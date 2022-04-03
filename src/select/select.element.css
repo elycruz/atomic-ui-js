@@ -1,0 +1,26 @@
+:host {
+    background: #fff;
+    display: inline-block;
+}
+
+:host button {
+    display: block;
+    /*background: none;
+    border-radius: 0;
+    border: none;*/
+}
+
+:host button:hover {
+
+}
+
+:host ::slotted(select) {
+    /*display: none;*/
+}
+
+:host #value-display {
+    border: 1px solid;
+    padding: 0.25rem;
+}
+
+
