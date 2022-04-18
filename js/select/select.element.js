@@ -1,3 +1,6 @@
+import {AtomicElement} from "../lib/dom/AtomicElement.js";
+import styles from './select.element.css';
+
 const mutObserverConfig = {childList: true, subtree: true, attributes: true, attributeFilter: ['selected']},
     mutObserver = new MutationObserver(records => {
     }),
@@ -13,10 +16,9 @@ const xSelectLocalName = 'x-select',
     xOptionSelectedClassName = `${xSelectLocalName}-option--selected`
 ;
 
-class XSelect extends HTMLElement {
-    static get localName() {
-        return xSelectLocalName;
-    }
+class XSelect extends AtomicElement {
+    static localName = xSelectLocalName;
+    static shadowRootOptions = {mode: 'open', delegatedFocus: true};
 
     get localName() {
         return this.constructor.localName;
@@ -93,7 +95,7 @@ class XSelect extends HTMLElement {
         }
 
         this.select.selectedIndex = index;
-        this.select.dispatchEvent(new Event('change', {bubbles: true, composed: true, cancelable: true, }));
+        this.select.dispatchEvent(new Event('change', {bubbles: true, composed: true, cancelable: true,}));
     };
 
     onChange = e => {
@@ -104,7 +106,6 @@ class XSelect extends HTMLElement {
 
     constructor() {
         super();
-        this.attachShadow({mode: 'open', delegatedFocus: true});
         this.shadowRoot.addEventListener('click', this.onClick);
         this.shadowRoot.addEventListener('change', this.onChange);
         this.shadowRoot.adoptedStyleSheets = [styleSheet];
