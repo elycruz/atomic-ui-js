@@ -1,50 +1,61 @@
-
 export class AtomicElement extends HTMLElement {
-    static styles = null;
-    static properties = null;
-    static localName = '';
-    static shadowRootOptions = {mode: 'open'};
+  static styles = null;
+  static properties = null;
+  static localName = '';
+  static shadowRootOptions = {mode: 'open'};
 
-    get localName() {
-        return this.constructor.localName;
-    }
+  #__initialized = false;
 
-    constructor() {
-        super();
-        this.attachShadow(this.constructor.shadowRootOptions);
-    }
+  get localName() {
+    return this.constructor.localName;
+  }
 
-    connectedCallback() {
-    }
+  constructor() {
+    super();
+    if (this.createRenderRoot) this.createRenderRoot();
+  }
 
-    disconnectedCallback() {
-    }
+  createRenderRoot() {
+    const {styles, shadowRootOptions} = this.constructor;
+    this.attachShadow(shadowRootOptions);
+    if (styles) this.adoptedStyleSheets.push(styles);
+  }
 
-    addEventListeners() {
+  connectedCallback() {
+    if (!this.#__initialized && this.isConnected) {
+      this.render();
+      this.#__initialized = true;
     }
+  }
 
-    removeEventListeners() {
+  disconnectedCallback() {
+    if (this.#__initialized) {
+      this.#__initialized = false;
     }
+  }
 
-    requestUpdate() {
-    }
+  addEventListeners() {
+  }
 
-    willUpdate() {
-    }
+  removeEventListeners() {
+  }
 
-    shouldUpdate() {
-    }
+  requestUpdate() {
+  }
 
-    firstUpdated() {
-    }
+  willUpdate() {
+  }
 
-    update() {
-    }
+  shouldUpdate() {
+  }
 
-    updated() {
-    }
+  firstUpdated() {
+  }
 
-    render() {
-    }
+  update() {
+  }
+
+  updated() {
+  }
 }
 
