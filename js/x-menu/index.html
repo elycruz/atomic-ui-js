@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>X-Menu Examples</title>
+  <script src="index.js" type="module"></script>
+</head>
+<body>
+<header><h1>X-Menu Examples</h1></header>
+<section>
+  <header><h3>With Unordered List</h3></header>
+  <x-menu value-textContent="ul > li > a">
+    <ul>
+      <li><a href="#link-1">Link 1</a></li>
+      <li><a href="#link-2">Link 2</a>
+        <ul>
+          <li><a href="#link-2-1">Link 2-1</a></li>
+          <li><a href="#link-2-2">Link 2-2</a></li>
+          <li><a href="#link-2-3">Link 2-3</a></li>
+        </ul>
+      </li>
+      <li><a href="#link-3">Link 3</a></li>
+      <li><a href="#link-4">Link 4</a>
+        <ul>
+          <li><a href="#link-4-1">Link 4-1</a></li>
+          <li><a href="#link-4-2">Link 4-2</a></li>
+        </ul>
+      </li>
+    </ul>
+  </x-menu>
+</section>
+
+<section>
+  <header><h3>With x-menu-item elements</h3></header>
+  <x-menu value-textContent="x-menu-item > span">
+    <x-menu-item><span>Link 1</span></x-menu-item>
+    <x-menu-item><span>Link 2</span>
+      <x-menu>
+        <x-menu-item><span>Link 2-1</span></x-menu-item>
+        <x-menu-item><span>Link 2-2</span></x-menu-item>
+        <x-menu-item><span>Link 2-3</span></x-menu-item>
+      </x-menu>
+    </x-menu-item>
+    <x-menu-item>Link 3</x-menu-item>
+    <x-menu-item>Link 4</x-menu-item>
+  </x-menu>
+</section>
+
+<section>
+  <header><h3>With `datalist`</h3></header>
+  <x-menu list="example-datalist"></x-menu>
+  <datalist id="example-datalist">
+    <option value="1">Option 1</option>
+    <option value="2">Option 2</option>
+    <option value="3">Option 3</option>
+    <option value="4">Option 4</option>
+    <option value="5">Option 5</option>
+  </datalist>
+</section>
+
+<section>
+  <header><h3>With `select`</h3></header>
+  <x-menu>
+    <select size="3" multiple>
+      <option value="1">Option 1</option>
+      <option value="2">Option 2</option>
+      <option value="3">Option 3</option>
+      <option value="4">Option 4</option>
+      <option value="5">Option 5</option>
+    </select>
+  </x-menu>
+</section>
+</body>
+</html>

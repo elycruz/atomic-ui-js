@@ -1,0 +1,4 @@
+.x-button-group:not(.x-button-group--vertical) button + button,
+.x-button-group.x-button-group--horizontal button + button {
+  margin-left: 0.5rem;
+}

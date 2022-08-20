@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>X-Modal</title>
+</head>
+<body>
+
+<x-dialog>
+  <form method="dialog">
+    <fieldset>
+      <legend>Dialog</legend>
+      <p>Hello</p>
+      <input type="date">
+      <button value="0" type="reset">Cancel</button>
+      <button value="1" type="submit">Confirm</button>
+    </fieldset>
+  </form>
+</x-dialog>
+
+<button class="open-btn">Open dialogs</button>
+
+<!--
+<dialog>
+  <form method="dialog">
+    <fieldset>
+      <legend>Dialog</legend>
+      <p>Hello</p>
+      <button value="0">Cancel</button>
+      <button value="1">Confirm</button>
+    </fieldset>
+  </form>
+</dialog>-->
+
+<script type="module">
+  import './index.js';
+
+  const querySelector = document.querySelector.bind(document),
+    querySelectorAll = document.querySelectorAll.bind(document);
+
+  window.addEventListener('DOMContentLoaded', () => {
+    const toggleBtn = querySelector('.open-btn'),
+      dialogs = querySelectorAll('x-dialog');
+
+    toggleBtn.addEventListener('click', () => {
+      dialogs.forEach(d => d.showModal ? d.showModal() : void (0));
+    });
+  }, {once: true});
+</script>
+</body>
+</html>

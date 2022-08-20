@@ -1,6 +1,11 @@
-@import url(copy.css);
+@import url(button.css);
+@import url(fieldset.css);
+@import url(section.css);
 
 html, body {
-    margin: 0;
-    padding: 0;
+  --x-font-family: Arial, Verdana, Helvetica, Sans-Serif;
+  margin: 0;
+  padding: 0;
+  font-family: var(--x-font-family);
 }
+

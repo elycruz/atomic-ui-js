@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>X-Number-Spinner</title>
+  <link rel="stylesheet" href="../css/index.stories.css">
+</head>
+<body>
+<section>
+  <header>x-number-spinner</header>
+  <article>
+    <header>Default</header>
+    <form id="default-x-number-spinner-form" action="#" method="get">
+      <fieldset class="x-fieldset x-fieldset--grid-2">
+        <legend>Default</legend>
+        <label for="default">Default</label>
+        <x-number-spinner id="default" name="default"></x-number-spinner>
+        <label for="x-spinner--with-min-and-max">With `min` and `max`</label>
+        <x-number-spinner id="x-spinner--with-min-and-max" name="x-spinner--with-min-and-max" min="1" max="12"></x-number-spinner>
+        <label for="x-spinner--with-min-invalid">With invalid `min`</label>
+        <x-number-spinner id="x-spinner--with-min-invalid" name="x-spinner--with-min-invalid" min="abcdefg">
+          <div slot="help">`min` will be normalized to `Number.MIN_SAFE_INTEGER`, in this case.</div>
+        </x-number-spinner>
+        <div class="x-button-group">
+          <button type="reset">Reset</button>
+          <button type="submit">Submit</button>
+        </div>
+      </fieldset>
+    </form>
+  </article>
+</section>
+
+<script src="x-number-spinner.js" type="module"></script>
+</body>
+</html>

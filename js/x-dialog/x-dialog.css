@@ -1,0 +1,3 @@
+:host ::slotted(dialog) {
+  background: skyblue;
+}

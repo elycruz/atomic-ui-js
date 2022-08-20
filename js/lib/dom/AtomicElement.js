@@ -57,5 +57,9 @@ export class AtomicElement extends HTMLElement {
 
   updated() {
   }
+
+  render() {
+    return '';
+  }
 }
 
