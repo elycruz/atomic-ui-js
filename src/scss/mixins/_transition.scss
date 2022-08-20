@@ -1,3 +1,0 @@
-@mixin transition ($value) {
-  @include with-browser-prefixes(transition, $value);
-}

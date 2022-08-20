@@ -1,7 +1,0 @@
-///**
-// * Sets user-select property to `none` for all browser prefixes.
-// * $value - user-select value.  Default `none`.
-// */
-@mixin user-select ($value: none) {
-  @include with-browser-prefixes(user-select, $value);
-}

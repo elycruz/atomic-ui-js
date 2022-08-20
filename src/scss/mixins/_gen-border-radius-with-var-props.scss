@@ -1,3 +1,0 @@
-@mixin gen-border-radius-with-var-props() {
-  border-radius: var(--ecms-border-top-left-radius) var(--ecms-border-top-right-radius) var(--ecms-border-bottom-right-radius) var(--ecms-border-bottom-left-radius);
-}

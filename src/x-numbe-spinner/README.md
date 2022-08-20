@@ -13,5 +13,4 @@ A number spinner control for only setting/fetching number values;  Can be used i
 - [x] `value`.
 - [x] `valueAsNumber`.
 - [x] `step`.
-- [x] `step`.
-- 
+- [ ] @todo

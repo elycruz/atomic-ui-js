@@ -1,7 +1,0 @@
-:root {
-  @each $x in $ecms-fib-long {
-    $v: $x * 0.01;
-    $k: str-replace($v + "", ".", "_");
-    --ecms-#{$k}s: #{$v}s;
-  }
-}

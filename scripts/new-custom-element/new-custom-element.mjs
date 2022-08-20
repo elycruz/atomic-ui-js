@@ -5,7 +5,7 @@ import fs from "fs";
 
 // @todo generate README.md as well (for elements)
 // @todo add `--no-readme` flag
-// @todo add `--no-scss` flag
+// @todo add `--no-css` flag
 // @todo add `--no-ts` flag
 // @todo add `--no-index` flag
 // @todo add a `--with-props` flag
