@@ -1,0 +1,23 @@
+@use "sass:math";
+@import "../variables/fibonacci";
+
+// Generates `#{$classPrefix}-box-shadow {
+//       box-shadow: 0 #{$x}rem #{$x2}rem #{$shadowRgba};
+// }` for given numbers.
+@mixin genBoxShadowClassesForNums($classPrefix: ecms, $shadowRgba: rgba(0,0,0,0.34), $nums: $ecms-index-and-fib-dec-assoc) {
+  $className: 0;
+  $lenNums: length($nums);
+  $v2: 0;
+  @each $k, $v in $nums {
+    $v1: nth($v, 2);
+    @if $k + 1 < $lenNums {
+      $v2: nth(nth(nth($nums, $k + 1), 2), 2);
+    } @else {
+      $v2: nth(nth(nth($nums, $lenNums), 2), 2);
+    }
+    $className: #{$classPrefix}-box-shadow-#{nth($v, 1)};
+    .#{$className} {
+      box-shadow: 0 #{$v1}rem #{$v2}rem #{$shadowRgba};
+    }
+  }
+}

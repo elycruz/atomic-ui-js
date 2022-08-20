@@ -1,0 +1,3 @@
+@mixin opacity ($value) {
+  @include with-browser-prefixes(opacity, $value);
+}

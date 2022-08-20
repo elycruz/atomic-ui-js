@@ -1,0 +1,14 @@
+///**
+// * Generates definition for key prefixed for hardcoded browser
+// * prefixes.
+// * $value - Property value.
+// * $key - Property name.
+// */
+@import "../variables/uncategorized";
+
+@mixin with-browser-prefixes ($key, $value) {
+  @each $browser-prefix in $browser-prefixes {
+    #{$browser-prefix}#{$key}: $value;
+  }
+  #{$key}: $value;
+}

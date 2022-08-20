@@ -1,0 +1,95 @@
+@import "../variables/variables";
+
+%pos-rel {
+  position: relative;
+}
+
+%pos-abs {
+  position: absolute;
+}
+
+%pos-fixed {
+  position: fixed;
+}
+
+%display-none {
+  display: none;
+}
+
+%display-block {
+  display: block;
+}
+
+%display-flex {
+  display: flex;
+}
+
+%display-inline-block {
+  display: inline-block;
+}
+
+%border-box {
+  box-sizing: border-box;
+}
+
+%width-100pct {
+  width: 100%;
+}
+
+%text-align-center {
+  text-align: center;
+}
+
+%color-white {
+  color: var(--ecms-color-grayscale-6, #fff);
+}
+
+%space-between-align-center {
+  justify-content: space-between;
+  align-items: center;
+}
+
+%flex-horizontal {
+  display: flex;
+  flex-direction: row;
+}
+
+%flex-vertical {
+  display: flex;
+  flex-direction: column;
+}
+
+%flex-horizontal-space-between-center {
+  @extend %flex-horizontal;
+  @extend %space-between-align-center;
+}
+
+%flex-vertical-space-between-center {
+  @extend %flex-vertical;
+  @extend %space-between-align-center;
+}
+
+%slide-transition-def {
+  transition: transform $ecms-time-0_34s ease-in-out,
+  margin $ecms-time-0_34s ease-in-out,
+  box-shadow $ecms-time-0_34s ease-in-out,
+  opacity $ecms-time-0_34s ease-in-out,
+  height $ecms-time-0_34s ease-in-out,
+  width $ecms-time-0_34s ease-in-out;
+}
+
+%shadow-un-raised {
+  box-shadow: 0 0 5px 0 rgba(0,0,0,0.21); //map-get($ecms-shadows-map, '0_02');
+}
+
+%shadow-raised {
+  box-shadow: 0 0 21px 0 rgba(0,0,0,0.21); // map-get($ecms-shadows-map, '0_03');
+}
+
+%border-radius-100p {
+  border-radius: 100%;
+}
+
+%border-radius-50p {
+  border-radius: 50%;
+}

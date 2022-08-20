@@ -1,0 +1,9 @@
+@import "../variables/spacing";
+
+@mixin gen-border-radius-var-properties() {
+  --ecms-border-radius: #{$ecms-rem-0_34};
+  --ecms-border-top-left-radius: var(--ecms-border-radius);
+  --ecms-border-top-right-radius: var(--ecms-border-radius);
+  --ecms-border-bottom-left-radius: var(--ecms-border-radius);
+  --ecms-border-bottom-right-radius: var(--ecms-border-radius);
+}

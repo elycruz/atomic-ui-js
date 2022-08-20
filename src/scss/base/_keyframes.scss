@@ -1,0 +1,135 @@
+@keyframes ripple-behavior-in {
+  0% {
+    transform: translate(var(--ecms-ripple-x), var(--ecms-ripple-y)) scale(var(--ecms-ripple-inactive-scale));
+    opacity: 0.34; //var(--ecms-ripple-inactive-opacity, 1);
+  }
+  100% {
+    transform: translate(var(--ecms-ripple-x), var(--ecms-ripple-y)) scale(var(--ecms-ripple-active-scale));
+    opacity: var(--ecms-ripple-active-opacity, 0.21);
+  }
+}
+
+@keyframes ripple-behavior-out {
+  0% {
+    transform: translate(var(--ecms-ripple-x), var(--ecms-ripple-y)) scale(var(--ecms-ripple-active-scale));
+    opacity: var(--ecms-ripple-active-opacity, 0.21);
+  }
+  100% {
+    transform: translate(var(--ecms-ripple-x), var(--ecms-ripple-y)) scale(var(--ecms-ripple-active-scale));
+    opacity: var(--ecms-ripple-inactive-opacity, 0);
+  }
+}
+
+@keyframes press-btn-in {
+  from {
+    box-shadow: 0 5px var(--ecms-font-size-one-third) 0 var(--ecms-theme-color-rgba-5);
+  }
+  to {
+    box-shadow: 0 3px var(--ecms-font-size-one-third) 0 rgba(0, 0, 0, 0),
+    0 3px var(--ecms-font-size-one-third) var(--ecms-theme-color-rgba-5) inset;
+  }
+}
+
+@keyframes press-btn-out {
+  from {
+    box-shadow: 0 3px var(--ecms-font-size-one-third) 0 rgba(0, 0, 0, 0),
+    0 3px var(--ecms-font-size-one-third) var(--ecms-theme-color-rgba-5) inset;
+  }
+  to {
+    box-shadow: 0 5px var(--ecms-font-size-one-third) 0 var(--ecms-theme-color-rgba-5);
+  }
+}
+
+@keyframes press-gradated-btn-in {
+  from {
+    box-shadow: 0 5px var(--ecms-font-size-one-third) 0 var(--ecms-shadow-color),
+    0 3px var(--ecms-font-size-one-third) 0 var(--ecms-theme-color-6) inset;
+  }
+  to {
+    box-shadow: 0 3px var(--ecms-font-size-one-third) 0 rgba(0, 0, 0, 0),
+    0 3px var(--ecms-font-size-one-third) var(--ecms-theme-color-4) inset;
+  }
+}
+
+@keyframes press-gradated-btn-out {
+  from {
+    box-shadow: 0 3px var(--ecms-font-size-one-third) 0 rgba(0, 0, 0, 0),
+    0 3px var(--ecms-font-size-one-third) var(--ecms-shadow-color) inset;
+  }
+  to {
+    box-shadow: 0 2px var(--ecms-font-size-one-third) 0 var(--ecms-shadow-color),
+    0 2px var(--ecms-font-size-one-third) 0 var(--ecms-theme-color-rgba-6) inset;
+  }
+}
+
+@keyframes slide-in-top {
+  from {
+    transform: translate(0, -100%);
+  }
+  to {
+    transform: translate(0, 0);
+  }
+}
+
+@keyframes slide-in-right {
+  from {
+    transform: translate(100%, 0);
+  }
+  to {
+    transform: translate(0, 0);
+  }
+}
+
+@keyframes slide-in-bottom {
+  from {
+    transform: translate(0, 100%);
+  }
+  to {
+    transform: translate(0, 0);
+  }
+}
+
+@keyframes slide-in-left {
+  from {
+    transform: translate(-100%, 0);
+  }
+  to {
+    transform: translate(0, 0);
+  }
+}
+
+@keyframes slide-out-top {
+  from {
+    transform: translate(0, 0);
+  }
+  to {
+    transform: translate(0, -100%);
+  }
+}
+
+@keyframes slide-out-right {
+  from {
+    transform: translate(0, 0);
+  }
+  to {
+    transform: translate(100%, 0);
+  }
+}
+
+@keyframes slide-out-bottom {
+  from {
+    transform: translate(0, 0);
+  }
+  to {
+    transform: translate(0, 100%);
+  }
+}
+
+@keyframes slide-out-left {
+  from {
+    transform: translate(0, 0);
+  }
+  to {
+    transform: translate(-100%, 0);
+  }
+}

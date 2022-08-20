@@ -1,0 +1,11 @@
+@import "../functions/functions";
+
+$ecms-fib-short: (13, 21, 34, 55, 89);
+$ecms-fib-long: (1, 2, 3, 5, 8, 13, 21, 34, 55, 89, 144, 233, 377, 610, 987);
+$ecms-fib-key-decimal-assoc: nums-to-key-decimal-assoc-list($ecms-fib-short);
+$ecms-index-and-fib-dec-assoc: nums-to-index-key-dec-assoc-list($ecms-fib-long);
+
+$ecms-fib-map: ();
+@each $k, $v in $ecms-fib-key-decimal-assoc {
+  $ecms-fib-key-decimal-map: map-merge($ecms-fib-map, (#{$k}: $v * 100))
+}

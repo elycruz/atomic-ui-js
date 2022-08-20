@@ -1,0 +1,80 @@
+@import "../variables/typography";
+@import "../mixins/font-smoothing";
+
+%ecms-h1 {
+  @include font-smoothing();
+  font: lighter 6.1rem $ecms-global-font-family;
+  letter-spacing: -0.08rem;
+}
+
+%ecms-h2 {
+  @include font-smoothing();
+  font: lighter 3.77rem $ecms-global-font-family;
+  letter-spacing: -0.03rem;
+}
+
+%ecms-h3 {
+  @include font-smoothing();
+  font: normal 2.33rem $ecms-global-font-family;
+  letter-spacing: -0.01rem;
+}
+
+%ecms-h4 {
+  @include font-smoothing();
+  font: 300 2.33rem $ecms-global-font-family;
+  letter-spacing: -0.01rem;
+}
+
+%ecms-h5 {
+  @include font-smoothing();
+  font: 500 1.44rem $ecms-global-font-family;
+}
+
+%ecms-h6 {
+  @include font-smoothing();
+  font: 300 1.44rem $ecms-global-font-family;
+}
+
+%ecms-subtitle1 {
+  @include font-smoothing();
+  font: normal 1rem $ecms-global-font-family;
+  letter-spacing: -0.03rem;
+}
+
+%ecms-subtitle2 {
+  @include font-smoothing();
+  font: 500 0.89rem $ecms-global-font-family;
+  letter-spacing: -0.01rem;
+}
+
+%ecms-text {
+  @include font-smoothing();
+  font: normal 1rem $ecms-global-font-family;
+  letter-spacing: 0.03rem;
+}
+
+%ecms-text2 {
+  @include font-smoothing();
+  font: normal var(--ecms-13px) $ecms-global-font-family;
+  letter-spacing: 0.01rem;
+}
+
+%ecms-text-button {
+  @include font-smoothing();
+  font: 500 var(--ecms-input-font-size) $ecms-global-font-family;
+  letter-spacing: 0.08rem;
+  line-height: var(--ecms-input-line-height);
+}
+
+%ecms-text-caption {
+  @include font-smoothing();
+  font: normal 0.89rem $ecms-global-font-family;
+  letter-spacing: 0.03rem;
+}
+
+%ecms-text-overline {
+  @include font-smoothing();
+  font: normal 0.55rem $ecms-global-font-family;
+  letter-spacing: 0.13rem;
+  line-height: 0.89rem;
+}

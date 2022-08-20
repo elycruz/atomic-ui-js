@@ -1,0 +1,12 @@
+@mixin gradation-style-with-shadow (
+  $color: var(--ecms-theme-color-5),
+  $gradientTop: var(--ecms-theme-color-rgba-6),
+  $gradientBottom: var(--ecms-theme-color-rgba-5),
+  $textShadowColor: var(--ecms-text-shadow-color)
+) {
+  color: $color;
+  background: linear-gradient($gradientTop 0, $gradientBottom);
+  box-shadow: 0 var(--ecms-border-width) var(--ecms-font-size-one-third) 0 var(--ecms-box-shadow-color),
+  0 var(--ecms-border-width) var(--ecms-font-size-one-third) 0 $gradientTop inset;
+  text-shadow: 1px 1px $textShadowColor;
+}

@@ -1,0 +1,15 @@
+@import "../functions/string";
+
+:root {
+  @each $x in $ecms-fib-long {
+    --ecms-#{$x}px: #{$x/16}rem;
+  }
+
+  $i: 1;
+  @each $x in $ecms-fib-long {
+    --ecms-spacing-#{$i}: var(--ecms-#{$x}px);
+    $i: $i + 1;
+  }
+
+  --ecms-spacing-default: 1rem;
+}

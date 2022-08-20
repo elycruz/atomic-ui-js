@@ -1,0 +1,52 @@
+@import "fibonacci";
+@import "../functions/ecms-map-funcs";
+
+// Colors are generated based on rgb color differences
+// All entered number differences should be in base 255 Fibonnacci decimal numbers
+$ecms-color-seeds-map: (
+  primary: rgba(32, 32, 223, 1),
+  secondary: rgba(191, 64, 191, 1),
+  success: rgba(64, 191, 64, 1),
+  info: rgba(32, 223, 223, 1) ,
+  warning: rgba(223, 128, 32, 1),
+  danger: rgba(223, 32, 32, 1),
+  grayscale: #000,
+  light: #00ff00,
+  surface: #FFF
+) !default;
+
+// Colors map
+$_ecms-fib-key-decimal-assoc-clone: join((), $ecms-fib-key-decimal-assoc);
+$_ecms-fib-key-decimal-assoc-clone: append($_ecms-fib-key-decimal-assoc-clone, ("1_00", 1.0));
+
+//@debug $_ecms-fib-key-decimal-assoc-clone;
+$color-indices-map: (
+    ("0_10", 0.1),
+    ("0_20", 0.2),
+    ("0_30", 0.3),
+    ("0_40", 0.4),
+    ("0_50", 0.5),
+    ("0_60", 0.6),
+    ("0_70", 0.7),
+    ("0_80", 0.8),
+    ("0_90", 0.9),
+    ("1_00", 1.0),
+);
+
+$ecms-colors-map: ecms_gen_colors_map($ecms-color-seeds-map,
+  $color-indices-map
+) !default;
+
+//@debug $ecms-colors-map;
+
+// Original Color Themes
+// ----------------
+// Primary and Secondary colors' table (used below)
+// (first row of colors are base colors the others where generated off of (the step here
+//  changes the "lightness" level))
+//step	#FF0000	#FF7700	#FFFF00	#00FF00	#0000FF	#7700FF
+//0.13	#420000	#421f00	#424200	#004200	#000042	#1f0042
+//0.21	#6b0000	#6b3200	#6b6b00	#006b00	#00006b	#32006b
+//0.34	#ad0000	#ad5100	#adad00	#00ad00	#0000ad	#5100ad
+//0.55	#ff1a1a	#ff851a	#ffff1a	#1aff1a	#1a1aff	#851aff
+//0.89	#ffc7c7	#ffe1c7	#ffffc7	#c7ffc7	#c7c7ff	#e1c7ff

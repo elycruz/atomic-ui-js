@@ -1,0 +1,56 @@
+@import "../variables/uncategorized";
+
+///**
+// * Prefixes specified properties within `$lists` and returns a new list
+// * with prefixed properties added.
+// * $lists - Value definition(s) list.
+// * $prefixProps - Props to prefix within value(s) list.
+// * @Note requires list to have a trailing comma (takes care of the case of using this with 'transition' property:  E.g.,
+// *  Where you need to prefix one property of a list but need to keep the list intact);  E.g.,
+// * ```
+// *  // Without `fix-with-browser-prefixes`
+// *  transition: transform 0.34s ease-in-out;
+// *
+// *  // With ...
+// *  @include with-browser-prefixes(transition,
+//      fit-with-browser-prefixes(
+//        (transform 1.44s ease-in-out,),
+//        transform
+//      )
+//    )
+//
+//    // Outputs
+//    -o-transition: -o-transform 1.44s ease-in-out, -ms-transform 1.44s ease-in-out, -moz-transform 1.44s ease-in-out, -webkit-transform 1.44s ease-in-out, transform 1.44s ease-in-out;
+//    -ms-transition: -o-transform 1.44s ease-in-out, -ms-transform 1.44s ease-in-out, -moz-transform 1.44s ease-in-out, -webkit-transform 1.44s ease-in-out, transform 1.44s ease-in-out;
+//    -moz-transition: -o-transform 1.44s ease-in-out, -ms-transform 1.44s ease-in-out, -moz-transform 1.44s ease-in-out, -webkit-transform 1.44s ease-in-out, transform 1.44s ease-in-out;
+//    -webkit-transition: -o-transform 1.44s ease-in-out, -ms-transform 1.44s ease-in-out, -moz-transform 1.44s ease-in-out, -webkit-transform 1.44s ease-in-out, transform 1.44s ease-in-out;
+//    transition: -o-transform 1.44s ease-in-out, -ms-transform 1.44s ease-in-out, -moz-transform 1.44s ease-in-out, -webkit-transform 1.44s ease-in-out, transform 1.44s ease-in-out; }
+// * ```
+// */
+@function fit-with-browser-prefixes ($lists, $prefixProps, $separator: comma) {
+  // Outgoing list
+  $out: ();
+
+  // Loop through lists
+  @each $list in $lists {
+
+    // If first prop in arg list in $prefixProps
+    @if index($prefixProps, nth($list, 1)) != null {
+
+      // For each browser prefix replace
+      @each $prefix in $browser-prefixes {
+        $newList: join((), $list, space);
+        $newList: set-nth($newList, 1, $prefix + nth($list, 1));
+        $out: append($out, $newList, $separator);
+      }
+      $out: append($out, $list, $separator);
+    }
+      // Else property shouldn't be prefixed;  Add it to outgoing list
+    @else {
+      $out: append($out, $list, $separator);
+    }
+  }
+
+  // Return new list of lists
+  @return $out;
+}

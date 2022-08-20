@@ -1,6 +1,0 @@
-@import url(./base);
-@import url(./modules);
-
-header + article {
-  margin-top: 1rem;
-}

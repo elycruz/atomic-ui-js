@@ -1,0 +1,37 @@
+@import "./string";
+
+@function num_to_hundreths ($n) {
+  @return $n * 0.01;
+}
+
+@function nums_to_hundreths ($xs) {
+  $out: ();
+  @each $x in $xs {
+    $out: append($out, num_to_hundreths($x));
+  }
+  @return $out;
+}
+
+@function decimal-to-key ($dec) {
+  @return str-replace(quote(#{$dec}), ".", "_");
+}
+
+@function nums-to-key-decimal-assoc-list($nums, $multiplier: 0.01) {
+  $out: ();
+  @each $x in $nums {
+    $dec: $x * $multiplier;
+    $out: append($out, (decimal-to-key($dec), $dec));
+  }
+  @return $out;
+}
+
+@function nums-to-index-key-dec-assoc-list($nums, $multiplier: 0.01) {
+  $out: ();
+  @for $i from 1 through length($nums) {
+    $x: nth($nums, $i);
+    $v: $x * $multiplier;
+    $k: decimal-to-key($v);
+    $out: append($out, ($i, ($k, $v)));
+  }
+  @return $out;
+}

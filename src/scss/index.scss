@@ -1,0 +1,16 @@
+@import "./variables/variables";
+@import "./placeholders/placeholder";
+@import "./functions/functions";
+@import "./mixins/mixins";
+@import "./base/base";
+@import "./properties/properties";
+
+.svg-defines {
+  width: 0;
+  height: 0;
+  visibility: hidden;
+}
+
+* {
+  @include gen-theme-and-variant-props($ecms-colors-map, $ecms-theme-names, $color-indices-map);
+}

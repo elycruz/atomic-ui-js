@@ -1,0 +1,25 @@
+@import "fibonacci";
+@import "./colors";
+@import "../functions/ecms-map-funcs";
+
+// Shadow maps
+// --------------------
+// One-point shadows
+// @see https://developer.mozilla.org/en-US/docs/Web/CSS/box-shadow
+// Here we're using the following values `offset-x | offset-y | blur-radius | color`.
+
+// Create 'one-point' shadow map;  E.g., (0_01: ..., 0_01-inset: ...)
+$ecms-shadows-map: ecms_gen_one_point_shadow_map(
+  $ecms-index-and-fib-dec-assoc,
+  $shadowColor: var(--ecms-box-shadow-color)
+);
+
+// Merge in 'two-point' shadow variations;  Uses one-point shadow map to create a two-point-shadow map;
+// E.g., (0_01: ..., 0_01-inset: ..., 0_01-two-point: (..., ...))
+$ecms-shadows-map: ecms_merge_two_point_shadow_map(
+    $ecms-shadows-map,
+    $ecms-index-and-fib-dec-assoc
+);
+
+// Log
+// @debug $ecms-shadows-map;

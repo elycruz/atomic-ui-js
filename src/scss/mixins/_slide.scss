@@ -1,0 +1,40 @@
+@mixin slide(
+  $from: left,
+  $parentSelector: ':host .content__wrapper',
+  $activeSelector: ':host(.ecms-component--active)',
+  $slidingElmSelector: '.content',
+  $expandedHeight: 100%,
+  $speed: 0.233s,
+  $easing: ease-in-out
+) {
+  #{$parentSelector} {
+    overflow: hidden;
+    transition: height #{$speed} ease-in-out, opacity #{$speed};
+    opacity: 0;
+    height: 0;
+  }
+
+  #{$activeSelector} #{$parentSelector} {
+    height: #{$expandedHeight};
+    opacity: 1;
+  }
+
+  #{$slidingElmSelector} {
+    animation: #{$speed} slide-out-#{$from} #{$easing};
+    @if ($from == top) {
+      transform: translate(0, -100%);
+    } @else if ($from == right) {
+      transform: translate(100%, 0);
+    } @else if ($from == bottom) {
+      transform: translate(0, 100%);
+    }
+    @if ($from == left) {
+      transform: translate(-100%, 0);
+    }
+  }
+
+  #{$activeSelector} #{$slidingElmSelector} {
+    animation: #{$speed} slide-in-#{$from} #{$easing};
+    transform: translate(0, 0);
+  }
+}

@@ -1,0 +1,15 @@
+@import "./spacing";
+
+// @note Using Material typography along with clarity.design typgoraphy for reference: https://material.io/design/typography/the-type-system.html#type-scale
+// @todo add clarity links
+
+// Font sizes
+$ecms-font-size-0_55: $ecms-rem-0_55;
+$ecms-font-size-0_89: $ecms-rem-0_89;
+$ecms-font-size-1_30: $ecms-rem-1_44;
+$ecms-font-size-2_33: $ecms-rem-2_33;
+$ecms-font-size-3_77: $ecms-rem-3_77;
+$ecms-font-size-6_10: $ecms-rem-6_10;
+
+// Font families
+$ecms-global-font-family: "Roboto", "Helvetica", "Geo Sans Light", "Verdana", "Arial", "Sans-Serif";

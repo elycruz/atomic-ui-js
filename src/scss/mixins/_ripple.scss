@@ -1,0 +1,54 @@
+@import "../variables/time";
+
+// @todo Create css-property variables for all states/parts of ripple effect (keyframe animation states etc.).
+
+@mixin ripple(
+  $rippleSelector: "&:host(.ecms-ripple-upgraded)",
+  $rippleOutSpeed: $ecms-time-0_34s,
+  $width: 1rem,
+  $height: 1rem,
+  $speed: $ecms-time-0_13s
+) {
+  #{$rippleSelector}::after,
+  #{$rippleSelector}::before {
+    position: absolute;
+    content: "";
+    top: 50%;
+    left: 50%;
+    pointer-events: none;
+    transform-origin: center;
+    transform: translate(var(--ecms-ripple-x, -50%), var(--ecms-ripple-y, -50%)) scale(var(--ecms-ripple-inactive-scale, 0));
+    width: $width;
+    height: $height;
+    border-radius: 50%;
+    opacity: 0; //var(--ecms-ripple-inactive-opacity);
+  }
+
+  #{$rippleSelector}::before {
+    transition: opacity $speed, background $speed, transform $speed ease-out;
+    z-index: 1;
+  }
+
+  #{$rippleSelector}:host(:focus)::before,
+  #{$rippleSelector}:host(:focus-within)::before,
+  #{$rippleSelector}:host(:hover)::before,
+  #{$rippleSelector}:host(:active)::before {
+    transform: translate(var(--ecms-ripple-x, -50%), var(--ecms-ripple-y, -50%)) scale(var(--ecms-ripple-active-scale, 0));
+    opacity: var(--ecms-ripple-hover-opacity);
+  }
+
+  #{$rippleSelector}::after {
+    transform: translate(var(--ecms-ripple-x), var(--ecms-ripple-y)) scale(var(--ecms-ripple-active-scale));
+    -webkit-animation: $rippleOutSpeed ripple-behavior-out ease-out;
+    animation: $rippleOutSpeed ripple-behavior-out ease-out;
+    z-index: 2;
+  }
+
+  #{$rippleSelector}:host(.ecms-ripple-upgraded--active)::after,
+  #{$rippleSelector}:host(:active)::after {
+    transform: translate(var(--ecms-ripple-x), var(--ecms-ripple-y)) scale(var(--ecms-ripple-active-scale));
+    -webkit-animation: $speed ripple-behavior-in ease-out;
+    animation: $speed ripple-behavior-in ease-out;
+    opacity: var(--ecms-ripple-active-opacity);
+  }
+}

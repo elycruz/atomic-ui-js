@@ -1,0 +1,48 @@
+@import "./fonts/fonts";
+
+///**
+// * @note Font paths are relative paths from public root.
+// * @note add `font-display: auto;` to fonts being imported from google
+// *  (ensures font-visibility while fonts are being downloaded).
+// *  @see https://developers.google.com/web/updates/2016/02/font-display
+// */
+//@font-face {
+//  font-family: 'Material Icons';
+//  font-style: normal;
+//  font-weight: 400;
+//  src: url(#{$fonts-path}/MaterialIcons-Regular.eot); /* For IE6-8 */
+//  src: local('Material Icons'),
+//  local('MaterialIcons-Regular'),
+//  url(#{$fonts-path}/MaterialIcons-Regular.woff2) format('woff2'),
+//  url(#{$fonts-path}/MaterialIcons-Regular.woff) format('woff'),
+//  url(#{$fonts-path}/MaterialIcons-Regular.ttf) format('truetype');
+//}
+
+.material-icons {
+  font-size: 21px;  /* Preferred icon size */
+}
+
+/* Our own rules for icon sizing */
+.font-size-13,
+.material-icons.md-13 { font-size: 13px; }
+.font-size-16,
+.material-icons.md-16 { font-size: 16px; }
+.font-size-21,
+.material-icons.md-21 { font-size: 21px; }
+.font-size-34,
+.material-icons.md-34 { font-size: 34px; }
+
+/* Material-icons' rules for sizing. */
+.material-icons.md-18 { font-size: 18px; }
+.material-icons.md-24 { font-size: 24px; }
+.material-icons.md-36 { font-size: 36px; }
+.material-icons.md-48 { font-size: 48px; }
+
+/* Rules for using icons as black on a light background. */
+.material-icons.md-dark { color: rgba(0, 0, 0, 0.55); }
+.material-icons.md-dark.md-inactive { color: rgba(0, 0, 0, 0.21); }
+
+/* Rules for using icons as white on a dark background. */
+.material-icons.md-light { color: rgba(255, 255, 255, 1); }
+.material-icons.md-light.md-inactive { color: rgba(255, 255, 255, 0.34); }
+

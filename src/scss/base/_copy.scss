@@ -1,0 +1,80 @@
+@import "../variables/variables";
+@import "../placeholders/placeholder";
+@import "../mixins/mixins";
+@import "./fonts";
+
+h3, h4, h5, h6 {
+  font-weight: bold;
+  margin-bottom: 13px;
+}
+
+blockquote {
+  text-indent: 1rem;
+}
+
+ul,
+ul li,
+blockquote,
+p {
+  margin-bottom: 34px;
+  line-height: 34px;
+}
+
+table {
+  margin-bottom: 34px;
+}
+
+a,
+button,
+input[type="submit"],
+input[type="reset"] {
+  @include with-browser-prefixes(transition, (
+      (background $ecms-time-0_13s),
+      (color $ecms-time-0_13s),
+      (border $ecms-time-0_13s)
+  ));
+}
+
+a {
+  display: inline-block;
+  color: rgb(89,144,221);
+  text-decoration: none;
+  box-sizing: border-box;
+  line-height: 100%;
+
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
+i {
+  font-style: italic;
+}
+
+ul {
+  list-style: disc;
+  padding-left: 13px;
+  margin-left: 8px;
+}
+
+ul li {
+  line-height: 21px;
+  margin-bottom: 13px;
+}
+
+h4 {
+  font-size: 21px;
+}
+
+blockquote,
+blockquote + figcaption,
+p {
+  font-size: 13px;
+  font-size: 1rem; //** Incase it's supported **/
+  line-height: 1.4rem; //** If supported **/
+}
+
+.h1, .h2, .h3, .h4, .h5, .h6 {
+  text-transform: uppercase;
+  font-family: 'Rajdhani', $ecms-global-font-family;
+}
