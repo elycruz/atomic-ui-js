@@ -21,6 +21,8 @@
         <x-number-spinner id="x-spinner--with-min-invalid" name="x-spinner--with-min-invalid" min="abcdefg">
           <div slot="help">`min` will be normalized to `Number.MIN_SAFE_INTEGER`, in this case.</div>
         </x-number-spinner>
+        <label for="number-input">Native Number Input</label>
+        <input type="number" id="number-input" name="number-input">
         <div class="x-button-group">
           <button type="reset">Reset</button>
           <button type="submit">Submit</button>
@@ -31,5 +33,6 @@
 </section>
 
 <script src="./index.js" type="module"></script>
+<script src="./index.stories.js" type="module"></script>
 </body>
 </html>

@@ -5,6 +5,7 @@ export class AtomicElement extends HTMLElement {
   static shadowRootOptions = {mode: 'open'};
 
   #__initialized = false;
+  #__updateComplete;
 
   get localName() {
     return this.constructor.localName;
@@ -40,7 +41,8 @@ export class AtomicElement extends HTMLElement {
   removeEventListeners() {
   }
 
-  requestUpdate() {
+  requestUpdate(propName, prevValue) {
+
   }
 
   willUpdate() {

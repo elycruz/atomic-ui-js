@@ -13,6 +13,10 @@ export const
   // Booleans
   // ----
   attribute = true,
-  reflect = true
+  reflect = true,
+
+  // Selectors
+  // ----
+  focusedSelector = ':focus, :focus-within'
 
 ;

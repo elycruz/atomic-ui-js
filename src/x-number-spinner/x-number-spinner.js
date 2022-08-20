@@ -1,4 +1,4 @@
-import {DEFAULT_VALUE_NAME, MAX_NAME, MIN_NAME, STEP_NAME, VALUE_NAME} from "../utils";
+import {DEFAULT_VALUE_NAME, focusedSelector, log, MAX_NAME, MIN_NAME, STEP_NAME, typeOf, VALUE_NAME} from "../utils";
 
 import {autoWrapNumber, isset} from "../utils";
 import {AtomicElement} from "../utils";
@@ -14,8 +14,8 @@ const {MAX_SAFE_INTEGER, MIN_SAFE_INTEGER, isNaN} = Number,
 :host > :first-child {
   width: var(${charLengthCssProp}, 18ch);
   border: 1px solid gray;
-  border-radius: 0.25rem;
-  padding: 0.25rem;
+  border-radius: 2px;
+  padding: 1px 2px;
   color: -internal-light-dark(black, white);
   cursor: text;
   background-color: -internal-light-dark(rgb(255, 255, 255), rgb(59, 59, 59));
@@ -23,7 +23,7 @@ const {MAX_SAFE_INTEGER, MIN_SAFE_INTEGER, isNaN} = Number,
 
 :host(:focus) > :first-child,
 :host(:focus-within) > :first-child {
-    outline: #000 solid 2px;
+    outline: #000 solid 1px;
 }
 
 :host,
@@ -51,7 +51,7 @@ const {MAX_SAFE_INTEGER, MIN_SAFE_INTEGER, isNaN} = Number,
 }
 `,
 
-  numberRegex = /^([-+]?e?\d+?)?((?<=\1)\.(e?\d+)?)?$/i,
+  numberRegex = /^([-+]|\d|[-+]?e?\d+?)((?<=\1)\.(e?\d+)?)?$/i,
   newLinesRegex = /[\n\r\t\f]/g,
 
   hasTrailingDot = xs => {
@@ -68,11 +68,14 @@ if (!styleSheetInitialized) {
     .catch(console.error);
 }
 
+// @todo Add property to enable handling of `BigInt` values.
+
 export class XNumberSpinner extends AtomicElement {
   static formAssociated = true;
   static localName = xNumberSpinnerLocalName;
   static observedAttributes = observedAttributes;
   static styles = styleSheet;
+  static shadowRootOptions = {mode: 'open', delegatesFocus: true};
 
   #defaultValue = '';
   #disabled = false;
@@ -90,6 +93,10 @@ export class XNumberSpinner extends AtomicElement {
 
   get #input() {
     return this.shadowRoot.firstElementChild;
+  }
+
+  get #errors() {
+    return this.shadowRoot.lastElementChild;
   }
 
   get disabled() {
@@ -133,6 +140,7 @@ export class XNumberSpinner extends AtomicElement {
       return;
     } else this.setAttribute(MIN_NAME, newValue);
     this.#min = newValue;
+    this.updateValidity();
   }
 
   #max;
@@ -144,6 +152,7 @@ export class XNumberSpinner extends AtomicElement {
     const newValue = Number(x);
     if (isNaN(newValue)) this.#max = MAX_SAFE_INTEGER;
     this.#max = newValue;
+    this.updateValidity();
   }
 
   #step;
@@ -154,6 +163,7 @@ export class XNumberSpinner extends AtomicElement {
   set step(x) {
     const newValue = Number(x);
     this.#step = isNaN(newValue) ? 1 : newValue;
+    this.updateValidity();
   }
 
   get valueAsNumber() {
@@ -161,9 +171,7 @@ export class XNumberSpinner extends AtomicElement {
   }
 
   set valueAsNumber(x) {
-    let newValueAsNumber = Number(x);
-    this.#valueAsNumber = isNaN(newValueAsNumber) ? NaN :
-      autoWrapNumber(this.min, this.max, newValueAsNumber);
+    this.#setValue(x);
   }
 
   get defaultValue() {
@@ -182,22 +190,7 @@ export class XNumberSpinner extends AtomicElement {
   }
 
   set value(xs) {
-    let newValue;
-    if (xs && (isNaN(xs) || !numberRegex.test(xs))) {
-      this.shadowRoot.getSelection().collapseToEnd();
-      newValue = this.value;
-    } else if (!isset(xs) || xs === '') {
-      this.#valueAsNumber = NaN;
-      newValue = null;
-    } else {
-      this.valueAsNumber = xs;
-      const {valueAsNumber} = this;
-      if (isNaN(valueAsNumber)) newValue = null;
-      else newValue = (xs[0] === '.' ? '.' + valueAsNumber.slice(1) : valueAsNumber) + (hasTrailingDot(xs) ? '.' : '');
-    }
-    this.#value = newValue;
-    this.#internals?.setFormValue(newValue);
-    this.#input.textContent = isset(newValue) ? newValue : '';
+    this.#setValue(xs);
   }
 
   get name() {
@@ -248,9 +241,46 @@ export class XNumberSpinner extends AtomicElement {
     this.shadowRoot.innerHTML = `
 <div></div>
 <slot name="help"></slot>
+<ul class="errors"></ul>
 `;
     this.#internals = this.attachInternals();
     this.#input.addEventListener('input', this.#onInput);
+    this.#input.addEventListener('focusin', this.#onFocus);
+    this.#input.addEventListener('focusout', this.#onFocusOut);
+  }
+
+  setValidity(validityState, validationMessage = null) {
+    this.#internals?.setValidity(validityState, validationMessage);
+  }
+
+  updateValidity() {
+    const {value, valueAsNumber, min, max, step, required} = this,
+      issetValue = isset(value),
+      newValidityState = {};
+    let validationMessage = null;
+    if (step < 1) {
+      newValidityState.typeMismatch = true;
+      validationMessage = `The control's \`step\` property only accepts positive numbers.`;
+    }
+    if (min >= max) {
+      newValidityState.typeMismatch = true;
+      validationMessage = `The control's \`min\` property must be less than the \`max\` property.`;
+    }
+    if (required && !issetValue) {
+      newValidityState.valueMissing = true;
+      validationMessage = 'Please fill out this field.';
+    }
+    if (issetValue) {
+      if (valueAsNumber < min) {
+        newValidityState.rangeUnderflow = true;
+        validationMessage = `The entered value must be greater than or equal to ${min}.`;
+      }
+      if (valueAsNumber > max) {
+        newValidityState.rangeOverflow = true;
+        validationMessage = `The entered value must be less than or equal to ${max}.`;
+      }
+    }
+    this.setValidity(newValidityState, validationMessage);
   }
 
   checkValidity() {
@@ -275,7 +305,7 @@ export class XNumberSpinner extends AtomicElement {
    */
   stepUp(amount = 1) {
     if (amount < 0) amount = amount * -1;
-    this.#offsetValue(amount)
+    this.#offsetValue(amount);
   }
 
   /**
@@ -286,7 +316,33 @@ export class XNumberSpinner extends AtomicElement {
    */
   stepDown(amount = 1) {
     if (amount > -1) amount = amount * -1;
-    this.#offsetValue(amount)
+    this.#offsetValue(amount);
+  }
+
+  #setValue(xsOrX) {
+    let newNumber = NaN,
+      newValue = null;
+
+    const {min, max} = this,
+      issetX = isset(xsOrX);
+
+    if (issetX && !isNaN(xsOrX) && numberRegex.test(xsOrX)) {
+      const _newNumber = Number(xsOrX);
+      if (isNaN(_newNumber)) {
+        newValue = null;
+        newNumber = _newNumber;
+      } else {
+        const xs = xsOrX + '';
+        newNumber = autoWrapNumber(min, max, _newNumber);
+        newValue = (xs[0] === '.' ? '.' + (newNumber + '').slice(1) : newNumber) + (hasTrailingDot(xs) ? '.' : '')
+      }
+    }
+
+    this.#value = newValue;
+    this.#valueAsNumber = newNumber;
+    this.#internals?.setFormValue(newValue);
+    this.#input.textContent = isset(newValue) ? newValue : '';
+    this.updateValidity();
   }
 
   #offsetValue(amount = 1) {
@@ -297,44 +353,106 @@ export class XNumberSpinner extends AtomicElement {
     this.value = newValueAsNumber + ''; // `value`'s setter sets `valueAsNumber` for us
   }
 
+  #positionCursor(collapseSelection = true) {
+    const range = new Range(),
+      {value} = this;
+    if (!value) return;
+    range.setStart(this.#input.firstChild, 0);
+    range.setEnd(this.#input.firstChild, value.length);
+    // range.collapse();
+    // log(range + '');
+    const selection = this.ownerDocument.getSelection();
+    selection.removeAllRanges();
+    selection.addRange(range);
+    if (collapseSelection) selection.collapseToEnd();
+  }
+
   #onInput = e => {
-    if (e.currentTarget.isSameNode(this)) return;
     e.preventDefault();
     e.stopPropagation();
-    this.value = this.#input.textContent.trim().replace(newLinesRegex, '');
+    const currValue = this.value;
+    const newValue = this.#input.textContent.trim().replace(newLinesRegex, '');
+    if (currValue === newValue) return;
+    this._changeDispatchPending = true;
+    this.value = newValue;
     this.dispatchEvent(new InputEvent('input', {
       bubbles: true,
       composed: true,
+      cancelable: false,
       data: e.data,
       inputType: e.inputType,
       isComposing: e.isComposing
     }));
   };
 
+  #onFocus = e => {
+    this.#positionCursor(false);
+  };
+
+  #onFocusOut = e => {
+    if (!this._changeDispatchPending) {
+      return;
+    }
+    this._changeDispatchPending = false;
+    this.reportValidity();
+    const evOptions = {
+      bubbles: true,
+      composed: true,
+      cancelable: false
+    };
+    this.dispatchEvent(new Event('change', evOptions));
+    this.dispatchEvent(new Event('input', evOptions));
+  };
+
   #onKeyDown = e => {
+    if (this.disabled || this.readOnly || !this.matches(focusedSelector)) {
+      return;
+    }
+    let triggerChange = false;
     switch (e.key) {
       case 'ArrowUp':
         e.preventDefault();
         this.stepUp();
+        triggerChange = true;
         break;
       case 'ArrowDown':
         e.preventDefault();
         this.stepDown();
+        triggerChange = true;
         break;
-      case 'ArrowLeft':
+      case 'PageUp':
+        e.preventDefault();
+        this.stepUp(10);
+        triggerChange = true;
         break;
-      case 'ArrowRight':
+      case 'PageDown':
+        e.preventDefault();
+        this.stepDown(10);
+        triggerChange = true;
         break;
       default:
         break;
+    }
+
+    if (triggerChange) {
+      this.#positionCursor();
+      this._changeDispatchPending = true;
+      this.#onFocusOut(e);
     }
   };
 
   attributeChangedCallback(name, prevValue, newValue) {
     if (prevValue === newValue) return;
     switch (name) {
-      case VALUE_NAME: this.defaultValue = newValue; break;
-      case 'readonly': this.readOnly = newValue; break;
+      case VALUE_NAME:
+        this.defaultValue = newValue;
+        break;
+      case 'readonly':
+        this.readOnly = newValue;
+        break;
+      case 'tabindex':
+        this.tabIndex = newValue;
+        break;
       default:
         this[name] = newValue;
         break;
