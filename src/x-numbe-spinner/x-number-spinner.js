@@ -1,6 +1,7 @@
-import {DEFAULT_VALUE_NAME, MAX_NAME, MIN_NAME, STEP_NAME, VALUE_NAME} from "../js/shared-constants.js";
+import {DEFAULT_VALUE_NAME, MAX_NAME, MIN_NAME, STEP_NAME, VALUE_NAME} from "../utils";
 
-import {autoWrapNumber, isset, registerCustomElement} from "../js/utils";
+import {autoWrapNumber, isset} from "../utils";
+import {AtomicElement} from "../utils";
 
 let styleSheetInitialized = false;
 
@@ -67,10 +68,11 @@ if (!styleSheetInitialized) {
     .catch(console.error);
 }
 
-class XNumberSpinner extends HTMLElement {
+export class XNumberSpinner extends AtomicElement {
   static formAssociated = true;
-
+  static localName = xNumberSpinnerLocalName;
   static observedAttributes = observedAttributes;
+  static styles = styleSheet;
 
   #defaultValue = '';
   #disabled = false;
@@ -243,8 +245,6 @@ class XNumberSpinner extends HTMLElement {
 
   constructor() {
     super();
-    this.attachShadow({mode: 'open', delegatesFocus: true});
-    this.shadowRoot.adoptedStyleSheets = [styleSheet];
     this.shadowRoot.innerHTML = `
 <div></div>
 <slot name="help"></slot>
@@ -361,8 +361,6 @@ class XNumberSpinner extends HTMLElement {
     this.value = this.defaultValue;
   }
 }
-
-registerCustomElement(xNumberSpinnerLocalName, XNumberSpinner);
 
 /*
 interface FormControl extends HTMLElement {

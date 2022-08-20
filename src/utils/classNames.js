@@ -1,4 +1,4 @@
-export const classNames = (...args: any[]): string => {
+export const classNames = (...args) => {
   if (!args.length) {
     return '';
   }

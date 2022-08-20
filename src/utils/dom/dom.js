@@ -1,15 +1,15 @@
-import {curry, isset, typeOf} from 'fjl';
+import {isset, typeOf} from '../object.js';
 
 export const isTouchCapable = window.ontouchend !== undefined,
 
-  isHTMLElement = (x: any): boolean => isset(x) && x instanceof HTMLElement,
+  isHTMLElement = x => isset(x) && x instanceof HTMLElement,
 
-  cleanSelector = (selector: string): string => {
+  cleanSelector = selector => {
     const s = (!isset(selector) ? '' : selector.toString()).trim();
     return s.indexOf('>') === 0 ? s.substring(1) : s;
   },
 
-  querySelector = (selector: string, element: Element | Document = document) =>
+  querySelector = (selector, element = document) =>
     element.querySelector(cleanSelector(selector)),
 
   querySelectorAll = (selector, element = document) =>
@@ -54,30 +54,21 @@ export const isTouchCapable = window.ontouchend !== undefined,
     return element.parentElement;
   },
 
-  isTouchEvent = (e: MouseEvent | TouchEvent): boolean => e.type.indexOf('touch') === 0,
+  isTouchEvent = e => e.type.indexOf('touch') === 0,
 
-  eventFromPossibleTouchEvent = (e: TouchEvent | MouseEvent, initialTouch = true): MouseEvent | Touch => {
+  eventFromPossibleTouchEvent = (e, initialTouch = true) => {
     if (isTouchEvent(e)) {
-      const {touches} = (e as TouchEvent);
+      const {touches} = e;
       return initialTouch ? touches[0] : touches[touches.length - 1];
     }
-    return e as MouseEvent;
+    return e;
   },
 
-  errorIfNotHtmlElement = curry((contextName, propName, element) => {
+  errorIfNotHtmlElement = (contextName, propName, element) => {
     if (!isHTMLElement(element)) {
       throw new Error(
         '#' + contextName + '.' + propName + ' can only be set to type of "HTMLElement".  ' +
         'Type received: ' + typeOf(element));
     }
-  }) as (c: string, p: string, e: any) => void,
-
-  getReverseTabKeyHandler = (ctx: HTMLElement) => (e: UIEvent): void => {
-    e.preventDefault();
-    if (!ctx.matches(':focus-within')) {
-      return;
-    }
-    ctx.dispatchEvent(e);
   }
-
 ;

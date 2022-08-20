@@ -1,6 +1,6 @@
-import {registerCustomElement} from "../js/utils/dom.js";
+import {registerCustomElement} from "../utils/dom";
 import xMenuStyleSheet from './x-menu.css' assert {type: 'css'};
-import {LitElement, html} from "lit";
+import {LitElement, html} from 'lit';
 
 export const xMenuName = 'x-menu',
 

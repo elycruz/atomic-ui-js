@@ -18,7 +18,7 @@ export class AtomicElement extends HTMLElement {
   createRenderRoot() {
     const {styles, shadowRootOptions} = this.constructor;
     this.attachShadow(shadowRootOptions);
-    if (styles) this.adoptedStyleSheets.push(styles);
+    if (styles) this.shadowRoot.adoptedStyleSheets.push(styles);
   }
 
   connectedCallback() {

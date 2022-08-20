@@ -1,3 +1,3 @@
-import {AtomicElement} from "../lib/dom/AtomicElement.js";
+import {AtomicElement} from "../utils";
 
 export class XField extends AtomicElement {}
