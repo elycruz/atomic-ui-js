@@ -1,8 +1,8 @@
-import {AtomicElement} from "../lib/dom/AtomicElement.js";
+import {AtomicElement} from "../lib/dom/x-atomic-element.js";
 import styles from './select.element.css';
 
 const mutObserverConfig = {childList: true, subtree: true, attributes: true, attributeFilter: ['selected']},
-    mutObserver = new MutationObserver(records => {
+    mutObserver = new MutationObserver(() => {
     }),
 
     // In "*.js" styles
@@ -25,26 +25,26 @@ class XSelect extends AtomicElement {
     }
 
     get selectedIndex() {
-        return this.__select?.selectedIndex;
+        return this.#_select?.selectedIndex;
     }
 
-    __select;
-    __selectDirty;
+    #_select;
+    #_selectDirty;
 
-    __valueDisplay;
-    __valueDisplayDirty;
+    #_valueDisplay;
+    #_valueDisplayDirty;
 
-    __buttons;
-    __buttonsDirty;
+    #_buttons;
+    #_buttonsDirty;
 
-    __dirty = true;
+    #_dirty = true;
 
     get dirty() {
-        return this.__dirty;
+        return this.#_dirty;
     }
 
     set dirty(x) {
-        this.__dirty = x;
+        this.#_dirty = x;
         if (x) {
             this.update();
         }
@@ -52,30 +52,30 @@ class XSelect extends AtomicElement {
 
     // Element references
     get select() {
-        if (!this.__select || this.__selectDirty) {
-            this.__select = this.querySelector('select');
-            this.__selectDirty = false;
+        if (!this.#_select || this.#_selectDirty) {
+            this.#_select = this.querySelector('select');
+            this.#_selectDirty = false;
         }
-        return this.__select;
+        return this.#_select;
     }
 
     get valueDisplay() {
-        if (!this.__valueDisplay || this.__valueDisplayDirty) {
-            this.__valueDisplay = this.shadowRoot.querySelector('_value-display');
-            this.__valueDisplayDirty = false;
+        if (!this.#_valueDisplay || this.#_valueDisplayDirty) {
+            this.#_valueDisplay = this.shadowRoot.querySelector('_value-display');
+            this.#_valueDisplayDirty = false;
         }
-        return this.__valueDisplay;
+        return this.#_valueDisplay;
     }
 
     get buttons() {
-        if (!this.__buttons || this.__buttonsDirty) {
-            this.__buttons = this.shadowRoot.querySelectorAll('button');
-            this.__buttonsDirty = false;
+        if (!this.#_buttons || this.#_buttonsDirty) {
+            this.#_buttons = this.shadowRoot.querySelectorAll('button');
+            this.#_buttonsDirty = false;
         }
-        return this.__buttons;
+        return this.#_buttons;
     }
 
-    __xSelectInitialized = false;
+    #_xSelectInitialized = false;
 
     onClick = e => {
         const button = e.target.closest('button.x-select-option');
@@ -110,15 +110,15 @@ class XSelect extends AtomicElement {
         this.shadowRoot.addEventListener('change', this.onChange);
         this.shadowRoot.adoptedStyleSheets = [styleSheet];
 
-        this.__select = null;
-        this.__selectDirty = true;
+        this.#_select = null;
+        this.#_selectDirty = true;
 
-        this.__valueDisplay = null;
-        this.__valueDisplayDirty = true;
+        this.#_valueDisplay = null;
+        this.#_valueDisplayDirty = true;
     }
 
     connectedCallback() {
-        if (this.isConnected && !this.__xSelectInitialized) {
+        if (this.isConnected && !this.#_xSelectInitialized) {
             this.render();
             this.updateValueDisplay();
             mutObserver.observe(this, mutObserverConfig);
@@ -127,7 +127,7 @@ class XSelect extends AtomicElement {
 
     updateValueDisplay() {
         const {select, select: {length}} = this;
-        let {selectedIndex} = this;
+        const {selectedIndex} = this;
         let displayValue = '';
 
         if (!length) {
@@ -145,7 +145,7 @@ class XSelect extends AtomicElement {
     }
 
     renderOptions() {
-        const {select, select: {selectedIndex}} = this;
+        const {select: {selectedIndex}} = this;
         return Array.from(this.select.options).map((x, i) => {
             return `<button class="x-select-option${i === selectedIndex ? ` ${xOptionSelectedClassName}` : ''}"
                         type="button" value="${x.value}" data-index="${i}"

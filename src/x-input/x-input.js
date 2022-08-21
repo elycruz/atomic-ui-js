@@ -1,3 +1,5 @@
+import {XFormControl} from "../x-base/x-form-control";
+
 const isset = x => x !== null && x !== undefined,
 
   {log, error} = console,
@@ -19,9 +21,7 @@ const isset = x => x !== null && x !== undefined,
 `,
   xInputStyleSheet = new CSSStyleSheet();
 
-class XInput extends HTMLElement {
-  static formAssociated = true;
-
+class XInput extends XFormControl {
   _disabled_value = '';
   _disabled_defaultValue = '';
   _disabled_disabled = false;
@@ -78,64 +78,51 @@ class XInput extends HTMLElement {
   }
 
   set required(x) {
-    this.__required = Boolean(x);
+    this.#_required = Boolean(x);
   }
 
   get disabled() {
-    return this.__disabled;
+    return this.#_disabled;
   }
 
   set disabled(x) {
-    this.__disabled = Boolean(x);
+    this.#_disabled = Boolean(x);
   }
 
   get tabIndex() {
-    return isset(this.__tabIndex) ? this.__tabIndex : 0;
+    return isset(this.#_tabIndex) ? this.#_tabIndex : 0;
   }
 
   set tabIndex(x) {
-    this.__tabIndex = isset(x) ? parseInt(x, 10) : 0;
-    this.setAttribute('tabindex', this.__tabIndex);
+    this.#_tabIndex = isset(x) ? parseInt(x, 10) : 0;
+    this.setAttribute('tabindex', this.#_tabIndex);
   }
 
   get willValidate() {
-    return this.__internals?.willValidate;
+    return this.#_internals?.willValidate;
   }
 
   get validity() {
-    return this.__internals?.validity;
+    return this.#_internals?.validity;
   }
 
   get validationMessage() {
-    return this.__internals?.validationMessage;
+    return this.#_internals?.validationMessage;
   }
 
-
-  __setValidity(validityState, validationMessage, anchor) {
+  #_setValidity(validityState, validationMessage, anchor) {
     if (validityState?.valid || !isset(validationMessage)) {
-      this.__internals.setValidity({});
+      this.#_internals.setValidity({});
     } else {
-      this.__internals.setValidity(validityState, validationMessage, anchor);
+      this.#_internals.setValidity(validityState, validationMessage, anchor);
     }
   }
 
-  setCustomValidity(validationMessage) {
-    this.__setValidity({customError: !!xs}, xs);
-  }
-
-  checkValidity() {
-    return this.__internals?.checkValidity();
-  }
-
-  reportValidity() {
-    return this.__internals?.reportValidity();
-  }
-
-  __onChange = e => {
+  #_onChange = e => {
     this.value = e.target.value;
   };
 
-  __onFormData = e => {
+  #_onFormData = e => {
     const {name, value} = this;
     if (!name) return;
     e.formData.set(name, value);
@@ -143,24 +130,24 @@ class XInput extends HTMLElement {
 
   constructor() {
     super();
-    this.__internals = this.attachInternals();
+    this.#_internals = this.attachInternals();
     this.attachShadow({mode: 'open', delegatesFocus: true});
     this.shadowRoot.adoptedStyleSheets.push(xInputStyleSheet);
     this.shadowRoot.innerHTML = '<input>';
-    this.shadowRoot.addEventListener('input', this.__onChange);
-    this.shadowRoot.addEventListener('change', this.__onChange);
-    this.addEventListener('formdata', this.__onFormData);
+    this.shadowRoot.addEventListener('input', this.#_onChange);
+    this.shadowRoot.addEventListener('change', this.#_onChange);
+    this.addEventListener('formdata', this.#_onFormData);
   }
 
   connectedCallback() {
-    if (!this.__initialized && this.isConnected) {
-      if (!this.constructor.__styleSheetAdopted) {
+    if (!this.#_initialized && this.isConnected) {
+      if (!this.constructor.#_styleSheetAdopted) {
         xInputStyleSheet.replace(xInputStyles)
           .then(() => {
-            this.constructor.__styleSheetAdopted = true;
+            this.constructor.#_styleSheetAdopted = true;
           })
           .catch(error);
-        this.__initialized = true;
+        this.#_initialized = true;
       }
 
       if (!this.hasAttribute('tabindex')) {
@@ -171,9 +158,9 @@ class XInput extends HTMLElement {
 
   onUpdateValue() {
     if (!this.matches(':disabled') && !this.value && this.hasAttribute('required')) {
-      this.__setValidity({valueMissing: true}, 'Custom "Required" Message: Please fill out this field.', this.shadowRoot.firstElementChild);
+      this.#_setValidity({valueMissing: true}, 'Custom "Required" Message: Please fill out this field.', this.shadowRoot.firstElementChild);
     } else {
-      this.__setValidity({});
+      this.#_setValidity({});
     }
   }
 

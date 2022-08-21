@@ -4,8 +4,9 @@ export class AtomicElement extends HTMLElement {
   static localName = '';
   static shadowRootOptions = {mode: 'open'};
 
-  ___initialized = false;
-  ___updateComplete;
+  #initialized = false;
+  _updateComplete;
+  #_updates;
 
   get localName() {
     return this.constructor.localName;
@@ -23,26 +24,26 @@ export class AtomicElement extends HTMLElement {
   }
 
   connectedCallback() {
-    if (!this.___initialized && this.isConnected) {
+    if (!this.#initialized && this.isConnected) {
       this.render();
-      this.___initialized = true;
+      this.#initialized = true;
     }
   }
 
   disconnectedCallback() {
-    if (this.___initialized) {
-      this.___initialized = false;
+    if (this.#initialized) {
+      this.#initialized = false;
     }
   }
 
-  addEventListeners() {
-  }
-
-  removeEventListeners() {
-  }
-
   requestUpdate(propName, prevValue) {
-
+    const updates = this.#_updates || {},
+      {observedAttributes, properties} = this.constructor
+      ;
+    for (const [k, v] of Object.entries(properties)) {
+      console.log(k, v);
+    }
+    this.#_updates = updates;
   }
 
   willUpdate() {
@@ -64,4 +65,3 @@ export class AtomicElement extends HTMLElement {
     return '';
   }
 }
-

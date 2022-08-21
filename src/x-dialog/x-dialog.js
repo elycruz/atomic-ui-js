@@ -74,12 +74,12 @@ export class XDialog extends HTMLElement {
 
   disconnectedCallback() {
     if (this._disabled_initialized) {
-      this._disabled_dialog.removeEventListener('cancel', this.__onClose);
-      this.__initialized = false;
+      this._disabled_dialog.removeEventListener('cancel', this.#_onClose);
+      this.#_initialized = false;
     }
   }
 
-  __onCloseViaForm(e) {
+  #_onCloseViaForm(e) {
     const {target} = e;
     if (target.localName === 'form' && target.method === 'dialog') {
       e.preventDefault();
@@ -87,7 +87,7 @@ export class XDialog extends HTMLElement {
     }
   }
 
-  __onClose(e) {
+  #_onClose(e) {
     console.log(e);
     this.opened = false;
   }

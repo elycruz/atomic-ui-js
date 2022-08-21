@@ -1,7 +1,13 @@
-import {isset} from '../object.js';
-import {AtomicElement} from "./AtomicElement.js";
-import {throwNoOverrideError} from "../events.js";
-import {DISABLED_NAME, DEFAULT_VALUE_NAME, VALUE_NAME, NAME_NAME} from "../shared-constants.js";
+import {isset} from '../utils/object.js';
+import {AtomicElement} from "./x-atomic-element.js";
+import {throwNoOverrideError} from "../utils/events.js";
+import {
+  DISABLED_NAME,
+  VALUE_NAME,
+  NAME_NAME,
+  READONLY_NAME,
+  REQUIRED_NAME
+} from "../utils/shared-constants.js";
 
 let styleSheetInitialized = false;
 
@@ -15,13 +21,15 @@ const xFormControlLocalName = 'x-form-control',
   styleSheet = new CSSStyleSheet(),
 
   observedAttributes = [
-    VALUE_NAME, DEFAULT_VALUE_NAME,
-    NAME_NAME
+    VALUE_NAME,
+    REQUIRED_NAME, READONLY_NAME.toLowerCase(), NAME_NAME,
+    DISABLED_NAME
   ];
 
 if (!styleSheetInitialized) {
   styleSheet.replace(xVisibleFormControlStyles)
     .catch(console.error);
+  styleSheetInitialized = true;
 }
 
 export class XFormControl extends AtomicElement {
@@ -42,14 +50,30 @@ export class XFormControl extends AtomicElement {
   }
 
   set disabled(x) {
-    const disabled = Boolean(x);
+    const {_disabled: prevDisabled} = this,
+      disabled = Boolean(x);
     this._disabled = disabled;
     if (this._internals) {
       this._internals.ariaDisabled = disabled + '';
     }
     this.ariaDisabled = disabled + '';
-    if (disabled) this.setAttribute(DISABLED_NAME, '');
-    else this.removeAttribute(DISABLED_NAME);
+    this.requestUpdate(DISABLED_NAME, prevDisabled);
+  }
+
+  _required;
+  get required() {
+    return !isset(this._required) ? false : this._required;
+  }
+
+  set required(x) {
+    const {required: prevRequired} = this,
+      required = Boolean(x);
+    this._required = required;
+    if (this._internals) {
+      this._internals.ariaRequired = required + '';
+    }
+    this.ariaRequired = required + '';
+    this.requestUpdate(REQUIRED_NAME, prevRequired);
   }
 
   _readOnly;
@@ -64,7 +88,7 @@ export class XFormControl extends AtomicElement {
       this._internals.ariaReadOnly = readOnly + '';
     }
     this.ariaReadOnly = readOnly + '';
-    if (readOnly) this.setAttribute('readonly', ''); else this.removeAttribute('readonly');
+    this.requestUpdate()
   }
 
   _defaultValue;
@@ -109,8 +133,12 @@ export class XFormControl extends AtomicElement {
     this.setAttribute('tabindex', this._tabIndex + '');
   }
 
+  get type() {
+    return this.localName;
+  }
+
   get localName() {
-    throwNoOverrideError();
+    return this.constructor.localName;
   }
 
   get willValidate() {
@@ -126,14 +154,14 @@ export class XFormControl extends AtomicElement {
   }
 
   get form() {
-    this._internals ? this._internals.form : null;
+    return this._internals ? this._internals.form : null;
   }
 
   get labels() {
     return this._internals ? this._internals.labels : undefined;
   }
 
-  ___xFormControlInitialized = false;
+  #_xFormControlInitialized = false;
 
   constructor() {
     super();
@@ -179,16 +207,36 @@ export class XFormControl extends AtomicElement {
   }
 
   connectedCallback() {
-    if (!this.___xFormControlInitialized && this.isConnected) {
-      this.tabIndex = this.tabIndex;
-      this.___xFormControlInitialized = true;
+    if (!this.#_xFormControlInitialized && this.isConnected) {
+      // this.tabIndex = this.tabIndex;
+      // this.constructor.observedAttributes.forEach()
+      // this.attributeChangedCallback()
+      this.#_xFormControlInitialized = true;
     }
   }
 
   disconnectedCallback() {
-    if (this.___xFormControlInitialized) {
-      this.___xFormControlInitialized = false;
+    if (this.#_xFormControlInitialized) {
+      this.#_xFormControlInitialized = false;
     }
+  }
+
+  _onFormData() {
+    throwNoOverrideError();
+  }
+
+  formAssociatedCallback(form) {
+    if (this.name && form.elements[this.name]) {
+      form.addEventListener('formdata', this._onFormData);
+      this.updateValidity();
+    } else {
+      form.removeEventListener('formdata', this._onFormData);
+    }
+  }
+
+  formDisabledCallback(state) {
+    if (state) this._internals.setFormValue(this.value);
+    else this._internals.setFormValue(null);
   }
 
   formResetCallback() {
