@@ -22,43 +22,43 @@ const isset = x => x !== null && x !== undefined,
 class XInput extends HTMLElement {
   static formAssociated = true;
 
-  #_value = '';
-  #_defaultValue = '';
-  #_disabled = false;
-  #_required = false;
-  #_name = '';
-  #_internals = null;
-  #_initialized = false;
-  #_tabIndex = 0;
+  _disabled_value = '';
+  _disabled_defaultValue = '';
+  _disabled_disabled = false;
+  _disabled_required = false;
+  _disabled_name = '';
+  _disabled_internals = null;
+  _disabled_initialized = false;
+  _disabled_tabIndex = 0;
 
-  static #_styleSheetAdopted = false;
+  static _disabled_styleSheetAdopted = false;
 
   get defaultValue() {
-    return this.#_defaultValue;
+    return this._disabled_defaultValue;
   }
 
   set defaultValue(xs) {
-    this.#_defaultValue =
+    this._disabled_defaultValue =
       this.value = isset(xs) ? xs + '' : '';
-    this.setAttribute('value', this.#_value);
+    this.setAttribute('value', this._disabled_value);
   }
 
   get value() {
-    return this.#_value;
+    return this._disabled_value;
   }
 
   set value(x) {
-    this.#_value = isset(x) ? x + '' : '';
+    this._disabled_value = isset(x) ? x + '' : '';
     this.onUpdateValue();
-    this.#_internals.setFormValue(this.#_value);
+    this._disabled_internals.setFormValue(this._disabled_value);
   }
 
   get labels() {
-    return this.#_internals.labels;
+    return this._disabled_internals.labels;
   }
 
   get form() {
-    return this.#_internals.form;
+    return this._disabled_internals.form;
   }
 
   get localName() {
@@ -66,76 +66,76 @@ class XInput extends HTMLElement {
   }
 
   get name() {
-    return this.#_name;
+    return this._disabled_name;
   }
 
   set name(x) {
-    this.#_name = isset(x) ? x + '' : '';
+    this._disabled_name = isset(x) ? x + '' : '';
   }
 
   get required() {
-    return this.#_required;
+    return this._disabled_required;
   }
 
   set required(x) {
-    this.#_required = Boolean(x);
+    this.__required = Boolean(x);
   }
 
   get disabled() {
-    return this.#_disabled;
+    return this.__disabled;
   }
 
   set disabled(x) {
-    this.#_disabled = Boolean(x);
+    this.__disabled = Boolean(x);
   }
 
   get tabIndex() {
-    return isset(this.#_tabIndex) ? this.#_tabIndex : 0;
+    return isset(this.__tabIndex) ? this.__tabIndex : 0;
   }
 
   set tabIndex(x) {
-    this.#_tabIndex = isset(x) ? parseInt(x, 10) : 0;
-    this.setAttribute('tabindex', this.#_tabIndex);
+    this.__tabIndex = isset(x) ? parseInt(x, 10) : 0;
+    this.setAttribute('tabindex', this.__tabIndex);
   }
 
   get willValidate() {
-    return this.#_internals?.willValidate;
+    return this.__internals?.willValidate;
   }
 
   get validity() {
-    return this.#_internals?.validity;
+    return this.__internals?.validity;
   }
 
   get validationMessage() {
-    return this.#_internals?.validationMessage;
+    return this.__internals?.validationMessage;
   }
 
 
-  #_setValidity(validityState, validationMessage, anchor) {
+  __setValidity(validityState, validationMessage, anchor) {
     if (validityState?.valid || !isset(validationMessage)) {
-      this.#_internals.setValidity({});
+      this.__internals.setValidity({});
     } else {
-      this.#_internals.setValidity(validityState, validationMessage, anchor);
+      this.__internals.setValidity(validityState, validationMessage, anchor);
     }
   }
 
   setCustomValidity(validationMessage) {
-    this.#_setValidity({customError: !!xs}, xs);
+    this.__setValidity({customError: !!xs}, xs);
   }
 
   checkValidity() {
-    return this.#_internals?.checkValidity();
+    return this.__internals?.checkValidity();
   }
 
   reportValidity() {
-    return this.#_internals?.reportValidity();
+    return this.__internals?.reportValidity();
   }
 
-  #_onChange = e => {
+  __onChange = e => {
     this.value = e.target.value;
   };
 
-  #_onFormData = e => {
+  __onFormData = e => {
     const {name, value} = this;
     if (!name) return;
     e.formData.set(name, value);
@@ -143,24 +143,24 @@ class XInput extends HTMLElement {
 
   constructor() {
     super();
-    this.#_internals = this.attachInternals();
+    this.__internals = this.attachInternals();
     this.attachShadow({mode: 'open', delegatesFocus: true});
     this.shadowRoot.adoptedStyleSheets.push(xInputStyleSheet);
     this.shadowRoot.innerHTML = '<input>';
-    this.shadowRoot.addEventListener('input', this.#_onChange);
-    this.shadowRoot.addEventListener('change', this.#_onChange);
-    this.addEventListener('formdata', this.#_onFormData);
+    this.shadowRoot.addEventListener('input', this.__onChange);
+    this.shadowRoot.addEventListener('change', this.__onChange);
+    this.addEventListener('formdata', this.__onFormData);
   }
 
   connectedCallback() {
-    if (!this.#_initialized && this.isConnected) {
-      if (!this.constructor.#_styleSheetAdopted) {
+    if (!this.__initialized && this.isConnected) {
+      if (!this.constructor.__styleSheetAdopted) {
         xInputStyleSheet.replace(xInputStyles)
           .then(() => {
-            this.constructor.#_styleSheetAdopted = true;
+            this.constructor.__styleSheetAdopted = true;
           })
           .catch(error);
-        this.#_initialized = true;
+        this.__initialized = true;
       }
 
       if (!this.hasAttribute('tabindex')) {
@@ -171,9 +171,9 @@ class XInput extends HTMLElement {
 
   onUpdateValue() {
     if (!this.matches(':disabled') && !this.value && this.hasAttribute('required')) {
-      this.#_setValidity({valueMissing: true}, 'Custom "Required" Message: Please fill out this field.', this.shadowRoot.firstElementChild);
+      this.__setValidity({valueMissing: true}, 'Custom "Required" Message: Please fill out this field.', this.shadowRoot.firstElementChild);
     } else {
-      this.#_setValidity({});
+      this.__setValidity({});
     }
   }
 
@@ -195,7 +195,7 @@ html, body {
 
 fieldset {
   border-radius: 5px;
-  border: 2px solid #CCC;
+  border: 2px solid _CCC;
   padding: 13px;
 }
 
@@ -208,7 +208,7 @@ x-input:invalid {
 }
 </style>
 
-<form action="#">
+<form action="_">
 <fieldset>
   <legend>XInput Test</legend>
   <x-input name="${xInputName}" id="${xInputName}" required></x-input>

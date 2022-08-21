@@ -4,8 +4,8 @@ export class AtomicElement extends HTMLElement {
   static localName = '';
   static shadowRootOptions = {mode: 'open'};
 
-  #__initialized = false;
-  #__updateComplete;
+  ___initialized = false;
+  ___updateComplete;
 
   get localName() {
     return this.constructor.localName;
@@ -23,15 +23,15 @@ export class AtomicElement extends HTMLElement {
   }
 
   connectedCallback() {
-    if (!this.#__initialized && this.isConnected) {
+    if (!this.___initialized && this.isConnected) {
       this.render();
-      this.#__initialized = true;
+      this.___initialized = true;
     }
   }
 
   disconnectedCallback() {
-    if (this.#__initialized) {
-      this.#__initialized = false;
+    if (this.___initialized) {
+      this.___initialized = false;
     }
   }
 

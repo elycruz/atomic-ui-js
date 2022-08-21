@@ -47,19 +47,19 @@ class XMenu extends LitElement {
     return xMenuName;
   }
 
-  #xMenuInitialized = false;
+  _disabledxMenuInitialized = false;
 
   connectedCallback() {
     super.connectedCallback();
-    if (!this.#xMenuInitialized && this.isConnected) {
+    if (!this._disabledxMenuInitialized && this.isConnected) {
       mutObserver.observe(this, mutObserverInit);
-      this.#xMenuInitialized = true;
+      this._disabledxMenuInitialized = true;
     }
   }
 
   disconnectedCallback() {
     super.disconnectedCallback();
-    this.#xMenuInitialized = false;
+    this._disabledxMenuInitialized = false;
   }
 
   render() {

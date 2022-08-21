@@ -67,7 +67,7 @@ export const isTouchCapable = window.ontouchend !== undefined,
   errorIfNotHtmlElement = (contextName, propName, element) => {
     if (!isHTMLElement(element)) {
       throw new Error(
-        '#' + contextName + '.' + propName + ' can only be set to type of "HTMLElement".  ' +
+        '_' + contextName + '.' + propName + ' can only be set to type of "HTMLElement".  ' +
         'Type received: ' + typeOf(element));
     }
   }

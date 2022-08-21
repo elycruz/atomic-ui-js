@@ -6,6 +6,7 @@ export const
   DEFAULT_VALUE_NAME = 'defaultValue',
   DISABLED_NAME = 'disabled',
   READONLY_NAME = 'readOnly',
+  NAME_NAME = 'name',
   MIN_NAME = 'min',
   MAX_NAME = 'max',
   STEP_NAME = 'step',

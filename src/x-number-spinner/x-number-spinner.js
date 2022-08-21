@@ -1,7 +1,7 @@
 import {DEFAULT_VALUE_NAME, focusedSelector, log, MAX_NAME, MIN_NAME, STEP_NAME, typeOf, VALUE_NAME} from "../utils";
 
 import {autoWrapNumber, isset} from "../utils";
-import {AtomicElement} from "../utils";
+import {XFormControl} from "../utils";
 
 let styleSheetInitialized = false;
 
@@ -23,7 +23,7 @@ const {MAX_SAFE_INTEGER, MIN_SAFE_INTEGER, isNaN} = Number,
 
 :host(:focus) > :first-child,
 :host(:focus-within) > :first-child {
-    outline: #000 solid 1px;
+    outline: _000 solid 1px;
 }
 
 :host,
@@ -61,7 +61,10 @@ const {MAX_SAFE_INTEGER, MIN_SAFE_INTEGER, isNaN} = Number,
 
   styleSheet = new CSSStyleSheet(),
 
-  observedAttributes = [MIN_NAME, MAX_NAME, STEP_NAME, VALUE_NAME, DEFAULT_VALUE_NAME];
+  observedAttributes = [
+    MIN_NAME, MAX_NAME, STEP_NAME,
+    VALUE_NAME, DEFAULT_VALUE_NAME
+  ];
 
 if (!styleSheetInitialized) {
   styleSheet.replace(xNumberSpinnerStyles)
@@ -70,171 +73,87 @@ if (!styleSheetInitialized) {
 
 // @todo Add property to enable handling of `BigInt` values.
 
-export class XNumberSpinner extends AtomicElement {
+export class XNumberSpinner extends XFormControl {
   static formAssociated = true;
   static localName = xNumberSpinnerLocalName;
   static observedAttributes = observedAttributes;
   static styles = styleSheet;
   static shadowRootOptions = {mode: 'open', delegatesFocus: true};
 
-  #defaultValue = '';
-  #disabled = false;
-  #name = '';
-  #readOnly = false;
-  #value = '';
-
-  #tabIndex = 0;
-  #valueAsNumber = 0;
-
   /**
    * @type {ElementInternals}
    */
-  #internals;
+  _internals;
 
-  get #input() {
+  get _input() {
     return this.shadowRoot.firstElementChild;
   }
 
-  get #errors() {
+  get _errors() {
     return this.shadowRoot.lastElementChild;
   }
 
-  get disabled() {
-    return !isset(this.#disabled) ? false : this.#disabled;
-  }
-
-  set disabled(x) {
-    const disabled = Boolean(x);
-    this.#disabled = disabled;
-    if (this.#internals) {
-      this.#internals.ariaDisabled = disabled + '';
-    }
-    this.ariaDisabled = disabled + '';
-    if (disabled) this.setAttribute('disabled', ''); else this.removeAttribute('disabled');
-  }
-
-  get readOnly() {
-    return !isset(this.#readOnly) ? false : this.#readOnly;
-  }
-
-  set readOnly(x) {
-    const readOnly = Boolean(x);
-    this.#readOnly = readOnly;
-    if (this.#internals) {
-      this.#internals.ariaReadOnly = readOnly + '';
-    }
-    this.ariaReadOnly = readOnly + '';
-    if (readOnly) this.setAttribute('readonly', ''); else this.removeAttribute('readonly');
-  }
-
-  #min;
+  _min;
   get min() {
-    return isset(this.#min) ? this.#min : MIN_SAFE_INTEGER;
+    return isset(this._min) ? this._min : MIN_SAFE_INTEGER;
   }
 
   set min(x) {
     let newValue = Number(x);
     if (isNaN(newValue)) {
-      this.#min = MIN_SAFE_INTEGER;
+      this._min = MIN_SAFE_INTEGER;
       this.removeAttribute(MIN_NAME);
       return;
     } else this.setAttribute(MIN_NAME, newValue);
-    this.#min = newValue;
+    this._min = newValue;
     this.updateValidity();
   }
 
-  #max;
+  _max;
   get max() {
-    return isset(this.#max) ? this.#max : MAX_SAFE_INTEGER;
+    return isset(this._max) ? this._max : MAX_SAFE_INTEGER;
   }
 
   set max(x) {
     const newValue = Number(x);
-    if (isNaN(newValue)) this.#max = MAX_SAFE_INTEGER;
-    this.#max = newValue;
+    if (isNaN(newValue)) this._max = MAX_SAFE_INTEGER;
+    this._max = newValue;
     this.updateValidity();
   }
 
-  #step;
+  _step;
   get step() {
-    return isset(this.#step) ? this.#step : 1;
+    return isset(this._step) ? this._step : 1;
   }
 
   set step(x) {
     const newValue = Number(x);
-    this.#step = isNaN(newValue) ? 1 : newValue;
+    this._step = isNaN(newValue) ? 1 : newValue;
     this.updateValidity();
   }
 
+  _valueAsNumber;
   get valueAsNumber() {
-    return isset(this.#valueAsNumber) ? this.#valueAsNumber : NaN;
+    return isset(this._valueAsNumber) ? this._valueAsNumber : NaN;
   }
 
   set valueAsNumber(x) {
-    this.#setValue(x);
-  }
-
-  get defaultValue() {
-    return !isset(this.#defaultValue) ? '' : this.#defaultValue;
-  }
-
-  set defaultValue(xs) {
-    this.#defaultValue = xs;
-    if (xs) this.setAttribute(VALUE_NAME, this.#defaultValue);
-    else this.removeAttribute(VALUE_NAME);
-    this.value = xs;
+    this._setValue(x);
   }
 
   get value() {
-    return !isset(this.#value) ? '' : this.#value;
+    return !isset(this._value) ? '' : this._value;
   }
 
   set value(xs) {
-    this.#setValue(xs);
-  }
-
-  get name() {
-    return !isset(this.#name) ? '' : this.#name;
-  }
-
-  set name(xs) {
-    this.#name = isset(xs) ? String(xs) : '';
-  }
-
-  get tabIndex() {
-    return !isset(this.#tabIndex) ? 0 : this.#tabIndex;
-  }
-
-  set tabIndex(x) {
-    this.#tabIndex = Number(x || 0);
-    this.setAttribute('tabindex', this.#tabIndex + '');
+    this._setValue(xs);
   }
 
   get localName() {
     return xNumberSpinnerLocalName;
   }
 
-  get willValidate() {
-    return this.#internals ? this.#internals.willValidate : false;
-  }
-
-  get validity() {
-    return this.#internals ? this.#internals.validity : undefined;
-  }
-
-  get validationMessage() {
-    return this.#internals ? this.#internals.validationMessage : '';
-  }
-
-  get form() {
-    this.#internals ? this.#internals.form : null;
-  }
-
-  get labels() {
-    return this.#internals ? this.#internals.labels : undefined;
-  }
-
-  #_xNumberSpinnerInitialized = false;
+  __xNumberSpinnerInitialized = false;
 
   constructor() {
     super();
@@ -243,14 +162,9 @@ export class XNumberSpinner extends AtomicElement {
 <slot name="help"></slot>
 <ul class="errors"></ul>
 `;
-    this.#internals = this.attachInternals();
-    this.#input.addEventListener('input', this.#onInput);
-    this.#input.addEventListener('focusin', this.#onFocus);
-    this.#input.addEventListener('focusout', this.#onFocusOut);
-  }
-
-  setValidity(validityState, validationMessage = null) {
-    this.#internals?.setValidity(validityState, validationMessage);
+    this._input.addEventListener('input', this._onInput);
+    this._input.addEventListener('focusin', this._onFocus);
+    this._input.addEventListener('focusout', this._onFocusOut);
   }
 
   updateValidity() {
@@ -283,20 +197,6 @@ export class XNumberSpinner extends AtomicElement {
     this.setValidity(newValidityState, validationMessage);
   }
 
-  checkValidity() {
-    return this.#internals ? this.#internals.checkValidity() : false;
-  }
-
-  reportValidity() {
-    return this.#internals ? this.#internals.reportValidity() : false;
-  }
-
-  setCustomValidity(message = '') {
-    if (this.#internals) {
-      this.#internals.setValidity(message ? {customError: true} : {}, message || '');
-    }
-  }
-
   /**
    * Steps control `valueAsNumber`, and `value`, values upward
    *  by given amount (Default `1`).
@@ -305,7 +205,7 @@ export class XNumberSpinner extends AtomicElement {
    */
   stepUp(amount = 1) {
     if (amount < 0) amount = amount * -1;
-    this.#offsetValue(amount);
+    this._offsetValue(amount);
   }
 
   /**
@@ -316,10 +216,10 @@ export class XNumberSpinner extends AtomicElement {
    */
   stepDown(amount = 1) {
     if (amount > -1) amount = amount * -1;
-    this.#offsetValue(amount);
+    this._offsetValue(amount);
   }
 
-  #setValue(xsOrX) {
+  _setValue(xsOrX) {
     let newNumber = NaN,
       newValue = null;
 
@@ -338,27 +238,27 @@ export class XNumberSpinner extends AtomicElement {
       }
     }
 
-    this.#value = newValue;
-    this.#valueAsNumber = newNumber;
-    this.#internals?.setFormValue(newValue);
-    this.#input.textContent = isset(newValue) ? newValue : '';
+    this._value = newValue;
+    this._valueAsNumber = newNumber;
+    this._internals?.setFormValue(newValue);
+    this._input.textContent = isset(newValue) ? newValue : '';
     this.updateValidity();
   }
 
-  #offsetValue(amount = 1) {
-    const valueAsNumber = this.#valueAsNumber;
+  _offsetValue(amount = 1) {
+    const valueAsNumber = this._valueAsNumber;
     let newValueAsNumber;
     if (!isset(valueAsNumber) || isNaN(valueAsNumber)) newValueAsNumber = amount;
     else newValueAsNumber = valueAsNumber + amount;
     this.value = newValueAsNumber + ''; // `value`'s setter sets `valueAsNumber` for us
   }
 
-  #positionCursor(collapseSelection = true) {
+  _positionCursor(collapseSelection = true) {
     const range = new Range(),
       {value} = this;
     if (!value) return;
-    range.setStart(this.#input.firstChild, 0);
-    range.setEnd(this.#input.firstChild, value.length);
+    range.setStart(this._input.firstChild, 0);
+    range.setEnd(this._input.firstChild, value.length);
     // range.collapse();
     // log(range + '');
     const selection = this.ownerDocument.getSelection();
@@ -367,11 +267,11 @@ export class XNumberSpinner extends AtomicElement {
     if (collapseSelection) selection.collapseToEnd();
   }
 
-  #onInput = e => {
+  _onInput = e => {
     e.preventDefault();
     e.stopPropagation();
     const currValue = this.value;
-    const newValue = this.#input.textContent.trim().replace(newLinesRegex, '');
+    const newValue = this._input.textContent.trim().replace(newLinesRegex, '');
     if (currValue === newValue) return;
     this._changeDispatchPending = true;
     this.value = newValue;
@@ -385,11 +285,11 @@ export class XNumberSpinner extends AtomicElement {
     }));
   };
 
-  #onFocus = e => {
-    this.#positionCursor(false);
+  _onFocus = e => {
+    this._positionCursor(false);
   };
 
-  #onFocusOut = e => {
+  _onFocusOut = e => {
     if (!this._changeDispatchPending) {
       return;
     }
@@ -404,7 +304,7 @@ export class XNumberSpinner extends AtomicElement {
     this.dispatchEvent(new Event('input', evOptions));
   };
 
-  #onKeyDown = e => {
+  _onKeyDown = e => {
     if (this.disabled || this.readOnly || !this.matches(focusedSelector)) {
       return;
     }
@@ -435,9 +335,9 @@ export class XNumberSpinner extends AtomicElement {
     }
 
     if (triggerChange) {
-      this.#positionCursor();
+      this._positionCursor();
       this._changeDispatchPending = true;
-      this.#onFocusOut(e);
+      this._onFocusOut(e);
     }
   };
 
@@ -460,18 +360,18 @@ export class XNumberSpinner extends AtomicElement {
   }
 
   connectedCallback() {
-    if (!this.#_xNumberSpinnerInitialized && this.isConnected) {
-      this.#input.contentEditable = 'true';
-      this.addEventListener('keydown', this.#onKeyDown);
+    if (!this.__xNumberSpinnerInitialized && this.isConnected) {
+      this._input.contentEditable = 'true';
+      this.addEventListener('keydown', this._onKeyDown);
       this.tabIndex = this.tabIndex;
-      this.#_xNumberSpinnerInitialized = true;
+      this.__xNumberSpinnerInitialized = true;
     }
   }
 
   disconnectedCallback() {
-    if (this.#_xNumberSpinnerInitialized) {
-      this.removeEventListener('keydown', this.#onKeyDown);
-      this.#_xNumberSpinnerInitialized = false;
+    if (this.__xNumberSpinnerInitialized) {
+      this.removeEventListener('keydown', this._onKeyDown);
+      this.__xNumberSpinnerInitialized = false;
     }
   }
 

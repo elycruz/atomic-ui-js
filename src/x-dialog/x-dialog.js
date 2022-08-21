@@ -13,13 +13,13 @@ export const xDialogLocalName = 'x-dialog',
   xDialogStyleSheet = new CSSStyleSheet();
 
 export class XDialog extends HTMLElement {
-  #_initialized = false;
-  #_styleSheetInitialized = false;
+  _disabled_initialized = false;
+  _disabled_styleSheetInitialized = false;
 
   isModal = false;
   opened = false;
 
-  get #_dialog() {
+  get _disabled_dialog() {
     return this.shadowRoot.firstElementChild;
   }
 
@@ -30,12 +30,12 @@ export class XDialog extends HTMLElement {
     if (this.shadowRoot.adoptedStyleSheets) this.shadowRoot.adoptedStyleSheets.push(xDialogStyleSheet);
     else this.shadowRoot.adoptedStyleSheets = [xDialogStyleSheet];
     // Captures events from child elements outside of `shadowRoot`:
-    this.addEventListener('reset', this.#_onCloseViaForm);
-    this.addEventListener('submit', this.#_onCloseViaForm);
+    this.addEventListener('reset', this._disabled_onCloseViaForm);
+    this.addEventListener('submit', this._disabled_onCloseViaForm);
   }
 
   show() {
-    this.#_dialog.show();
+    this._disabled_dialog.show();
     this.opened = true;
   }
 
@@ -45,12 +45,12 @@ export class XDialog extends HTMLElement {
   }
 
   close(retValue) {
-    this.#_dialog.close(retValue);
+    this._disabled_dialog.close(retValue);
     this.opened = false;
   }
 
   open() {
-    const dialog = this.#_dialog;
+    const dialog = this._disabled_dialog;
     if (!dialog.open) {
       if (this.isModal) dialog.showModal();
       else dialog.show();
@@ -59,27 +59,27 @@ export class XDialog extends HTMLElement {
   }
 
   connectedCallback() {
-    if (!this.#_initialized && this.isConnected) {
-      if (!this.#_styleSheetInitialized) {
+    if (!this._disabled_initialized && this.isConnected) {
+      if (!this._disabled_styleSheetInitialized) {
         xDialogStyleSheet.replace(xDialogStyles)
           .then(() => {
-            this.#_styleSheetInitialized = true;
+            this._disabled_styleSheetInitialized = true;
           }).catch(error);
       }
-      this.#_dialog.removeEventListener('cancel', this.#_onClose);
-      this.#_dialog.addEventListener('cancel', this.#_onClose);
-      this.#_initialized = true;
+      this._disabled_dialog.removeEventListener('cancel', this._disabled_onClose);
+      this._disabled_dialog.addEventListener('cancel', this._disabled_onClose);
+      this._disabled_initialized = true;
     }
   }
 
   disconnectedCallback() {
-    if (this.#_initialized) {
-      this.#_dialog.removeEventListener('cancel', this.#_onClose);
-      this.#_initialized = false;
+    if (this._disabled_initialized) {
+      this._disabled_dialog.removeEventListener('cancel', this.__onClose);
+      this.__initialized = false;
     }
   }
 
-  #_onCloseViaForm(e) {
+  __onCloseViaForm(e) {
     const {target} = e;
     if (target.localName === 'form' && target.method === 'dialog') {
       e.preventDefault();
@@ -87,7 +87,7 @@ export class XDialog extends HTMLElement {
     }
   }
 
-  #_onClose(e) {
+  __onClose(e) {
     console.log(e);
     this.opened = false;
   }

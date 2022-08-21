@@ -25,26 +25,26 @@ class XSelect extends AtomicElement {
     }
 
     get selectedIndex() {
-        return this.#_select?.selectedIndex;
+        return this.__select?.selectedIndex;
     }
 
-    #_select;
-    #_selectDirty;
+    __select;
+    __selectDirty;
 
-    #_valueDisplay;
-    #_valueDisplayDirty;
+    __valueDisplay;
+    __valueDisplayDirty;
 
-    #_buttons;
-    #_buttonsDirty;
+    __buttons;
+    __buttonsDirty;
 
-    #_dirty = true;
+    __dirty = true;
 
     get dirty() {
-        return this.#_dirty;
+        return this.__dirty;
     }
 
     set dirty(x) {
-        this.#_dirty = x;
+        this.__dirty = x;
         if (x) {
             this.update();
         }
@@ -52,30 +52,30 @@ class XSelect extends AtomicElement {
 
     // Element references
     get select() {
-        if (!this.#_select || this.#_selectDirty) {
-            this.#_select = this.querySelector('select');
-            this.#_selectDirty = false;
+        if (!this.__select || this.__selectDirty) {
+            this.__select = this.querySelector('select');
+            this.__selectDirty = false;
         }
-        return this.#_select;
+        return this.__select;
     }
 
     get valueDisplay() {
-        if (!this.#_valueDisplay || this.#_valueDisplayDirty) {
-            this.#_valueDisplay = this.shadowRoot.querySelector('#value-display');
-            this.#_valueDisplayDirty = false;
+        if (!this.__valueDisplay || this.__valueDisplayDirty) {
+            this.__valueDisplay = this.shadowRoot.querySelector('_value-display');
+            this.__valueDisplayDirty = false;
         }
-        return this.#_valueDisplay;
+        return this.__valueDisplay;
     }
 
     get buttons() {
-        if (!this.#_buttons || this.#_buttonsDirty) {
-            this.#_buttons = this.shadowRoot.querySelectorAll('button');
-            this.#_buttonsDirty = false;
+        if (!this.__buttons || this.__buttonsDirty) {
+            this.__buttons = this.shadowRoot.querySelectorAll('button');
+            this.__buttonsDirty = false;
         }
-        return this.#_buttons;
+        return this.__buttons;
     }
 
-    #_xSelectInitialized = false;
+    __xSelectInitialized = false;
 
     onClick = e => {
         const button = e.target.closest('button.x-select-option');
@@ -110,15 +110,15 @@ class XSelect extends AtomicElement {
         this.shadowRoot.addEventListener('change', this.onChange);
         this.shadowRoot.adoptedStyleSheets = [styleSheet];
 
-        this.#_select = null;
-        this.#_selectDirty = true;
+        this.__select = null;
+        this.__selectDirty = true;
 
-        this.#_valueDisplay = null;
-        this.#_valueDisplayDirty = true;
+        this.__valueDisplay = null;
+        this.__valueDisplayDirty = true;
     }
 
     connectedCallback() {
-        if (this.isConnected && !this.#_xSelectInitialized) {
+        if (this.isConnected && !this.__xSelectInitialized) {
             this.render();
             this.updateValueDisplay();
             mutObserver.observe(this, mutObserverConfig);

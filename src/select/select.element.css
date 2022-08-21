@@ -18,7 +18,7 @@
     /*display: none;*/
 }
 
-:host #value-display {
+:host _value-display {
     border: 1px solid;
     padding: 0.25rem;
 }
