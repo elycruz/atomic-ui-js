@@ -3,31 +3,40 @@
 <head>
   <meta charset="UTF-8">
   <title>X-Number-Spinner</title>
-  <link rel="stylesheet" href="../css/index.stories.css">
+  <link href="../css/index.stories.css" rel="stylesheet">
   <style>
     form {
       max-inline-size: 55vw;
     }
+
     x-number-input,
     input {
       text-align: right;
     }
   </style>
+  <script type="importmap">
+    {
+      "imports": {
+        "lit": "https://cdn.jsdelivr.net/gh/lit/dist@2.3.0/all/lit-all.min.js"
+      }
+    }
+  </script>
 </head>
 <body>
 <section>
   <header>x-number-spinner</header>
   <article>
     <header>Default</header>
-    <form id="default-x-number-spinner-form" action="#" method="get">
+    <form action="#" id="default-x-number-spinner-form" method="get">
       <fieldset class="x-fieldset x-fieldset--grid-2">
         <legend>Default</legend>
         <label for="default">Default</label>
         <x-number-spinner id="default" name="default"></x-number-spinner>
         <label for="x-spinner--with-min-and-max">With `min` and `max`</label>
-        <x-number-spinner id="x-spinner--with-min-and-max" name="x-spinner--with-min-and-max" min="1" max="12"></x-number-spinner>
+        <x-number-spinner id="x-spinner--with-min-and-max" max="12" min="1"
+                          name="x-spinner--with-min-and-max"></x-number-spinner>
         <label for="x-spinner--with-min-invalid">With invalid `min`</label>
-        <x-number-spinner id="x-spinner--with-min-invalid" name="x-spinner--with-min-invalid" min="abcdefg">
+        <x-number-spinner id="x-spinner--with-min-invalid" min="abcdefg" name="x-spinner--with-min-invalid">
           <div slot="help">`min` will be normalized to `Number.MIN_SAFE_INTEGER`, in this case.</div>
         </x-number-spinner>
         <label for="x-spinner--required">Required</label>
@@ -35,10 +44,10 @@
                           name="x-spinner--required" required>
         </x-number-spinner>
         <label for="number-input">Native Number Input</label>
-        <div><input type="number" id="number-input" name="number-input"></div>
+        <div><input id="number-input" name="number-input" type="number"></div>
         <label for="text-input">Native Text Input (with 'live-formatting', and restrictions)</label>
-        <div><input type="text" id="text-input" name="text-input"
-               pattern="^([-+]|\d|[-+]?[eE]?\d+?)((?<=\1)\.([eE]?\d+)?)?$"></div>
+        <div><input id="text-input" name="text-input" pattern="^([-+]|\d|[-+]?[eE]?\d+?)((?<=\1)\.([eE]?\d+)?)?$"
+                    type="text"></div>
         <div class="x-button-group">
           <button type="reset">Reset</button>
           <button type="submit">Submit</button>

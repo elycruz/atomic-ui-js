@@ -8,10 +8,11 @@ import {
   VALUE_NAME,
 } from "../utils";
 
-import { autoWrapNumber, isset } from "../utils";
-import { XFormControl } from "../x-base";
+import {autoWrapNumber, isset} from "../utils";
+import {XFormControl} from "../x-base";
+import {html} from "lit";
 
-const { MAX_SAFE_INTEGER, MIN_SAFE_INTEGER, isNaN } = Number,
+const {MAX_SAFE_INTEGER, MIN_SAFE_INTEGER, isNaN} = Number,
   xNumberSpinnerLocalName = "x-number-spinner",
   charLengthCssProp = "--x-number-spinner-size",
   xNumberSpinnerStyles = `
@@ -32,7 +33,7 @@ const { MAX_SAFE_INTEGER, MIN_SAFE_INTEGER, isNaN } = Number,
 
 :host(:focus) > :first-child,
 :host(:focus-within) > :first-child {
-    outline: _000 solid 1px;
+    outline: #000 solid 1px;
 }
 
 :host,
@@ -52,7 +53,7 @@ const { MAX_SAFE_INTEGER, MIN_SAFE_INTEGER, isNaN } = Number,
 :host > :first-child {
     white-space: nowrap;
     vertical-align: middle;
-    font-family: monospaced;
+    font-family: monospace;
 }
 
 :host(:invalid) {
@@ -63,16 +64,13 @@ const { MAX_SAFE_INTEGER, MIN_SAFE_INTEGER, isNaN } = Number,
   font-size: small;
 }
 `,
+
   hasTrailingDot = (xs) => {
     const incoming = xs + "";
     return incoming.lastIndexOf(".") === incoming.length - 1;
   },
-  styleSheet = new CSSStyleSheet(),
-  observedAttributes = [
-    MIN_NAME,
-    MAX_NAME,
-    STEP_NAME,
-  ];
+
+  styleSheet = new CSSStyleSheet();
 
 // @todo Add property to enable handling of `BigInt` values.
 
@@ -86,19 +84,20 @@ export const numberRegex = /^([-+]|\d|[-+]?e?\d+?)((?<=\1)\.(e?\d+)?)?$/i,
 
 export class XNumberSpinner extends XFormControl {
   static localName = xNumberSpinnerLocalName;
-  static observedAttributes = Array.from(
-    new Set(XFormControl.observedAttributes.concat(observedAttributes))
-      .values(),
-  );
-  static properties = Object.assign({}, XFormControl.properties || {}, {});
-  static styles = styleSheet;
-  static shadowRootOptions = { mode: "open", delegatesFocus: true };
 
-  get #input() {
+  static properties = Object.assign({}, XFormControl.properties || {}, {
+    min: {type: Number, reflect: true},
+    max: {type: Number, reflect: true},
+    step: {type: Number, reflect: true},
+  });
+
+  // static styles = styleSheet;
+
+  get _input() {
     return this.shadowRoot.firstElementChild;
   }
 
-  get #errors() {
+  get _errors() {
     return this.shadowRoot.lastElementChild;
   }
 
@@ -109,7 +108,7 @@ export class XNumberSpinner extends XFormControl {
 
   set min(x) {
     const newValue = Number(x),
-      { min: prevMin } = this;
+      {min: prevMin} = this;
     if (isNaN(newValue)) {
       this._min = MIN_SAFE_INTEGER;
       return;
@@ -126,7 +125,7 @@ export class XNumberSpinner extends XFormControl {
 
   set max(x) {
     const newValue = Number(x),
-      { max: prevMax } = this;
+      {max: prevMax} = this;
     if (isNaN(newValue)) this._max = MAX_SAFE_INTEGER;
     this._max = newValue;
     this.updateValidity();
@@ -140,7 +139,7 @@ export class XNumberSpinner extends XFormControl {
 
   set step(x) {
     const newValue = Number(x),
-      { step: prevStep } = this;
+      {step: prevStep} = this;
     this._step = isNaN(newValue) ? 1 : newValue;
     this.updateValidity();
     this.requestUpdate(STEP_NAME, prevStep);
@@ -152,9 +151,7 @@ export class XNumberSpinner extends XFormControl {
   }
 
   set valueAsNumber(x) {
-    const { valueAsNumber: prevValueAsNumber } = this;
-    this.#setValue(x);
-    this.requestUpdate(VALUE_AS_NUMBER_NAME, prevValueAsNumber);
+    this._setValue(x + '');
   }
 
   get value() {
@@ -162,27 +159,13 @@ export class XNumberSpinner extends XFormControl {
   }
 
   set value(xs) {
-    const { value: prevValue } = this;
-    this.#setValue(xs);
-    this.requestUpdate(VALUE_NAME, prevValue);
+    this._setValue(xs);
   }
 
-  #_xNumberSpinnerInitialized = false;
-
-  constructor() {
-    super();
-    this.shadowRoot.innerHTML = `
-<div></div>
-<slot name="help"></slot>
-<ul class="errors"></ul>
-`;
-    this.#input.addEventListener("input", this.#onInput);
-    this.#input.addEventListener("focusin", this.#onFocus);
-    this.#input.addEventListener("focusout", this.#onFocusOut);
-  }
+  _xNumberSpinnerInitialized = false;
 
   updateValidity() {
-    const { value, valueAsNumber, min, max, step, required } = this,
+    const {value, valueAsNumber, min, max, step, required} = this,
       issetValue = isset(value),
       newValidityState = {};
     let validationMessage = null;
@@ -223,7 +206,7 @@ export class XNumberSpinner extends XFormControl {
    */
   stepUp(amount = 1) {
     if (amount < 0) amount = amount * -1;
-    this.#offsetValue(amount);
+    this._offsetValue(amount);
   }
 
   /**
@@ -234,14 +217,17 @@ export class XNumberSpinner extends XFormControl {
    */
   stepDown(amount = 1) {
     if (amount > -1) amount = amount * -1;
-    this.#offsetValue(amount);
+    this._offsetValue(amount);
   }
 
-  #setValue(xsOrX) {
+  _setValue(xsOrX) {
     let newNumber = NaN,
       newValue = null;
 
-    const { min, max } = this,
+    const {
+        min, max, _value: prevValue,
+        _valueAsNumber: prevValueAsNumber
+      } = this,
       issetX = isset(xsOrX);
 
     if (issetX && !isNaN(xsOrX) && numberRegex.test(xsOrX)) {
@@ -262,10 +248,11 @@ export class XNumberSpinner extends XFormControl {
     this._valueAsNumber = newNumber;
     this.updateValidity();
     this._internals?.setFormValue(newValue);
-    this.#input.textContent = isset(newValue) ? newValue : "";
+    this.requestUpdate(VALUE_NAME, prevValue);
+    this.requestUpdate(VALUE_AS_NUMBER_NAME, prevValueAsNumber);
   }
 
-  #offsetValue(amount = 1) {
+  _offsetValue(amount = 1) {
     const valueAsNumber = this._valueAsNumber;
     let newValueAsNumber;
     if (!isset(valueAsNumber) || isNaN(valueAsNumber)) {
@@ -274,12 +261,12 @@ export class XNumberSpinner extends XFormControl {
     this.value = newValueAsNumber + ""; // `value`'s setter sets `valueAsNumber` for us
   }
 
-  #positionCursor(collapseSelection = true) {
+  _positionCursor(collapseSelection = true) {
     const range = new Range(),
-      { value } = this;
+      {value} = this;
     if (!value) return;
-    range.setStart(this.#input.firstChild, 0);
-    range.setEnd(this.#input.firstChild, value.length);
+    range.setStart(this._input.firstChild, 0);
+    range.setEnd(this._input.firstChild, value.length);
     // range.collapse();
     // log(range + '');
     const selection = this.ownerDocument.getSelection();
@@ -288,11 +275,11 @@ export class XNumberSpinner extends XFormControl {
     if (collapseSelection) selection.collapseToEnd();
   }
 
-  #onInput = (e) => {
+  _onInput = (e) => {
     e.preventDefault();
     e.stopPropagation();
     const currValue = this.value;
-    const newValue = this.#input.textContent.trim().replace(newLinesRegex, "");
+    const newValue = this._input.textContent.trim().replace(newLinesRegex, "");
     this.value = newValue;
     if (
       currValue === newValue ||
@@ -313,11 +300,11 @@ export class XNumberSpinner extends XFormControl {
     );
   };
 
-  #onFocus = () => {
-    this.#positionCursor(false);
+  _onFocus = () => {
+    this._positionCursor(false);
   };
 
-  #onFocusOut = () => {
+  _onFocusOut = () => {
     if (!this._changeDispatchPending) {
       return;
     }
@@ -332,7 +319,7 @@ export class XNumberSpinner extends XFormControl {
     this.dispatchEvent(new Event("input", evOptions));
   };
 
-  #onKeyDown = (e) => {
+  _onKeyDown = (e) => {
     if (this.disabled || this.readOnly || !this.matches(focusedSelector)) {
       return;
     }
@@ -363,54 +350,64 @@ export class XNumberSpinner extends XFormControl {
     }
 
     if (triggerChange) {
-      this.#positionCursor();
+      this._positionCursor();
       this._changeDispatchPending = true;
-      this.#onFocusOut(e);
+      this._onFocusOut(e);
     }
   };
-
-  attributeChangedCallback(name, prevValue, newValue) {
-    if (prevValue === newValue) return;
-    switch (name) {
-      case VALUE_NAME:
-        this.defaultValue = newValue;
-        break;
-      case "readonly":
-        this.readOnly = newValue;
-        break;
-      case "tabindex":
-        this.tabIndex = newValue;
-        break;
-      default:
-        this[name] = newValue;
-        break;
-    }
-  }
-
-  connectedCallback() {
-    if (!this.#_xNumberSpinnerInitialized && this.isConnected) {
-      this.#input.contentEditable = "true";
-      this.addEventListener("keydown", this.#onKeyDown);
-      this.#_xNumberSpinnerInitialized = true;
-    }
-  }
-
-  disconnectedCallback() {
-    if (this.#_xNumberSpinnerInitialized) {
-      this.removeEventListener("keydown", this.#onKeyDown);
-      this.#_xNumberSpinnerInitialized = false;
-    }
-  }
-
-  formResetCallback() {
-    this.value = this.defaultValue;
-  }
 
   _onFormData = (e) => {
     if (!this.name) return;
     if (!this.value) e.formData.delete(this.name);
     else e.formData.set(this.name, this.value);
   };
+
+  connectedCallback() {
+    super.connectedCallback();
+    if (!this._xNumberSpinnerInitialized && this.isConnected) {
+      this._xNumberSpinnerInitialized = true;
+    }
+  }
+
+  disconnectedCallback() {
+    super.disconnectedCallback();
+    if (this._xNumberSpinnerInitialized) {
+      this.removeEventListener("keydown", this._onKeyDown);
+      this._xNumberSpinnerInitialized = false;
+    }
+  }
+
+  firstUpdated(_changedProperties) {
+    super.firstUpdated(_changedProperties);
+    this.updateComplete.then(() => {
+      this._input.contentEditable = "true";
+      this._input.addEventListener("input", this._onInput);
+      this._input.addEventListener("focusin", this._onFocus);
+      this._input.addEventListener("focusout", this._onFocusOut);
+      this.addEventListener("keydown", this._onKeyDown);
+    });
+  }
+
+  updated(_changedProperties) {
+    super.updated(_changedProperties);
+    this.updateComplete.then(() => {
+      if (_changedProperties.has(VALUE_NAME)) {
+        this._input.textContent = this._value;
+      }
+    });
+  }
+
+  formResetCallback() {
+    this.value = this.defaultValue;
+  }
+
+  render() {
+    return html`
+      <div></div>
+      <slot name="help"></slot>
+      <ul class="errors"></ul>
+    `;
+  }
 }
 
 /*

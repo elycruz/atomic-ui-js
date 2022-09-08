@@ -1,6 +1,7 @@
 export const // Property names
-// ----
-VALUE_NAME = "value",
+
+  // ----
+  VALUE_NAME = "value",
   VALUE_AS_NUMBER_NAME = "value",
   DEFAULT_VALUE_NAME = "defaultValue",
   DISABLED_NAME = "disabled",
@@ -10,10 +11,13 @@ VALUE_NAME = "value",
   MIN_NAME = "min",
   MAX_NAME = "max",
   STEP_NAME = "step",
+  TABINDEX_NAME = "tabIndex",
+
   // Booleans
   // ----
   attribute = true,
   reflect = true,
+
   // Selectors
   // ----
   focusedSelector = ":focus, :focus-within";

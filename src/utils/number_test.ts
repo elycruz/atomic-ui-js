@@ -1,11 +1,11 @@
-import { range } from "fjl";
-import { constrainNum, resolvePointer, wrapPointer } from "./number";
+import {range} from "fjl";
+import {constrainNum, resolvePointer, wrapPointer} from "./number";
 
 describe("#constrainNum", () => {
   type Args = [number, number, number];
   const min = -5,
     max = 5;
-  (<[Args, number][]> range(min + min, max + max)
+  (<[Args, number][]>range(min + min, max + max)
     .map((x) => {
       let expected = x;
       if (x >= max) {
@@ -27,7 +27,7 @@ describe("#wrapPointer", () => {
   type Args = [number, number, number];
   const min = -5,
     max = 5;
-  (<[Args, number][]> range(min + min, max + max)
+  (<[Args, number][]>range(min + min, max + max)
     .map((x) => {
       let expected = x;
       if (x < min) {
@@ -50,7 +50,7 @@ describe("#resolvePointer", () => {
   type Args = [Wraps, number, number, number];
   const min = -5,
     max = 5;
-  (<[Args, number][]> [
+  (<[Args, number][]>[
     [[true, 0, 0, 0], 0],
     [[false, 0, 0, 0], 0],
   ].concat(

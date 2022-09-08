@@ -1,52 +1,29 @@
-import { isset } from "../utils/object.js";
-import { AtomicElement } from "./x-atomic-element.js";
-import { throwNoOverrideError } from "../utils/events.js";
+import {isset} from "../utils/object.js";
+import {XAtomicElement} from "./x-atomic-element.js";
+import {throwNoOverrideError} from "../utils/events.js";
 import {
+  DEFAULT_VALUE_NAME,
   DISABLED_NAME,
   NAME_NAME,
   READONLY_NAME,
-  REQUIRED_NAME,
+  REQUIRED_NAME, TABINDEX_NAME,
   VALUE_NAME,
 } from "../utils/shared-constants.js";
 
-let styleSheetInitialized = false;
-
-const xFormControlLocalName = "x-form-control",
-  xVisibleFormControlStyles = `
-:host {
-}
-`,
-  styleSheet = new CSSStyleSheet(),
-  observedAttributes = [
-    VALUE_NAME,
-    REQUIRED_NAME,
-    READONLY_NAME.toLowerCase(),
-    NAME_NAME,
-    DISABLED_NAME,
-  ];
-
-if (!styleSheetInitialized) {
-  styleSheet.replace(xVisibleFormControlStyles)
-    .catch(console.error);
-  styleSheetInitialized = true;
-}
-
-export class XFormControl extends AtomicElement {
+export class XFormControl extends XAtomicElement {
   static formAssociated = true;
-  static localName = xFormControlLocalName;
-  static observedAttributes = observedAttributes;
-  static styles = styleSheet;
-  static shadowRootOptions = { mode: "open", delegatesFocus: true };
+  static shadowRootOptions = {mode: "open", delegatesFocus: true};
 
-  static properties = {
-    defaultValue: { type: String, attribute: VALUE_NAME, reflect: true },
-    disabled: { type: Boolean, reflect: true },
-    name: { type: Boolean, reflect: true },
-    readOnly: { type: Boolean, reflect: true },
-    required: { type: Boolean, reflect: true },
-    tabIndex: { type: Boolean, reflect: true },
-    type: { type: String, reflect: true },
-    value: { type: String },
+  // static shadowRootOptions = {mode: "open", delegatesFocus: true};
+  static  properties = {
+    defaultValue: {type: String, attribute: VALUE_NAME, reflect: true},
+    disabled: {type: Boolean, reflect: true, attribute: VALUE_NAME},
+    name: {type: Boolean, reflect: true},
+    readOnly: {type: Boolean, reflect: true},
+    required: {type: Boolean, reflect: true},
+    tabIndex: {type: Boolean, reflect: true},
+    type: {type: String, reflect: true},
+    value: {type: String, attribute: false},
   };
 
   /**
@@ -60,7 +37,7 @@ export class XFormControl extends AtomicElement {
   }
 
   set disabled(x) {
-    const { _disabled: prevDisabled } = this,
+    const {_disabled: prevDisabled} = this,
       disabled = Boolean(x);
     this._disabled = disabled;
     if (this._internals) {
@@ -76,7 +53,7 @@ export class XFormControl extends AtomicElement {
   }
 
   set required(x) {
-    const { required: prevRequired } = this,
+    const {required: prevRequired} = this,
       required = Boolean(x);
     this._required = required;
     if (this._internals) {
@@ -92,13 +69,14 @@ export class XFormControl extends AtomicElement {
   }
 
   set readOnly(x) {
-    const readOnly = Boolean(x);
+    const {readOnly: prevReadOnly} = this,
+      readOnly = Boolean(x);
     this._readOnly = readOnly;
     if (this._internals) {
       this._internals.ariaReadOnly = readOnly + "";
     }
     this.ariaReadOnly = readOnly + "";
-    this.requestUpdate();
+    this.requestUpdate(READONLY_NAME, prevReadOnly);
   }
 
   _defaultValue;
@@ -107,10 +85,10 @@ export class XFormControl extends AtomicElement {
   }
 
   set defaultValue(xs) {
+    const {_defaultValue: prevDefaultValue} = this;
     this._defaultValue = xs;
-    if (xs) this.setAttribute(VALUE_NAME, this._defaultValue);
-    else this.removeAttribute(VALUE_NAME);
     this.value = xs;
+    this.requestUpdate(DEFAULT_VALUE_NAME, prevDefaultValue);
   }
 
   _value;
@@ -119,28 +97,31 @@ export class XFormControl extends AtomicElement {
   }
 
   set value(xs) {
-    this._value = isset(xs) ? String(xs) : "";
+    const {value: prevValue} = this;
+    this._value = isset(xs) ? xs : "";
+    this.requestUpdate(VALUE_NAME, prevValue);
   }
 
-  _name = "";
+  _name;
   get name() {
     return !isset(this._name) ? "" : this._name;
   }
 
   set name(xs) {
-    this._name = isset(xs) ? String(xs) : "";
-    if (this._name) this.setAttribute(NAME_NAME, this._name);
-    else this.removeAttribute(NAME_NAME);
+    const {name: prevName} = this;
+    this._name = isset(xs) ? xs : "";
+    this.requestUpdate(NAME_NAME, prevName);
   }
 
-  _tabIndex = 0;
+  _tabIndex;
   get tabIndex() {
     return !isset(this._tabIndex) ? 0 : this._tabIndex;
   }
 
   set tabIndex(x) {
-    this._tabIndex = Number(x || 0);
-    this.setAttribute("tabindex", this._tabIndex + "");
+    const {_tabIndex: prevTabIndex} = this;
+    this._tabIndex = !isset(x) ? 0 : Number(x);
+    this.requestUpdate(TABINDEX_NAME, prevTabIndex);
   }
 
   get type() {
@@ -167,12 +148,19 @@ export class XFormControl extends AtomicElement {
     return this._internals ? this._internals.labels : undefined;
   }
 
-  #_xFormControlInitialized = false;
-
-  constructor() {
-    super();
-    this._internals = this.attachInternals();
-  }
+  _xFormControlInitialized = false;
+  //
+  // constructor() {
+  //   super();
+  //   this._internals = this.attachInternals();
+  //   Object.assign(this, {
+  //     defaultValue: '',
+  //     tabIndex: 0,
+  //     required: false,
+  //     disabled: false,
+  //     readOnly: false,
+  //   });
+  // }
 
   setValidity(validityState, validationMessage = null) {
     this._internals?.setValidity(validityState, validationMessage);
@@ -191,42 +179,24 @@ export class XFormControl extends AtomicElement {
   }
 
   setCustomValidity(message = "") {
-    this._internals?.setValidity(
-      message ? { customError: true } : {},
+    if (!this._internals) return;
+    this._internals.setValidity(
+      message ? {customError: true} : {},
       message || "",
     );
   }
 
-  attributeChangedCallback(name, prevValue, newValue) {
-    if (prevValue === newValue) return;
-    switch (name) {
-      case VALUE_NAME:
-        this.defaultValue = newValue;
-        break;
-      case "readonly":
-        this.readOnly = newValue;
-        break;
-      case "tabindex":
-        this.tabIndex = newValue;
-        break;
-      default:
-        this[name] = newValue;
-        break;
-    }
-  }
-
   connectedCallback() {
-    if (!this.#_xFormControlInitialized && this.isConnected) {
-      // this.tabIndex = this.tabIndex;
-      // this.constructor.observedAttributes.forEach()
-      // this.attributeChangedCallback()
-      this.#_xFormControlInitialized = true;
+    super.connectedCallback();
+    if (!this._xFormControlInitialized && this.isConnected) {
+      this._xFormControlInitialized = true;
     }
   }
 
   disconnectedCallback() {
-    if (this.#_xFormControlInitialized) {
-      this.#_xFormControlInitialized = false;
+    super.disconnectedCallback();
+    if (this._xFormControlInitialized) {
+      this._xFormControlInitialized = false;
     }
   }
 
