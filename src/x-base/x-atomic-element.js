@@ -1,8 +1,8 @@
 export class AtomicElement extends HTMLElement {
   static styles = null;
   static properties = null;
-  static localName = '';
-  static shadowRootOptions = {mode: 'open'};
+  static localName = "";
+  static shadowRootOptions = { mode: "open" };
 
   #initialized = false;
 
@@ -20,7 +20,7 @@ export class AtomicElement extends HTMLElement {
   }
 
   createRenderRoot() {
-    const {styles, shadowRootOptions} = this.constructor;
+    const { styles, shadowRootOptions } = this.constructor;
     this.attachShadow(shadowRootOptions);
     if (styles) this.shadowRoot.adoptedStyleSheets.push(styles);
   }
@@ -43,9 +43,10 @@ export class AtomicElement extends HTMLElement {
 
   requestUpdate(propName, prevValue) {
     const updates = this.#_updates || {},
-      {observedAttributes, properties} = this.constructor
-      ;
-    if (!properties || !observedAttributes || !observedAttributes.length) return;
+      { observedAttributes, properties } = this.constructor;
+    if (!properties || !observedAttributes || !observedAttributes.length) {
+      return;
+    }
     const cfg = properties[propName];
     if (!cfg) return;
     if (!this.shouldUpdate(propName, prevValue)) return;
@@ -70,6 +71,6 @@ export class AtomicElement extends HTMLElement {
   }
 
   render() {
-    return '';
+    return "";
   }
 }

@@ -1,14 +1,14 @@
-import {isset, log, qs} from "../utils/index.js";
-import {allowedDataChars} from "./x-number-spinner.js";
+import { isset, log, qs } from "../utils/index.js";
+import { allowedDataChars } from "./x-number-spinner.js";
 
-window.addEventListener('DOMContentLoaded', () => {
+window.addEventListener("DOMContentLoaded", () => {
   if (document.forms) {
     const len = document.forms.length;
     for (let i = 0; i < len; i += 1) {
       const f = document.forms.item(i);
-      f.addEventListener('change', log);
-      f.addEventListener('input', log);
-      f.addEventListener('submit', e => {
+      f.addEventListener("change", log);
+      f.addEventListener("input", log);
+      f.addEventListener("submit", (e) => {
         e.preventDefault();
         const form = e.currentTarget,
           data = new FormData(form);
@@ -18,23 +18,23 @@ window.addEventListener('DOMContentLoaded', () => {
             .reduce((agg, [k, v]) => {
               agg[k] = v;
               return agg;
-            }, {})
+            }, {}),
         );
       });
     }
   }
 
-  let prevTextInputValue = '';
+  let prevTextInputValue = "";
 
   const textInput = qs('[name="text-input"]'),
     // Empty array signals use of "browsers" locale.
     currencyFmt = new Intl.NumberFormat([], {
-      style: 'currency',
-      currency: 'USD'
+      style: "currency",
+      currency: "USD",
     });
 
-// text-input char restrict
-  textInput.addEventListener('input', e => {
+  // text-input char restrict
+  textInput.addEventListener("input", (e) => {
     e.preventDefault();
     const input = e.currentTarget;
     let newValue = prevTextInputValue;
@@ -44,5 +44,4 @@ window.addEventListener('DOMContentLoaded', () => {
       prevTextInputValue = input.value;
     }
   });
-
-}, {once: true});
+}, { once: true });

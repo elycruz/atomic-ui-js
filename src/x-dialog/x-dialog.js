@@ -1,15 +1,13 @@
 // Type assertions not yet supported by firefox - css now loaded in `connectedCallback()`.
 // import xDialogStyleSheet from './x-dialog.css' assert {type: "css"};
-import {error} from "../js/utils/index.js";
+import { error } from "../js/utils/index.js";
 
-export const xDialogLocalName = 'x-dialog',
-
+export const xDialogLocalName = "x-dialog",
   xDialogStyles = `
   :host dialog::backdrop {
     background: rgba(0,0,0,0) !important;
   }
   `,
-
   xDialogStyleSheet = new CSSStyleSheet();
 
 export class XDialog extends HTMLElement {
@@ -25,13 +23,14 @@ export class XDialog extends HTMLElement {
 
   constructor() {
     super();
-    this.attachShadow({mode: 'open', delegatesFocus: true});
-    this.shadowRoot.innerHTML = '<dialog><slot></slot></dialog>';
-    if (this.shadowRoot.adoptedStyleSheets) this.shadowRoot.adoptedStyleSheets.push(xDialogStyleSheet);
-    else this.shadowRoot.adoptedStyleSheets = [xDialogStyleSheet];
+    this.attachShadow({ mode: "open", delegatesFocus: true });
+    this.shadowRoot.innerHTML = "<dialog><slot></slot></dialog>";
+    if (this.shadowRoot.adoptedStyleSheets) {
+      this.shadowRoot.adoptedStyleSheets.push(xDialogStyleSheet);
+    } else this.shadowRoot.adoptedStyleSheets = [xDialogStyleSheet];
     // Captures events from child elements outside of `shadowRoot`:
-    this.addEventListener('reset', this._disabled_onCloseViaForm);
-    this.addEventListener('submit', this._disabled_onCloseViaForm);
+    this.addEventListener("reset", this._disabled_onCloseViaForm);
+    this.addEventListener("submit", this._disabled_onCloseViaForm);
   }
 
   show() {
@@ -66,22 +65,25 @@ export class XDialog extends HTMLElement {
             this._disabled_styleSheetInitialized = true;
           }).catch(error);
       }
-      this._disabled_dialog.removeEventListener('cancel', this._disabled_onClose);
-      this._disabled_dialog.addEventListener('cancel', this._disabled_onClose);
+      this._disabled_dialog.removeEventListener(
+        "cancel",
+        this._disabled_onClose,
+      );
+      this._disabled_dialog.addEventListener("cancel", this._disabled_onClose);
       this._disabled_initialized = true;
     }
   }
 
   disconnectedCallback() {
     if (this._disabled_initialized) {
-      this._disabled_dialog.removeEventListener('cancel', this.#_onClose);
+      this._disabled_dialog.removeEventListener("cancel", this.#_onClose);
       this.#_initialized = false;
     }
   }
 
   #_onCloseViaForm(e) {
-    const {target} = e;
-    if (target.localName === 'form' && target.method === 'dialog') {
+    const { target } = e;
+    if (target.localName === "form" && target.method === "dialog") {
       e.preventDefault();
       this.close();
     }

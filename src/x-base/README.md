@@ -12,10 +12,10 @@ Base classes for creating custom elements.
 
 General idea:
 
-Control should contain a mechanism for tracking updates coming from property setters, and/or, attribute setters.
+Control should contain a mechanism for tracking updates coming from property
+setters, and/or, attribute setters.
 
 Pseudo workflow diagram:
 
-Control connected -> check states ->
-update -> render -> listen for state updates
- 
+Control connected -> check states -> update -> render -> listen for state
+updates

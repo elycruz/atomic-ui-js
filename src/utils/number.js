@@ -3,27 +3,20 @@ export const constrainNumber = (min = 0, max = 0, num = 0) => {
     else if (num > max) return max;
     else return num;
   },
-
   autoWrapNumber = (min = 0, max = 0, num = 0) => {
     if (num < min) return max;
     else if (num > max) return min;
     else return num;
   },
-
-  isUsableNumber = (num = 0) => typeof num === 'number' && !Number.isNaN(num),
-
+  isUsableNumber = (num = 0) => typeof num === "number" && !Number.isNaN(num),
   isPositiveNumber = (num = 0) => isUsableNumber(num) && num > -1,
-
   constrainPointer = constrainNumber,
-
   wrapPointer = autoWrapNumber,
-
   resolvePointer = (autoWrap, min, max, pointer) =>
     (autoWrap ? wrapPointer : constrainPointer)(min, max, pointer),
-
-  closestPairFromFib = num => {
+  closestPairFromFib = (num) => {
     if (num <= 0) {
-      return [0, 1]
+      return [0, 1];
     }
     let a = 0,
       b = 1;
@@ -39,7 +32,6 @@ export const constrainNumber = (min = 0, max = 0, num = 0) => {
     }
     return out;
   },
-
   fib = (start, end) => {
     start = isPositiveNumber(start) ? start : 0;
     end = isPositiveNumber(end) ? end : 1000;
@@ -55,6 +47,4 @@ export const constrainNumber = (min = 0, max = 0, num = 0) => {
       b = a + b;
     }
     return out;
-  }
-
-;
+  };

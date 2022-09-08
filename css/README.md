@@ -1,6 +1,7 @@
 ## Scss/
 
 ## Dir. structure
+
 ```
 scss/
   - base - Contains reference base implementation (css reset, + base html styles).

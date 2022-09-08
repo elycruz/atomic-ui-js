@@ -24,7 +24,6 @@ export function rafLimiter(fn, fps = 60) {
       // call the fn
       stopAnimation = fn(delta);
     }
-    return stopAnimation ? undefined :
-      requestAnimationFrame(loop);
+    return stopAnimation ? undefined : requestAnimationFrame(loop);
   }(then));
 }

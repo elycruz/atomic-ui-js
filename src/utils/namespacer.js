@@ -10,10 +10,10 @@ export const namespacer = (nsString, obj, valueToSet = undefined) => {
     return obj;
   }
   const shouldSetValue = valueToSet !== undefined,
-    nss = nsString[0] === '.' ? nsString.slice(1) : nsString;
+    nss = nsString[0] === "." ? nsString.slice(1) : nsString;
 
   // Reduce original object to itself with requested modifications
-  return nss.split('.').reduce((agg, key, ind, parts) => {
+  return nss.split(".").reduce((agg, key, ind, parts) => {
     if (ind === parts.length - 1 && shouldSetValue) {
       agg[key] = valueToSet;
     } else if (agg[key] === undefined) {

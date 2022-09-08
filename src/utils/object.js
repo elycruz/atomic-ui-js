@@ -3,11 +3,11 @@
  * @memberOf object
  */
 const _Number = Number.name,
-  _NaN = 'NaN',
-  _Null = 'Null',
-  _Undefined = 'Undefined';
+  _NaN = "NaN",
+  _Null = "Null",
+  _Undefined = "Undefined";
 
-export const isset = x => x !== null && x !== undefined;
+export const isset = (x) => x !== null && x !== undefined;
 
 /**
  * Returns the constructor/class/type name of a value.
@@ -25,9 +25,10 @@ export function typeOf(value) {
   } else if (value === null) {
     retVal = _Null;
   } else {
-    const {name: constructorName} = (value).constructor;
-    retVal = constructorName === _Number && isNaN(value) ?
-      _NaN : constructorName;
+    const { name: constructorName } = (value).constructor;
+    retVal = constructorName === _Number && isNaN(value)
+      ? _NaN
+      : constructorName;
   }
   return retVal;
 }

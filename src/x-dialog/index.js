@@ -1,1 +1,1 @@
-export * from './x-dialog.js';
+export * from "./x-dialog.js";

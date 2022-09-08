@@ -1,11 +1,8 @@
-import {XFormControl} from "../x-base/x-form-control";
+import { XFormControl } from "../x-base/x-form-control";
 
-const isset = x => x !== null && x !== undefined,
-
-  {log, error} = console,
-
-  xInputName = 'x-input',
-
+const isset = (x) => x !== null && x !== undefined,
+  { log, error } = console,
+  xInputName = "x-input",
   xInputStyles = `
 :host {
     background-color: green;
@@ -22,11 +19,11 @@ const isset = x => x !== null && x !== undefined,
   xInputStyleSheet = new CSSStyleSheet();
 
 class XInput extends XFormControl {
-  _disabled_value = '';
-  _disabled_defaultValue = '';
+  _disabled_value = "";
+  _disabled_defaultValue = "";
   _disabled_disabled = false;
   _disabled_required = false;
-  _disabled_name = '';
+  _disabled_name = "";
   _disabled_internals = null;
   _disabled_initialized = false;
   _disabled_tabIndex = 0;
@@ -39,8 +36,9 @@ class XInput extends XFormControl {
 
   set defaultValue(xs) {
     this._disabled_defaultValue =
-      this.value = isset(xs) ? xs + '' : '';
-    this.setAttribute('value', this._disabled_value);
+      this.value =
+        isset(xs) ? xs + "" : "";
+    this.setAttribute("value", this._disabled_value);
   }
 
   get value() {
@@ -48,7 +46,7 @@ class XInput extends XFormControl {
   }
 
   set value(x) {
-    this._disabled_value = isset(x) ? x + '' : '';
+    this._disabled_value = isset(x) ? x + "" : "";
     this.onUpdateValue();
     this._disabled_internals.setFormValue(this._disabled_value);
   }
@@ -70,7 +68,7 @@ class XInput extends XFormControl {
   }
 
   set name(x) {
-    this._disabled_name = isset(x) ? x + '' : '';
+    this._disabled_name = isset(x) ? x + "" : "";
   }
 
   get required() {
@@ -95,7 +93,7 @@ class XInput extends XFormControl {
 
   set tabIndex(x) {
     this.#_tabIndex = isset(x) ? parseInt(x, 10) : 0;
-    this.setAttribute('tabindex', this.#_tabIndex);
+    this.setAttribute("tabindex", this.#_tabIndex);
   }
 
   get willValidate() {
@@ -118,12 +116,12 @@ class XInput extends XFormControl {
     }
   }
 
-  #_onChange = e => {
+  #_onChange = (e) => {
     this.value = e.target.value;
   };
 
-  #_onFormData = e => {
-    const {name, value} = this;
+  #_onFormData = (e) => {
+    const { name, value } = this;
     if (!name) return;
     e.formData.set(name, value);
   };
@@ -131,12 +129,12 @@ class XInput extends XFormControl {
   constructor() {
     super();
     this.#_internals = this.attachInternals();
-    this.attachShadow({mode: 'open', delegatesFocus: true});
+    this.attachShadow({ mode: "open", delegatesFocus: true });
     this.shadowRoot.adoptedStyleSheets.push(xInputStyleSheet);
-    this.shadowRoot.innerHTML = '<input>';
-    this.shadowRoot.addEventListener('input', this.#_onChange);
-    this.shadowRoot.addEventListener('change', this.#_onChange);
-    this.addEventListener('formdata', this.#_onFormData);
+    this.shadowRoot.innerHTML = "<input>";
+    this.shadowRoot.addEventListener("input", this.#_onChange);
+    this.shadowRoot.addEventListener("change", this.#_onChange);
+    this.addEventListener("formdata", this.#_onFormData);
   }
 
   connectedCallback() {
@@ -150,15 +148,21 @@ class XInput extends XFormControl {
         this.#_initialized = true;
       }
 
-      if (!this.hasAttribute('tabindex')) {
+      if (!this.hasAttribute("tabindex")) {
         this.tabIndex = 0;
       }
     }
   }
 
   onUpdateValue() {
-    if (!this.matches(':disabled') && !this.value && this.hasAttribute('required')) {
-      this.#_setValidity({valueMissing: true}, 'Custom "Required" Message: Please fill out this field.', this.shadowRoot.firstElementChild);
+    if (
+      !this.matches(":disabled") && !this.value && this.hasAttribute("required")
+    ) {
+      this.#_setValidity(
+        { valueMissing: true },
+        'Custom "Required" Message: Please fill out this field.',
+        this.shadowRoot.firstElementChild,
+      );
     } else {
       this.#_setValidity({});
     }
@@ -170,9 +174,9 @@ class XInput extends XFormControl {
   }
 }
 
-
-if (!window.customElements.get(xInputName)) customElements.define(xInputName, XInput);
-
+if (!window.customElements.get(xInputName)) {
+  customElements.define(xInputName, XInput);
+}
 
 document.body.innerHTML = `
 <style>
@@ -207,19 +211,18 @@ x-input:invalid {
 </form>
 `;
 
-const {forms: [form]} = document;
+const { forms: [form] } = document;
 
-form.addEventListener('input', log);
-form.addEventListener('change', e => log(e.currentTarget));
-form.addEventListener('submit', e => {
+form.addEventListener("input", log);
+form.addEventListener("change", (e) => log(e.currentTarget));
+form.addEventListener("submit", (e) => {
   e.preventDefault();
   log(JSON.stringify(
-      Array.from(new FormData(e.currentTarget).entries())
-    )
-  );
+    Array.from(new FormData(e.currentTarget).entries()),
+  ));
 });
 
-form.elements[xInputName].addEventListener('invalid', e => {
-  const {target} = e;
+form.elements[xInputName].addEventListener("invalid", (e) => {
+  const { target } = e;
   log(e, target, target.validity);
-})
+});

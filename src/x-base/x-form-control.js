@@ -1,31 +1,28 @@
-import {isset} from '../utils/object.js';
-import {AtomicElement} from "./x-atomic-element.js";
-import {throwNoOverrideError} from "../utils/events.js";
+import { isset } from "../utils/object.js";
+import { AtomicElement } from "./x-atomic-element.js";
+import { throwNoOverrideError } from "../utils/events.js";
 import {
   DISABLED_NAME,
-  VALUE_NAME,
   NAME_NAME,
   READONLY_NAME,
-  REQUIRED_NAME
+  REQUIRED_NAME,
+  VALUE_NAME,
 } from "../utils/shared-constants.js";
 
 let styleSheetInitialized = false;
 
-const xFormControlLocalName = 'x-form-control',
-
+const xFormControlLocalName = "x-form-control",
   xVisibleFormControlStyles = `
 :host {
 }
 `,
-
   styleSheet = new CSSStyleSheet(),
-
   observedAttributes = [
     VALUE_NAME,
     REQUIRED_NAME,
     READONLY_NAME.toLowerCase(),
     NAME_NAME,
-    DISABLED_NAME
+    DISABLED_NAME,
   ];
 
 if (!styleSheetInitialized) {
@@ -39,17 +36,17 @@ export class XFormControl extends AtomicElement {
   static localName = xFormControlLocalName;
   static observedAttributes = observedAttributes;
   static styles = styleSheet;
-  static shadowRootOptions = {mode: 'open', delegatesFocus: true};
+  static shadowRootOptions = { mode: "open", delegatesFocus: true };
 
   static properties = {
-    defaultValue: {type: String, attribute: VALUE_NAME, reflect: true},
-    disabled: {type: Boolean, reflect: true},
-    name: {type: Boolean, reflect: true},
-    readOnly: {type: Boolean, reflect: true},
-    required: {type: Boolean, reflect: true},
-    tabIndex: {type: Boolean, reflect: true},
-    type: {type: String, reflect: true},
-    value: {type: String},
+    defaultValue: { type: String, attribute: VALUE_NAME, reflect: true },
+    disabled: { type: Boolean, reflect: true },
+    name: { type: Boolean, reflect: true },
+    readOnly: { type: Boolean, reflect: true },
+    required: { type: Boolean, reflect: true },
+    tabIndex: { type: Boolean, reflect: true },
+    type: { type: String, reflect: true },
+    value: { type: String },
   };
 
   /**
@@ -63,13 +60,13 @@ export class XFormControl extends AtomicElement {
   }
 
   set disabled(x) {
-    const {_disabled: prevDisabled} = this,
+    const { _disabled: prevDisabled } = this,
       disabled = Boolean(x);
     this._disabled = disabled;
     if (this._internals) {
-      this._internals.ariaDisabled = disabled + '';
+      this._internals.ariaDisabled = disabled + "";
     }
-    this.ariaDisabled = disabled + '';
+    this.ariaDisabled = disabled + "";
     this.requestUpdate(DISABLED_NAME, prevDisabled);
   }
 
@@ -79,13 +76,13 @@ export class XFormControl extends AtomicElement {
   }
 
   set required(x) {
-    const {required: prevRequired} = this,
+    const { required: prevRequired } = this,
       required = Boolean(x);
     this._required = required;
     if (this._internals) {
-      this._internals.ariaRequired = required + '';
+      this._internals.ariaRequired = required + "";
     }
-    this.ariaRequired = required + '';
+    this.ariaRequired = required + "";
     this.requestUpdate(REQUIRED_NAME, prevRequired);
   }
 
@@ -98,15 +95,15 @@ export class XFormControl extends AtomicElement {
     const readOnly = Boolean(x);
     this._readOnly = readOnly;
     if (this._internals) {
-      this._internals.ariaReadOnly = readOnly + '';
+      this._internals.ariaReadOnly = readOnly + "";
     }
-    this.ariaReadOnly = readOnly + '';
-    this.requestUpdate()
+    this.ariaReadOnly = readOnly + "";
+    this.requestUpdate();
   }
 
   _defaultValue;
   get defaultValue() {
-    return !isset(this._defaultValue) ? '' : this._defaultValue;
+    return !isset(this._defaultValue) ? "" : this._defaultValue;
   }
 
   set defaultValue(xs) {
@@ -118,20 +115,20 @@ export class XFormControl extends AtomicElement {
 
   _value;
   get value() {
-    return !isset(this._value) ? '' : this._value;
+    return !isset(this._value) ? "" : this._value;
   }
 
   set value(xs) {
-    this._value = isset(xs) ? String(xs) : '';
+    this._value = isset(xs) ? String(xs) : "";
   }
 
-  _name = '';
+  _name = "";
   get name() {
-    return !isset(this._name) ? '' : this._name;
+    return !isset(this._name) ? "" : this._name;
   }
 
   set name(xs) {
-    this._name = isset(xs) ? String(xs) : '';
+    this._name = isset(xs) ? String(xs) : "";
     if (this._name) this.setAttribute(NAME_NAME, this._name);
     else this.removeAttribute(NAME_NAME);
   }
@@ -143,7 +140,7 @@ export class XFormControl extends AtomicElement {
 
   set tabIndex(x) {
     this._tabIndex = Number(x || 0);
-    this.setAttribute('tabindex', this._tabIndex + '');
+    this.setAttribute("tabindex", this._tabIndex + "");
   }
 
   get type() {
@@ -159,7 +156,7 @@ export class XFormControl extends AtomicElement {
   }
 
   get validationMessage() {
-    return this._internals ? this._internals.validationMessage : '';
+    return this._internals ? this._internals.validationMessage : "";
   }
 
   get form() {
@@ -193,8 +190,11 @@ export class XFormControl extends AtomicElement {
     return this._internals ? this._internals.reportValidity() : false;
   }
 
-  setCustomValidity(message = '') {
-    this._internals?.setValidity(message ? {customError: true} : {}, message || '');
+  setCustomValidity(message = "") {
+    this._internals?.setValidity(
+      message ? { customError: true } : {},
+      message || "",
+    );
   }
 
   attributeChangedCallback(name, prevValue, newValue) {
@@ -203,10 +203,10 @@ export class XFormControl extends AtomicElement {
       case VALUE_NAME:
         this.defaultValue = newValue;
         break;
-      case 'readonly':
+      case "readonly":
         this.readOnly = newValue;
         break;
-      case 'tabindex':
+      case "tabindex":
         this.tabIndex = newValue;
         break;
       default:
@@ -236,10 +236,10 @@ export class XFormControl extends AtomicElement {
 
   formAssociatedCallback(form) {
     if (this.name && form.elements[this.name]) {
-      form.addEventListener('formdata', this._onFormData);
+      form.addEventListener("formdata", this._onFormData);
       this.updateValidity();
     } else {
-      form.removeEventListener('formdata', this._onFormData);
+      form.removeEventListener("formdata", this._onFormData);
     }
   }
 
