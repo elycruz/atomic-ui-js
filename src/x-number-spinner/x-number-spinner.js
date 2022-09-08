@@ -8,7 +8,7 @@ import {
 } from "../utils";
 
 import {autoWrapNumber, isset} from "../utils";
-import {XFormControl} from "../utils";
+import {XFormControl} from "../x-base";
 
 const {MAX_SAFE_INTEGER, MIN_SAFE_INTEGER, isNaN} = Number,
 
@@ -28,6 +28,7 @@ const {MAX_SAFE_INTEGER, MIN_SAFE_INTEGER, isNaN} = Number,
   color: -internal-light-dark(black, white);
   cursor: text;
   background-color: -internal-light-dark(rgb(255, 255, 255), rgb(59, 59, 59));
+  text-align: right;
 }
 
 :host(:focus) > :first-child,
@@ -64,10 +65,6 @@ const {MAX_SAFE_INTEGER, MIN_SAFE_INTEGER, isNaN} = Number,
 }
 `,
 
-  numberRegex = /^([-+]|\d|[-+]?e?\d+?)((?<=\1)\.(e?\d+)?)?$/i,
-  newLinesRegex = /[\n\r\t\f]/g,
-  allowedDataChars = /^[\.\-e\d]/i,
-
   hasTrailingDot = xs => {
     const incoming = xs + '';
     return incoming.lastIndexOf('.') === incoming.length - 1;
@@ -76,7 +73,9 @@ const {MAX_SAFE_INTEGER, MIN_SAFE_INTEGER, isNaN} = Number,
   styleSheet = new CSSStyleSheet(),
 
   observedAttributes = [
-    MIN_NAME, MAX_NAME, STEP_NAME,
+    MIN_NAME,
+    MAX_NAME,
+    STEP_NAME,
   ];
 
 // @todo Add property to enable handling of `BigInt` values.
@@ -85,12 +84,19 @@ const {MAX_SAFE_INTEGER, MIN_SAFE_INTEGER, isNaN} = Number,
 styleSheet.replace(xNumberSpinnerStyles)
   .catch(error);
 
+export const numberRegex = /^([-+]|\d|[-+]?e?\d+?)((?<=\1)\.(e?\d+)?)?$/i,
+  newLinesRegex = /[\n\r\t\f]/g,
+  allowedDataChars = /^[.\-e\d]/i;
+
 export class XNumberSpinner extends XFormControl {
   static localName = xNumberSpinnerLocalName;
   static observedAttributes = Array.from(
     new Set(XFormControl.observedAttributes.concat(observedAttributes))
       .values()
   );
+  static properties = Object.assign({}, XFormControl.properties || {}, {
+
+  });
   static styles = styleSheet;
   static shadowRootOptions = {mode: 'open', delegatesFocus: true};
 

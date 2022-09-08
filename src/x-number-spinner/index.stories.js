@@ -1,4 +1,5 @@
-import {log} from "../utils";
+import {isset, log, qs} from "../utils/index.js";
+import {allowedDataChars} from "./x-number-spinner.js";
 
 window.addEventListener('DOMContentLoaded', () => {
   if (document.forms) {
@@ -22,4 +23,26 @@ window.addEventListener('DOMContentLoaded', () => {
       });
     }
   }
+
+  let prevTextInputValue = '';
+
+  const textInput = qs('[name="text-input"]'),
+    // Empty array signals use of "browsers" locale.
+    currencyFmt = new Intl.NumberFormat([], {
+      style: 'currency',
+      currency: 'USD'
+    });
+
+// text-input char restrict
+  textInput.addEventListener('input', e => {
+    e.preventDefault();
+    const input = e.currentTarget;
+    let newValue = prevTextInputValue;
+    if (isset(e.data) && !allowedDataChars.test(e.data)) {
+      input.value = prevTextInputValue;
+    } else {
+      prevTextInputValue = input.value;
+    }
+  });
+
 }, {once: true});

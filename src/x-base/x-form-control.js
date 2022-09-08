@@ -22,7 +22,9 @@ const xFormControlLocalName = 'x-form-control',
 
   observedAttributes = [
     VALUE_NAME,
-    REQUIRED_NAME, READONLY_NAME.toLowerCase(), NAME_NAME,
+    REQUIRED_NAME,
+    READONLY_NAME.toLowerCase(),
+    NAME_NAME,
     DISABLED_NAME
   ];
 
@@ -38,6 +40,17 @@ export class XFormControl extends AtomicElement {
   static observedAttributes = observedAttributes;
   static styles = styleSheet;
   static shadowRootOptions = {mode: 'open', delegatesFocus: true};
+
+  static properties = {
+    defaultValue: {type: String, attribute: VALUE_NAME, reflect: true},
+    disabled: {type: Boolean, reflect: true},
+    name: {type: Boolean, reflect: true},
+    readOnly: {type: Boolean, reflect: true},
+    required: {type: Boolean, reflect: true},
+    tabIndex: {type: Boolean, reflect: true},
+    type: {type: String, reflect: true},
+    value: {type: String},
+  };
 
   /**
    * @type {ElementInternals}
@@ -135,10 +148,6 @@ export class XFormControl extends AtomicElement {
 
   get type() {
     return this.localName;
-  }
-
-  get localName() {
-    return this.constructor.localName;
   }
 
   get willValidate() {

@@ -5,8 +5,10 @@ export class AtomicElement extends HTMLElement {
   static shadowRootOptions = {mode: 'open'};
 
   #initialized = false;
-  _updateComplete;
+
   #_updates;
+
+  _updateComplete;
 
   get localName() {
     return this.constructor.localName;
@@ -36,20 +38,26 @@ export class AtomicElement extends HTMLElement {
     }
   }
 
+  #updateReactiveProperty(propName, prevValue) {
+  }
+
   requestUpdate(propName, prevValue) {
     const updates = this.#_updates || {},
       {observedAttributes, properties} = this.constructor
       ;
-    for (const [k, v] of Object.entries(properties)) {
-      console.log(k, v);
-    }
+    if (!properties || !observedAttributes || !observedAttributes.length) return;
+    const cfg = properties[propName];
+    if (!cfg) return;
+    if (!this.shouldUpdate(propName, prevValue)) return;
+    this.#updateReactiveProperty(propName, prevValue, cfg);
     this.#_updates = updates;
   }
 
   willUpdate() {
   }
 
-  shouldUpdate() {
+  shouldUpdate(propName, propValue) {
+    return true;
   }
 
   firstUpdated() {

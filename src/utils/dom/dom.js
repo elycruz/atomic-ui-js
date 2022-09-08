@@ -15,6 +15,9 @@ export const isTouchCapable = window.ontouchend !== undefined,
   querySelectorAll = (selector, element = document) =>
     Array.from(element.querySelectorAll(cleanSelector(selector))),
 
+  qs = querySelector,
+  qsAll = querySelectorAll,
+
   addClass = (className, elm) => elm.classList.add(className),
 
   removeClass = (className, elm) => elm.classList.remove(className),
