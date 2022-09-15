@@ -8,3 +8,4 @@ export * from "./namespacer.js";
 export * from "./number.js";
 export * from "./object.js";
 export * from "./shared-constants.js";
+export * from "./string";

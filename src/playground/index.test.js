@@ -1,30 +1,6 @@
 // url_test.ts
 import {assertEquals} from "https://deno.land/std@0.155.0/testing/asserts.ts";
-import {parseFloat1, parseNumber, restrictToFloatChars} from './index.js';
-
-Deno.test("#parseNumber", async (t) => {
-  const {isNaN} = Number;
-
-  [
-    [null, NaN],
-    [undefined, NaN],
-    ['', NaN],
-    ['-', NaN],
-    ['-1', -1],
-    ['0', 0],
-    ['-0', -0],
-  ]
-    .forEach(([arg, expected]) => {
-      const rslt = parseNumber(arg);
-      console.log(`parseNumber(${JSON.stringify(arg)}) === ${isNaN(expected) ? 'NaN' : JSON.stringify(expected)}`);
-      console.log(rslt);
-      if (isNaN(expected)) {
-        assertEquals(isNaN(rslt), true);
-      } else {
-        assertEquals(rslt, expected);
-      }
-    });
-});
+import {restrictToFloatChars} from './index.js';
 
 Deno.test("#restrictToFloatChars", () => {
   // Rules to test for:
@@ -44,13 +20,18 @@ Deno.test("#restrictToFloatChars", () => {
     ['.-e', '.'],
     ['-.1e', '-.1e'],
     ['-.1e2', '-.1e2'],
+    ['-0.1', '-0.1'],
+    ['-0.1e', '-0.1e'],
+    ['-0.1e2', '-0.1e2'],
+    ['-0.1e2.2', '-0.1e22'],
+    ['-0.1e-2.2', '-0.1e22'],
     ['-1', '-1'],
     ['0', '0'],
     ['0.', '0.'],
     ['0.1', '0.1'],
     ['1', '1'],
     ['1e.2', '1e2'],
-    ['1e2.2', '1e2.2'],
+    ['1e2.2', '1e22'],
     ['1e', '1e'],
     ['1e2', '1e2'],
     ['1eee2', '1e2'],
@@ -64,20 +45,3 @@ Deno.test("#restrictToFloatChars", () => {
     });
 });
 
-// Deno.test("parseFloat1", () => {
-//   const {isNaN} = Number;
-//
-//   [
-//     [null, NaN],
-//     [undefined, NaN],
-//     ['', NaN],
-//     ['-', NaN]
-//   ]
-//     .forEach(([arg, expected]) => {
-//       const rslt = parseFloat1(arg);
-//
-//       if (isNaN(expected)) {
-//         assertEquals(isNaN(rslt), true);
-//       }
-//     });
-// });
