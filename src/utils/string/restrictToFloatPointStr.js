@@ -34,12 +34,12 @@ const
    */
   restrictToFloatPointStr = (inValue, options = {
     prevChar: '',
-    flags: 0b00000,
+    flags: FractionsAllowed,
     lastIndex: 0,
     out: ''
   }) => {
     let {
-      flags = 0b00000,
+      flags = FractionsAllowed,
       lastIndex = 0,
       prevChar = '',
       out = ''
@@ -55,13 +55,14 @@ const
     for (; i < _inValueLen; i += 1) {
       const char = _inValue[i],
         isDigit = digitRegex.test(char),
-        fractionsAllowed = flags & FractionsAllowed > 0,
-        hasExponent = flags & HasExponent > 0,
-        hasDecimalSign = flags & HasDecimal > 0,
-        prevCharIsDigit = flags & IsPrevCharADigit > 0,
-        hasExponentMinus = flags & HasExponentMinus > 0
+        fractionsAllowed = flags & FractionsAllowed,
+        hasMinus = flags & HasMinus,
+        hasExponent = flags & HasExponent,
+        hasDecimalSign = flags & HasDecimal,
+        prevCharIsDigit = flags & IsPrevCharADigit,
+        hasExponentMinus = flags & HasExponentMinus
       ;
-      if (!(flags & HasMinus) && char === minusSign && (prevChar === exponentChar || (!prevChar && !out.length))) {
+      if (!hasMinus && char === minusSign && (prevChar === exponentChar || (!prevChar && !out.length))) {
         flags = flags | HasMinus; // `SUM` op.
         out += char;
         prevChar = char;
@@ -79,7 +80,7 @@ const
         } =
           restrictToFloatPointStr(_inValue.slice(i + 1), {flags, prevChar, lastIndex: i});
         out += decimalSign + _out;
-        i = out.length - 1 + lastIndex;
+        i = i + lastIndex;
         prevChar = _prevChar;
         flags = flags | _flags;
       } else if (!hasExponent && char === exponentChar && prevCharIsDigit) {

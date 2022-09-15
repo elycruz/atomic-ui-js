@@ -24,7 +24,8 @@ Deno.test("#restrictToFloatChars", () => {
     ['-0.1e', '-0.1e'],
     ['-0.1e2', '-0.1e2'],
     ['-0.1e2.2', '-0.1e22'],
-    ['-0.1e-2.2', '-0.1e22'],
+    ['-0.1e-2.2', '-0.1e-22'],
+    ['+0.1e+2.2', '0.1e22'],
     ['-1', '-1'],
     ['0', '0'],
     ['0.', '0.'],
@@ -36,12 +37,12 @@ Deno.test("#restrictToFloatChars", () => {
     ['1e2', '1e2'],
     ['1eee2', '1e2'],
     ['1ee2e2', '1e22'],
+    [{toString() { return '99.00'}}, '99.00']
   ]
     .forEach(([arg, expected]) => {
       const rslt = restrictToFloatChars(arg);
       console.log(`restrictToFloatChars(${JSON.stringify(arg)}) === ${JSON.stringify(expected)}`);
-      console.log(rslt);
+      // console.log(rslt);
       assertEquals(rslt, expected);
     });
 });
-
