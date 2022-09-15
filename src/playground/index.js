@@ -40,7 +40,7 @@ const minusSign = '-',
    * @param [fractionsAllowed=true]
    * @returns {string}
    */
-  restrictToFloatChars = (inValue, fractionsAllowed = true) => {
+  restrictToFloatChars = (inValue, fractionsAllowed = true, prevChar) => {
     if (!inValue) return '';
 
     const _inValue = inValue.toString(),
@@ -52,42 +52,36 @@ const minusSign = '-',
       hasExponent = false,
       hasExponentMinus = false,
       prevCharIsDigit = false,
-      prevChar = '',
+      _prevChar = prevChar ?? '',
       out = '';
-
-    if (_inValue[0] === minusSign) {
-      prevChar =
-        out = minusSign;
-      i += 1;
-    }
 
     for (; i < _inValueLen; i += 1) {
       const char = _inValue[i],
         isDigit = digitRegex.test(char);
-      if (isDigit) {
-        out += char;
-        prevCharIsDigit = isDigit;
-        prevChar = char;
-      } else if (!hasMinus && (!i || prevChar === exponentChar)) {
+      if (!hasMinus && char === minusSign && (_prevChar === exponentChar || (!_prevChar && !out.length))) {
         hasMinus = true;
         out += char;
-        prevChar = char;
+        _prevChar = char;
       } else if (fractionsAllowed && !hasDecimalSign && char === decimalSign && (
-        !prevChar || prevChar === minusSign ||
-        prevChar === plusSign || prevCharIsDigit
+        !_prevChar || _prevChar === minusSign ||
+        _prevChar === plusSign || prevCharIsDigit
       )) {
         hasDecimalSign = true;
-        out += decimalSign + restrictToFloatChars(_inValue.slice(i + 1), false);
+        out += decimalSign + restrictToFloatChars(_inValue.slice(i + 1), false, decimalSign);
         i = out.length - 1;
-        prevChar = char;
+        _prevChar = char;
       } else if (!hasExponent && char === exponentChar && prevCharIsDigit) {
         hasExponent = true;
         out += char;
-        prevChar = char;
-      } else if (!hasExponentMinus && char === minusSign && prevChar === exponentChar) {
+        _prevChar = char;
+      } else if (!hasExponentMinus && char === minusSign && _prevChar === exponentChar) {
         hasExponentMinus = true;
         out += char;
-        prevChar = char;
+        _prevChar = char;
+      } else if (isDigit) {
+        out += char;
+        prevCharIsDigit = isDigit;
+        _prevChar = char;
       }
       prevCharIsDigit = isDigit;
     }
