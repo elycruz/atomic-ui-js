@@ -22,28 +22,77 @@ const minusSign = '-',
     let _inValue = inValue.toString(),
       _inValueLen = _inValue.length,
       i = 0,
-      value = 1,
-      divisor = 1,
-      exponent = 1,
       out = '';
 
     for (; i < _inValueLen; i += 1) {
       const char = _inValue[i];
-      if (char === minusSign) {
-        value =
-          divisor = -1;
-        continue;
-      }
-      if (char === plusSign) continue;
-      // If `char` is a decimal and next char is a digit parse 'fractional' part
-      if (char === decimalSign || !digitRegex.test(char)) {
-        return NaN;
-      } else {
-        out += char;
-      }
+      if ((char === minusSign || char === plusSign) && !i) out += char;
+      else if (digitRegex.test(char)) out += char;
+      else break;
     }
 
     return Number(out);
+  },
+
+  /**
+   * @todo Optimize with bitwise ops (store flags).
+   * @param {string} inValue
+   * @param [fractionsAllowed=true]
+   * @returns {string}
+   */
+  restrictToFloatChars = (inValue, fractionsAllowed = true) => {
+    if (!inValue) return '';
+
+    const _inValue = inValue.toString(),
+      _inValueLen = _inValue.length;
+
+    let i = 0,
+      hasMinus = false,
+      hasDecimalSign = false,
+      hasExponent = false,
+      hasExponentMinus = false,
+      prevCharIsDigit = false,
+      prevChar = '',
+      out = '';
+
+    if (_inValue[0] === minusSign) {
+      prevChar =
+        out = minusSign;
+      i += 1;
+    }
+
+    for (; i < _inValueLen; i += 1) {
+      const char = _inValue[i],
+        isDigit = digitRegex.test(char);
+      if (isDigit) {
+        out += char;
+        prevCharIsDigit = isDigit;
+        prevChar = char;
+      } else if (!hasMinus && (!i || prevChar === exponentChar)) {
+        hasMinus = true;
+        out += char;
+        prevChar = char;
+      } else if (fractionsAllowed && !hasDecimalSign && char === decimalSign && (
+        !prevChar || prevChar === minusSign ||
+        prevChar === plusSign || prevCharIsDigit
+      )) {
+        hasDecimalSign = true;
+        out += decimalSign + restrictToFloatChars(_inValue.slice(i + 1), false);
+        i = out.length - 1;
+        prevChar = char;
+      } else if (!hasExponent && char === exponentChar && prevCharIsDigit) {
+        hasExponent = true;
+        out += char;
+        prevChar = char;
+      } else if (!hasExponentMinus && char === minusSign && prevChar === exponentChar) {
+        hasExponentMinus = true;
+        out += char;
+        prevChar = char;
+      }
+      prevCharIsDigit = isDigit;
+    }
+
+    return out;
   },
 
   parseFloat1 = (inValue) => {
@@ -102,4 +151,4 @@ const minusSign = '-',
   }*/
 ;
 
-export {parseFloat1, parseNumber};
+export {parseFloat1, parseNumber, restrictToFloatChars};

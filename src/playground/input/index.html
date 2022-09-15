@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Playground -> Input</title>
+</head>
+<body>
+<form action="#">
+  <fieldset>
+    <legend>Default Input</legend>
+    <label for="default">Default</label>
+    <input name="default" id="default">
+    <label for="number">Number</label>
+    <input type="number" name="number" id="number">
+  </fieldset>
+  <fieldset>
+    <button type="reset">Reset</button>
+    <button>Submit</button>
+  </fieldset>
+</form>
+<script type="module">
+  import {log, qs} from "../../utils";
+
+  window.addEventListener('DOMContentLoaded', e => {
+    qs('form').addEventListener('input', e => {
+      if (e.target.type === 'number') log(e.target.value, e.target.valueAsNumber);
+    });
+  }, {once: true});
+</script>
+</body>
+</html>
