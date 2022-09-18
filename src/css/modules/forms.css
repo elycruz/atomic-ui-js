@@ -1,0 +1,69 @@
+/* ----------------
+ * x-fieldset
+ * ---------------- */
+:is(fieldset, .x-fieldset) {
+  padding: 1rem;
+}
+
+:is(fieldset, .x-fieldset) + :is(fieldset,.x-fieldset) {
+  margin-top: 1rem;
+}
+
+:is(fieldset, .x-fieldset).x-layout-horizontal > x-field + x-field {
+  margin-left: 1rem;
+  margin-top: 1rem;
+}
+
+:is(fieldset, .x-fieldset):is(.x-layout-vertical, :not(.x-layout-horizontal)) > x-field {
+  display: block;
+}
+
+:is(fieldset, .x-fieldset):is(.x-layout-vertical, :not(.x-layout-horizontal)) > x-field + x-field {
+  margin-top: 1rem;
+}
+
+:is(fieldset, .x-fieldset) label {
+  user-select: none;
+}
+
+:is(fieldset, .x-fieldset) label:has(+ *) {
+  font-weight: bold;
+}
+
+:is(fieldset, .x-fieldset) label:has(+ :required, + * :required)::before,
+:is(fieldset, .x-fieldset):has(:required) label:first-child:has(+ *)::before {
+  content: "*";
+  color: red;
+  margin-right: 0.25rem;
+}
+
+:is(.x-fieldset, fieldset).x-grid {
+  display: grid;
+  gap: 0.5rem;
+}
+
+:is(.x-fieldset, fieldset).x-grid label {
+  text-align: right;
+}
+
+:is(.x-fieldset, fieldset).x-fieldset--grid-2 {
+  grid-template-columns: auto auto;
+}
+
+/*
+ * x-field
+ * ------------------ */
+:is(x-field, .x-field) {
+  display: inline-block;
+}
+
+:is(x-field, .x-field):not(.x-layout-vertical) > label:has(+ *),
+:is(x-field, .x-field):not(.x-layout-vertical) > label:is(* + *) {
+  margin-right: 0.5rem;
+}
+
+:is(x-field, .x-field).x-layout-vertical > label:has(+ *) {
+  display: block;
+  margin-bottom: 0.5rem;
+}
+

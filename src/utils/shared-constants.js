@@ -12,6 +12,7 @@ export const // Property names
   MAX_NAME = "max",
   STEP_NAME = "step",
   TABINDEX_NAME = "tabIndex",
+  MATCHING_SYMBOL = 'matching',
 
   // Booleans
   // ----

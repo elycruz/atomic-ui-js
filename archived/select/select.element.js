@@ -1,4 +1,4 @@
-import { AtomicElement } from "../lib/dom/x-atomic-element.js";
+import { AtomicElement } from "../lib/dom/x-atomic.js";
 import styles from "./select.element.css";
 
 const mutObserverConfig = {

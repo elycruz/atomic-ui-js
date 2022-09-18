@@ -1,5 +1,4 @@
-@import url(base);
-@import url(modules);
+@import url(./index.css);
 
 header + article {
   margin-top: 1rem;

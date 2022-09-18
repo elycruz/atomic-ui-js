@@ -6,10 +6,10 @@ import {
   STEP_NAME,
   VALUE_AS_NUMBER_NAME,
   VALUE_NAME,
-} from "../utils";
+} from "../../src/utils";
 
-import {autoWrapNumber, isset} from "../utils";
-import {XFormControl} from "../x-base";
+import {autoWrapNumber, isset} from "../../src/utils";
+import {XFormControl} from "../../src/x-base";
 import {html} from "lit";
 
 const {MAX_SAFE_INTEGER, MIN_SAFE_INTEGER, isNaN} = Number,

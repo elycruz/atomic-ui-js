@@ -1,0 +1,17 @@
+:host {
+  display: inline-block;
+}
+
+:host .error-message {
+  color: red;
+  margin-top: 0.5rem;
+}
+
+:host [name="help"] {
+  font-size: smaller;
+}
+
+:host > .flex-container {
+  display: flex;
+  flex-flow: row wrap;
+}

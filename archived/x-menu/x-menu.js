@@ -1,14 +1,16 @@
-import { registerCustomElement } from "../utils/dom";
-import xMenuStyleSheet from "./x-menu.css" assert { type: "css" };
-import { html, LitElement } from "lit";
+import {registerCustomElement} from "../../src/utils/dom";
+import xMenuStyleSheet from "./x-menu.css" assert {type: "css"};
+import {html, LitElement} from "lit";
 
 export const xMenuName = "x-menu",
+
   xMenuTypes = {
     Select: "select-one",
     SelectMultiple: "select-multiple",
     Tabs: "tabs",
     UnorderedList: "ul",
   },
+
   xMenuEvNames = {
     Change: "change",
     Collapse: "collapse",
@@ -19,9 +21,8 @@ export const xMenuName = "x-menu",
 const mutObserverInit = {
     childList: true,
     subtree: true,
-    attributes: true,
-    attributeFilter: ["class", "id"],
   },
+
   mutObserver = new MutationObserver((mutations) => {
   });
 
@@ -32,8 +33,8 @@ class XMenu extends LitElement {
 
   static get properties() {
     return {
-      defaultValue: { type: String, attribute: "value", reflect: true },
-      value: { type: String, attribute: false },
+      defaultValue: {type: String, attribute: "value", reflect: true},
+      value: {type: String, attribute: false},
     };
   }
 

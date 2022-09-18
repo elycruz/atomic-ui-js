@@ -1,5 +1,5 @@
 import {isset} from "../utils/object.js";
-import {XAtomicElement} from "./x-atomic-element.js";
+import {XAtomic} from "./x-atomic.js";
 import {throwNoOverrideError} from "../utils/events.js";
 import {
   DEFAULT_VALUE_NAME,
@@ -10,7 +10,7 @@ import {
   VALUE_NAME,
 } from "../utils/shared-constants.js";
 
-export class XFormControl extends XAtomicElement {
+export class XFormControl extends XAtomic {
   static formAssociated = true;
   static shadowRootOptions = {mode: "open", delegatesFocus: true};
 
