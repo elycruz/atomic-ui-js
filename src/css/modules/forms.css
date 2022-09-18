@@ -39,7 +39,7 @@
 
 :is(.x-fieldset, fieldset).x-grid {
   display: grid;
-  gap: 0.5rem;
+  gap: 1rem;
 }
 
 :is(.x-fieldset, fieldset).x-grid label {
