@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>X-Field</title>
+  <link rel="stylesheet" href="./colors.css">
+  <link rel="stylesheet" href="./index.css">
+  <link rel="stylesheet" href="./index.stories.css">
+  <script type="importmap">
+    {
+      "imports": {
+        "lit": "https://cdn.jsdelivr.net/gh/lit/dist@2.3.0/all/lit-all.min.js"
+      }
+    }
+
+
+  </script>
+
+  <style>
+    .x-color-grid th {
+      padding: 0.5rem;
+      background: var(--x-grayscale-hsl-6);
+    }
+
+    .x-color-grid tbody td {
+      padding: 1rem;
+    }
+
+    .x-color-grid + .x-color-grid {
+      margin-top: 1rem;
+    }
+  </style>
+</head>
+<body>
+<script type="module">
+  import {render, html} from 'lit';
+  import {xThemes} from "../constants.js";
+
+  const themes = Object.values(xThemes);
+  const themeRange = Array(6).fill(0, 0, 6);
+
+  render(html`
+    <table class="x-color-grid">
+      <thead>
+      <tr>
+        <th colspan="${themes.length}">HSL Color Table</th>
+      </tr>
+      <tr>
+        ${themes.map(k => html`
+          <th>${k}</th>`)}
+      </tr>
+      </thead>
+      <tbody>
+      ${themeRange.map((_, i) => html`
+        <tr>${themes.map(k => html`
+          <td style="background: var(--x-${k}-hsl-${i + 1});"
+              title="--x-${k}-hsl-${i + 1}">&nbsp;
+          </td>
+        `)}
+        </tr>
+      `)}
+      </tbody>
+    </table>
+    <table class="x-color-grid">
+      <thead>
+      <tr>
+        <th colspan="${themes.length}">HSLA Color Table</th>
+      </tr>
+      <tr>
+        ${themes.map(k => html`
+          <th>${k}</th>`)}
+      </tr>
+      </thead>
+      <tbody>
+      ${themeRange.map((_, i) => html`
+        <tr>${themes.map(k => html`
+          <td style="background: var(--x-${k}-hsla-${i + 1});"
+              title="--x-${k}-hsla-${i + 1}">&nbsp;
+          </td>
+        `)}
+        </tr>
+      `)}
+      </tbody>
+    </table>
+  `, document.body);
+</script>
+</body>
+</html>

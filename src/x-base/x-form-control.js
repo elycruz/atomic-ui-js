@@ -1,6 +1,6 @@
 import {isset} from "../utils/object.js";
 import {XAtomic} from "./x-atomic.js";
-import {throwNoOverrideError} from "../utils/events.js";
+import {throwNoOverrideError} from "../utils/dom/events.js";
 import {
   DEFAULT_VALUE_NAME,
   DISABLED_NAME,

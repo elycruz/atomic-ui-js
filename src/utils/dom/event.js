@@ -14,5 +14,15 @@ export const preventDefault = e => e.preventDefault(),
 
   removeEventListeners = (listenerEvNameOpsTuple, element) =>
     listenerEvNameOpsTuple.reduce((elm, [listener, evName, options]) =>
-      addEventListener(listener, evName, elm, options), element)
+      addEventListener(listener, evName, elm, options), element),
+
+  throwNoOverrideError = () => {
+    throw new Error(`Should override method from extending class.`);
+  },
+
+  waitFor = async (timeout) => {
+    return new Promise((resolve) => {
+      setTimeout(resolve, timeout || 0);
+    });
+  }
 ;
