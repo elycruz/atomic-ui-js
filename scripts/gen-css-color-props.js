@@ -29,7 +29,7 @@ const fs = require('fs'),
   };
 
 (async () => {
-  const outputFilePath = path.join(__dirname, '../src/css/colors.css'),
+  const outputFilePath = path.join(__dirname, '../src/css/modules/colors.css'),
     content = `:root {\n${Array(6).fill(0, 0, 6)
       .flatMap((_, i) => {
         // const lightness = 255 * .1 * i;

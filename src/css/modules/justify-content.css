@@ -1,0 +1,62 @@
+/**
+ * justify-content.css
+ */
+.x-justify-content-center,
+.x-jc-center {
+  justify-content: center;
+}
+
+.x-justify-content-start,
+.x-jc-start {
+  justify-content: start;
+}
+
+.x-justify-content-end,
+.x-jc-end {
+  justify-content: end;
+}
+
+.x-justify-content-flex-start,
+.x-jc-flex-start {
+  justify-content: flex-start;
+}
+
+.x-justify-content-flex-end,
+.x-jc-flex-end {
+  justify-content: flex-end;
+}
+
+.x-justify-content-left,
+.x-jc-left {
+  justify-content: left;
+}
+
+.x-justify-content-right,
+.x-jc-right {
+  justify-content: right;
+}
+
+.x-justify-content-normal,
+.x-jc-normal {
+  justify-content: normal;
+}
+
+.x-justify-content-space-between,
+.x-jc-space-between {
+  justify-content: space-between;
+}
+
+.x-justify-content-space-around,
+.x-jc-space-around {
+  justify-content: space-around;
+}
+
+.x-justify-content-space-evenly,
+.x-jc-space-evenly {
+  justify-content: space-evenly;
+}
+
+.x-justify-content-stretch,
+.x-jc-stretch {
+  justify-content: stretch;
+}
