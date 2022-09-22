@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Spacing</title>
+  <link rel="stylesheet" href="index.css">
+  <style>
+    .box {
+      display: inline-block;
+      background: var(--x-warning-hsl-6);
+      border: var(--x-2px) solid var(--x-warning-hsl-1);
+      margin: var(--x-13px);
+    }
+  </style>
+  <script type="importmap">
+    {
+      "imports": {
+        "lit": "https://cdn.jsdelivr.net/gh/lit/dist@2.3.0/all/lit-all.min.js"
+      }
+    }
+
+
+
+
+
+
+
+
+
+  </script>
+</head>
+<body>
+<script type="module">
+  import {html, render} from 'lit';
+  import {fib} from "../../utils";
+
+  const out = document.createElement('div'),
+    seeds = fib(4000),
+    seedsLen = seeds.length;
+
+  render(html`${seeds.flatMap((n, i) => {
+    const lim = seedsLen - (i + 1);
+
+    return html`<div class="x-display-block"><div>--x-${n}px</div></div>${Array(lim).fill(null, 0, lim).map(_ => html`
+      <div class="box" style="
+      width: var(--x-${n}px);
+      height: var(--x-${n}px);">&nbsp;
+      </div>`
+    )}</div>`;
+  })}`, out);
+
+  document.body.appendChild(out);
+</script>
+</body>
+</html>

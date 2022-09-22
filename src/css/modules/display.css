@@ -1,7 +1,99 @@
-.x-inline-block {
+/**
+ * Display property classes.
+ */
+.x-display-block {
+  display: block;
+}
+
+.x-display-contents {
+  display: contents;
+}
+
+.x-display-flex {
+  display: flex;
+}
+
+.x-display-flow-root {
+  display: flow-root;
+}
+
+.x-display-grid {
+  display: grid;
+}
+
+.x-display-inline {
+  display: inline;
+}
+
+.x-display-inline-block {
   display: inline-block;
 }
 
-.x-block {
-  display: block;
+.x-display-inline-flex {
+  display: inline-flex;
 }
+
+.x-display-inline-grid {
+  display: inline-grid;
+}
+
+.x-display-inline-table {
+  display: inline-table;
+}
+
+.x-display-inherit {
+  display: inherit;
+}
+
+.x-display-initial {
+  display: initial;
+}
+
+.x-display-list-item {
+  display: list-item;
+}
+
+.x-display-none {
+  display: none;
+}
+
+.x-display-revert {
+  display: revert;
+}
+
+.x-display-table {
+  display: table;
+}
+
+.x-display-table-caption {
+  display: table-caption;
+}
+
+.x-display-table-cell {
+  display: table-cell;
+}
+
+.x-display-table-column-group {
+  display: table-column-group;
+}
+
+.x-display-table-footer-group {
+  display: table-footer-group;
+}
+
+.x-display-table-header-group {
+  display: table-header-group;
+}
+
+.x-display-table-row {
+  display: table-row;
+}
+
+.x-display-table-row-group {
+  display: table-row-group;
+}
+
+.x-display-unset {
+  display: unset;
+}
+

@@ -3,9 +3,9 @@
 <head>
   <meta charset="UTF-8">
   <title>X-Field</title>
-  <link rel="stylesheet" href="css/modules/colors.css">
-  <link rel="stylesheet" href="css/index.css">
-  <link rel="stylesheet" href="css/index.stories.css">
+  <link rel="stylesheet" href="colors.css">
+  <link rel="stylesheet" href="../index.css">
+  <link rel="stylesheet" href="../index.stories.css">
   <script type="importmap">
     {
       "imports": {
@@ -34,7 +34,7 @@
 <body>
 <script type="module">
   import {render, html} from 'lit';
-  import {xThemes} from "./constants.js";
+  import {xThemes} from "../../constants.js";
 
   const themes = Object.values(xThemes);
   const themeRange = Array(6).fill(0, 0, 6);
