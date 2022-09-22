@@ -1,5 +1,5 @@
 /**
- * gen-color-scheme-css.js
+ * colors.js
  *
  * Outputs the library's css color properties - Colors are made up of `hsl`, and `hsla` generated colors.
  */
@@ -13,24 +13,10 @@ const fs = require('fs'),
   warning = ['warning', 30],
   danger = ['danger', 0],
   neutral = ['neutral', 0],
+  fileName = 'colors.css',
 
-  /**
-   * @param {number} n
-   * @returns {number[]}
-   */
-  parseBase255Cmps = (n, groupBinSize = 4) => {
-    const binStr = n.toString(2),
-      binSize = binStr.length,
-      parts = [];
-    for (let i = 0; i < binSize; i += groupBinSize) {
-      parts.push(Number('0b' + binStr.slice(i, groupBinSize + i)));
-    }
-    return parts;
-  };
-
-(async () => {
-  const outputFilePath = path.join(__dirname, '../src/css/modules/colors.css'),
-    content = `:root {\n${Array(6).fill(0, 0, 6)
+  genColorsCss = (outputFilePath = path.join(__dirname, '../../src/css/modules/', fileName)) => {
+    const content = `:root {\n${Array(6).fill(0, 0, 6)
       .flatMap((_, i) => {
         // const lightness = 255 * .1 * i;
         return [
@@ -49,9 +35,11 @@ const fs = require('fs'),
       }).join(';\n')
     }\n}\n`;
 
-  return await fs.promises.writeFile(outputFilePath, content)
-    .then(
-      () => log(`file ${outputFilePath} written successfully`),
-      error
-    );
-})();
+    return fs.promises.writeFile(outputFilePath, content)
+      .then(
+        () => log(`file ${fileName} written successfully`),
+        error
+      );
+  };
+
+module.exports = {genColorsCss};

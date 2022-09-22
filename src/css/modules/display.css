@@ -1,99 +1,103 @@
 /**
  * Display property classes.
  */
-.x-display-block {
+.x-display-block,
+.x-d-block {
   display: block;
 }
 
-.x-display-contents {
+.x-display-contents,
+.x-d-contents {
   display: contents;
 }
 
-.x-display-flex {
+.x-display-flex,
+.x-d-flex {
   display: flex;
 }
 
-.x-display-flow-root {
+.x-display-flow-root,
+.x-d-flow-root {
   display: flow-root;
 }
 
-.x-display-grid {
+.x-display-grid,
+.x-d-grid {
   display: grid;
 }
 
-.x-display-inline {
+.x-display-inline,
+.x-d-inline {
   display: inline;
 }
 
-.x-display-inline-block {
+.x-display-inline-block,
+.x-d-inline-block {
   display: inline-block;
 }
 
-.x-display-inline-flex {
+.x-display-inline-flex,
+.x-d-inline-flex {
   display: inline-flex;
 }
 
-.x-display-inline-grid {
+.x-display-inline-grid,
+.x-d-inline-grid {
   display: inline-grid;
 }
 
-.x-display-inline-table {
+.x-display-inline-table,
+.x-d-inline-table {
   display: inline-table;
 }
 
-.x-display-inherit {
-  display: inherit;
-}
-
-.x-display-initial {
-  display: initial;
-}
-
-.x-display-list-item {
+.x-display-list-item,
+.x-d-list-item {
   display: list-item;
 }
 
-.x-display-none {
+.x-display-none,
+.x-d-none {
   display: none;
 }
 
-.x-display-revert {
-  display: revert;
-}
-
-.x-display-table {
+.x-display-table,
+.x-d-table {
   display: table;
 }
 
-.x-display-table-caption {
+.x-display-table-caption,
+.x-d-table-caption {
   display: table-caption;
 }
 
-.x-display-table-cell {
+.x-display-table-cell,
+.x-d-table-cell {
   display: table-cell;
 }
 
-.x-display-table-column-group {
+.x-display-table-column-group,
+.x-d-table-column-group {
   display: table-column-group;
 }
 
-.x-display-table-footer-group {
+.x-display-table-footer-group,
+.x-d-table-footer-group {
   display: table-footer-group;
 }
 
-.x-display-table-header-group {
+.x-display-table-header-group,
+.x-d-table-header-group {
   display: table-header-group;
 }
 
-.x-display-table-row {
+.x-display-table-row,
+.x-d-table-row {
   display: table-row;
 }
 
-.x-display-table-row-group {
+.x-display-table-row-group,
+.x-d-table-row-group {
   display: table-row-group;
-}
-
-.x-display-unset {
-  display: unset;
 }
 

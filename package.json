@@ -4,7 +4,7 @@
   "description": "An atomic user interface toolkit, and library, for building html user interfaces.",
   "main": "index.js",
   "scripts": {
-    "gen-css": "node ./scripts/gen-css-color-props.js && node ./scripts/gen-css-spacing-props.js && node ./scripts/gen-css-display.js",
+    "gen-css": "node scripts/gen-css/colors.js && node ./scripts/gen-css-spacing-props.js && node ./scripts/gen-css-display.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
