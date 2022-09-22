@@ -11,8 +11,8 @@
   --x-warning-hsla-1: hsla(30, 80%, 16%, 0.840);
   --x-danger-hsl-1: hsl(0, 75%, 16%);
   --x-danger-hsla-1: hsla(0, 80%, 16%, 0.840);
-  --x-grayscale-hsl-1: hsl(0, 0%, 16%);
-  --x-grayscale-hsla-1: hsla(0, 0%, 16%, 0.840);
+  --x-neutral-hsl-1: hsl(0, 0%, 16%);
+  --x-neutral-hsla-1: hsla(0, 0%, 16%, 0.840);
   --x-primary-hsl-2: hsl(240, 75%, 32%);
   --x-primary-hsla-2: hsla(240, 80%, 32%, 0.680);
   --x-secondary-hsl-2: hsl(300, 75%, 32%);
@@ -25,8 +25,8 @@
   --x-warning-hsla-2: hsla(30, 80%, 32%, 0.680);
   --x-danger-hsl-2: hsl(0, 75%, 32%);
   --x-danger-hsla-2: hsla(0, 80%, 32%, 0.680);
-  --x-grayscale-hsl-2: hsl(0, 0%, 32%);
-  --x-grayscale-hsla-2: hsla(0, 0%, 32%, 0.680);
+  --x-neutral-hsl-2: hsl(0, 0%, 32%);
+  --x-neutral-hsla-2: hsla(0, 0%, 32%, 0.680);
   --x-primary-hsl-3: hsl(240, 75%, 48%);
   --x-primary-hsla-3: hsla(240, 80%, 48%, 0.520);
   --x-secondary-hsl-3: hsl(300, 75%, 48%);
@@ -39,8 +39,8 @@
   --x-warning-hsla-3: hsla(30, 80%, 48%, 0.520);
   --x-danger-hsl-3: hsl(0, 75%, 48%);
   --x-danger-hsla-3: hsla(0, 80%, 48%, 0.520);
-  --x-grayscale-hsl-3: hsl(0, 0%, 48%);
-  --x-grayscale-hsla-3: hsla(0, 0%, 48%, 0.520);
+  --x-neutral-hsl-3: hsl(0, 0%, 48%);
+  --x-neutral-hsla-3: hsla(0, 0%, 48%, 0.520);
   --x-primary-hsl-4: hsl(240, 75%, 64%);
   --x-primary-hsla-4: hsla(240, 80%, 64%, 0.360);
   --x-secondary-hsl-4: hsl(300, 75%, 64%);
@@ -53,8 +53,8 @@
   --x-warning-hsla-4: hsla(30, 80%, 64%, 0.360);
   --x-danger-hsl-4: hsl(0, 75%, 64%);
   --x-danger-hsla-4: hsla(0, 80%, 64%, 0.360);
-  --x-grayscale-hsl-4: hsl(0, 0%, 64%);
-  --x-grayscale-hsla-4: hsla(0, 0%, 64%, 0.360);
+  --x-neutral-hsl-4: hsl(0, 0%, 64%);
+  --x-neutral-hsla-4: hsla(0, 0%, 64%, 0.360);
   --x-primary-hsl-5: hsl(240, 75%, 80%);
   --x-primary-hsla-5: hsla(240, 80%, 80%, 0.200);
   --x-secondary-hsl-5: hsl(300, 75%, 80%);
@@ -67,8 +67,8 @@
   --x-warning-hsla-5: hsla(30, 80%, 80%, 0.200);
   --x-danger-hsl-5: hsl(0, 75%, 80%);
   --x-danger-hsla-5: hsla(0, 80%, 80%, 0.200);
-  --x-grayscale-hsl-5: hsl(0, 0%, 80%);
-  --x-grayscale-hsla-5: hsla(0, 0%, 80%, 0.200);
+  --x-neutral-hsl-5: hsl(0, 0%, 80%);
+  --x-neutral-hsla-5: hsla(0, 0%, 80%, 0.200);
   --x-primary-hsl-6: hsl(240, 75%, 96%);
   --x-primary-hsla-6: hsla(240, 80%, 96%, 0.040);
   --x-secondary-hsl-6: hsl(300, 75%, 96%);
@@ -81,6 +81,6 @@
   --x-warning-hsla-6: hsla(30, 80%, 96%, 0.040);
   --x-danger-hsl-6: hsl(0, 75%, 96%);
   --x-danger-hsla-6: hsla(0, 80%, 96%, 0.040);
-  --x-grayscale-hsl-6: hsl(0, 0%, 96%);
-  --x-grayscale-hsla-6: hsla(0, 0%, 96%, 0.040)
+  --x-neutral-hsl-6: hsl(0, 0%, 96%);
+  --x-neutral-hsla-6: hsla(0, 0%, 96%, 0.040)
 }

@@ -5,5 +5,5 @@ export const xThemes = {
   Info: 'info',
   Warning: 'warning',
   Danger: 'danger',
-  Grayscale: 'grayscale'
+  Grayscale: 'neutral'
 }

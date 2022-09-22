@@ -12,7 +12,7 @@ const fs = require('fs'),
   info = ['info', 180],
   warning = ['warning', 30],
   danger = ['danger', 0],
-  grayscale = ['grayscale', 0],
+  neutral = ['neutral', 0],
 
   /**
    * @param {number} n
@@ -35,15 +35,15 @@ const fs = require('fs'),
         // const lightness = 255 * .1 * i;
         return [
           primary, secondary, success, info,
-          warning, danger, grayscale
+          warning, danger, neutral
         ]
           .flatMap(([c, cN], j) => {
             let l = (i + 1) * 16;
             return [
               `  --x-${c}-hsl-${i + 1}: ` +
-              `hsl(${cN}, ${c === 'grayscale' ? 0 : 75}%, ${l}%)`,
+              `hsl(${cN}, ${c === 'neutral' ? 0 : 75}%, ${l}%)`,
               `  --x-${c}-hsla-${i + 1}: ` +
-              `hsla(${cN}, ${c === 'grayscale' ? 0 : 80}%, ${l}%, ${(1 - ((i + 1) * .16)).toFixed(3)})`
+              `hsla(${cN}, ${c === 'neutral' ? 0 : 80}%, ${l}%, ${(1 - ((i + 1) * .16)).toFixed(3)})`
             ];
           })
       }).join(';\n')

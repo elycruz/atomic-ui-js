@@ -1,0 +1,3 @@
+section :is(header + *, > div > header + *) {
+  border-top: var(--x-1px) solid var(--x-neutral-hsl-4);
+}
