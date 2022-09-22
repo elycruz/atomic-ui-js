@@ -10,6 +10,7 @@ const
   {genJustifyContentCss} = require('./justify-content'),
   {genAlignItemsCss} = require('./align-items'),
   {genGridCss} = require('./grid'),
+  {genPositionCss} = require('./position'),
   {genSpacingCss} = require('./spacing');
 
 (async () => Promise.all([
@@ -18,6 +19,7 @@ const
     genDisplayCss(),
     genGridCss(),
     genJustifyContentCss(),
+    genPositionCss(),
     genSpacingCss(),
   ]).catch(console.error)
 )();
