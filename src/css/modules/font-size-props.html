@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Font Sizes</title>
+  <script type="importmap">
+    {
+      "imports": {
+        "lit": "https://cdn.jsdelivr.net/gh/lit/dist@2.3.0/all/lit-all.min.js"
+      }
+    }
+  </script>
+  <link rel="stylesheet" href="../index.css">
+</head>
+<body>
+<script type="module">
+  import {render, html} from 'lit';
+  import {section} from "../../templates/section.js";
+
+  let byMultiplesOf8 = [],
+    text = 'The quick brown fox jumped over the lazy dog.'
+  ;
+  // Multiples of `8`
+  for (let i = 1; i <= 12; i += 1) {
+    byMultiplesOf8.push(html`<span>${i * 8}px</span><div style="font-size: ${i * 8}px;">${text}</div>`);
+  }
+  render(html`${section("Font sizes (multiples of 8)", byMultiplesOf8)}`,
+    document.body);
+</script>
+</body>
+</html>

@@ -1,0 +1,13 @@
+label {
+  user-select: none;
+}
+
+label:has(+ *) {
+  font-weight: bold;
+}
+
+label:has(+ :required, + * :required)::before {
+  content: "*";
+  color: red;
+  margin-right: 0.25rem;
+}
