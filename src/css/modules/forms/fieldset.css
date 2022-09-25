@@ -1,3 +1,8 @@
+legend {
+  font-weight: bold;
+  font-size: 18px;
+}
+
 /* ----------------
  * x-fieldset
  * ---------------- */
@@ -5,8 +10,8 @@
   padding: 1rem;
 }
 
-:is(fieldset, .x-fieldset) + :is(fieldset,.x-fieldset) {
-  margin-top: 1rem;
+:is(fieldset, .x-fieldset) + :is(fieldset, .x-fieldset) {
+  margin-top: 1.5rem;
 }
 
 .x-layout-horizontal > x-field + x-field {
@@ -36,10 +41,18 @@
 }
 
 :is(.x-fieldset, fieldset):not(.x-grid):not(.x-layout-horizontal)
-> :is(x-field, .x-field) {
+> :is(x-field, .x-field):not(:last-child) {
   margin-bottom: 1rem;
 }
 
 :is(.x-fieldset, fieldset):not(.x-grid) > * + :is(x-field, .x-field, label) {
   margin-left: 1rem;
+}
+
+:is(.x-fieldset, fieldset):not(.x-layout-vertical) :is(x-field, .x-field) > :is(x-field, x-field) {
+  margin: 0 0 1rem 1rem;
+}
+
+:is(.x-fieldset, fieldset) > :is(* + button, button + *) {
+  margin-left: 0.5rem;
 }

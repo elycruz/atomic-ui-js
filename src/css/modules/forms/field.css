@@ -1,3 +1,16 @@
+label {
+  user-select: none;
+}
+
+label:has(+ *) {
+  font-weight: bold;
+}
+
+label:has(+ :required, + * :required)::before {
+  content: "*";
+  color: red;
+  margin-right: 0.25rem;
+}
 
 /*
  * x-field
@@ -21,14 +34,11 @@
 }
 
 :is(x-field, .x-field) :is(.x-help, [slot="help"]) {
+  margin-top: 0.5rem;
   font-size: smaller;
 }
 
 :is(x-field, .x-field) .x-error-message {
   color: red;
   margin-top: 0.5rem;
-}
-
-:is(.x-fieldset, fieldset):not(.x-layout-vertical) :is(x-field, .x-field) > :is(x-field, x-field) {
-  margin: 0 0 1rem 1rem;
 }

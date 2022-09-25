@@ -1,3 +1,11 @@
-section :is(header + *, > div > header + *) {
+section > :is(header, div > header) {
+  padding: 1.5rem;
+}
+
+section > :is(section, div > section, article, div > article) {
   border-top: var(--x-1px) solid var(--x-neutral-hsl-4);
+}
+
+section article {
+  padding: 1rem;
 }
