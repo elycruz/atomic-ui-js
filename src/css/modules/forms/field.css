@@ -15,7 +15,9 @@ label:has(+ :required, + * :required)::before {
 /*
  * x-field
  * ------------------ */
-:is(x-field, .x-field) {
+
+:is(x-field, .x-field),
+:is(x-field, .x-field):not(.x-layout-vertical) > * {
   display: inline-block;
   vertical-align: top;
 }
@@ -26,20 +28,49 @@ label:has(+ :required, + * :required)::before {
 }
 
 :is(x-field, .x-field).x-layout-vertical > label:has(+ *) {
-  display: block;
   margin-bottom: 0.5rem;
 }
 
-:is(x-field, .x-field).x-layout-vertical {
+:is(x-field, .x-field).x-layout-vertical,
+:is(x-field, .x-field).x-layout-vertical > label:has(+ *) {
   display: block;
 }
 
-:is(x-field, .x-field) :is(.x-help, [slot="help"]) {
+:is(x-field, .x-field) :is(
+  .x-field__error-message,
+  .x-field__help,
+  [slot="help"],
+  .x-help,
+  .x-error-message
+  ) {
   margin-top: 0.5rem;
+}
+
+:is(x-field, .x-field) :is(.x-field__help, [slot="help"], .x-help) {
   font-size: smaller;
 }
 
-:is(x-field, .x-field) .x-error-message {
+:is(x-field, .x-field) .x-field__flex-row {
+  display: flex;
+  flex-flow: row nowrap;
+}
+
+:is(x-field, .x-field) .x-field__flex-row .x-field__leading {
+  margin-right: 0.5rem;
+}
+
+:is(x-field, .x-field) .x-field__flex-row .x-field__trailing {
+  margin-left: 0.5rem;
+}
+
+:is(x-field, .x-field) :is(.x-field__error-message, .x-error-message) {
   color: red;
-  margin-top: 0.5rem;
+}
+
+/*
+ * .x-text-input
+ *-------------------------*/
+.x-text-input {
+  border: 2px solid rgb(118, 118, 118);
+  background: #fff;
 }
