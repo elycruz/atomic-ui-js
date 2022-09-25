@@ -6,6 +6,7 @@ legend {
 /* ----------------
  * x-fieldset
  * ---------------- */
+
 :is(fieldset, .x-fieldset) {
   padding: 1rem;
 }

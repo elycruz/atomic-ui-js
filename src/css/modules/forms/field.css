@@ -17,6 +17,7 @@ label:has(+ :required, + * :required)::before {
  * ------------------ */
 :is(x-field, .x-field) {
   display: inline-block;
+  vertical-align: top;
 }
 
 :is(x-field, .x-field):not(.x-layout-vertical) > label:has(+ *),
