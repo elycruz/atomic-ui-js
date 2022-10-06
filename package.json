@@ -3,6 +3,9 @@
   "version": "1.0.0",
   "description": "An atomic user interface toolkit, and library, for building html user interfaces.",
   "main": "index.js",
+  "engines": {
+    "node": ">=v18"
+  },
   "scripts": {
     "gen-css": "node scripts/gen-css/colors.js && node ./scripts/gen-css-spacing-props.js && node ./scripts/gen-css-display.js",
     "test": "echo \"Error: no test specified\" && exit 1"
