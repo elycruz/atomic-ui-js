@@ -15,10 +15,12 @@ label:has(+ :required, + * :required)::before {
 /*
  * x-field
  * ------------------ */
+:is(x-field, .x-field) {
+  display: inline-block;
+}
 
 :is(x-field, .x-field),
 :is(x-field, .x-field):not(.x-layout-vertical) > * {
-  display: inline-block;
   vertical-align: top;
 }
 

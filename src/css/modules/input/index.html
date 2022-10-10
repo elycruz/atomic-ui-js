@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Input/X-Input/.x-input</title>
+  <link rel="stylesheet" href="../../index.stories.css"/>
+  <link rel="stylesheet" href="index.css"/>
+</head>
+<body>
+<section>
+  <header>
+    <h2>Input</h2>
+  </header>
+
+  <article>
+    <form action="#" onsubmit="e => e.preventDefault();">
+      <fieldset class="x-fieldset--grid-2 x-grid">
+
+        <!-- Default Text Input -->
+        <label for="default-input">Default Text Input</label>
+        <div class="x-field">
+          <div class="x-input">
+            <input name="default-input" id="default-input"/>
+          </div>
+        </div>
+
+        <!-- Default Number -->
+        <label for="default-number-input">Default Number Input</label>
+        <div class="x-field">
+          <div class="x-input">
+            <input name="default-number-input"
+                   id="default-number-input"
+                   type="number"/>
+          </div>
+        </div>
+
+        <!-- Default Date -->
+        <label for="default-date-input">Default Date Input</label>
+        <div class="x-field">
+          <div class="x-input">
+            <input name="default-date-input"
+                   id="default-date-input"
+                   type="date"/>
+          </div>
+        </div>
+
+        <!-- Default Checkbox (wrapped) -->
+        <label for="default-checkbox-input">Default Checkbox Input (wrapped)</label>
+        <div class="x-field">
+          <div class="x-input">
+            <input name="default-checkbox-input"
+                   id="default-checkbox-input"
+                   type="checkbox"/>
+          </div>
+        </div>
+
+        <!-- Default Checkbox (unwrapped) -->
+        <label for="default-checkbox-input-2">Default Checkbox Input (unwrapped)</label>
+        <div class="x-field">
+          <input class="x-input" name="default-checkbox-input-2"
+                 id="default-checkbox-input-2"
+                 type="checkbox"/>
+        </div>
+
+        <!-- With Leading -->
+        <label for="default-input-2">With Leading</label>
+        <div class="x-field">
+          <div class="x-input">
+            <div>$</div>
+            <input name="default-input-2" id="default-input-2" type="number"/>
+          </div>
+        </div>
+
+        <!-- With Trailing -->
+        <label for="default-input-3">With Trailing</label>
+        <div class="x-field">
+          <div class="x-input">
+            <input name="default-input-3" id="default-input-3" type="number"/>
+            <div>kr</div>
+          </div>
+        </div>
+
+        <!-- With Leading and Trailing -->
+        <label for="default-input-4">With Leading and Trailing</label>
+        <div class="x-field">
+          <div class="x-input">
+            <div>$</div>
+            <input name="default-input-4" id="default-input-4" type="number"/>
+            <div>?</div>
+          </div>
+        </div>
+
+      </fieldset>
+      <fieldset>
+        <button type="reset">Reset</button>
+        <button>Submit</button>
+      </fieldset>
+    </form>
+  </article>
+</section>
+
+</body>
+</html>

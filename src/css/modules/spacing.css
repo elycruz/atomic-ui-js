@@ -7,18 +7,25 @@
   --x-2px: 0.125rem;
   --x-3px: 0.1875rem;
   --x-5px: 0.3125rem;
+  --x-4px: 0.25rem;
   --x-8px: 0.5rem;
   --x-13px: 0.8125rem;
   --x-21px: 1.3125rem;
   --x-34px: 2.125rem;
+  --x-16px: 1rem;
   --x-55px: 3.4375rem;
   --x-89px: 5.5625rem;
+  --x-32px: 2rem;
   --x-144px: 9rem;
   --x-233px: 14.5625rem;
+  --x-64px: 4rem;
   --x-377px: 23.5625rem;
   --x-610px: 38.125rem;
+  --x-128px: 8rem;
   --x-987px: 61.6875rem;
   --x-1597px: 99.8125rem;
+  --x-256px: 16rem;
   --x-2584px: 161.5rem;
-  --x-4181px: 261.3125rem
+  --x-4181px: 261.3125rem;
+  --x-512px: 32rem
 }

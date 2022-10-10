@@ -11,13 +11,17 @@ const fs = require('fs'),
   genSpacingCss = () => {
     const outputFilePath = path.join(__dirname, '../../src/css/modules/', fileName);
     const out = [];
-    let a = 0, b = 1, i = 0;
+    let a = 0, b = 1, i = 0, c = 1;
     while (a < 2000 && b < 2000) {
       a = a + b;
       b = a + b;
       i += 1;
+      c *= 2;
       out.push(`  --x-${a}px: ${a / 16}rem`);
       out.push(`  --x-${b}px: ${b / 16}rem`);
+      if (c !== b && c !== a) {
+        out.push(`  --x-${c}px: ${c / 16}rem`);
+      }
     }
 
     const content =

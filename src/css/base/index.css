@@ -5,6 +5,6 @@ html, body {
 
   margin: 0;
   padding: 0;
-  font-family: var(--x-font-family);
+  font: normal 1rem var(--x-font-family);
 }
 
