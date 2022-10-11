@@ -1,3 +1,6 @@
+@import url(./checkbox.css);
+@import url(./radio.css);
+
 /** Layout direction **/
 html:not([dir="rtl"]) .x-input {
   flex-flow: row nowrap;
@@ -23,23 +26,15 @@ html[dir="rtl"] .x-input > * + * {
   padding: var(--x-1px) var(--x-2px);
 }
 
+/** Input **/
 :is(x-input, .x-input),
-:is(x-input, .x-input) > input {
+:is(x-input, .x-input) > [type] {
   font-size: 1rem;
 }
 
-/** Input **/
 :is(x-input, .x-input) > input {
   padding: 0;
   border: none;
-  margin: 0;
-}
-
-/** Input[Type=Checkbox,Radio] **/
-:is(x-input, .x-input) > :is(input[type="checkbox"], input[type="radio"]),
-:is(x-input, .x-input):is(input[type="checkbox"], input[type="radio"]) {
-  -webkit-appearance: none;
-  appearance: none;
   margin: 0;
 }
 
