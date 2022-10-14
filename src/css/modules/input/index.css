@@ -1,7 +1,9 @@
 @import url(./checkbox.css);
 @import url(./radio.css);
 
-/** Layout direction **/
+/*
+ * Layout direction
+ * ---------------------- */
 html:not([dir="rtl"]) .x-input {
   flex-flow: row nowrap;
 }
@@ -10,44 +12,55 @@ html[dir="rtl"] .x-input {
   flex-flow: column nowrap;
 }
 
-html:not([dir="rtl"]) .x-input > * + * {
-  margin-left: 0.25rem;
+/*
+ * Base
+ * ------------------------ */
+html:not([dir="rtl"]) :is(x-input, .x-input) > :not(input):not([type]) {
+  padding: var(--x-input-padding-top) var(--x-input-padding-left);
 }
 
-html[dir="rtl"] .x-input > * + * {
-  margin-top: 0.25rem;
+html[dir="rtl"] :is(x-input, .x-input) > :not(input):not([type]) {
+  padding: var(--x-input-padding-left) var(--x-input-padding-top);
 }
 
-/** Base **/
 :is(x-input, .x-input) {
+  --x-input-padding-top: var(--x-1px);
+  --x-input-padding-left: var(--x-2px);
+  --x-input-outline-width: var(--x-2px);
+
   display: flex;
   width: fit-content;
   border-radius: var(--x-3px);
-  padding: var(--x-1px) var(--x-2px);
 }
 
-/** Input **/
+/*
+ * Input
+ * ---------------------- */
 :is(x-input, .x-input),
-:is(x-input, .x-input) > [type] {
-  font-size: 1rem;
-}
-
 :is(x-input, .x-input) > input {
-  padding: 0;
+  font-size: 1rem;
   border: none;
   margin: 0;
 }
 
-/** Focus Visible **/
-:is(x-input, .x-input):has(:focus-visible) {
-  outline: var(--x-1px) solid;
+/*
+ * Focus Visible
+ *--------------------- */
+:is(x-input, .x-input):has(input:focus-visible) {
+  outline: var(--x-input-outline-width) solid;
 }
 
-:is(x-input, .x-input) > :focus-visible {
+/**
+ @todo Add outline offset to x-input variants.
+ */
+
+:is(x-input, .x-input) > input:focus-visible {
   outline: none;
 }
 
-/** Outlined/Default **/
+/*
+ * Outlined/Default
+ * ----------------------- */
 :is(x-input, .x-input):not(.x-underlined),
 :is(x-input, .x-input).x-outlined {
   border: var(--x-1px) solid;
