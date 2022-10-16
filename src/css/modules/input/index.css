@@ -48,6 +48,7 @@ html[dir="rtl"] :is(x-input, .x-input) > :not(input):not([type]) {
  *--------------------- */
 :is(x-input, .x-input):has(input:focus-visible) {
   outline: var(--x-input-outline-width) solid;
+  outline-offset: var(--x-2px);
 }
 
 /**
