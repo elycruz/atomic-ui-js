@@ -7,6 +7,7 @@
   background-color: #FFF;
   border: var(--x-1px) solid currentColor;
   border-radius: var(--x-3px);
+  box-sizing: border-box;
 }
 
 :is(.x-radio, .x-checkbox),
@@ -19,25 +20,16 @@
 :is(.x-radio, .x-checkbox)::after {
   content: "";
   background-color: currentColor;
-  transform-origin: center center;
 }
 
 .x-checkbox::after {
-  transform: rotate(-15deg);
+  clip-path: polygon(14% 44%, 0 65%, 50% 100%, 100% 16%, 80% 0%, 43% 62%);
+}
+
+:is(.x-radio, .x-checkbox)::after {
   opacity: 0;
-  clip-path: polygon(14% 44%, 0 65%, 50% 100%, 100% 16%, 80% 0%, 43% 62%);
 }
 
-.x-checkbox:checked::after {
-  transform: rotate(0deg);
+:is(.x-radio, .x-checkbox):checked::after {
   opacity: 1;
-  clip-path: polygon(14% 44%, 0 65%, 50% 100%, 100% 16%, 80% 0%, 43% 62%);
 }
-
-:is(.x-radio, .x-checkbox):is(:focus-visible, :checked, :indeterminate) {
-  outline-offset: var(--x-2px);
-}
-
-/*:is(.x-radio, .x-checkbox):checked::after {*/
-/*  position: absolute;*/
-/*}*/

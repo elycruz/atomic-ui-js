@@ -26,11 +26,20 @@ html[dir="rtl"] :is(x-input, .x-input) > :not(input):not([type]) {
 :is(x-input, .x-input) {
   --x-input-padding-top: var(--x-1px);
   --x-input-padding-left: var(--x-2px);
-  --x-input-outline-width: var(--x-2px);
+  --x-focus-ring-width: var(--x-2px);
 
   display: flex;
   width: fit-content;
-  border-radius: var(--x-3px);
+}
+
+:is(.x-radio, .x-checkbox, .x-input, x-input):focus-visible,
+:is(.x-input, x-input):has(input:focus-visible) {
+  outline: var(--x-focus-ring-width, var(--x-2px)) solid;
+  outline-offset: var(--x-2px);
+}
+
+:is(x-input, .x-input) > input {
+  vertical-align: middle;
 }
 
 /*
@@ -39,6 +48,11 @@ html[dir="rtl"] :is(x-input, .x-input) > :not(input):not([type]) {
 :is(x-input, .x-input),
 :is(x-input, .x-input) > input {
   font-size: 1rem;
+  border-radius: var(--x-3px);
+}
+
+:is(x-input, .x-input):is(input),
+:is(x-input, .x-input) > input {
   border: none;
   margin: 0;
 }
@@ -46,15 +60,6 @@ html[dir="rtl"] :is(x-input, .x-input) > :not(input):not([type]) {
 /*
  * Focus Visible
  *--------------------- */
-:is(x-input, .x-input):has(input:focus-visible) {
-  outline: var(--x-input-outline-width) solid;
-  outline-offset: var(--x-2px);
-}
-
-/**
- @todo Add outline offset to x-input variants.
- */
-
 :is(x-input, .x-input) > input:focus-visible {
   outline: none;
 }
@@ -65,4 +70,8 @@ html[dir="rtl"] :is(x-input, .x-input) > :not(input):not([type]) {
 :is(x-input, .x-input):not(.x-underlined),
 :is(x-input, .x-input).x-outlined {
   border: var(--x-1px) solid;
+}
+
+:is(x-input, .x-input).x-underlined {
+  border-bottom: var(--x-1px) solid;
 }

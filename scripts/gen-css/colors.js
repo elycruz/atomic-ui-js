@@ -16,20 +16,21 @@ const fs = require('fs'),
   fileName = 'colors.css',
 
   genColorsCss = (outputFilePath = path.join(__dirname, '../../src/css/modules/', fileName)) => {
-    const content = `:root {\n${Array(6).fill(0, 0, 6)
-      .flatMap((_, i) => {
+    const range = Array(5).fill(0, 0, 5),
+      content = `:root {\n${[
+        primary, secondary, success, info,
+        warning, danger, neutral
+      ]
+      .flatMap(([c, cN], j) => {
         // const lightness = 255 * .1 * i;
-        return [
-          primary, secondary, success, info,
-          warning, danger, neutral
-        ]
-          .flatMap(([c, cN], j) => {
-            let l = (i + 1) * 16;
+        return range.flatMap((_, i) => {
+            const offset = i + 1;
+            let l = offset * 16;
             return [
               `  --x-${c}-hsl-${i + 1}: ` +
               `hsl(${cN}, ${c === 'neutral' ? 0 : 75}%, ${l}%)`,
-              `  --x-${c}-hsla-${i + 1}: ` +
-              `hsla(${cN}, ${c === 'neutral' ? 0 : 80}%, ${l}%, ${(1 - ((i + 1) * .16)).toFixed(3)})`
+              // `  --x-${c}-hsla-${i + 1}: ` +
+              // `hsla(${cN}, ${c === 'neutral' ? 0 : 80}%, ${l}%, ${(1 - (offset * .16)).toFixed(3)})`
             ];
           })
       }).join(';\n')
