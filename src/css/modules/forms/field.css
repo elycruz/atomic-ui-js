@@ -20,21 +20,21 @@ label:has(+ :required, + * :required)::before {
 }
 
 :is(x-field, .x-field),
-:is(x-field, .x-field):not(.x-layout-vertical) > * {
+:is(x-field, .x-field):not(.x-field--vertical) > * {
   vertical-align: top;
 }
 
-:is(x-field, .x-field):not(.x-layout-vertical) > label:has(+ *),
-:is(x-field, .x-field):not(.x-layout-vertical) > label:is(* + *) {
+:is(x-field, .x-field):not(.x-field--vertical) > label:has(+ *),
+:is(x-field, .x-field):not(.x-field--vertical) > label:is(* + *) {
   margin-right: 0.5rem;
 }
 
-:is(x-field, .x-field).x-layout-vertical > label:has(+ *) {
+:is(x-field, .x-field).x-field--vertical > label:has(+ *) {
   margin-bottom: 0.5rem;
 }
 
-:is(x-field, .x-field).x-layout-vertical,
-:is(x-field, .x-field).x-layout-vertical > label:has(+ *) {
+:is(x-field, .x-field).x-field--vertical,
+:is(x-field, .x-field).x-field--vertical > label:has(+ *) {
   display: block;
 }
 
@@ -67,12 +67,4 @@ label:has(+ :required, + * :required)::before {
 
 :is(x-field, .x-field) :is(.x-field__error-message, .x-error-message) {
   color: red;
-}
-
-/*
- * .x-text-input
- *-------------------------*/
-.x-text-input {
-  border: 2px solid rgb(118, 118, 118);
-  background: #fff;
 }

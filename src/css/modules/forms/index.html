@@ -158,33 +158,33 @@
       <fieldset class="x-grid x-fieldset--grid-2">
         <legend>x-field-control</legend>
 
-        <div class="x-field x-layout-horizontal">
+        <div class="x-field x-field--vertical">
           <label for="x-field-control-with-trailing-and-leading">
             With Text-Field Input
           </label>
           <div class="x-field__content">
-            <div class="x-field__flex-row x-text-input">
-              <div class="x-field__leading">$</div>
+            <div class="x-input">
+              <div>$</div>
               <input id="x-field-control-with-trailing-and-leading"
                      name="x-field-control-with-trailing-and-leading"
                      placeholder="0.00"
                      max="1000000"
                      min="0"
                      type="number"/>
-              <div class="x-field__trailing">?</div>
+              <div>?</div>
             </div>
             <div class="x-field__help">Help text.</div>
             <div class="x-field__error-message">Error message.</div>
           </div>
         </div> <!-- /.x-field -->
 
-        <div class="x-field">
+        <div class="x-field x-field--vertical">
           <label for="x-field-control-default">Default</label>
-          <div class="x-field-control">
+          <div class="x-input">
             <input id="x-field-control-default"
                    name="x-field-control-default"/>
           </div>
-        </div>
+        </div> <!-- /.x-field -->
       </fieldset>
     </form>
   </article>

@@ -33,7 +33,11 @@ legend {
   gap: 1rem;
 }
 
-:is(.x-fieldset, fieldset).x-grid label {
+html:not([dir="rtl"]) :is(.x-fieldset, fieldset).x-grid > label {
+  text-align: right;
+}
+
+html[dir="rtl"] :is(.x-fieldset, fieldset).x-grid {
   text-align: right;
 }
 
