@@ -13,9 +13,9 @@ const fs = require('fs'),
   warning = ['warning', 30],
   danger = ['danger', 0],
   neutral = ['neutral', 0],
-  fileName = 'colors.css',
+  fileName = 'index.css',
 
-  genColorsCss = (outputFilePath = path.join(__dirname, '../../src/css/modules/', fileName)) => {
+  genColorsCss = (outputFilePath = path.join(__dirname, '../../src/css/modules/colors/', fileName)) => {
     const range = Array(5).fill(0, 0, 5),
       content = `:root {\n${[
         primary, secondary, success, info,

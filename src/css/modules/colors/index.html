@@ -3,9 +3,9 @@
 <head>
   <meta charset="UTF-8">
   <title>X-Field</title>
-  <link rel="stylesheet" href="colors.css">
-  <link rel="stylesheet" href="../index.css">
-  <link rel="stylesheet" href="../index.stories.css">
+  <link rel="stylesheet" href="index.css">
+  <link rel="stylesheet" href="../../index.css">
+  <link rel="stylesheet" href="../../index.stories.css">
   <script type="importmap">
     {
       "imports": {
@@ -17,7 +17,7 @@
   <style>
     .x-color-grid th {
       padding: 0.5rem;
-      background: var(--x-neutral-hsl-6);
+      background: var(--x-neutral-hsl-5);
     }
 
     .x-color-grid tbody td {
@@ -32,10 +32,10 @@
 <body>
 <script type="module">
   import {render, html} from 'lit';
-  import {xThemes} from "../../constants.js";
+  import {xThemes} from "../../../constants.js";
 
   const themes = Object.values(xThemes);
-  const themeRange = Array(6).fill(0, 0, 6);
+  const themeRange = Array(5).fill(0, 0, 5);
 
   render(html`
     <table class="x-color-grid">
@@ -59,7 +59,7 @@
       `)}
       </tbody>
     </table>
-    <table class="x-color-grid">
+    <table class="x-color-grid x-display-none">
       <thead>
       <tr>
         <th colspan="${themes.length}">HSLA Color Table</th>
