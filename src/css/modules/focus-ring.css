@@ -1,0 +1,5 @@
+:is(.x-radio, .x-checkbox, .x-input, x-input, button, textarea, select):focus-visible,
+:is(.x-input, x-input):has(input:focus-visible) {
+  outline: var(--x-focus-ring-width, var(--x-2px)) solid;
+  outline-offset: var(--x-2px);
+}

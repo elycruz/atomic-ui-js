@@ -1,3 +1,4 @@
 :root {
   --x-focus-ring-width: var(--x-2px);
+  --x-border-radius: var(--x-3px);
 }

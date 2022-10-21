@@ -32,12 +32,6 @@ html[dir="rtl"] :is(x-input, .x-input) > :not(input):not([type]) {
   width: fit-content;
 }
 
-:is(.x-radio, .x-checkbox, .x-input, x-input):focus-visible,
-:is(.x-input, x-input):has(input:focus-visible) {
-  outline: var(--x-focus-ring-width, var(--x-2px)) solid;
-  outline-offset: var(--x-2px);
-}
-
 :is(x-input, .x-input) > input {
   vertical-align: middle;
 }
@@ -48,7 +42,7 @@ html[dir="rtl"] :is(x-input, .x-input) > :not(input):not([type]) {
 :is(x-input, .x-input),
 :is(x-input, .x-input) > input {
   font-size: 1rem;
-  border-radius: var(--x-3px);
+  border-radius: var(--x-border-radius);
 }
 
 :is(x-input, .x-input):is(input),

@@ -1,0 +1,10 @@
+.x-radio,
+.x-radio::after {
+  border-radius: var(--x-8px);
+}
+
+.x-radio::after {
+  width: var(--x-8px);
+  height: var(--x-8px);
+}
+

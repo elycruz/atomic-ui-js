@@ -1,14 +1,19 @@
 legend {
   font-weight: bold;
   font-size: 18px;
+  padding: 0.5rem;
 }
 
 /* ----------------
  * x-fieldset
  * ---------------- */
-
 :is(fieldset, .x-fieldset) {
   padding: 1rem;
+}
+
+:is(fieldset, .x-fieldset, legend) {
+  border-radius: var(--x-border-radius);
+  border: var(--x-1px) solid;
 }
 
 :is(fieldset, .x-fieldset) + :is(fieldset, .x-fieldset) {

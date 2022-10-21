@@ -1,18 +1,16 @@
 :is(.x-radio, .x-checkbox) {
-  display: grid;
+  display: inline-grid;
   place-content: center;
   -webkit-appearance: none;
   appearance: none;
   margin: 0;
   background-color: #FFF;
   border: var(--x-1px) solid currentColor;
-  border-radius: var(--x-3px);
   box-sizing: border-box;
 }
 
-:is(.x-radio, .x-checkbox),
-:is(.x-radio, .x-checkbox)::before,
-:is(.x-radio, .x-checkbox)::after {
+.x-checkbox::after,
+:is(.x-radio, .x-checkbox) {
   width: 1rem;
   height: 1rem;
 }
@@ -20,6 +18,11 @@
 :is(.x-radio, .x-checkbox)::after {
   content: "";
   background-color: currentColor;
+}
+
+.x-checkbox,
+.x-checkbox::after {
+  border-radius: var(--x-border-radius);
 }
 
 .x-checkbox::after {
