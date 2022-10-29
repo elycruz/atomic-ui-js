@@ -6,6 +6,14 @@ section > :is(section, div > section, article, div > article) {
   border-top: var(--x-1px) solid var(--x-neutral-hsl-4);
 }
 
+section > :is(section, div > section, article, div > article) > :is(header, div > header) {
+  padding: .5rem;
+}
+
+section > :is(section, div > section, article, div > article) > :is(header, div > header) + * {
+  margin-top: 1rem;
+}
+
 section article {
   padding: 1rem;
 }

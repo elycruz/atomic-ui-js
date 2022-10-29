@@ -1,3 +1,7 @@
 :is(.x-form, form):not(.x-layout-horizontal) + :is(.x-form, form) {
   margin-top: 1.5rem;
 }
+
+:is(.x-form, form) {
+  width: fit-content;
+}

@@ -1,8 +1,9 @@
+@import url(properties.css);
 @import url(colors/index.css);
+@import url(focus-ring.css);
+
 @import url(display.css);
 @import url(form.css);
 @import url(form-controls/index.css);
-@import url(focus-ring.css);
-@import url(properties.css);
 @import url(section.css);
 @import url(spacing.css);
