@@ -3,6 +3,10 @@
   border: var(--x-1px) solid;
 }
 
+/*:is(.x-button, button):is(:hover, :focus-visible) {*/
+/*  background: var(--x-neutral-hsl-5);*/
+/*}*/
+
 :is(.x-button, button):not(:disabled):hover {
   cursor: pointer;
 }
