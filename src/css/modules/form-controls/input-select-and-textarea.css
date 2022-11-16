@@ -1,6 +1,3 @@
-@import url(checkbox.css);
-@import url(radio.css);
-
 /*
  * Layout direction
  * ---------------------- */
@@ -15,11 +12,11 @@ html[dir="rtl"] .x-input {
 /*
  * Base
  * ------------------------ */
-html:not([dir="rtl"]) :is(x-input, .x-input) > :not(input):not([type]) {
+html:not([dir="rtl"]) :is(x-input, .x-input) > :not(input):not([type]):not(select):not(textarea) {
   padding: var(--x-input-padding-top) var(--x-input-padding-left);
 }
 
-html[dir="rtl"] :is(x-input, .x-input) > :not(input):not([type]) {
+html[dir="rtl"] :is(x-input, .x-input) > :not(input):not([type]):not(select):not(textarea) {
   padding: var(--x-input-padding-left) var(--x-input-padding-top);
 }
 
@@ -31,7 +28,7 @@ html[dir="rtl"] :is(x-input, .x-input) > :not(input):not([type]) {
   width: fit-content;
 }
 
-:is(x-input, .x-input) > input {
+:is(x-input, .x-input) > :is(input, textarea, select) {
   vertical-align: middle;
 }
 
@@ -39,13 +36,12 @@ html[dir="rtl"] :is(x-input, .x-input) > :not(input):not([type]) {
  * Input
  * ---------------------- */
 :is(x-input, .x-input),
-:is(x-input, .x-input) > input {
-  font-size: 1rem;
+:is(x-input, .x-input) > :is(input, textarea, select) {
   border-radius: var(--x-border-radius);
 }
 
-:is(x-input, .x-input):is(input),
-:is(x-input, .x-input) > input {
+:is(x-input, .x-input):is(input, textarea, select),
+:is(x-input, .x-input) > :is(input, textarea, select) {
   border: none;
   margin: 0;
 }
@@ -53,7 +49,7 @@ html[dir="rtl"] :is(x-input, .x-input) > :not(input):not([type]) {
 /*
  * Focus Visible
  *--------------------- */
-:is(x-input, .x-input) > input:focus-visible {
+:is(x-input, .x-input) > :is(input, select, textarea):focus-visible {
   outline: none;
 }
 

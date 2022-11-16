@@ -3,19 +3,19 @@
 <head>
   <meta charset="UTF-8">
   <title>Input/X-Input/.x-input</title>
-  <link rel="stylesheet" href="../../../index.stories.css"/>
-  <link rel="stylesheet" href="index.css"/>
+  <link rel="stylesheet" href="../../index.stories.css"/>
+  <link rel="stylesheet" href="input-select-and-textarea.css"/>
 </head>
 <body>
 <section>
   <header>
-    <h2>Input</h2>
+    <h2>Decorated Form Control</h2>
   </header>
 
   <article>
     <form action="#" onsubmit="e => e.preventDefault();">
       <fieldset class="x-fieldset--grid-2 x-grid">
-        <legend>Default Input Elements</legend>
+        <legend>With "x-*" classnames</legend>
 
         <!-- Default Text Input -->
         <label for="default-input">Default Text Input</label>
@@ -92,6 +92,33 @@
                    type="radio"/>
             <label for="default-radio-input-5">Radio 5</label>
           </div>
+        </div>
+
+        <!-- Textarea -->
+        <label for="textarea">Textarea</label>
+        <div class="x-field">
+          <div class="x-input">
+            <textarea name="textarea" id="textarea"></textarea>
+          </div>
+        </div>
+
+        <!-- Color -->
+        <label for="color">Color</label>
+        <div class="x-field">
+          <div class="x-input">
+            <input type="color" name="color" id="color">
+          </div>
+        </div>
+
+        <!-- Select -->
+        <label for="select">Select</label>
+        <div class="x-field">
+          <select class="x-input" name="select" id="select">
+            <option value="">-- Select a value --</option>
+            <option value="1">Value 1</option>
+            <option value="2">Value 2</option>
+            <option value="3">Value 3</option>
+          </select>
         </div>
 
         <!-- With Leading -->
