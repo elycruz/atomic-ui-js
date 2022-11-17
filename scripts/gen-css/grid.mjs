@@ -1,4 +1,4 @@
 const genGridCss = () => {
 };
 
-module.exports = {genGridCss};
+export {genGridCss};

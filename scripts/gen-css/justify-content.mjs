@@ -3,9 +3,13 @@
  *
  * Generates `justify-content` property classes (`.x-justify-space-between, .x-jc-space-between` etc.).
  */
-const fs = require('fs'),
-  path = require('path'),
-  {log, error} = console,
+import fs from 'fs';
+import * as path from "path";
+import url from "url";
+
+const __dirname = url.fileURLToPath(new URL('.', import.meta.url));
+
+const {log, error} = console,
 
   genJustifyContentCss = () => {
     const fileName = 'justify-content.css',
@@ -39,4 +43,4 @@ ${out.join('\n\n')}\n`;
       );
   };
 
-module.exports = {genJustifyContentCss};
+export {genJustifyContentCss};

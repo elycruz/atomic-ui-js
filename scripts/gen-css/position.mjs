@@ -3,9 +3,13 @@
  *
  * Generates `position` property classes (`.x-position-absolute` etc.).
  */
-const fs = require('fs'),
-  path = require('path'),
-  {log, error} = console,
+import fs from 'fs';
+import * as path from "path";
+import url from "url";
+
+const __dirname = url.fileURLToPath(new URL('.', import.meta.url));
+
+const {log, error} = console,
 
   genPositionCss = () => {
     const fileName = 'position.css',
@@ -32,4 +36,4 @@ ${out.join('\n\n')}\n`;
       );
   };
 
-module.exports = {genPositionCss};
+export {genPositionCss};

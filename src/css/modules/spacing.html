@@ -20,27 +20,63 @@
     }
   </script>
 </head>
+
 <body>
+<section>
+  <header>
+    <div class="x-h2">Spacing</div>
+  </header>
+  <article>
+    <div>
+      <p>The library's spacing properties - factors of 144, and the fibonacci sequence,
+        combined, in ordered sequence, represented as `rem` units (in source).</p>
+    </div>
+  </article>
+</section>
+
 <script type="module">
   import {html, render} from 'lit';
   import {fib} from "../../utils";
+  import {factorsOf} from "../../utils/index.js";
 
   const out = document.createElement('div'),
-    seeds = fib(4000),
-    seedsLen = seeds.length;
+    fibonacciNums = fib(5000),
+    factorsOf144 = factorsOf(144),
+    sizes = fibonacciNums
+      .concat(factorsOf144.filter(x => !fibonacciNums.includes(x)))
+      .sort((a, b) => {
+        if (a < b) return -1;
+        return a === b ? 0 : 1;
+      }),
 
-  render(html`${seeds.flatMap((n, i) => {
-    const lim = seedsLen - (i + 1);
+    sizesLen = sizes.length;
 
-    return html`<div class="x-display-block"><div>--x-${n}px</div></div>${Array(lim).fill(null, 0, lim).map(_ => html`
-      <div class="box" style="
-      width: var(--x-${n}px);
-      height: var(--x-${n}px);">&nbsp;
-      </div>`
-    )}</div>`;
-  })}`, out);
+  render(html`
+      <div>
+        ${sizes.flatMap((n, i) => {
+          const lim = sizesLen - (i + 3);
+          //
+          return html`
+            <div class="x-display-block">
+              <div>--x-${n}px</div>
+            </div>
+            <div>
+              ${
+                Array(Math.max(lim, 1))
+                  .fill(null, 0, Math.max(lim, 1))
+                  .map(_ => html`
+                    <div class="box" style="
+              width: var(--x-${n}px);
+              height: var(--x-${n}px);">&nbsp;
+                    </div>`
+                  )
+              }
+            </div>`;
+        })}
+      </div>`,
 
-  document.body.appendChild(out);
+    document.querySelector('body > section > article')
+  );
 </script>
 </body>
 </html>

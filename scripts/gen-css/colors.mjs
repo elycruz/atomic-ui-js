@@ -3,9 +3,13 @@
  *
  * Outputs the library's css color properties - Colors are made up of `hsl`, and `hsla` generated colors.
  */
-const fs = require('fs'),
-  path = require('path'),
-  {log, error} = console,
+import fs from 'fs';
+import * as path from "path";
+import url from "url";
+
+const __dirname = url.fileURLToPath(new URL('.', import.meta.url));
+
+const {log, error} = console,
   primary = ['primary', 240],
   secondary = ['secondary', 300],
   success = ['success', 120],
@@ -43,4 +47,4 @@ const fs = require('fs'),
       );
   };
 
-module.exports = {genColorsCss};
+export {genColorsCss};

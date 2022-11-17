@@ -3,9 +3,13 @@
  *
  * Generates `display` property classes (`.x-display-block, .x-d-block` etc.).
  */
-const fs = require('fs'),
-  path = require('path'),
-  {log, error} = console,
+import fs from 'fs';
+import * as path from "path";
+import url from "url";
+
+const __dirname = url.fileURLToPath(new URL('.', import.meta.url));
+
+const {log, error} = console,
   fileName = 'display.css',
 
   genDisplayCss = () => {
@@ -48,4 +52,4 @@ ${out.join('\n')}\n`;
       );
   };
 
-module.exports = {genDisplayCss};
+export {genDisplayCss};
