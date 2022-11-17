@@ -6,6 +6,7 @@
 import fs from 'fs';
 import * as path from "path";
 import url from "url";
+import {fib} from "../../src/utils/index.js";
 
 const __dirname = url.fileURLToPath(new URL('.', import.meta.url));
 
@@ -21,24 +22,20 @@ const {log, error} = console,
 
   genColorsCss = (outputFilePath = path.join(__dirname, '../../src/css/modules/colors/', fileName)) => {
     const range = Array(5).fill(0, 0, 5),
+      fibNums = fib(89).slice(5), // Drop numbers 1, 2, 5, and 8 - These will generate to dark 'lightness'
       content = `:root {\n${[
         primary, secondary, success, info,
         warning, danger, neutral
       ]
-      .flatMap(([c, cN], j) => {
-        // const lightness = 255 * .1 * i;
-        return range.flatMap((_, i) => {
-            const offset = i + 1;
-            let l = offset * 16;
-            return [
+        .flatMap(([c, cN], j) =>
+          fibNums.flatMap((lightness, i) => ([
               `  --x-${c}-hsl-${i + 1}: ` +
-              `hsl(${cN}, ${c === 'neutral' ? 0 : 75}%, ${l}%)`,
+              `hsl(${cN}, ${c === 'neutral' ? 0 : 75}%, ${lightness}%)`,
               // `  --x-${c}-hsla-${i + 1}: ` +
               // `hsla(${cN}, ${c === 'neutral' ? 0 : 80}%, ${l}%, ${(1 - (offset * .16)).toFixed(3)})`
-            ];
-          })
-      }).join(';\n')
-    }\n}\n`;
+            ]))
+        ).join(';\n')
+      }\n}\n`;
 
     return fs.promises.writeFile(outputFilePath, content)
       .then(

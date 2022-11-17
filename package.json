@@ -2,6 +2,7 @@
   "name": "atomic-ui-js",
   "version": "1.0.0",
   "description": "An atomic user interface toolkit, and library, for building html user interfaces.",
+  "module": "src/index.js",
   "type": "module",
   "engines": {
     "node": ">=v18"

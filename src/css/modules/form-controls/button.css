@@ -1,11 +1,11 @@
 .x-button, button {
   border-radius: var(--x-border-radius);
-  border: var(--x-1px) solid;
+  border: var(--x-1px) solid ButtonBorder;
 }
 
-/*:is(.x-button, button):is(:hover, :focus-visible) {*/
-/*  background: var(--x-neutral-hsl-5);*/
-/*}*/
+:is(.x-button, button):is(:hover, :focus-visible) {
+  background: F;
+}
 
 :is(.x-button, button):not(:disabled):hover {
   cursor: pointer;

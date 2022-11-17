@@ -1,4 +1,4 @@
-:is(.x-input, x-input):has(:is(input:not([type="checkbox"]):not([type="radio"]), select, textarea):focus-visible),
+:is(.x-input, x-input):has(:is(input, select, textarea):focus-visible),
 :is(.x-radio, .x-checkbox, .x-input, x-input, button,
   :is(:not(.x-input):not(x-input) > :is(select, textarea, input))
 ):focus-visible {

@@ -1,6 +1,6 @@
 import {isset, typeOf} from "../object.js";
 
-export const isTouchCapable = window.ontouchend !== undefined,
+export const // isTouchCapable = window.ontouchend !== undefined,
 
   isHTMLElement = (x) => isset(x) && x instanceof HTMLElement,
 

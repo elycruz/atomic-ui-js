@@ -4,8 +4,8 @@
   -webkit-appearance: none;
   appearance: none;
   margin: 0;
-  background-color: #FFF;
-  border: var(--x-1px) solid currentColor;
+  background-color: Field;
+  border: var(--x-1px) solid ButtonBorder;
   box-sizing: border-box;
 }
 
@@ -17,7 +17,7 @@
 
 :is(.x-radio, .x-checkbox)::after {
   content: "";
-  background-color: currentColor;
+  background-color: ButtonText;
 }
 
 .x-checkbox,

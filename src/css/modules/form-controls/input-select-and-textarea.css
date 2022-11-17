@@ -12,11 +12,14 @@ html[dir="rtl"] .x-input {
 /*
  * Base
  * ------------------------ */
-html:not([dir="rtl"]) :is(x-input, .x-input) > :not(input):not([type]):not(select):not(textarea) {
+
+html:not([dir="rtl"]) :is(x-input, .x-input):is([type], input, select, textarea),
+html:not([dir="rtl"]) :is(x-input, .x-input) > * {
   padding: var(--x-input-padding-top) var(--x-input-padding-left);
 }
 
-html[dir="rtl"] :is(x-input, .x-input) > :not(input):not([type]):not(select):not(textarea) {
+html[dir="rtl"] :is(x-input, .x-input):is([type], input, select, textarea),
+html[dir="rtl"] :is(x-input, .x-input) > * {
   padding: var(--x-input-padding-left) var(--x-input-padding-top);
 }
 
@@ -26,6 +29,7 @@ html[dir="rtl"] :is(x-input, .x-input) > :not(input):not([type]):not(select):not
 
   display: flex;
   width: fit-content;
+  background: Field;
 }
 
 :is(x-input, .x-input) > :is(input, textarea, select) {
