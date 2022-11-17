@@ -1,3 +1,9 @@
+/**
+ * colors.css
+ *
+ * The library's base colors (tentative).
+ */
+
 :root {
   --x-primary-hsl-1: hsl(240, 75%, 13%);
   --x-primary-hsl-2: hsl(240, 75%, 21%);
@@ -34,4 +40,60 @@
   --x-neutral-hsl-3: hsl(0, 0%, 34%);
   --x-neutral-hsl-4: hsl(0, 0%, 55%);
   --x-neutral-hsl-5: hsl(0, 0%, 89%)
+}
+
+.x-theme-primary {
+  --x-theme-1: var(--x-primary-hsl-1);
+  --x-theme-2: var(--x-primary-hsl-2);
+  --x-theme-3: var(--x-primary-hsl-3);
+  --x-theme-4: var(--x-primary-hsl-4);
+  --x-theme-5: var(--x-primary-hsl-5);
+}
+
+.x-theme-secondary {
+  --x-theme-1: var(--x-secondary-hsl-1);
+  --x-theme-2: var(--x-secondary-hsl-2);
+  --x-theme-3: var(--x-secondary-hsl-3);
+  --x-theme-4: var(--x-secondary-hsl-4);
+  --x-theme-5: var(--x-secondary-hsl-5);
+}
+
+.x-theme-success {
+  --x-theme-1: var(--x-success-hsl-1);
+  --x-theme-2: var(--x-success-hsl-2);
+  --x-theme-3: var(--x-success-hsl-3);
+  --x-theme-4: var(--x-success-hsl-4);
+  --x-theme-5: var(--x-success-hsl-5);
+}
+
+.x-theme-info {
+  --x-theme-1: var(--x-info-hsl-1);
+  --x-theme-2: var(--x-info-hsl-2);
+  --x-theme-3: var(--x-info-hsl-3);
+  --x-theme-4: var(--x-info-hsl-4);
+  --x-theme-5: var(--x-info-hsl-5);
+}
+
+.x-theme-warning {
+  --x-theme-1: var(--x-warning-hsl-1);
+  --x-theme-2: var(--x-warning-hsl-2);
+  --x-theme-3: var(--x-warning-hsl-3);
+  --x-theme-4: var(--x-warning-hsl-4);
+  --x-theme-5: var(--x-warning-hsl-5);
+}
+
+.x-theme-danger {
+  --x-theme-1: var(--x-danger-hsl-1);
+  --x-theme-2: var(--x-danger-hsl-2);
+  --x-theme-3: var(--x-danger-hsl-3);
+  --x-theme-4: var(--x-danger-hsl-4);
+  --x-theme-5: var(--x-danger-hsl-5);
+}
+
+.x-theme-neutral {
+  --x-theme-1: var(--x-neutral-hsl-1);
+  --x-theme-2: var(--x-neutral-hsl-2);
+  --x-theme-3: var(--x-neutral-hsl-3);
+  --x-theme-4: var(--x-neutral-hsl-4);
+  --x-theme-5: var(--x-neutral-hsl-5);
 }

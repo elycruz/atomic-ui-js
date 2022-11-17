@@ -1,7 +1,7 @@
 @import url(properties.css);
 @import url(colors/index.css);
 @import url(focus-ring.css);
-
+@import url(flex.css);
 @import url(display.css);
 @import url(form.css);
 @import url(form-controls/index.css);

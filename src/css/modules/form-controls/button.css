@@ -1,16 +1,79 @@
-.x-button, button {
+/**
+ * Base
+ * ---------------- */
+.x-button, x-button, button {
   border-radius: var(--x-border-radius);
   border: var(--x-1px) solid ButtonBorder;
-}
-
-:is(.x-button, button):is(:hover, :focus-visible) {
-  background: F;
+  display: inline-flex;
+  text-align: center;
 }
 
 :is(.x-button, button):not(:disabled):hover {
   cursor: pointer;
 }
 
+/*
+ * Sizes
+ * ------------------- */
+:is(.x-button, x-button, button).x-small {
+  font-size: var(--x-12px);
+  line-height: var(--x-12px);
+  padding: var(--x-3px);
+}
+
+:is(.x-button, x-button, button).x-dense {
+  padding: var(--x-8px);
+  font-size: var(--x-16px);
+  line-height: var(--x-18px);
+}
+
+:is(.x-button, x-button, button):is(:not(.x-small):not(.x-dense):not(.x--large), .x-normal) {
+  padding: var(--x-8px);
+  font-size: var(--x-16px);
+  line-height: var(--x-24px);
+}
+
+:is(.x-button, x-button, button).x--large {
+  padding: var(--x-12px);
+  font-size: var(--x-21px);
+  line-height: var(--x-34px);
+}
+
+/*
+ * Contents
+ * -------------------- */
+:is(.x-button, x-button, button) > * + * {
+  margin-left: var(--x-5px);
+}
+
+/*
+ * Variants
+ * -------------------- */
+:is(.x-button, x-button, button):not(.x-outlined) {
+  border-color: transparent;
+}
+
+/* Note: See following link for more about system-colors:
+ https://developer.mozilla.org/en-US/docs/Web/CSS/system-color
+ */
+
+:is(.x-button, x-button, button):not(.x-filled) {
+  color: var(--x-theme-3);
+  background: Field;
+}
+
+:is(.x-button, x-button, button).x-filled {
+  background: var(--x-theme-4);
+  color: Field;
+}
+
+:is(.x-button, x-button, button).x-outlined {
+  border-color: var(--x-theme-4);
+}
+
+/**
+ * .x-button-group
+ * ---------------- */
 .x-button-group:not(.x-button-group--vertical) button + button,
 .x-button-group.x-button-group--horizontal button + button {
   margin-left: 0.5rem;

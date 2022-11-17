@@ -1,9 +1,18 @@
 export const xThemes = {
-  Primary: 'primary',
-  Secondary: 'secondary',
-  Success: 'success',
-  Info: 'info',
-  Warning: 'warning',
-  Danger: 'danger',
-  Grayscale: 'neutral'
-}
+    Primary: 'primary',
+    Secondary: 'secondary',
+    Success: 'success',
+    Info: 'info',
+    Warning: 'warning',
+    Danger: 'danger',
+    Grayscale: 'neutral'
+  },
+
+  xVarities = {
+    Outlined: 'outlined',
+    Filled: 'filled',
+    Raised: 'raised',
+    Small: 'small',
+    Normal: 'normal',
+    Large: 'large'
+  };

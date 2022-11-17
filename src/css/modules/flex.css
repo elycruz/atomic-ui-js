@@ -1,3 +1,7 @@
+.x-flex {
+  display: flex;
+}
+
 .x-flex-row {
   flex-flow: row nowrap;
 }
