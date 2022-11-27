@@ -12,6 +12,7 @@ export const xThemes = {
     Outlined: 'outlined',
     Filled: 'filled',
     Raised: 'raised',
+    Dense: 'dense',
     Small: 'small',
     Normal: 'normal',
     Large: 'large'

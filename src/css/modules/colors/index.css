@@ -5,41 +5,76 @@
  */
 
 :root {
-  --x-primary-hsl-1: hsl(240, 75%, 13%);
-  --x-primary-hsl-2: hsl(240, 75%, 21%);
-  --x-primary-hsl-3: hsl(240, 75%, 34%);
-  --x-primary-hsl-4: hsl(240, 75%, 55%);
-  --x-primary-hsl-5: hsl(240, 75%, 89%);
-  --x-secondary-hsl-1: hsl(300, 75%, 13%);
-  --x-secondary-hsl-2: hsl(300, 75%, 21%);
-  --x-secondary-hsl-3: hsl(300, 75%, 34%);
-  --x-secondary-hsl-4: hsl(300, 75%, 55%);
-  --x-secondary-hsl-5: hsl(300, 75%, 89%);
-  --x-success-hsl-1: hsl(120, 75%, 13%);
-  --x-success-hsl-2: hsl(120, 75%, 21%);
-  --x-success-hsl-3: hsl(120, 75%, 34%);
-  --x-success-hsl-4: hsl(120, 75%, 55%);
-  --x-success-hsl-5: hsl(120, 75%, 89%);
-  --x-info-hsl-1: hsl(180, 75%, 13%);
-  --x-info-hsl-2: hsl(180, 75%, 21%);
-  --x-info-hsl-3: hsl(180, 75%, 34%);
-  --x-info-hsl-4: hsl(180, 75%, 55%);
-  --x-info-hsl-5: hsl(180, 75%, 89%);
-  --x-warning-hsl-1: hsl(30, 75%, 13%);
-  --x-warning-hsl-2: hsl(30, 75%, 21%);
-  --x-warning-hsl-3: hsl(30, 75%, 34%);
-  --x-warning-hsl-4: hsl(30, 75%, 55%);
-  --x-warning-hsl-5: hsl(30, 75%, 89%);
-  --x-danger-hsl-1: hsl(0, 75%, 13%);
-  --x-danger-hsl-2: hsl(0, 75%, 21%);
-  --x-danger-hsl-3: hsl(0, 75%, 34%);
-  --x-danger-hsl-4: hsl(0, 75%, 55%);
-  --x-danger-hsl-5: hsl(0, 75%, 89%);
-  --x-neutral-hsl-1: hsl(0, 0%, 13%);
-  --x-neutral-hsl-2: hsl(0, 0%, 21%);
-  --x-neutral-hsl-3: hsl(0, 0%, 34%);
-  --x-neutral-hsl-4: hsl(0, 0%, 55%);
-  --x-neutral-hsl-5: hsl(0, 0%, 89%)
+  --x-primary-hsl-1: hsl(240, 72%, 10%);
+  --x-primary-hsl-2: hsl(240, 72%, 20%);
+  --x-primary-hsl-3: hsl(240, 72%, 30%);
+  --x-primary-hsl-4: hsl(240, 72%, 40%);
+  --x-primary-hsl-5: hsl(240, 72%, 50%);
+  --x-primary-hsl-6: hsl(240, 72%, 60%);
+  --x-primary-hsl-7: hsl(240, 72%, 70%);
+  --x-primary-hsl-8: hsl(240, 72%, 80%);
+  --x-primary-hsl-9: hsl(240, 72%, 90%);
+  --x-primary-hsl-10: hsl(240, 72%, 99%);
+  --x-secondary-hsl-1: hsl(300, 72%, 10%);
+  --x-secondary-hsl-2: hsl(300, 72%, 20%);
+  --x-secondary-hsl-3: hsl(300, 72%, 30%);
+  --x-secondary-hsl-4: hsl(300, 72%, 40%);
+  --x-secondary-hsl-5: hsl(300, 72%, 50%);
+  --x-secondary-hsl-6: hsl(300, 72%, 60%);
+  --x-secondary-hsl-7: hsl(300, 72%, 70%);
+  --x-secondary-hsl-8: hsl(300, 72%, 80%);
+  --x-secondary-hsl-9: hsl(300, 72%, 90%);
+  --x-secondary-hsl-10: hsl(300, 72%, 99%);
+  --x-success-hsl-1: hsl(120, 72%, 10%);
+  --x-success-hsl-2: hsl(120, 72%, 20%);
+  --x-success-hsl-3: hsl(120, 72%, 30%);
+  --x-success-hsl-4: hsl(120, 72%, 40%);
+  --x-success-hsl-5: hsl(120, 72%, 50%);
+  --x-success-hsl-6: hsl(120, 72%, 60%);
+  --x-success-hsl-7: hsl(120, 72%, 70%);
+  --x-success-hsl-8: hsl(120, 72%, 80%);
+  --x-success-hsl-9: hsl(120, 72%, 90%);
+  --x-success-hsl-10: hsl(120, 72%, 99%);
+  --x-info-hsl-1: hsl(180, 72%, 10%);
+  --x-info-hsl-2: hsl(180, 72%, 20%);
+  --x-info-hsl-3: hsl(180, 72%, 30%);
+  --x-info-hsl-4: hsl(180, 72%, 40%);
+  --x-info-hsl-5: hsl(180, 72%, 50%);
+  --x-info-hsl-6: hsl(180, 72%, 60%);
+  --x-info-hsl-7: hsl(180, 72%, 70%);
+  --x-info-hsl-8: hsl(180, 72%, 80%);
+  --x-info-hsl-9: hsl(180, 72%, 90%);
+  --x-info-hsl-10: hsl(180, 72%, 99%);
+  --x-warning-hsl-1: hsl(30, 72%, 10%);
+  --x-warning-hsl-2: hsl(30, 72%, 20%);
+  --x-warning-hsl-3: hsl(30, 72%, 30%);
+  --x-warning-hsl-4: hsl(30, 72%, 40%);
+  --x-warning-hsl-5: hsl(30, 72%, 50%);
+  --x-warning-hsl-6: hsl(30, 72%, 60%);
+  --x-warning-hsl-7: hsl(30, 72%, 70%);
+  --x-warning-hsl-8: hsl(30, 72%, 80%);
+  --x-warning-hsl-9: hsl(30, 72%, 90%);
+  --x-warning-hsl-10: hsl(30, 72%, 99%);
+  --x-danger-hsl-1: hsl(0, 72%, 10%);
+  --x-danger-hsl-2: hsl(0, 72%, 20%);
+  --x-danger-hsl-3: hsl(0, 72%, 30%);
+  --x-danger-hsl-4: hsl(0, 72%, 40%);
+  --x-danger-hsl-5: hsl(0, 72%, 50%);
+  --x-danger-hsl-6: hsl(0, 72%, 60%);
+  --x-danger-hsl-7: hsl(0, 72%, 70%);
+  --x-danger-hsl-8: hsl(0, 72%, 80%);
+  --x-danger-hsl-9: hsl(0, 72%, 90%);
+  --x-danger-hsl-10: hsl(0, 72%, 99%);
+  --x-neutral-hsl-1: hsl(0, 0%, 10%);
+  --x-neutral-hsl-2: hsl(0, 0%, 20%);
+  --x-neutral-hsl-3: hsl(0, 0%, 30%);
+  --x-neutral-hsl-4: hsl(0, 0%, 40%);
+  --x-neutral-hsl-5: hsl(0, 0%, 50%);
+  --x-neutral-hsl-6: hsl(0, 0%, 60%);
+  --x-neutral-hsl-7: hsl(0, 0%, 70%);
+  --x-neutral-hsl-8: hsl(0, 0%, 80%);
+  --x-neutral-hsl-9: hsl(0, 0%, 90%);
+  --x-neutral-hsl-10: hsl(0, 0%, 99%)
 }
 
 .x-theme-primary {
@@ -48,6 +83,11 @@
   --x-theme-3: var(--x-primary-hsl-3);
   --x-theme-4: var(--x-primary-hsl-4);
   --x-theme-5: var(--x-primary-hsl-5);
+  --x-theme-6: var(--x-primary-hsl-6);
+  --x-theme-7: var(--x-primary-hsl-7);
+  --x-theme-8: var(--x-primary-hsl-8);
+  --x-theme-9: var(--x-primary-hsl-9);
+  --x-theme-10: var(--x-primary-hsl-10);
 }
 
 .x-theme-secondary {
@@ -56,6 +96,11 @@
   --x-theme-3: var(--x-secondary-hsl-3);
   --x-theme-4: var(--x-secondary-hsl-4);
   --x-theme-5: var(--x-secondary-hsl-5);
+  --x-theme-6: var(--x-secondary-hsl-6);
+  --x-theme-7: var(--x-secondary-hsl-7);
+  --x-theme-8: var(--x-secondary-hsl-8);
+  --x-theme-9: var(--x-secondary-hsl-9);
+  --x-theme-10: var(--x-secondary-hsl-10);
 }
 
 .x-theme-success {
@@ -64,6 +109,11 @@
   --x-theme-3: var(--x-success-hsl-3);
   --x-theme-4: var(--x-success-hsl-4);
   --x-theme-5: var(--x-success-hsl-5);
+  --x-theme-6: var(--x-success-hsl-6);
+  --x-theme-7: var(--x-success-hsl-7);
+  --x-theme-8: var(--x-success-hsl-8);
+  --x-theme-9: var(--x-success-hsl-9);
+  --x-theme-10: var(--x-success-hsl-10);
 }
 
 .x-theme-info {
@@ -72,6 +122,11 @@
   --x-theme-3: var(--x-info-hsl-3);
   --x-theme-4: var(--x-info-hsl-4);
   --x-theme-5: var(--x-info-hsl-5);
+  --x-theme-6: var(--x-info-hsl-6);
+  --x-theme-7: var(--x-info-hsl-7);
+  --x-theme-8: var(--x-info-hsl-8);
+  --x-theme-9: var(--x-info-hsl-9);
+  --x-theme-10: var(--x-info-hsl-10);
 }
 
 .x-theme-warning {
@@ -80,6 +135,11 @@
   --x-theme-3: var(--x-warning-hsl-3);
   --x-theme-4: var(--x-warning-hsl-4);
   --x-theme-5: var(--x-warning-hsl-5);
+  --x-theme-6: var(--x-warning-hsl-6);
+  --x-theme-7: var(--x-warning-hsl-7);
+  --x-theme-8: var(--x-warning-hsl-8);
+  --x-theme-9: var(--x-warning-hsl-9);
+  --x-theme-10: var(--x-warning-hsl-10);
 }
 
 .x-theme-danger {
@@ -88,6 +148,11 @@
   --x-theme-3: var(--x-danger-hsl-3);
   --x-theme-4: var(--x-danger-hsl-4);
   --x-theme-5: var(--x-danger-hsl-5);
+  --x-theme-6: var(--x-danger-hsl-6);
+  --x-theme-7: var(--x-danger-hsl-7);
+  --x-theme-8: var(--x-danger-hsl-8);
+  --x-theme-9: var(--x-danger-hsl-9);
+  --x-theme-10: var(--x-danger-hsl-10);
 }
 
 .x-theme-neutral {
@@ -96,4 +161,9 @@
   --x-theme-3: var(--x-neutral-hsl-3);
   --x-theme-4: var(--x-neutral-hsl-4);
   --x-theme-5: var(--x-neutral-hsl-5);
+  --x-theme-6: var(--x-neutral-hsl-6);
+  --x-theme-7: var(--x-neutral-hsl-7);
+  --x-theme-8: var(--x-neutral-hsl-8);
+  --x-theme-9: var(--x-neutral-hsl-9);
+  --x-theme-10: var(--x-neutral-hsl-10);
 }

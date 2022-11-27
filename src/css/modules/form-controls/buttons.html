@@ -28,21 +28,30 @@
       <section>
         <header>Button Themes</header>
         <div>
-          ${Object.keys(xThemes).map(k1 => html`
-            <dl>
+          <dl>
+            ${Object.keys(xThemes).map(k1 => html`
               <dt>${k1}</dt>
-              <dd class="x-button-group">
-                <button class="x-theme-${xThemes[k1]} x-small x-outlined" type="button">Small</button>
-                <button class="x-theme-${xThemes[k1]} x-dense x-outlined" type="button">Dense</button>
-                <button class="x-theme-${xThemes[k1]} x-outlined" type="button">Normal</button>
-                <button class="x-theme-${xThemes[k1]} x--large x-outlined" type="button">Large</button>
-                <button class="x-theme-${xThemes[k1]} x-outlined" type="button" disabled>Disabled</button>
-                <button class="x-theme-${xThemes[k1]} x-outlined" type="button"><span>$</span><span>With multiple children</span>
-                </button>
-                <button class="x-theme-${xThemes[k1]} x-outlined" type="button">With long ${'text '.repeat(10)}</button>
-              </dd>
-            </dl>
-          `)}
+
+              ${Object.keys(xVarities).map(k2 => html`
+                <dd>
+                  <dl>
+                    <dt>${k2}</dt>
+                    <dd class="x-button-group">
+                      ${k2 !== 'Dense' && k2 !== 'Small' && k2 !== 'Large' ? html`
+                      <button class="x-theme-${xThemes[k1]} x-dense x-${xVarities[k2]}" type="button">
+                        Dense and ${k2[0].toUpperCase().concat(k2.slice(1))}
+                      </button>` : null}
+                      <button class="x-theme-${xThemes[k1]} x-${xVarities[k2]}" type="button" disabled>${k2} and Disabled</button>
+                      <button class="x-theme-${xThemes[k1]} x-${xVarities[k2]}" type="button"><span>$</span><span>With multiple children</span>
+                      </button>
+                      <button class="x-theme-${xThemes[k1]} x-${xVarities[k2]}" type="button">With long ${'text '.repeat(10)}
+                      </button>
+                    </dd>
+                  </dl>
+                </dd>
+              `)}
+            `)}
+          </dl>
         </div>
       </section>`,
     document.body

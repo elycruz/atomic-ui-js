@@ -6,6 +6,8 @@
   border: var(--x-1px) solid ButtonBorder;
   display: inline-flex;
   text-align: center;
+  font-weight: bold;
+  transition: all 0.08s;
 }
 
 :is(.x-button, button):not(:disabled):hover {
@@ -44,31 +46,6 @@
  * -------------------- */
 :is(.x-button, x-button, button) > * + * {
   margin-left: var(--x-5px);
-}
-
-/*
- * Variants
- * -------------------- */
-:is(.x-button, x-button, button):not(.x-outlined) {
-  border-color: transparent;
-}
-
-/* Note: See following link for more about system-colors:
- https://developer.mozilla.org/en-US/docs/Web/CSS/system-color
- */
-
-:is(.x-button, x-button, button):not(.x-filled) {
-  color: var(--x-theme-3);
-  background: Field;
-}
-
-:is(.x-button, x-button, button).x-filled {
-  background: var(--x-theme-4);
-  color: Field;
-}
-
-:is(.x-button, x-button, button).x-outlined {
-  border-color: var(--x-theme-4);
 }
 
 /**

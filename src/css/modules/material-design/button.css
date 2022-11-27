@@ -1,0 +1,37 @@
+/*
+ * Variants
+ * -------------------- */
+:is(.x-button, x-button, button):not(.x-outlined) {
+  border-color: transparent;
+}
+
+/* Note: See following link for more about system-colors:
+ https://developer.mozilla.org/en-US/docs/Web/CSS/system-color
+ */
+
+:is(.x-button, x-button, button):not(.x-filled) {
+  color: var(--x-theme-4);
+  background-color: Field;
+}
+
+:is(.x-button, x-button, button).x-filled {
+  background-color: var(--x-theme-4);
+  color: Field;
+}
+
+:is(.x-button, x-button, button).x-outlined {
+  border-color: var(--x-theme-4);
+}
+
+:is(.x-button, x-button, button):is(.x-outlined, :not(.x-filled)):hover {
+  background-color: var(--x-theme-9);
+  color: var(--x-theme-4);
+}
+
+:is(.x-button, x-button, button).x-filled:hover {
+  background-color: var(--x-theme-6);
+}
+
+:is(.x-button, x-button, button).x-filled:hover {
+
+}
