@@ -16,6 +16,8 @@ html[dir="rtl"] .x-input {
 html:not([dir="rtl"]) :is(x-input, .x-input):is([type], input, select, textarea),
 html:not([dir="rtl"]) :is(x-input, .x-input) > * {
   padding: var(--x-input-padding-top) var(--x-input-padding-left);
+  background: Field;
+  color: FieldText;
 }
 
 html[dir="rtl"] :is(x-input, .x-input):is([type], input, select, textarea),

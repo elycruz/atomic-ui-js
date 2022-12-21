@@ -5,7 +5,7 @@
   "module": "src/index.js",
   "type": "module",
   "engines": {
-    "node": ">=v18"
+    "node": ">=v19"
   },
   "scripts": {
     "gen-css": "node scripts/gen-css/index.mjs",
