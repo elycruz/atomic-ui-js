@@ -6,9 +6,9 @@ html, body {
   font: normal 1rem var(--x-font-family);
 }
 
-@media (prefers-color-scheme: dark) {
-  html, body {
-    background: var(--x-neutral-hsl-1);
-    color: var(--x-neutral-hsl-5);
-  }
-}
+/*@media (prefers-color-scheme: dark) {*/
+/*  html, body {*/
+/*    background: var(--x-neutral-hsl-1);*/
+/*    color: var(--x-neutral-hsl-5);*/
+/*  }*/
+/*}*/

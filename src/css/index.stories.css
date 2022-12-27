@@ -1,1 +1,31 @@
 @import url(./index.css);
+
+body {
+  display: grid;
+  grid-template-areas:
+ "app-header app-header app-header"
+ "app-nav app-main app-main"
+ "app-footer app-footer app-footer";
+}
+
+body > header {
+  grid-area: app-header;
+}
+
+body > main {
+  grid-area: app-main;
+}
+
+body > nav {
+  grid-area: app-nav;
+}
+
+body > footer {
+  grid-area: app-footer;
+}
+
+body > main iframe {
+  /*width: 75vw;*/
+  min-height: 75vh;
+  /*border: none;*/
+}
