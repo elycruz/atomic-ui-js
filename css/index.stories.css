@@ -10,6 +10,7 @@ body {
 
 body > header {
   grid-area: app-header;
+  border-bottom: var(--x-1px) solid;
 }
 
 body > main {
@@ -18,6 +19,7 @@ body > main {
 
 body > nav {
   grid-area: app-nav;
+  max-width: var(--x-144px);
 }
 
 body > footer {
@@ -28,4 +30,5 @@ body > main iframe {
   /*width: 75vw;*/
   min-height: 75vh;
   /*border: none;*/
+  overflow-y: visible;
 }
