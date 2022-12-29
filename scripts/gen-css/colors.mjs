@@ -6,8 +6,8 @@
 import fs from 'fs';
 import * as path from "path";
 import url from "url";
-import {factorsOf, fib} from "../../src/utils/index.js";
-import {xThemes} from "../../src/constants.js";
+import {factorsOf, fib} from "../../utils/index.js";
+import {xThemes} from "../../constants.js";
 
 const __dirname = url.fileURLToPath(new URL('.', import.meta.url));
 

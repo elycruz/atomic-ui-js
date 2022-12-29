@@ -1,6 +1,6 @@
-import {XAtomic} from "../x-base";
+import {XAtomic} from "../x-base/index.js";
 import {css, html, unsafeCSS} from "lit";
-import {addEventListener, addEventListeners, removeEventListener, removeEventListeners} from "../utils/dom/events.js";
+import {addEventListener, addEventListeners, removeEventListener, removeEventListeners} from "../../utils/dom/events.js";
 import styles from './x-field.css' assert {type: 'css'};
 
 export const xFieldName = 'x-field';

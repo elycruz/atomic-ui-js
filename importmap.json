@@ -1,5 +1,0 @@
-{
-  "imports": {
-    "lit": "https://cdn.jsdelivr.net/gh/lit/dist@2.3.0/all/lit-all.min.js"
-  }
-}

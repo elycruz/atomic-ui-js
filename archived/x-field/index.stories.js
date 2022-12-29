@@ -1,4 +1,4 @@
-import {preventDefault} from "../utils";
+import {preventDefault} from "../../utils/index.js";
 
 window.addEventListener('DOMContentLoaded', () => {
   for (const form of window.document.forms) {
