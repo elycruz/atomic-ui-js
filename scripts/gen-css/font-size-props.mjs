@@ -12,7 +12,7 @@ const __dirname = url.fileURLToPath(new URL('.', import.meta.url));
 const {log, error} = console,
 
   genFontSizeCssProps = () => {
-    const outputFilePath = path.join(__dirname, '../src/css/modules/font-size-props.css');
+    const outputFilePath = path.join(__dirname, '../css/modules/font-size-props.css');
     const out = [];
 
     const content =

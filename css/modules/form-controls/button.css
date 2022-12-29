@@ -7,7 +7,7 @@
   display: inline-flex;
   text-align: center;
   font-weight: bold;
-  transition: all 0.08s;
+  transition: all 0.13s;
 }
 
 :is(.x-button, button):not(:disabled):hover {

@@ -13,7 +13,7 @@ const {log, error} = console,
   fileName = 'display.css',
 
   genDisplayCss = () => {
-    const outputFilePath = path.join(__dirname, '../../src/css/modules/', fileName);
+    const outputFilePath = path.join(__dirname, '../../css/modules/', fileName);
     const out = [
       'block',
       'contents',

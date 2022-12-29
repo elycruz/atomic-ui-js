@@ -12,7 +12,7 @@ const {log, error} = console;
 
 export const genAlignItemsCss = () => {
   const fileName = 'align-items.css',
-    outputFilePath = path.join(__dirname, `../../src/css/modules/${fileName}`);
+    outputFilePath = path.join(__dirname, `../../css/modules/${fileName}`);
   const out = ['normal',
     'baseline',
     'center',

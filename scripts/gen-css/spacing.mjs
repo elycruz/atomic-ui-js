@@ -15,7 +15,7 @@ const {fib, factorsOf} = utils,
   fileName = 'spacing.css',
 
   genSpacingCss = () => {
-    const outputFilePath = path.join(__dirname, '../../src/css/modules/', fileName),
+    const outputFilePath = path.join(__dirname, '../../css/modules/', fileName),
 
       fibs = fib(5000),
       factorsOf144 = factorsOf(144),

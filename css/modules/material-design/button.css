@@ -1,37 +1,59 @@
 /*
  * Variants
  * -------------------- */
-:is(.x-button, x-button, button):not(.x-outlined) {
+:where(.x-button, button):not(.x-outlined) {
   border-color: transparent;
+}
+
+:where(.x-button, button):disabled {
+  pointer-events: none;
+  color: var(--x-neutral-hsl-1);
+  background-color: var(--x-neutral-hsl-7);
+  opacity: 0.34;
 }
 
 /* Note: See following link for more about system-colors:
  https://developer.mozilla.org/en-US/docs/Web/CSS/system-color
  */
 
-:is(.x-button, x-button, button):not(.x-filled) {
+:where(.x-button, button):not(.x-filled) {
   color: var(--x-theme-4);
-  background-color: Field;
+  background-color: var(--x-field);
 }
 
-:is(.x-button, x-button, button).x-filled {
+:where(.x-button, button).x-filled {
   background-color: var(--x-theme-4);
-  color: Field;
+  color: var(--x-field);
 }
 
-:is(.x-button, x-button, button).x-outlined {
+:where(.x-button, button).x-outlined {
   border-color: var(--x-theme-4);
 }
 
-:is(.x-button, x-button, button):is(.x-outlined, :not(.x-filled)):hover {
+:where(.x-button, button):where(.x-outlined, .x-raised):not(.x-filled):hover {
   background-color: var(--x-theme-9);
   color: var(--x-theme-4);
 }
 
-:is(.x-button, x-button, button).x-filled:hover {
+:where(.x-button, button).x-filled:hover {
   background-color: var(--x-theme-6);
 }
 
-:is(.x-button, x-button, button).x-filled:hover {
+:where(.x-button, button).x-filled:active {
+  background-color: var(--x-theme-4);
+}
 
+:where(.x-button, button):not(.x-filled):active {
+  background-color: var(--x-theme-8);
+}
+
+:where(.x-button, button).x-raised:active,
+:where(.x-button, button).x-raised {
+  box-shadow: 0 0 var(--x-1px) rgba(0, 0, 0, 0.21),
+  0 var(--x-2px) var(--x-3px) rgba(0, 0, 0, 0.21);
+}
+
+:where(.x-button, button).x-raised:hover {
+  box-shadow: 0 var(--x-2px) var(--x-3px) rgba(0, 0, 0, 0.21),
+  0 var(--x-3px) var(--x-5px) rgba(0, 0, 0, 0.21);
 }

@@ -13,7 +13,7 @@ const {log, error} = console,
 
   genJustifyContentCss = () => {
     const fileName = 'justify-content.css',
-      outputFilePath = path.join(__dirname, `../../src/css/modules/${fileName}`);
+      outputFilePath = path.join(__dirname, `../../css/modules/${fileName}`);
     const out = ['center',
       'start',
       'end',

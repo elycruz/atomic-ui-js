@@ -75,6 +75,12 @@
   --x-neutral-hsl-8: hsl(0, 0%, 80%);
   --x-neutral-hsl-9: hsl(0, 0%, 90%);
   --x-neutral-hsl-10: hsl(0, 0%, 99%)
+
+ --x-field: Field;
+}
+
+@media (prefers-color-scheme: dark) {
+  --x-field: var(--x-neutral-hsl-1);
 }
 
 .x-theme-primary {

@@ -21,10 +21,10 @@ const {log, error} = console,
   neutral = ['neutral', 0],
   fileName = 'index.css',
 
-  genColorsCss = (outputFilePath = path.join(__dirname, '../../src/css/modules/colors/', fileName)) => {
+  genColorsCss = (outputFilePath = path.join(__dirname, '../../css/modules/colors/', fileName)) => {
     const lightnessNums = '.'.repeat(10)
         .split('')
-        .map((_, i) => ((i + 1) * 10) - (i === 9 ? 1 : -0)),
+        .map((_, i) => ((i + 1) * 10) - (i === 9 ? 1 : 0)),
 
       themeColors = [
         primary, secondary, success, info,
@@ -54,6 +54,12 @@ ${[lightnessNums.map((_, i) =>
 
 :root {
 ${themeColors}
+
+ --x-field: Field;
+}
+
+@media (prefers-color-scheme: dark) {
+  --x-field: var(--x-neutral-hsl-1);
 }
 
 ${themeVars.trim()}
