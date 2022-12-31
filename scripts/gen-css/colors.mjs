@@ -6,7 +6,6 @@
 import fs from 'fs';
 import * as path from "path";
 import url from "url";
-import {factorsOf, fib} from "../../utils/index.js";
 import {xThemes} from "../../constants.js";
 
 const __dirname = url.fileURLToPath(new URL('.', import.meta.url));
@@ -33,16 +32,21 @@ const {log, error} = console,
         .flatMap(([c, cN], j) =>
           lightnessNums.flatMap((lightness, i) => ([
             `  --x-${c}-hsl-${i + 1}: ` +
-            `hsl(${cN}, ${c === 'neutral' ? 0 : 72}%, ${lightness}%)`,
+            `hsl(${cN}, ${c === 'neutral' ? 0 : 72}%, ${lightness}%);`,
+            `  --x-${c}-hsla-${i + 1}: ` +
+            `hsla(${cN}, ${c === 'neutral' ? 0 : 89}%, ${lightness}%, ${1 - ((lightness - 1) * .01)});`,
           ]))
-        ).join(';\n'),
+        ).join('\n'),
 
       themeVars = Object.keys(xThemes).reduce((agg, k, j) => {
         const themeName = xThemes[k];
         return agg + `
 .x-theme-${themeName} {
-${[lightnessNums.map((_, i) =>
-          `  --x-theme-${i + 1}: var(--x-${themeName}-hsl-${i + 1});`).join('\n')]}
+${lightnessNums.flatMap((_, i) => ([
+          `  --x-theme-${i + 1}: var(--x-${themeName}-hsl-${i + 1});`,
+          `  --x-theme-hsla-${i + 1}: var(--x-${themeName}-hsla-${i + 1});`
+        ]))
+          .join('\n')}
 }\n`
       }, '');
 
@@ -59,7 +63,9 @@ ${themeColors}
 }
 
 @media (prefers-color-scheme: dark) {
-  --x-field: var(--x-neutral-hsl-1);
+  :root {
+    /*--x-field: var(--x-neutral-hsl-1);*/
+  }
 }
 
 ${themeVars.trim()}

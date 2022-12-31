@@ -14,6 +14,10 @@ export const // isTouchCapable = window.ontouchend !== undefined,
 
   qsAll = querySelectorAll,
 
+  $ = qs,
+
+  $$ = qsAll,
+
   addClass = (className, elm) => elm.classList.add(className),
 
   removeClass = (className, elm) => elm.classList.remove(className),

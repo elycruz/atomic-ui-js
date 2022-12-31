@@ -6,170 +6,312 @@
 
 :root {
   --x-primary-hsl-1: hsl(240, 72%, 10%);
+  --x-primary-hsla-1: hsla(240, 89%, 10%, 0.91);
   --x-primary-hsl-2: hsl(240, 72%, 20%);
+  --x-primary-hsla-2: hsla(240, 89%, 20%, 0.81);
   --x-primary-hsl-3: hsl(240, 72%, 30%);
+  --x-primary-hsla-3: hsla(240, 89%, 30%, 0.71);
   --x-primary-hsl-4: hsl(240, 72%, 40%);
+  --x-primary-hsla-4: hsla(240, 89%, 40%, 0.61);
   --x-primary-hsl-5: hsl(240, 72%, 50%);
+  --x-primary-hsla-5: hsla(240, 89%, 50%, 0.51);
   --x-primary-hsl-6: hsl(240, 72%, 60%);
+  --x-primary-hsla-6: hsla(240, 89%, 60%, 0.41000000000000003);
   --x-primary-hsl-7: hsl(240, 72%, 70%);
+  --x-primary-hsla-7: hsla(240, 89%, 70%, 0.30999999999999994);
   --x-primary-hsl-8: hsl(240, 72%, 80%);
+  --x-primary-hsla-8: hsla(240, 89%, 80%, 0.20999999999999996);
   --x-primary-hsl-9: hsl(240, 72%, 90%);
+  --x-primary-hsla-9: hsla(240, 89%, 90%, 0.10999999999999999);
   --x-primary-hsl-10: hsl(240, 72%, 99%);
+  --x-primary-hsla-10: hsla(240, 89%, 99%, 0.020000000000000018);
   --x-secondary-hsl-1: hsl(300, 72%, 10%);
+  --x-secondary-hsla-1: hsla(300, 89%, 10%, 0.91);
   --x-secondary-hsl-2: hsl(300, 72%, 20%);
+  --x-secondary-hsla-2: hsla(300, 89%, 20%, 0.81);
   --x-secondary-hsl-3: hsl(300, 72%, 30%);
+  --x-secondary-hsla-3: hsla(300, 89%, 30%, 0.71);
   --x-secondary-hsl-4: hsl(300, 72%, 40%);
+  --x-secondary-hsla-4: hsla(300, 89%, 40%, 0.61);
   --x-secondary-hsl-5: hsl(300, 72%, 50%);
+  --x-secondary-hsla-5: hsla(300, 89%, 50%, 0.51);
   --x-secondary-hsl-6: hsl(300, 72%, 60%);
+  --x-secondary-hsla-6: hsla(300, 89%, 60%, 0.41000000000000003);
   --x-secondary-hsl-7: hsl(300, 72%, 70%);
+  --x-secondary-hsla-7: hsla(300, 89%, 70%, 0.30999999999999994);
   --x-secondary-hsl-8: hsl(300, 72%, 80%);
+  --x-secondary-hsla-8: hsla(300, 89%, 80%, 0.20999999999999996);
   --x-secondary-hsl-9: hsl(300, 72%, 90%);
+  --x-secondary-hsla-9: hsla(300, 89%, 90%, 0.10999999999999999);
   --x-secondary-hsl-10: hsl(300, 72%, 99%);
+  --x-secondary-hsla-10: hsla(300, 89%, 99%, 0.020000000000000018);
   --x-success-hsl-1: hsl(120, 72%, 10%);
+  --x-success-hsla-1: hsla(120, 89%, 10%, 0.91);
   --x-success-hsl-2: hsl(120, 72%, 20%);
+  --x-success-hsla-2: hsla(120, 89%, 20%, 0.81);
   --x-success-hsl-3: hsl(120, 72%, 30%);
+  --x-success-hsla-3: hsla(120, 89%, 30%, 0.71);
   --x-success-hsl-4: hsl(120, 72%, 40%);
+  --x-success-hsla-4: hsla(120, 89%, 40%, 0.61);
   --x-success-hsl-5: hsl(120, 72%, 50%);
+  --x-success-hsla-5: hsla(120, 89%, 50%, 0.51);
   --x-success-hsl-6: hsl(120, 72%, 60%);
+  --x-success-hsla-6: hsla(120, 89%, 60%, 0.41000000000000003);
   --x-success-hsl-7: hsl(120, 72%, 70%);
+  --x-success-hsla-7: hsla(120, 89%, 70%, 0.30999999999999994);
   --x-success-hsl-8: hsl(120, 72%, 80%);
+  --x-success-hsla-8: hsla(120, 89%, 80%, 0.20999999999999996);
   --x-success-hsl-9: hsl(120, 72%, 90%);
+  --x-success-hsla-9: hsla(120, 89%, 90%, 0.10999999999999999);
   --x-success-hsl-10: hsl(120, 72%, 99%);
+  --x-success-hsla-10: hsla(120, 89%, 99%, 0.020000000000000018);
   --x-info-hsl-1: hsl(180, 72%, 10%);
+  --x-info-hsla-1: hsla(180, 89%, 10%, 0.91);
   --x-info-hsl-2: hsl(180, 72%, 20%);
+  --x-info-hsla-2: hsla(180, 89%, 20%, 0.81);
   --x-info-hsl-3: hsl(180, 72%, 30%);
+  --x-info-hsla-3: hsla(180, 89%, 30%, 0.71);
   --x-info-hsl-4: hsl(180, 72%, 40%);
+  --x-info-hsla-4: hsla(180, 89%, 40%, 0.61);
   --x-info-hsl-5: hsl(180, 72%, 50%);
+  --x-info-hsla-5: hsla(180, 89%, 50%, 0.51);
   --x-info-hsl-6: hsl(180, 72%, 60%);
+  --x-info-hsla-6: hsla(180, 89%, 60%, 0.41000000000000003);
   --x-info-hsl-7: hsl(180, 72%, 70%);
+  --x-info-hsla-7: hsla(180, 89%, 70%, 0.30999999999999994);
   --x-info-hsl-8: hsl(180, 72%, 80%);
+  --x-info-hsla-8: hsla(180, 89%, 80%, 0.20999999999999996);
   --x-info-hsl-9: hsl(180, 72%, 90%);
+  --x-info-hsla-9: hsla(180, 89%, 90%, 0.10999999999999999);
   --x-info-hsl-10: hsl(180, 72%, 99%);
+  --x-info-hsla-10: hsla(180, 89%, 99%, 0.020000000000000018);
   --x-warning-hsl-1: hsl(30, 72%, 10%);
+  --x-warning-hsla-1: hsla(30, 89%, 10%, 0.91);
   --x-warning-hsl-2: hsl(30, 72%, 20%);
+  --x-warning-hsla-2: hsla(30, 89%, 20%, 0.81);
   --x-warning-hsl-3: hsl(30, 72%, 30%);
+  --x-warning-hsla-3: hsla(30, 89%, 30%, 0.71);
   --x-warning-hsl-4: hsl(30, 72%, 40%);
+  --x-warning-hsla-4: hsla(30, 89%, 40%, 0.61);
   --x-warning-hsl-5: hsl(30, 72%, 50%);
+  --x-warning-hsla-5: hsla(30, 89%, 50%, 0.51);
   --x-warning-hsl-6: hsl(30, 72%, 60%);
+  --x-warning-hsla-6: hsla(30, 89%, 60%, 0.41000000000000003);
   --x-warning-hsl-7: hsl(30, 72%, 70%);
+  --x-warning-hsla-7: hsla(30, 89%, 70%, 0.30999999999999994);
   --x-warning-hsl-8: hsl(30, 72%, 80%);
+  --x-warning-hsla-8: hsla(30, 89%, 80%, 0.20999999999999996);
   --x-warning-hsl-9: hsl(30, 72%, 90%);
+  --x-warning-hsla-9: hsla(30, 89%, 90%, 0.10999999999999999);
   --x-warning-hsl-10: hsl(30, 72%, 99%);
+  --x-warning-hsla-10: hsla(30, 89%, 99%, 0.020000000000000018);
   --x-danger-hsl-1: hsl(0, 72%, 10%);
+  --x-danger-hsla-1: hsla(0, 89%, 10%, 0.91);
   --x-danger-hsl-2: hsl(0, 72%, 20%);
+  --x-danger-hsla-2: hsla(0, 89%, 20%, 0.81);
   --x-danger-hsl-3: hsl(0, 72%, 30%);
+  --x-danger-hsla-3: hsla(0, 89%, 30%, 0.71);
   --x-danger-hsl-4: hsl(0, 72%, 40%);
+  --x-danger-hsla-4: hsla(0, 89%, 40%, 0.61);
   --x-danger-hsl-5: hsl(0, 72%, 50%);
+  --x-danger-hsla-5: hsla(0, 89%, 50%, 0.51);
   --x-danger-hsl-6: hsl(0, 72%, 60%);
+  --x-danger-hsla-6: hsla(0, 89%, 60%, 0.41000000000000003);
   --x-danger-hsl-7: hsl(0, 72%, 70%);
+  --x-danger-hsla-7: hsla(0, 89%, 70%, 0.30999999999999994);
   --x-danger-hsl-8: hsl(0, 72%, 80%);
+  --x-danger-hsla-8: hsla(0, 89%, 80%, 0.20999999999999996);
   --x-danger-hsl-9: hsl(0, 72%, 90%);
+  --x-danger-hsla-9: hsla(0, 89%, 90%, 0.10999999999999999);
   --x-danger-hsl-10: hsl(0, 72%, 99%);
+  --x-danger-hsla-10: hsla(0, 89%, 99%, 0.020000000000000018);
   --x-neutral-hsl-1: hsl(0, 0%, 10%);
+  --x-neutral-hsla-1: hsla(0, 0%, 10%, 0.91);
   --x-neutral-hsl-2: hsl(0, 0%, 20%);
+  --x-neutral-hsla-2: hsla(0, 0%, 20%, 0.81);
   --x-neutral-hsl-3: hsl(0, 0%, 30%);
+  --x-neutral-hsla-3: hsla(0, 0%, 30%, 0.71);
   --x-neutral-hsl-4: hsl(0, 0%, 40%);
+  --x-neutral-hsla-4: hsla(0, 0%, 40%, 0.61);
   --x-neutral-hsl-5: hsl(0, 0%, 50%);
+  --x-neutral-hsla-5: hsla(0, 0%, 50%, 0.51);
   --x-neutral-hsl-6: hsl(0, 0%, 60%);
+  --x-neutral-hsla-6: hsla(0, 0%, 60%, 0.41000000000000003);
   --x-neutral-hsl-7: hsl(0, 0%, 70%);
+  --x-neutral-hsla-7: hsla(0, 0%, 70%, 0.30999999999999994);
   --x-neutral-hsl-8: hsl(0, 0%, 80%);
+  --x-neutral-hsla-8: hsla(0, 0%, 80%, 0.20999999999999996);
   --x-neutral-hsl-9: hsl(0, 0%, 90%);
-  --x-neutral-hsl-10: hsl(0, 0%, 99%)
+  --x-neutral-hsla-9: hsla(0, 0%, 90%, 0.10999999999999999);
+  --x-neutral-hsl-10: hsl(0, 0%, 99%);
+  --x-neutral-hsla-10: hsla(0, 0%, 99%, 0.020000000000000018);
 
  --x-field: Field;
 }
 
 @media (prefers-color-scheme: dark) {
-  --x-field: var(--x-neutral-hsl-1);
+  :root {
+    /*--x-field: var(--x-neutral-hsl-1);*/
+  }
 }
 
 .x-theme-primary {
   --x-theme-1: var(--x-primary-hsl-1);
+  --x-theme-hsla-1: var(--x-primary-hsla-1);
   --x-theme-2: var(--x-primary-hsl-2);
+  --x-theme-hsla-2: var(--x-primary-hsla-2);
   --x-theme-3: var(--x-primary-hsl-3);
+  --x-theme-hsla-3: var(--x-primary-hsla-3);
   --x-theme-4: var(--x-primary-hsl-4);
+  --x-theme-hsla-4: var(--x-primary-hsla-4);
   --x-theme-5: var(--x-primary-hsl-5);
+  --x-theme-hsla-5: var(--x-primary-hsla-5);
   --x-theme-6: var(--x-primary-hsl-6);
+  --x-theme-hsla-6: var(--x-primary-hsla-6);
   --x-theme-7: var(--x-primary-hsl-7);
+  --x-theme-hsla-7: var(--x-primary-hsla-7);
   --x-theme-8: var(--x-primary-hsl-8);
+  --x-theme-hsla-8: var(--x-primary-hsla-8);
   --x-theme-9: var(--x-primary-hsl-9);
+  --x-theme-hsla-9: var(--x-primary-hsla-9);
   --x-theme-10: var(--x-primary-hsl-10);
+  --x-theme-hsla-10: var(--x-primary-hsla-10);
 }
 
 .x-theme-secondary {
   --x-theme-1: var(--x-secondary-hsl-1);
+  --x-theme-hsla-1: var(--x-secondary-hsla-1);
   --x-theme-2: var(--x-secondary-hsl-2);
+  --x-theme-hsla-2: var(--x-secondary-hsla-2);
   --x-theme-3: var(--x-secondary-hsl-3);
+  --x-theme-hsla-3: var(--x-secondary-hsla-3);
   --x-theme-4: var(--x-secondary-hsl-4);
+  --x-theme-hsla-4: var(--x-secondary-hsla-4);
   --x-theme-5: var(--x-secondary-hsl-5);
+  --x-theme-hsla-5: var(--x-secondary-hsla-5);
   --x-theme-6: var(--x-secondary-hsl-6);
+  --x-theme-hsla-6: var(--x-secondary-hsla-6);
   --x-theme-7: var(--x-secondary-hsl-7);
+  --x-theme-hsla-7: var(--x-secondary-hsla-7);
   --x-theme-8: var(--x-secondary-hsl-8);
+  --x-theme-hsla-8: var(--x-secondary-hsla-8);
   --x-theme-9: var(--x-secondary-hsl-9);
+  --x-theme-hsla-9: var(--x-secondary-hsla-9);
   --x-theme-10: var(--x-secondary-hsl-10);
+  --x-theme-hsla-10: var(--x-secondary-hsla-10);
 }
 
 .x-theme-success {
   --x-theme-1: var(--x-success-hsl-1);
+  --x-theme-hsla-1: var(--x-success-hsla-1);
   --x-theme-2: var(--x-success-hsl-2);
+  --x-theme-hsla-2: var(--x-success-hsla-2);
   --x-theme-3: var(--x-success-hsl-3);
+  --x-theme-hsla-3: var(--x-success-hsla-3);
   --x-theme-4: var(--x-success-hsl-4);
+  --x-theme-hsla-4: var(--x-success-hsla-4);
   --x-theme-5: var(--x-success-hsl-5);
+  --x-theme-hsla-5: var(--x-success-hsla-5);
   --x-theme-6: var(--x-success-hsl-6);
+  --x-theme-hsla-6: var(--x-success-hsla-6);
   --x-theme-7: var(--x-success-hsl-7);
+  --x-theme-hsla-7: var(--x-success-hsla-7);
   --x-theme-8: var(--x-success-hsl-8);
+  --x-theme-hsla-8: var(--x-success-hsla-8);
   --x-theme-9: var(--x-success-hsl-9);
+  --x-theme-hsla-9: var(--x-success-hsla-9);
   --x-theme-10: var(--x-success-hsl-10);
+  --x-theme-hsla-10: var(--x-success-hsla-10);
 }
 
 .x-theme-info {
   --x-theme-1: var(--x-info-hsl-1);
+  --x-theme-hsla-1: var(--x-info-hsla-1);
   --x-theme-2: var(--x-info-hsl-2);
+  --x-theme-hsla-2: var(--x-info-hsla-2);
   --x-theme-3: var(--x-info-hsl-3);
+  --x-theme-hsla-3: var(--x-info-hsla-3);
   --x-theme-4: var(--x-info-hsl-4);
+  --x-theme-hsla-4: var(--x-info-hsla-4);
   --x-theme-5: var(--x-info-hsl-5);
+  --x-theme-hsla-5: var(--x-info-hsla-5);
   --x-theme-6: var(--x-info-hsl-6);
+  --x-theme-hsla-6: var(--x-info-hsla-6);
   --x-theme-7: var(--x-info-hsl-7);
+  --x-theme-hsla-7: var(--x-info-hsla-7);
   --x-theme-8: var(--x-info-hsl-8);
+  --x-theme-hsla-8: var(--x-info-hsla-8);
   --x-theme-9: var(--x-info-hsl-9);
+  --x-theme-hsla-9: var(--x-info-hsla-9);
   --x-theme-10: var(--x-info-hsl-10);
+  --x-theme-hsla-10: var(--x-info-hsla-10);
 }
 
 .x-theme-warning {
   --x-theme-1: var(--x-warning-hsl-1);
+  --x-theme-hsla-1: var(--x-warning-hsla-1);
   --x-theme-2: var(--x-warning-hsl-2);
+  --x-theme-hsla-2: var(--x-warning-hsla-2);
   --x-theme-3: var(--x-warning-hsl-3);
+  --x-theme-hsla-3: var(--x-warning-hsla-3);
   --x-theme-4: var(--x-warning-hsl-4);
+  --x-theme-hsla-4: var(--x-warning-hsla-4);
   --x-theme-5: var(--x-warning-hsl-5);
+  --x-theme-hsla-5: var(--x-warning-hsla-5);
   --x-theme-6: var(--x-warning-hsl-6);
+  --x-theme-hsla-6: var(--x-warning-hsla-6);
   --x-theme-7: var(--x-warning-hsl-7);
+  --x-theme-hsla-7: var(--x-warning-hsla-7);
   --x-theme-8: var(--x-warning-hsl-8);
+  --x-theme-hsla-8: var(--x-warning-hsla-8);
   --x-theme-9: var(--x-warning-hsl-9);
+  --x-theme-hsla-9: var(--x-warning-hsla-9);
   --x-theme-10: var(--x-warning-hsl-10);
+  --x-theme-hsla-10: var(--x-warning-hsla-10);
 }
 
 .x-theme-danger {
   --x-theme-1: var(--x-danger-hsl-1);
+  --x-theme-hsla-1: var(--x-danger-hsla-1);
   --x-theme-2: var(--x-danger-hsl-2);
+  --x-theme-hsla-2: var(--x-danger-hsla-2);
   --x-theme-3: var(--x-danger-hsl-3);
+  --x-theme-hsla-3: var(--x-danger-hsla-3);
   --x-theme-4: var(--x-danger-hsl-4);
+  --x-theme-hsla-4: var(--x-danger-hsla-4);
   --x-theme-5: var(--x-danger-hsl-5);
+  --x-theme-hsla-5: var(--x-danger-hsla-5);
   --x-theme-6: var(--x-danger-hsl-6);
+  --x-theme-hsla-6: var(--x-danger-hsla-6);
   --x-theme-7: var(--x-danger-hsl-7);
+  --x-theme-hsla-7: var(--x-danger-hsla-7);
   --x-theme-8: var(--x-danger-hsl-8);
+  --x-theme-hsla-8: var(--x-danger-hsla-8);
   --x-theme-9: var(--x-danger-hsl-9);
+  --x-theme-hsla-9: var(--x-danger-hsla-9);
   --x-theme-10: var(--x-danger-hsl-10);
+  --x-theme-hsla-10: var(--x-danger-hsla-10);
 }
 
 .x-theme-neutral {
   --x-theme-1: var(--x-neutral-hsl-1);
+  --x-theme-hsla-1: var(--x-neutral-hsla-1);
   --x-theme-2: var(--x-neutral-hsl-2);
+  --x-theme-hsla-2: var(--x-neutral-hsla-2);
   --x-theme-3: var(--x-neutral-hsl-3);
+  --x-theme-hsla-3: var(--x-neutral-hsla-3);
   --x-theme-4: var(--x-neutral-hsl-4);
+  --x-theme-hsla-4: var(--x-neutral-hsla-4);
   --x-theme-5: var(--x-neutral-hsl-5);
+  --x-theme-hsla-5: var(--x-neutral-hsla-5);
   --x-theme-6: var(--x-neutral-hsl-6);
+  --x-theme-hsla-6: var(--x-neutral-hsla-6);
   --x-theme-7: var(--x-neutral-hsl-7);
+  --x-theme-hsla-7: var(--x-neutral-hsla-7);
   --x-theme-8: var(--x-neutral-hsl-8);
+  --x-theme-hsla-8: var(--x-neutral-hsla-8);
   --x-theme-9: var(--x-neutral-hsl-9);
+  --x-theme-hsla-9: var(--x-neutral-hsla-9);
   --x-theme-10: var(--x-neutral-hsl-10);
+  --x-theme-hsla-10: var(--x-neutral-hsla-10);
 }

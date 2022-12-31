@@ -17,7 +17,7 @@
   <style>
     .x-color-grid th {
       padding: 0.5rem;
-      background: var(--x-neutral-hsl-5);
+      background: var(--x-neutral-hsl-8);
     }
 
     .x-color-grid tbody td {
@@ -35,51 +35,51 @@
   import {xThemes} from "../constants.js";
 
   const themes = Object.values(xThemes);
-  const themeRange = '.'.repeat(9).split('');
+  const themeRange = '.'.repeat(10).split('');
 
   render(html`
-    <table class="x-color-grid">
-      <thead>
-      <tr>
-        <th colspan="${themes.length}">HSL Color Table</th>
-      </tr>
-      <tr>
-        ${themes.map(k => html`
-          <th>${k}</th>`)}
-      </tr>
-      </thead>
-      <tbody>
-      ${themeRange.map((_, i) => html`
-        <tr>${themes.map(k => html`
-          <td style="background: var(--x-${k}-hsl-${i + 1});"
-              title="--x-${k}-hsl-${i + 1}">&nbsp;
-          </td>
-        `)}
-        </tr>
-      `)}
-      </tbody>
-    </table>
-    <table class="x-color-grid x-display-none">
-      <thead>
-      <tr>
-        <th colspan="${themes.length}">HSLA Color Table</th>
-      </tr>
-      <tr>
-        ${themes.map(k => html`
-          <th>${k}</th>`)}
-      </tr>
-      </thead>
-      <tbody>
-      ${themeRange.map((_, i) => html`
-        <tr>${themes.map(k => html`
-          <td style="background: var(--x-${k}-hsla-${i + 1});"
-              title="--x-${k}-hsla-${i + 1}">&nbsp;
-          </td>
-        `)}
-        </tr>
-      `)}
-      </tbody>
-    </table>
+      <table class="x-color-grid">
+          <thead>
+          <tr>
+              <th colspan="${themes.length}">HSL Color Table</th>
+          </tr>
+          <tr>
+              ${themes.map(k => html`
+                  <th>${k}</th>`)}
+          </tr>
+          </thead>
+          <tbody>
+          ${themeRange.map((_, i) => html`
+              <tr>${themes.map(k => html`
+                  <td style="background: var(--x-${k}-hsl-${i + 1});"
+                      title="--x-${k}-hsl-${i + 1}">&nbsp;
+                  </td>
+              `)}
+              </tr>
+          `)}
+          </tbody>
+      </table>
+      <table class="x-color-grid">
+          <thead>
+          <tr>
+              <th colspan="${themes.length}">HSLA Color Table</th>
+          </tr>
+          <tr>
+              ${themes.map(k => html`
+                  <th>${k}</th>`)}
+          </tr>
+          </thead>
+          <tbody>
+          ${themeRange.map((_, i) => html`
+              <tr>${themes.map(k => html`
+                  <td style="background: var(--x-${k}-hsla-${i + 1});"
+                      title="--x-${k}-hsla-${i + 1}">&nbsp;
+                  </td>
+              `)}
+              </tr>
+          `)}
+          </tbody>
+      </table>
   `, document.body);
 </script>
 </body>
