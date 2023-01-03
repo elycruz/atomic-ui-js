@@ -17,8 +17,8 @@
 /** Ripple styles **/
 :where(.x-button, .x-btn).x-filled::after,
 :where(.x-button, .x-btn).x-filled::before {
-  --x-ripple-hover-opacity: 0.21;
-  --x-ripple-active-opacity: 0.13;
+  --x-ripple-hover-opacity: 0.55;
+  --x-ripple-active-opacity: 0.34;
 
   background: var(--x-field);
 }
@@ -41,7 +41,7 @@
 
 :where(.x-button, .x-btn):not(.x-filled) {
   /*background-color: var(--x-field);*/
-  border-color: var(--x-field);
+  /*border-color: var(--x-field);*/
   color: var(--x-theme-4);
 }
 

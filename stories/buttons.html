@@ -89,14 +89,15 @@
     document.body
   );
 
-  window.addEventListener('DOMContentLoaded', e => {
+  window.addEventListener('DOMContentLoaded', () => {
 
     // Add ripple effect behavior, for 'x-button' instances
     $$('.x-btn, .x-button').forEach(b => {
       b.rippleEffect = 'bounded';
       addRippleEffect(b);
-    })
-  }, {once: true})
+    });
+
+  }, {once: true});
 </script>
 </body>
 </html>

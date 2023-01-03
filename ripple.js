@@ -1,87 +1,87 @@
-export const RippleEffect = {
-    BOUNDED: 'bounded',
-    UNBOUNDED: 'unbounded'
-  },
+/**
+ * @module ripple
+ *
+ * Adds/Removes 'Bounded' (enclosed) ripple effects from an element.
+ */
+const _mouseOverEventName = 'mouseenter',
+  _mouseDownEventName = 'mousedown',
+  _activeSuffix = '--active',
 
-  animationEndEventName = 'animationend',
-  mouseOverEventName = 'mouseenter',
-  mouseDownEventName = 'mousedown',
-  activeSuffix = '--active',
+  _rippleDiameterCssPropName = '--x-ripple-diameter',
+  _rippleXCssPropName = '--x-ripple-x',
+  _rippleYCssPropName = '--x-ripple-y',
+  _rippleClassName = 'x-ripple',
 
-  onRippleAnimationEnd = function (e) {
+  /**
+   * @param {AnimationEvent} e
+   */
+  _onRippleAnimationEnd = function (e) {
     e.currentTarget
-      .classList.remove(`${rippleUpgradedClassName}${activeSuffix}`);
+      .classList.remove(`${_rippleClassName}${_activeSuffix}`);
   },
 
-  onRippleElementMouseDown = function (e) {
-    if (e.type === mouseOverEventName) {
-      updateCssProps(e.currentTarget, e);
+  /**
+   * @param {MouseEvent} e
+   */
+  _onRippleElementMouseDown = function (e) {
+    if (e.type === _mouseOverEventName) {
+      _updateCssProps(e.currentTarget, e);
       return;
     }
-    rippleActive(e.currentTarget, e);
+    _rippleActive(e.currentTarget, e);
   },
 
-  rippleDiameterCssPropName = '--x-ripple-diameter',
-  rippleXCssPropName = '--x-ripple-x',
-  rippleYCssPropName = '--x-ripple-y',
-  rippleUpgradedClassName = 'x-ripple-upgraded',
+  /**
+   * @param {HTMLElement} ctx
+   * @param {MouseEvent} [e]
+   */
+  _updateCssProps = (ctx, e) => {
+    const rippleRadius = Math.max(ctx.offsetHeight, ctx.offsetWidth);
 
-  updateCssProps = (ctx, e) => {
-    ctx.rippleDiameter = Math.max(ctx.offsetHeight, ctx.offsetWidth);
-    if (ctx.rippleEffect === RippleEffect.BOUNDED) {
-      ctx.rippleDiameter = ctx.rippleDiameter * 2;
-    }
-    ctx.style.setProperty(rippleDiameterCssPropName, ctx.rippleDiameter + 'px');
+    ctx.style.setProperty(_rippleDiameterCssPropName, rippleRadius * 2 + 'px');
+
     if (!e) return;
-    if (ctx.rippleEffect === RippleEffect.BOUNDED) {
-      ctx.rippleX = `${(e.clientX - ctx.offsetLeft + window.scrollX) / ctx.offsetWidth * 100 - 100}%`;
-      ctx.rippleY = `${(e.clientY - ctx.offsetTop + window.scrollY) / ctx.offsetHeight * 100 - 100}%`;
-      ctx.style.setProperty(rippleXCssPropName, ctx.rippleX);
-      ctx.style.setProperty(rippleYCssPropName, ctx.rippleY);
-    }
+
+    const rippleX = `${e.offsetX - (rippleRadius + (ctx.offsetWidth / 2))}px`,
+      rippleY = `${e.offsetY - (rippleRadius + (ctx.offsetHeight / 2))}px`;
+
+    ctx.style.setProperty(_rippleXCssPropName, rippleX);
+    ctx.style.setProperty(_rippleYCssPropName, rippleY);
   },
 
-  rippleActive = (ctx, e) => {
-    ctx.classList.remove(`${rippleUpgradedClassName}${activeSuffix}`);
-    updateCssProps(ctx, e);
-    ctx.classList.add(`${rippleUpgradedClassName}${activeSuffix}`);
+  _rippleActive = (ctx, e) => {
+    ctx.classList.remove(`${_rippleClassName}${_activeSuffix}`);
+    _updateCssProps(ctx, e);
+    ctx.classList.add(`${_rippleClassName}${_activeSuffix}`);
   },
 
   addRippleEffect = (ctx) => {
+    removeRippleEffect(ctx);
     ctx.classList.add(
-      rippleUpgradedClassName,
-      `${rippleUpgradedClassName}--${ctx.rippleEffect}`
+      _rippleClassName,
+      `${_rippleClassName}-upgraded`,
+      `${_rippleClassName}--${ctx.rippleEffect}`
     );
-    ctx.rippleDiameter = Math.max(ctx.offsetHeight, ctx.offsetWidth);
-    if (!ctx.rippleEffect) {
-      ctx.rippleEffect = RippleEffect.BOUNDED;
-    }
-    if (ctx.rippleEffect === RippleEffect.BOUNDED) {
-      ctx.style.top = 0;
-      ctx.style.left = 0;
-    }
-    updateCssProps(ctx);
-    ctx.addEventListener(animationEndEventName, onRippleAnimationEnd);
-    ctx.addEventListener(mouseOverEventName, onRippleElementMouseDown);
-    ctx.addEventListener(mouseDownEventName, onRippleElementMouseDown);
+    _updateCssProps(ctx);
+    // ctx.addEventListener(_animationEndEventName, _onRippleAnimationEnd);
+    ctx.addEventListener(_mouseOverEventName, _onRippleElementMouseDown);
+    ctx.addEventListener(_mouseDownEventName, _onRippleElementMouseDown);
+    ctx.addEventListener('focusout', _onRippleAnimationEnd);
     return ctx;
   },
 
   removeRippleEffect = (ctx) => {
-    ctx.removeEventListener(animationEndEventName, onRippleAnimationEnd);
-    ctx.removeEventListener(mouseOverEventName, onRippleElementMouseDown);
-    ctx.removeEventListener(mouseDownEventName, onRippleElementMouseDown);
-    const className = rippleUpgradedClassName;
+    // ctx.removeEventListener(_animationEndEventName, _onRippleAnimationEnd);
+    ctx.removeEventListener(_mouseOverEventName, _onRippleElementMouseDown);
+    ctx.removeEventListener(_mouseDownEventName, _onRippleElementMouseDown);
+    ctx.removeEventListener('focusout', _onRippleAnimationEnd);
     ctx.classList.remove(
-      className,
-      `${className}${activeSuffix}`,
-      `${className}--${ctx.rippleEffect}`
+      _rippleClassName,
+      `${_rippleClassName}${_activeSuffix}`,
+      `${_rippleClassName}-upgraded`,
+      `${_rippleClassName}--${ctx.rippleEffect}`
     );
     return ctx;
-  },
+  };
 
-  rippleResizeObserver = new ResizeObserver((records) => {
-    for (const r of records) {
-      updateCssProps(r.target);
-    }
-  });
+export {addRippleEffect, removeRippleEffect}
