@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Buttons</title>
+  <link rel="stylesheet" href="../css/index.stories.css"/>
+  <script type="importmap">
+    {
+      "imports": {
+        "lit": "https://cdn.jsdelivr.net/gh/lit/dist@2.3.0/all/lit-all.min.js"
+      }
+    }
+  </script>
+  <style>
+    .x-button-group + .x-button-group {
+      margin-top: var(--x-21px);
+    }
+
+    .x-button-group button {
+      margin: var(--x-8px);
+    }
+  </style>
+</head>
+<body>
+<script type="module">
+  import {html, render} from 'lit';
+  import {xThemes, xVarities} from "../constants.js";
+  import {addRippleEffect} from "../ripple.js";
+  import {$$} from '../utils';
+
+  const out = document.createElement('fieldset'),
+    allBaseVariantClasses = 'x-ripple x-filled x-raised x-outlined x-ripple-upgraded';
+
+  render(html`
+      <section>
+        <header>Checkbox Themes</header>
+        <div>
+          <dl>
+            ${Object.keys(xThemes).map(k1 => html`
+                <dt>${k1}</dt>
+
+                <dd>
+                    <form>
+                        <fieldset class="x-fieldset x-fieldset--grid-2">
+                            <label for="checkbox-1">Checkbox</label>
+                            <div class="x-field">
+                              <div class="x-ripple x-${xThemes[k1]}">
+                                <input type="checkbox" id="checkbox-1" name="checkbox-1"
+                                       class="x-checkbox"/>
+                              </div>
+                            </div>
+                        </fieldset>
+                    </form>
+                </dd>
+            `)}
+          </dl>
+        </div>
+      </section>`,
+    document.body
+  );
+
+</script>
+</body>
+</html>

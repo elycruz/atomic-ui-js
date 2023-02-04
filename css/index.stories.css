@@ -4,31 +4,33 @@ body {
   display: grid;
   grid-template-areas:
  "app-header app-header app-header"
- "app-nav app-main app-main"
+ "app-main app-main app-main"
  "app-footer app-footer app-footer";
 }
 
-body > header {
+body > * > * {
+  max-width: 1597px;
+}
+
+body > .x-app-header {
   grid-area: app-header;
   border-bottom: var(--x-1px) solid;
 }
 
-body > main {
+body > div {
   grid-area: app-main;
+  display: inline-grid;
+  grid-template-columns: auto 1fr;
 }
 
-body > nav {
-  grid-area: app-nav;
+body > div > nav {
   max-width: var(--x-144px);
 }
 
-body > footer {
+body > .x-app-footer {
   grid-area: app-footer;
 }
 
 body > main iframe {
-  /*width: 75vw;*/
-  min-height: 75vh;
-  /*border: none;*/
-  overflow-y: visible;
+  border: none;
 }

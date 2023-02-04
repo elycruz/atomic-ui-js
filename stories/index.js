@@ -2,21 +2,22 @@ const $ = (selector, base = document) =>
     base.querySelector(selector),
 
   $$ = (selector, base = document) =>
-    base.querySelectorAll(selector),
-
-  resizeIframe = iframe => {
-    iframe.style.height =
-      iframe.contentWindow.document.body.scrollHeight + 'px';
-  }
+    base.querySelectorAll(selector)
 ;
 
 // Init
 // ----
-window.addEventListener('DOMContentLoaded', () => {
+window.addEventListener('load', () => {
   const iframe = $('iframe'),
+    header = $('.x-app-header'),
+    footer = $('.x-app-footer'),
     menus = $$('.x-menu'),
-    nav = $('nav'),
+    nav = $('.x-app-nav'),
     hambtn = $('.x-hamburger-btn'),
+
+    mainIframeHeightResize = (iframe) => {
+      iframe.style.height = window.innerHeight + (-1 * (header.offsetHeight + footer.offsetHeight)) - 12 + 'px';
+    },
 
     iframeMutObserver = new MutationObserver(records => {
       let target;
@@ -24,13 +25,15 @@ window.addEventListener('DOMContentLoaded', () => {
         target = r.target;
         if (target) break;
       }
-      if (target) resizeIframe(iframe);
+      if (target) mainIframeHeightResize(iframe);
     });
 
   iframeMutObserver.observe(iframe.contentWindow.document.body, {
     childList: true,
     subtree: true
   });
+
+  iframe.onload = e => mainIframeHeightResize(e.currentTarget);
 
   hambtn.addEventListener('click', () => {
     nav.classList.toggle('x-display-none');
