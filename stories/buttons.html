@@ -24,7 +24,7 @@
     allBaseVariantClasses = 'x-ripple x-filled x-raised x-outlined x-ripple-upgraded';
 
   out.innerHTML = `
-        <header>Button Themes</header>
+        <header><div class="x-h2">Button Themes</div></header>
         <div>
           <dl>
             ${Object.keys(xThemes).map(k1 => `
@@ -51,7 +51,7 @@
                     </dd>
                   </dl>
                 </dd>
-              `)}
+              `).join('\n')}
               <dd>
                 <dl>
                   <dt>All</dt>
@@ -73,7 +73,7 @@
                   </dd>
                 </dl>
               </dd>
-            `)}
+            `).join('\n')}
           </dl>
         </div>
       `;

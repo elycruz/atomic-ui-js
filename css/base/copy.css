@@ -1,8 +1,53 @@
-h1, h2, h3, h4, h5, h6 {
+h1, h2, h3, h4, h5, h6, figure {
   margin: 0;
+}
+
+h1,
+.x-h1 {
+  font-size: var(--x-72px);
+  line-height: var(--x-72px);
+}
+
+h2,
+.x-h2 {
+  font-size: var(--x-48px);
+  line-height: var(--x-48px);
+}
+
+h3,
+.x-h3 {
+  font-size: var(--x-36px);
+  line-height: var(--x-36px);
+}
+
+h4,
+.x-h4 {
+  font-size: var(--x-24px);
+  line-height: var(--x-24px);
+}
+
+h5,
+.x-h5 {
+  font-size: var(--x-18px);
+  line-height: var(--x-18px);
+}
+
+h6,
+.x-h6 {
+  font-size: var(--x-16px);
+  line-height: var(--x-16px);
+}
+
+a, p {
+  font-size: var(--x-16px);
+  line-height: var(--x-24px);
 }
 
 dl dd + *,
 dl + dl {
   margin-top: var(--x-21px);
+}
+
+dt, label {
+  font-weight: bold;
 }

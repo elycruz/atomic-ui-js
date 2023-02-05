@@ -52,7 +52,13 @@
 /**
  * .x-button-group
  * ---------------- */
-.x-button-group:not(.x-button-group--vertical) button + button,
-.x-button-group.x-button-group--horizontal button + button {
-  margin-left: 0.5rem;
+.x-button-group:where(
+  :not(.x-button-group--vertical),
+  .x-button-group--horizontal
+) :where(
+  > button + button,
+  > .x-btn + .x-btn,
+  > .x-button + .x-button
+) {
+  margin-left: var(--x-8px);
 }
