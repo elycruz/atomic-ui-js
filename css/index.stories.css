@@ -24,7 +24,7 @@ body > div {
 }
 
 body > div > nav {
-  max-width: var(--x-144px);
+  /*max-width: var(--x-144px);*/
 }
 
 body > .x-app-footer {

@@ -16,4 +16,8 @@ export const xThemes = {
     Small: 'small',
     Normal: 'normal',
     Large: 'large'
-  };
+  },
+
+  CHECKED_NAME = 'checked',
+  DEFAULT_CHECKED_NAME = 'defaultChecked'
+;
