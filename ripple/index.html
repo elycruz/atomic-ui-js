@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Atomic UI Js - Ripple element</title>
+</head>
+<link rel="stylesheet" href="../css/index.stories.css"/>
+<link rel="stylesheet" href="./index.css"/>
+<style>
+  .standalone-ripple {
+    width: 3rem;
+    height: 3rem;
+  }
+</style>
+<body>
+<script type="module" src="register.js"></script>
+<section>
+  <div>
+    <p>The ripple element operates in two modes:</p>
+    <ul>
+      <li>With children, and</li>
+      <li>As an &quot;empty&quot; child element.</li>
+    </ul>
+    <dl>
+      <dt>Empty element</dt>
+      <dd>
+        <x-ripple class="standalone-ripple x-theme-neutral"></x-ripple>
+      </dd>
+      <dt>Empty child element</dt>
+      <dd>
+        <button type="button" class="x-btn x-ripple x-filled x-theme-neutral">
+          <span>Button</span>
+          <x-ripple></x-ripple>
+        </button>
+      </dd>
+      <dt>Parent element (with a child element)</dt>
+      <dd>
+        <label for="checkbox" class="x-theme-success">
+          <x-ripple>
+            <input class="x-checkbox" type="checkbox" id="checkbox" name="checkbox"/>
+          </x-ripple>
+        </label>
+      </dd>
+    </dl>
+  </div>
+</section>
+</body>
+</html>
