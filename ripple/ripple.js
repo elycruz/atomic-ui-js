@@ -10,7 +10,7 @@ export const xRippleName = 'x-ripple',
  */
 const _mouseOverEventName = 'mouseenter',
   _mouseDownEventName = 'mousedown',
-  _activeSuffix = '--active',
+  _activeSuffix = '--actsive',
 
   _rippleDiameterCssPropName = `--${xRippleName}-diameter`,
   _rippleXCssPropName = `--${xRippleName}-x`,
@@ -78,7 +78,7 @@ const _mouseOverEventName = 'mouseenter',
   },
 
   _resizeObserver = new ResizeObserver(debounce((records) => {
-    if (!records.length) return;
+    if (!records?.length) return;
 
     records[0].target.update();
   }, 377)),
@@ -89,7 +89,7 @@ const _mouseOverEventName = 'mouseenter',
     let requiresUpdate = false,
       target;
 
-    for (let i =0; i < recordsLen; i += 1) {
+    for (let i = 0; i < recordsLen; i += 1) {
       const r = records[i];
 
       if (r.addedNodes.length || r.removedNodes.length) {

@@ -32,10 +32,8 @@
   }
 }
 
-.x-ripple,
 x-ripple {
-  /* Set dynamically */
-  --x-ripple-diameter: 250%;
+  --x-ripple-diameter: 100%;
   --x-ripple-x: -50%;
   --x-ripple-y: -50%;
 
@@ -50,29 +48,45 @@ x-ripple {
   --x-ripple-active-speed-out: 0.34s;
 
   position: relative;
+  display: inline-grid;
+  overflow: hidden;
+
+  transition: background var(--x-ripple-speed),
+  background-color var(--x-ripple-speed);
 }
 
-x-ripple {
-  display: grid;
+x-ripple:hover {
+  background: var(--x-theme-hsla-9);
 }
 
-:where(.x-ripple, x-ripple)::after,
-:where(.x-ripple, x-ripple)::before {
+x-ripple:not(:empty) {
+  padding: 1rem;
+  border-radius: 50%;
+}
+
+x-ripple:not(:empty) > :first-child {
+  place-self: center;
+}
+
+x-ripple::after,
+x-ripple::before {
   position: absolute;
   content: "";
   top: 50%;
   left: 50%;
+  background: var(--x-theme-3);
   pointer-events: none;
   transform-origin: center;
   transition: opacity var(--x-ripple-speed),
   background var(--x-ripple-speed),
+  background-color var(--x-ripple-speed),
   transform var(--x-ripple-speed) ease-out;
   width: var(--x-ripple-diameter);
   height: var(--x-ripple-diameter);
   border-radius: 50%;
 }
 
-:where(.x-ripple, x-ripple)::before {
+x-ripple::before {
   transform: translate(
     var(--x-ripple-x),
     var(--x-ripple-y)
@@ -83,12 +97,14 @@ x-ripple {
   z-index: 1;
 }
 
-:where(.x-ripple, x-ripple):is(
-  :focus-visible,
-  :hover,
-  :active,
-  .x-ripple--active
-)::before {
+x-ripple:is(
+    :hover,
+    .x-ripple--active
+  )::before,
+  x-ripple:has(
+    :focus,
+    :active
+  )::before {
   transform: translate(
     var(--x-ripple-x),
     var(--x-ripple-y)
@@ -98,36 +114,14 @@ x-ripple {
   opacity: var(--x-ripple-opacity);
 }
 
-:where(.x-ripple, x-ripple)::after {
+x-ripple::after {
+  animation: var(--x-ripple-active-speed-out) ripple-behavior-out ease-out;
+  animation-fill-mode: forwards;
   z-index: 2;
 }
 
-:where(.x-ripple, x-ripple)::after {
-  animation: var(--x-ripple-active-speed-out) ripple-behavior-out ease-out;
-  animation-fill-mode: forwards;
-}
-
-:where(.x-ripple, x-ripple).x-ripple--active::after,
-:where(.x-ripple, x-ripple):is(:active, :hover:active)::after {
+x-ripple.x-ripple--active::after,
+x-ripple:has(:active, :hover:active)::after {
   animation: var(--x-ripple-active-speed) ripple-behavior-in ease-out;
   animation-fill-mode: forwards;
-}
-
-x-ripple::after,
-x-ripple::before {
-  background: var(--x-theme-3);
-}
-
-x-ripple:empty {
-  overflow: hidden;
-}
-
-x-ripple:not(:empty) {
-  display: inline-grid;
-  padding: 1rem;
-  border-radius: 50%;
-}
-
-x-ripple:not(:empty) > :first-child {
-  place-self: center;
 }
