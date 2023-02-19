@@ -33,7 +33,6 @@
 }
 
 x-ripple {
-  --x-ripple-diameter: 100%;
   --x-ripple-x: -50%;
   --x-ripple-y: -50%;
 
@@ -49,7 +48,6 @@ x-ripple {
 
   position: relative;
   display: inline-grid;
-  overflow: hidden;
 
   transition: background var(--x-ripple-speed),
   background-color var(--x-ripple-speed);
@@ -59,7 +57,24 @@ x-ripple:hover {
   background: var(--x-theme-hsla-9);
 }
 
+x-ripple:empty {
+  --x-ripple-diameter: 200%;
+
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: var(--x-ripple-diameter);
+  height: var(--x-ripple-diameter);
+}
+
+x-ripple,
+*:has(> x-ripple:empty) {
+  overflow: hidden;
+}
+
 x-ripple:not(:empty) {
+  --x-ripple-diameter: 100%;
+
   padding: 1rem;
   border-radius: 50%;
 }
@@ -97,14 +112,15 @@ x-ripple::before {
   z-index: 1;
 }
 
-x-ripple:is(
-    :hover,
-    .x-ripple--active
+x-ripple:where(
+    [persistactive]
   )::before,
-  x-ripple:has(
+x-ripple:has(
+    :hover,
     :focus,
     :active
-  )::before {
+  )::before,
+*:has(> x-ripple:empty):where(:hover, :active, :focus) > x-ripple:empty::before {
   transform: translate(
     var(--x-ripple-x),
     var(--x-ripple-y)
@@ -120,8 +136,9 @@ x-ripple::after {
   z-index: 2;
 }
 
-x-ripple.x-ripple--active::after,
-x-ripple:has(:active, :hover:active)::after {
+x-ripple[persistactive]::after,
+x-ripple:has(:active, :hover:active)::after,
+*:has(> x-ripple:empty):is(:active, :hover:active) > x-ripple:is(:empty, :empty[persistactive])::after {
   animation: var(--x-ripple-active-speed) ripple-behavior-in ease-out;
   animation-fill-mode: forwards;
 }

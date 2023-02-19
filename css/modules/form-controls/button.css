@@ -2,6 +2,7 @@
  * Base
  * ---------------- */
 .x-button, .x-btn, button {
+  position: relative;
   border-radius: var(--x-border-radius);
   border: var(--x-1px) solid ButtonBorder;
   display: inline-flex;

@@ -8,6 +8,9 @@
 <link rel="stylesheet" href="./index.css"/>
 <style>
   .standalone-ripple {
+    position: relative;
+    overflow: hidden;
+    display: inline-block;
     width: 3rem;
     height: 3rem;
   }
@@ -15,16 +18,30 @@
 <body>
 <script type="module" src="register.js"></script>
 <section>
+  <header>
+    <span class="x-h2">Ripple Element</span>
+  </header>
   <div>
-    <p>The ripple element operates in two modes:</p>
+    <p>An element that provides the material-design ripple effect, for user interactions, within/on UI components.</p>
+    <p>The element operates in two modes:</p>
     <ul>
-      <li>With children, and</li>
-      <li>As an &quot;empty&quot; child element.</li>
+      <li>With children (e.g., with a checkbox input), and</li>
+      <li>As an &quot;empty&quot; child element (within a button element, etc.).</li>
+    </ul>
+
+    <h3 class="x-h3">Caveats</h3>
+    <ul>
+      <li>When the elements is used as an empty element, within an interactive element, the interactive element should contain
+        a <code>position</code> value;  E.g., <code>position: relative;</code> etc.
+      </li>
     </ul>
     <dl>
       <dt>Empty element</dt>
       <dd>
-        <x-ripple class="standalone-ripple x-theme-neutral"></x-ripple>
+        <p>With <code>position: relative;</code>:</p>
+        <div class="standalone-ripple x-theme-neutral" style="position: relative;">
+          <x-ripple></x-ripple>
+        </div>
       </dd>
       <dt>Empty child element</dt>
       <dd>
