@@ -9,7 +9,7 @@ export const xRippleName = 'x-ripple';
  */
 const _mouseOverEventName = 'mouseenter',
   _mouseDownEventName = 'mousedown',
-  _animationEndEventName = 'mousedown',
+  _animationEndEventName = 'animationend',
 
   _rippleDiameterCssPropName = `--${xRippleName}-diameter`,
   _rippleXCssPropName = `--${xRippleName}-x`,
@@ -27,7 +27,7 @@ const _mouseOverEventName = 'mouseenter',
    */
   _onRippleAnimationEnd = function (e) {
     const ctx = _rippleCtxFromEvent(e);
-    if (ctx.persistActive) ctx.persistActive = false;
+    if (ctx.rippleActive) ctx.rippleActive = false;
   },
 
   /**
@@ -68,9 +68,8 @@ const _mouseOverEventName = 'mouseenter',
   },
 
   _rippleActive = (ctx, e) => {
-    ctx.persistActive = false;
     _updateCssProps(ctx, e);
-    ctx.persistActive = true;
+    ctx.rippleActive = true;
   },
 
   addRippleEffect = (ctx) => {
@@ -82,7 +81,7 @@ const _mouseOverEventName = 'mouseenter',
     if (ctx.childElementCount) removeRippleEffect(ctx.parentElement);
 
     _updateCssProps(ctx);
-    ctx.addEventListener(_animationEndEventName, _onRippleAnimationEnd);
+    eventTarget.addEventListener(_animationEndEventName, _onRippleAnimationEnd);
     eventTarget.addEventListener(_mouseOverEventName, _onRippleElementMouseDown);
     eventTarget.addEventListener(_mouseDownEventName, _onRippleElementMouseDown);
     eventTarget.addEventListener('focusout', _onRippleAnimationEnd);
@@ -98,10 +97,10 @@ const _mouseOverEventName = 'mouseenter',
     return ctx;
   },
 
-  PERSIST_ACTIVE_NAME = 'persistactive',
+  RIPPLE_ACTIVE_NAME = 'rippleactive',
   RADIUS_MULTIPLIER_NAME = 'radiusmultiplier',
 
-  observedAttributes = [PERSIST_ACTIVE_NAME, RADIUS_MULTIPLIER_NAME],
+  observedAttributes = [RIPPLE_ACTIVE_NAME, RADIUS_MULTIPLIER_NAME],
 
   _resizeObserver = new ResizeObserver(debounce((records) => {
     if (!records?.length) return;
@@ -141,7 +140,7 @@ export class XRippleElement extends HTMLElement {
 
   #initialized = false;
   #radiusMultiplier = 2;
-  #persistActive = false;
+  #rippleActive = false;
   #attrsChangedMap = {};
 
   get radiusMultiplier() {
@@ -153,20 +152,20 @@ export class XRippleElement extends HTMLElement {
     this.update();
   }
 
-  get persistActive() {
-    return this.#persistActive;
+  get rippleActive() {
+    return this.#rippleActive;
   }
 
-  set persistActive(bln) {
-    this.#persistActive = Boolean(bln);
+  set rippleActive(bln) {
+    this.#rippleActive = Boolean(bln);
 
-    // if (!this.#attrsChangedMap[PERSIST_ACTIVE_NAME]) {
-    //   this.#attrsChangedMap[PERSIST_ACTIVE_NAME] = true;
-      if (this.#persistActive) this.setAttribute(PERSIST_ACTIVE_NAME, '');
-      else this.removeAttribute(PERSIST_ACTIVE_NAME);
-    // } else {
-    //   this.#attrsChangedMap[PERSIST_ACTIVE_NAME] = false;
-    // }
+    if (!this.#attrsChangedMap[RIPPLE_ACTIVE_NAME]) {
+      this.#attrsChangedMap[RIPPLE_ACTIVE_NAME] = true;
+      if (this.#rippleActive) this.setAttribute(RIPPLE_ACTIVE_NAME, '');
+      else this.removeAttribute(RIPPLE_ACTIVE_NAME);
+    } else {
+      delete this.#attrsChangedMap[RIPPLE_ACTIVE_NAME];
+    }
     this.update();
   }
 
@@ -196,10 +195,10 @@ export class XRippleElement extends HTMLElement {
 
     switch (attrName) {
       // Reflected attribute
-      case PERSIST_ACTIVE_NAME:
-        // if (!this.#attrsChangedMap[PERSIST_ACTIVE_NAME]) {
-        //   this.persistActive = newValue !== null;
-        // }/* else this.#attrsChangedMap[PERSIST_ACTIVE_NAME] = false;*/
+      case RIPPLE_ACTIVE_NAME:
+        if (!this.#attrsChangedMap[RIPPLE_ACTIVE_NAME]) {
+          this.rippleActive = newValue !== null;
+        } else delete this.#attrsChangedMap[RIPPLE_ACTIVE_NAME];
         break;
       case RADIUS_MULTIPLIER_NAME:
         this.radiusMultiplier = newValue;

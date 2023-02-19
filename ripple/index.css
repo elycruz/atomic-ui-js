@@ -54,7 +54,7 @@ x-ripple {
 }
 
 x-ripple:hover {
-  background: var(--x-theme-hsla-9);
+  background: var(--x-theme-hsla-8);
 }
 
 x-ripple:empty {
@@ -131,14 +131,24 @@ x-ripple:has(
 }
 
 x-ripple::after {
-  animation: var(--x-ripple-active-speed-out) ripple-behavior-out ease-out;
-  animation-fill-mode: forwards;
   z-index: 2;
 }
 
+
+/**
+ * "active" out animation.
+ */
+x-ripple:not([persistactive])::after {
+  animation: var(--x-ripple-active-speed-out) ripple-behavior-out ease-out;
+  animation-fill-mode: forwards;
+}
+
+/**
+ * "active" in animation.
+ */
 x-ripple[persistactive]::after,
 x-ripple:has(:active, :hover:active)::after,
-*:has(> x-ripple:empty):is(:active, :hover:active) > x-ripple:is(:empty, :empty[persistactive])::after {
+*:has(> x-ripple:empty):where(:active, :hover:active, :has(> x-ripple:empty[persistactive])) > x-ripple:empty::after {
   animation: var(--x-ripple-active-speed) ripple-behavior-in ease-out;
   animation-fill-mode: forwards;
 }
