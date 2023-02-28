@@ -113,7 +113,7 @@ x-ripple::before {
 }
 
 x-ripple:where(
-    [persistactive]
+    [rippleactive]
   )::before,
 x-ripple:has(
     :hover,
@@ -138,7 +138,7 @@ x-ripple::after {
 /**
  * "active" out animation.
  */
-x-ripple:not([persistactive])::after {
+x-ripple:not([rippleactive])::after {
   animation: var(--x-ripple-active-speed-out) ripple-behavior-out ease-out;
   animation-fill-mode: forwards;
 }
@@ -146,9 +146,9 @@ x-ripple:not([persistactive])::after {
 /**
  * "active" in animation.
  */
-x-ripple[persistactive]::after,
+x-ripple[rippleactive]::after,
 x-ripple:has(:active, :hover:active)::after,
-*:has(> x-ripple:empty):where(:active, :hover:active, :has(> x-ripple:empty[persistactive])) > x-ripple:empty::after {
+*:has(> x-ripple:empty):where(:active, :hover:active, :has(> x-ripple:empty[rippleactive])) > x-ripple:empty::after {
   animation: var(--x-ripple-active-speed) ripple-behavior-in ease-out;
   animation-fill-mode: forwards;
 }
