@@ -1,7 +1,7 @@
 import {unsafeCSS, html} from 'lit';
 
-import {XFormControl} from "../archived/x-base/index.js";
-import {CHECKED_NAME, DEFAULT_CHECKED_NAME} from "../constants.js";
+import {XFormControl} from "../x-base/index.js";
+import {CHECKED_NAME, DEFAULT_CHECKED_NAME} from "../../constants.js";
 import styles from './checkbox.css' assert {type: 'css'};
 
 export const xCheckboxName = 'x-checkbox',

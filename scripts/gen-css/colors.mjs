@@ -11,7 +11,7 @@ import {xThemes} from "../../constants.js";
 const __dirname = url.fileURLToPath(new URL('.', import.meta.url));
 
 const {log, error} = console,
-  primary = ['primary', 240],
+  primary = ['primary', 224],
   secondary = ['secondary', 300],
   success = ['success', 120],
   info = ['info', 180],

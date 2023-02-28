@@ -25,9 +25,8 @@
 <script type="module">
   import {html, render} from 'lit';
   import {xThemes, xVarities} from "../constants.js";
-  import {addRippleEffect} from "../ripple.js";
-  import {$$} from '../utils';
-  import '../checkbox/register.js';
+
+  import '../archived/checkbox/register.js';
 
   const out = document.createElement('fieldset'),
     allBaseVariantClasses = 'x-ripple x-filled x-raised x-outlined x-ripple-upgraded';
@@ -49,9 +48,6 @@
                                 <input type="checkbox" id="checkbox-1" name="checkbox-1"
                                        class="x-checkbox"/>
                               </div>
-                              <x-checkbox>
-                                <input type="checkbox" name="checkbox" />
-                              </x-checkbox>
                             </div>
                         </fieldset>
                     </form>

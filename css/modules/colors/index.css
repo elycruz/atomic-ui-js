@@ -5,26 +5,26 @@
  */
 
 :root {
-  --x-primary-hsl-1: hsl(240, 72%, 10%);
-  --x-primary-hsla-1: hsla(240, 89%, 10%, 0.91);
-  --x-primary-hsl-2: hsl(240, 72%, 20%);
-  --x-primary-hsla-2: hsla(240, 89%, 20%, 0.81);
-  --x-primary-hsl-3: hsl(240, 72%, 30%);
-  --x-primary-hsla-3: hsla(240, 89%, 30%, 0.71);
-  --x-primary-hsl-4: hsl(240, 72%, 40%);
-  --x-primary-hsla-4: hsla(240, 89%, 40%, 0.61);
-  --x-primary-hsl-5: hsl(240, 72%, 50%);
-  --x-primary-hsla-5: hsla(240, 89%, 50%, 0.51);
-  --x-primary-hsl-6: hsl(240, 72%, 60%);
-  --x-primary-hsla-6: hsla(240, 89%, 60%, 0.41000000000000003);
-  --x-primary-hsl-7: hsl(240, 72%, 70%);
-  --x-primary-hsla-7: hsla(240, 89%, 70%, 0.30999999999999994);
-  --x-primary-hsl-8: hsl(240, 72%, 80%);
-  --x-primary-hsla-8: hsla(240, 89%, 80%, 0.20999999999999996);
-  --x-primary-hsl-9: hsl(240, 72%, 90%);
-  --x-primary-hsla-9: hsla(240, 89%, 90%, 0.10999999999999999);
-  --x-primary-hsl-10: hsl(240, 72%, 99%);
-  --x-primary-hsla-10: hsla(240, 89%, 99%, 0.020000000000000018);
+  --x-primary-hsl-1: hsl(224, 72%, 10%);
+  --x-primary-hsla-1: hsla(224, 89%, 10%, 0.91);
+  --x-primary-hsl-2: hsl(224, 72%, 20%);
+  --x-primary-hsla-2: hsla(224, 89%, 20%, 0.81);
+  --x-primary-hsl-3: hsl(224, 72%, 30%);
+  --x-primary-hsla-3: hsla(224, 89%, 30%, 0.71);
+  --x-primary-hsl-4: hsl(224, 72%, 40%);
+  --x-primary-hsla-4: hsla(224, 89%, 40%, 0.61);
+  --x-primary-hsl-5: hsl(224, 72%, 50%);
+  --x-primary-hsla-5: hsla(224, 89%, 50%, 0.51);
+  --x-primary-hsl-6: hsl(224, 72%, 60%);
+  --x-primary-hsla-6: hsla(224, 89%, 60%, 0.41000000000000003);
+  --x-primary-hsl-7: hsl(224, 72%, 70%);
+  --x-primary-hsla-7: hsla(224, 89%, 70%, 0.30999999999999994);
+  --x-primary-hsl-8: hsl(224, 72%, 80%);
+  --x-primary-hsla-8: hsla(224, 89%, 80%, 0.20999999999999996);
+  --x-primary-hsl-9: hsl(224, 72%, 90%);
+  --x-primary-hsla-9: hsla(224, 89%, 90%, 0.10999999999999999);
+  --x-primary-hsl-10: hsl(224, 72%, 99%);
+  --x-primary-hsla-10: hsla(224, 89%, 99%, 0.020000000000000018);
   --x-secondary-hsl-1: hsl(300, 72%, 10%);
   --x-secondary-hsla-1: hsla(300, 89%, 10%, 0.91);
   --x-secondary-hsl-2: hsl(300, 72%, 20%);
