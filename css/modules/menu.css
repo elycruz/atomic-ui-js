@@ -1,0 +1,48 @@
+.x-menu {
+  display: block;
+}
+
+.x-menu,
+.x-menu :where(> ul, > ul ul) {
+  min-width: var(--x-144px);
+}
+
+.x-menu li:not(:focus-within) > a + ul {
+  display: none;
+}
+
+.x-menu a,
+.x-menu li:focus-within > a + ul,
+.x-menu li:hover > a + ul {
+  display: block;
+}
+
+.x-menu.x-menu--horizontal {
+  width: 100%;
+}
+
+.x-menu.x-menu--horizontal ul ul {
+  position: absolute;
+  min-width: fit-content;
+}
+
+.x-menu.x-menu--horizontal > ul ul ul {
+  left: 100%;
+}
+
+.x-menu.x-menu--horizontal > ul {
+  display: flex;
+  column-gap: var(--x-8px);
+}
+
+.x-menu.x-menu--horizontal > ul > li {
+  display: inline-block;
+}
+
+.x-menu.x-menu--horizontal li {
+  position: relative;
+}
+
+.x-menu ul {
+  list-style: none;
+}
