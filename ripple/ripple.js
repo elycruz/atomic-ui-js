@@ -129,7 +129,7 @@ const _mouseOverEventName = 'mouseenter',
 
   _mutObserverConfig = {childList: true};
 
-export {addRippleEffect, removeRippleEffect}
+export {addRippleEffect, removeRippleEffect, RIPPLE_ACTIVE_NAME, RADIUS_MULTIPLIER_NAME}
 
 export class XRippleElement extends HTMLElement {
   static localName = xRippleName;

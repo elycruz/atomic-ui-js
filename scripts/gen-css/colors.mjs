@@ -59,7 +59,7 @@ ${lightnessNums.flatMap((_, i) => ([
 :root {
 ${themeColors}
 
- --x-field: Field;
+  --x-field: Field;
 }
 
 @media (prefers-color-scheme: dark) {

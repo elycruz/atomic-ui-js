@@ -20,7 +20,8 @@ const {log, error} = console,
       'absolute',
       'sticky',
       'fixed',
-    ].map(k => `.x-position-${k} {
+    ].map(k => `.x-position-${k},
+.x-pos-${k} {
   position: ${k};
 }`);
 
