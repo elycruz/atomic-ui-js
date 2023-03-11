@@ -44,6 +44,7 @@ a, p {
 }
 
 dl dd + *,
+dl dt + *,
 dl + dl {
   margin-top: var(--x-21px);
 }
