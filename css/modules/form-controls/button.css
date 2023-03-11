@@ -47,6 +47,17 @@
   line-height: var(--x-34px);
 }
 
+:where(.x-button, .x-btn, button).x-raised:active,
+:where(.x-button, .x-btn, button).x-raised {
+  box-shadow: 0 0 var(--x-1px) rgba(0, 0, 0, 0.21),
+  0 var(--x-2px) var(--x-3px) rgba(0, 0, 0, 0.21);
+}
+
+:where(.x-button, .x-btn, button).x-raised:hover {
+  box-shadow: 0 var(--x-2px) var(--x-3px) rgba(0, 0, 0, 0.21),
+  0 var(--x-3px) var(--x-5px) rgba(0, 0, 0, 0.21);
+}
+
 /*
  * Contents
  * -------------------- */

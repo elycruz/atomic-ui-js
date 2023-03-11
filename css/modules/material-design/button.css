@@ -72,13 +72,3 @@
   /*background-color: var(--x-theme-hsla-6);*/
 }
 
-:where(.x-button, .x-btn).x-raised:active,
-:where(.x-button, .x-btn).x-raised {
-  box-shadow: 0 0 var(--x-1px) rgba(0, 0, 0, 0.21),
-  0 var(--x-2px) var(--x-3px) rgba(0, 0, 0, 0.21);
-}
-
-:where(.x-button, .x-btn).x-raised:hover {
-  box-shadow: 0 var(--x-2px) var(--x-3px) rgba(0, 0, 0, 0.21),
-  0 var(--x-3px) var(--x-5px) rgba(0, 0, 0, 0.21);
-}

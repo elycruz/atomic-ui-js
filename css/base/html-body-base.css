@@ -1,5 +1,6 @@
 html, body {
   --x-font-family: Arial, Verdana, Helvetica, Sans-Serif;
+  --x-focus-ring-color: currentColor;
 
   margin: 0;
   padding: 0;
@@ -8,6 +9,8 @@ html, body {
 
 @media (prefers-color-scheme: dark) {
   html, body {
+    --x-focus-ring-color: Field;
+
     background: var(--x-neutral-hsl-1);
     color: var(--x-neutral-hsl-5);
   }

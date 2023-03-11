@@ -1,7 +1,10 @@
-:is(.x-input, x-input):has(:is(input, select, textarea):focus-visible),
-:is(.x-radio, .x-checkbox, .x-input, x-input, button,
+:is(.x-input, x-input):has(
+  :is(input, select, textarea):focus-visible
+),
+:is(
+  .x-radio, .x-checkbox, .x-input, x-input, button,
   :is(:not(.x-input):not(x-input) > :is(select, textarea, input))
 ):focus-visible {
-  outline: var(--x-focus-ring-width, var(--x-1px)) solid;
+  outline: var(--x-focus-ring-width, var(--x-1px)) solid var(--x-focus-ring-color);
   outline-offset: 0;
 }
