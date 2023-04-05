@@ -1,12 +1,13 @@
 .x-checkbox {
-  --x-checkbox-speed: 0.13s;
+  --x-input-speed: 0.13s;
+  --x-input-highlight-color: var(--x-theme-4, var(--x-neutral-hsl-4));
 
-  transition: background var(--x-checkbox-speed);
-  border-color: var(--x-theme-3);
+  transition: background var(--x-input-speed);
+  border-color: var(--x-input-highlight-color);
 }
 
 .x-checkbox::after {
-  animation: var(--x-checkbox-speed) box-wipe-obscure;
+  animation: var(--x-input-speed) box-wipe-obscure;
   animation-fill-mode: forwards;
   visibility: visible;
 }
@@ -19,12 +20,11 @@
 }
 
 .x-checkbox:checked {
-  background: var(--x-theme-3);
+  background: var(--x-input-highlight-color);
 }
 
 .x-checkbox:checked::after {
-  clip-path: circle(100%);
-  animation: var(--x-checkbox-speed) box-wipe-reveal;
+  animation: var(--x-input-speed) box-wipe-reveal;
 }
 
 @keyframes box-wipe-reveal {

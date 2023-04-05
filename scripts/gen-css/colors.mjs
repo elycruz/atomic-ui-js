@@ -40,11 +40,16 @@ const {log, error} = console,
 
       themeVars = Object.keys(xThemes).reduce((agg, k, j) => {
         const themeName = xThemes[k];
+
+        // @todo deprecate --x-theme-{\d} and --x-theme-hsla-{\d} in
+        // exchange for the '--x-theme-color-*'.
         return agg + `
 .x-theme-${themeName} {
 ${lightnessNums.flatMap((_, i) => ([
           `  --x-theme-${i + 1}: var(--x-${themeName}-hsl-${i + 1});`,
-          `  --x-theme-hsla-${i + 1}: var(--x-${themeName}-hsla-${i + 1});`
+          `  --x-theme-color-${i + 1}: var(--x-${themeName}-hsl-${i + 1});`,
+          `  --x-theme-hsla-${i + 1}: var(--x-${themeName}-hsla-${i + 1});`,
+          `  --x-theme-color-hsla-${i + 1}: var(--x-${themeName}-hsla-${i + 1});`
         ]))
           .join('\n')}
 }\n`

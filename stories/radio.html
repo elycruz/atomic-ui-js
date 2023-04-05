@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Radioes</title>
+  <link rel="stylesheet" href="../css/index.stories.css"/>
+  <link rel="stylesheet" href="../ripple/index.css"/>
+</head>
+<body>
+<script type="module">
+  import {xThemes, xVarities} from "../constants.js";
+
+  const content = document.createElement('section');
+
+  content.innerHTML = `
+        <header>Radio Themes</header>
+        <div>
+          <dl>
+            ${Object.keys(xThemes).map((k1, i) => `
+                <dt>${k1}</dt>
+
+                <dd>
+                  <form>
+                    <fieldset class="x-fieldset x-fieldset--grid-2">
+                    <label for="radio-set-${i}">Radio set ${i + 1}:</label>
+
+                      <x-field>
+                      ${Array(3).fill(null, 0, 2).map((_, j) => `
+                          <x-ripple class="x-theme-${xThemes[k1]}">
+                            <input type="radio" id="radio-${i}-${j}" name="radio-set-${i}"
+                                   class="x-radio"/>
+                          </x-ripple>
+
+                          <label for="radio-${i}-${j}">Radio ${i + 1}.${j + 1}</label>
+                      `).join('\n')}
+                        <!-- Use of \`inert\` here is temporary - disabled state should be handled via css -->
+                          <x-ripple class="x-theme-${xThemes[k1]}">
+                            <input type="radio" id="radio-disabled-${i}" name="radio-disabled-${i}"
+                                   class="x-radio" disabled />
+                          </x-ripple>
+
+                          <label for="radio-disabled-${i}" inert>Disabled ${i}</label>
+                      </x-field>
+
+                    </fieldset>
+                  </form>
+                </dd>
+            `).join('\n')}
+          </dl>
+        </div>`;
+
+  document.body.appendChild(content);
+</script>
+<script src="../ripple/register.js" type="module"></script>
+</body>
+</html>

@@ -1,11 +1,15 @@
 :is(.x-radio, .x-checkbox) {
+  --x-input-bg-color: Field;
+  --x-input-border-color: ButtonBorder;
+  --x-input-text-color: ButtonText;
+
   display: inline-grid;
   place-content: center;
   -webkit-appearance: none;
   appearance: none;
   margin: 0;
-  background-color: Field;
-  border: var(--x-1px) solid ButtonBorder;
+  background-color: var(--x-input-bg-color);
+  border: var(--x-1px) solid var(--x-input-border-color);
   box-sizing: border-box;
 }
 
@@ -17,7 +21,7 @@
 
 :is(.x-radio, .x-checkbox)::after {
   content: "";
-  background-color: ButtonText;
+  background-color: var(--x-input-text-color);
 }
 
 .x-checkbox,

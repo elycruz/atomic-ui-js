@@ -1,22 +1,27 @@
 /**
  * position.css
  */
-.x-position-static {
+.x-position-static,
+.x-pos-static {
   position: static;
 }
 
-.x-position-relative {
+.x-position-relative,
+.x-pos-relative {
   position: relative;
 }
 
-.x-position-absolute {
+.x-position-absolute,
+.x-pos-absolute {
   position: absolute;
 }
 
-.x-position-sticky {
+.x-position-sticky,
+.x-pos-sticky {
   position: sticky;
 }
 
-.x-position-fixed {
+.x-position-fixed,
+.x-pos-fixed {
   position: fixed;
 }
