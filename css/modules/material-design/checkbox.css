@@ -1,3 +1,44 @@
 .x-checkbox {
+  --x-checkbox-speed: 0.13s;
 
+  transition: background var(--x-checkbox-speed);
+  border-color: var(--x-theme-3);
+}
+
+.x-checkbox::after {
+  animation: var(--x-checkbox-speed) box-wipe-obscure;
+  animation-fill-mode: forwards;
+}
+
+.x-checkbox::after,
+.x-checkbox:checked::after {
+  background: transparent url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="none" stroke="white" stroke-width="3" d="M1.73,12.91 8.1,19.28 22.79,4.59"></path></svg>');
+}
+
+.x-checkbox:checked {
+  background: var(--x-theme-3);
+}
+
+.x-checkbox:checked::after {
+  clip-path: circle(100%);
+  animation: var(--x-checkbox-speed) box-wipe-reveal;
+}
+
+@keyframes box-wipe-reveal {
+  0% {
+    clip-path: inset(0 100% 0 0);
+  }
+
+  100% {
+    clip-path: inset(0);
+  }
+}
+
+@keyframes box-wipe-obscure {
+  0% {
+    clip-path: inset(0);
+  }
+  100% {
+    clip-path: inset(0 100% 0 0);
+  }
 }

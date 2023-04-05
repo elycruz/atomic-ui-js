@@ -5,15 +5,6 @@
   <title>Checkboxes</title>
   <link rel="stylesheet" href="../css/index.stories.css"/>
   <link rel="stylesheet" href="../ripple/index.css"/>
-  <style>
-    .x-button-group + .x-button-group {
-      margin-top: var(--x-21px);
-    }
-
-    .x-button-group button {
-      margin: var(--x-8px);
-    }
-  </style>
 </head>
 <body>
 <script type="module">
@@ -31,15 +22,16 @@
                 <dd>
                     <form>
                         <fieldset class="x-fieldset x-fieldset--grid-2">
-                            <label for="checkbox-${i}" class="x-theme-${xThemes[k1]}">
-                              <x-ripple>
+                            <label for="checkbox-${i}">
+                              <x-ripple class="x-theme-${xThemes[k1]}">
                                 <input type="checkbox" id="checkbox-${i}" name="checkbox-${i}"
                                        class="x-checkbox "/>
                               </x-ripple>
                               <span>Checkbox ${i}</span>
                             </label>
+                            <!-- Use of \`inert\` here is temporary - disabled state should be handled via css -->
                             <label for="checkbox-disabled-${i}" class="x-theme-${xThemes[k1]}" inert>
-                              <x-ripple>
+                              <x-ripple class="x-theme-${xThemes[k1]}">
                                 <input type="checkbox" id="checkbox-disabled-${i}" name="checkbox-disabled-${i}"
                                        class="x-checkbox" disabled />
                               </x-ripple>
