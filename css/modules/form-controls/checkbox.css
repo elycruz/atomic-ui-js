@@ -30,9 +30,10 @@
 }
 
 :is(.x-radio, .x-checkbox)::after {
-  opacity: 0;
+  visibility: hidden;
 }
 
 :is(.x-radio, .x-checkbox):checked::after {
-  opacity: 1;
+  visibility: visible;
 }
+

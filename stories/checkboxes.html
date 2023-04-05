@@ -20,25 +20,28 @@
                 <dt>${k1}</dt>
 
                 <dd>
-                    <form>
-                        <fieldset class="x-fieldset x-fieldset--grid-2">
-                            <label for="checkbox-${i}">
-                              <x-ripple class="x-theme-${xThemes[k1]}">
-                                <input type="checkbox" id="checkbox-${i}" name="checkbox-${i}"
-                                       class="x-checkbox "/>
-                              </x-ripple>
-                              <span>Checkbox ${i}</span>
-                            </label>
-                            <!-- Use of \`inert\` here is temporary - disabled state should be handled via css -->
-                            <label for="checkbox-disabled-${i}" class="x-theme-${xThemes[k1]}" inert>
-                              <x-ripple class="x-theme-${xThemes[k1]}">
-                                <input type="checkbox" id="checkbox-disabled-${i}" name="checkbox-disabled-${i}"
-                                       class="x-checkbox" disabled />
-                              </x-ripple>
-                              <span>Disabled ${i}</span>
-                            </label>
-                        </fieldset>
-                    </form>
+                  <form>
+                    <fieldset class="x-fieldset x-layout-horizontal">
+                      <label for="checkbox-${i}">
+                        <x-ripple class="x-theme-${xThemes[k1]}">
+                          <input type="checkbox" id="checkbox-${i}" name="checkbox-${i}"
+                                 class="x-checkbox"/>
+                        </x-ripple>
+
+                        <span>Checkbox ${i}</span>
+                      </label>
+
+                      <!-- Use of \`inert\` here is temporary - disabled state should be handled via css -->
+                      <label for="checkbox-disabled-${i}" class="x-theme-${xThemes[k1]}" inert>
+                        <x-ripple class="x-theme-${xThemes[k1]}">
+                          <input type="checkbox" id="checkbox-disabled-${i}" name="checkbox-disabled-${i}"
+                                 class="x-checkbox" disabled />
+                        </x-ripple>
+
+                        <span>Disabled ${i}</span>
+                      </label>
+                    </fieldset>
+                  </form>
                 </dd>
             `).join('')}
           </dl>
