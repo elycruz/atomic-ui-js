@@ -75,7 +75,7 @@ x-ripple,
 x-ripple:not(:empty) {
   --x-ripple-diameter: 100%;
 
-  padding: 1rem;
+  padding: 0.5rem;
   border-radius: 50%;
 }
 
