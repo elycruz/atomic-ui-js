@@ -4,6 +4,8 @@
   <meta charset="UTF-8">
   <title>Button - Atomic UI Js</title>
   <link rel="stylesheet" href="../../css/index.stories.css"/>
+  <link rel="stylesheet" href="../../css/modules/material-design/index.css"/>
+
   <style>
     .x-button-group + .x-button-group {
       margin-top: var(--x-21px);
@@ -17,8 +19,7 @@
 <body>
 <script type="module">
   import {xThemes, xVarities} from "../../constants.js";
-  import {addRippleEffect} from "../../ripple.js";
-  import {$$} from '../../utils/index.js';
+  import '../../ripple/register.js';
 
   const out = document.createElement('section'),
     allBaseVariantClasses = 'x-ripple x-filled x-raised x-outlined x-ripple-upgraded';
@@ -37,16 +38,20 @@
                     <dd class="x-button-group">
                       ${k2 !== 'Dense' && k2 !== 'Small' && k2 !== 'Large' ? `
                         <button class="x-btn x-theme-${xThemes[k1]} x-dense x-${xVarities[k2]}" type="button">
-                          Dense and ${k2[0].toUpperCase().concat(k2.slice(1))}
+                          <x-ripple></x-ripple>
+                          <span>Dense and ${k2[0].toUpperCase().concat(k2.slice(1))}</span>
                         </button>` : null}
-                      <button class="x-btn x-theme-${xThemes[k1]} x-${xVarities[k2]}" type="button" disabled>${k2}
-                        and Disabled
+                      <button class="x-btn x-theme-${xThemes[k1]} x-${xVarities[k2]}" type="button" disabled>
+                        <x-ripple></x-ripple>
+                        <span>${k2} and Disabled</span>
                       </button>
                       <button class="x-btn x-theme-${xThemes[k1]} x-${xVarities[k2]}" type="button">
+                        <x-ripple></x-ripple>
                         <span>$</span><span>With multiple children</span>
                       </button>
-                      <button class="x-btn x-theme-${xThemes[k1]} x-${xVarities[k2]}" type="button">With long
-                        ${'text '.repeat(10)}
+                      <button class="x-btn x-theme-${xThemes[k1]} x-${xVarities[k2]}" type="button">
+                        <x-ripple></x-ripple>
+                        <span>With long ${'text '.repeat(10)}</span>
                       </button>
                     </dd>
                   </dl>
@@ -57,18 +62,28 @@
                   <dt>All</dt>
                   <dd class="x-button-group">
                     <button class="x-btn x-theme-${xThemes[k1]} ${allBaseVariantClasses}"
-                            type="button">Button
+                            type="button">
+                          <x-ripple></x-ripple>
+                            Button
                     </button>
                     <button class="x-btn x-theme-${xThemes[k1]} x-dense ${allBaseVariantClasses}"
-                            type="button">Dense
+                            type="button">
+                          <x-ripple></x-ripple>
+                            Dense
                     </button>
                     <button class="x-btn x-theme-${xThemes[k1]} ${allBaseVariantClasses}"
-                            type="button" disabled>Disabled
+                            type="button" disabled>
+                          <x-ripple></x-ripple>
+                            Disabled
                     </button>
                     <button class="x-btn x-theme-${xThemes[k1]} ${allBaseVariantClasses}"
-                            type="button"><span>$</span><span>With multiple children</span></button>
+                            type="button">
+                          <x-ripple></x-ripple>
+                            <span>$</span><span>With multiple children</span></button>
                     <button class="x-btn x-theme-${xThemes[k1]} ${allBaseVariantClasses}"
-                            type="button">With long ${'text '.repeat(10)}
+                            type="button">
+                          <x-ripple></x-ripple>
+                            With long ${'text '.repeat(10)}
                     </button>
                   </dd>
                 </dl>
@@ -79,16 +94,6 @@
       `;
 
   document.body.appendChild(out);
-
-  window.addEventListener('DOMContentLoaded', () => {
-
-    // Add ripple effect behavior, for 'x-button' instances
-    $$('.x-btn, .x-button').forEach(b => {
-      b.rippleEffect = 'bounded';
-      addRippleEffect(b);
-    });
-
-  }, {once: true});
 </script>
 </body>
 </html>

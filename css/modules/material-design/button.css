@@ -1,4 +1,11 @@
 /**
+ * Setup `x-ripple` element for animations.
+ */
+:where(.x-button, .x-btn) {
+  position: relative;
+}
+
+/**
  * Not "Filled" variant base
  * ------------------- */
 :where(.x-button, .x-btn):not(.x-filled) {
