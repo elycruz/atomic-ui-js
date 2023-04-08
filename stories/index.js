@@ -7,13 +7,13 @@ const $ = (selector, base = document) =>
 
 // Init
 // ----
-window.addEventListener('load', () => {
+window.addEventListener('DOMContentLoaded', () => {
   const iframe = $('iframe'),
     header = $('.x-app-header'),
     footer = $('.x-app-footer'),
     menus = $$('.x-menu'),
     nav = $('.x-app-nav'),
-    hambtn = $('.x-hamburger-btn'),
+    hamburgerBtn = $('.x-hamburger-btn'),
 
     mainIframeHeightResize = (iframe) => {
       iframe.style.height = window.innerHeight + (-1 * (header.offsetHeight + footer.offsetHeight)) - 12 + 'px';
@@ -35,7 +35,7 @@ window.addEventListener('load', () => {
 
   iframe.onload = e => mainIframeHeightResize(e.currentTarget);
 
-  hambtn.addEventListener('click', () => {
+  hamburgerBtn.addEventListener('click', () => {
     nav.classList.toggle('x-display-none');
   });
 
@@ -44,10 +44,20 @@ window.addEventListener('load', () => {
 
   // Load stories into iframe
   menus.forEach(menu => menu.addEventListener('click', e => {
-    e.preventDefault();
-
     if (e.target.localName === 'a') {
-      iframe.src = e.target.href;
+      setIframeSrcFromHash(iframe, e.target.hash);
     }
   }));
+
+  window.addEventListener('popstate', console.log);
+
+  // Load initial page
+  if (window.location.hash) {
+    setIframeSrcFromHash(iframe, window.location.hash);
+  }
+
 }, {once: true});
+
+const setIframeSrcFromHash = (iframe, hash = '#colors.html') => {
+  iframe.src = hash.slice(1) ?? '';
+}
