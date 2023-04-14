@@ -8,7 +8,7 @@ export const xThemes = {
     Grayscale: 'neutral'
   },
 
-  xVarities = {
+  xVariants = {
     Outlined: 'outlined',
     Filled: 'filled',
     Raised: 'raised',
@@ -19,5 +19,7 @@ export const xThemes = {
   },
 
   CHECKED_NAME = 'checked',
-  DEFAULT_CHECKED_NAME = 'defaultChecked'
+  DEFAULT_CHECKED_NAME = 'defaultChecked',
+  THEME_NAME = 'theme',
+  VARIETY_NAME = 'variety'
 ;

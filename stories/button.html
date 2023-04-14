@@ -19,7 +19,7 @@
 
 <script type="module">
   import {$} from '../utils';
-  import {xThemes, xVarities} from "../constants.js";
+  import {xThemes, xVariants} from "../constants.js";
   import {classNames} from "../utils/index.js";
   import '../ripple/register.js'
 
@@ -37,13 +37,13 @@
             <dt class="x-h5">${k1} theme</dt>
 
             <dd>
-            ${Object.keys(xVarities).map(k2 => `
+            ${Object.keys(xVariants).map(k2 => `
               <button
                 class="${
                   classNames(
                       classNameSuffix,
                       `x-theme-${xThemes[k1]}`,
-                      `x-${xVarities[k2]}`
+                      `x-${xVariants[k2]}`
                   )}"
               >${k2}</button>
             `).join('')}
