@@ -4,6 +4,13 @@
 }
 
 .x-radio::after {
+  transition: clip-path var(--x-input-speed);
   width: var(--x-8px);
   height: var(--x-8px);
+  clip-path: circle(0);
+  background: var(--x-input-highlight-color);
+}
+
+.x-radio:checked::after {
+  clip-path: circle(100%);
 }
