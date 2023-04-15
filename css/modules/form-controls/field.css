@@ -1,5 +1,11 @@
 label {
   user-select: none;
+  vertical-align: middle;
+}
+
+label,
+label span {
+  display: inline-block;
 }
 
 label:has(+ *) {

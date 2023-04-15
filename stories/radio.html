@@ -27,12 +27,14 @@
 
                       <x-field>
                       ${Array(3).fill(null, 0, 2).map((_, j) => `
+                        <label for="radio-${i}-${j}">
                           <x-ripple class="x-theme-${xThemes[k1]}">
                             <input type="radio" id="radio-${i}-${j}" name="radio-set-${i}"
                                    class="x-radio"/>
                           </x-ripple>
 
-                          <label for="radio-${i}-${j}">Radio ${i + 1}.${j + 1}</label>
+                          <span>Radio ${i + 1}.${j + 1}</span>
+                        </label>
                       `).join('\n')}
                         <!-- Use of \`inert\` here is temporary - disabled state should be handled via css -->
                           <x-ripple class="x-theme-${xThemes[k1]}">

@@ -12,42 +12,41 @@ html[dir="rtl"] .x-input {
 /*
  * Base
  * ------------------------ */
-
-html:not([dir="rtl"]) :is(x-input, .x-input):is([type], input, select, textarea),
-html:not([dir="rtl"]) :is(x-input, .x-input) > * {
+html:not([dir="rtl"]) :where(x-input, .x-input):is([type], input, select, textarea),
+html:not([dir="rtl"]) :where(x-input, .x-input) > * {
   padding: var(--x-input-padding-top) var(--x-input-padding-left);
-  background: Field;
-  color: FieldText;
+  background: var(--x-input-bg-color);
+  color: var(--x-input-text-color);
 }
 
-html[dir="rtl"] :is(x-input, .x-input):is([type], input, select, textarea),
-html[dir="rtl"] :is(x-input, .x-input) > * {
+html[dir="rtl"] :where(x-input, .x-input):is([type], input, select, textarea),
+html[dir="rtl"] :where(x-input, .x-input) > * {
   padding: var(--x-input-padding-left) var(--x-input-padding-top);
 }
 
-:is(x-input, .x-input) {
+:where(x-input, .x-input) {
   --x-input-padding-top: var(--x-1px);
   --x-input-padding-left: var(--x-2px);
 
   display: flex;
   width: fit-content;
-  background: Field;
+  background: var(--x-input-bg-color);
 }
 
-:is(x-input, .x-input) > :is(input, textarea, select) {
+:where(x-input, .x-input) > :is(input, textarea, select) {
   vertical-align: middle;
 }
 
 /*
  * Input
  * ---------------------- */
-:is(x-input, .x-input),
-:is(x-input, .x-input) > :is(input, textarea, select) {
+:where(x-input, .x-input),
+:where(x-input, .x-input) > :is(input, textarea, select) {
   border-radius: var(--x-border-radius);
 }
 
-:is(x-input, .x-input):is(input, textarea, select),
-:is(x-input, .x-input) > :is(input, textarea, select) {
+:where(x-input, .x-input):is(input, textarea, select),
+:where(x-input, .x-input) > :is(input, textarea, select) {
   border: none;
   margin: 0;
 }
@@ -55,18 +54,18 @@ html[dir="rtl"] :is(x-input, .x-input) > * {
 /*
  * Focus Visible
  *--------------------- */
-:is(x-input, .x-input) > :is(input, select, textarea):focus-visible {
+:where(x-input, .x-input) > :is(input, select, textarea):focus-visible {
   outline: none;
 }
 
 /*
  * Outlined/Default
  * ----------------------- */
-:is(x-input, .x-input):not(.x-underlined),
-:is(x-input, .x-input).x-outlined {
+:where(x-input, .x-input):not(.x-underlined),
+:where(x-input, .x-input).x-outlined {
   border: var(--x-1px) solid;
 }
 
-:is(x-input, .x-input).x-underlined {
+:where(x-input, .x-input).x-underlined {
   border-bottom: var(--x-1px) solid;
 }

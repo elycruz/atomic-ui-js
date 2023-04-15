@@ -10,7 +10,7 @@
   --x-input-speed: 0.13s;
   --x-input-border-width: var(--x-1px);
   --x-input-highlight-color: var(--x-highlight-color);
-  --x-input-text-color: ButtonText;
+  --x-input-text-color: FieldText /*ButtonText*/;
   --x-input-bg-color: Field;
   --x-input-border-color: ButtonBorder;
 }
