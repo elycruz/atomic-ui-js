@@ -1,4 +1,7 @@
-.x-radio,
+.x-radio {
+  border-radius: 1rem;
+}
+
 .x-radio::after {
   border-radius: var(--x-8px);
 }

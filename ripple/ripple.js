@@ -58,7 +58,7 @@ const _mouseOverEventName = 'mouseenter',
       `${rippleRadius * ctx.radiusMultiplier}px`
     );
 
-    if (!e) return;
+    if (!e || ctx.childElementCount) return;
 
     const rippleX = `${e.offsetX - (rippleRadius + (ctx.offsetWidth / 2))}px`,
       rippleY = `${e.offsetY - (rippleRadius + (ctx.offsetHeight / 2))}px`;

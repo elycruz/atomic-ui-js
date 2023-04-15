@@ -5,11 +5,11 @@
 
   display: inline-grid;
   place-content: center;
-  margin: 0;
   transition: background-color var(--x-input-speed);
   background-color: var(--x-input-bg-color);
   border: var(--x-input-border-width) solid var(--x-input-border-color);
   box-sizing: border-box;
+  margin: 0;
 }
 
 .x-checkbox::after,

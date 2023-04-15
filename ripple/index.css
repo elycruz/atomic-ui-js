@@ -54,7 +54,7 @@ x-ripple {
 }
 
 x-ripple:hover {
-  background: var(--x-theme-hsla-8);
+  background: var(--x-theme-hsla-9);
 }
 
 x-ripple:empty {
@@ -132,6 +132,10 @@ x-ripple:has(
 
 x-ripple::after {
   z-index: 2;
+}
+
+x-ripple:has(:disabled) {
+  pointer-events: none;
 }
 
 /**

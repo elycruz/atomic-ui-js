@@ -15,30 +15,30 @@ label:has(+ :required, + * :required)::before {
 /*
  * x-field
  * ------------------ */
-:is(x-field, .x-field) {
+:where(x-field, .x-field) {
   display: inline-block;
 }
 
-:is(x-field, .x-field),
-:is(x-field, .x-field):not(.x-field--vertical) > * {
-  vertical-align: top;
+:where(x-field, .x-field),
+:where(x-field, .x-field):not(.x-field--vertical) > * {
+  vertical-align: middle;
 }
 
-:is(x-field, .x-field):not(.x-field--vertical) > label:has(+ *),
-:is(x-field, .x-field):not(.x-field--vertical) > label:is(* + *) {
+:where(x-field, .x-field):not(.x-field--vertical) > label:has(+ *),
+:where(x-field, .x-field):not(.x-field--vertical) > label:is(* + *) {
   margin-right: 0.5rem;
 }
 
-:is(x-field, .x-field).x-field--vertical > label:has(+ *) {
+:where(x-field, .x-field).x-field--vertical > label:has(+ *) {
   margin-bottom: 0.5rem;
 }
 
-:is(x-field, .x-field).x-field--vertical,
-:is(x-field, .x-field).x-field--vertical > label:has(+ *) {
+:where(x-field, .x-field).x-field--vertical,
+:where(x-field, .x-field).x-field--vertical > label:has(+ *) {
   display: block;
 }
 
-:is(x-field, .x-field) :is(
+:where(x-field, .x-field) :is(
   .x-field__error-message,
   .x-field__help,
   [slot="help"],
@@ -48,23 +48,23 @@ label:has(+ :required, + * :required)::before {
   margin-top: 0.5rem;
 }
 
-:is(x-field, .x-field) :is(.x-field__help, [slot="help"], .x-help) {
+:where(x-field, .x-field) :is(.x-field__help, [slot="help"], .x-help) {
   font-size: smaller;
 }
 
-:is(x-field, .x-field) .x-field__flex-row {
+:where(x-field, .x-field) .x-field__flex-row {
   display: flex;
   flex-flow: row nowrap;
 }
 
-:is(x-field, .x-field) .x-field__flex-row .x-field__leading {
+:where(x-field, .x-field) .x-field__flex-row .x-field__leading {
   margin-right: 0.5rem;
 }
 
-:is(x-field, .x-field) .x-field__flex-row .x-field__trailing {
+:where(x-field, .x-field) .x-field__flex-row .x-field__trailing {
   margin-left: 0.5rem;
 }
 
-:is(x-field, .x-field) :is(.x-field__error-message, .x-error-message) {
+:where(x-field, .x-field) :is(.x-field__error-message, .x-error-message) {
   color: red;
 }
