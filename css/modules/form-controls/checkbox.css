@@ -5,7 +5,8 @@
 
   display: inline-grid;
   place-content: center;
-  transition: background-color var(--x-input-speed);
+  transition: background-color var(--x-input-speed), border var(--x-input-speed),
+  opacity var(--x-input-speed);
   background-color: var(--x-input-bg-color);
   border: var(--x-input-border-width) solid var(--x-input-border-color);
   box-sizing: border-box;
