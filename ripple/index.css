@@ -89,7 +89,7 @@ x-ripple::before {
   content: "";
   top: 50%;
   left: 50%;
-  background: var(--x-theme-3);
+  background: var(--x-theme-5);
   pointer-events: none;
   transform-origin: center;
   transition: opacity var(--x-ripple-speed),

@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Input - Atomic Js UI</title>
+  <link rel="stylesheet" href="../css/index.stories.css"/>
+  <link rel="stylesheet" href="../css/modules/form-controls/index.css"/>
+  <style>
+    .leading,
+    .trailing {
+      padding: 0;
+      font-weight: normal;
+    }
+  </style>
+</head>
+<body>
+<section>
+  <header>
+    <h2>Input Control</h2>
+  </header>
+
+  <article>
+    <form action="#">
+      <fieldset class="x-grid x-fieldset--grid-2">
+        <label for="text-input-1">Default</label>
+
+        <div class="x-field">
+          <input id="text-input-1" name="text-input-1" class="x-input"/>
+
+          <div slot="help">(Optional)</div>
+        </div>
+
+        <label slot="leading" for="text-input-2">Disabled</label>
+
+        <div class="x-field">
+          <input id="text-input-2" name="text-input-2" class="x-input" disabled/>
+
+          <div slot="help">(Optional)</div>
+        </div>
+
+        <label for="text-input-3">With leading content</label>
+
+        <div class="x-field">
+          <div class="x-input">
+            <label for="text-input-3" class="leading mds-icon">star</label>
+            <input id="text-input-3" name="text-input-3" placeholder="Placeholder"/>
+          </div>
+        </div>
+
+        <label for="text-input-4">With trailing content</label>
+
+        <div class="x-field">
+          <div class="x-input">
+            <input id="text-input-4" name="text-input-4" placeholder="Placeholder"/>
+            <label for="text-input-4" class="trailing mds-icon">star</label>
+          </div>
+        </div>
+
+        <label for="text-input-5">Required</label>
+
+        <div class="x-field">
+          <input id="text-input-5" name="text-input-5" required class="x-input"/>
+        </div>
+      </fieldset>
+
+      <fieldset>
+        <button type="reset">Reset</button>
+        <button>Submit</button>
+      </fieldset>
+    </form>
+  </article>
+</section>
+
+</body>
+</html>

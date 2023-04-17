@@ -10,20 +10,21 @@
  * ------------------- */
 :where(.x-button, .x-btn):not(.x-filled) {
   background: transparent;
+  color: var(--x-theme-4);
 }
 
 /** Ripple styles **/
-:where(.x-button, .x-btn):not(.x-filled)::after,
-:where(.x-button, .x-btn):not(.x-filled)::before {
-  background: var(--x-theme-5);
+:where(.x-button, .x-btn):not(.x-filled) x-ripple::after,
+:where(.x-button, .x-btn):not(.x-filled) x-ripple::before {
+  background: var(--x-theme-7);
 }
 
 /**
  * "Filled" variant base
  * ------------------- */
 /** Ripple styles **/
-:where(.x-button, .x-btn).x-filled::after,
-:where(.x-button, .x-btn).x-filled::before {
+:where(.x-button, .x-btn).x-filled x-ripple::after,
+:where(.x-button, .x-btn).x-filled x-ripple::before {
   --x-ripple-hover-opacity: 0.55;
   --x-ripple-active-opacity: 0.34;
 
@@ -33,10 +34,6 @@
 /*
  * Variants
  * -------------------- */
-:where(.x-button, .x-btn):not(.x-outlined) {
-  border-color: transparent;
-}
-
 :where(.x-button, .x-btn):disabled {
   pointer-events: none;
   opacity: 0.34;
@@ -46,36 +43,22 @@
  https://developer.mozilla.org/en-US/docs/Web/CSS/system-color
  */
 
-:where(.x-button, .x-btn):not(.x-filled) {
-  /*background-color: var(--x-field);*/
-  /*border-color: var(--x-field);*/
-  color: var(--x-theme-4);
-}
-
 :where(.x-button, .x-btn).x-filled {
-  background-color: var(--x-theme-4);
-  border-color: var(--x-theme-4);
+  background-color: var(--x-theme-5);
+  border-color: var(--x-theme-5);
   color: var(--x-field);
 }
 
+:where(.x-button, .x-btn).x-filled:focus-visible {
+  --x-focus-ring-color: var(--x-theme-3);
+
+  border-color: var(--x-theme-3);
+}
+
 :where(.x-button, .x-btn).x-outlined {
-  border-color: var(--x-theme-4);
+  border-color: var(--x-theme-5);
 }
 
-:where(.x-button, .x-btn):where(.x-outlined, .x-raised, :not(.x-filled)):not(.x-filled):hover {
-  /*background-color: var(--x-theme-hsla-7);*/
-  color: var(--x-theme-4);
+:where(.x-button, .x-btn):where(.x-outlined, .x-raised):not(.x-filled):hover {
+  color: var(--x-theme-5);
 }
-
-:where(.x-button, .x-btn).x-filled:hover {
-  /*background-color: var(--x-theme-hsla-5);*/
-}
-
-:where(.x-button, .x-btn).x-filled:active {
-  /*background-color: var(--x-theme-hsla-3);*/
-}
-
-:where(.x-button, .x-btn):not(.x-filled):active {
-  /*background-color: var(--x-theme-hsla-6);*/
-}
-

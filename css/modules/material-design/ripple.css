@@ -1,10 +1,11 @@
-/**
+/*
+!**
  * How it works:
  * `::before` pseudo selector gets designated as the hover/`:focus-visible` surface,
  *  and `::after` as the mousedown/click surface.
  * The `::before` hover transition only happens via `transition`,
  * The `:active` animation only happens via `animation`.
- */
+ *!
 
 @keyframes ripple-behavior-in {
   0% {
@@ -36,7 +37,7 @@
 .x-btn,
 .x-ripple {
 
-  /* Set dynamically */
+  !* Set dynamically *!
   --x-ripple-diameter: 250%;
   --x-ripple-x: -50%;
   --x-ripple-y: -50%;
@@ -117,3 +118,4 @@
   animation: var(--x-ripple-active-speed) ripple-behavior-in ease-out;
   animation-fill-mode: forwards;
 }
+*/

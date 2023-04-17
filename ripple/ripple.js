@@ -191,7 +191,7 @@ export class XRippleElement extends HTMLElement {
   }
 
   attributeChangedCallback(attrName, prevValue, newValue) {
-    console.log(attrName, prevValue, newValue);
+    // console.log(attrName, prevValue, newValue);
 
     switch (attrName) {
       // Reflected attribute

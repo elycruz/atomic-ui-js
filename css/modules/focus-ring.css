@@ -8,3 +8,7 @@
   outline: var(--x-focus-ring-width, var(--x-1px)) solid var(--x-focus-ring-color);
   outline-offset: 0;
 }
+
+button, a, label {
+  cursor: pointer;
+}

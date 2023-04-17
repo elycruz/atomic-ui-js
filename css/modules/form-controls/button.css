@@ -19,32 +19,30 @@
 /*
  * Sizes
  * ------------------- */
-:where(.x-button, .x-btn, button):is(.x-small, .x--small) {
+:where(.x-button, .x-btn, button).x-small {
   font-size: var(--x-12px);
   line-height: var(--x-12px);
   padding: var(--x-3px);
 }
 
-:where(.x-button, .x-btn, button):is(.x-dense, .x--dense) {
+:where(.x-button, .x-btn, button).x-dense {
   padding: var(--x-8px);
   font-size: var(--x-16px);
   line-height: var(--x-18px);
 }
 
+:where(.x-button, .x-btn, button).x-large {
+  padding: var(--x-12px);
+  font-size: var(--x-21px);
+  line-height: var(--x-34px);
+}
+
 :where(.x-button, .x-btn, button):is(
-  :not(.x-small):not(.x-dense):not(.x--large), .x-normal
-):is(
-  :not(.x--small):not(.x--dense):not(.x--large), .x--normal
+  :not(.x-small):not(.x-dense):not(.x-large), .x-normal
 ) {
   padding: var(--x-8px);
   font-size: var(--x-16px);
   line-height: var(--x-24px);
-}
-
-:where(.x-button, .x-btn, button):is(.x-large, .x--large) {
-  padding: var(--x-12px);
-  font-size: var(--x-21px);
-  line-height: var(--x-34px);
 }
 
 :where(.x-button, .x-btn, button).x-raised:active,
