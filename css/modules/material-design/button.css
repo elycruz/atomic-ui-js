@@ -1,8 +1,17 @@
 /**
  * Setup `x-ripple` element for animations.
  */
-:where(.x-button, .x-btn) {
+:where(.x-button, .x-btn),
+:where(.x-button, .x-btn) > *:not(x-ripple) {
   position: relative;
+}
+
+:where(.x-button, .x-btn) > *:not(x-ripple) {
+  z-index: 2;
+}
+
+:where(.x-button, .x-btn) > x-ripple {
+  z-index: 1;
 }
 
 /**

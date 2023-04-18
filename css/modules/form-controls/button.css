@@ -59,7 +59,7 @@
 /*
  * Contents
  * -------------------- */
-:where(.x-button, .x-btn, button) > * + * {
+:where(.x-button, .x-btn, button) > *:not(:is(x-ripple)) + * {
   margin-left: var(--x-5px);
 }
 

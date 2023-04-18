@@ -11,14 +11,14 @@
     transform: translate(var(--x-ripple-x), var(--x-ripple-y)) scale(var(--x-ripple-inactive-scale));
     opacity: var(--x-ripple-inactive-opacity);
   }
-  55% {
+  100% {
     transform: translate(var(--x-ripple-x), var(--x-ripple-y)) scale(var(--x-ripple-active-scale));
     opacity: var(--x-ripple-active-opacity);
   }
-  100% {
+  /*100% {
     transform: translate(var(--x-ripple-x), var(--x-ripple-y)) scale(var(--x-ripple-active-scale));
     opacity: var(--x-ripple-active-opacity-end);
-  }
+  }*/
 }
 
 @keyframes ripple-behavior-out {
@@ -43,7 +43,7 @@ x-ripple {
   --x-ripple-active-scale: 1;
   --x-ripple-inactive-scale: 0;
   --x-ripple-speed: 0.21s;
-  --x-ripple-active-speed: 0.55s;
+  --x-ripple-active-speed: 0.21s;
   --x-ripple-active-speed-out: 0.34s;
 
   position: relative;
@@ -53,7 +53,7 @@ x-ripple {
   background-color var(--x-ripple-speed);
 }
 
-x-ripple:hover {
+x-ripple:not(:empty):hover {
   background: var(--x-theme-hsla-9);
 }
 
@@ -63,8 +63,8 @@ x-ripple:empty {
   position: absolute;
   left: 0;
   top: 0;
-  width: var(--x-ripple-diameter);
-  height: var(--x-ripple-diameter);
+  width:100%;
+  height: 100%;
 }
 
 x-ripple,
@@ -151,7 +151,7 @@ x-ripple:not([rippleactive])::after {
  */
 x-ripple[rippleactive]::after,
 x-ripple:has(:active, :hover:active)::after,
-*:has(> x-ripple:empty):where(:active, :hover:active, :has(> x-ripple:empty[rippleactive])) > x-ripple:empty::after {
+*:has(> x-ripple:empty):is(:active, :hover:active, :has(> x-ripple:empty[rippleactive])) > x-ripple:empty::after {
   animation: var(--x-ripple-active-speed) ripple-behavior-in ease-out;
   animation-fill-mode: forwards;
 }

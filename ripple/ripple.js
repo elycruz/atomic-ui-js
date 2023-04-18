@@ -14,6 +14,7 @@ const _mouseOverEventName = 'mouseenter',
   _rippleDiameterCssPropName = `--${xRippleName}-diameter`,
   _rippleXCssPropName = `--${xRippleName}-x`,
   _rippleYCssPropName = `--${xRippleName}-y`,
+  _rippleInAniName = 'ripple-behavior-in',
 
   /**
    * @param {Event} e
@@ -69,6 +70,10 @@ const _mouseOverEventName = 'mouseenter',
 
   _rippleActive = (ctx, e) => {
     _updateCssProps(ctx, e);
+    if (ctx.rippleActive) {
+      ctx.getAnimations({subtree: true})
+        .find(ani => ani.animationName === _rippleInAniName)?.play();
+    }
     ctx.rippleActive = true;
   },
 
@@ -81,7 +86,6 @@ const _mouseOverEventName = 'mouseenter',
     if (ctx.childElementCount) removeRippleEffect(ctx.parentElement);
 
     _updateCssProps(ctx);
-    eventTarget.addEventListener(_animationEndEventName, _onRippleAnimationEnd);
     eventTarget.addEventListener(_mouseOverEventName, _onRippleElementMouseDown);
     eventTarget.addEventListener(_mouseDownEventName, _onRippleElementMouseDown);
     eventTarget.addEventListener('focusout', _onRippleAnimationEnd);
@@ -90,7 +94,6 @@ const _mouseOverEventName = 'mouseenter',
   },
 
   removeRippleEffect = (ctx) => {
-    ctx.removeEventListener(_animationEndEventName, _onRippleAnimationEnd);
     ctx.removeEventListener(_mouseOverEventName, _onRippleElementMouseDown);
     ctx.removeEventListener(_mouseDownEventName, _onRippleElementMouseDown);
     ctx.removeEventListener('focusout', _onRippleAnimationEnd);
@@ -176,6 +179,7 @@ export class XRippleElement extends HTMLElement {
   connectedCallback() {
     if (!this.#initialized && this.isConnected) {
       addRippleEffect(this);
+
       _mutObserver.observe(this, _mutObserverConfig);
       _resizeObserver.observe(this);
       this.#initialized = true;
