@@ -36,6 +36,7 @@ window.addEventListener('DOMContentLoaded', () => {
   iframe.onload = e => mainIframeHeightResize(e.currentTarget);
 
   hamburgerBtn.addEventListener('click', () => {
+    html.classList.toggle('x-nav-hidden');
     nav.classList.toggle('x-display-none');
   });
 

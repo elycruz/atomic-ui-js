@@ -1,4 +1,4 @@
-@import url(index.css);
+@import url(../../css/index.css);
 
 * {
   box-sizing: border-box;
@@ -72,3 +72,11 @@ body > main iframe {
   'GRAD' 0,
   'opsz' 48
 }
+
+/*html.x-nav-hidden {
+  grid-template-areas:
+ "app-header app-header app-header"
+ "app-main app-main app-main"
+ "app-footer app-footer app-footer";
+}
+*/
