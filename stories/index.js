@@ -14,6 +14,7 @@ window.addEventListener('DOMContentLoaded', () => {
     menus = $$('.x-menu'),
     nav = $('.x-app-nav'),
     hamburgerBtn = $('.x-hamburger-btn'),
+    html = $('html'),
 
     mainIframeHeightResize = (iframe) => {
       iframe.style.height = window.innerHeight + (-1 * (header.offsetHeight + footer.offsetHeight)) - 12 + 'px';
