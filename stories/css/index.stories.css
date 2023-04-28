@@ -22,6 +22,14 @@ body > .x-app-header {
   border-bottom: var(--x-1px) solid;
 }
 
+body .x-app-header__title {
+  gap: 0.5rem;
+}
+
+body .x-app-header__title > * {
+  display: inline-block;
+}
+
 body > div {
   grid-area: app-main;
   display: inline-grid;
@@ -43,6 +51,10 @@ body > .x-app-content > main iframe {
 
 body > .x-app-content > main > div {
   border-left: 1px solid var(--x-neutral-hsl-4);
+}
+
+body > .x-app-content > .x-app-nav {
+  padding: var(--x-8px);
 }
 
 html.x-nav-hidden main {
