@@ -3,7 +3,7 @@
 }
 
 :host .error-message {
-  color: var(--x-danger-hsl-5);
+  color: var(--x-danger-color-5);
   margin-top: 0.5rem;
 }
 

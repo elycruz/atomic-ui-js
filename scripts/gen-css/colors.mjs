@@ -11,31 +11,36 @@ import {xThemes} from "../../constants.js";
 const __dirname = url.fileURLToPath(new URL('.', import.meta.url));
 
 const {log, error} = console,
-  primary = ['primary', 224],
-  secondary = ['secondary', 300],
-  success = ['success', 120],
-  info = ['info', 180],
-  warning = ['warning', 30],
-  danger = ['danger', 0],
-  neutral = ['neutral', 0],
+  primary = ['primary', 256, 72],
+  secondary = ['secondary', 300, 72],
+  success = ['success', 120, 72],
+  info = ['info', 180, 72],
+  warning = ['warning', 30, 72],
+  danger = ['danger', 0, 72],
+  neutral = ['neutral', 0, 0],
   fileName = 'index.css',
 
   genColorsCss = (outputFilePath = path.join(__dirname, '../../css/modules/colors/', fileName)) => {
-    const lightnessNums = '.'.repeat(10)
-        .split('')
-        .map((_, i) => ((i + 1) * 10) - (i === 9 ? 1 : 0)),
+    const lightnessNums = new Array(9)
+        .fill(null, 0, 9)
+        .map((_, i) => ((i + 1) * 10) - (i === 9 ? 1 : 0))
+        .concat([95, 99, 100]),
 
       themeColors = [
         primary, secondary, success, info,
         warning, danger, neutral
       ]
-        .flatMap(([c, cN], j) =>
-          lightnessNums.flatMap((lightness, i) => ([
-            `  --x-${c}-hsl-${i + 1}: ` +
-            `hsl(${cN}, ${c === 'neutral' ? 0 : 72}%, ${lightness}%);`,
-            `  --x-${c}-hsla-${i + 1}: ` +
-            `hsla(${cN}, ${c === 'neutral' ? 0 : 89}%, ${lightness}%, ${1 - ((lightness - 1) * .01)});`,
-          ]))
+        .flatMap(([name, degree, saturation], j) =>
+          lightnessNums.flatMap((lightness, i) => {
+            const alpha = 1 - ((lightness - 1) * .01);
+
+            return [
+              `  --x-${name}-color-${i + 1}: ` +
+              `hsl(${degree}, ${saturation}%, ${lightness}%);`,
+              `  --x-${name}-color-with-alpha-${i + 1}: ` +
+              `hsla(${degree}, ${saturation}%, ${lightness}%, ${alpha});`,
+            ];
+          })
         ).join('\n'),
 
       themeVars = Object.keys(xThemes).reduce((agg, k, j) => {
@@ -45,12 +50,12 @@ const {log, error} = console,
         // exchange for the '--x-theme-color-*'.
         return agg + `
 .x-theme-${themeName} {
-${lightnessNums.flatMap((_, i) => ([
-          `  --x-theme-${i + 1}: var(--x-${themeName}-hsl-${i + 1});`,
-          `  --x-theme-color-${i + 1}: var(--x-${themeName}-hsl-${i + 1});`,
-          `  --x-theme-hsla-${i + 1}: var(--x-${themeName}-hsla-${i + 1});`,
-          `  --x-theme-color-hsla-${i + 1}: var(--x-${themeName}-hsla-${i + 1});`
-        ]))
+${lightnessNums.flatMap((lightness, i) => {
+          return [
+            `  --x-color-${i + 1}: var(--x-${themeName}-color-${i + 1});`,
+            `  --x-color-with-alpha-${i + 1}: var(--x-${themeName}-color-with-alpha-${i + 1});`,
+          ];
+        })
           .join('\n')}
 }\n`
       }, '');

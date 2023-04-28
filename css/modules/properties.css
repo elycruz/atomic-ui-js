@@ -1,5 +1,5 @@
 :root {
-  --x-highlight-color: var(--x-theme-5, var(--x-neutral-hsl-5));
+  --x-highlight-color: var(--x-color-5, var(--x-neutral-color-5));
 
   --x-focus-ring-width: 0.09375rem; /*1.5px;*/
   --x-focus-ring-color: currentColor;

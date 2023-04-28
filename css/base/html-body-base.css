@@ -11,7 +11,7 @@ html, body {
   html, body {
     --x-focus-ring-color: Field;
 
-    background: var(--x-neutral-hsl-1);
-    color: var(--x-neutral-hsl-5);
+    background: var(--x-neutral-color-1);
+    color: var(--x-neutral-color-5);
   }
 }

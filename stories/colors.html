@@ -17,7 +17,7 @@
   <style>
     .x-color-grid th {
       padding: 0.5rem;
-      background: var(--x-neutral-hsl-8);
+      background: var(--x-neutral-color-8);
     }
 
     .x-color-grid tbody td {
@@ -51,8 +51,8 @@
           <tbody>
           ${themeRange.map((_, i) => html`
               <tr>${themes.map(k => html`
-                  <td style="background: var(--x-${k}-hsl-${i + 1});"
-                      title="--x-${k}-hsl-${i + 1}">&nbsp;
+                  <td style="background: var(--x-${k}-color-${i + 1});"
+                      title="--x-${k}-color-${i + 1}">&nbsp;
                   </td>
               `)}
               </tr>
@@ -72,8 +72,8 @@
           <tbody>
           ${themeRange.map((_, i) => html`
               <tr>${themes.map(k => html`
-                  <td style="background: var(--x-${k}-hsla-${i + 1});"
-                      title="--x-${k}-hsla-${i + 1}">&nbsp;
+                  <td style="background: var(--x-${k}-color-with-alpha-${i + 1});"
+                      title="--x-${k}-color-with-alpha-${i + 1}">&nbsp;
                   </td>
               `)}
               </tr>

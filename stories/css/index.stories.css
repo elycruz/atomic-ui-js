@@ -42,7 +42,7 @@ body > div > nav {
 
 body > .x-app-footer {
   grid-area: app-footer;
-  border-top: var(--x-border-width) solid var(--x-neutral-hsl-4);
+  border-top: var(--x-border-width) solid var(--x-neutral-color-4);
 }
 
 body > .x-app-content > main iframe {
@@ -50,7 +50,7 @@ body > .x-app-content > main iframe {
 }
 
 body > .x-app-content > main > div {
-  border-left: 1px solid var(--x-neutral-hsl-4);
+  border-left: 1px solid var(--x-neutral-color-4);
 }
 
 body > .x-app-content > .x-app-nav {
