@@ -38,10 +38,11 @@ body > .x-app-footer {
 }
 
 body > .x-app-content > main iframe {
-  border: 1px solid var(--x-neutral-hsl-4);
-  border-top: none;
-  border-right: none;
-  border-bottom: none;
+  border: none;
+}
+
+body > .x-app-content > main > div {
+  border-left: 1px solid var(--x-neutral-hsl-4);
 }
 
 html.x-nav-hidden main {
