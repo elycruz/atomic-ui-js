@@ -5,6 +5,7 @@
 
   display: inline-grid;
   place-content: center;
+  cursor: pointer;
   transition: background-color var(--x-input-speed), border var(--x-input-speed),
   opacity var(--x-input-speed);
   background-color: var(--x-input-bg-color);
