@@ -1,5 +1,5 @@
-export const registerCustomElement = (elementName, elementConstructor) => {
-  if (typeof customElements !== 'undefined' && !customElements?.get(elementName)) {
-    customElements.define(elementName, elementConstructor);
+export const registerCustomElement = (elementName, elementConstructor, registry = customElements) => {
+  if (typeof registry !== 'undefined' && !registry?.get(elementName)) {
+    registry.define(elementName, elementConstructor);
   }
 };
