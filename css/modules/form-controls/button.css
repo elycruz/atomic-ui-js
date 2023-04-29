@@ -4,7 +4,7 @@
 .x-button, .x-btn, button {
   position: relative;
   border-radius: var(--x-border-radius);
-  border: var(--x-1px) solid ButtonBorder;
+  border: var(--x-border-width) solid ButtonBorder;
   display: inline-flex;
   text-decoration: none;
   text-align: center;
@@ -45,6 +45,9 @@
   line-height: var(--x-24px);
 }
 
+/**
+ * Raised
+ */
 :where(.x-button, .x-btn, button).x-raised:active,
 :where(.x-button, .x-btn, button).x-raised {
   box-shadow: 0 0 var(--x-1px) rgba(0, 0, 0, 0.21),

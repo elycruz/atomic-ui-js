@@ -1,3 +1,5 @@
+import {debounce} from "../utils/index.js";
+
 const $ = (selector, base = document) =>
     base.querySelector(selector),
 
@@ -17,7 +19,7 @@ window.addEventListener('DOMContentLoaded', () => {
     html = $('html'),
 
     mainIframeHeightResize = (iframe) => {
-      iframe.style.height = window.innerHeight + (-1 * (header.offsetHeight + footer.offsetHeight)) - 12 + 'px';
+      iframe.style.height = document.body.scrollHeight + (-1 * (header.offsetHeight + footer.offsetHeight)) - 4 + 'px';
     },
 
     iframeMutObserver = new MutationObserver(records => {
@@ -51,7 +53,13 @@ window.addEventListener('DOMContentLoaded', () => {
     }
   }));
 
+  const resizeHandler = debounce(() => {
+    mainIframeHeightResize(iframe);
+  }, 377);
+
   window.addEventListener('popstate', console.log);
+  window.addEventListener('resize', resizeHandler);
+  window.addEventListener('orientationchange', resizeHandler);
 
   // Load initial page
   if (window.location.hash) {
