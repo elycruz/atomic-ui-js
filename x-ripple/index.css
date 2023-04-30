@@ -37,7 +37,7 @@ x-ripple {
   --x-ripple-y: -50%;
 
   --x-ripple-opacity: 0.13;
-  --x-ripple-active-opacity: 0.21;
+  --x-ripple-active-opacity: 0.13;
   --x-ripple-active-opacity-end: 0.13;
   --x-ripple-inactive-opacity: 0;
   --x-ripple-active-scale: 1;

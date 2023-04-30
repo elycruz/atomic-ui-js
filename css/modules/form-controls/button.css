@@ -9,7 +9,9 @@
   text-decoration: none;
   text-align: center;
   font-weight: bold;
-  transition: all 0.13s;
+  transition: border-color 0.13s, color 0.13s, background-color 0.13s,
+  transform 0.13s ease-in-out, opacity 0.13s,
+  box-shadow 0.13s ease-in-out;
 }
 
 :where(.x-button, .x-btn, button):not(:disabled):hover {

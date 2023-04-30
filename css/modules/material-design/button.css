@@ -55,6 +55,7 @@
   color: var(--x-color-4);
 }
 
+:where(.x-button, .x-btn):not(.x-filled):has(> [rippleactive]),
 :where(.x-button, .x-btn):not(.x-filled):active {
   color: var(--x-color-3);
 }
@@ -74,6 +75,7 @@
     color: var(--x-color-7);
   }
 
+  :where(.x-button, .x-btn):not(.x-filled):has(> [rippleactive]),
   :where(.x-button, .x-btn):not(.x-filled):active {
     color: var(--x-color-8);
   }
@@ -114,8 +116,8 @@
 }
 
 :where(.x-button, .x-btn).x-filled {
-  background-color: var(--x-color-4);
-  border-color: var(--x-color-4);
+  background-color: var(--x-color-5);
+  border-color: var(--x-color-5);
   color: var(--x-color-12);
 }
 

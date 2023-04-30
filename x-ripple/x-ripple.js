@@ -28,7 +28,9 @@ const _mouseOverEventName = 'mouseenter',
    */
   _onRippleAnimationEnd = function (e) {
     const ctx = _rippleCtxFromEvent(e);
+    ctx.pauseUpdates = true;
     if (ctx.rippleActive) ctx.rippleActive = false;
+    ctx.pauseUpdates = false;
   },
 
   /**
@@ -41,6 +43,7 @@ const _mouseOverEventName = 'mouseenter',
       _updateCssProps(rippleCtx, e);
       return;
     }
+
     _rippleActive(rippleCtx, e);
   },
 
@@ -49,7 +52,10 @@ const _mouseOverEventName = 'mouseenter',
    * @param {MouseEvent} [e]
    */
   _updateCssProps = (ctx, e) => {
-    let rippleRadius;
+    let rippleRadius,
+      rippleOffsetX = e?.offsetX,
+      rippleOffsetY = e?.offsetY;
+
     if (ctx.childElementCount) rippleRadius = Math.max(ctx.offsetHeight, ctx.offsetWidth);
     else if (ctx.parentElement) rippleRadius = Math.max(ctx.parentElement.offsetHeight, ctx.parentElement.offsetWidth);
     else return;
@@ -59,22 +65,30 @@ const _mouseOverEventName = 'mouseenter',
       `${rippleRadius * ctx.radiusMultiplier}px`
     );
 
-    if (!e || ctx.childElementCount) return;
+    if (!e || ctx.childElementCount) {
+      rippleOffsetX = ctx.offsetHeight / 2;
+      rippleOffsetY = ctx.offsetWidth / 2;
+    } else if (rippleOffsetX === undefined) return;
 
-    const rippleX = `${e.offsetX - (rippleRadius + (ctx.offsetWidth / 2))}px`,
-      rippleY = `${e.offsetY - (rippleRadius + (ctx.offsetHeight / 2))}px`;
+    const rippleX = `${rippleOffsetX - (rippleRadius + (ctx.offsetWidth / 2))}px`,
+      rippleY = `${rippleOffsetY - (rippleRadius + (ctx.offsetHeight / 2))}px`;
 
     ctx.style.setProperty(_rippleXCssPropName, rippleX);
     ctx.style.setProperty(_rippleYCssPropName, rippleY);
   },
 
   _rippleActive = (ctx, e) => {
+    ctx.pauseUpdates = true;
     _updateCssProps(ctx, e);
+
     if (ctx.rippleActive) {
       ctx.getAnimations({subtree: true})
+        .reverse()
         .find(ani => ani.animationName === _rippleInAniName)?.play();
     }
+
     ctx.rippleActive = true;
+    ctx.pauseUpdates = false;
   },
 
   addRippleEffect = (ctx) => {
@@ -88,6 +102,7 @@ const _mouseOverEventName = 'mouseenter',
     _updateCssProps(ctx);
     eventTarget.addEventListener(_mouseOverEventName, _onRippleElementMouseDown);
     eventTarget.addEventListener(_mouseDownEventName, _onRippleElementMouseDown);
+    // eventTarget.addEventListener(_animationEndEventName, _onRippleAnimationEnd);
     eventTarget.addEventListener('focusout', _onRippleAnimationEnd);
 
     return ctx;
@@ -96,6 +111,7 @@ const _mouseOverEventName = 'mouseenter',
   removeRippleEffect = (ctx) => {
     ctx.removeEventListener(_mouseOverEventName, _onRippleElementMouseDown);
     ctx.removeEventListener(_mouseDownEventName, _onRippleElementMouseDown);
+    // ctx.removeEventListener(_animationEndEventName, _onRippleAnimationEnd);
     ctx.removeEventListener('focusout', _onRippleAnimationEnd);
     return ctx;
   },
@@ -108,29 +124,39 @@ const _mouseOverEventName = 'mouseenter',
   _resizeObserver = new ResizeObserver(debounce((records) => {
     if (!records?.length) return;
 
-    records[0].target.update();
+    let lastTarget;
+
+    records.forEach(record => {
+      const {target} = record;
+
+      // Only allow update if target hasn't already been updated in parent iteration
+      if (!lastTarget || !lastTarget.isSameNode(target)) {
+        lastTarget = target;
+        target.update()
+      } else {
+        lastTarget = target;
+      }
+    });
   }, 377)),
 
   _mutObserver = new MutationObserver((records) => {
     const recordsLen = records.length;
 
-    let requiresUpdate = false,
-      target;
+    let target;
 
     for (let i = 0; i < recordsLen; i += 1) {
       const r = records[i];
 
       if (r.addedNodes.length || r.removedNodes.length) {
+        if (!target || !target.isSameNode(r.target)) {
+          r.target.update();
+        }
         target = r.target;
-        requiresUpdate = true;
-        break;
       }
     }
-
-    if (requiresUpdate && target) target.update();
   }),
 
-  _mutObserverConfig = {childList: true};
+  _mutObserverConfig = {childList: true, subtree: true};
 
 export {addRippleEffect, removeRippleEffect, RIPPLE_ACTIVE_NAME, RADIUS_MULTIPLIER_NAME}
 
@@ -140,6 +166,8 @@ export class XRippleElement extends HTMLElement {
   static get observedAttributes() {
     return observedAttributes;
   }
+
+  pauseUpdates = false;
 
   #initialized = false;
   #radiusMultiplier = 2;
@@ -169,7 +197,7 @@ export class XRippleElement extends HTMLElement {
     } else {
       delete this.#attrsChangedMap[RIPPLE_ACTIVE_NAME];
     }
-    this.update();
+    if (!this.pauseUpdates) this.update();
   }
 
   get localName() {
@@ -195,8 +223,6 @@ export class XRippleElement extends HTMLElement {
   }
 
   attributeChangedCallback(attrName, prevValue, newValue) {
-    // console.log(attrName, prevValue, newValue);
-
     switch (attrName) {
       // Reflected attribute
       case RIPPLE_ACTIVE_NAME:

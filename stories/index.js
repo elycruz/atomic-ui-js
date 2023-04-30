@@ -19,7 +19,10 @@ window.addEventListener('DOMContentLoaded', () => {
     html = $('html'),
 
     mainIframeHeightResize = (iframe) => {
-      iframe.style.height = document.body.scrollHeight + (-1 * (header.offsetHeight + footer.offsetHeight)) - 4 + 'px';
+      const possNewHeight = window.innerHeight +
+          (-1 * (header.scrollHeight + footer.scrollHeight));
+
+      iframe.style.height = possNewHeight + 'px';
     },
 
     iframeMutObserver = new MutationObserver(records => {
@@ -36,15 +39,13 @@ window.addEventListener('DOMContentLoaded', () => {
     subtree: true
   });
 
-  iframe.onload = e => mainIframeHeightResize(e.currentTarget);
+  // Listen for iframe load for resize
+  iframe.addEventListener('load', e => mainIframeHeightResize(e.currentTarget));
 
   hamburgerBtn.addEventListener('click', () => {
     html.classList.toggle('x-nav-hidden');
     nav.classList.toggle('x-display-none');
   });
-
-  // Listen for iframe load for resize
-  // iframe.addEventListener('load', () => resizeIframe(iframe));
 
   // Load stories into iframe
   menus.forEach(menu => menu.addEventListener('click', e => {
