@@ -1,7 +1,7 @@
-import {LitElement} from "lit";
+import {LitElement} from 'lit';
 
 export class XAtomic extends LitElement {
-  static localName = "";
+  static localName = '';
 
   get localName() {
     return this.constructor.localName;

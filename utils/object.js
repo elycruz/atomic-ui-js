@@ -3,9 +3,9 @@
  * @memberOf object
  */
 const _Number = Number.name,
-  _NaN = "NaN",
-  _Null = "Null",
-  _Undefined = "Undefined";
+  _NaN = 'NaN',
+  _Null = 'Null',
+  _Undefined = 'Undefined';
 
 export const isset = (x) => x !== null && x !== undefined;
 

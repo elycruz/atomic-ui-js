@@ -1,8 +1,8 @@
 // url_test.ts
-import {assertEquals} from "https://deno.land/std@0.155.0/testing/asserts.ts";
+import {assertEquals} from 'https://deno.land/std@0.155.0/testing/asserts.ts';
 import {restrictToFloatChars} from './index.js';
 
-Deno.test("#restrictToFloatChars", () => {
+Deno.test('#restrictToFloatChars', () => {
   // Rules to test for:
   // - Exponent char is only allowed after digits.
   // - Minus signs are only allowed at index zero or after an exponent character.
@@ -37,7 +37,7 @@ Deno.test("#restrictToFloatChars", () => {
     ['1e2', '1e2'],
     ['1eee2', '1e2'],
     ['1ee2e2', '1e22'],
-    [{toString() { return '99.00'}}, '99.00']
+    [{toString() { return '99.00';}}, '99.00']
   ]
     .forEach(([arg, expected]) => {
       const rslt = restrictToFloatChars(arg);

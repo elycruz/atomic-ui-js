@@ -21,9 +21,9 @@ const {log, error} = console,
   fileName = 'index.css',
 
   genColorsCss = (outputFilePath = path.join(__dirname, '../../css/modules/colors/', fileName)) => {
-    const lightnessNums = new Array(9)
-        .fill(null, 0, 9)
-        .map((_, i) => ((i + 1) * 10) - (i === 9 ? 1 : 0))
+    const lightnessNums = new Array(10)
+        .fill(null, 0, 10)
+        .map((_, i) => i * 10)
         .concat([95, 99, 100]),
 
       themeColors = [
@@ -32,13 +32,13 @@ const {log, error} = console,
       ]
         .flatMap(([name, degree, saturation], j) =>
           lightnessNums.flatMap((lightness, i) => {
-            const alpha = 1 - ((lightness - 1) * .01);
+            const alpha = 100 - lightness;
 
             return [
               `  --x-${name}-color-${i + 1}: ` +
-              `hsl(${degree}, ${saturation}%, ${lightness}%);`,
+              `hsl(${degree}deg, ${saturation}%, ${lightness}%);`,
               `  --x-${name}-color-with-alpha-${i + 1}: ` +
-              `hsla(${degree}, ${saturation}%, ${lightness}%, ${alpha});`,
+              `hsla(${degree}deg, ${saturation}%, ${lightness}%, ${alpha.toFixed(2)}%);`,
             ];
           })
         ).join('\n'),
@@ -46,8 +46,6 @@ const {log, error} = console,
       themeVars = Object.keys(xThemes).reduce((agg, k, j) => {
         const themeName = xThemes[k];
 
-        // @todo deprecate --x-theme-{\d} and --x-theme-hsla-{\d} in
-        // exchange for the '--x-theme-color-*'.
         return agg + `
 .x-theme-${themeName} {
 ${lightnessNums.flatMap((lightness, i) => {

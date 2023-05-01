@@ -1,17 +1,17 @@
 export const // Property names
 
   // ----
-  VALUE_NAME = "value",
-  VALUE_AS_NUMBER_NAME = "value",
-  DEFAULT_VALUE_NAME = "defaultValue",
-  DISABLED_NAME = "disabled",
-  READONLY_NAME = "readOnly",
-  REQUIRED_NAME = "required",
-  NAME_NAME = "name",
-  MIN_NAME = "min",
-  MAX_NAME = "max",
-  STEP_NAME = "step",
-  TABINDEX_NAME = "tabIndex",
+  VALUE_NAME = 'value',
+  VALUE_AS_NUMBER_NAME = 'value',
+  DEFAULT_VALUE_NAME = 'defaultValue',
+  DISABLED_NAME = 'disabled',
+  READONLY_NAME = 'readOnly',
+  REQUIRED_NAME = 'required',
+  NAME_NAME = 'name',
+  MIN_NAME = 'min',
+  MAX_NAME = 'max',
+  STEP_NAME = 'step',
+  TABINDEX_NAME = 'tabIndex',
   MATCHING_SYMBOL = 'matching',
 
   // Booleans
@@ -21,4 +21,4 @@ export const // Property names
 
   // Selectors
   // ----
-  focusedSelector = ":focus, :focus-within";
+  focusedSelector = ':focus, :focus-within';

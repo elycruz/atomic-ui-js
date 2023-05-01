@@ -1,4 +1,4 @@
-import {isset, typeOf} from "../object.js";
+import {isset, typeOf} from '../object.js';
 
 export const // isTouchCapable = window.ontouchend !== undefined,
 
@@ -54,7 +54,7 @@ export const // isTouchCapable = window.ontouchend !== undefined,
     return element.parentElement;
   },
 
-  isTouchEvent = (e) => e.type.indexOf("touch") === 0,
+  isTouchEvent = (e) => e.type.indexOf('touch') === 0,
 
   eventFromPossibleTouchEvent = (e, initialTouch = true) => {
     if (isTouchEvent(e)) {
@@ -67,9 +67,9 @@ export const // isTouchCapable = window.ontouchend !== undefined,
   errorIfNotHtmlElement = (contextName, propName, element) => {
     if (!isHTMLElement(element)) {
       throw new Error(
-        "_" + contextName + "." + propName +
+        '_' + contextName + '.' + propName +
         ' can only be set to type of "HTMLElement".  ' +
-        "Type received: " + typeOf(element),
+        'Type received: ' + typeOf(element),
       );
     }
   };

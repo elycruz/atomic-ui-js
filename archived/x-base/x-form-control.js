@@ -1,6 +1,6 @@
-import {isset} from "../../utils/object.js";
-import {XAtomic} from "./x-atomic.js";
-import {throwNoOverrideError} from "../../utils/dom/events.js";
+import {isset} from '../../utils/object.js';
+import {XAtomic} from './x-atomic.js';
+import {throwNoOverrideError} from '../../utils/dom/events.js';
 import {
   DEFAULT_VALUE_NAME,
   DISABLED_NAME,
@@ -8,11 +8,11 @@ import {
   READONLY_NAME,
   REQUIRED_NAME, TABINDEX_NAME,
   VALUE_NAME,
-} from "../../utils/shared-constants.js";
+} from '../../utils/shared-constants.js';
 
 export class XFormControl extends XAtomic {
   static formAssociated = true;
-  static shadowRootOptions = {mode: "open", delegatesFocus: true};
+  static shadowRootOptions = {mode: 'open', delegatesFocus: true};
 
   // static shadowRootOptions = {mode: "open", delegatesFocus: true};
   static  properties = {
@@ -41,9 +41,9 @@ export class XFormControl extends XAtomic {
       disabled = Boolean(x);
     this._disabled = disabled;
     if (this._internals) {
-      this._internals.ariaDisabled = disabled + "";
+      this._internals.ariaDisabled = disabled + '';
     }
-    this.ariaDisabled = disabled + "";
+    this.ariaDisabled = disabled + '';
     this.requestUpdate(DISABLED_NAME, prevDisabled);
   }
 
@@ -57,9 +57,9 @@ export class XFormControl extends XAtomic {
       required = Boolean(x);
     this._required = required;
     if (this._internals) {
-      this._internals.ariaRequired = required + "";
+      this._internals.ariaRequired = required + '';
     }
-    this.ariaRequired = required + "";
+    this.ariaRequired = required + '';
     this.requestUpdate(REQUIRED_NAME, prevRequired);
   }
 
@@ -73,15 +73,15 @@ export class XFormControl extends XAtomic {
       readOnly = Boolean(x);
     this._readOnly = readOnly;
     if (this._internals) {
-      this._internals.ariaReadOnly = readOnly + "";
+      this._internals.ariaReadOnly = readOnly + '';
     }
-    this.ariaReadOnly = readOnly + "";
+    this.ariaReadOnly = readOnly + '';
     this.requestUpdate(READONLY_NAME, prevReadOnly);
   }
 
   _defaultValue;
   get defaultValue() {
-    return !isset(this._defaultValue) ? "" : this._defaultValue;
+    return !isset(this._defaultValue) ? '' : this._defaultValue;
   }
 
   set defaultValue(xs) {
@@ -93,23 +93,23 @@ export class XFormControl extends XAtomic {
 
   _value;
   get value() {
-    return !isset(this._value) ? "" : this._value;
+    return !isset(this._value) ? '' : this._value;
   }
 
   set value(xs) {
     const {value: prevValue} = this;
-    this._value = isset(xs) ? xs : "";
+    this._value = isset(xs) ? xs : '';
     this.requestUpdate(VALUE_NAME, prevValue);
   }
 
   _name;
   get name() {
-    return !isset(this._name) ? "" : this._name;
+    return !isset(this._name) ? '' : this._name;
   }
 
   set name(xs) {
     const {name: prevName} = this;
-    this._name = isset(xs) ? xs : "";
+    this._name = isset(xs) ? xs : '';
     this.requestUpdate(NAME_NAME, prevName);
   }
 
@@ -137,7 +137,7 @@ export class XFormControl extends XAtomic {
   }
 
   get validationMessage() {
-    return this._internals ? this._internals.validationMessage : "";
+    return this._internals ? this._internals.validationMessage : '';
   }
 
   get form() {
@@ -178,11 +178,11 @@ export class XFormControl extends XAtomic {
     return this._internals ? this._internals.reportValidity() : false;
   }
 
-  setCustomValidity(message = "") {
+  setCustomValidity(message = '') {
     if (!this._internals) return;
     this._internals.setValidity(
       message ? {customError: true} : {},
-      message || "",
+      message || '',
     );
   }
 
@@ -206,10 +206,10 @@ export class XFormControl extends XAtomic {
 
   formAssociatedCallback(form) {
     if (this.name && form.elements[this.name]) {
-      form.addEventListener("formdata", this._onFormData);
+      form.addEventListener('formdata', this._onFormData);
       this.updateValidity();
     } else {
-      form.removeEventListener("formdata", this._onFormData);
+      form.removeEventListener('formdata', this._onFormData);
     }
   }
 

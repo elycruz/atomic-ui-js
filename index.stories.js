@@ -1,4 +1,4 @@
-import {debounce} from "./utils/index.js";
+import {debounce} from './utils/index.js';
 
 const $ = (selector, base = document) =>
     base.querySelector(selector),
@@ -71,4 +71,4 @@ window.addEventListener('DOMContentLoaded', () => {
 
 const setIframeSrcFromHash = (iframe, hash = '#colors.html') => {
   iframe.src = hash.slice(1) ?? '';
-}
+};

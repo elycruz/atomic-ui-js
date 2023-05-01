@@ -10,7 +10,7 @@ export const constrainNumber = (min = 0, max = 0, num = 0) => {
     else return num;
   },
 
-  isUsableNumber = (num = 0) => typeof num === "number" && !Number.isNaN(num),
+  isUsableNumber = (num = 0) => typeof num === 'number' && !Number.isNaN(num),
 
   isPositiveNumber = (num = 0) => isUsableNumber(num) && num > -1,
 

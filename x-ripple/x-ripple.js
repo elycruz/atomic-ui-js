@@ -1,4 +1,4 @@
-import {debounce} from "../utils/index.js";
+import {debounce} from '../utils/index.js';
 
 export const xRippleName = 'x-ripple';
 
@@ -132,7 +132,7 @@ const _mouseOverEventName = 'mouseenter',
       // Only allow update if target hasn't already been updated in parent iteration
       if (!lastTarget || !lastTarget.isSameNode(target)) {
         lastTarget = target;
-        target.update()
+        target.update();
       } else {
         lastTarget = target;
       }
@@ -158,7 +158,7 @@ const _mouseOverEventName = 'mouseenter',
 
   _mutObserverConfig = {childList: true, subtree: true};
 
-export {addRippleEffect, removeRippleEffect, RIPPLE_ACTIVE_NAME, RADIUS_MULTIPLIER_NAME}
+export {addRippleEffect, removeRippleEffect, RIPPLE_ACTIVE_NAME, RADIUS_MULTIPLIER_NAME};
 
 export class XRippleElement extends HTMLElement {
   static localName = xRippleName;
@@ -224,17 +224,17 @@ export class XRippleElement extends HTMLElement {
 
   attributeChangedCallback(attrName, prevValue, newValue) {
     switch (attrName) {
-      // Reflected attribute
-      case RIPPLE_ACTIVE_NAME:
-        if (!this.#attrsChangedMap[RIPPLE_ACTIVE_NAME]) {
-          this.rippleActive = newValue !== null;
-        } else delete this.#attrsChangedMap[RIPPLE_ACTIVE_NAME];
-        break;
-      case RADIUS_MULTIPLIER_NAME:
-        this.radiusMultiplier = newValue;
-        break;
-      default:
-        break;
+    // Reflected attribute
+    case RIPPLE_ACTIVE_NAME:
+      if (!this.#attrsChangedMap[RIPPLE_ACTIVE_NAME]) {
+        this.rippleActive = newValue !== null;
+      } else delete this.#attrsChangedMap[RIPPLE_ACTIVE_NAME];
+      break;
+    case RADIUS_MULTIPLIER_NAME:
+      this.radiusMultiplier = newValue;
+      break;
+    default:
+      break;
     }
   }
 

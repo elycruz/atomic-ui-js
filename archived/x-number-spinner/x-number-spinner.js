@@ -6,15 +6,15 @@ import {
   STEP_NAME,
   VALUE_AS_NUMBER_NAME,
   VALUE_NAME,
-} from "../../utils";
+} from '../../utils';
 
-import {autoWrapNumber, isset} from "../../utils";
-import {XFormControl} from "../x-base";
-import {html} from "lit";
+import {autoWrapNumber, isset} from '../../utils';
+import {XFormControl} from '../x-base';
+import {html} from 'lit';
 
 const {MAX_SAFE_INTEGER, MIN_SAFE_INTEGER, isNaN} = Number,
-  xNumberSpinnerLocalName = "x-number-spinner",
-  charLengthCssProp = "--x-number-spinner-size",
+  xNumberSpinnerLocalName = 'x-number-spinner',
+  charLengthCssProp = '--x-number-spinner-size',
   xNumberSpinnerStyles = `
 :host {
   --x-border-color: gray;
@@ -66,8 +66,8 @@ const {MAX_SAFE_INTEGER, MIN_SAFE_INTEGER, isNaN} = Number,
 `,
 
   hasTrailingDot = (xs) => {
-    const incoming = xs + "";
-    return incoming.lastIndexOf(".") === incoming.length - 1;
+    const incoming = xs + '';
+    return incoming.lastIndexOf('.') === incoming.length - 1;
   },
 
   styleSheet = new CSSStyleSheet();
@@ -155,7 +155,7 @@ export class XNumberSpinner extends XFormControl {
   }
 
   get value() {
-    return !isset(this._value) ? "" : this._value;
+    return !isset(this._value) ? '' : this._value;
   }
 
   set value(xs) {
@@ -172,16 +172,16 @@ export class XNumberSpinner extends XFormControl {
     if (step < 1) {
       newValidityState.typeMismatch = true;
       validationMessage =
-        `The control's \`step\` property only accepts positive numbers.`;
+        'The control\'s `step` property only accepts positive numbers.';
     }
     if (min >= max) {
       newValidityState.typeMismatch = true;
       validationMessage =
-        `The control's \`min\` property must be less than the \`max\` property.`;
+        'The control\'s `min` property must be less than the `max` property.';
     }
     if (required && !value) {
       newValidityState.valueMissing = true;
-      validationMessage = "Please fill out this field.";
+      validationMessage = 'Please fill out this field.';
     }
     if (issetValue) {
       if (valueAsNumber < min) {
@@ -236,11 +236,11 @@ export class XNumberSpinner extends XFormControl {
         newValue = null;
         newNumber = _newNumber;
       } else {
-        const xs = xsOrX + "";
+        const xs = xsOrX + '';
         newNumber = autoWrapNumber(min, max, _newNumber);
         newValue =
-          (xs[0] === "." ? "." + (newNumber + "").slice(1) : newNumber) +
-          (hasTrailingDot(xs) ? "." : "");
+          (xs[0] === '.' ? '.' + (newNumber + '').slice(1) : newNumber) +
+          (hasTrailingDot(xs) ? '.' : '');
       }
     }
 
@@ -258,7 +258,7 @@ export class XNumberSpinner extends XFormControl {
     if (!isset(valueAsNumber) || isNaN(valueAsNumber)) {
       newValueAsNumber = amount;
     } else newValueAsNumber = valueAsNumber + amount;
-    this.value = newValueAsNumber + ""; // `value`'s setter sets `valueAsNumber` for us
+    this.value = newValueAsNumber + ''; // `value`'s setter sets `valueAsNumber` for us
   }
 
   _positionCursor(collapseSelection = true) {
@@ -279,7 +279,7 @@ export class XNumberSpinner extends XFormControl {
     e.preventDefault();
     e.stopPropagation();
     const currValue = this.value;
-    const newValue = this._input.textContent.trim().replace(newLinesRegex, "");
+    const newValue = this._input.textContent.trim().replace(newLinesRegex, '');
     this.value = newValue;
     if (
       currValue === newValue ||
@@ -289,7 +289,7 @@ export class XNumberSpinner extends XFormControl {
     }
     this._changeDispatchPending = true;
     this.dispatchEvent(
-      new InputEvent("input", {
+      new InputEvent('input', {
         bubbles: true,
         composed: true,
         cancelable: false,
@@ -315,8 +315,8 @@ export class XNumberSpinner extends XFormControl {
       composed: true,
       cancelable: false,
     };
-    this.dispatchEvent(new Event("change", evOptions));
-    this.dispatchEvent(new Event("input", evOptions));
+    this.dispatchEvent(new Event('change', evOptions));
+    this.dispatchEvent(new Event('input', evOptions));
   };
 
   _onKeyDown = (e) => {
@@ -325,28 +325,28 @@ export class XNumberSpinner extends XFormControl {
     }
     let triggerChange = false;
     switch (e.key) {
-      case "ArrowUp":
-        e.preventDefault();
-        this.stepUp();
-        triggerChange = true;
-        break;
-      case "ArrowDown":
-        e.preventDefault();
-        this.stepDown();
-        triggerChange = true;
-        break;
-      case "PageUp":
-        e.preventDefault();
-        this.stepUp(10);
-        triggerChange = true;
-        break;
-      case "PageDown":
-        e.preventDefault();
-        this.stepDown(10);
-        triggerChange = true;
-        break;
-      default:
-        break;
+    case 'ArrowUp':
+      e.preventDefault();
+      this.stepUp();
+      triggerChange = true;
+      break;
+    case 'ArrowDown':
+      e.preventDefault();
+      this.stepDown();
+      triggerChange = true;
+      break;
+    case 'PageUp':
+      e.preventDefault();
+      this.stepUp(10);
+      triggerChange = true;
+      break;
+    case 'PageDown':
+      e.preventDefault();
+      this.stepDown(10);
+      triggerChange = true;
+      break;
+    default:
+      break;
     }
 
     if (triggerChange) {
@@ -372,7 +372,7 @@ export class XNumberSpinner extends XFormControl {
   disconnectedCallback() {
     super.disconnectedCallback();
     if (this._xNumberSpinnerInitialized) {
-      this.removeEventListener("keydown", this._onKeyDown);
+      this.removeEventListener('keydown', this._onKeyDown);
       this._xNumberSpinnerInitialized = false;
     }
   }
@@ -380,11 +380,11 @@ export class XNumberSpinner extends XFormControl {
   firstUpdated(_changedProperties) {
     super.firstUpdated(_changedProperties);
     this.updateComplete.then(() => {
-      this._input.contentEditable = "true";
-      this._input.addEventListener("input", this._onInput);
-      this._input.addEventListener("focusin", this._onFocus);
-      this._input.addEventListener("focusout", this._onFocusOut);
-      this.addEventListener("keydown", this._onKeyDown);
+      this._input.contentEditable = 'true';
+      this._input.addEventListener('input', this._onInput);
+      this._input.addEventListener('focusin', this._onFocus);
+      this._input.addEventListener('focusout', this._onFocusOut);
+      this.addEventListener('keydown', this._onKeyDown);
     });
   }
 

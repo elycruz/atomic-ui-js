@@ -17,7 +17,7 @@ export const preventDefault = e => e.preventDefault(),
       addEventListener(listener, evName, elm, options), element),
 
   throwNoOverrideError = () => {
-    throw new Error(`Should override method from extending class.`);
+    throw new Error('Should override method from extending class.');
   },
 
   waitFor = async (timeout) => {

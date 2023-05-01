@@ -9,6 +9,10 @@
   },
   "scripts": {
     "gen-css": "node scripts/gen-css/index.mjs",
+    "eslint": "eslint .",
+    "stylelint": "stylelint .",
+    "typedoc": "typedoc .",
+    "build": "echo \"No build step defined\" && exit 1",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -22,5 +26,12 @@
     "url": "https://github.com/elycruz/atomic-ui-js/issues"
   },
   "homepage": "https://github.com/elycruz/atomic-ui-js#readme",
-  "devDependencies": {}
+  "devDependencies": {
+    "eslint": "^8.39.0",
+    "rollup": "^3.21.2",
+    "stylelint": "^15.6.0",
+    "stylelint-config-standard": "^33.0.0",
+    "typedoc": "^0.24.6",
+    "typescript": "^5.0.4"
+  }
 }
