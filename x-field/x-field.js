@@ -1,18 +1,21 @@
-import {addEventListener, addEventListeners, removeEventListener, removeEventListeners} from "../utils/dom/events.js";
+import {addEventListener, addEventListeners, removeEventListener, removeEventListeners} from '../utils/dom/events.js';
 import {LitElement, html} from 'lit';
-import styles from './x-field.css' assert {type: 'css'};
+
+import styles from './x-field.css.js';
 
 export const xFieldName = 'x-field';
 
-const SELECTORS_NAME = 'selectors',
-  VALIDATION_MESSAGE_NAME = 'validationMessage';
+// const SELECTORS_NAME = 'selectors',
+//   VALIDATION_MESSAGE_NAME = 'validationMessage';
 
 export class XField extends LitElement {
   static get localName() {
     return xFieldName;
   }
 
-  static styles = styles;
+  static get styles() {
+    return styles;
+  }
 
   static properties = {
     selectors: {type: String},

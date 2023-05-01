@@ -35,9 +35,9 @@ const {log, error} = console,
             const alpha = 100 - lightness;
 
             return [
-              `  --x-${name}-color-${i + 1}: ` +
+              `  --x-${name}-color-${i}: ` +
               `hsl(${degree}deg, ${saturation}%, ${lightness}%);`,
-              `  --x-${name}-color-with-alpha-${i + 1}: ` +
+              `  --x-${name}-color-with-alpha-${i}: ` +
               `hsla(${degree}deg, ${saturation}%, ${lightness}%, ${alpha.toFixed(2)}%);`,
             ];
           })
@@ -50,8 +50,8 @@ const {log, error} = console,
 .x-theme-${themeName} {
 ${lightnessNums.flatMap((lightness, i) => {
           return [
-            `  --x-color-${i + 1}: var(--x-${themeName}-color-${i + 1});`,
-            `  --x-color-with-alpha-${i + 1}: var(--x-${themeName}-color-with-alpha-${i + 1});`,
+            `  --x-color-${i}: var(--x-${themeName}-color-${i});`,
+            `  --x-color-with-alpha-${i}: var(--x-${themeName}-color-with-alpha-${i});`,
           ];
         })
           .join('\n')}

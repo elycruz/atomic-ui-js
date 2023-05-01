@@ -11,7 +11,7 @@ export function rafLimiter(fn, fps = 60) {
   const interval = 1000 / fps;
   let then = Date.now();
 
-  return (function loop(timestamp) {
+  return (function loop(/*timestamp*/) {
     const now = Date.now(),
       delta = now - then;
     let stopAnimation;

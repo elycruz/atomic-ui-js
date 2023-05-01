@@ -9,7 +9,7 @@ export const xRippleName = 'x-ripple';
  */
 const _mouseOverEventName = 'mouseenter',
   _mouseDownEventName = 'mousedown',
-  _animationEndEventName = 'animationend',
+  // _animationEndEventName = 'animationend',
 
   _rippleDiameterCssPropName = `--${xRippleName}-diameter`,
   _rippleXCssPropName = `--${xRippleName}-x`,

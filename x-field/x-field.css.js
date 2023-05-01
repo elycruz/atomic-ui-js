@@ -1,4 +1,6 @@
-:host {
+import {css} from 'lit';
+
+export default css`:host {
   display: inline-block;
 }
 
@@ -19,3 +21,4 @@
   display: flex;
   flex-flow: row wrap;
 }
+`;

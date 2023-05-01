@@ -11,6 +11,7 @@
     "gen-css": "node scripts/gen-css/index.mjs",
     "eslint": "eslint .",
     "stylelint": "stylelint .",
+    "lint": "pnpm eslint && pnpm stylelint",
     "typedoc": "typedoc .",
     "build": "echo \"No build step defined\" && exit 1",
     "test": "echo \"Error: no test specified\" && exit 1"

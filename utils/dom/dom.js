@@ -31,7 +31,7 @@ export const // isTouchCapable = window.ontouchend !== undefined,
     return elm;
   },
 
-  whereMatchesSelector = (selector) => (element) => element.matches(s),
+  whereMatchesSelector = (selector) => (element) => element.matches(selector),
 
   /**
    * Finds an element that matches selector (from right to left (up dom tree)) or
