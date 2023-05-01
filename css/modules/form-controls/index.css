@@ -3,7 +3,9 @@
 @import url(fieldset.css);
 @import url(checkbox.css);
 @import url(radio.css);
-@import url(input-select-and-textarea.css);
+@import url(input.css);
+@import url(select.css);
+@import url(textarea.css);
 
 input,
 textarea,

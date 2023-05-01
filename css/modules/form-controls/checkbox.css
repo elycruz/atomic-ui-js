@@ -1,4 +1,4 @@
-:where(.x-radio, .x-checkbox) {
+:where(.x-radio, .x-checkbox, [type=radio], [type=checkbox]) {
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
@@ -14,39 +14,39 @@
   margin: 0;
 }
 
-.x-checkbox::after,
-:where(.x-radio, .x-checkbox) {
+:where(.x-checkbox, [type=checkbox])::after,
+:where(.x-radio, .x-checkbox, [type=radio], [type=checkbox]) {
   width: 1rem;
   height: 1rem;
 }
 
-:where(.x-radio, .x-checkbox)::after {
+:where(.x-radio, .x-checkbox, [type=radio], [type=checkbox])::after {
   content: "";
   background-color: var(--x-input-bg-color);
 }
 
-.x-checkbox,
-.x-checkbox::after {
+:where(.x-checkbox, [type=checkbox]),
+:where(.x-checkbox, [type=checkbox])::after {
   border-radius: var(--x-border-radius);
 }
 
-.x-checkbox::after,
-.x-checkbox:checked::after {
+:where(.x-checkbox, [type=checkbox])::after,
+:where(.x-checkbox, [type=checkbox]):checked::after {
   background: transparent url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="none" stroke="white" stroke-width="3" d="M1.73,12.91 8.1,19.28 22.79,4.59"></path></svg>');
   width: var(--x-12px);
   height: var(--x-12px);
 }
 
-.x-checkbox:checked {
+:where(.x-checkbox, [type=checkbox]):checked {
   background: var(--x-input-highlight-color);
 }
 
-.x-checkbox::after {
+:where(.x-checkbox, [type=checkbox])::after {
   animation: var(--x-input-speed) box-wipe-obscure;
   animation-fill-mode: forwards;
 }
 
-.x-checkbox:checked::after {
+:where(.x-checkbox, [type=checkbox]):checked::after {
   animation: var(--x-input-speed) box-wipe-reveal;
 }
 

@@ -4,22 +4,93 @@
   <meta charset="UTF-8">
   <title>Input - Atomic Js UI</title>
   <link rel="stylesheet" href="css/index.stories.css"/>
-  <link rel="stylesheet" href="../css/modules/form-controls/index.css"/>
+  <link rel="stylesheet" href="../css/modules/material-design/index.css"/>
+  <link rel="stylesheet" href="../x-ripple/index.css"/>
   <style>
     .leading,
     .trailing {
       padding: 0;
       font-weight: normal;
     }
+
+    section > article {
+      border-top: none;
+    }
   </style>
 </head>
 <body>
-<section>
-  <header>
-    <h2>Default (Text) Input Control</h2>
-  </header>
+<script type="module">
+  // All HTMLInputElement types
+  // ----
+  const inputTypes = [
+      'button',
+      'checkbox',
+      'color',
+      'date',
+      'datetime-local',
+      'email',
+      'file',
+      'hidden',
+      'image',
+      'month',
+      'number',
+      'password',
+      'radio',
+      'range',
+      'reset',
+      'search',
+      'submit',
+      'tel',
+      'text',
+      'time',
+      'url',
+      'week'
+    ],
+    out = document.createElement('section')
+  ;
+  out.classList.add('x-flex', 'x-flex-row-wrap')
+  out.innerHTML += `
+  <article>
+    <header>
+      <h3>Inputs controls with decorators</h3>
+    </header>
+
+    <form action="#">
+      <fieldset class="x-grid x-fieldset x-fieldset--grid-2">
+        ${inputTypes.reduce((agg, type) => {
+      const name = `${type}-2`,
+          humanReadableName = type[0].toUpperCase() + type.substring(1);
+      return agg +
+          `<label for="${name}">${humanReadableName}</label>` +
+          `<div class="x-input"><input type="${type}" name="${name}" id="${name}"></div>`
+          ;
+  }, '')}
+      </fieldset>
+      <fieldset class="x-grid x-fieldset--grid-2">
+        <label for="select-1">Textarea</label>
+        <div class="x-input">
+          <select name="select-1" id="select-1">
+            <option value="NaN">-- Select an option --</option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+          </select>
+        </div>
+        <label for="textarea">Textarea</label>
+        <div class="x-input">
+        <textarea name="textarea" id="textarea" cols="30" rows="10"></textarea>
+        </div>
+      </fieldset>
+    </form>
+  </article>
 
   <article>
+    <header>
+      <h3>Default (Text) Input Control</h3>
+    </header>
+
     <form action="#">
       <fieldset class="x-grid x-fieldset--grid-2">
         <label for="text-input-1">Default</label>
@@ -69,74 +140,21 @@
       </fieldset>
     </form>
   </article>
-</section>
-
-<script type="module">
-  import {$} from '../utils/dom/index.js';
-
-  // All HTMLInputElement types
-  // ----
-  const inputTypes = [
-      'button',
-      'checkbox',
-      'color',
-      'date',
-      'datetime-local',
-      'email',
-      'file',
-      'hidden',
-      'image',
-      'month',
-      'number',
-      'password',
-      'radio',
-      'range',
-      'reset',
-      'search',
-      'submit',
-      'tel',
-      'text',
-      'time',
-      'url',
-      'week'
-    ],
-    out = $('section')
-  ;
-  out.innerHTML += `
-  <header>
-    <h3>All <code>input</code> Element Controls (no-decorators)</h3>
-  </header>
 
   <article>
+    <header>
+      <h3>Input controls without decorators</h3>
+    </header>
     <form action="#">
       <fieldset class="x-grid x-fieldset x-fieldset--grid-2">
         ${inputTypes.reduce((agg, type) => {
-          const name = `${type}-input`,
-            humanReadableName = type[0].toUpperCase() + type.substring(1);
-          return agg +
-            `<label for="${name}">${humanReadableName}</label>` +
-            `<div><input type="${type}" name="${name}" id="${name}"></div>`
+      const name = `${type}`,
+          humanReadableName = type[0].toUpperCase() + type.substring(1);
+      return agg +
+          `<label for="${name}">${humanReadableName}</label>` +
+          `<div><input type="${type}" name="${name}" id="${name}"></div>`
           ;
-        }, '')}
-      </fieldset>
-    </form>
-  </article>
-
-  <header>
-    <h3>All <code>input</code> Element Controls (with-decorators)</h3>
-  </header>
-
-  <article>
-    <form action="#">
-      <fieldset class="x-grid x-fieldset x-fieldset--grid-2">
-        ${inputTypes.reduce((agg, type) => {
-          const name = `${type}-input-2`,
-            humanReadableName = type[0].toUpperCase() + type.substring(1);
-          return agg +
-            `<label for="${name}">${humanReadableName}</label>` +
-            `<div class="x-input"><input type="${type}" name="${name}" id="${name}"></div>`
-          ;
-        }, '')}
+  }, '')}
       </fieldset>
     </form>
   </article>
