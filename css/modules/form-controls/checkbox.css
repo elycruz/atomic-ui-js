@@ -25,6 +25,10 @@
   background-color: var(--x-input-bg-color);
 }
 
+:where(.x-radio, .x-checkbox, [type=radio], [type=checkbox])[readonly] {
+  pointer-events: none;
+}
+
 :where(.x-checkbox, [type=checkbox]),
 :where(.x-checkbox, [type=checkbox])::after {
   border-radius: var(--x-border-radius);

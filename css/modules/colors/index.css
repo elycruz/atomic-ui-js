@@ -179,7 +179,7 @@
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --x-field: var(--x-neutral-hsl-10);
+    --x-field: var(--x-neutral-color-1);
   }
 }
 

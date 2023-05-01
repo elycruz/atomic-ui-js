@@ -74,7 +74,7 @@ ${themeColors}
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --x-field: var(--x-neutral-hsl-1);
+    --x-field: var(--x-neutral-color-1);
   }
 }
 
