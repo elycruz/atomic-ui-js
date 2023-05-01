@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <title>Button - Atomic UI Js</title>
-  <link rel="stylesheet" href="./css/index.stories.css"/>
-  <link rel="stylesheet" href="../css/modules/material-design/index.css"/>
+  <link rel="stylesheet" href="css/index.stories.css"/>
+  <link rel="stylesheet" href="css/modules/material-design/index.css"/>
 </head>
 <body>
 
@@ -18,10 +18,10 @@
 </section>
 
 <script type="module">
-  import {$} from '../utils';
-  import {xThemes, xVariants} from "../constants.js";
-  import {classNames} from "../utils/index.js";
-  import '../x-ripple/register.js'
+  import {$} from './utils/index.js';
+  import {xThemes, xVariants} from "./constants.js";
+  import {classNames} from "./utils/index.js";
+  import './x-ripple/register.js'
 
   $('.buttons-section > .x-section-body')
     .innerHTML = `

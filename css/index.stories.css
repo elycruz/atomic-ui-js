@@ -1,5 +1,5 @@
-@import url(../../css/index.css);
-@import url(./material-design-icons.css);
+@import url(index.css);
+@import url(material-design-icons.css);
 
 * {
   box-sizing: border-box;

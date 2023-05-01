@@ -1,4 +1,4 @@
-import {debounce} from "../utils/index.js";
+import {debounce} from "./utils/index.js";
 
 const $ = (selector, base = document) =>
     base.querySelector(selector),
