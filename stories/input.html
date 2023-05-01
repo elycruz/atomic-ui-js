@@ -16,7 +16,7 @@
 <body>
 <section>
   <header>
-    <h2>Input Control</h2>
+    <h2>Default (Text) Input Control</h2>
   </header>
 
   <article>
@@ -71,5 +71,78 @@
   </article>
 </section>
 
+<script type="module">
+  import {$} from '../utils/dom/index.js';
+
+  // All HTMLInputElement types
+  // ----
+  const inputTypes = [
+      'button',
+      'checkbox',
+      'color',
+      'date',
+      'datetime-local',
+      'email',
+      'file',
+      'hidden',
+      'image',
+      'month',
+      'number',
+      'password',
+      'radio',
+      'range',
+      'reset',
+      'search',
+      'submit',
+      'tel',
+      'text',
+      'time',
+      'url',
+      'week'
+    ],
+    out = $('section')
+  ;
+  out.innerHTML += `
+  <header>
+    <h3>All <code>input</code> Element Controls (no-decorators)</h3>
+  </header>
+
+  <article>
+    <form action="#">
+      <fieldset class="x-grid x-fieldset x-fieldset--grid-2">
+        ${inputTypes.reduce((agg, type) => {
+          const name = `${type}-input`,
+            humanReadableName = type[0].toUpperCase() + type.substring(1);
+          return agg +
+            `<label for="${name}">${humanReadableName}</label>` +
+            `<div><input type="${type}" name="${name}" id="${name}"></div>`
+          ;
+        }, '')}
+      </fieldset>
+    </form>
+  </article>
+
+  <header>
+    <h3>All <code>input</code> Element Controls (with-decorators)</h3>
+  </header>
+
+  <article>
+    <form action="#">
+      <fieldset class="x-grid x-fieldset x-fieldset--grid-2">
+        ${inputTypes.reduce((agg, type) => {
+          const name = `${type}-input-2`,
+            humanReadableName = type[0].toUpperCase() + type.substring(1);
+          return agg +
+            `<label for="${name}">${humanReadableName}</label>` +
+            `<div class="x-input"><input type="${type}" name="${name}" id="${name}"></div>`
+          ;
+        }, '')}
+      </fieldset>
+    </form>
+  </article>
+`;
+
+document.body.appendChild(out);
+</script>
 </body>
 </html>
