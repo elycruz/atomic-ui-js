@@ -25,7 +25,7 @@ export default function CheckboxPage() {
                   {/* Use of \`inert\` here is temporary - disabled state should be handled via css */}
                   <label htmlFor={`checkbox-disabled-${i}`}
                     className={`x-theme-${xThemes[k1]}`}
-                    inert>
+                    inert="true">
                     <x-ripple className={`x-theme-${xThemes[k1]}`}>
                       <input type="checkbox"
                         id={`checkbox-disabled-${i}`}

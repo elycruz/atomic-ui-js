@@ -4,9 +4,6 @@
 
 [type="radio"]::after {
   border-radius: var(--x-8px);
-}
-
-[type="radio"]::after {
   transition: clip-path var(--x-input-speed);
   width: var(--x-8px);
   height: var(--x-8px);

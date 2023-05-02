@@ -3,7 +3,7 @@
 ),
 :is(
   .x-radio, .x-checkbox, .x-input, x-input, button,
-  :is(:not(.x-input):not(x-input) > :is(select, textarea, input))
+  :is(:not(.x-input, x-input) > :is(select, textarea, input))
 ):focus-visible {
   outline: var(--x-focus-ring-width, var(--x-1px)) solid var(--x-focus-ring-color);
   outline-offset: 0;

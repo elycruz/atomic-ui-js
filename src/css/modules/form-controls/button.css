@@ -40,7 +40,7 @@
 }
 
 :where(.x-button, .x-btn, button, input[type="submit"], input[type="reset"], input[type="image"], input[type="button"]):is(
-  :not(.x-small):not(.x-dense):not(.x-large), .x-normal
+  :not(.x-small, .x-dense, .x-large), .x-normal
 ) {
   padding: var(--x-8px);
   font-size: var(--x-16px);

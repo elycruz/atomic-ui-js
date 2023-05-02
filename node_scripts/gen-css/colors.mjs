@@ -36,9 +36,9 @@ const {log, error} = console,
 
             return [
               `  --x-${name}-color-${i}: ` +
-              `hsl(${degree}deg ${saturation}% ${lightness}%);`,
+              `hsl(${degree}deg, ${saturation}%, ${lightness}%);`,
               `  --x-${name}-color-with-alpha-${i}: ` +
-              `hsla(${degree}deg ${saturation}% ${lightness}% ${alpha.toFixed(2)}%);`,
+              `hsla(${degree}deg, ${saturation}%, ${lightness}%, ${alpha * .01}%);`,
             ];
           })
         ).join('\n'),

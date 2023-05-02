@@ -25,13 +25,13 @@ legend {
   margin-top: 1rem;
 }
 
-/*:is(.x-layout-vertical, :not(.x-layout-horizontal)) > x-field {
+/* :is(.x-layout-vertical, :not(.x-layout-horizontal)) > x-field {
   display: block;
-}*/
+} */
 
-/*:is(.x-layout-vertical, :not(.x-layout-horizontal)) > x-field + x-field {*/
-/*  margin-top: 1rem;*/
-/*}*/
+/* :is(.x-layout-vertical, :not(.x-layout-horizontal)) > x-field + x-field {
+  margin-top: 1rem;
+} */
 
 :is(.x-fieldset, fieldset).x-grid {
   display: grid;
@@ -50,7 +50,7 @@ html[dir="rtl"] :is(.x-fieldset, fieldset).x-grid {
   grid-template-columns: auto auto;
 }
 
-:is(.x-fieldset, fieldset):not(.x-grid):not(.x-layout-horizontal)
+:is(.x-fieldset, fieldset):not(.x-grid, .x-layout-horizontal)
 > :is(x-field, .x-field):not(:last-child) {
   margin-bottom: 1rem;
 }

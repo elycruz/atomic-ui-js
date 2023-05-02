@@ -6,10 +6,6 @@
   position: relative;
 }
 
-:where(.x-button, .x-btn) > span {
-  /*display: inline-block;*/
-}
-
 :where(.x-button, .x-btn) > *:not(x-ripple) {
   z-index: 3;
 }
@@ -32,7 +28,7 @@
 
 /** For medium size **/
 :where(.x-button, .x-btn).x-outlined:is(
-  :not(.x-small):not(.x-dense):not(.x-large), .x-normal
+  :not(.x-small, .x-dense, .x-large), .x-normal
 ),
 :where(.x-button, .x-btn).x-outlined.x-dense {
   padding: calc(var(--x-8px) - var(--x-border-width)) var(--x-8px);
