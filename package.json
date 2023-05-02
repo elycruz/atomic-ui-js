@@ -8,12 +8,14 @@
     "node": ">=v18"
   },
   "scripts": {
+    "postinstall": "pnpm build",
+    "build": "pnpm lint && pnpm gen-css",
+    "lint": "pnpm eslint && pnpm stylelint",
+    "docs": "pnpm typedoc",
     "gen-css": "node scripts/gen-css/index.mjs",
     "eslint": "eslint .",
-    "stylelint": "stylelint .",
-    "lint": "pnpm eslint && pnpm stylelint",
+    "stylelint": "stylelint **/*.css",
     "typedoc": "typedoc .",
-    "build": "echo \"No build step defined\" && exit 1",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
