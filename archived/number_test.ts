@@ -1,4 +1,4 @@
-import {constrainNumber, resolvePointer, wrapPointer} from "../utils/number";
+import {constrainNumber, resolvePointer, wrapPointer} from "../src/utils/number";
 
 describe("#constrainNumber", () => {
   type Args = [number, number, number];

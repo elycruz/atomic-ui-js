@@ -1,6 +1,6 @@
-import {isset} from '../../utils/object.js';
+import {isset} from '../../src/utils/object.js';
 import {XAtomic} from './x-atomic.js';
-import {throwNoOverrideError} from '../../utils/dom/events.js';
+import {throwNoOverrideError} from '../../src/utils/dom/events.js';
 import {
   DEFAULT_VALUE_NAME,
   DISABLED_NAME,
@@ -8,7 +8,7 @@ import {
   READONLY_NAME,
   REQUIRED_NAME, TABINDEX_NAME,
   VALUE_NAME,
-} from '../../utils/shared-constants.js';
+} from '../../src/utils/shared-constants.js';
 
 export class XFormControl extends XAtomic {
   static formAssociated = true;
