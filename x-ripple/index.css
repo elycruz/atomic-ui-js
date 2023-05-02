@@ -49,8 +49,9 @@ x-ripple {
   background-color var(--x-ripple-speed);
 }
 
-x-ripple:not(:empty):hover {
-  background: var(--x-color-with-alpha-9);
+x-ripple,
+*:has(> x-ripple:empty) {
+  overflow: hidden;
 }
 
 x-ripple:empty {
@@ -63,9 +64,8 @@ x-ripple:empty {
   height: 100%;
 }
 
-x-ripple,
-*:has(> x-ripple:empty) {
-  overflow: hidden;
+x-ripple:has(:disabled) {
+  pointer-events: none;
 }
 
 x-ripple:not(:empty) {
@@ -77,6 +77,10 @@ x-ripple:not(:empty) {
 
 x-ripple:not(:empty) > :first-child {
   place-self: center;
+}
+
+x-ripple:not(:empty):hover {
+  background: var(--x-color-with-alpha-9);
 }
 
 x-ripple::after,
@@ -128,10 +132,6 @@ x-ripple:has(
 
 x-ripple::after {
   z-index: 2;
-}
-
-x-ripple:has(:disabled) {
-  pointer-events: none;
 }
 
 /**
