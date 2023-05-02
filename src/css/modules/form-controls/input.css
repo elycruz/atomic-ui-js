@@ -17,24 +17,24 @@ html[dir="rtl"] .x-input {
  * Padding
  * ------------------------ */
 html:not([dir="rtl"]) :where(x-input, .x-input):where(
-  input:not([type="range"]):not([type="submit"]):not([type="reset"]):not([type="button"]):not([type="image"]):not([type="radio"]):not([type="checkbox"]),
+  input:not([type="range"], [type="submit"], [type="reset"], [type="button"], [type="image"], [type="radio"], [type="checkbox"]),
   select,
   textarea
 ),
-html:not([dir="rtl"]) :where(x-input, .x-input) > *:not([type="range"]):not([type="submit"]):not([type="reset"]):not([type="button"]):not([type="image"]):not([type="radio"]):not([type="checkbox"]) {
+html:not([dir="rtl"]) :where(x-input, .x-input) > *:not([type="range"], [type="submit"], [type="reset"], [type="button"], [type="image"], [type="radio"], [type="checkbox"]) {
   padding: var(--x-input-padding-top) var(--x-input-padding-left);
 }
 
 html[dir="rtl"] :where(x-input, .x-input):is(
-  input:not([type="range"]):not([type="submit"]):not([type="reset"]):not([type="button"]):not([type="image"]):not([type="radio"]):not([type="checkbox"]),
+  input:not([type="range"], [type="submit"], [type="reset"], [type="button"], [type="image"], [type="radio"], [type="checkbox"]),
   select,
   textarea
 ),
-html[dir="rtl"] :where(x-input, .x-input) > *:not([type="range"]):not([type="submit"]):not([type="reset"]):not([type="button"]):not([type="image"]):not([type="radio"]):not([type="checkbox"]) {
+html[dir="rtl"] :where(x-input, .x-input) > *:not([type="range"], [type="submit"], [type="reset"], [type="button"], [type="image"], [type="radio"], [type="checkbox"]) {
   padding: var(--x-input-padding-left) var(--x-input-padding-top);
 }
 
-:where(x-input, .x-input):not([type="checkbox"]):not([type="radio"]) {
+:where(x-input, .x-input):not([type="checkbox"], [type="radio"]) {
   --x-input-padding-top: var(--x-border-width);
   --x-input-padding-left: calc(var(--x-border-width) * 2);
 
@@ -44,12 +44,12 @@ html[dir="rtl"] :where(x-input, .x-input) > *:not([type="range"]):not([type="sub
 }
 
 :where(x-input, .x-input):has(
-  input:not([type="range"]):not([type="submit"]):not([type="reset"]):not([type="button"]):not([type="image"]):not([type="radio"]):not([type="checkbox"]),
+  input:not([type="range"], [type="submit"], [type="reset"], [type="button"], [type="image"], [type="radio"], [type="checkbox"]),
   select,
   textarea
 ),
 :where(x-input, .x-input):is(
-  input:not([type="range"]):not([type="submit"]):not([type="reset"]):not([type="button"]):not([type="image"]):not([type="radio"]):not([type="checkbox"]),
+  input:not([type="range"], [type="submit"], [type="reset"], [type="button"], [type="image"], [type="radio"], [type="checkbox"]),
   select,
   textarea
 ) {
@@ -63,9 +63,9 @@ html[dir="rtl"] :where(x-input, .x-input) > *:not([type="range"]):not([type="sub
 /*
  * Input
  * ---------------------- */
-:where(x-input, .x-input):not([type="checkbox"]):not([type="radio"]),
+:where(x-input, .x-input):not([type="checkbox"], [type="radio"]),
 :where(x-input, .x-input) > :is(
-  input:not([type="checkbox"]):not([type="radio"]),
+  input:not([type="checkbox"], [type="radio"]),
   textarea,
   select
 ) {
@@ -73,12 +73,12 @@ html[dir="rtl"] :where(x-input, .x-input) > *:not([type="range"]):not([type="sub
 }
 
 :where(x-input, .x-input):is(
-  input:not([type="checkbox"]):not([type="radio"]),
+  input:not([type="checkbox"], [type="radio"]),
   textarea,
   select
 ),
 :where(x-input, .x-input) > :is(
-  input:not([type="checkbox"]):not([type="radio"]),
+  input:not([type="checkbox"], [type="radio"]),
   textarea,
   select
  ) {
@@ -89,7 +89,7 @@ html[dir="rtl"] :where(x-input, .x-input) > *:not([type="range"]):not([type="sub
 /*
  * Focus Visible
  *--------------------- */
-:where(x-input, .x-input) > :is(input:not([type="range"]):not([type="submit"]):not([type="reset"]):not([type="button"]):not([type="image"]):not([type="radio"]):not([type="checkbox"]), select, textarea):focus-visible {
+:where(x-input, .x-input) > :is(input:not([type="range"], [type="submit"], [type="reset"], [type="button"], [type="image"], [type="radio"], [type="checkbox"]), select, textarea):focus-visible {
   outline: none;
 }
 
@@ -100,7 +100,7 @@ html[dir="rtl"] :where(x-input, .x-input) > *:not([type="range"]):not([type="sub
   :where(x-input, .x-input):not(.x-underlined),
   :where(x-input, .x-input).x-outlined
 ):has(
-  input:not([type="range"]):not([type="image"]):not([type="checkbox"]):not([type="radio"]),
+  input:not([type="range"], [type="image"], [type="checkbox"], [type="radio"]),
   select,
   textarea
 ),
@@ -108,7 +108,7 @@ html[dir="rtl"] :where(x-input, .x-input) > *:not([type="range"]):not([type="sub
   :where(x-input, .x-input):not(.x-underlined),
   :where(x-input, .x-input).x-outlined
 ):is(
-  input:not([type="range"]):not([type="image"]):not([type="checkbox"]):not([type="radio"]),
+  input:not([type="range"], [type="image"], [type="checkbox"], [type="radio"]),
   select,
   textarea
 ) {
