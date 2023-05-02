@@ -5,5 +5,4 @@ export interface NavItem {
   containerOnly?: boolean;
   className?: string;
   items?: NavItem[];
-  htmlAttribs?: object;
 }

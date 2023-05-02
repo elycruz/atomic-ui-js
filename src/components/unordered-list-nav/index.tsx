@@ -1,18 +1,19 @@
 import Link from 'next/link';
 import {NavItem} from "../../data/types";
 
-export function UnorderedListNav({label, uri, items, containerOnly, ...rest}: NavItem) {
+let _uuid = Number.MIN_SAFE_INTEGER;
+
+export function UnorderedListNav({items, containerOnly}: NavItem) {
   if (containerOnly) {
-    return <UnorderedListNav items={items} {...rest} />;
+    return <UnorderedListNav items={items}/>;
   }
 
-  return <ul {...rest}>
-    <li>
+  return <ul>
+    {items.map(({uri, label, items: subItems}, i) =>
+      <li  key={`nav-list-item-${i}-${_uuid++}`}>
       <Link href={uri}>{label}</Link>
 
-      {items?.length && items.map(item => (
-        <UnorderedListNav {...item} />
-      ))}
-    </li>
+      {subItems?.length && <UnorderedListNav items={subItems}/>}
+    </li>)}
   </ul>
 }

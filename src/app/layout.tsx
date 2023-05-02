@@ -1,13 +1,11 @@
 import React from 'react';
 import '../css/index.stories.css';
 import {AppNav} from "../features/app-nav";
+
 export const metadata = {
   charset: 'UTF-8',
   viewport: 'width=device-width,initial-scale=1',
-  title: 'Atomic UI Js',
-  base: {
-    href: './'
-  }
+  title: 'Atomic UI Js'
 };
 
 export default function RootLayout({

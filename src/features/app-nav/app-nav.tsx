@@ -3,10 +3,10 @@ import {UnorderedListNav} from "../../components/unordered-list-nav";
 import {navigationItems} from "../../data/navigation-items";
 
 export function AppNav() {
-  return <nav>{
-    navigationItems.map(({label, items, ...rest}: NavItem) => <>
+  return <nav className="x-app-nav">{
+    navigationItems.map(({label, items}: NavItem) => <>
         <h3>{label}</h3>
-        <UnorderedListNav items={items} {...rest} />
+        <UnorderedListNav items={items} />
       </>
     )}
   </nav>
