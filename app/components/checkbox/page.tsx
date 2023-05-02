@@ -1,5 +1,5 @@
 import React from 'react';
-import {xThemes, xVariants} from "../../../constants.js";
+import {xThemes} from '../../../constants.js';
 
 export default function CheckboxPage() {
   return <section>
@@ -12,11 +12,11 @@ export default function CheckboxPage() {
 
             <dd>
               <form>
-                <fieldset className={`x-fieldset x-layout-horizontal`}>
+                <fieldset className={'x-fieldset x-layout-horizontal'}>
                   <label htmlFor={`checkbox-${i}`}>
                     <x-ripple className={`x-theme-${xThemes[k1]}`}>
                       <input type="checkbox" id={`checkbox-${i}`} name={`checkbox-${i}`}
-                             className={`x-checkbox`}/>
+                        className={'x-checkbox'}/>
                     </x-ripple>
 
                     <span>Checkbox {i}</span>
@@ -24,14 +24,14 @@ export default function CheckboxPage() {
 
                   {/* Use of \`inert\` here is temporary - disabled state should be handled via css */}
                   <label htmlFor={`checkbox-disabled-${i}`}
-                         className={`x-theme-${xThemes[k1]}`}
-                         inert>
+                    className={`x-theme-${xThemes[k1]}`}
+                    inert>
                     <x-ripple className={`x-theme-${xThemes[k1]}`}>
                       <input type="checkbox"
-                             id={`checkbox-disabled-${i}`}
-                             name={`checkbox-disabled-${i}`}
-                             className={`x-checkbox`}
-                             disabled/>
+                        id={`checkbox-disabled-${i}`}
+                        name={`checkbox-disabled-${i}`}
+                        className={'x-checkbox'}
+                        disabled/>
                     </x-ripple>
 
                     <span>Disabled {i}</span>
@@ -43,5 +43,5 @@ export default function CheckboxPage() {
         )}
       </dl>
     </div>
-  </section>
+  </section>;
 }

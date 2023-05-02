@@ -1,3 +1,3 @@
-export default function ComponentsPage() {
-  return <h1>Components page</h1>
+export default function FieldPage() {
+  return <h1>Field component page</h1>;
 }

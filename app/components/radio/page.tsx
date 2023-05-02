@@ -1,3 +1,3 @@
-export default function ComponentsPage() {
-  return <h1>Components page</h1>
+export default function RadioPage() {
+  return <h1>Radio control page</h1>;
 }

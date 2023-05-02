@@ -1,3 +1,3 @@
 export default function ComponentsPage() {
-  return <h1>Components page</h1>
+  return <h1>Components page</h1>;
 }
