@@ -1,5 +1,5 @@
 import React from 'react';
-import {xThemes} from '../../../constants.js';
+import {xThemes} from '../../../utils/constants.js';
 
 export default function CheckboxPage() {
   return <section>

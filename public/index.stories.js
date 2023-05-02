@@ -1,11 +1,4 @@
-import {debounce} from './utils/index.js';
-
-const $ = (selector, base = document) =>
-    base.querySelector(selector),
-
-  $$ = (selector, base = document) =>
-    base.querySelectorAll(selector)
-;
+import {debounce, $, $$} from '../utils/index.js';
 
 // Init
 // ----

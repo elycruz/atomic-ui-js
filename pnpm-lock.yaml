@@ -8,6 +8,7 @@ specifiers:
   '@types/react': 18.2.0
   eslint: ^8.39.0
   eslint-config-next: ^13.3.4
+  fjl: 2.0.0-alpha.5
   next: ^13.3.4
   react: ^18.2.0
   react-dom: ^18.2.0
@@ -26,6 +27,7 @@ devDependencies:
   '@types/react': 18.2.0
   eslint: 8.39.0
   eslint-config-next: 13.3.4_iacogk7kkaymxepzhgcbytyi7q
+  fjl: 2.0.0-alpha.5
   next: 13.3.4_biqbaboplfbrettd7655fr4n2y
   react: 18.2.0
   react-dom: 18.2.0_react@18.2.0
@@ -1749,6 +1751,11 @@ packages:
     dependencies:
       locate-path: 6.0.0
       path-exists: 4.0.0
+    dev: true
+
+  /fjl/2.0.0-alpha.5:
+    resolution: {integrity: sha512-YzWxxwpqOWh3O8jXaIomsmZ3pCCe6jZ67lwUalHS29dHTg0OwAYlgZdms0FMCcg364Ysarm52o9USx0JIDeaZg==}
+    engines: {node: '>=16 || >=18', npm: '>=8 || >= 9'}
     dev: true
 
   /flat-cache/3.0.4:

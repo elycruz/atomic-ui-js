@@ -14,7 +14,7 @@
     "build": "pnpm lint && pnpm gen-css && next build",
     "lint": "pnpm stylelint && next lint",
     "docs": "pnpm typedoc",
-    "gen-css": "node scripts/gen-css/index.mjs",
+    "gen-css": "node node_scripts/gen-css/index.mjs",
     "stylelint": "stylelint **/*.css",
     "typedoc": "typedoc .",
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -38,6 +38,7 @@
     "@types/react": "18.2.0",
     "eslint": "^8.39.0",
     "eslint-config-next": "^13.3.4",
+    "fjl": "2.0.0-alpha.5",
     "next": "^13.3.4",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",

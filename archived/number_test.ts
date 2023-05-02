@@ -1,7 +1,6 @@
-import {range} from "fjl";
-import {constrainNum, resolvePointer, wrapPointer} from "./number";
+import {constrainNumber, resolvePointer, wrapPointer} from "../utils/number";
 
-describe("#constrainNum", () => {
+describe("#constrainNumber", () => {
   type Args = [number, number, number];
   const min = -5,
     max = 5;
@@ -16,8 +15,8 @@ describe("#constrainNum", () => {
       return [[min, max, x], expected];
     }))
     .forEach(([args, expected]) => {
-      it(`constrainNum(${args.join(", ")}) === ${expected}`, () => {
-        const result = constrainNum.apply(null, args);
+      it(`constrainNumber(${args.join(", ")}) === ${expected}`, () => {
+        const result = constrainNumber.apply(null, args);
         expect(result).toEqual(expected);
       });
     });

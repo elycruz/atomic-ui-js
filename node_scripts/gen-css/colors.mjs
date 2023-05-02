@@ -6,7 +6,7 @@
 import fs from 'fs';
 import * as path from "path";
 import url from "url";
-import {xThemes} from "../../constants.js";
+import {xThemes} from "../../utils/constants.js";
 
 const __dirname = url.fileURLToPath(new URL('.', import.meta.url));
 

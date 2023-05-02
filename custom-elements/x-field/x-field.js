@@ -1,4 +1,4 @@
-import {addEventListener, addEventListeners, removeEventListener, removeEventListeners} from '../utils/dom/events.js';
+import {addEventListener, addEventListeners, removeEventListener, removeEventListeners} from '../../utils/dom/events.js';
 import {LitElement, html} from 'lit';
 
 import styles from './x-field.css.js';
