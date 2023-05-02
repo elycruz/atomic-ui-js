@@ -9,11 +9,12 @@
   },
   "scripts": {
     "postinstall": "pnpm build",
-    "build": "pnpm lint && pnpm gen-css",
-    "lint": "pnpm eslint && pnpm stylelint",
+    "dev": "next dev",
+    "start": "next start",
+    "build": "pnpm lint && pnpm gen-css && next build",
+    "lint": "pnpm stylelint && next lint",
     "docs": "pnpm typedoc",
     "gen-css": "node scripts/gen-css/index.mjs",
-    "eslint": "eslint .",
     "stylelint": "stylelint **/*.css",
     "typedoc": "typedoc .",
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -30,7 +31,13 @@
   },
   "homepage": "https://github.com/elycruz/atomic-ui-js#readme",
   "devDependencies": {
+    "@mdx-js/loader": "^2.3.0",
+    "@mdx-js/react": "^2.3.0",
+    "@next/mdx": "^13.3.4",
+    "@types/node": "18.16.3",
+    "@types/react": "18.2.0",
     "eslint": "^8.39.0",
+    "eslint-config-next": "^13.3.4",
     "next": "^13.3.4",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
@@ -38,6 +45,7 @@
     "stylelint": "^15.6.0",
     "stylelint-config-standard": "^33.0.0",
     "typedoc": "^0.24.6",
-    "typescript": "^5.0.4"
+    "typescript": "^5.0.4",
+    "webpack": "^5.81.0"
   }
 }

@@ -12,14 +12,34 @@
     "preserveConstEnums": true,
     "sourceMap": true,
     "strictNullChecks": false,
-    "target": "ES2015",
+    "target": "ES2017",
     "declaration": false,
     "types": [
       "./types"
+    ],
+    "allowJs": true,
+    "skipLibCheck": true,
+    "strict": false,
+    "forceConsistentCasingInFileNames": true,
+    "noEmit": true,
+    "incremental": true,
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "jsx": "preserve",
+    "plugins": [
+      {
+        "name": "next"
+      }
     ]
   },
   "exclude": [
     "**/node_modules",
     "**/dist"
+  ],
+  "include": [
+    "next-env.d.ts",
+    "**/*.ts",
+    "**/*.tsx",
+    ".next/types/**/*.ts"
   ]
 }
