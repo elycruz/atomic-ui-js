@@ -101,7 +101,7 @@ export default function InputPage() {
           })}
         </fieldset>
         <fieldset className="x-grid x-fieldset--grid-2">
-          <label htmlFor="select-1">Textarea</label>
+          <label htmlFor="select-1">Select</label>
           <div className="x-input">
             <select name="select-1" id="select-1">
               <option value="NaN">-- Select an option --</option>
@@ -114,7 +114,7 @@ export default function InputPage() {
           </div>
           <label htmlFor="textarea">Textarea</label>
           <div className="x-input">
-            <textarea name="textarea" id="textarea" cols="30" rows="10"></textarea>
+            <textarea name="textarea" id="textarea" cols={30} rows={10}></textarea>
           </div>
         </fieldset>
       </form>
