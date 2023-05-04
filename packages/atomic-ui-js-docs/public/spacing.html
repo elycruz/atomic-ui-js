@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <base href="./">
+  <title>Spacing</title>
+  <link rel="stylesheet" href="../../atomic-ui-js/src/css/index.stories.css">
+  <style>
+    .box {
+      display: inline-block;
+      background: var(--x-warning-color-5);
+      border: var(--x-2px) solid var(--x-warning-color-1);
+      margin: var(--x-13px);
+    }
+  </style>
+  <script type="importmap">
+    {
+      "imports": {
+        "lit": "https://cdn.jsdelivr.net/gh/lit/dist@2.3.0/all/lit-all.min.js"
+      }
+    }
+  </script>
+</head>
+
+<body>
+<section>
+  <header>
+    <div class="x-h2">Spacing</div>
+  </header>
+  <article>
+    <div>
+      <p>The library's spacing properties - factors of 144, and the fibonacci sequence,
+        combined, in ordered sequence, represented as `rem` units (in source).</p>
+    </div>
+  </article>
+</section>
+
+<script type="module">
+  import {html, render} from 'lit';
+  import {fib} from "../../atomic-ui-js/src/utils/index.js";
+  import {factorsOf} from "../../atomic-ui-js/src/utils/index.js";
+
+  const out = document.createElement('div'),
+    fibonacciNums = fib(5000),
+    factorsOf144 = factorsOf(144),
+    sizes = fibonacciNums
+      .concat(factorsOf144.filter(x => !fibonacciNums.includes(x)))
+      .sort((a, b) => {
+        if (a < b) return -1;
+        return a === b ? 0 : 1;
+      }),
+
+    sizesLen = sizes.length;
+
+  render(html`
+      <div>
+        ${sizes.flatMap((n, i) => {
+          const lim = sizesLen - (i + 3);
+          //
+          return html`
+            <div class="x-display-block">
+              <div>--x-${n}px</div>
+            </div>
+            <div>
+              ${
+                Array(Math.max(lim, 1))
+                  .fill(null, 0, Math.max(lim, 1))
+                  .map(_ => html`
+                    <div class="box" style="
+              width: var(--x-${n}px);
+              height: var(--x-${n}px);">&nbsp;
+                    </div>`
+                  )
+              }
+            </div>`;
+        })}
+      </div>`,
+
+    document.querySelector('body > section > article')
+  );
+</script>
+</body>
+</html>

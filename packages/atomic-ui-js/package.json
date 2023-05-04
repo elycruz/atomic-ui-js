@@ -1,0 +1,42 @@
+{
+  "name": "atomic-ui-js",
+  "version": "1.0.0",
+  "description": "An atomic user interface toolkit, and library, for building html user interfaces.",
+  "module": "packages/atomic-ui-js/index.js",
+  "type": "module",
+  "engines": {
+    "node": ">=v18"
+  },
+  "scripts": {
+    "lint": "pnpm stylelint && pnpm eslint",
+    "docs": "pnpm typedoc",
+    "gen-css": "node packages/atomic-ui-js/node_scripts/gen-css/index.mjs",
+    "stylelint": "stylelint ./src/**/*.css",
+    "eslint": "eslint ./src/**/*",
+    "stylelint-fix": "stylelint ./src/**/*.css --fix",
+    "typedoc": "typedoc .",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "browserslist": [
+    "defaults",
+    "> 0.2% and not dead"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/elycruz/atomic-ui-js.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "LGPL-Clause-3",
+  "bugs": {
+    "url": "https://github.com/elycruz/atomic-ui-js/issues"
+  },
+  "homepage": "https://github.com/elycruz/atomic-ui-js#readme",
+  "devDependencies": {
+    "@types/node": "18.16.3",
+    "@types/react": "18.2.0",
+    "eslint": "^8.39.0",
+    "rollup": "^3.21.2",
+    "typescript": "^5.0.4"
+  }
+}
