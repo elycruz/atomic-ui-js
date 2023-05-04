@@ -1,4 +1,4 @@
-import { isset, log, qs } from '../../src/utils/index.js';
+import { isset, log, qs } from '../../utils/index.js';
 import { allowedDataChars } from './x-number-spinner.js';
 
 window.addEventListener('DOMContentLoaded', () => {

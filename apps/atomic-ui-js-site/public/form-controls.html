@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <base href="./">
+  <title>Form Controls</title>
+  <link rel="stylesheet" href="../../../packages/atomic-ui-js/css/index.stories.css"/>
+  <link rel="stylesheet" href="../../../packages/atomic-ui-js/css/modules/form-controls/index.css"/>
+</head>
+<body>
+<section>
+  <header>
+    <h2>Form Controls</h2>
+  </header>
+
+  <article>
+    <header>
+      <h3>All together</h3>
+    </header>
+
+    <form action="#">
+      <fieldset class="x-grid x-fieldset--grid-2">
+        <legend>Fieldset - Grid Layout Approach</legend>
+
+        <label for="text-input-1">Default</label>
+        <div class="x-field">
+          <input id="text-input-1" name="text-input-1" class="x-input" />
+
+          <div slot="help">(Optional)</div>
+        </div>
+
+        <label slot="leading" for="text-input-2"
+               title="Is 'leading slot' label">Default</label>
+
+        <div class="x-field">
+          <input id="text-input-2" name="text-input-2" class="x-input" />
+
+          <div slot="help">(Optional)</div>
+        </div>
+
+        <label for="text-input-3">Required</label>
+
+        <div class="x-field">
+          <input id="text-input-3" name="text-input-3" required class="x-input" />
+        </div>
+
+        <label slot="leading" for="text-input-4"
+               title="Is 'leading slot' label">With Leading Slot</label>
+
+        <div class="x-field">
+          <input id="text-input-4" name="text-input-4" required class="x-input"/>
+        </div>
+
+        <label for="text-input">Required</label>
+
+        <div class="x-field">
+          <input id="text-input" name="text-input" required class="x-input"/>
+        </div>
+
+        <label for="checkbox">Checkbox</label>
+
+        <div class="x-field x-layout-horizontal">
+          <input type="checkbox" class="x-checkbox" id="checkbox" name="checkbox" required/>
+        </div>
+
+        <label for="radio-1">Radio-Group</label>
+        <div class="x-field x-layout-horizontal">
+          <div class="x-field">
+            <input type="radio" class="x-radio" name="radio-group-1" id="radio-1" required value="1">
+            <label for="radio-1">Radio 1</label>
+          </div>
+          <div class="x-field">
+            <input type="radio" class="x-radio" name="radio-group-1" id="radio-2" required value="2">
+            <label for="radio-2">Radio 2</label>
+          </div>
+          <div class="x-field">
+            <input type="radio" class="x-radio" name="radio-group-1" id="radio-3" required value="3">
+            <label for="radio-3">Radio 3</label>
+          </div>
+          <div class="x-field">
+            <input type="radio" class="x-radio" name="radio-group-1" id="radio-4" required value="4">
+            <label for="radio-4">Radio 4</label>
+          </div>
+          <div class="x-field">
+            <input type="radio" class="x-radio" name="radio-group-1" id="radio-5" required value="5">
+            <label for="radio-5">Radio 5</label>
+          </div>
+        </div>
+      </fieldset>
+
+      <fieldset>
+        <button type="reset">Reset</button>
+        <button>Submit</button>
+      </fieldset>
+    </form>
+    <form action="#">
+      <fieldset>
+        <legend>General, Default Layout, Approach</legend>
+
+        <div class="x-field">
+          <label for="text-input-2-1">Default</label>
+          <input id="text-input-2-1" name="text-input-2-1"/>
+          <div slot="help">(Optional)</div>
+        </div>
+
+        <div class="x-field">
+          <label slot="leading" for="text-input-2-2"
+                 title="Is 'leading slot' label">Default</label>
+          <input id="text-input-2-2" name="text-input-2-2"/>
+          <div slot="help">(Optional)</div>
+        </div>
+
+        <div class="x-field">
+          <label for="text-input-2-3">Required</label>
+          <input id="text-input-2-3" name="text-input-2-3" required/>
+        </div>
+
+        <div class="x-field">
+          <label slot="leading" for="text-input-2-4"
+                 title="Is 'leading slot' label">With Leading Slot Label</label>
+          <input id="text-input-2-4" name="text-input-2-4" required/>
+        </div>
+
+        <div class="x-field">
+          <label for="text-input-2-">Required</label>
+          <input id="text-input-2-" name="text-input-2-" required/>
+        </div>
+
+        <div class="x-field x-layout-horizontal">
+          <label for="checkbox-2">Checkbox</label>
+          <input type="checkbox" class="x-checkbox" id="checkbox-2" name="checkbox" required/>
+        </div>
+
+        <div class="x-field x-layout-horizontal">
+          <label for="radio-1">Radio-Group</label>
+          <div class="x-field">
+            <input type="radio" class="x-radio" name="radio-group-1" id="radio-2-1" required value="1">
+            <label for="radio-2-1">Radio 1</label>
+          </div>
+          <div class="x-field">
+            <input type="radio" class="x-radio" name="radio-group-1" id="radio-2-2" required value="2">
+            <label for="radio-2-2">Radio 2</label>
+          </div>
+          <div class="x-field">
+            <input type="radio" class="x-radio" name="radio-group-1" id="radio-2-3" required value="3">
+            <label for="radio-2-3">Radio 3</label>
+          </div>
+          <div class="x-field">
+            <input type="radio" class="x-radio" name="radio-group-1" id="radio-2-4" required value="4">
+            <label for="radio-2-4">Radio 4</label>
+          </div>
+          <div class="x-field">
+            <input type="radio" class="x-radio" name="radio-group-1" id="radio-2-5" required value="5">
+            <label for="radio-2-5">Radio 5</label>
+          </div>
+        </div>
+        <label for="textarea-1">Textarea</label>
+        <div class="x-field">
+          <textarea id="textarea-1" name="textarea-1"></textarea>
+        </div>
+      </fieldset>
+
+      <fieldset>
+        <button type="reset">Reset</button>
+        <button>Submit</button>
+      </fieldset>
+    </form>
+
+    <form action="#">
+      <fieldset class="x-grid x-fieldset--grid-2">
+        <legend>x-field-control</legend>
+
+        <div class="x-field x-field--vertical">
+          <label for="x-field-control-with-trailing-and-leading">
+            With Text-Field Input
+          </label>
+          <div class="x-field__content">
+            <div class="x-input">
+              <div>$</div>
+              <input id="x-field-control-with-trailing-and-leading"
+                     name="x-field-control-with-trailing-and-leading"
+                     placeholder="0.00"
+                     max="1000000"
+                     min="0"
+                     type="number"/>
+              <div>?</div>
+            </div>
+            <div class="x-field__help">Help text.</div>
+            <div class="x-field__error-message">Error message.</div>
+          </div>
+        </div> <!-- /.x-field -->
+
+        <div class="x-field x-field--vertical">
+          <label for="x-field-control-default">Default</label>
+          <div class="x-input">
+            <input id="x-field-control-default"
+                   name="x-field-control-default"/>
+          </div>
+        </div> <!-- /.x-field -->
+      </fieldset>
+    </form>
+  </article>
+</section>
+
+</body>
+</html>

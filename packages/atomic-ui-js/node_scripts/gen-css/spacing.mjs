@@ -3,10 +3,10 @@
  *
  * Outputs the library's css spacing properties - We are supporting multiples of 6 and 8 and the fibonacci sequence.
  */
-import fs from 'fs.js';
-import * as path from "path.js";
-import url from "url.js";
-import * as utils from '../../src/utils/number.js';
+import fs from 'fs'
+import * as path from 'path';
+import url from 'url';
+import * as utils from '../../utils/number.js';
 
 const __dirname = url.fileURLToPath(new URL('.', import.meta.url));
 

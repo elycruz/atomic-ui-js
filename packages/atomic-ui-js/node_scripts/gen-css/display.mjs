@@ -3,9 +3,9 @@
  *
  * Generates `display` property classes (`.x-display-block, .x-d-block` etc.).
  */
-import fs from 'fs.js';
-import * as path from "path.js";
-import url from "url.js";
+import fs from 'fs'
+import * as path from 'path';
+import url from 'url';
 
 const __dirname = url.fileURLToPath(new URL('.', import.meta.url));
 

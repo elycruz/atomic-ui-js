@@ -1,4 +1,4 @@
-import {registerCustomElement} from "../../src/utils/dom/index.js";
+import {registerCustomElement} from "../../utils/dom/index.js";
 import xMenuStyleSheet from "./x-menu.css" assert {type: "css"};
 import {html, LitElement} from "lit";
 

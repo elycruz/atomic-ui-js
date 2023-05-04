@@ -3,9 +3,9 @@
  *
  * Outputs the library's css color properties - Colors are made up of `hsl`, and `hsla` generated colors.
  */
-import fs from 'fs.js';
-import * as path from "path.js";
-import url from "url.js";
+import fs from 'fs'
+import * as path from 'path';
+import url from 'url';
 
 const __dirname = url.fileURLToPath(new URL('.', import.meta.url));
 

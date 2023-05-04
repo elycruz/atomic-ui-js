@@ -106,6 +106,8 @@ dist
 # IDEs
 .idea/
 
+# Vercel
+.turbo
 
 # Added by cargo
 

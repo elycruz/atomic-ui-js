@@ -3,9 +3,9 @@
  *
  * Generates `position` property classes (`.x-position-absolute` etc.).
  */
-import fs from 'fs.js';
-import * as path from "path.js";
-import url from "url.js";
+import fs from 'fs'
+import * as path from 'path';
+import url from 'url';
 
 const __dirname = url.fileURLToPath(new URL('.', import.meta.url));
 
