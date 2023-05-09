@@ -6,7 +6,7 @@
 import fs from 'fs'
 import * as path from 'path';
 import url from 'url';
-import * as utils from '../../utils/number.js';
+import * as utils from '../../src/utils/number.js';
 
 const __dirname = url.fileURLToPath(new URL('.', import.meta.url));
 

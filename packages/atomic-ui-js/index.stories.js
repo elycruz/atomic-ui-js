@@ -1,4 +1,4 @@
-import {debounce, $, $$} from '../../../packages/atomic-ui-js/utils/index.js';
+import {debounce, $, $$} from './src/utils/index.js';
 
 // Init
 // ----

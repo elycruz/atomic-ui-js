@@ -4,8 +4,8 @@
   <meta charset="UTF-8">
   <base href="./">
   <title>Button - Atomic UI Js</title>
-  <link rel="stylesheet" href="../../../../packages/atomic-ui-js/css/index.stories.css"/>
-  <link rel="stylesheet" href="../../../../packages/atomic-ui-js/css/modules/material-design/index.css"/>
+  <link rel="stylesheet" href="../../src/css/index.stories.css"/>
+  <link rel="stylesheet" href="../src/css/modules/material-design/index.css"/>
 
   <style>
     .x-button-group + .x-button-group {
@@ -19,8 +19,8 @@
 </head>
 <body>
 <script type="module">
-  import {xThemes, xVariants} from "../../../../packages/atomic-ui-js/utils/constants.js";
-  import '../../../../packages/atomic-ui-js/x-ripple/register.js';
+  import {xThemes, xVariants} from "../src/utils/constants.js";
+  import '../src/x-ripple/register.js';
 
   const out = document.createElement('section'),
     allBaseVariantClasses = 'x-ripple x-filled x-raised x-outlined x-ripple-upgraded';

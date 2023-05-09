@@ -4,13 +4,13 @@
   <meta charset="UTF-8">
   <base href="./">
   <title>Radio</title>
-  <link rel="stylesheet" href="../../../packages/atomic-ui-js/css/index.stories.css"/>
-  <link rel="stylesheet" href="../../../packages/atomic-ui-js/css/modules/material-design/index.css"/>
-  <link rel="stylesheet" href="../../../packages/atomic-ui-js/x-ripple/index.css"/>
+  <link rel="stylesheet" href="../src/css/index.stories.css"/>
+  <link rel="stylesheet" href="src/css/modules/material-design/index.css"/>
+  <link rel="stylesheet" href="src/x-ripple/index.css"/>
 </head>
 <body>
 <script type="module">
-  import {xThemes, xVariants} from "../../../packages/atomic-ui-js/utils/constants.js";
+  import {xThemes, xVariants} from "./src/utils/constants.js";
 
   const content = document.createElement('section');
 
@@ -55,6 +55,6 @@
 
   document.body.appendChild(content);
 </script>
-<script src="../../../packages/atomic-ui-js/x-ripple/register.js" type="module"></script>
+<script src="src/x-ripple/register.js" type="module"></script>
 </body>
 </html>

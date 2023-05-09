@@ -1,5 +1,5 @@
 import React from 'react';
-import {xThemes} from '../../../../../../packages/atomic-ui-js/utils/constants.js';
+import {xThemes} from '../../../../../../packages/atomic-ui-js/src/utils/constants.js';
 
 export default function CheckboxPage() {
   return <section>

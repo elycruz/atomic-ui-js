@@ -1,5 +1,5 @@
 import React from 'react';
-import '../css/index.stories.css';
+import '../css/index.css';
 import {AppNav} from "../features/app-nav";
 
 export const metadata = {

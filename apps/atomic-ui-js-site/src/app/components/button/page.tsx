@@ -1,4 +1,4 @@
-import {xThemes, xVariants, classNames} from '../../../../../../packages/atomic-ui-js/utils';
+import {xThemes, xVariants, classNames} from '../../../../../../packages/atomic-ui-js/src/utils';
 export default function ButtonPage() {
   return <>
     <section className="buttons-section">

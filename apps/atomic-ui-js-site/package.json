@@ -18,6 +18,7 @@
     "> 0.2% and not dead"
   ],
   "dependencies": {
+    "atomic-ui-js": "workspace:^",
     "@mdx-js/loader": "^2.3.0",
     "@mdx-js/react": "^2.3.0",
     "@next/mdx": "^13.3.4",

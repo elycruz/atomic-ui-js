@@ -110,3 +110,6 @@ Default color variants:
 ### Todos
 
 - Can we perform custom "dropdown" menu animation with `details` element?
+
+- [ ] Move story styles into './apps/atomic-ui-js-site'.
+- 
