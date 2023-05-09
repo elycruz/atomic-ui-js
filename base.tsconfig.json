@@ -35,11 +35,5 @@
   "exclude": [
     "**/node_modules",
     "**/dist"
-  ],
-  "include": [
-    "apps/atomic-ui-js-docs/next-env.d.ts",
-    "**/*.ts",
-    "**/*.tsx",
-    ".next/types/**/*.ts"
   ]
 }

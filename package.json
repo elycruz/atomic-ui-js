@@ -7,16 +7,15 @@
     "node": ">=v18"
   },
   "scripts": {
-    "postinstall": "pnpm build",
     "dev": "next dev",
     "start": "next start",
     "build": "pnpm lint && pnpm gen-css && next build",
-    "lint": "pnpm stylelint && next lint",
+    "lint": "pnpm stylelint",
     "fix": "pnpm stylelint -- --fix && pnpm next lint -- --fix",
     "docs": "pnpm typedoc",
     "gen-css": "node packages/atomic-ui-js/node_scripts/gen-css/index.mjs",
-    "gen-navitems": "node packages/atomic-ui-js/node_scripts/gen-navItems.mjs",
-    "stylelint": "stylelint apps/atomic-ui-js-docs/src/**/*.css",
+    "gen-navitems": "node apps/atomic-ui-js-site/node_scripts/gen-navItems.mjs",
+    "stylelint": "stylelint packages/**/*.css",
     "typedoc": "typedoc .",
     "test": "echo \"Error: no test specified\" && exit 1",
     "prepare": "husky install"

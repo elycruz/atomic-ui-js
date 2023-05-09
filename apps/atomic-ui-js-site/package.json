@@ -4,15 +4,12 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "pnpm lint && pnpm gen-css && next build",
+    "build": "pnpm lint && next build",
     "start": "next start",
-    "postinstall": "pnpm build",
     "lint": "pnpm stylelint && next lint",
     "docs": "pnpm typedoc",
-    "gen-css": "node packages/atomic-ui-js/node_scripts/gen-css/index.mjs",
-    "gen-navitems": "node packages/atomic-ui-js/node_scripts/gen-navItems.mjs",
-    "stylelint": "stylelint packages/atomic-ui-js-docs/src/**/*.css",
-    "stylelint-fix": "stylelint packages/atomic-ui-js-docs/src/**/*.css --fix",
+    "gen-navitems": "node node_scripts/gen-navItems.mjs",
+    "stylelint": "stylelint src/**/*.css",
     "typedoc": "typedoc ",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
