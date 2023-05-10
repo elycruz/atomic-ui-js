@@ -1,4 +1,4 @@
-import {restrictToFloatPointStr} from '../../src/utils/string/restrictToFloatPointStr.js';
+import {restrictToFloatPointStr} from '../../utils/string/restrictToFloatPointStr.js';
 
 import './number-input-live-format.js';
 

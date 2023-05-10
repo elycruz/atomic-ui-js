@@ -6,9 +6,9 @@ import {
   STEP_NAME,
   VALUE_AS_NUMBER_NAME,
   VALUE_NAME,
-} from '../../src/utils/index.js';
+} from '../../utils/index.js';
 
-import {autoWrapNumber, isset} from '../../src/utils/index.js';
+import {autoWrapNumber, isset} from '../../utils/index.js';
 import {XFormControl} from '../x-base/index.js';
 import {html} from 'lit';
 

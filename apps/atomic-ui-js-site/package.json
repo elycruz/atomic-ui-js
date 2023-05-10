@@ -18,15 +18,16 @@
     "> 0.2% and not dead"
   ],
   "dependencies": {
-    "atomic-ui-js": "workspace:^",
     "@mdx-js/loader": "^2.3.0",
     "@mdx-js/react": "^2.3.0",
     "@next/mdx": "^13.3.4",
     "@types/node": "18.16.3",
     "@types/react": "18.2.0",
     "@types/react-dom": "18.2.3",
+    "atomic-ui-js": "workspace:^",
     "eslint": "^8.39.0",
     "eslint-config-next": "^13.3.4",
+    "fjl": "2.0.0-alpha.5",
     "next": "^13.3.4",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
@@ -36,5 +37,8 @@
     "typedoc": "^0.24.6",
     "typescript": "^5.0.4",
     "webpack": "^5.81.0"
+  },
+  "devDependencies": {
+    "node-dirwalk": "^0.8.6"
   }
 }

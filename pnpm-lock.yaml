@@ -91,6 +91,9 @@ importers:
       eslint-config-next:
         specifier: ^13.3.4
         version: 13.3.4(eslint@8.39.0)(typescript@5.0.4)
+      fjl:
+        specifier: 2.0.0-alpha.5
+        version: 2.0.0-alpha.5
       next:
         specifier: ^13.3.4
         version: 13.3.4(react-dom@18.2.0)(react@18.2.0)
@@ -118,6 +121,10 @@ importers:
       webpack:
         specifier: ^5.81.0
         version: 5.81.0
+    devDependencies:
+      node-dirwalk:
+        specifier: ^0.8.6
+        version: 0.8.6
 
   packages/atomic-ui-js:
     devDependencies:
@@ -1858,6 +1865,15 @@ packages:
       locate-path: 6.0.0
       path-exists: 4.0.0
 
+  /fjl@1.12.13:
+    resolution: {integrity: sha512-Gehy6n/l+Pr0i+8ZQK4NLlyp8KCvFdQUxFeMDr7fjG9xK7JIz8AEeSwm/wsKaK3KTq9why9NEte2aOA08+E7Xg==}
+    dev: true
+
+  /fjl@2.0.0-alpha.5:
+    resolution: {integrity: sha512-YzWxxwpqOWh3O8jXaIomsmZ3pCCe6jZ67lwUalHS29dHTg0OwAYlgZdms0FMCcg364Ysarm52o9USx0JIDeaZg==}
+    engines: {node: '>=16 || >=18', npm: '>=8 || >= 9'}
+    dev: false
+
   /flat-cache@3.0.4:
     resolution: {integrity: sha512-dm9s5Pw7Jc0GvMYbshN6zchCA9RgQlzzEZX3vylR9IqFfS8XciblUXOKfW6SiuJ0e13eDYZoZV5wdrev7P3Nwg==}
     engines: {node: ^10.12.0 || >=12.0.0}
@@ -2972,6 +2988,12 @@ packages:
     transitivePeerDependencies:
       - '@babel/core'
       - babel-plugin-macros
+
+  /node-dirwalk@0.8.6:
+    resolution: {integrity: sha512-zxBhKyzu5AhfmiQEnLy8kLu4IVJQPSeUWIBAPIQuZt7jPNMixtg1zYqgO8pyRZYgLFbaXyTZFab7MgFto0n31Q==}
+    dependencies:
+      fjl: 1.12.13
+    dev: true
 
   /node-releases@2.0.10:
     resolution: {integrity: sha512-5GFldHPXVG/YZmFzJvKK2zDSzPKhEp0+ZR5SVaoSag9fsL5YgHbUHDfnG5494ISANDcK4KwPXAx2xqVEydmd7w==}

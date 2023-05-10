@@ -1,6 +1,6 @@
 import React from 'react';
 import '../css/index.css';
-import {AppNav} from "../features/app-nav";
+import {AppNav} from '../features/app-nav';
 
 export const metadata = {
   title: 'Atomic UI Js'
