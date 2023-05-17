@@ -38,7 +38,6 @@
     "**/dist"
   ],
   "include": [
-    "archived/atomic-ui-js-docs/next-env.d.ts",
     "**/*.ts",
     "**/*.tsx",
     ".next/types/**/*.ts"
