@@ -25,6 +25,7 @@
     "@types/react": "18.2.0",
     "@types/react-dom": "18.2.3",
     "atomic-ui-js": "workspace:^",
+    "atomic-ui-react": "workspace:^",
     "eslint": "^8.39.0",
     "eslint-config-next": "^13.3.4",
     "fjl": "2.0.0-alpha.5",

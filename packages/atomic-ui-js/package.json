@@ -4,6 +4,7 @@
   "description": "An atomic user interface toolkit, and library, for building html user interfaces.",
   "module": "index.js",
   "type": "module",
+  "typings": "types",
   "engines": {
     "node": ">=v18"
   },
@@ -12,7 +13,7 @@
     "./*": "./*"
   },
   "scripts": {
-    "build": "pnpm lint && pnpm gen-css",
+    "build": "pnpm gen-css && pnpm lint",
     "lint": "pnpm eslint && pnpm stylelint",
     "fix": "pnpm stylelint -- --fix",
     "docs": "pnpm typedoc",

@@ -85,6 +85,9 @@ importers:
       atomic-ui-js:
         specifier: workspace:^
         version: link:../../packages/atomic-ui-js
+      atomic-ui-react:
+        specifier: workspace:^
+        version: link:../../packages/atomic-ui-react
       eslint:
         specifier: ^8.39.0
         version: 8.39.0
@@ -166,7 +169,21 @@ importers:
         specifier: ^5.0.4
         version: 5.0.4
 
-  packages/atomic-ui-js-react: {}
+  packages/atomic-ui-react:
+    dependencies:
+      atomic-ui-js:
+        specifier: workspace:^
+        version: link:../atomic-ui-js
+    devDependencies:
+      '@lit-labs/react':
+        specifier: ^1.1.1
+        version: 1.1.1
+      react:
+        specifier: ^18.2.0
+        version: 18.2.0
+      typescript:
+        specifier: ^5.0.4
+        version: 5.0.4
 
 packages:
 
@@ -307,6 +324,10 @@ packages:
     dependencies:
       '@jridgewell/resolve-uri': 3.1.0
       '@jridgewell/sourcemap-codec': 1.4.14
+
+  /@lit-labs/react@1.1.1:
+    resolution: {integrity: sha512-9TC+/ZWb6BJlWCyUr14FKFlaGnyKpeEDorufXozQgke/VoVrslUQNaL7nBmrAWdNrmzx5jWgi8lFmWwrxMjnlA==}
+    dev: true
 
   /@lit-labs/ssr-dom-shim@1.1.1:
     resolution: {integrity: sha512-kXOeFbfCm4fFf2A3WwVEeQj55tMZa8c8/f9AKHMobQMkzNUfUj+antR3fRPaZJawsa1aZiP/Da3ndpZrwEe4rQ==}

@@ -1,0 +1,11 @@
+{
+  "extends": "../../base.tsconfig.json",
+  "compilerOptions": {
+    "types": [
+      "atomic-ui-js"
+    ]
+  },
+  "include": [
+    ""
+  ]
+}
