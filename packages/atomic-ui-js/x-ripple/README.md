@@ -6,7 +6,7 @@ Ripple effect element.
 
 ### Self contained element
 
-In this approach the element would be able to operate in two configrations: 
+In this approach the element would be able to operate in two configurations: 
 
 1.  With `children` elements.
 2.  As a child element.

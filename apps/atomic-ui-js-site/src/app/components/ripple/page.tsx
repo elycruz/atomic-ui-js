@@ -1,4 +1,4 @@
-import React from "react";
+import React from 'react';
 import XRippleComponent from 'atomic-ui-js-next/x-ripple';
 import styles from './page.module.css';
 
@@ -71,6 +71,5 @@ export default function RipplePage() {
         </dd>
       </dl>
     </div>
-  </section>
-    ;
+  </section>;
 }

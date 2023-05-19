@@ -1,4 +1,7 @@
 { "extends": ["stylelint-config-standard"],
+  "ignoreFiles": [
+    "./dist/**/*"
+  ],
   "rules": {
     "selector-class-pattern": "[a-zA-Z][\\w-]+",
     "number-max-precision": 5,
