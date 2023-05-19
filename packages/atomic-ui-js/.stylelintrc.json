@@ -1,7 +1,5 @@
-{ "extends": ["stylelint-config-standard"],
-  "rules": {
-    "selector-class-pattern": "[a-zA-Z][\\w-]+",
-    "number-max-precision": 5,
-    "color-function-notation": "legacy"
-  }
+{ "extends": ["stylelint-config-standard", "../../.stylelintrc.json"],
+  "ignoreFiles": [
+    "./dist/**/*"
+  ]
 }

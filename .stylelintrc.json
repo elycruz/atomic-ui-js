@@ -5,6 +5,6 @@
   "rules": {
     "selector-class-pattern": "[a-zA-Z][\\w-]+",
     "number-max-precision": 5,
-    "color-function-notation": "legacy"
+    "selector-attribute-quotes": "always"
   }
 }
