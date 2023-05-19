@@ -25,7 +25,8 @@
     "@types/react": "18.2.0",
     "@types/react-dom": "18.2.3",
     "atomic-ui-js": "workspace:^",
-    "atomic-ui-react": "workspace:^",
+    "atomic-ui-js-next": "workspace:^",
+    "atomic-ui-js-react": "workspace:^",
     "eslint": "^8.39.0",
     "eslint-config-next": "^13.3.4",
     "fjl": "2.0.0-alpha.5",
@@ -40,6 +41,10 @@
     "webpack": "^5.81.0"
   },
   "devDependencies": {
-    "node-dirwalk": "^0.8.6"
+    "css-loader": "^6.7.4",
+    "node-dirwalk": "^0.8.6",
+    "sass": "^1.62.1",
+    "sass-loader": "^13.2.2",
+    "style-loader": "^3.3.3"
   }
 }

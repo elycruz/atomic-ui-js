@@ -1,5 +1,5 @@
 import React from 'react';
-import '../css/index.css';
+import '../css/index.scss';
 import {AppNav} from '../features/app-nav';
 
 export const metadata = {

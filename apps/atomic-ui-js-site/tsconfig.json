@@ -26,7 +26,7 @@
     },
     "types": [
       "atomic-ui-js",
-      "atomic-ui-react"
+      "atomic-ui-js-react"
     ]
   },
   "include": [

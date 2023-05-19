@@ -1,5 +1,6 @@
 import React from "react";
-import {XRippleComponent} from 'atomic-ui-react';
+import XRippleComponent from 'atomic-ui-js-next/x-ripple';
+import styles from './page.module.css';
 
 export default function RipplePage() {
   return <section>
@@ -25,7 +26,7 @@ export default function RipplePage() {
         <dt>Non-interactive element with empty ripple element</dt>
         <dd>
           <p>With <code>position: relative;</code>:</p>
-          <div className="standalone-ripple x-theme-neutral" style={{position: 'relative'}}>
+          <div className={`${styles['standalone-ripple']} x-theme-neutral`} style={{position: 'relative'}}>
             <XRippleComponent></XRippleComponent>
           </div>
         </dd>

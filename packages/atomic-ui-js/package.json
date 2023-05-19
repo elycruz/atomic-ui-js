@@ -10,7 +10,8 @@
   },
   "exports": {
     ".": "./index.js",
-    "./*": "./*"
+    "./*": "./*",
+    "./**/*.css": "./**/*.css"
   },
   "scripts": {
     "build": "pnpm gen-css && pnpm lint",
@@ -22,6 +23,10 @@
     "stylelint": "stylelint **/*.css",
     "typedoc": "typedoc ."
   },
+  "browserslist": [
+    "defaults",
+    "> 0.2% and not dead"
+  ],
   "repository": {
     "type": "git",
     "url": "git+https://github.com/elycruz/atomic-ui-js.git"

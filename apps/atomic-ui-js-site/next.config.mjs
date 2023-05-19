@@ -1,4 +1,8 @@
 import nextMdx from '@next/mdx';
+import path from 'node:path';
+import url from 'url';
+
+const __dirname = url.fileURLToPath(new URL('.', import.meta.url));
 
 const withMDX = nextMdx({
   extension: /\.mdx?$/,
@@ -21,7 +25,13 @@ const nextConfig = {
   reactStrictMode: true,
   experimental: {
     appDir: true
-  }
+  },
+  sassOptions: {
+    includePaths: [
+      path.join(__dirname, 'src/css'),
+      // path.join(__dirname, '../../packages')
+    ],
+  },
 }
 
 // Merge MDX config with Next.js config
