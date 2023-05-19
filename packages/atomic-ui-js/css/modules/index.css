@@ -2,6 +2,7 @@
 @import "button/index.css";
 @import "colors/index.css";
 @import "form-controls/index.css";
+@import "../../x-ripple/index.css";
 @import "material-design/index.css";
 @import "input/index.css";
 @import "align-items.css";
