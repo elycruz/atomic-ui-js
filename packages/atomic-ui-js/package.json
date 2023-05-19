@@ -10,7 +10,7 @@
   },
   "exports": {
     ".": "./index.js",
-    "./*.scss": "./*.scss",
+    "./*": "./*",
     "./*.css": "./dist/*.css"
   },
   "scripts": {
