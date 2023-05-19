@@ -10,8 +10,8 @@
   },
   "exports": {
     ".": "./index.js",
-    "./*": "./*",
-    "./**/*.css": "./**/*.css"
+    "./*.scss": "./*.scss",
+    "./*.css": "./dist/*.css"
   },
   "scripts": {
     "build": "pnpm gen-css && pnpm lint",

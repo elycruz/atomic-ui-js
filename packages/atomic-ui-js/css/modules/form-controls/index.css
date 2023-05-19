@@ -1,9 +1,5 @@
-@import url("../button/button.css");
-@import url("field.css");
-@import url("fieldset.css");
-@import url("../input/checkbox.css");
-@import url("../input/radio.css");
-@import url("../input/input.css");
+@import "field.css";
+@import "fieldset.css";
 
 input,
 textarea,

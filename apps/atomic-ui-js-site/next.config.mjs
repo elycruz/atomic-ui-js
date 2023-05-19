@@ -29,7 +29,7 @@ const nextConfig = {
   sassOptions: {
     includePaths: [
       path.join(__dirname, 'src/css'),
-      // path.join(__dirname, '../../packages')
+      path.join(__dirname, '../../packages')
     ],
   },
 }
