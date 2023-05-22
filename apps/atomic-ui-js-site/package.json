@@ -7,6 +7,7 @@
     "build": "pnpm gen-navitems && next build",
     "start": "next start",
     "lint": "pnpm stylelint && next lint",
+    "lint-fix": "pnpm stylelint --fix && next lint --fix",
     "docs": "pnpm typedoc",
     "gen-navitems": "node node_scripts/gen-navItems.mjs",
     "stylelint": "stylelint src/**/*.css",

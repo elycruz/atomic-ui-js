@@ -2,42 +2,42 @@ import {NavItem} from '../types';
 
 export const navigationItems: NavItem[] = [{
   'label': 'App',
-  'uri': '/',
+  'uri': 'atomic-ui-js/',
   'alias': 'app',
   'items': [
     {
       'label': 'Components',
-      'uri': 'components/',
+      'uri': 'atomic-ui-js/components/',
       'alias': 'components',
       'items': [
         {
           'label': 'Button',
-          'uri': 'components/button/',
+          'uri': 'atomic-ui-js/components/button/',
           'alias': 'button'
         },
         {
           'label': 'Checkbox',
-          'uri': 'components/checkbox/',
+          'uri': 'atomic-ui-js/components/checkbox/',
           'alias': 'checkbox'
         },
         {
           'label': 'Field',
-          'uri': 'components/field/',
+          'uri': 'atomic-ui-js/components/field/',
           'alias': 'field'
         },
         {
           'label': 'Input',
-          'uri': 'components/input/',
+          'uri': 'atomic-ui-js/components/input/',
           'alias': 'input'
         },
         {
           'label': 'Radio',
-          'uri': 'components/radio/',
+          'uri': 'atomic-ui-js/components/radio/',
           'alias': 'radio'
         },
         {
           'label': 'Ripple',
-          'uri': 'components/ripple/',
+          'uri': 'atomic-ui-js/components/ripple/',
           'alias': 'ripple'
         }
       ]

@@ -8,7 +8,7 @@ export const xFieldName = 'x-field';
 // const SELECTORS_NAME = 'selectors',
 //   VALIDATION_MESSAGE_NAME = 'validationMessage';
 
-export class XField extends LitElement {
+export class XFieldElement extends LitElement {
   static get localName() {
     return xFieldName;
   }

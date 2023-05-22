@@ -3,7 +3,11 @@ import {xThemes} from 'atomic-ui-js/utils/constants.js';
 
 export default function CheckboxPage() {
   return <section>
-    <header>Checkbox</header>
+    <header>
+      <h2 className="h2">
+        Checkbox
+      </h2>
+    </header>
     <div>
       <dl>
         {Object.keys(xThemes).map((k1, i) =>
@@ -13,8 +17,9 @@ export default function CheckboxPage() {
             <dd>
               <form>
                 <fieldset className={'x-fieldset x-layout-horizontal'}>
-                  <label htmlFor={`checkbox-${i}`}>
-                    <x-ripple className={`x-theme-${xThemes[k1]}`}>
+                  <label htmlFor={`checkbox-${i}`}
+                    className={`x-theme-${xThemes[k1]}`}>
+                    <x-ripple>
                       <input type="checkbox" id={`checkbox-${i}`} name={`checkbox-${i}`}
                         className={'x-checkbox'}/>
                     </x-ripple>
@@ -25,7 +30,7 @@ export default function CheckboxPage() {
                   {/* Use of \`inert\` here is temporary - disabled state should be handled via css */}
                   <label htmlFor={`checkbox-disabled-${i}`}
                     className={`x-theme-${xThemes[k1]}`}>
-                    <x-ripple className={`x-theme-${xThemes[k1]}`}>
+                    <x-ripple>
                       <input type="checkbox"
                         id={`checkbox-disabled-${i}`}
                         name={`checkbox-disabled-${i}`}

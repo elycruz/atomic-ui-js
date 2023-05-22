@@ -1,4 +1,4 @@
 import {registerCustomElement} from '../utils/index.js';
-import {XField} from './x-field.js';
+import {XFieldElement} from './x-field.js';
 
-registerCustomElement(XField.localName, XField);
+registerCustomElement(XFieldElement.localName, XFieldElement);

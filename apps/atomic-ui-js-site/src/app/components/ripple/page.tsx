@@ -5,7 +5,7 @@ import styles from './page.module.css';
 export default function RipplePage() {
   return <section>
     <header>
-      <span className="x-h2">Ripple Element</span>
+      <h2>Ripple Element</h2>
     </header>
     <div>
       <p>An element that provides the material-design ripple effect, for user interactions, within/on UI components.</p>

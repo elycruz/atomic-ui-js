@@ -8,12 +8,11 @@ const __dirname = url.fileURLToPath(new URL('.', import.meta.url)),
 
   targetDir = path.join(__dirname, '../src/app/'),
   outFilePath = path.join(__dirname, '../src/data/generated/navigation-items.ts'),
-  isProdEnv = process.env.NODE_ENV?.toLowerCase().startsWith('production'),
 
   getNavItemConstructor = dirToWalk => function NavItem(fileName, filePath, stat, files) {
     const ext = path.extname(fileName),
       basename = path.basename(fileName, ext),
-      uri = (isProdEnv ? 'atomic-ui-js/' : '') + filePath.split(dirToWalk)[1];
+      uri = 'atomic-ui-js/' + filePath.split(dirToWalk)[1];
 
     Object.defineProperties(this, {
       label: {value: basename[0].toUpperCase() + basename.slice(1), enumerable: true},

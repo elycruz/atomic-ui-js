@@ -1,35 +1,9 @@
 {
+  "extends": [
+    "../../.eslintrc.json"
+  ],
   "env": {
     "browser": true,
     "es2021": true
-  },
-  "extends": ["eslint:recommended"],
-  "ignorePatterns": [
-    "**/archived/**/*",
-    "**/node_modules/**/*"
-  ],
-  "overrides": [
-  ],
-  "parserOptions": {
-    "ecmaVersion": "latest",
-    "sourceType": "module"
-  },
-  "rules": {
-    "indent": [
-      "error",
-      2
-    ],
-    "linebreak-style": [
-      "error",
-      "unix"
-    ],
-    "quotes": [
-      "error",
-      "single"
-    ],
-    "semi": [
-      "error",
-      "always"
-    ]
   }
 }

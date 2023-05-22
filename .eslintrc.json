@@ -1,12 +1,12 @@
 {
   "env": {
-    "browser": true,
     "es2021": true
   },
   "extends": ["eslint:recommended"],
   "ignorePatterns": [
     "**/archived/**/*",
-    "**/node_modules/**/*"
+    "**/node_modules/**/*",
+    "**/generated/**/*"
   ],
   "overrides": [
   ],

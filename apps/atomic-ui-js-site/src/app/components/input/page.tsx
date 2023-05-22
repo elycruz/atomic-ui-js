@@ -69,7 +69,7 @@ export default function InputPage() {
   return <section className="x-flex x-flex-row-wrap">
     <article className={styles['article']}>
       <header>
-        <h3>Inputs controls with decorators</h3>
+        <h2>Inputs controls with decorators</h2>
       </header>
 
       <form action="#">
