@@ -29,8 +29,6 @@ jobs:
   # Build job
   build:
     runs-on: ubuntu-latest
-    env:
-      NODE_ENV: production
     steps:
       - name: Checkout
         uses: actions/checkout@v3
@@ -89,6 +87,8 @@ jobs:
       - name: Install dependencies
         run: ${{ steps.detect-package-manager.outputs.manager }} ${{ steps.detect-package-manager.outputs.command }}
       - name: Build with Next.js
+        env:
+          NODE_ENV: production
         run: turbo build
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v1
