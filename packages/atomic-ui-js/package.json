@@ -14,9 +14,9 @@
     "./*.css": "./dist/*.css"
   },
   "scripts": {
-    "build": "pnpm gen-css && pnpm lint",
+    "build": "pnpm gen-css",
     "lint": "pnpm eslint && pnpm stylelint",
-    "fix": "pnpm stylelint -- --fix",
+    "fix": "pnpm stylelint --fix && pnpm eslint --fix",
     "docs": "pnpm typedoc",
     "gen-css": "node node_scripts/gen-css/index.mjs",
     "eslint": "eslint **/*.js",
