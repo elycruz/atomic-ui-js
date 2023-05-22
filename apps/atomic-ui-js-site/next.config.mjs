@@ -21,6 +21,7 @@ const withMDX = nextMdx({
 const nextConfig = {
   output: 'export',
   distDir: '../../dist/atomic-ui-js-site',
+  basePath: '/atomic-ui-js',
   // Configure pageExtensions to include md and mdx
   pageExtensions: ['ts', 'tsx', 'js', 'jsx', 'md', 'mdx'],
   // Optionally, add any other Next.js config below
