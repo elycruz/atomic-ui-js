@@ -8,7 +8,7 @@
     "./*": "./*"
   },
   "scripts": {
-    "test": "echo \"Tests not yet written\" && exit 0"
+    "test": "echo \"Tests not yet written\""
   },
   "browserslist": [
     "defaults",
