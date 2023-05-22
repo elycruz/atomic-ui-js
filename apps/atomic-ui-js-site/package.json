@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "next build",
+    "build": "pnpm gen-navitems && next build",
     "start": "next start",
     "lint": "pnpm stylelint && next lint",
     "docs": "pnpm typedoc",

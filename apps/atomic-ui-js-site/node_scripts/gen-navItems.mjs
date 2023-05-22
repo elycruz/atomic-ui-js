@@ -8,11 +8,12 @@ const __dirname = url.fileURLToPath(new URL('.', import.meta.url)),
 
   targetDir = path.join(__dirname, '../src/app/'),
   outFilePath = path.join(__dirname, '../src/data/generated/navigation-items.ts'),
+  isProdEnv = process.env.NODE_ENV?.toLowerCase().startsWith('production'),
 
   getNavItemConstructor = dirToWalk => function NavItem(fileName, filePath, stat, files) {
     const ext = path.extname(fileName),
       basename = path.basename(fileName, ext),
-      uri = filePath.split(dirToWalk)[1];
+      uri = (isProdEnv ? 'atomic-ui-js/' : '') + filePath.split(dirToWalk)[1];
 
     Object.defineProperties(this, {
       label: {value: basename[0].toUpperCase() + basename.slice(1), enumerable: true},
@@ -49,7 +50,7 @@ const __dirname = url.fileURLToPath(new URL('.', import.meta.url)),
   return genNavItemsJson(targetDir)
     .then(json => fs.writeFile(outFilePath, `import {NavItem} from '../types';
 
-export const navigationItems: NavItem[] = [${JSON.stringify(json, null, '  ')}];
+export const navigationItems: NavItem[] = [${JSON.stringify(json, null, '  ').replaceAll(`"`, `'`)}];
 `))
     .catch(console.error);
 })();
