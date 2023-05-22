@@ -9,7 +9,7 @@
   "scripts": {
     "dev": "turbo dev",
     "start": "turbo start",
-    "build": "turbo lint && turbo build",
+    "build": "turbo build",
     "lint": "turbo lint",
     "docs": "turbo doc",
     "test": "turbo test",

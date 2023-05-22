@@ -8,6 +8,7 @@
         "packages/**/dist/**"
       ]
     },
+    "dev": {},
     "doc": {}
   }
 }
