@@ -1,6 +1,8 @@
 import React from 'react';
 import {xThemes} from 'atomic-ui-js/utils/constants.js';
 
+import XRippleComponent from 'atomic-ui-js-next/x-ripple';
+
 export default function CheckboxPage() {
   return <section>
     <header>
@@ -19,10 +21,10 @@ export default function CheckboxPage() {
                 <fieldset className={'x-fieldset x-layout-horizontal'}>
                   <label htmlFor={`checkbox-${i}`}
                     className={`x-theme-${xThemes[k1]}`}>
-                    <x-ripple>
+                    <XRippleComponent>
                       <input type="checkbox" id={`checkbox-${i}`} name={`checkbox-${i}`}
                         className={'x-checkbox'}/>
-                    </x-ripple>
+                    </XRippleComponent>
 
                     <span>Checkbox {i}</span>
                   </label>
@@ -30,13 +32,13 @@ export default function CheckboxPage() {
                   {/* Use of \`inert\` here is temporary - disabled state should be handled via css */}
                   <label htmlFor={`checkbox-disabled-${i}`}
                     className={`x-theme-${xThemes[k1]}`}>
-                    <x-ripple>
+                    <XRippleComponent>
                       <input type="checkbox"
                         id={`checkbox-disabled-${i}`}
                         name={`checkbox-disabled-${i}`}
                         className={'x-checkbox'}
                         disabled/>
-                    </x-ripple>
+                    </XRippleComponent>
 
                     <span>Disabled {i}</span>
                   </label>
