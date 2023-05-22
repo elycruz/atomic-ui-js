@@ -1,0 +1,62 @@
+{
+  "name": "atomic-ui-js",
+  "version": "1.0.0",
+  "description": "An atomic user interface toolkit, and library, for building html user interfaces.",
+  "module": "index.js",
+  "type": "module",
+  "typings": "types",
+  "engines": {
+    "node": ">=v18"
+  },
+  "exports": {
+    ".": "./index.js",
+    "./*": "./*",
+    "./*.css": "./dist/*.css"
+  },
+  "scripts": {
+    "build": "pnpm gen-css",
+    "lint": "pnpm eslint && pnpm stylelint",
+    "fix": "pnpm stylelint --fix && pnpm eslint --fix",
+    "docs": "pnpm typedoc",
+    "gen-css": "node node_scripts/gen-css/index.mjs",
+    "eslint": "eslint **/*.js",
+    "stylelint": "stylelint **/*.css",
+    "typedoc": "typedoc ."
+  },
+  "browserslist": [
+    "defaults",
+    "> 0.2% and not dead"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/elycruz/atomic-ui-js.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "LGPL-Clause-3",
+  "bugs": {
+    "url": "https://github.com/elycruz/atomic-ui-js/issues"
+  },
+  "homepage": "https://github.com/elycruz/atomic-ui-js#readme",
+  "devDependencies": {
+    "@rollup/plugin-typescript": "^11.1.1",
+    "@types/node": "18.16.3",
+    "cssnano": "^6.0.1",
+    "eslint": "^8.39.0",
+    "postcss": "^8.4.23",
+    "postcss-preset-env": "^8.3.2",
+    "prettier": "^2.8.8",
+    "rollup": "^3.21.2",
+    "rollup-plugin-postcss": "^4.0.2",
+    "rollup-plugin-sass": "^1.12.19",
+    "sass": "^1.62.1",
+    "stylelint": "^15.6.0",
+    "stylelint-config-standard": "^33.0.0",
+    "typedoc": "^0.24.6",
+    "typescript": "^5.0.4"
+  },
+  "dependencies": {
+    "lit": "^2.7.4",
+    "postcss-import": "^15.1.0"
+  }
+}

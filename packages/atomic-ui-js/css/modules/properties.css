@@ -1,0 +1,16 @@
+:root {
+  --x-highlight-color: var(--x-color-5, var(--x-neutral-color-5));
+
+  --x-focus-ring-width: 0.09375rem; /*1.5px;*/
+  --x-focus-ring-color: currentColor;
+
+  --x-border-radius: var(--x-3px);
+  --x-border-width: var(--x-1px);
+
+  --x-input-speed: 0.13s;
+  --x-input-border-width: var(--x-1px);
+  --x-input-highlight-color: var(--x-highlight-color);
+  --x-input-text-color: FieldText /*ButtonText*/;
+  --x-input-bg-color: Field;
+  --x-input-border-color: ButtonBorder;
+}

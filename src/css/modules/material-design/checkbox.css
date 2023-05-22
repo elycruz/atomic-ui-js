@@ -1,9 +1,0 @@
-.x-checkbox,
-.x-radio {
-  --x-input-highlight-color: var(--x-color-4, var(--x-neutral-color-4));
-}
-
-:where(.x-checkbox,
-.x-radio):where(:active, :checked) {
-  border-color: var(--x-input-highlight-color);
-}

@@ -1,0 +1,76 @@
+label {
+  user-select: none;
+  vertical-align: middle;
+}
+
+label,
+label span {
+  display: inline-block;
+}
+
+label:has(+ *) {
+  font-weight: bold;
+}
+
+label:has(+ :required, + * :required)::before {
+  content: "*";
+  color: red;
+  margin-right: 0.25rem;
+}
+
+/*
+ * x-field
+ * ------------------ */
+:where(x-field, .x-field) {
+  display: inline-block;
+}
+
+:where(x-field, .x-field),
+:where(x-field, .x-field):not(.x-field--vertical) > * {
+  vertical-align: middle;
+}
+
+:where(x-field, .x-field):not(.x-field--vertical) > label:has(+ *),
+:where(x-field, .x-field):not(.x-field--vertical) > label:is(* + *) {
+  margin-right: 0.5rem;
+}
+
+:where(x-field, .x-field).x-field--vertical > label:has(+ *) {
+  margin-bottom: 0.5rem;
+}
+
+:where(x-field, .x-field).x-field--vertical,
+:where(x-field, .x-field).x-field--vertical > label:has(+ *) {
+  display: block;
+}
+
+:where(x-field, .x-field) :is(
+  .x-field__error-message,
+  .x-field__help,
+  [slot="help"],
+  .x-help,
+  .x-error-message
+  ) {
+  margin-top: 0.5rem;
+}
+
+:where(x-field, .x-field) :is(.x-field__help, [slot="help"], .x-help) {
+  font-size: smaller;
+}
+
+:where(x-field, .x-field) .x-field__flex-row {
+  display: flex;
+  flex-flow: row nowrap;
+}
+
+:where(x-field, .x-field) .x-field__flex-row .x-field__leading {
+  margin-right: 0.5rem;
+}
+
+:where(x-field, .x-field) .x-field__flex-row .x-field__trailing {
+  margin-left: 0.5rem;
+}
+
+:where(x-field, .x-field) :is(.x-field__error-message, .x-error-message) {
+  color: red;
+}

@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <base href="./">
+  <title>Font Sizes</title>
+  <script type="importmap">
+    {
+      "imports": {
+        "lit": "https://cdn.jsdelivr.net/gh/lit/dist@2.3.0/all/lit-all.min.js"
+      }
+    }
+  </script>
+  <link rel="stylesheet" href="css/index.css">
+</head>
+<body>
+<section>
+  <header>
+    <h2>
+      Example Font-Size Sequences
+    </h2>
+  </header>
+  <article>
+    <dl>
+      <dt>Objective</dt>
+      <dd>
+        <p>Layout content with variying font size increments to depict the effect of different font-size sequences;
+          E.g., fibonacci sequence, factors-of-a-number sequence, etc.</p>
+      </dd>
+    </dl>
+  </article>
+</section>
+
+<!--
+These props are currently under development and this page is only for experimental purposes (currently).
+-->
+
+<script type="module">
+  import {render, html} from 'lit';
+  import {factorsOf, fib, multiplesOf} from "./utils/index.js";
+
+  const text = 'The quick brown fox jumped over the lazy dog.',
+
+    renderFontSizeSubArticle = (title, numbers) => {
+      return html`
+        <article>
+          <header>
+            <h3>${title}</h3>
+          </header>
+          ${numbers
+            .map(i => html`<span>${i}px</span>
+            <div style="font-size: ${i / 16}rem;">${text}</div>`)}
+        </article>
+      `;
+    };
+
+  render([
+      renderFontSizeSubArticle("Factors of 144", factorsOf(144)),
+      renderFontSizeSubArticle("Multiples of 8", multiplesOf(16, 8)),
+      renderFontSizeSubArticle("Fibonacci numbers", fib(144))
+    ],
+    document.body.firstElementChild
+  );
+</script>
+</body>
+</html>

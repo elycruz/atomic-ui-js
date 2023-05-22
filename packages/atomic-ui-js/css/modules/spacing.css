@@ -1,0 +1,39 @@
+/**
+ * spacing.css
+ *
+ * The library's spacing properties - factors of 144, and the fibonacci sequence
+ * in order sequence represented as `rem` units.
+ *
+ * ====> DO NOT MANUALLY EDIT THIS FILE - This file is generated via a script ({repo-root}/scripts/gen-css/spacing.mjs).
+ */
+
+:root {
+  --x-1px: 0.0625rem;
+  --x-2px: 0.125rem;
+  --x-3px: 0.1875rem;
+  --x-4px: 0.25rem;
+  --x-5px: 0.3125rem;
+  --x-6px: 0.375rem;
+  --x-8px: 0.5rem;
+  --x-9px: 0.5625rem;
+  --x-12px: 0.75rem;
+  --x-13px: 0.8125rem;
+  --x-16px: 1rem;
+  --x-18px: 1.125rem;
+  --x-21px: 1.3125rem;
+  --x-24px: 1.5rem;
+  --x-34px: 2.125rem;
+  --x-36px: 2.25rem;
+  --x-48px: 3rem;
+  --x-55px: 3.4375rem;
+  --x-72px: 4.5rem;
+  --x-89px: 5.5625rem;
+  --x-144px: 9rem;
+  --x-233px: 14.5625rem;
+  --x-377px: 23.5625rem;
+  --x-610px: 38.125rem;
+  --x-987px: 61.6875rem;
+  --x-1597px: 99.8125rem;
+  --x-2584px: 161.5rem;
+  --x-4181px: 261.3125rem;
+}

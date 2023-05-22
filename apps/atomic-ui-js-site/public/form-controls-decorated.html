@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <base href="./">
+  <title>Input/X-Input/.x-input</title>
+  <link rel="stylesheet" href="../src/css/index.stories.css"/>
+  <link rel="stylesheet" href="css/modules/input/input.css"/>
+</head>
+<body>
+<section>
+  <header>
+    <h2>Decorated Form Control</h2>
+  </header>
+
+  <article>
+    <form action="#" onsubmit="e => e.preventDefault();">
+      <fieldset class="x-fieldset--grid-2 x-grid">
+        <legend>With "x-*" classnames</legend>
+
+        <!-- Default Text Input -->
+        <label for="default-input">Default Text Input</label>
+        <div class="x-field">
+          <div class="x-input">
+            <input name="default-input" id="default-input"/>
+          </div>
+        </div>
+
+        <!-- Default Number -->
+        <label for="default-number-input">Default Number Input</label>
+        <div class="x-field">
+          <div class="x-input">
+            <input name="default-number-input"
+                   id="default-number-input"
+                   type="number"/>
+          </div>
+        </div>
+
+        <!-- Default Date -->
+        <label for="default-date-input">Default Date Input</label>
+        <div class="x-field">
+          <div class="x-input">
+            <input name="default-date-input"
+                   id="default-date-input"
+                   type="date"/>
+          </div>
+        </div>
+
+        <!-- Checkbox -->
+        <label for="default-checkbox-input">Checkbox</label>
+        <div class="x-field">
+          <input class="x-checkbox"
+                 name="default-checkbox-input"
+                 id="default-checkbox-input"
+                 type="checkbox"/>
+        </div>
+
+        <!-- Radio -->
+        <label for="default-radio-input">Radio</label>
+        <div class="x-field">
+          <div class="x-field">
+            <input class="x-radio"
+                   name="default-radio-input"
+                   id="default-radio-input"
+                   type="radio"/>
+            <label for="default-radio-input">Radio</label>
+          </div>
+          <div class="x-field">
+            <input class="x-radio"
+                   name="default-radio-input"
+                   id="default-radio-input-2"
+                   type="radio"/>
+            <label for="default-radio-input-2">Radio 2</label>
+          </div>
+          <div class="x-field">
+            <input class="x-radio"
+                   name="default-radio-input"
+                   id="default-radio-input-3"
+                   type="radio"/>
+            <label for="default-radio-input-3">Radio 3</label>
+          </div>
+          <div class="x-field">
+            <input class="x-radio"
+                   name="default-radio-input"
+                   id="default-radio-input-4"
+                   type="radio"/>
+            <label for="default-radio-input-4">Radio 4</label>
+          </div>
+          <div class="x-field">
+            <input class="x-radio"
+                   name="default-radio-input"
+                   id="default-radio-input-5"
+                   type="radio"/>
+            <label for="default-radio-input-5">Radio 5</label>
+          </div>
+        </div>
+
+        <!-- Textarea -->
+        <label for="textarea">Textarea</label>
+        <div class="x-field">
+          <div class="x-input">
+            <textarea name="textarea" id="textarea"></textarea>
+          </div>
+        </div>
+
+        <!-- Color -->
+        <label for="color">Color</label>
+        <div class="x-field">
+          <div class="x-input">
+            <input type="color" name="color" id="color">
+          </div>
+        </div>
+
+        <!-- Select -->
+        <label for="select">Select</label>
+        <div class="x-field">
+          <div class="x-input">
+            <select name="select" id="select">
+              <option value="">-- Select a value --</option>
+              <option value="1">Value 1</option>
+              <option value="2">Value 2</option>
+              <option value="3">Value 3</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- With Leading -->
+        <label for="default-input-2">With Leading</label>
+        <div class="x-field">
+          <div class="x-input">
+            <div>$</div>
+            <input name="default-input-2" id="default-input-2" type="number"/>
+          </div>
+        </div>
+
+        <!-- With Trailing -->
+        <label for="default-input-3">With Trailing</label>
+        <div class="x-field">
+          <div class="x-input">
+            <input name="default-input-3" id="default-input-3" type="number"/>
+            <div>kr</div>
+          </div>
+        </div>
+
+        <!-- With Leading and Trailing -->
+        <label for="default-input-4">With Leading and Trailing</label>
+        <div class="x-field">
+          <div class="x-input">
+            <div>$</div>
+            <input name="default-input-4" id="default-input-4" type="number"/>
+            <div>?</div>
+          </div>
+        </div>
+
+        <!-- Required -->
+        <label for="default-input-5">Email (required)</label>
+        <div class="x-field">
+          <div class="x-input">
+            <input name="default-input-5" id="default-input-5" required type="email"/>
+          </div>
+        </div>
+      </fieldset>
+
+      <fieldset>
+        <button type="reset" class="x-outlined x-dense">Reset</button>
+        <button class="x-theme-neutral x-filled x-dense">Submit</button>
+      </fieldset>
+    </form>
+  </article>
+</section>
+
+</body>
+</html>

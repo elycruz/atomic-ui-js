@@ -1,0 +1,16 @@
+[type="radio"] {
+  border-radius: 1rem;
+}
+
+[type="radio"]::after {
+  border-radius: var(--x-8px);
+  transition: clip-path var(--x-input-speed);
+  width: var(--x-8px);
+  height: var(--x-8px);
+  clip-path: circle(0);
+  background: var(--x-input-highlight-color);
+}
+
+[type="radio"]:checked::after {
+  clip-path: circle(100%);
+}

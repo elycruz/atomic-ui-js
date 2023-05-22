@@ -1,0 +1,120 @@
+/**
+ * Layout direction
+ * ---------------------- */
+html:not([dir="rtl"]) .x-input {
+  flex-flow: row nowrap;
+}
+
+html[dir="rtl"] .x-input {
+  flex-flow: column nowrap;
+}
+
+/**
+ * Base
+ * ------------------------ */
+
+/**
+ * Padding
+ * ------------------------ */
+html:not([dir="rtl"]) :where(x-input, .x-input):where(
+  input:not([type="range"], [type="submit"], [type="reset"], [type="button"], [type="image"], [type="radio"], [type="checkbox"]),
+  select,
+  textarea
+),
+html:not([dir="rtl"]) :where(x-input, .x-input) > *:not([type="range"], [type="submit"], [type="reset"], [type="button"], [type="image"], [type="radio"], [type="checkbox"]) {
+  padding: var(--x-input-padding-top) var(--x-input-padding-left);
+}
+
+html[dir="rtl"] :where(x-input, .x-input):is(
+  input:not([type="range"], [type="submit"], [type="reset"], [type="button"], [type="image"], [type="radio"], [type="checkbox"]),
+  select,
+  textarea
+),
+html[dir="rtl"] :where(x-input, .x-input) > *:not([type="range"], [type="submit"], [type="reset"], [type="button"], [type="image"], [type="radio"], [type="checkbox"]) {
+  padding: var(--x-input-padding-left) var(--x-input-padding-top);
+}
+
+:where(x-input, .x-input):not([type="checkbox"], [type="radio"]) {
+  --x-input-padding-top: var(--x-border-width);
+  --x-input-padding-left: calc(var(--x-border-width) * 2);
+
+  display: flex;
+  width: fit-content;
+  color: var(--x-input-text-color);
+}
+
+:where(x-input, .x-input):has(
+  input:not([type="range"], [type="submit"], [type="reset"], [type="button"], [type="image"], [type="radio"], [type="checkbox"]),
+  select,
+  textarea
+),
+:where(x-input, .x-input):is(
+  input:not([type="range"], [type="submit"], [type="reset"], [type="button"], [type="image"], [type="radio"], [type="checkbox"]),
+  select,
+  textarea
+) {
+  background: var(--x-input-bg-color);
+}
+
+:where(x-input, .x-input) > :is(input, textarea, select) {
+  vertical-align: middle;
+}
+
+/*
+ * Input
+ * ---------------------- */
+:where(x-input, .x-input):not([type="checkbox"], [type="radio"]),
+:where(x-input, .x-input) > :is(
+  input:not([type="checkbox"], [type="radio"]),
+  textarea,
+  select
+) {
+  border-radius: var(--x-border-radius);
+}
+
+:where(x-input, .x-input):is(
+  input:not([type="checkbox"], [type="radio"]),
+  textarea,
+  select
+),
+:where(x-input, .x-input) > :is(
+  input:not([type="checkbox"], [type="radio"]),
+  textarea,
+  select
+ ) {
+  border: none;
+  margin: 0;
+}
+
+/*
+ * Focus Visible
+ *--------------------- */
+:where(x-input, .x-input) > :is(input:not([type="range"], [type="submit"], [type="reset"], [type="button"], [type="image"], [type="radio"], [type="checkbox"]), select, textarea):focus-visible {
+  outline: none;
+}
+
+/*
+ * Outlined/Default
+ * ----------------------- */
+:where(
+  :where(x-input, .x-input):not(.x-underlined),
+  :where(x-input, .x-input).x-outlined
+):has(
+  input:not([type="range"], [type="image"], [type="checkbox"], [type="radio"]),
+  select,
+  textarea
+),
+:where(
+  :where(x-input, .x-input):not(.x-underlined),
+  :where(x-input, .x-input).x-outlined
+):is(
+  input:not([type="range"], [type="image"], [type="checkbox"], [type="radio"]),
+  select,
+  textarea
+) {
+  border: var(--x-border-width) solid;
+}
+
+:where(x-input, .x-input).x-underlined {
+  border-bottom: var(--x-border-width) solid;
+}

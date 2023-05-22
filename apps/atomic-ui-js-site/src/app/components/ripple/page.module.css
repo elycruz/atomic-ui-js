@@ -1,0 +1,7 @@
+.standalone-ripple {
+  position: relative;
+  overflow: hidden;
+  display: inline-block;
+  width: 3rem;
+  height: 3rem;
+}

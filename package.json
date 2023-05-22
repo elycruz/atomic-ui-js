@@ -1,25 +1,19 @@
 {
-  "name": "atomic-ui-js",
+  "name": "atomic-ui-js-monorepo",
   "version": "1.0.0",
-  "description": "An atomic user interface toolkit, and library, for building html user interfaces.",
-  "module": "src/index.js",
-  "type": "module",
+  "description": "Atomic-Ui-Js Monorepo.",
+  "private": true,
   "engines": {
     "node": ">=v18"
   },
   "scripts": {
-    "postinstall": "pnpm build",
-    "dev": "next dev",
-    "start": "next start",
-    "build": "pnpm lint && pnpm gen-css && next build",
-    "lint": "pnpm stylelint && next lint",
-    "docs": "pnpm typedoc",
-    "gen-css": "node node_scripts/gen-css/index.mjs",
-    "gen-navitems": "node node_scripts/gen-navItems.mjs",
-    "stylelint": "stylelint src/**/*.css",
-    "stylelint-fix": "stylelint src/**/*.css --fix",
-    "typedoc": "typedoc .",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dev": "turbo dev",
+    "start": "turbo start",
+    "build": "turbo lint && turbo build",
+    "lint": "turbo lint",
+    "docs": "turbo doc",
+    "test": "turbo test",
+    "prepare": "husky install"
   },
   "browserslist": [
     "defaults",
@@ -44,12 +38,15 @@
     "@types/react": "18.2.0",
     "eslint": "^8.39.0",
     "eslint-config-next": "^13.3.4",
+    "husky": "^8.0.3",
     "next": "^13.3.4",
+    "prettier": "^2.8.8",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "rollup": "^3.21.2",
     "stylelint": "^15.6.0",
     "stylelint-config-standard": "^33.0.0",
+    "turbo": "^1.9.8",
     "typedoc": "^0.24.6",
     "typescript": "^5.0.4",
     "webpack": "^5.81.0"

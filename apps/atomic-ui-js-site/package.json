@@ -1,0 +1,50 @@
+{
+  "name": "atomic-ui-js-site",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "pnpm stylelint && next lint",
+    "docs": "pnpm typedoc",
+    "gen-navitems": "node node_scripts/gen-navItems.mjs",
+    "stylelint": "stylelint src/**/*.css",
+    "typedoc": "typedoc ",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "browserslist": [
+    "defaults",
+    "> 0.2% and not dead"
+  ],
+  "dependencies": {
+    "@mdx-js/loader": "^2.3.0",
+    "@mdx-js/react": "^2.3.0",
+    "@next/mdx": "^13.3.4",
+    "@types/node": "18.16.3",
+    "@types/react": "18.2.0",
+    "@types/react-dom": "18.2.3",
+    "atomic-ui-js": "workspace:^",
+    "atomic-ui-js-next": "workspace:^",
+    "atomic-ui-js-react": "workspace:^",
+    "eslint": "^8.39.0",
+    "eslint-config-next": "^13.3.4",
+    "fjl": "2.0.0-alpha.5",
+    "next": "^13.3.4",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "rollup": "^3.21.2",
+    "stylelint": "^15.6.0",
+    "stylelint-config-standard": "^33.0.0",
+    "typedoc": "^0.24.6",
+    "typescript": "^5.0.4",
+    "webpack": "^5.81.0"
+  },
+  "devDependencies": {
+    "css-loader": "^6.7.4",
+    "node-dirwalk": "^0.8.6",
+    "sass": "^1.62.1",
+    "sass-loader": "^13.2.2",
+    "style-loader": "^3.3.3"
+  }
+}

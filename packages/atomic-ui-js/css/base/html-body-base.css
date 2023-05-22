@@ -1,0 +1,17 @@
+html, body {
+  --x-font-family: Arial, Verdana, Helvetica, Sans-Serif;
+  --x-focus-ring-color: currentColor;
+
+  margin: 0;
+  padding: 0;
+  font: normal 1rem var(--x-font-family);
+}
+
+@media (prefers-color-scheme: dark) {
+  html, body {
+    --x-focus-ring-color: Field;
+
+    background: var(--x-neutral-color-1);
+    color: var(--x-neutral-color-5);
+  }
+}

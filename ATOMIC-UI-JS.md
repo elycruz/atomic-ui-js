@@ -107,6 +107,21 @@ Default color variants:
 - z-overlay
 - z-with-overlay
 
+## Site Approaches
+
+General:
+
+- static site.
+- SPA (nextjs/react).
+- SPA (custom 'vanilla js' approach).
+
+### SPA (custom/vanillajs)
+
+
+
 ### Todos
 
 - Can we perform custom "dropdown" menu animation with `details` element?
+
+- [ ] Move story styles into './apps/atomic-ui-js-site'.
+
