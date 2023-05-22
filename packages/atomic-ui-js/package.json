@@ -21,7 +21,8 @@
     "gen-css": "node node_scripts/gen-css/index.mjs",
     "eslint": "eslint **/*.js",
     "stylelint": "stylelint **/*.css",
-    "typedoc": "typedoc ."
+    "typedoc": "typedoc .",
+    "test": "echo \"Tests not yet written\" && exit 0"
   },
   "browserslist": [
     "defaults",
