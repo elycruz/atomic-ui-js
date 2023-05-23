@@ -12,11 +12,11 @@ const __dirname = url.fileURLToPath(new URL('.', import.meta.url)),
   getNavItemConstructor = dirToWalk => function NavItem(fileName, filePath, stat, files) {
     const ext = path.extname(fileName),
       basename = path.basename(fileName, ext),
-      uri = 'atomic-ui-js/' + filePath.split(dirToWalk)[1];
+      uri = filePath.split(dirToWalk)[1];
 
     Object.defineProperties(this, {
       label: {value: basename[0].toUpperCase() + basename.slice(1), enumerable: true},
-      uri: {value: `${uri}${!uri.endsWith('/') ? '/' : ''}`, enumerable: true},
+      uri: {value: `/${uri}${uri.length > 1 && !uri.endsWith('/') ? '/' : ''}`, enumerable: true},
       alias: {value: basename, enumerable: true},
     });
 
