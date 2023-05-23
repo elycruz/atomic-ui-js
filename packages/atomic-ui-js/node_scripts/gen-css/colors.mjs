@@ -1,5 +1,5 @@
 /**
- * colors.js
+ * colors.mjs
  *
  * Outputs the library's css color properties - Colors are made up of `hsl`, and `hsla` generated colors.
  */
@@ -8,15 +8,16 @@ import * as path from "path";
 import url from "url";
 import {xThemes} from "../../utils/constants.js";
 
-const __dirname = url.fileURLToPath(new URL('.', import.meta.url));
+const __dirname = url.fileURLToPath(new URL('.', import.meta.url)),
 
-const {log, error} = console,
-  primary = ['primary', 256, 72],
-  secondary = ['secondary', 300, 72],
-  success = ['success', 120, 72],
-  info = ['info', 180, 72],
-  warning = ['warning', 30, 72],
-  danger = ['danger', 0, 72],
+  {log, error} = console,
+
+  primary = ['primary', 240, 21],
+  secondary = ['secondary', 300, 21],
+  success = ['success', 120, 21],
+  info = ['info', 180, 21],
+  warning = ['warning', 60, 21],
+  danger = ['danger', 30, 21],
   neutral = ['neutral', 0, 0],
   fileName = 'index.css',
 
@@ -30,15 +31,21 @@ const {log, error} = console,
         primary, secondary, success, info,
         warning, danger, neutral
       ]
-        .flatMap(([name, degree, saturation], j) =>
+        .flatMap(([name, hue, saturation], j) =>
           lightnessNums.flatMap((lightness, i) => {
             const alpha = 100 - lightness;
+            let chroma = Math.min(
+              0.21,
+              1 - (saturation + ((100 - saturation) / lightnessNums.length) * i) * .01
+            );
+
+            if (!saturation) chroma = 0;
 
             return [
               `  --x-${name}-color-${i}: ` +
-              `hsl(${degree}deg, ${saturation}%, ${lightness}%);`,
+              `oklch(${lightness}% ${chroma} ${hue}deg);`,
               `  --x-${name}-color-with-alpha-${i}: ` +
-              `hsla(${degree}deg, ${saturation}%, ${lightness}%, ${alpha * .01}%);`,
+              `oklch(${lightness}% ${chroma} ${hue}deg / ${alpha * .01}%);`,
             ];
           })
         ).join('\n'),

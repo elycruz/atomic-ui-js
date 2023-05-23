@@ -1,0 +1,12 @@
+.x-color-grid th {
+  padding: 0.5rem;
+  background: var(--x-neutral-color-8);
+}
+
+.x-color-grid tbody td {
+  padding: 1rem;
+}
+
+.x-color-grid + .x-color-grid {
+  margin-top: 1rem;
+}

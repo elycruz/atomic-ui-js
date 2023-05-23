@@ -21,6 +21,11 @@ export const navigationItems: NavItem[] = [{
           'alias': 'checkbox'
         },
         {
+          'label': 'Colors',
+          'uri': 'atomic-ui-js/components/colors/',
+          'alias': 'colors'
+        },
+        {
           'label': 'Field',
           'uri': 'atomic-ui-js/components/field/',
           'alias': 'field'
