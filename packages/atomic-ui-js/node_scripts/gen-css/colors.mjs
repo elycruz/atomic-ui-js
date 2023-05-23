@@ -39,13 +39,14 @@ const __dirname = url.fileURLToPath(new URL('.', import.meta.url)),
               1 - (saturation + ((100 - saturation) / lightnessNums.length) * i) * .01
             );
 
+            // If 'neutral' color set chroma to the lowest value
             if (!saturation) chroma = 0;
 
             return [
               `  --x-${name}-color-${i}: ` +
               `oklch(${lightness}% ${chroma} ${hue}deg);`,
               `  --x-${name}-color-with-alpha-${i}: ` +
-              `oklch(${lightness}% ${chroma} ${hue}deg / ${alpha * .01}%);`,
+              `oklch(${lightness}% ${chroma} ${hue}deg / ${(alpha * .01).toFixed(5)});`,
             ];
           })
         ).join('\n'),

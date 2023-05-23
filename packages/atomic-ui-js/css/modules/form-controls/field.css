@@ -8,6 +8,10 @@ label span {
   display: inline-block;
 }
 
+label > * + * {
+  margin-inline-start: 0.25rem;
+}
+
 label:has(+ *) {
   font-weight: bold;
 }
@@ -15,7 +19,7 @@ label:has(+ *) {
 label:has(+ :required, + * :required)::before {
   content: "*";
   color: red;
-  margin-right: 0.25rem;
+  margin-inline-end: 0.25rem;
 }
 
 /*
@@ -32,11 +36,11 @@ label:has(+ :required, + * :required)::before {
 
 :where(x-field, .x-field):not(.x-field--vertical) > label:has(+ *),
 :where(x-field, .x-field):not(.x-field--vertical) > label:is(* + *) {
-  margin-right: 0.5rem;
+  margin-inline-end: 0.5rem;
 }
 
 :where(x-field, .x-field).x-field--vertical > label:has(+ *) {
-  margin-bottom: 0.5rem;
+  margin-block-end: 0.5rem;
 }
 
 :where(x-field, .x-field).x-field--vertical,
