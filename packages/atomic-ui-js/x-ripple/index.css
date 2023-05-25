@@ -1,20 +1,25 @@
 /**
  * How it works:
  * `::before` pseudo selector gets designated as the hover/`:focus-visible` surface,
- *  and `::after` as the mousedown/click surface.
+ *  and `::after` pseudo selector gets designated as the mousedown/click surface.
  * The `::before` hover transition only happens via `transition`,
- * The `:active` animation only happens via `animation`.
+ * The `:active` animation happens via `animation`.
  */
 
 @keyframes ripple-behavior-in {
   0% {
     transform: translate(var(--x-ripple-x), var(--x-ripple-y)) scale(var(--x-ripple-inactive-scale));
-    opacity: var(--x-ripple-inactive-opacity);
+    opacity: var(--x-ripple-active-opacity-end);
+  }
+
+  55% {
+    transform: translate(var(--x-ripple-x), var(--x-ripple-y)) scale(var(--x-ripple-active-scale));
+    opacity: var(--x-ripple-active-opacity);
   }
 
   100% {
     transform: translate(var(--x-ripple-x), var(--x-ripple-y)) scale(var(--x-ripple-active-scale));
-    opacity: var(--x-ripple-active-opacity);
+    opacity: var(--x-ripple-active-opacity-end);
   }
 }
 
@@ -31,8 +36,8 @@
 }
 
 x-ripple {
-  --x-ripple-x: -50%;
-  --x-ripple-y: -50%;
+  --x-ripple-x: 50%;
+  --x-ripple-y: 50%;
   --x-ripple-opacity: 0.13;
   --x-ripple-active-opacity: 0.13;
   --x-ripple-active-opacity-end: 0.13;
@@ -40,7 +45,7 @@ x-ripple {
   --x-ripple-active-scale: 1;
   --x-ripple-inactive-scale: 0;
   --x-ripple-speed: 0.21s;
-  --x-ripple-active-speed: 0.21s;
+  --x-ripple-active-speed: 0.55s;
   --x-ripple-active-speed-out: 0.34s;
 
   position: relative;
@@ -60,7 +65,7 @@ x-ripple:empty {
   position: absolute;
   left: 0;
   top: 0;
-  width:100%;
+  width: 100%;
   height: 100%;
 }
 
@@ -87,8 +92,6 @@ x-ripple::after,
 x-ripple::before {
   position: absolute;
   content: "";
-  top: 50%;
-  left: 50%;
   background: var(--x-color-5);
   pointer-events: none;
   transform-origin: center;
@@ -138,7 +141,7 @@ x-ripple::after {
  * "active" out animation.
  */
 x-ripple:not([rippleactive])::after {
-  animation: var(--x-ripple-active-speed-out) ripple-behavior-out ease-out;
+  animation: var(--x-ripple-active-speed-out) ripple-behavior-out ease-in-out;
   animation-fill-mode: forwards;
 }
 
@@ -148,6 +151,6 @@ x-ripple:not([rippleactive])::after {
 x-ripple[rippleactive]::after,
 x-ripple:has(:active, :hover:active)::after,
 *:has(> x-ripple:empty):is(:active, :hover:active, :has(> x-ripple:empty[rippleactive])) > x-ripple:empty::after {
-  animation: var(--x-ripple-active-speed) ripple-behavior-in ease-out;
+  animation: var(--x-ripple-active-speed) ripple-behavior-in ease-in-out;
   animation-fill-mode: forwards;
 }
