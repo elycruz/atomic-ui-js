@@ -72,8 +72,8 @@ const _mouseOverEventName = 'mouseenter',
     );
 
     if (!e || ctx.childElementCount) {
-      rippleOffsetX = ctx.offsetHeight / 2;
-      rippleOffsetY = ctx.offsetWidth / 2;
+      rippleOffsetX = ctx.offsetWidth / 2;
+      rippleOffsetY = ctx.offsetHeight / 2;
     } else if (rippleOffsetX === undefined) return;
 
     const rippleX = `${rippleOffsetX - rippleRadius}px`,

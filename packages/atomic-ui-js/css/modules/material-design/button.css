@@ -106,7 +106,7 @@
 :where(.x-button, .x-btn).x-filled x-ripple::after,
 :where(.x-button, .x-btn).x-filled x-ripple::before {
   --x-ripple-hover-opacity: 0.55;
-  --x-ripple-active-opacity: 0.34;
+  --x-ripple-active-opacity: 0.21;
 
   background: var(--x-color-12);
 }
