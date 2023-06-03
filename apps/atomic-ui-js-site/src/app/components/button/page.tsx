@@ -15,52 +15,41 @@ export default function ButtonPage() {
         <h3>Button Varieties</h3>
 
         <dl>
-          {['x-btn', 'x-button'].map(classNameSuffix => <>
-            <dt className="x-h4">{!classNameSuffix ? 'Default' : classNameSuffix}</dt>
-
-            <dd>
-              {Object.keys(xThemes).map((k1, j) =>
-                <dl key={`${_uuid++}-${j}`}>
-                  <dt className="x-h5">{k1} theme</dt>
-
-                  <dd>
-                    {Object.keys(xVariants).map((k2, k) =>
-                      <button
-                        key={`${_uuid++}-${k}`}
-                        className={
-                          classNames(
-                            classNameSuffix,
-                            `x-theme-${xThemes[k1]}`,
-                            `x-${xVariants[k2]}`
-                          )}
-                      >{k2}</button>
-                    )}
-
-                    <button
-                      className={
-                        classNames(
-                          classNameSuffix,
-                          `x-theme-${xThemes[k1]}`
-                        )}
-                      disabled
-                    >Disabled
-                    </button>
-                  </dd>
-                </dl>
-              )}
-            </dd>
-          </>
-          )}
-        </dl>
-        <dl>
           {Object.keys(xThemes).map(k1 => <>
             <dt>{k1}</dt>
 
+            <dd>
+              <dt>With no ripple</dt>
+
+              <dd className="x-btn-group">
+                {Object.keys(xVariants).map((k2, k) =>
+                  <button
+                    key={`${_uuid++}-${k}`}
+                    className={
+                      classNames(
+                        'x-btn',
+                        `x-theme-${xThemes[k1]}`,
+                        `x-${xVariants[k2]}`
+                      )}
+                  >{k2}</button>
+                )}
+
+                <button
+                  className={
+                    classNames(
+                      'x-btn',
+                      `x-theme-${xThemes[k1]}`
+                    )}
+                  disabled
+                >Disabled
+                </button>
+              </dd>
+            </dd>
             {Object.keys(xVariants).map(k2 =>
               <dd key={`dd-2.${k2}`}>
                 <dl>
                   <dt>{k2}</dt>
-                  <dd className="x-button-group">
+                  <dd className="x-btn-group">
                     {k2 !== 'Dense' && k2 !== 'Small' && k2 !== 'Large' ?
                       <button className={`x-btn x-theme-${xThemes[k1]} x-dense x-${xVariants[k2]}`} type="button">
                         <XRippleComponent></XRippleComponent>
@@ -85,7 +74,7 @@ export default function ButtonPage() {
             <dd>
               <dl>
                 <dt>All</dt>
-                <dd className="x-button-group">
+                <dd className="x-btn-group">
                   <button className={`x-btn x-theme-${xThemes[k1]} ${allBaseVariantClasses}`}
                     type="button">
                     <XRippleComponent></XRippleComponent>

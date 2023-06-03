@@ -8,7 +8,7 @@ export const xRippleName = 'x-ripple';
  * Adds/Removes 'Bounded' (enclosed) ripple effects from an element.
  */
 const _mouseOverEventName = 'mouseenter',
-  _mouseDownEventName = 'mousedown',
+  _mouseDownEventName = 'pointerdown',
   _animationEndEventName = 'animationend',
   _rippleDiameterCssPropName = `--${xRippleName}-diameter`,
   _rippleXCssPropName = `--${xRippleName}-x`,

@@ -8,11 +8,11 @@
   <link rel="stylesheet" href="../css/modules/material-design/index.css"/>
 
   <style>
-    .x-button-group + .x-button-group {
+    .x-btn-group + .x-btn-group {
       margin-top: var(--x-21px);
     }
 
-    .x-button-group button {
+    .x-btn-group button {
       margin: var(--x-8px);
     }
   </style>
@@ -36,7 +36,7 @@
                 <dd>
                   <dl>
                     <dt>${k2}</dt>
-                    <dd class="x-button-group">
+                    <dd class="x-btn-group">
                       ${k2 !== 'Dense' && k2 !== 'Small' && k2 !== 'Large' ? `
                         <button class="x-btn x-theme-${xThemes[k1]} x-dense x-${xVariants[k2]}" type="button">
                           <x-ripple></x-ripple>
@@ -61,7 +61,7 @@
               <dd>
                 <dl>
                   <dt>All</dt>
-                  <dd class="x-button-group">
+                  <dd class="x-btn-group">
                     <button class="x-btn x-theme-${xThemes[k1]} ${allBaseVariantClasses}"
                             type="button">
                           <x-ripple></x-ripple>

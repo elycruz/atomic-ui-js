@@ -55,8 +55,8 @@
   position: relative;
 }
 
-:where(.x-button, .x-btn, .x-ripple)::after,
-:where(.x-button, .x-btn, .x-ripple)::before {
+:where(.x-btn, .x-ripple)::after,
+:where(.x-btn, .x-ripple)::before {
   position: absolute;
   content: "";
   top: 50%;
@@ -78,7 +78,7 @@
   overflow: hidden;
 }
 
-:where(.x-button, .x-btn, .x-ripple)::before {
+:where(.x-btn, .x-ripple)::before {
   transform: translate(
     var(--x-ripple-x),
     var(--x-ripple-y)
@@ -89,7 +89,7 @@
   z-index: 1;
 }
 
-:where(.x-button, .x-btn, .x-ripple):is(
+:where(.x-btn, .x-ripple):is(
   :focus-visible,
   :hover,
   :active,
@@ -104,17 +104,17 @@
   opacity: var(--x-ripple-opacity);
 }
 
-:where(.x-button, .x-btn, .x-ripple)::after {
+:where(.x-btn, .x-ripple)::after {
   z-index: 2;
 }
 
-:where(.x-button, .x-btn, .x-ripple)::after {
+:where(.x-btn, .x-ripple)::after {
   animation: var(--x-ripple-active-speed-out) ripple-behavior-out ease-out;
   animation-fill-mode: forwards;
 }
 
-:where(.x-button, .x-btn, .x-ripple).x-ripple--active::after,
-:where(.x-button, .x-btn, .x-ripple):not(.x-ripple-upgraded):is(:active, :hover:active)::after {
+:where(.x-btn, .x-ripple).x-ripple--active::after,
+:where(.x-btn, .x-ripple):not(.x-ripple-upgraded):is(:active, :hover:active)::after {
   animation: var(--x-ripple-active-speed) ripple-behavior-in ease-out;
   animation-fill-mode: forwards;
 }
