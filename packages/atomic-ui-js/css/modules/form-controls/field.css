@@ -22,6 +22,10 @@ label:has(+ :required, + * :required)::before {
   margin-inline-end: 0.25rem;
 }
 
+label:has(> x-ripple > :disabled) {
+  pointer-events: none;
+}
+
 /*
  * x-field
  * ------------------ */

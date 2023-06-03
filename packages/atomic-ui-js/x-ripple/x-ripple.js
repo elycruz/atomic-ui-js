@@ -8,13 +8,11 @@ export const xRippleName = 'x-ripple';
  * Adds/Removes 'Bounded' (enclosed) ripple effects from an element.
  */
 const _mouseOverEventName = 'mouseenter',
-  _mouseDownEventName = 'mousedown',
-  // _animationEndEventName = 'animationend',
-
+  _mouseDownEventName = 'pointerdown',
+  _animationEndEventName = 'animationend',
   _rippleDiameterCssPropName = `--${xRippleName}-diameter`,
   _rippleXCssPropName = `--${xRippleName}-x`,
   _rippleYCssPropName = `--${xRippleName}-y`,
-  _rippleInAniName = 'ripple-behavior-in',
 
   /**
    * @param {Event} e
@@ -47,6 +45,11 @@ const _mouseOverEventName = 'mouseenter',
     _rippleActive(rippleCtx, e);
   },
 
+  _calcRippleRadius = (containerW, containerH) => {
+    return Math.sqrt(
+      Math.pow(containerW, 2) + Math.pow(containerH, 2));
+  },
+
   /**
    * @param {XRippleElement} ctx
    * @param {MouseEvent} [e]
@@ -56,22 +59,25 @@ const _mouseOverEventName = 'mouseenter',
       rippleOffsetX = e?.offsetX,
       rippleOffsetY = e?.offsetY;
 
-    if (ctx.childElementCount) rippleRadius = Math.max(ctx.offsetHeight, ctx.offsetWidth);
-    else if (ctx.parentElement) rippleRadius = Math.max(ctx.parentElement.offsetHeight, ctx.parentElement.offsetWidth);
+    if (ctx.childElementCount) {
+      rippleRadius = _calcRippleRadius(ctx.offsetWidth, ctx.offsetHeight);
+    } else if (ctx.parentElement) {
+      rippleRadius = _calcRippleRadius(ctx.parentElement.offsetWidth, ctx.parentElement.offsetHeight);
+    }
     else return;
 
     ctx.style.setProperty(
       _rippleDiameterCssPropName,
-      `${rippleRadius * ctx.radiusMultiplier}px`
+      `${rippleRadius * 2}px`
     );
 
     if (!e || ctx.childElementCount) {
-      rippleOffsetX = ctx.offsetHeight / 2;
-      rippleOffsetY = ctx.offsetWidth / 2;
+      rippleOffsetX = ctx.offsetWidth / 2;
+      rippleOffsetY = ctx.offsetHeight / 2;
     } else if (rippleOffsetX === undefined) return;
 
-    const rippleX = `${rippleOffsetX - (rippleRadius + (ctx.offsetWidth / 2))}px`,
-      rippleY = `${rippleOffsetY - (rippleRadius + (ctx.offsetHeight / 2))}px`;
+    const rippleX = `${rippleOffsetX - rippleRadius}px`,
+      rippleY = `${rippleOffsetY - rippleRadius}px`;
 
     ctx.style.setProperty(_rippleXCssPropName, rippleX);
     ctx.style.setProperty(_rippleYCssPropName, rippleY);
@@ -80,12 +86,6 @@ const _mouseOverEventName = 'mouseenter',
   _rippleActive = (ctx, e) => {
     ctx.pauseUpdates = true;
     _updateCssProps(ctx, e);
-
-    if (ctx.rippleActive) {
-      ctx.getAnimations({subtree: true})
-        .reverse()
-        .find(ani => ani.animationName === _rippleInAniName)?.play();
-    }
 
     ctx.rippleActive = true;
     ctx.pauseUpdates = false;
@@ -102,7 +102,7 @@ const _mouseOverEventName = 'mouseenter',
     _updateCssProps(ctx);
     eventTarget.addEventListener(_mouseOverEventName, _onRippleElementMouseDown);
     eventTarget.addEventListener(_mouseDownEventName, _onRippleElementMouseDown);
-    // eventTarget.addEventListener(_animationEndEventName, _onRippleAnimationEnd);
+    eventTarget.addEventListener(_animationEndEventName, _onRippleAnimationEnd);
     eventTarget.addEventListener('focusout', _onRippleAnimationEnd);
 
     return ctx;
@@ -111,7 +111,7 @@ const _mouseOverEventName = 'mouseenter',
   removeRippleEffect = (ctx) => {
     ctx.removeEventListener(_mouseOverEventName, _onRippleElementMouseDown);
     ctx.removeEventListener(_mouseDownEventName, _onRippleElementMouseDown);
-    // ctx.removeEventListener(_animationEndEventName, _onRippleAnimationEnd);
+    ctx.removeEventListener(_animationEndEventName, _onRippleAnimationEnd);
     ctx.removeEventListener('focusout', _onRippleAnimationEnd);
     return ctx;
   },
@@ -170,18 +170,8 @@ export class XRippleElement extends HTMLElement {
   pauseUpdates = false;
 
   #initialized = false;
-  #radiusMultiplier = 2;
   #rippleActive = false;
   #attrsChangedMap = {};
-
-  get radiusMultiplier() {
-    return this.#radiusMultiplier;
-  }
-
-  set radiusMultiplier(x) {
-    this.#radiusMultiplier = Number(x) ?? 2;
-    this.update();
-  }
 
   get rippleActive() {
     return this.#rippleActive;
@@ -229,9 +219,6 @@ export class XRippleElement extends HTMLElement {
       if (!this.#attrsChangedMap[RIPPLE_ACTIVE_NAME]) {
         this.rippleActive = newValue !== null;
       } else delete this.#attrsChangedMap[RIPPLE_ACTIVE_NAME];
-      break;
-    case RADIUS_MULTIPLIER_NAME:
-      this.radiusMultiplier = newValue;
       break;
     default:
       break;
