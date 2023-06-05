@@ -35,8 +35,8 @@ html[dir="rtl"] :where(x-input, .x-input) > *:not([type="range"], [type="submit"
 }
 
 :where(x-input, .x-input):not([type="checkbox"], [type="radio"]) {
-  --x-input-padding-top: var(--x-border-width);
-  --x-input-padding-left: calc(var(--x-border-width) * 2);
+  --x-input-padding-top: var(--x-8px); /*var(--x-border-width);*/
+  --x-input-padding-left: var(--x-8px); /*calc(var(--x-border-width) * 2)*/;
 
   display: flex;
   width: fit-content;
