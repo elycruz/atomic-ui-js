@@ -1,4 +1,4 @@
- @use "atomic-ui-js/dist/index.min.css";
+@use "atomic-ui-js/dist/index.min.css";
 
 * {
   box-sizing: border-box;
@@ -19,14 +19,7 @@ body > * > * {
 body > .x-app-header {
   grid-area: app-header;
   border-bottom: var(--x-1px) solid;
-}
-
-body .x-app-header__title {
   gap: 0.5rem;
-}
-
-body .x-app-header__title > * {
-  display: inline-block;
 }
 
 body > div {
@@ -57,6 +50,6 @@ body > .x-app-content > .x-app-nav {
   padding: var(--x-8px);
 }
 
-html.x-nav-hidden main {
-  width: 100vw;
+html.with-app-nav-hidden .x-app-nav {
+  display: none;
 }

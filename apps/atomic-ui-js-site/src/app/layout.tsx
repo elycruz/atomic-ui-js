@@ -1,6 +1,7 @@
 import React from 'react';
 import '../css/index.scss';
 import {AppNav} from '../features/app-nav';
+import {AppNavToggle} from '@/components/app-nav-toggle';
 
 export const metadata = {
   title: 'Atomic UI Js'
@@ -17,11 +18,12 @@ export default function RootLayout({
     <html lang="en">
       <body>
         <header className="x-app-header">
-          <div>
-            <div className="x-app-header__title x-flex x-flex-row x-align-items-center">
-              <button className="x-hamburger-btn x-btn"><i className="mds-icon">menu</i></button>
-              <h1>Atomic UI Js</h1>
-            </div>
+          <div className=" x-flex x-flex-row x-align-items-center">
+            <AppNavToggle />
+
+            <hgroup className="x-app-header__start">
+              <a href="/atomic-ui-js"><h1 className="x-app-header__title">Atomic UI Js</h1></a>
+            </hgroup>
           </div>
         </header>
 

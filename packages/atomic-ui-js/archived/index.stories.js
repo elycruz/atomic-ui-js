@@ -1,4 +1,4 @@
-import {debounce, $, $$} from './utils/index.js';
+import {debounce, $, $$} from '../utils/index.js';
 
 // Init
 // ----
