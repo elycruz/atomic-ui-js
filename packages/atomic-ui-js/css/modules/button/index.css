@@ -12,6 +12,7 @@
   transition: border-color 0.13s, color 0.13s, background-color 0.13s,
   transform 0.13s ease-in-out, opacity 0.13s,
   box-shadow 0.13s ease-in-out;
+  user-select: none;
 }
 
 :where(.x-btn, button, input[type="submit"], input[type="reset"], input[type="image"], input[type="button"]):not(:disabled):hover {

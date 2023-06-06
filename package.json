@@ -12,6 +12,7 @@
     "build": "turbo build",
     "build:lib": "cd packages/atomic-ui-js && pnpm build",
     "lint": "turbo lint",
+    "lint-fix": "turbo lint-fix",
     "gen:site:navitems": "cd apps/atomic-ui-js-site/ && pnpm gen-navitems && cd ../../",
     "docs": "turbo doc",
     "test": "turbo test",
