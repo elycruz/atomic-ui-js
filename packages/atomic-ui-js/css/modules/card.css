@@ -1,0 +1,23 @@
+.x-card {
+  display: inline-flex;
+}
+
+html[dir="ltr"] .x-card:not(.x-layout-horizontal) {
+  flex-flow: column nowrap;
+}
+
+html[dir="rtl"] .x-card:not(.x-layout-vertical) {
+  flex-flow: row nowrap;
+}
+
+.x-card.x-outlined {
+  border: var(--x-border-width) solid;
+}
+
+.x-card.x-filled {
+
+}
+
+.x-card.x-raised {
+
+}

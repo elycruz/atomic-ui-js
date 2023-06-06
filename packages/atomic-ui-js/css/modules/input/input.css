@@ -17,26 +17,26 @@ html[dir="rtl"] .x-input {
  * Padding
  * ------------------------ */
 html:not([dir="rtl"]) :where(x-input, .x-input):where(
-  input:not([type="range"], [type="submit"], [type="reset"], [type="button"], [type="image"], [type="radio"], [type="checkbox"]),
+  input:not([type="range"], [type="submit"], [type="color"], [type="reset"], [type="button"], [type="image"], [type="radio"], [type="checkbox"]),
   select,
   textarea
 ),
-html:not([dir="rtl"]) :where(x-input, .x-input) > *:not([type="range"], [type="submit"], [type="reset"], [type="button"], [type="image"], [type="radio"], [type="checkbox"]) {
+html:not([dir="rtl"]) :where(x-input, .x-input) > *:not([type="range"], [type="color"], [type="submit"], [type="reset"], [type="button"], [type="image"], [type="radio"], [type="checkbox"]) {
   padding: var(--x-input-padding-top) var(--x-input-padding-left);
 }
 
 html[dir="rtl"] :where(x-input, .x-input):is(
-  input:not([type="range"], [type="submit"], [type="reset"], [type="button"], [type="image"], [type="radio"], [type="checkbox"]),
+  input:not([type="range"], [type="color"], [type="submit"], [type="reset"], [type="button"], [type="image"], [type="radio"], [type="checkbox"]),
   select,
   textarea
 ),
-html[dir="rtl"] :where(x-input, .x-input) > *:not([type="range"], [type="submit"], [type="reset"], [type="button"], [type="image"], [type="radio"], [type="checkbox"]) {
+html[dir="rtl"] :where(x-input, .x-input) > *:not([type="range"], [type="color"], [type="submit"], [type="reset"], [type="button"], [type="image"], [type="radio"], [type="checkbox"]) {
   padding: var(--x-input-padding-left) var(--x-input-padding-top);
 }
 
 :where(x-input, .x-input):not([type="checkbox"], [type="radio"]) {
-  --x-input-padding-top: var(--x-border-width);
-  --x-input-padding-left: calc(var(--x-border-width) * 2);
+  --x-input-padding-top: var(--x-8px); /*var(--x-border-width);*/
+  --x-input-padding-left: var(--x-8px); /*calc(var(--x-border-width) * 2)*/;
 
   display: flex;
   width: fit-content;
@@ -44,12 +44,12 @@ html[dir="rtl"] :where(x-input, .x-input) > *:not([type="range"], [type="submit"
 }
 
 :where(x-input, .x-input):has(
-  input:not([type="range"], [type="submit"], [type="reset"], [type="button"], [type="image"], [type="radio"], [type="checkbox"]),
+  input:not([type="range"], [type="color"], [type="submit"], [type="reset"], [type="button"], [type="image"], [type="radio"], [type="checkbox"]),
   select,
   textarea
 ),
 :where(x-input, .x-input):is(
-  input:not([type="range"], [type="submit"], [type="reset"], [type="button"], [type="image"], [type="radio"], [type="checkbox"]),
+  input:not([type="range"], [type="color"], [type="submit"], [type="reset"], [type="button"], [type="image"], [type="radio"], [type="checkbox"]),
   select,
   textarea
 ) {

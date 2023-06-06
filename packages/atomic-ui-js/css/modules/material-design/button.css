@@ -23,7 +23,7 @@
  */
  /** For small size **/
 .x-btn.x-outlined.x-small {
-  padding: calc(var(--x-3px) - var(--x-border-width)) var(--x-3px);
+  padding: calc(var(--x-3px) - var(--x-border-width));
 }
 
 /** For medium size **/
@@ -31,12 +31,12 @@
   :not(.x-small, .x-dense, .x-large), .x-normal
 ),
 .x-btn.x-outlined.x-dense {
-  padding: calc(var(--x-8px) - var(--x-border-width)) var(--x-8px);
+  padding: calc(var(--x-8px) - var(--x-border-width));
 }
 
 /** For large size **/
 .x-btn.x-outlined.x-large {
-  padding: calc(var(--x-12px) - var(--x-border-width)) var(--x-12px);
+  padding: calc(var(--x-12px) - var(--x-border-width));
 }
 
 /**
@@ -88,7 +88,7 @@
  */
 .x-btn:disabled {
   pointer-events: none;
-  opacity: 0.34;
+  opacity: 0.55;
 }
 
 /*
@@ -98,6 +98,7 @@
 /* Note: See following link for more about system-colors:
  https://developer.mozilla.org/en-US/docs/Web/CSS/system-color
  */
+
 
 /*
  * Filled

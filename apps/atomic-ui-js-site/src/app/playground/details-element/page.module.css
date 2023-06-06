@@ -1,0 +1,16 @@
+.x-details,
+.x-details > summary {
+  position: relative;
+}
+
+.x-details > summary {
+  user-select: none;
+}
+
+.x-details .x-details-arrow::after {
+  content: "arrow_down"
+}
+
+.x-details[open] .x-details-arrow::after {
+  content: "arrow_up";
+}

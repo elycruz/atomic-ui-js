@@ -19,31 +19,33 @@ export default function ButtonPage() {
             <dt>{k1}</dt>
 
             <dd>
-              <dt>With no ripple</dt>
+              <dl>
+                <dt>With no ripple</dt>
 
-              <dd className="x-btn-group">
-                {Object.keys(xVariants).map((k2, k) =>
+                <dd className="x-btn-group">
+                  {Object.keys(xVariants).map((k2, k) =>
+                    <button
+                      key={`${_uuid++}-${k}`}
+                      className={
+                        classNames(
+                          'x-btn',
+                          `x-theme-${xThemes[k1]}`,
+                          `x-${xVariants[k2]}`
+                        )}
+                    >{k2}</button>
+                  )}
+
                   <button
-                    key={`${_uuid++}-${k}`}
                     className={
                       classNames(
                         'x-btn',
-                        `x-theme-${xThemes[k1]}`,
-                        `x-${xVariants[k2]}`
+                        `x-theme-${xThemes[k1]}`
                       )}
-                  >{k2}</button>
-                )}
-
-                <button
-                  className={
-                    classNames(
-                      'x-btn',
-                      `x-theme-${xThemes[k1]}`
-                    )}
-                  disabled
-                >Disabled
-                </button>
-              </dd>
+                    disabled
+                  >Disabled
+                  </button>
+                </dd>
+              </dl>
             </dd>
             {Object.keys(xVariants).map(k2 =>
               <dd key={`dd-2.${k2}`}>

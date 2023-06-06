@@ -10,5 +10,5 @@ button {
 
 :disabled {
   pointer-events: none;
-  opacity: 0.34;
+  opacity: 0.55;
 }
