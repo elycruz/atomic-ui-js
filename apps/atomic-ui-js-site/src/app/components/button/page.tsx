@@ -48,8 +48,8 @@ export default function ButtonPage() {
                         <XRippleComponent></XRippleComponent>
                         <span>$</span><span>With multiple children</span>
                       </button>
-                      {Object.keys(sizeVariants).map((k3, i3)=> k3 === 'Normal' ? null :
-                        <button key={`${k1}-${k2}-${k3}-${i3}`} className={`x-btn x-theme-${themeClassSuffix}${variantClassName} x-${sizeVariants[k3]}`}
+                      {Object.keys(sizeVariants).map(k3=> k3 === 'Normal' ? null :
+                        <button key={`${k1}-${k2}-${k3}`} className={`x-btn x-theme-${themeClassSuffix}${variantClassName} x-${sizeVariants[k3]}`}
                           type="button">
                           <XRippleComponent></XRippleComponent>
                           <span>{k3}</span>
