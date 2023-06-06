@@ -9,6 +9,7 @@ export const xThemes = {
   },
 
   xVariants = {
+    Default: '',
     Outlined: 'outlined',
     Filled: 'filled',
     Raised: 'raised',
