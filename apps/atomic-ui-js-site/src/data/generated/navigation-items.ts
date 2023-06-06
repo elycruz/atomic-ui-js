@@ -16,6 +16,11 @@ export const navigationItems: NavItem[] = [{
           'alias': 'button'
         },
         {
+          'label': 'Card',
+          'uri': '/components/card/',
+          'alias': 'card'
+        },
+        {
           'label': 'Checkbox',
           'uri': '/components/checkbox/',
           'alias': 'checkbox'
@@ -44,6 +49,18 @@ export const navigationItems: NavItem[] = [{
           'label': 'Ripple',
           'uri': '/components/ripple/',
           'alias': 'ripple'
+        }
+      ]
+    },
+    {
+      'label': 'Playground',
+      'uri': '/playground/',
+      'alias': 'playground',
+      'items': [
+        {
+          'label': 'Details-element',
+          'uri': '/playground/details-element/',
+          'alias': 'details-element'
         }
       ]
     }

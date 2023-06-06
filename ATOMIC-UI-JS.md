@@ -4,45 +4,45 @@ An atomic, CSS first, user interface library.
 
 ## CSS Components
 
-- `.z-alert`
-- `.z-app-bar`
-- `.z-badge`
-- `.z-button`/`.z-btn`
-- `.z-card`
-- `.z-dropdown` - Class for turning `details` elements into togglable dropdowns, dropups, popovers, etc.
-- `.z-field`
-- `.z-fieldset`
-- `.z-input`
-- `.z-mds-icon`
-- `.z-menu`
-- `.z-section`
-- `.z-select`
-- `.z-table`
-- `.z-textarea`
-- `.z-elevation` (drop-shadows)
+- `.x-alert`
+- `.x-app-bar`
+- `.x-badge`
+- `.x-button`/`.x-btn`
+- `.x-card`
+- `.x-dropdown` - Class for turning `details` elements into togglable dropdowns, dropups, popovers, etc.
+- `.x-field`
+- `.x-fieldset`
+- `.x-input`
+- `.x-mds-icon`
+- `.x-menu`
+- `.x-section`
+- `.x-select`
+- `.x-table`
+- `.x-textarea`
+- `.x-elevation` (drop-shadows)
 
 ### Copy
 
-- `.z-typography` - Applies default styles for contained `p`, `blockquote`, `caption`, `a`, and `button` elements.
-- `.z-h1` - `.z-h6` - Heading size, and line-height, styles.
+- `.x-typography` - Applies default styles for contained `p`, `blockquote`, `caption`, `a`, and `button` elements.
+- `.x-h1` - `.x-h6` - Heading size, and line-height, styles.
 
 ### Variant classes
 
-- `.z-round` - Used for icon buttons/buttons that are completely round.
-- `.z-rounded` - Applies rounded border-radius.
-- `.z-outlined`
-- `.z-filled`
-- `.z-raised` - With elevation/boz-shadow
-- `.z-small`
-- `.z-medium` - Default.
-- `.z-large`
-- `.z-horizontal` - Horizontal layout.
-- `.z-vertical` - Vertical layout.
+- `.x-round` - Used for icon buttons/buttons that are completely round.
+- `.x-rounded` - Applies rounded border-radius.
+- `.x-outlined`
+- `.x-filled`
+- `.x-raised` - With elevation/boz-shadow
+- `.x-small`
+- `.x-medium` - Default.
+- `.x-large`
+- `.x-horizontal` - Horizontal layout.
+- `.x-vertical` - Vertical layout.
 
 #### Tentative
 
-- ~~`.z-collapsible`~~ superseded by, natively built-in, `details` element.
-- ~~`.z-with-collapsible`~~ "".
+- ~~`.x-collapsible`~~ superseded by, natively built-in, `details` element.
+- ~~`.x-with-collapsible`~~ "".
 
 ## CSS Properties
 
@@ -62,9 +62,9 @@ Default color variants:
 - Danger
 - Neutral - Grayscale.
 
-- `.z-{color-name}-{index}` where `{color-name}` is one of the default defined color variants (in lowercase) and `{index}` is the lightness index of the color (each index increments the colors lightness by 10%). 
+- `.x-{color-name}-{index}` where `{color-name}` is one of the default defined color variants (in lowercase) and `{index}` is the lightness index of the color (each index increments the colors lightness by 10%). 
 
-- `.z-theme-color-{index}` This class set is controlled by apply the above class (`.z-{color-name}-index}`) to an element;  E.g.
+- `.x-theme-color-{index}` This class set is controlled by apply the above class (`.x-{color-name}-index}`) to an element;  E.g.
 ```html
 <style>
   button {
@@ -117,11 +117,7 @@ General:
 
 ### SPA (custom/vanillajs)
 
-
-
 ### Todos
 
 - Can we perform custom "dropdown" menu animation with `details` element?
-
 - [ ] Move story styles into './apps/atomic-ui-js-site'.
-
