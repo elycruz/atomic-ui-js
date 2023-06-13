@@ -1,9 +1,16 @@
-import {xThemes, xVariants, classNames} from 'atomic-ui-js/utils';
+import {xThemes, xVariants} from 'atomic-ui-js/utils';
 import XRippleComponent from 'atomic-ui-js-next/x-ripple';
 
-let _uuid = 0;
+const partitionedVariants = Object.entries(xVariants).reduce((agg, [k, v]) => {
+    if (/large|small|dense|normal|medium/.test(v)) {
+      agg[1][k] = v;
+    } else {
+      agg[0][k] = v;
+    }
+    return agg;
+  }, [{}, {}]),
 
-const allBaseVariantClasses = 'x-ripple x-filled x-raised x-outlined x-ripple-upgraded';
+  [filteredVariants, sizeVariants] = partitionedVariants;
 
 export default function ButtonPage() {
   return <>
@@ -15,96 +22,44 @@ export default function ButtonPage() {
         <h3>Button Varieties</h3>
 
         <dl>
-          {Object.keys(xThemes).map(k1 => <>
-            <dt>{k1}</dt>
+          {Object.keys(xThemes).map(k1 => {
+            const themeClassSuffix = xThemes[k1];
+            return <>
+              <dt>{k1}</dt>
 
-            <dd>
-              <dl>
-                <dt>With no ripple</dt>
+              {Object.keys(filteredVariants).map(k2 => {
+                const variantClassSuffix = xVariants[k2],
+                  variantClassName = variantClassSuffix ? ` x-${variantClassSuffix}` : '';
 
-                <dd className="x-btn-group">
-                  {Object.keys(xVariants).map((k2, k) =>
-                    <button
-                      key={`${_uuid++}-${k}`}
-                      className={
-                        classNames(
-                          'x-btn',
-                          `x-theme-${xThemes[k1]}`,
-                          `x-${xVariants[k2]}`
-                        )}
-                    >{k2}</button>
-                  )}
-
-                  <button
-                    className={
-                      classNames(
-                        'x-btn',
-                        `x-theme-${xThemes[k1]}`
-                      )}
-                    disabled
-                  >Disabled
-                  </button>
-                </dd>
-              </dl>
-            </dd>
-            {Object.keys(xVariants).map(k2 =>
-              <dd key={`dd-2.${k2}`}>
-                <dl>
-                  <dt>{k2}</dt>
-                  <dd className="x-btn-group">
-                    {k2 !== 'Dense' && k2 !== 'Small' && k2 !== 'Large' ?
-                      <button className={`x-btn x-theme-${xThemes[k1]} x-dense x-${xVariants[k2]}`} type="button">
+                return <dd key={`dd-2.${k2}`}>
+                  <dl>
+                    <dt>{k2}</dt>
+                    <dd className="x-btn-group">
+                      {k2 !== 'Dense' && k2 !== 'Small' && k2 !== 'Large' ?
+                        <button className={`x-btn x-theme-${themeClassSuffix}${variantClassName}`} type="button">
+                          <XRippleComponent></XRippleComponent>
+                          <span>Default</span>
+                        </button> : null}
+                      <button className={`x-btn x-theme-${themeClassSuffix}${variantClassName}`} type="button" disabled>
                         <XRippleComponent></XRippleComponent>
-                        <span>Dense and {k2[0].toUpperCase().concat(k2.slice(1))}</span>
-                      </button> : null}
-                    <button className={`x-btn x-theme-${xThemes[k1]} x-${xVariants[k2]}`} type="button" disabled>
-                      <XRippleComponent></XRippleComponent>
-                      <span>{k2} and Disabled</span>
-                    </button>
-                    <button className={`x-btn x-theme-${xThemes[k1]} x-${xVariants[k2]}`} type="button">
-                      <XRippleComponent></XRippleComponent>
-                      <span>$</span><span>With multiple children</span>
-                    </button>
-                    <button className={`x-btn x-theme-${xThemes[k1]} x-${xVariants[k2]}`} type="button">
-                      <XRippleComponent></XRippleComponent>
-                      <span>With long {'text '.repeat(10)}</span>
-                    </button>
-                  </dd>
-                </dl>
-              </dd>
-            )}
-            <dd>
-              <dl>
-                <dt>All</dt>
-                <dd className="x-btn-group">
-                  <button className={`x-btn x-theme-${xThemes[k1]} ${allBaseVariantClasses}`}
-                    type="button">
-                    <XRippleComponent></XRippleComponent>
-                    Button
-                  </button>
-                  <button className={`x-btn x-theme-${xThemes[k1]} x-dense ${allBaseVariantClasses}`}
-                    type="button">
-                    <XRippleComponent></XRippleComponent>
-                    Dense
-                  </button>
-                  <button className={`x-btn x-theme-${xThemes[k1]} ${allBaseVariantClasses}`}
-                    type="button" disabled>
-                    <XRippleComponent></XRippleComponent>
-                    Disabled
-                  </button>
-                  <button className={`x-btn x-theme-${xThemes[k1]} ${allBaseVariantClasses}`}
-                    type="button">
-                    <XRippleComponent></XRippleComponent>
-                    <span>$</span><span>With multiple children</span></button>
-                  <button className={`x-btn x-theme-${xThemes[k1]} ${allBaseVariantClasses}`}
-                    type="button">
-                    <XRippleComponent></XRippleComponent>
-                    With long {'text '.repeat(10)}
-                  </button>
-                </dd>
-              </dl>
-            </dd>
-          </>)}
+                        <span>Disabled</span>
+                      </button>
+                      <button className={`x-btn x-theme-${themeClassSuffix}${variantClassName}`} type="button">
+                        <XRippleComponent></XRippleComponent>
+                        <span>$</span><span>With multiple children</span>
+                      </button>
+                      {Object.keys(sizeVariants).map(k3=> k3 === 'Normal' ? null :
+                        <button key={`${k1}-${k2}-${k3}`} className={`x-btn x-theme-${themeClassSuffix}${variantClassName} x-${sizeVariants[k3]}`}
+                          type="button">
+                          <XRippleComponent></XRippleComponent>
+                          <span>{k3}</span>
+                        </button>)}
+                    </dd>
+                  </dl>
+                </dd>;
+              })}
+            </>;
+          })}
         </dl>
       </div>
     </section>

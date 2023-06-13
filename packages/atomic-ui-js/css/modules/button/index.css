@@ -1,7 +1,11 @@
 /**
  * Base
  * ---------------- */
-.x-btn, button, input[type="submit"], input[type="reset"], input[type="image"], input[type="button"] {
+.x-btn,
+button,
+input:where([type="submit"], [type="reset"], [type="image"], [type="button"]),
+input[type="file"]::file-selector-button
+{
   position: relative;
   border-radius: var(--x-border-radius);
   border: var(--x-border-width) solid ButtonBorder;
@@ -15,32 +19,49 @@
   user-select: none;
 }
 
-:where(.x-btn, button, input[type="submit"], input[type="reset"], input[type="image"], input[type="button"]):not(:disabled):hover {
+:where(
+  .x-btn, button, input:where([type="submit"], [type="reset"], [type="image"], [type="button"]),
+  input[type="file"]::file-selector-button
+):not(:disabled):hover {
   cursor: pointer;
 }
 
 /*
  * Sizes
  * ------------------- */
-:where(.x-btn, button, input[type="submit"], input[type="reset"], input[type="image"], input[type="button"]).x-small {
+:where(
+  .x-btn,
+   button,
+  input:where([type="submit"], [type="reset"], [type="image"], [type="button"]),
+  input[type="file"]::file-selector-button
+).x-small {
   font-size: var(--x-12px);
   line-height: var(--x-12px);
   padding: var(--x-3px);
 }
 
-:where(.x-btn, button, input[type="submit"], input[type="reset"], input[type="image"], input[type="button"]).x-dense {
+:where(.x-btn, button,
+  input:where([type="submit"], [type="reset"], [type="image"], [type="button"]),
+  input[type="file"]::file-selector-button
+).x-dense {
   padding: var(--x-8px);
   font-size: var(--x-16px);
   line-height: var(--x-18px);
 }
 
-:where(.x-btn, button, input[type="submit"], input[type="reset"], input[type="image"], input[type="button"]).x-large {
+:where(.x-btn, button,
+  input:where([type="submit"], [type="reset"], [type="image"], [type="button"]),
+  input[type="file"]::file-selector-button
+).x-large {
   padding: var(--x-12px);
   font-size: var(--x-21px);
   line-height: var(--x-34px);
 }
 
-:where(.x-btn, button, input[type="submit"], input[type="reset"], input[type="image"], input[type="button"]):is(
+:where(.x-btn, button,
+  input:where([type="submit"], [type="reset"], [type="image"], [type="button"]),
+  input[type="file"]::file-selector-button
+):is(
   :not(.x-small, .x-dense, .x-large), .x-normal
 ) {
   padding: var(--x-8px);
@@ -51,13 +72,22 @@
 /**
  * Raised
  */
-:where(.x-btn, button, input[type="submit"], input[type="reset"], input[type="image"], input[type="button"]).x-raised:active,
-:where(.x-btn, button, input[type="submit"], input[type="reset"], input[type="image"], input[type="button"]).x-raised {
+:where(.x-btn, button,
+  input:where([type="submit"], [type="reset"], [type="image"], [type="button"]),
+  input[type="file"]::file-selector-button
+).x-raised:active,
+:where(.x-btn, button,
+  input:where([type="submit"], [type="reset"], [type="image"], [type="button"]),
+  input[type="file"]::file-selector-button
+).x-raised {
   box-shadow: 0 0 var(--x-1px) rgba(0, 0, 0, 0.21),
   0 var(--x-2px) var(--x-3px) rgba(0, 0, 0, 0.21);
 }
 
-:where(.x-btn, button, input[type="submit"], input[type="reset"], input[type="image"], input[type="button"]).x-raised:hover {
+:where(.x-btn, button,
+  input:where([type="submit"], [type="reset"], [type="image"], [type="button"]),
+  input[type="file"]::file-selector-button
+).x-raised:hover {
   box-shadow: 0 var(--x-2px) var(--x-3px) rgba(0, 0, 0, 0.21),
   0 var(--x-3px) var(--x-5px) rgba(0, 0, 0, 0.21);
 }
@@ -65,7 +95,10 @@
 /*
  * Contents
  * -------------------- */
-:where(.x-btn, button, input[type="submit"], input[type="reset"], input[type="image"], input[type="button"]) > *:not(:is(x-ripple)) + * {
+:where(.x-btn, button,
+  input:where([type="submit"], [type="reset"], [type="image"], [type="button"]),
+  input[type="file"]::file-selector-button
+) > *:not(:is(x-ripple)) + * {
   margin-left: var(--x-5px);
 }
 
