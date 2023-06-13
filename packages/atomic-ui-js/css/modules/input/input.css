@@ -1,11 +1,11 @@
 /**
  * Layout direction
  * ---------------------- */
-html:not([dir="rtl"]) .x-input {
+html:not([dir="rtl"]) :where(x-input, .x-input) {
   flex-flow: row nowrap;
 }
 
-html[dir="rtl"] .x-input {
+html[dir="rtl"] :where(x-input, .x-input) {
   flex-flow: column nowrap;
 }
 
@@ -14,7 +14,7 @@ html[dir="rtl"] .x-input {
  * ------------------------ */
 
 /**
- * Padding
+ * Padding (ltr)
  * ------------------------ */
 html:not([dir="rtl"]) :where(x-input, .x-input):where(
   input:not(
@@ -43,6 +43,9 @@ html:not([dir="rtl"]) :where(x-input, .x-input) > *:not(
   padding: var(--x-input-padding-block) var(--x-input-padding-inline);
 }
 
+/**
+ * Padding (rtl)
+ */
 html[dir="rtl"] :where(x-input, .x-input):is(
   input:not(
     [type="button"],
@@ -70,15 +73,22 @@ html[dir="rtl"] :where(x-input, .x-input) > *:not(
   padding: var(--x-input-padding-inline) var(--x-input-padding-block);
 }
 
+/**
+ * Default dimensions, where not checkbox, and/or radio button.
+ */
 :where(x-input, .x-input):not([type="checkbox"], [type="radio"]) {
   --x-input-padding-block: var(--x-8px);
   --x-input-padding-inline: var(--x-8px);
 
   display: flex;
   width: fit-content;
+  height: fit-content;
   color: var(--x-input-text-color);
 }
 
+/**
+ * Default background.
+ */
 :where(x-input, .x-input):has(
   input:not(
     [type="button"],
@@ -115,7 +125,7 @@ html[dir="rtl"] :where(x-input, .x-input) > *:not(
 }
 
 /*
- * Input
+ * Input, Select, Textarea, and 'not checkbox, or radio'
  * ---------------------- */
 :where(x-input, .x-input):not([type="checkbox"], [type="radio"]),
 :where(x-input, .x-input) > :is(
@@ -138,6 +148,34 @@ html[dir="rtl"] :where(x-input, .x-input) > *:not(
  ) {
   border: none;
   margin: 0;
+}
+
+/**
+ * Line-height
+ */
+:where(x-input, .x-input):where(
+  input:not(
+    [type="checkbox"],
+    [type="color"],
+    [type="image"],
+    [type="radio"],
+    [type="range"]
+  ),
+  select,
+  textarea
+),
+:where(x-input, .x-input) > :where(
+  input:not(
+    [type="checkbox"],
+    [type="color"],
+    [type="image"],
+    [type="radio"],
+    [type="range"]
+  ),
+  select,
+  textarea
+) {
+  line-height: var(--x-24px);
 }
 
 /*

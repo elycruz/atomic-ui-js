@@ -23,7 +23,7 @@ export const constrainNumber = (min = 0, max = 0, num = 0) => {
 
   multiplesOf = (numMultiples, multiplicand, ) => {
     const out = [];
-    for (let i = 1; i < numMultiples; i += 1) {
+    for (let i = 1; i <= numMultiples; i += 1) {
       out.push(i * multiplicand);
     }
     return out;
