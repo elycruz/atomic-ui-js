@@ -16,9 +16,11 @@ export const classNames = (...args) => {
       return `${agg} ${x}`;
     case 'object':
     default:
-      return agg + Object.keys(x)
-        .filter((x1) => Boolean(x[x1]))
-        .join(' ');
+      return `${agg} ${
+        Object.keys(x)
+          .filter((x1) => Boolean(x[x1]))
+          .join(' ')
+      }`;
     }
   }, '').trim();
 };

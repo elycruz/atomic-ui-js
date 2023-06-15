@@ -17,12 +17,12 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body>
-        <header className="x-app-header">
+        <header className="x-app-bar">
           <div className=" x-flex x-flex-row x-align-items-center">
             <AppNavToggle />
 
-            <hgroup className="x-app-header__start">
-              <a href="/atomic-ui-js"><h1 className="x-app-header__title">Atomic UI Js</h1></a>
+            <hgroup className="x-app-bar__start">
+              <a href="/atomic-ui-js"><h1 className="x-app-bar__title">Atomic UI Js</h1></a>
             </hgroup>
           </div>
         </header>

@@ -11,6 +11,11 @@ export const navigationItems: NavItem[] = [{
       'alias': 'components',
       'items': [
         {
+          'label': 'App-bar',
+          'uri': '/components/app-bar/',
+          'alias': 'app-bar'
+        },
+        {
           'label': 'Button',
           'uri': '/components/button/',
           'alias': 'button'
