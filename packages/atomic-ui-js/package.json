@@ -17,7 +17,7 @@
     "build": "pnpm build:css",
     "build:css": "pnpm gen-css && node node_scripts/build/index.mjs",
     "lint": "pnpm eslint && pnpm stylelint",
-    "lint-fix": "pnpm stylelint --fix && pnpm eslint --fix",
+    "lintfix": "pnpm stylelint --fix && pnpm eslint --fix",
     "watch": "node node_scripts/watch/index.mjs",
     "docs": "pnpm typedoc",
     "gen-css": "node node_scripts/gen-css/index.mjs",

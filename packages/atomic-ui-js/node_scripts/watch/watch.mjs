@@ -15,13 +15,14 @@ export const watch = async () => {
       interval: 610,
       binaryInterval: 610
     })
+    .on('ready', async () => {
+      await buildCss();
+      log('Awaiting changes ...');
+    })
     .on('all', async (event, path) => {
       log(event, path);
 
       switch (event) {
-        case 'ready':
-          log('Awaiting changes ...');
-          break;
         case 'change':
           log(`[watch:change] - ${path} changed.`);
           await buildCss();

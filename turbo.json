@@ -8,8 +8,17 @@
         "packages/**/dist/**"
       ]
     },
-    "dev": {},
-    "lint-fix": {},
+    "watch": {
+      "outputs": [
+        "packages/atomic-ui-js/dist/index.min.css"
+      ]
+    },
+    "dev": {
+      "dependsOn": [
+        "watch"
+      ]
+    },
+    "lintfix": {},
     "test": {},
     "doc": {}
   }
