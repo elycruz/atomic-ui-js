@@ -16,6 +16,7 @@
     "gen:site:navitems": "cd apps/atomic-ui-js-site/ && pnpm gen-navitems && cd ../../",
     "docs": "turbo doc",
     "test": "turbo test",
+    "watch:lib": "cd packages/atomic-ui-js/ && pnpm watch && cd ../../",
     "prepare": "husky install"
   },
   "browserslist": [
