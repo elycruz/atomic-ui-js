@@ -59,6 +59,11 @@ export const navigationItems: NavItem[] = [{
           'label': 'Ripple',
           'uri': '/components/ripple/',
           'alias': 'ripple'
+        },
+        {
+          'label': 'Spacing',
+          'uri': '/components/spacing/',
+          'alias': 'spacing'
         }
       ]
     },
