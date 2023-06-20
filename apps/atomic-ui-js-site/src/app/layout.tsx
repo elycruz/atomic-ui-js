@@ -17,6 +17,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body>
+      <div className="x-app-wrapper">
         <header className="x-app-bar">
           <div className=" x-flex x-flex-row x-align-items-center">
             <AppNavToggle />
@@ -42,6 +43,8 @@ export default function RootLayout({
             <p>&copy;</p>
           </div>
         </footer>
+      </div>
+      {/* end of .x-app-wrapper */}
 
       </body>
     </html>
