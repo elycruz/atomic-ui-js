@@ -36,6 +36,11 @@ export const navigationItems: NavItem[] = [{
           'alias': 'colors'
         },
         {
+          'label': 'Copy',
+          'uri': '/components/copy/',
+          'alias': 'copy'
+        },
+        {
           'label': 'Field',
           'uri': '/components/field/',
           'alias': 'field'
