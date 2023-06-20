@@ -1,0 +1,7 @@
+.copy-section dd > * {
+  display: block;
+}
+
+.copy-section dd * + * {
+  margin-top: var(--x-8px);
+}

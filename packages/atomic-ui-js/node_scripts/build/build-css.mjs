@@ -24,7 +24,8 @@ const distPath = path.join(__dirname, '../../dist'),
             return fs.writeFile(outFilePath + '.map', map.toString())
           }
         })
-    ),
+    )
+    .then(() => console.log('\'build-css\' finished successfully.')),
 
   buildCss = () => fs.mkdir(distPath).then(compileCss, compileCss);
 

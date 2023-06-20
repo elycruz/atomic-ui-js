@@ -11,6 +11,11 @@ export const navigationItems: NavItem[] = [{
       'alias': 'components',
       'items': [
         {
+          'label': 'App-bar',
+          'uri': '/components/app-bar/',
+          'alias': 'app-bar'
+        },
+        {
           'label': 'Button',
           'uri': '/components/button/',
           'alias': 'button'
@@ -31,6 +36,11 @@ export const navigationItems: NavItem[] = [{
           'alias': 'colors'
         },
         {
+          'label': 'Copy',
+          'uri': '/components/copy/',
+          'alias': 'copy'
+        },
+        {
           'label': 'Field',
           'uri': '/components/field/',
           'alias': 'field'
@@ -41,6 +51,11 @@ export const navigationItems: NavItem[] = [{
           'alias': 'input'
         },
         {
+          'label': 'Menu',
+          'uri': '/components/menu/',
+          'alias': 'menu'
+        },
+        {
           'label': 'Radio',
           'uri': '/components/radio/',
           'alias': 'radio'
@@ -49,6 +64,11 @@ export const navigationItems: NavItem[] = [{
           'label': 'Ripple',
           'uri': '/components/ripple/',
           'alias': 'ripple'
+        },
+        {
+          'label': 'Spacing',
+          'uri': '/components/spacing/',
+          'alias': 'spacing'
         }
       ]
     },
@@ -61,6 +81,11 @@ export const navigationItems: NavItem[] = [{
           'label': 'Details-element',
           'uri': '/playground/details-element/',
           'alias': 'details-element'
+        },
+        {
+          'label': 'Example-font-size-sequences',
+          'uri': '/playground/example-font-size-sequences/',
+          'alias': 'example-font-size-sequences'
         }
       ]
     }

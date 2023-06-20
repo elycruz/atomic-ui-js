@@ -15,7 +15,7 @@ export default function RadioPage() {
             <dd key={`radio-page-dd-${i}`}>
               <form>
                 <fieldset className="x-fieldset x-fieldset--grid-2">
-                  <label htmlFor={`radio-set-${i}`}>Radio set {i + 1}:</label>
+                  <label htmlFor={`radio-${i}-0`}>Radio set {i + 1}:</label>
 
                   <XFieldComponent>
                     {Array(3).fill(null, 0, 2).map((_, j) =>

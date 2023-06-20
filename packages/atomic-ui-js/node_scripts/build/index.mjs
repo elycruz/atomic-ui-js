@@ -1,8 +1,3 @@
-import {buildCss} from "./build-css.mjs";
+import {build} from "./build.mjs";
 
-(async () => Promise.all([
-    buildCss()
-  ])
-    .then(() => console.log('build completed successfully\n'))
-    .catch(console.error)
-)();
+await build();
