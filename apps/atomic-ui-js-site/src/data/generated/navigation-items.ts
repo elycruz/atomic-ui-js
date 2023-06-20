@@ -71,6 +71,11 @@ export const navigationItems: NavItem[] = [{
           'label': 'Details-element',
           'uri': '/playground/details-element/',
           'alias': 'details-element'
+        },
+        {
+          'label': 'Example-font-size-sequences',
+          'uri': '/playground/example-font-size-sequences/',
+          'alias': 'example-font-size-sequences'
         }
       ]
     }
