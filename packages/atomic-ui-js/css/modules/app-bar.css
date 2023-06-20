@@ -1,3 +1,13 @@
 .x-app-bar {
   padding: var(--x-16px);
 }
+
+.x-app-bar.x-filled {
+  background: var(--x-color-5);
+  color: var(--x-color-8);
+}
+
+.x-app-bar.x-outlined {
+  border: var(--x-border-width) solid var(--x-color-4);
+  color: var(--x-color-5);
+}

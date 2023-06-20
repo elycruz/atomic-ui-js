@@ -20,6 +20,7 @@ const __dirname = url.fileURLToPath(new URL('.', import.meta.url)),
   danger = ['danger', 30, 21],
   neutral = ['neutral', 0, 0],
   fileName = 'index.css',
+  xThemeKeys = Object.keys(xThemes),
 
   genColorsCss = (outputFilePath = path.join(__dirname, '../../css/modules/colors/', fileName)) => {
     const lightnessNums = new Array(10)
@@ -51,7 +52,7 @@ const __dirname = url.fileURLToPath(new URL('.', import.meta.url)),
           })
         ).join('\n'),
 
-      themeVars = Object.keys(xThemes).reduce((agg, k, j) => {
+      themeVars = xThemeKeys.reduce((agg, k, j) => {
         const themeName = xThemes[k];
 
         return agg + `

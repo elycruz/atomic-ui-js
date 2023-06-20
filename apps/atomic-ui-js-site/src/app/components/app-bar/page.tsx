@@ -6,7 +6,7 @@ export default function AppBarPage() {
       <h2>AppBar</h2>
     </header>
     <article>
-      <div>
+      <div className="x-theme-primary">
         {Object.entries(xVariants)
           .map(([k, v], i) => {
             const className = classNames('x-app-bar',
