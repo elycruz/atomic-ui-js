@@ -12,9 +12,9 @@ body {
  "app-footer app-footer app-footer";
 }
 
-body > * > * {
-  max-width: 1597px;
-}
+//body > * > * {
+//  max-width: 1597px;
+//}
 
 body > .x-app-bar {
   grid-area: app-header;
