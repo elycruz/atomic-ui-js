@@ -5,36 +5,42 @@ h1, h2, h3, h4, h5, h6, figure {
 h1,
 .x-h1 {
   font-size: var(--x-72px);
+  font-weight: bold;
   line-height: var(--x-72px);
 }
 
 h2,
 .x-h2 {
   font-size: var(--x-48px);
+  font-weight: bold;
   line-height: var(--x-48px);
 }
 
 h3,
 .x-h3 {
   font-size: var(--x-36px);
+  font-weight: bold;
   line-height: var(--x-36px);
 }
 
 h4,
 .x-h4 {
   font-size: var(--x-24px);
+  font-weight: bold;
   line-height: var(--x-24px);
 }
 
 h5,
 .x-h5 {
   font-size: var(--x-18px);
+  font-weight: bold;
   line-height: var(--x-18px);
 }
 
 h6,
 .x-h6 {
   font-size: var(--x-16px);
+  font-weight: bold;
   line-height: var(--x-16px);
 }
 

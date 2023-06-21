@@ -34,7 +34,7 @@ An atomic, CSS first, user interface library.
 - `.x-filled`
 - `.x-raised` - With elevation/box-shadow
 - `.x-small`
-- `.x-medium`/`.x-normal` - Default.
+- `.x-dense`
 - `.x-large`
 - `.x-horizontal` - Horizontal layout.
 - `.x-vertical` - Vertical layout.
