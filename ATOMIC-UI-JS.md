@@ -4,26 +4,26 @@ An atomic, CSS first, user interface library.
 
 ## CSS Components
 
-- `.x-alert`
-- `.x-app-bar`
-- `.x-badge`
-- `.x-button`/`.x-btn`
-- `.x-card`
-- `.x-dropdown` - Class for turning `details` elements into togglable dropdowns, dropups, popovers, etc.
-- `.x-field`
-- `.x-fieldset`
-- `.x-input`
-- `.x-mds-icon`
-- `.x-menu`
-- `.x-section`
-- `.x-select`
-- `.x-table`
-- `.x-textarea`
-- `.x-elevation` (drop-shadows)
+- [ ] `.x-alert`
+- [ ] `.x-app-bar`
+- [ ] `.x-badge`
+- [x] `.x-btn`
+- [ ] `.x-card`
+- [x] `.x-checkbox` - Available also via `.x-input`.
+- [ ] `.x-field`
+- [ ] `.x-fieldset`
+- [ ] `.x-input`
+- [ ] `.x-mds-icon`
+- [ ] `.x-menu`
+- [x] `.x-radio`
+- [ ] `.x-section`
+- [ ] `.x-select`
+- [ ] `.x-table`
+- [ ] `.x-textarea`
+- [ ] `.x-elevation-*` (drop-shadows)
 
 ### Copy
 
-- `.x-typography` - Applies default styles for contained `p`, `blockquote`, `caption`, `a`, and `button` elements.
 - `.x-h1` - `.x-h6` - Heading size, and line-height, styles.
 
 ### Variant classes
@@ -32,9 +32,9 @@ An atomic, CSS first, user interface library.
 - `.x-rounded` - Applies rounded border-radius.
 - `.x-outlined`
 - `.x-filled`
-- `.x-raised` - With elevation/boz-shadow
+- `.x-raised` - With elevation/box-shadow
 - `.x-small`
-- `.x-medium` - Default.
+- `.x-dense`
 - `.x-large`
 - `.x-horizontal` - Horizontal layout.
 - `.x-vertical` - Vertical layout.
@@ -43,12 +43,14 @@ An atomic, CSS first, user interface library.
 
 - ~~`.x-collapsible`~~ superseded by, natively built-in, `details` element.
 - ~~`.x-with-collapsible`~~ "".
+- [ ] `.x-dropdown` - Class for turning `details` elements into togglable dropdowns, dropups, popovers, etc.
+- `.x-typography` - Applies default styles for contained `p`, `blockquote`, `caption`, `a`, and `button` elements.
 
 ## CSS Properties
 
 ### Spacing properties
 
-- `--z-{x}px` Where `{x}` is any factor of 144 or any fibonacci number upto 4181, and represents a `rem` unit value that is the equivalent of it's pixel number (`{x}`) counterpart.
+- `--x-{x}px` Where `{x}` is any factor of 144 or any fibonacci number upto 4181, and represents a `rem` unit value that is the equivalent of it's pixel number (`{x}`) counterpart.
 
 ### Colors
 
@@ -68,16 +70,16 @@ Default color variants:
 ```html
 <style>
   button {
-    background: var(--z-theme-color-4);
-    color: var(--z-theme-color-9);
+    background: var(--x-theme-color-4);
+    color: var(--x-theme-color-9);
   }
 </style>
 
 <!-- Secondary theme themed button -->
-<button class="z-theme-secondary">...</button>
+<button class="x-theme-secondary">...</button>
 
 <!-- Danger theme themed button -->
-<button class="z-theme-danger">...</button>
+<button class="x-theme-danger">...</button>
 
 <!-- Etc. -->
 ```
@@ -88,24 +90,24 @@ Default color variants:
 
 ## Custom Elements
 
-- `z-ripple`
-- `z-field`
-- `z-with-overlay` - Used for dropdown menus etc.
-- `z-overlay`
+- `x-ripple`
+- `x-field`
 
 ### Tentative/For future development
 
-- z-date-textfield
-- z-date-input
-- z-date-range-input
-- z-date-calendar
-- z-password-input
-- z-collapsible
-- z-with-collapsible
-- z-tooltip
-- z-with-tooltip
-- z-overlay
-- z-with-overlay
+- `x-with-overlay` - Used for dropdown menus etc.
+- `x-overlay`
+- x-date-textfield
+- x-date-input
+- x-date-range-input
+- x-date-calendar
+- x-password-input
+- x-collapsible
+- x-with-collapsible
+- x-tooltip
+- x-with-tooltip
+- x-overlay
+- x-with-overlay
 
 ## Site Approaches
 

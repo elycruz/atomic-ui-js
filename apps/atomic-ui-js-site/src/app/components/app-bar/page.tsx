@@ -6,7 +6,8 @@ export default function AppBarPage() {
       <h2>AppBar</h2>
     </header>
     <article>
-      <div>
+      <div className="x-theme-primary">
+        <p>Supplies the hide and show animation on user scroll.</p>
         {Object.entries(xVariants)
           .map(([k, v], i) => {
             const className = classNames('x-app-bar',
@@ -17,7 +18,7 @@ export default function AppBarPage() {
             return <header key={`app-header-${Date.now()}-${i}`}
               className={className}>
               <hgroup>
-                <h3>AppHeader{v ? ` (${k})` : null}</h3>
+                <span className="x-h3">Title{v ? ` (${k})` : null}</span>
               </hgroup>
             </header>;
           })}

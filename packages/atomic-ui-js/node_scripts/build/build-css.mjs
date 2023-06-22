@@ -11,7 +11,7 @@ const distPath = path.join(__dirname, '../../dist'),
   inFilePath = path.join(__dirname, '../../css/index.css'),
   outFilePath = path.join(distPath, 'index.min.css'),
 
-  compileCss = () => fs.readFile(inFilePath)
+  compileCss = async () => fs.readFile(inFilePath)
     .then(css => postcss([
         postcssImport,
         cssnano
@@ -27,6 +27,6 @@ const distPath = path.join(__dirname, '../../dist'),
     )
     .then(() => console.log('\'build-css\' finished successfully.')),
 
-  buildCss = () => fs.mkdir(distPath).then(compileCss, compileCss);
+  buildCss = async () => fs.mkdir(distPath).then(compileCss, compileCss);
 
 export {buildCss}

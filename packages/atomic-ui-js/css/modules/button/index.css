@@ -75,21 +75,21 @@ input[type="file"]::file-selector-button
 :where(.x-btn, button,
   input:where([type="submit"], [type="reset"], [type="image"], [type="button"]),
   input[type="file"]::file-selector-button
-).x-raised:active,
-:where(.x-btn, button,
-  input:where([type="submit"], [type="reset"], [type="image"], [type="button"]),
-  input[type="file"]::file-selector-button
-).x-raised {
-  box-shadow: 0 0 var(--x-1px) rgba(0, 0, 0, 0.21),
-  0 var(--x-2px) var(--x-3px) rgba(0, 0, 0, 0.21);
+).x-raised:hover {
+  box-shadow: 0 var(--x-2px) var(--x-3px) var(--x-neutral-color-with-alpha-6),
+  0 var(--x-3px) var(--x-5px) var(--x-neutral-color-with-alpha-6);
 }
 
 :where(.x-btn, button,
   input:where([type="submit"], [type="reset"], [type="image"], [type="button"]),
   input[type="file"]::file-selector-button
-).x-raised:hover {
-  box-shadow: 0 var(--x-2px) var(--x-3px) rgba(0, 0, 0, 0.21),
-  0 var(--x-3px) var(--x-5px) rgba(0, 0, 0, 0.21);
+).x-raised:active,
+:where(.x-btn, button,
+  input:where([type="submit"], [type="reset"], [type="image"], [type="button"]),
+  input[type="file"]::file-selector-button
+).x-raised {
+  box-shadow: 0 0 var(--x-1px) var(--x-neutral-color-with-alpha-6),
+  0 var(--x-2px) var(--x-3px) var(--x-neutral-color-with-alpha-6);
 }
 
 /*

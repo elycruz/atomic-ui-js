@@ -1,3 +1,30 @@
 .x-app-bar {
-  padding: var(--x-16px);
+  --x-app-bar-padding: var(--x-16px);
+
+  padding: var(--x-app-bar-padding);
+}
+
+.x-app-bar.x-filled {
+  background: var(--x-color-5);
+  color: var(--x-color-8);
+}
+
+.x-app-bar.x-outlined {
+  border: var(--x-border-width) solid var(--x-color-4);
+  color: var(--x-color-5);
+}
+
+.x-app-bar.x-raised {
+  border: var(--x-border-width) solid var(--x-color-4);
+  color: var(--x-color-5);
+  box-shadow: 0 var(--x-2px) var(--x-3px) var(--x-neutral-color-with-alpha-6),
+  0 var(--x-3px) var(--x-5px) var(--x-neutral-color-with-alpha-6);
+}
+
+.x-app-bar.x-dense {
+  --x-app-bar-padding: var(--x-8px);
+}
+
+.x-app-bar.x-small {
+  --x-app-bar-padding: var(--x-3px);
 }

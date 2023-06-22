@@ -1,0 +1,3 @@
+# XAppBarComponent
+
+Component description.
