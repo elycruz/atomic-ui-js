@@ -7,7 +7,7 @@
     "node": ">=v18"
   },
   "scripts": {
-    "dev": "turbo dev",
+    "dev": "pnpm gen:site:navitems && turbo dev",
     "start": "turbo start",
     "build": "turbo build",
     "build:lib": "cd packages/atomic-ui-js && pnpm build",
