@@ -52,7 +52,9 @@ const __dirname = url.fileURLToPath(new URL('.', import.meta.url)),
     return {localName, classNamePrefix};
   },
 
-  writeCustomElementFiles = async (localName, classNamePrefix, outputDir) => {
+  doesFileExist = async filePath => fs.access(filePath, fs.F_OK),
+
+  getCustomElementContent = (localName, classNamePrefix, outputDir) => {
     const className = `${classNamePrefix}Element`,
       nameVarName = `${lcaseFirst(classNamePrefix)}Name`,
       indexCssFilePath = path.join(outputDir, 'index.css'),
@@ -61,54 +63,45 @@ const __dirname = url.fileURLToPath(new URL('.', import.meta.url)),
       indexFilePath = path.join(outputDir, `index.js`),
       readmeFilePath = path.join(outputDir, `README.md`);
 
-    return Promise.all([
-      // Write index.css
-      fs.writeFile(indexCssFilePath, `.${localName} {
+    return [
+      [indexCssFilePath, `.${localName} {
       display: inline-block;
-}`)
-        .then(() => indexCssFilePath),
-
-      // Write {element}.js
-      fs.writeFile(elementFilePath,
+}`],
+      [elementFilePath,
         `export const ${nameVarName} = '${localName}';
 
 export class ${className} extends HTMLElement {
   static localName = ${nameVarName};
 }
-`).then(() => elementFilePath),
-
-      // Write register.js
-      fs.writeFile(registerFilePath,
+`],
+      [registerFilePath,
         `import {${className}} from './${localName}.js';
 import {registerCustomElement} from '../utils/index.js';
 
 registerCustomElement(${className}.localName, ${className});
-`).then(() => registerFilePath),
-
-      // Write index.js
-      fs.writeFile(indexFilePath,
+`],
+      [indexFilePath,
         `export * from './${localName}.js';
 export * from './register.js';
-`).then(() => indexFilePath),
+`],
 
       // Write README.md
-      fs.writeFile(readmeFilePath,
+      [readmeFilePath,
         `# ${localName}
 
 Component description.
-`).then(() => readmeFilePath),
-    ]);
+`],
+    ];
   },
 
-  writeReactComponentFiles = async (localName, classNamePrefix, outputDir) => {
+  getReactComponentContent = (localName, classNamePrefix, outputDir) => {
     const className = `${classNamePrefix}Component`,
       elementClassName = `${classNamePrefix}Element`,
       indexFilePath = path.join(outputDir, `index.js`),
       readmeFilePath = path.join(outputDir, `README.md`);
 
-    return Promise.all([
-      // Write index.js
-      fs.writeFile(indexFilePath,
+    return [
+      [indexFilePath,
         `// 'use client';
 
 import React from 'react';
@@ -122,24 +115,22 @@ const ${className} = createComponent({
 });
 
 export default ${className};
-`).then(() => indexFilePath),
+`],
 
-      // Write README.md
-      fs.writeFile(readmeFilePath,
+      [readmeFilePath,
         `# ${className}
 
 Component description.
-`).then(() => readmeFilePath),
-    ]);
+`],
+    ];
   },
 
-  writeNextJsComponentFiles = async (localName, classNamePrefix, outputDir) => {
+  writeNextJsComponentFiles = (localName, classNamePrefix, outputDir) => {
     const className = `${classNamePrefix}Component`,
       indexFilePath = path.join(outputDir, `index.js`);
 
-    return Promise.all([
-      // Write index.js
-      fs.writeFile(indexFilePath,
+    return [
+      [indexFilePath,
         `import lazy from 'next/dynamic';
 
 const ${className} = lazy(() => import('atomic-ui-js-react/${localName}'), {
@@ -147,11 +138,11 @@ const ${className} = lazy(() => import('atomic-ui-js-react/${localName}'), {
 });
 
 export default ${className};
-`).then(() => indexFilePath),
-    ]);
+`],
+    ];
   },
 
-  writeSitePageFiles = async (localName, classNamePrefix, outputDir) => {
+  writeSitePageFiles = (localName, classNamePrefix, outputDir) => {
     const className = `${classNamePrefix}Page`,
       pageTsxFilePath = path.join(outputDir, `page.tsx`),
       humanReadableName = localName
@@ -160,9 +151,9 @@ export default ${className};
         .reduce((agg, xs) => `${agg + ucaseFirst(xs)} `, '')
         .trim();
 
-    return Promise.all([
+    return [
       // Write page.tsx
-      fs.writeFile(pageTsxFilePath,
+      [pageTsxFilePath,
         `export default function ${className}() {
   return <section>
   <header>${humanReadableName} Page</header>
@@ -173,29 +164,62 @@ export default ${className};
   </article>
   </section>;
 }
-`)
-        .then(() => pageTsxFilePath),
-    ]);
+`],
+    ];
   },
 
-  getFilesScaffolder = (localName, classNamePrefix) => (filesWriter, packagePath) => {
-    const outputDir = path.join(packageRoot, packagePath, localName);
+  getFilesScaffolder = (localName, classNamePrefix) => async (filesWriter, packagePath) => {
+    const outputDir = path.join(packageRoot, packagePath, localName),
 
-    return fs.mkdir(outputDir)
-      .then(() => filesWriter(localName, classNamePrefix, outputDir),
-        () => {
-          if (!force) {
-            throw new Error(`Files already exist for this element - ` +
-              `Use -f, or --force, to overwrite them.`);
-          }
+      writeFiles = async () => {
+        const initialResult = await filesWriter(localName, classNamePrefix, outputDir);
 
-          return filesWriter(localName, classNamePrefix, outputDir);
-        });
+        if (!filesWriter.requiresAssist) return initialResult;
+
+        const filesAndContentsList = initialResult;
+
+        // Write files
+        return Promise.all(filesAndContentsList
+          .map(([filePath, content]) =>
+            doesFileExist(filePath)
+              .then(
+                () => {
+                  if (!force) {
+                    // log(`    - Skipping file ${filePath}\n  - File already exists.`);
+                    return {filePath, skipped: true};
+                  }
+                  return fs.writeFile(filePath, content).then(() => filePath)
+                },
+                () => fs.writeFile(filePath, content).then(() => filePath))
+          )
+        )
+      };
+
+    // Ensure output dir exists
+    return fs.mkdir(outputDir, {recursive: true})
+      .then(writeFiles, writeFiles);
   },
 
   throwNameTypeMismatch = () => {
     throw new TypeError(`Element name must match pattern ${componentNameRegex}`);
-  }
+  },
+
+  printRelativeFilePaths = async fileNames => {
+    const output = fileNames.reduce(
+      (agg, file) => {
+        if (!file || file.skipped) return agg;
+
+        const relativeFilePath = path.relative(__dirname, file);
+        return agg + `  - ${relativeFilePath.slice(relativeFilePath.lastIndexOf('../') + 1)}\n`
+      },
+      ''
+    )
+      .trimEnd();
+
+    if (output) log(output);
+
+    return fileNames;
+  };
 
 await (async () => {
   log(`Working with arguments:
@@ -207,41 +231,64 @@ force: ${force}
   if (!incomingComponentName) throwNameTypeMismatch();
 
   const {localName, classNamePrefix,} = getComponentMeta(incomingComponentName),
-    scaffoldFilesWith = getFilesScaffolder(localName, classNamePrefix),
-    printFilesWritten = async fileNames => log(fileNames.reduce(
-      (agg, file) => {
-        const relativeFilePath = path.relative(__dirname, file);
-        return agg + `  - ${relativeFilePath.slice(relativeFilePath.lastIndexOf('../') + 1)}\n`
-      },
-      ''
-    )
-      .trimEnd());
+
+    scaffolder = getFilesScaffolder(localName, classNamePrefix),
+
+    scaffoldFilesUsing = (func, outputDir, outFilePaths = []) => {
+      return scaffolder(func, outputDir)
+        .then(printRelativeFilePaths)
+        .then(filePaths => outFilePaths.concat(filePaths));
+    };
 
   if (!componentNameRegex.test(incomingComponentName)) throwNameTypeMismatch();
+
+  // Apply temporary boolean required for achieving file overwrite skip (until all writers are converted).
+  getCustomElementContent.requiresAssist = true;
+  getReactComponentContent.requiresAssist = true;
+  writeNextJsComponentFiles.requiresAssist = true;
+  writeSitePageFiles.requiresAssist = true;
+
+  log(`Files written successfully:\n`);
 
   // Write files
   // ----
   // Write ui lib. files
-  return scaffoldFilesWith(writeCustomElementFiles, 'packages/atomic-ui-js')
-    .then(files => {
-      log(`Files written successfully:\n`);
-      return printFilesWritten(files);
-    })
+  return scaffoldFilesUsing(getCustomElementContent, 'packages/atomic-ui-js')
 
     // Write React lib. files
-    .then(() => scaffoldFilesWith(writeReactComponentFiles, 'packages/atomic-ui-js-react'))
-    .then(printFilesWritten)
+    .then(collectedFilePaths => scaffoldFilesUsing(
+        getReactComponentContent, 'packages/atomic-ui-js-react', collectedFilePaths)
+    )
 
     // Write Next lib. files
-    .then(() => scaffoldFilesWith(writeNextJsComponentFiles, 'packages/atomic-ui-js-next'))
-    .then(printFilesWritten)
+    .then(collectedFilePaths => scaffoldFilesUsing(
+      writeNextJsComponentFiles, 'packages/atomic-ui-js-next', collectedFilePaths)
+    )
 
     // Write Site lib. files
-    .then(() => scaffoldFilesWith(writeSitePageFiles, 'apps/atomic-ui-js-site'))
-    .then(printFilesWritten)
+    .then(collectedFilePaths => scaffoldFilesUsing(
+      writeSitePageFiles, 'apps/atomic-ui-js-site/src/app/components', collectedFilePaths)
+    )
 
-    // Print final empty newline
-    .then(() => log(''))
+    // Print skipped files
+    .then(collectedFilePaths => {
+
+      const skippedFiles = collectedFilePaths.filter(fp => fp.skipped).map(fp => fp.filePath),
+        skippedFilesLen = skippedFiles.length;
+
+      if (skippedFilesLen === collectedFilePaths.length) log('  None.');
+
+      if (skippedFilesLen) {
+        log('\nSkipped files:\n');
+
+        printRelativeFilePaths(skippedFiles);
+
+        log('\n  Use -f, or --force, to overwrite them.');
+      }
+
+      // Print final empty newline
+      log('')
+    })
 
     .catch(error);
 })();
