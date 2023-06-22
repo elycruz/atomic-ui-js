@@ -36,12 +36,16 @@ const __dirname = url.fileURLToPath(new URL('.', import.meta.url)),
 
   incomingComponentName = process.argv.at(-1),
 
+  ucaseFirst = (str = '') => str[0].toUpperCase() + str.slice(1),
+
+  lcaseFirst = (str = '') => str[0].toLowerCase() + str.slice(1),
+
   getComponentMeta = (inLocalName = '') => {
     const localName = inLocalName.startsWith('x-') ? inLocalName : `x-${inLocalName}`,
       classNamePrefix = localName.trim()
         .split('-')
         .reduce((agg, part) =>
-            agg + (!part ? '' : part[0].toUpperCase() + part.slice(1)),
+            agg + (!part ? '' : ucaseFirst(part)),
           ''
         );
 
@@ -50,7 +54,7 @@ const __dirname = url.fileURLToPath(new URL('.', import.meta.url)),
 
   writeCustomElementFiles = async (localName, classNamePrefix, outputDir) => {
     const className = `${classNamePrefix}Element`,
-      nameVarName = `${classNamePrefix[0].toLowerCase() + classNamePrefix.slice(1)}Name`,
+      nameVarName = `${lcaseFirst(classNamePrefix)}Name`,
       indexCssFilePath = path.join(outputDir, 'index.css'),
       elementFilePath = path.join(outputDir, `${localName}.js`),
       registerFilePath = path.join(outputDir, `register.js`),
@@ -93,11 +97,7 @@ export * from './register.js';
 
 Component description.
 `).then(() => readmeFilePath),
-    ])
-      .then(fileNames => fileNames.reduce((agg, file) => {
-          return agg + `\n - ${path.basename(file)}`;
-        }, 'Custom element files written successfully.  Files written:\n')
-      )
+    ]);
   },
 
   writeReactComponentFiles = async (localName, classNamePrefix, outputDir) => {
@@ -130,11 +130,52 @@ export default ${className};
 
 Component description.
 `).then(() => readmeFilePath),
-    ])
-      .then(fileNames => fileNames.reduce((agg, file) => {
-          return agg + `\n - ${path.basename(file)}`;
-        }, 'React component files written successfully:\n')
-      )
+    ]);
+  },
+
+  writeNextJsComponentFiles = async (localName, classNamePrefix, outputDir) => {
+    const className = `${classNamePrefix}Component`,
+      indexFilePath = path.join(outputDir, `index.js`);
+
+    return Promise.all([
+      // Write index.js
+      fs.writeFile(indexFilePath,
+        `import lazy from 'next/dynamic';
+
+const ${className} = lazy(() => import('atomic-ui-js-react/${localName}'), {
+  ssr: false
+});
+
+export default ${className};
+`).then(() => indexFilePath),
+    ]);
+  },
+
+  writeSitePageFiles = async (localName, classNamePrefix, outputDir) => {
+    const className = `${classNamePrefix}Page`,
+      pageTsxFilePath = path.join(outputDir, `page.tsx`),
+      humanReadableName = localName
+        .split('-')
+        .slice(1) // Omit leading 'x'
+        .reduce((agg, xs) => `${agg + ucaseFirst(xs)} `, '')
+        .trim();
+
+    return Promise.all([
+      // Write page.tsx
+      fs.writeFile(pageTsxFilePath,
+        `export default function ${className}() {
+  return <section>
+  <header>${humanReadableName} Page</header>
+  <article>
+    <div>
+        Page contents.
+    </div>
+  </article>
+  </section>;
+}
+`)
+        .then(() => pageTsxFilePath),
+    ]);
   },
 
   getFilesScaffolder = (localName, classNamePrefix) => (filesWriter, packagePath) => {
@@ -145,10 +186,10 @@ Component description.
         () => {
           if (!force) {
             throw new Error(`Files already exist for this element - ` +
-              `Use -f, or --force, to overwrite them regardless.`);
+              `Use -f, or --force, to overwrite them.`);
           }
 
-          return filesWriter(localName, classNamePrefix, outputDir)
+          return filesWriter(localName, classNamePrefix, outputDir);
         });
   },
 
@@ -166,15 +207,41 @@ force: ${force}
   if (!incomingComponentName) throwNameTypeMismatch();
 
   const {localName, classNamePrefix,} = getComponentMeta(incomingComponentName),
-    scaffoldFilesWith = getFilesScaffolder(localName, classNamePrefix);
+    scaffoldFilesWith = getFilesScaffolder(localName, classNamePrefix),
+    printFilesWritten = async fileNames => log(fileNames.reduce(
+      (agg, file) => {
+        const relativeFilePath = path.relative(__dirname, file);
+        return agg + `  - ${relativeFilePath.slice(relativeFilePath.lastIndexOf('../') + 1)}\n`
+      },
+      ''
+    )
+      .trimEnd());
 
   if (!componentNameRegex.test(incomingComponentName)) throwNameTypeMismatch();
 
+  // Write files
+  // ----
+  // Write ui lib. files
   return scaffoldFilesWith(writeCustomElementFiles, 'packages/atomic-ui-js')
-    .then(message => log(message, '\n'))
+    .then(files => {
+      log(`Files written successfully:\n`);
+      return printFilesWritten(files);
+    })
+
+    // Write React lib. files
     .then(() => scaffoldFilesWith(writeReactComponentFiles, 'packages/atomic-ui-js-react'))
-    .then(message => log(message, '\n'))
-    // .then(() => scaffoldFilesWith(writeNextComponentFiles, 'packages/atomic-ui-js-next'))
-    // .then(message => log(message, '\n'))
+    .then(printFilesWritten)
+
+    // Write Next lib. files
+    .then(() => scaffoldFilesWith(writeNextJsComponentFiles, 'packages/atomic-ui-js-next'))
+    .then(printFilesWritten)
+
+    // Write Site lib. files
+    .then(() => scaffoldFilesWith(writeSitePageFiles, 'apps/atomic-ui-js-site'))
+    .then(printFilesWritten)
+
+    // Print final empty newline
+    .then(() => log(''))
+
     .catch(error);
 })();
