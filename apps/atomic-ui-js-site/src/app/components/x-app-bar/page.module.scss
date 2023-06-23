@@ -1,0 +1,7 @@
+.example-scroll-pane {
+  max-height: 33vh;
+  overflow: auto;
+  border-radius: var(--x-border-radius);
+  border: var(--x-border-width) solid;
+  padding: 1rem;
+}
