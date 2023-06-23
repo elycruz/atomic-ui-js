@@ -1,3 +1,3 @@
 # x-app-bar
 
-Component description.
+Application bar component.
