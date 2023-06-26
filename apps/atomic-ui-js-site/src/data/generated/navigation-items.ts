@@ -71,9 +71,9 @@ export const navigationItems: NavItem[] = [{
           'alias': 'spacing'
         },
         {
-          'label': 'X-app-bar',
-          'uri': '/components/x-app-bar/',
-          'alias': 'x-app-bar'
+          'label': 'X-appbar',
+          'uri': '/components/x-appbar/',
+          'alias': 'x-appbar'
         }
       ]
     },

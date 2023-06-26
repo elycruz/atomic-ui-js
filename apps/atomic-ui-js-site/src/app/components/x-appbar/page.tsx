@@ -1,4 +1,4 @@
-import XAppBarComponent from 'atomic-ui-js-next/x-app-bar';
+import XAppBarComponent from 'atomic-ui-js-next/x-appbar';
 import styles from './page.module.scss';
 
 export default function XAppBarPage() {
@@ -7,7 +7,10 @@ export default function XAppBarPage() {
     <article>
       <div>
         <div className={styles['example-scroll-pane']}>
-          <XAppBarComponent parentSelector={styles['example-scroll-pane']}><h1>Lorem Ipsum</h1></XAppBarComponent>
+          <XAppBarComponent
+            classNameOnIntersect={styles['example-appbar-auxillary-classname']}
+            parentSelector={`.${styles['example-scroll-pane']}`}
+          ><h1>Lorem Ipsum</h1></XAppBarComponent>
 
           <h4>&ldquo;Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit...&rdquo;</h4>
 

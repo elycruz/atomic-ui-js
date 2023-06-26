@@ -22,5 +22,7 @@ export const xThemes = {
   CHECKED_NAME = 'checked',
   DEFAULT_CHECKED_NAME = 'defaultChecked',
   THEME_NAME = 'theme',
-  VARIETY_NAME = 'variety'
+  VARIETY_NAME = 'variety',
+  PARENT_SELECTOR_NAME = 'parentSelector',
+  CLASS_NAME_ON_INTERSECT_NAME = 'classNameOnIntersect'
 ;

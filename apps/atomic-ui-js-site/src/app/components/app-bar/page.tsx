@@ -10,7 +10,7 @@ export default function AppBarPage() {
         <p>Supplies the hide and show animation on user scroll.</p>
         {Object.entries(xVariants)
           .map(([k, v], i) => {
-            const className = classNames('x-app-bar',
+            const className = classNames('x-appbar',
               {
                 [`x-${v}`]: !!v
               });
