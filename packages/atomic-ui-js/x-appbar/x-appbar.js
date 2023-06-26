@@ -1,10 +1,11 @@
 import {
   addClass,
-  CLASS_NAME_ON_INTERSECT_NAME,
   hasClass,
+  removeClass,
+  debounce,
   log,
-  PARENT_SELECTOR_NAME,
-  removeClass
+  CLASS_NAME_ON_INTERSECT_NAME,
+  PARENT_SELECTOR_NAME, error,
 } from '../utils/index.js';
 
 /**
@@ -18,7 +19,19 @@ export const xAppbarEvents = {
   },
   xAppbarObservedAttribs = [CLASS_NAME_ON_INTERSECT_NAME, PARENT_SELECTOR_NAME];
 
-const {Intersected, NotIntersected} = xAppbarEvents;
+const {Intersected, NotIntersected} = xAppbarEvents,
+  styles = new CSSStyleSheet(),
+  stylesText = `:host > :first-child {
+  position: absolute;
+  width: var(--placeholder-width);
+  height: var(--placeholder-height);
+  x-index: -1;
+}
+
+:host(.x-appbar--auxillary-mode.x-appbar--auxillary-show) > :first-child {
+  position: relative;
+}
+`;
 
 /**
  * @note Component functions as a decorator.
@@ -32,7 +45,7 @@ export class XAppbarElement extends HTMLElement {
   /**
    * @type {string}
    */
-  #classNameOnIntersect;
+  #classNameOnIntersect = `${xAppbarName}--auxillary-mode`;
   get classNameOnIntersect() {
     return this.#classNameOnIntersect ?? '';
   }
@@ -53,6 +66,15 @@ export class XAppbarElement extends HTMLElement {
       removeClass(prevValue, this);
       addClass(newValue, this);
     }
+  }
+
+  #auxillaryShowClassName = `${xAppbarName}--auxillary-show`;
+  get auxillaryShowClassName() {
+    return this.#auxillaryShowClassName ?? '';
+  }
+
+  set auxillaryShowClassName(str) {
+    this.#auxillaryShowClassName = str ? str + '' : '';
   }
 
   /**
@@ -115,14 +137,38 @@ export class XAppbarElement extends HTMLElement {
   }
 
   #initialized = false;
+  #stylesInitialized = false;
 
   /**
    * @type {IntersectionObserver}
    */
   #intersectObserver;
 
+  /**
+   * @type {ResizeObserver}
+   */
+  #resizeObserver;
+
+  #lastScrollTop = 0;
+
+  constructor() {
+    super();
+
+    this.attachShadow({mode: 'open'});
+
+    this.shadowRoot.adoptedStyleSheets.push(styles);
+    this.shadowRoot.innerHTML = `
+    <div class="spacing-placeholder"></div>
+    <slot></slot>
+    `;
+  }
+
   connectedCallback() {
     if (!this.#initialized && this.isConnected) {
+      if (!this.#stylesInitialized) {
+        styles.replace(stylesText).catch(error);
+        this.#stylesInitialized = true;
+      }
       this.#processParentChange(null, this.selectedParent);
 
       this.#initialized = true;
@@ -143,16 +189,18 @@ export class XAppbarElement extends HTMLElement {
 
     log('attrib changed', ...arguments);
     switch (name) {
-    case PARENT_SELECTOR_NAME:
-    case CLASS_NAME_ON_INTERSECT_NAME:
-      this[name] = nextValue;
-      return;
-    default:
-      return;
+      case PARENT_SELECTOR_NAME:
+      case CLASS_NAME_ON_INTERSECT_NAME:
+        this[name] = nextValue;
+        return;
+      default:
+        return;
     }
   }
 
   update(isIntersecting) {
+    // if (this.intersecting === isIntersecting) return;
+
     const _isIntersecting =
       this.#intersected = Boolean(isIntersecting);
 
@@ -168,33 +216,51 @@ export class XAppbarElement extends HTMLElement {
 
   #processParentChange(oldParent, newParent) {
     if (oldParent) oldParent.removeEventListener('scroll', this.#onParentScroll);
-    if (this.#intersectObserver) this.#intersectObserver.unobserve(this);
+    const {shadowRoot: {firstElementChild: placeholder}, firstElementChild} = this;
+
+    if (this.#intersectObserver) this.#intersectObserver.unobserve(placeholder);
+    if (this.#resizeObserver) this.#resizeObserver.unobserve(placeholder);
+
+    this.#resizeObserver = new ResizeObserver(records => {
+      records.forEach(r => {
+        const bbox = r.target.getBoundingClientRect();
+        placeholder.style.width = `${bbox.width}px`;
+        placeholder.style.height = `${bbox.height}px`;
+      });
+    });
+
+    this.#resizeObserver.observe(firstElementChild);
 
     this.#intersectObserver = new IntersectionObserver((records) => {
       records.forEach(r => {
-        // @todo Call internal div manipulation method, as required, here
         // @note manipulation method needs to set property that would be inspected
         //   from `onParentScroll` method (something like 'intersected' to signal that the
         //   'onscroll' inspection should be suspended).
 
-        r.target.update(r.isIntersecting);
+
+        this.update(r.isIntersecting);
       });
     }, {root: newParent, rootMargin: '16px'});
 
-    this.#intersectObserver.observe(this);
+    this.#intersectObserver.observe(placeholder);
 
     newParent.removeEventListener('scroll', this.#onParentScroll);
     newParent.addEventListener('scroll', this.#onParentScroll);
   }
 
-  #onParentScroll = () => {
-    if (this.#intersected) return;
-    // const p = e.currentTarget;
-    //
-    // if (p.scrollTop > this.offsetHeight + this.offsetTop) {
-    // }
+  #onParentScroll = e => {
+    if (this.#intersected || !this.childElementCount) return;
+    const p = this.selectedParent,
+      c = p.firstElementChild;
+
+    if (p.scrollTop < this.#lastScrollTop) {
+      this.classList.toggle(this.#auxillaryShowClassName, true);
+    } else if (hasClass(this.#auxillaryShowClassName, this)) {
+      removeClass(this.#auxillaryShowClassName, this);
+    }
+
+    this.#lastScrollTop = p.scrollTop;
 
     log('scrolling');
-    return null;
   };
 }

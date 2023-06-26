@@ -28,3 +28,14 @@
 .x-appbar.x-small {
   --x-appbar-padding: var(--x-3px);
 }
+
+.x-appbar--auxillary-mode > :first-child {
+  position: fixed;
+  transform: translateY(-100%);
+  pointer-events: none;
+}
+
+.x-appbar--auxillary-mode.x-appbar--auxillary-show > :first-child {
+  transform: translateY(0);
+  pointer-events: all;
+}

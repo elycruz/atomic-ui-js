@@ -8,9 +8,12 @@ export default function XAppBarPage() {
       <div>
         <div className={styles['example-scroll-pane']}>
           <XAppBarComponent
-            classNameOnIntersect={styles['example-appbar-auxillary-classname']}
             parentSelector={`.${styles['example-scroll-pane']}`}
-          ><h1>Lorem Ipsum</h1></XAppBarComponent>
+          >
+            <header className="x-appbar">
+              <h1>Lorem Ipsum</h1>
+            </header>
+          </XAppBarComponent>
 
           <h4>&ldquo;Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit...&rdquo;</h4>
 
