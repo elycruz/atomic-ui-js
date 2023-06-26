@@ -5,7 +5,7 @@ An atomic, CSS first, user interface library.
 ## CSS Components
 
 - [ ] `.x-alert`
-- [ ] `.x-app-bar`
+- [ ] `.x-appbar`
 - [ ] `.x-badge`
 - [x] `.x-btn`
 - [ ] `.x-card`

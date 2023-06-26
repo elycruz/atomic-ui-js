@@ -1,30 +1,30 @@
-.x-app-bar {
-  --x-app-bar-padding: var(--x-16px);
+.x-appbar {
+  --x-appbar-padding: var(--x-16px);
 
-  padding: var(--x-app-bar-padding);
+  padding: var(--x-appbar-padding);
 }
 
-.x-app-bar.x-filled {
+.x-appbar.x-filled {
   background: var(--x-color-5);
   color: var(--x-color-8);
 }
 
-.x-app-bar.x-outlined {
+.x-appbar.x-outlined {
   border: var(--x-border-width) solid var(--x-color-4);
   color: var(--x-color-5);
 }
 
-.x-app-bar.x-raised {
+.x-appbar.x-raised {
   border: var(--x-border-width) solid var(--x-color-4);
   color: var(--x-color-5);
   box-shadow: 0 var(--x-2px) var(--x-3px) var(--x-neutral-color-with-alpha-6),
   0 var(--x-3px) var(--x-5px) var(--x-neutral-color-with-alpha-6);
 }
 
-.x-app-bar.x-dense {
-  --x-app-bar-padding: var(--x-8px);
+.x-appbar.x-dense {
+  --x-appbar-padding: var(--x-8px);
 }
 
-.x-app-bar.x-small {
-  --x-app-bar-padding: var(--x-3px);
+.x-appbar.x-small {
+  --x-appbar-padding: var(--x-3px);
 }

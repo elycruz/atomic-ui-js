@@ -1,3 +1,3 @@
-# x-app-bar
+# x-appbar
 
 Application bar component.
