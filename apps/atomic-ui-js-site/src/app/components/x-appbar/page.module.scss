@@ -1,4 +1,5 @@
 .example-scroll-pane {
+  position: relative;
   max-height: 33vh;
   overflow: auto;
   border-radius: var(--x-border-radius);
