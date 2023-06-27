@@ -4,6 +4,9 @@
   overflow: auto;
   border-radius: var(--x-border-radius);
   border: var(--x-border-width) solid;
+}
+
+.example-scroll-pane > .text {
   padding: 1rem;
 }
 

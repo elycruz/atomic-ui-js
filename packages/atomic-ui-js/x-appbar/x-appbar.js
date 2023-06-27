@@ -5,7 +5,7 @@ import {
   debounce,
   log,
   CLASS_NAME_ON_INTERSECT_NAME,
-  PARENT_SELECTOR_NAME, error,
+  PARENT_SELECTOR_NAME, error, isUsableNumber,
 } from '../utils/index.js';
 
 /**
@@ -21,22 +21,7 @@ export const xAppbarEvents = {
 
 const {Intersected, NotIntersected} = xAppbarEvents,
   styles = new CSSStyleSheet(),
-  stylesText = `
-:host {
-  display: block;
-}
-:host > :first-child {
-  width: var(--placeholder-width);
-  height: var(--placeholder-height);
-  x-index: -1;
-}
-:host(:not(.x-appbar--auxillary-mode)) > :first-child {
-  position: fixed;
-}
-:host(.x-appbar--auxillary-mode.x-appbar--auxillary-show) > :first-child {
-  position: relative;
-}
-`;
+  stylesText = ``;
 
 /**
  * @note Component functions as a decorator.
@@ -50,16 +35,16 @@ export class XAppbarElement extends HTMLElement {
   /**
    * @type {string}
    */
-  #auxillaryModeClassName = `${xAppbarName}--auxillary-mode`;
-  get auxillaryModeClassName() {
-    return this.#auxillaryModeClassName ?? '';
+  #hiddenClassName = `x--hidden`;
+  get hiddenClassName() {
+    return this.#hiddenClassName ?? '';
   }
 
-  set auxillaryModeClassName(str) {
-    const prevValue = this.#auxillaryModeClassName,
+  set hiddenClassName(str) {
+    const prevValue = this.#hiddenClassName,
       newValue = str ? str + '' : '';
 
-    this.#auxillaryModeClassName = newValue;
+    this.#hiddenClassName = newValue;
 
     // If no toggle classname, to new value, is required, return
     if (prevValue === newValue || !prevValue) {
@@ -73,13 +58,13 @@ export class XAppbarElement extends HTMLElement {
     }
   }
 
-  #auxillaryShowClassName = `${xAppbarName}--auxillary-show`;
-  get auxillaryShowClassName() {
-    return this.#auxillaryShowClassName ?? '';
+  #visibleClassName = `x--visible`;
+  get visibleClassName() {
+    return this.#visibleClassName ?? '';
   }
 
-  set auxillaryShowClassName(str) {
-    this.#auxillaryShowClassName = str ? str + '' : '';
+  set visibleClassName(str) {
+    this.#visibleClassName = str ? str + '' : '';
   }
 
   /**
@@ -91,10 +76,10 @@ export class XAppbarElement extends HTMLElement {
   }
 
   set parentSelector(str) {
-    const {parentSelector: prevValue, auxillaryModeClassName} = this,
+    const {parentSelector: prevValue, hiddenClassName} = this,
       newValue = str ? str + '' : '';
 
-    if (prevValue === newValue || !auxillaryModeClassName) {
+    if (prevValue === newValue || !hiddenClassName) {
       this.#parentSelector = newValue;
       return;
     }
@@ -123,15 +108,6 @@ export class XAppbarElement extends HTMLElement {
     return this.#selectedParent;
   }
 
-  #auxAppbarMode = false;
-  get auxAppbarMode() {
-    return Boolean(this.#auxAppbarMode);
-  }
-
-  set auxAppbarMode(bln) {
-    this.#auxAppbarMode = Boolean(bln);
-  }
-
   /**
    * @type {boolean}
    */
@@ -141,16 +117,49 @@ export class XAppbarElement extends HTMLElement {
     return this.#intersected ?? false;
   }
 
+  /**
+   * @type {number}
+   */
+  #marginTop;
+
+  get marginTop() {
+    return this.#marginTop ?? 0;
+  }
+
+  set marginTop(x) {
+    let cast = Number(x);
+    cast = isUsableNumber(cast) ? cast : 0;
+  }
+
+  /**
+   * @type {number}
+   */
+  #debounceDelay= 233;
+
+  get debounceDelay() {
+    return this.#debounceDelay ?? 233;
+  }
+
+  set debounceDelay(x) {
+    this.#debounceDelay = x;
+  }
+
   #initialized = false;
   #stylesInitialized = false;
-  #appbarContentWidth;
   #appbarContentHeight;
 
   /**
+   * Allows to capture dimension changes on appbar content element.
+   *
    * @type {ResizeObserver}
    */
   #resizeObserver;
 
+  /**
+   * Tracks the last scrollbar 'top' position, for the selected parent.
+   *
+   * @type {number}
+   */
   #lastScrollTop = 0;
 
   constructor() {
@@ -160,7 +169,6 @@ export class XAppbarElement extends HTMLElement {
 
     this.shadowRoot.adoptedStyleSheets.push(styles);
     this.shadowRoot.innerHTML = `
-    <div class="spacing-placeholder"></div>
     <slot></slot>
     `;
   }
@@ -172,15 +180,14 @@ export class XAppbarElement extends HTMLElement {
         this.#stylesInitialized = true;
       }
       this.#initializeListeners(null, this.selectedParent);
-
+      this.#onParentScroll();
       this.#initialized = true;
     }
   }
 
   disconnectedCallback() {
     if (this.#initialized) {
-      this.#resizeObserver.unobserve(this);
-      this.selectedParent.removeEventListener('scroll', this.#onParentScroll);
+      this.selectedParent?.removeEventListener('scroll', this.#onParentScroll);
 
       this.#initialized = false;
     }
@@ -189,10 +196,13 @@ export class XAppbarElement extends HTMLElement {
   attributeChangedCallback(name, prevValue, nextValue) {
     if (prevValue === nextValue) return;
 
-    log('attrib changed', ...arguments);
     switch (name) {
       case PARENT_SELECTOR_NAME:
       case CLASS_NAME_ON_INTERSECT_NAME:
+      case 'debounceDelay':
+      case 'hiddenClassName':
+      case 'visibleClassName':
+      case 'marginTop':
         this[name] = nextValue;
         return;
       default:
@@ -206,7 +216,7 @@ export class XAppbarElement extends HTMLElement {
     const _isIntersecting =
       this.#intersected = Boolean(isIntersecting);
 
-    this.classList.toggle(this.auxillaryModeClassName, !_isIntersecting);
+    this.classList.toggle(this.hiddenClassName, !_isIntersecting);
 
     this.dispatchEvent(new CustomEvent(
       _isIntersecting ? Intersected : NotIntersected, {
@@ -217,38 +227,37 @@ export class XAppbarElement extends HTMLElement {
 
   #initializeListeners(oldParent, newParent) {
     if (oldParent) oldParent.removeEventListener('scroll', this.#onParentScroll);
-    const {shadowRoot: {firstElementChild: placeholder}, firstElementChild} = this;
 
-    if (this.#resizeObserver) this.#resizeObserver.unobserve(firstElementChild);
+    if (this.#resizeObserver) this.#resizeObserver.unobserve(this);
 
     this.#resizeObserver = new ResizeObserver(records => {
       records.forEach(r => {
         const bbox = r.target.getBoundingClientRect();
-        placeholder.style.setProperty('--placeholder-width', `${bbox.width}px`);
-        placeholder.style.setProperty('--placeholder-height', `${bbox.height}px`);
-        this.#appbarContentWidth = bbox.width;
         this.#appbarContentHeight = bbox.height;
       });
     });
 
-    this.#resizeObserver.observe(firstElementChild);
+    this.#resizeObserver.observe(this);
 
     newParent.removeEventListener('scroll', this.#onParentScroll);
     newParent.addEventListener('scroll', this.#onParentScroll);
+
+    return this;
   }
 
-  #onParentScroll = e => {
-    const {selectedParent: p, auxillaryShowClassName} = this,
-      intersectionPoint = this.#appbarContentHeight;
+  #onParentScroll = debounce(() => {
+    const {selectedParent: p, visibleClassName} = this,
+      intersectionPoint = this.marginTop + this.#appbarContentHeight,
+      hasFocusWithin = this.matches(':focus-within');
 
     this.#toggleIntersectState(p.scrollTop <= intersectionPoint);
 
     if (p.scrollTop > intersectionPoint && p.scrollTop < this.#lastScrollTop) {
-      this.classList.toggle(auxillaryShowClassName, true);
-    } else if (hasClass(auxillaryShowClassName, this)) {
-      removeClass(auxillaryShowClassName, this);
+      this.classList.toggle(visibleClassName, true);
+    } else if (hasClass(visibleClassName, this) && !hasFocusWithin) {
+      removeClass(visibleClassName, this);
     }
 
     this.#lastScrollTop = p.scrollTop;
-  };
+  }, this.debounceDelay);
 }

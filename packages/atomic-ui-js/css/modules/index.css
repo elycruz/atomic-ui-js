@@ -1,5 +1,5 @@
 @import "properties.css";
-@import "appbar.css";
+@import "../../x-appbar/index.css";
 @import "button/index.css";
 @import "card.css";
 @import "colors/index.css";
