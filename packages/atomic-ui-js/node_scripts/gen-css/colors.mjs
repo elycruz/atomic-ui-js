@@ -38,7 +38,7 @@ const __dirname = url.fileURLToPath(new URL('.', import.meta.url)),
             let chroma = Math.min(
               0.21,
               1 - (saturation + ((100 - saturation) / lightnessNums.length) * i) * .01
-            );
+            ).toFixed(5);
 
             // If 'neutral' color set chroma to the lowest value
             if (!saturation) chroma = 0;

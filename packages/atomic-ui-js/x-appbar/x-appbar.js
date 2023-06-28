@@ -3,7 +3,6 @@ import {
   hasClass,
   removeClass,
   debounce,
-  log,
   CLASS_NAME_ON_INTERSECT_NAME,
   PARENT_SELECTOR_NAME, error, isUsableNumber,
 } from '../utils/index.js';
@@ -21,7 +20,7 @@ export const xAppbarEvents = {
 
 const {Intersected, NotIntersected} = xAppbarEvents,
   styles = new CSSStyleSheet(),
-  stylesText = ``;
+  stylesText = '';
 
 /**
  * @note Component functions as a decorator.
@@ -35,7 +34,7 @@ export class XAppbarElement extends HTMLElement {
   /**
    * @type {string}
    */
-  #hiddenClassName = `x--hidden`;
+  #hiddenClassName = 'x--hidden';
   get hiddenClassName() {
     return this.#hiddenClassName ?? '';
   }
@@ -58,7 +57,7 @@ export class XAppbarElement extends HTMLElement {
     }
   }
 
-  #visibleClassName = `x--visible`;
+  #visibleClassName = 'x--visible';
   get visibleClassName() {
     return this.#visibleClassName ?? '';
   }
@@ -128,7 +127,7 @@ export class XAppbarElement extends HTMLElement {
 
   set marginTop(x) {
     let cast = Number(x);
-    cast = isUsableNumber(cast) ? cast : 0;
+    this.#marginTop = isUsableNumber(cast) ? cast : 0;
   }
 
   /**
@@ -197,16 +196,16 @@ export class XAppbarElement extends HTMLElement {
     if (prevValue === nextValue) return;
 
     switch (name) {
-      case PARENT_SELECTOR_NAME:
-      case CLASS_NAME_ON_INTERSECT_NAME:
-      case 'debounceDelay':
-      case 'hiddenClassName':
-      case 'visibleClassName':
-      case 'marginTop':
-        this[name] = nextValue;
-        return;
-      default:
-        return;
+    case PARENT_SELECTOR_NAME:
+    case CLASS_NAME_ON_INTERSECT_NAME:
+    case 'debounceDelay':
+    case 'hiddenClassName':
+    case 'visibleClassName':
+    case 'marginTop':
+      this[name] = nextValue;
+      return;
+    default:
+      return;
     }
   }
 

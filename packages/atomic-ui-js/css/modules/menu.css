@@ -1,4 +1,7 @@
-.x-menu {
+.x-menu,
+.x-menu a,
+.x-menu li:focus-within > a + ul,
+.x-menu li:hover > a + ul {
   display: block;
 }
 
@@ -10,12 +13,6 @@
 /* .x-menu li:not(:focus-within) > a + ul {
   display: none;
 } */
-
-.x-menu a,
-.x-menu li:focus-within > a + ul,
-.x-menu li:hover > a + ul {
-  display: block;
-}
 
 .x-menu.x-menu--horizontal {
   width: 100%;
