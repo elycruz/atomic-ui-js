@@ -228,5 +228,5 @@ html[dir="rtl"] :where(x-input, .x-input) > *:not(
  * Size
  * -------------------- */
 :where(x-input, .x-input).x-small {
-  /*--x-input-padding-block: ;*/
+  /* --x-input-padding-block: ; */
 }

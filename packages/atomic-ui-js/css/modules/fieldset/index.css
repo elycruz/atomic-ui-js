@@ -1,5 +1,5 @@
-@import "field.css";
-@import "fieldset.css";
+@import url("field.css");
+@import url("fieldset.css");
 
 input,
 textarea,

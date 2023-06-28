@@ -1,6 +1,6 @@
 html, body {
-  --x-font-family: Arial, Verdana, Helvetica, Sans-Serif;
-  --x-focus-ring-color: currentColor;
+  --x-font-family: arial, verdana, helvetica, sans-serif;
+  --x-focus-ring-color: currentcolor;
 
   margin: 0;
   padding: 0;

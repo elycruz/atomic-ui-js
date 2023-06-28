@@ -22,7 +22,7 @@
     "docs": "pnpm typedoc",
     "gen:css": "node node_scripts/gen-css/index.mjs",
     "eslint": "eslint .",
-    "stylelint": "stylelint **/*.css",
+    "stylelint": "stylelint **/*.{css,scss}",
     "typedoc": "typedoc .",
     "test": "echo \"Tests not yet written\""
   },

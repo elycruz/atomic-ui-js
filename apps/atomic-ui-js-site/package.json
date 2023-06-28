@@ -10,7 +10,7 @@
     "lintfix": "pnpm stylelint --fix && next lint --fix",
     "docs": "pnpm typedoc",
     "gen-navitems": "node node_scripts/gen-navItems.mjs",
-    "stylelint": "stylelint src/**/*.css",
+    "stylelint": "stylelint src/**/*.{css,scss}",
     "typedoc": "typedoc ",
     "test": "echo \"Tests not yet writtent\""
   },
@@ -46,6 +46,7 @@
     "node-dirwalk": "^0.8.6",
     "sass": "^1.62.1",
     "sass-loader": "^13.2.2",
-    "style-loader": "^3.3.3"
+    "style-loader": "^3.3.3",
+    "stylelint-config-standard-scss": "^9.0.0"
   }
 }

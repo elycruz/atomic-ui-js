@@ -12,7 +12,7 @@ section > :where(
   article,
   div > article
 ) {
-  border-top: var(--x-1px) solid currentColor;
+  border-top: var(--x-1px) solid currentcolor;
 }
 
 section > :where(

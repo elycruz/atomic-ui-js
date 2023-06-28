@@ -1,8 +1,5 @@
 :where(.x-radio, .x-checkbox, [type="radio"], [type="checkbox"]) {
-  -webkit-appearance: none;
-  -moz-appearance: none;
   appearance: none;
-
   display: inline-grid;
   place-content: center;
   cursor: pointer;
@@ -68,6 +65,7 @@
   0% {
     clip-path: inset(0);
   }
+
   100% {
     clip-path: inset(0 100% 0 0);
   }
