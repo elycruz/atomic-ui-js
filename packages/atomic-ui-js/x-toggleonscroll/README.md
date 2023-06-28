@@ -1,3 +1,3 @@
-# x-back-to-top-btn
+# x-toggleonscroll
 
 Component description.

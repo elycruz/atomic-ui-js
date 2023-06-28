@@ -1,3 +1,0 @@
-# XBackToTopBtnComponent
-
-Component description.

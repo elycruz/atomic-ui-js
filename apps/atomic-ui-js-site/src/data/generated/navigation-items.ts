@@ -71,11 +71,6 @@ export const navigationItems: NavItem[] = [{
           'alias': 'spacing'
         },
         {
-          'label': 'X-app-bar2',
-          'uri': '/components/x-app-bar2/',
-          'alias': 'x-app-bar2'
-        },
-        {
           'label': 'X-appbar',
           'uri': '/components/x-appbar/',
           'alias': 'x-appbar'
@@ -84,6 +79,11 @@ export const navigationItems: NavItem[] = [{
           'label': 'X-back-to-top-btn',
           'uri': '/components/x-back-to-top-btn/',
           'alias': 'x-back-to-top-btn'
+        },
+        {
+          'label': 'X-toggleonscroll',
+          'uri': '/components/x-toggleonscroll/',
+          'alias': 'x-toggleonscroll'
         }
       ]
     },

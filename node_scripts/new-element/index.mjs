@@ -29,12 +29,32 @@ const __dirname = url.fileURLToPath(new URL('.', import.meta.url)),
   forceFlagRegex = /-{1,2}f(orce)?/i,
   componentNameRegex = /^[a-z]{1,55}-[\w-]{1,55}$/i,
 
+  FORCE_FLAG = 0x02,
+  STYLES_FLAG = 0x04,
+  SHADOW_DOM_FLAG = 0x08,
+
+  FLAGS = process.argv.slice(2).reduce((flags, arg) => {
+    switch (arg) {
+      case '--force':
+      case '-f':
+        return flags | FORCE_FLAG;
+      case '--styles':
+      case '-s':
+        return flags | STYLES_FLAG;
+      case '--shadow':
+        return flags | SHADOW_DOM_FLAG;
+      default:
+        return flags;
+    }
+  }, 0x00),
+
+  force = Boolean(FLAGS & FORCE_FLAG),
+  styles = Boolean(FLAGS & STYLES_FLAG),
+  shadow = Boolean(FLAGS & SHADOW_DOM_FLAG),
+
   packageRoot = path.join(__dirname, '../../'),
 
-  // Whether to overwrite existing files or not
-  force = process.argv.some(flag => forceFlagRegex.test(flag)),
-
-  incomingComponentName = process.argv.at(-1),
+  incomingComponentName = process.argv.filter(name => /^[a-z]/i.test(name)).shift(),
 
   ucaseFirst = (str = '') => str[0].toUpperCase() + str.slice(1),
 
@@ -57,6 +77,7 @@ const __dirname = url.fileURLToPath(new URL('.', import.meta.url)),
   getCustomElementContent = (localName, classNamePrefix, outputDir) => {
     const className = `${classNamePrefix}Element`,
       nameVarName = `${lcaseFirst(classNamePrefix)}Name`,
+      observedAttribNames = `${classNamePrefix}ObservedAttribs`,
       indexCssFilePath = path.join(outputDir, 'index.css'),
       elementFilePath = path.join(outputDir, `${localName}.js`),
       registerFilePath = path.join(outputDir, `register.js`),
@@ -68,10 +89,57 @@ const __dirname = url.fileURLToPath(new URL('.', import.meta.url)),
       display: inline-block;
 }`],
       [elementFilePath,
-        `export const ${nameVarName} = '${localName}';
+        `${
+          styles && shadow ? `import styles from './index.css' assert { type: 'css' };\n\n` : ''
+        }export const ${nameVarName} = '${localName}',
+
+  ${observedAttribNames} = Object.freeze([]);
 
 export class ${className} extends HTMLElement {
   static localName = ${nameVarName};
+  static observedAttributes = ${observedAttribNames};
+
+  #initialized = false;
+${!shadow ? '' : `\n  constructor() {
+    super();
+
+    this.attachShadow({mode: 'open'});${
+          !styles ? '' : '\n    this.shadowRoot.adoptedStyleSheets.push(styles);'
+        }
+  }
+`}
+  connectedCallback() {
+    if (!this.#initialized && this.isConnected) {
+      this.#removeListeners()
+        .#addListeners();
+      this.#initialized = true;
+    }
+  }
+
+  disconnectedCallback() {
+    if (this.#initialized) {
+      this.#removeListeners();
+      this.#initialized = false;
+    }
+  }
+
+  #addListeners() {
+    return this;
+  }
+
+  #removeListeners() {
+    return this;
+  }
+
+  attributeChangedCallback(name, prevValue, nextValue) {
+    if (prevValue === nextValue) return;
+
+    switch (name) {
+    default:
+      this[name] = nextValue;
+      return;
+    }
+  }
 }
 `],
       [registerFilePath,
@@ -102,7 +170,7 @@ Component description.
 
     return [
       [indexFilePath,
-        `// 'use client';
+        `'use client';
 
 import React from 'react';
 import {createComponent} from '@lit-labs/react';
@@ -257,7 +325,7 @@ force: ${force}
 
     // Write React lib. files
     .then(collectedFilePaths => scaffoldFilesUsing(
-        getReactComponentContent, 'packages/atomic-ui-js-react', collectedFilePaths)
+      getReactComponentContent, 'packages/atomic-ui-js-react', collectedFilePaths)
     )
 
     // Write Next lib. files

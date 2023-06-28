@@ -1,6 +1,6 @@
-export default function XBackToTopBtnPage() {
+export default function XToggleonscrollPage() {
   return <section>
-  <header>Back To Top Btn Page</header>
+  <header>Toggleonscroll Page</header>
   <article>
     <div>
         Page contents.
