@@ -86,7 +86,7 @@ const __dirname = url.fileURLToPath(new URL('.', import.meta.url)),
 
     return [
       [indexCssFilePath, `.${localName} {
-      display: inline-block;
+  display: inline-block;
 }`],
       [elementFilePath,
         `${

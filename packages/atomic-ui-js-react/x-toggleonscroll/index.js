@@ -2,12 +2,12 @@
 
 import React from 'react';
 import {createComponent} from '@lit-labs/react';
-import {XToggleonscrollElement} from 'atomic-ui-js/x-toggleonscroll/index.js';
+import {XToggleOnScrollElement} from 'atomic-ui-js/x-ToggleOnScroll/index.js';
 
-const XToggleonscrollComponent = createComponent({
-  tagName: XToggleonscrollElement.localName,
-  elementClass: XToggleonscrollElement,
+const XToggleOnScrollComponent = createComponent({
+  tagName: XToggleOnScrollElement.localName,
+  elementClass: XToggleOnScrollElement,
   react: React
 });
 
-export default XToggleonscrollComponent;
+export default XToggleOnScrollComponent;

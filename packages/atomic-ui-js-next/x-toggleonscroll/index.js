@@ -1,7 +1,7 @@
 import lazy from 'next/dynamic';
 
-const XToggleonscrollComponent = lazy(() => import('atomic-ui-js-react/x-toggleonscroll'), {
+const XToggleOnScrollComponent = lazy(() => import('atomic-ui-js-react/x-ToggleOnScroll'), {
   ssr: false
 });
 
-export default XToggleonscrollComponent;
+export default XToggleOnScrollComponent;

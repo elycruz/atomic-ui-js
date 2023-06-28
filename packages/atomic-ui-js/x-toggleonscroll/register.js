@@ -1,4 +1,4 @@
-import {XToggleonscrollElement} from './x-toggleonscroll.js';
+import {XToggleOnScrollElement} from './x-ToggleOnScroll.js';
 import {registerCustomElement} from '../utils/index.js';
 
-registerCustomElement(XToggleonscrollElement.localName, XToggleonscrollElement);
+registerCustomElement(XToggleOnScrollElement.localName, XToggleOnScrollElement);

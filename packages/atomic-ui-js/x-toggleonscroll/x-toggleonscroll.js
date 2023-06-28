@@ -1,21 +1,22 @@
-import styles from './index.css' assert { type: 'css' };
+import {CLASS_NAME_ON_INTERSECT_NAME, isset} from "../utils/index.js";
+import {ReactiveElement} from 'lit';
 
-export const xToggleonscrollName = 'x-toggleonscroll',
+export const xToggleOnScrollName = 'x-ToggleOnScroll';
 
-  XToggleonscrollObservedAttribs = Object.freeze([]);
+const intersectionObserver = new IntersectionObserver(records => {
+    records.forEach(r => r.update(r));
+  }),
 
-export class XToggleonscrollElement extends HTMLElement {
-  static localName = xToggleonscrollName;
-  static observedAttributes = XToggleonscrollObservedAttribs;
+  CLASSNAME_TO_TOGGLE_NAME = 'classNameToToggle';
+
+export class XToggleOnScrollElement extends ReactiveElement {
+  static localName = xToggleOnScrollName;
+
+  static properties = {
+    [CLASSNAME_TO_TOGGLE_NAME]: {type: String}
+  };
 
   #initialized = false;
-
-  constructor() {
-    super();
-
-    this.attachShadow({mode: 'open'});
-    this.shadowRoot.adoptedStyleSheets.push(styles);
-  }
 
   connectedCallback() {
     if (!this.#initialized && this.isConnected) {
@@ -32,21 +33,21 @@ export class XToggleonscrollElement extends HTMLElement {
     }
   }
 
+  updated(_changed) {
+    if (_changed.has(CLASSNAME_TO_TOGGLE_NAME)) {
+
+    }
+  }
+
+  #initializeIntersectObserver() {
+
+  }
+
   #addListeners() {
     return this;
   }
 
   #removeListeners() {
     return this;
-  }
-
-  attributeChangedCallback(name, prevValue, nextValue) {
-    if (prevValue === nextValue) return;
-
-    switch (name) {
-    default:
-      this[name] = nextValue;
-      return;
-    }
   }
 }
