@@ -36,25 +36,17 @@
   },
   "homepage": "https://github.com/elycruz/atomic-ui-js#readme",
   "devDependencies": {
-    "@mdx-js/loader": "^2.3.0",
-    "@mdx-js/react": "^2.3.0",
-    "@next/mdx": "^13.4.7",
     "@types/node": "18.16.3",
-    "@types/react": "18.2.0",
     "eslint": "^8.43.0",
-    "eslint-config-next": "^13.4.7",
     "husky": "^8.0.3",
-    "next": "^13.4.7",
     "prettier": "^2.8.8",
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0",
     "rollup": "^3.25.3",
     "stylelint": "^15.9.0",
     "stylelint-config-standard": "^33.0.0",
     "stylelint-config-standard-scss": "^9.0.0",
     "turbo": "^1.10.6",
     "typedoc": "^0.24.8",
-    "typescript": "^5.1.5",
-    "webpack": "^5.88.0"
+    "typescript": "^5.1.6",
+    "webpack": "^5.88.1"
   }
 }
