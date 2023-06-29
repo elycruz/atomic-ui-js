@@ -1,3 +1,4 @@
-.x-toggleonscroll {
+:where(.x-toggleonscroll, x-toggleonscroll) {
+  /* position: sticky; */
   display: inline-block;
 }

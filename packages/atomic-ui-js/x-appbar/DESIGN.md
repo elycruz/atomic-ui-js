@@ -2,7 +2,7 @@
 
 ## Objective
 
-Create an appbar component that gives the user full control on what to do on the main to targeted features: Positioning and browser scroll intersection.
+Create an appbar component that gives the user full control on what to do on the main, targeted, features: Positioning and browser scroll intersection.
 
 ## Definitions
 
@@ -21,37 +21,31 @@ App Bar
 
 <!-- Targets `document.scrollingElement` (the document element) as 
      it's parent scrolling-element. -->
-<x-appbar-decorator>
-    <header class="x-appbar my-app-header">
-        <h1>My App</h1>
-    </header>
-</x-appbar-decorator>
+<x-appbar class="my-app-header">
+  <h1>My App</h1>
+</x-appbar>
 
 <!-- Targets '.example-scroll-pane' element as 
      it's 'parent scrolling-element' -->
 <div class="example-scroll-pane">
-    <x-appbar-decorator scrollingparent=".example-scroll-pane">
-        <header class="x-appbar my-app-header">
-            <h1>My App</h1>
-        </header>
-    </x-appbar-decorator>
+    <x-appbar scrollingparent=".example-scroll-pane" class="my-app-header">
+      <h1>My App</h1>
+    </x-appbar>
 </div>
 
 <!-- Or -->
 
 <!-- Footer App Bar (Naming is tentative) -->
-<x-appbar-decorator orientation="bottom">
-    <footer class="x-appbar my-app-footer">
-        <p>&copy;</p>
-    </footer>
-</x-appbar-decorator>
+<x-appbar orientation="bottom" class="my-app-footer">
+  <p>&copy;</p>
+</x-appbar>
 ```
 
 Ensuring aux app bar mode persists (in re-render use cases) using react (without next.js):
 
 ```typescript jsx
 import {useState, createRef} from 'react';
-import XAppBarDecorator from 'atomic-ui-js-react/x-appbar-decorator';
+import XAppBarDecorator from 'atomic-ui-js-react/x-appbar';
 
 export default function AppHeader() {
     const [isInAuxAppBarMode, setIsInAuxAppBarMode] = useState(false);
@@ -59,10 +53,8 @@ export default function AppHeader() {
     
     // ... `useEffect`, refs, and all that jazz here.
     
-    return <XAppBarDecorator ref={appBarRef} auxAppBarMode={isInAuxAppBarMode}>
-        <header className="x-appbar my-app-header">
-            <h1>My App</h1>
-        </header>
+    return <XAppBarDecorator ref={appBarRef} auxAppBarMode={isInAuxAppBarMode} className="my-app-header">
+      <h1>My App</h1>
     </XAppBarDecorator>;
 }
 ```
@@ -71,7 +63,7 @@ Same example as above but also using next.js (only one import is different):
 
 ```typescript jsx
 import {useState, createRef} from 'react';
-import XAppBarDecorator from 'atomic-ui-js-next/x-appbar-decorator';
+import XAppBarDecorator from 'atomic-ui-js-next/x-appbar';
 
 export default function AppHeader() {
     const [isInAuxAppBarMode, setIsInAuxAppBarMode] = useState(false);
@@ -79,10 +71,8 @@ export default function AppHeader() {
     
     // ... `useEffect`, refs, and all that jazz here.
     
-    return <XAppBarDecorator ref={appBarRef} auxAppBarMode={isInAuxAppBarMode}>
-        <header className="x-appbar my-app-header">
-            <h1>My App</h1>
-        </header>
+    return <XAppBarDecorator ref={appBarRef} auxAppBarMode={isInAuxAppBarMode} className="x-appbar my-app-header">
+      <h1>My App</h1>
     </XAppBarDecorator>;
 }
 ```
@@ -104,5 +94,5 @@ In other frameworks ... etc.
 
 ### Implementation Caveats
 
-- Component should function as a decorator which contains an appbar component (`div.x-appbar`, etc.).
+- ~~Component should function as a decorator which contains an appbar component (`div.x-appbar`, etc.).~~
 - Component should create a `div` element, internally (marked as `inert`) which should contain the original header's dimensions on it (dimensions should be captured via a `ResizeObserver` object to ensure we always have the most upto date dimensions for our `div`). 

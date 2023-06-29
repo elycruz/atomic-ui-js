@@ -47,7 +47,9 @@
     "chokidar": "^3.5.3",
     "cssnano": "^6.0.1",
     "eslint": "^8.39.0",
+    "lit": "^2.7.4",
     "postcss": "^8.4.23",
+    "postcss-import": "^15.1.0",
     "postcss-preset-env": "^8.3.2",
     "prettier": "^2.8.8",
     "rollup": "^3.21.2",
@@ -59,8 +61,7 @@
     "typedoc": "^0.24.6",
     "typescript": "^5.0.4"
   },
-  "dependencies": {
-    "lit": "^2.7.4",
-    "postcss-import": "^15.1.0"
+  "peerDependencies": {
+    "lit": "^2.7.4"
   }
 }

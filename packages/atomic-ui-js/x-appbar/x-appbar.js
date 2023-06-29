@@ -4,8 +4,10 @@ import {
   removeClass,
   debounce,
   CLASS_NAME_ON_INTERSECT_NAME,
-  PARENT_SELECTOR_NAME, error, isUsableNumber,
+  error, isUsableNumber, toNumberOr,
 } from '../utils/index.js';
+
+import {ReactiveElement} from 'lit';
 
 /**
  * @type {string}
@@ -13,23 +15,33 @@ import {
 export const xAppbarName = 'x-appbar';
 
 export const xAppbarEvents = {
-    Intersected: `${xAppbarName}-intersected`,
-    NotIntersected: `${xAppbarName}-not-intersected`
-  },
-  xAppbarObservedAttribs = [CLASS_NAME_ON_INTERSECT_NAME, PARENT_SELECTOR_NAME];
+  Intersected: `${xAppbarName}-intersected`,
+  NotIntersected: `${xAppbarName}-not-intersected`
+};
 
 const {Intersected, NotIntersected} = xAppbarEvents,
-  styles = new CSSStyleSheet(),
-  stylesText = '';
+  HIDDEN_CLASSNAME_NAME = 'hiddenClassName',
+  VISIBLE_CLASSNAME_NAME = 'visibleClassName',
+  PARENT_SELECTOR_NAME = 'parentSelector',
+  DEBOUNCE_DELAY_NAME = 'debounceDelay',
+  MARGIN_TOP_NAME = 'marginTop'
+;
 
 /**
  * @note Component functions as a decorator.
  *
  * @todo Re-name component to x-appbar-decorator.
  */
-export class XAppbarElement extends HTMLElement {
+export class XAppbarElement extends ReactiveElement {
   static localName = xAppbarName;
-  static observedAttributes = Object.freeze(xAppbarObservedAttribs);
+
+  static properties = {
+    [HIDDEN_CLASSNAME_NAME]: {type: String, attribute: true},
+    [VISIBLE_CLASSNAME_NAME]: {type: String, attribute: true},
+    [PARENT_SELECTOR_NAME]: {type: String, attribute: true},
+    [DEBOUNCE_DELAY_NAME]: {type: Number, attribute: true},
+    [MARGIN_TOP_NAME]: {type: Number, attribute: true},
+  };
 
   /**
    * @type {string}
@@ -46,15 +58,17 @@ export class XAppbarElement extends HTMLElement {
     this.#hiddenClassName = newValue;
 
     // If no toggle classname, to new value, is required, return
-    if (prevValue === newValue || !prevValue) {
+    if (prevValue === newValue) {
       return;
     }
 
     // Toggle classname to new value if required
-    if (hasClass(prevValue, this)) {
+    if (prevValue && hasClass(prevValue, this)) {
       removeClass(prevValue, this);
       addClass(newValue, this);
     }
+
+    this.requestUpdate(HIDDEN_CLASSNAME_NAME, prevValue);
   }
 
   #visibleClassName = 'x--visible';
@@ -63,7 +77,23 @@ export class XAppbarElement extends HTMLElement {
   }
 
   set visibleClassName(str) {
-    this.#visibleClassName = str ? str + '' : '';
+    const prevValue = this.#visibleClassName,
+      newValue = str ? str + '' : '';
+
+    this.#visibleClassName = newValue;
+
+    // If no toggle classname, to new value, is required, return
+    if (prevValue === newValue) {
+      return;
+    }
+
+    // Toggle classname to new value if required
+    if (prevValue && hasClass(prevValue, this)) {
+      removeClass(prevValue, this);
+      addClass(newValue, this);
+    }
+
+    this.requestUpdate(VISIBLE_CLASSNAME_NAME, prevValue);
   }
 
   /**
@@ -80,6 +110,7 @@ export class XAppbarElement extends HTMLElement {
 
     if (prevValue === newValue || !hiddenClassName) {
       this.#parentSelector = newValue;
+      this.requestUpdate(PARENT_SELECTOR_NAME, prevValue);
       return;
     }
 
@@ -91,6 +122,7 @@ export class XAppbarElement extends HTMLElement {
     this.#selectedParent = null;
 
     this.#initializeListeners(prevParent, this.selectedParent);
+    this.requestUpdate(PARENT_SELECTOR_NAME, prevValue);
   }
 
   /**
@@ -111,40 +143,39 @@ export class XAppbarElement extends HTMLElement {
    * @type {boolean}
    */
   #intersected = false;
-
-  get intersecting() {
+  get intersected() {
     return this.#intersected ?? false;
   }
 
   /**
    * @type {number}
    */
-  #marginTop;
-
+  #marginTop = 0;
   get marginTop() {
     return this.#marginTop ?? 0;
   }
 
-  set marginTop(x) {
-    let cast = Number(x);
-    this.#marginTop = isUsableNumber(cast) ? cast : 0;
+  set marginTop(n) {
+    const prevValue = this.debounceDelay;
+    this.#marginTop = toNumberOr(n, 0);
+    this.requestUpdate(MARGIN_TOP_NAME, prevValue);
   }
 
   /**
    * @type {number}
    */
-  #debounceDelay= 233;
-
+  #debounceDelay = 233;
   get debounceDelay() {
     return this.#debounceDelay ?? 233;
   }
 
   set debounceDelay(x) {
-    this.#debounceDelay = x;
+    const prevValue = this.debounceDelay;
+    this.#debounceDelay = toNumberOr(x, 233);
+    this.requestUpdate(DEBOUNCE_DELAY_NAME, prevValue);
   }
 
   #initialized = false;
-  #stylesInitialized = false;
   #appbarContentHeight;
 
   /**
@@ -161,23 +192,8 @@ export class XAppbarElement extends HTMLElement {
    */
   #lastScrollTop = 0;
 
-  constructor() {
-    super();
-
-    this.attachShadow({mode: 'open'});
-
-    this.shadowRoot.adoptedStyleSheets.push(styles);
-    this.shadowRoot.innerHTML = `
-    <slot></slot>
-    `;
-  }
-
   connectedCallback() {
     if (!this.#initialized && this.isConnected) {
-      if (!this.#stylesInitialized) {
-        styles.replace(stylesText).catch(error);
-        this.#stylesInitialized = true;
-      }
       this.#initializeListeners(null, this.selectedParent);
       this.#onParentScroll();
       this.#initialized = true;
@@ -192,25 +208,23 @@ export class XAppbarElement extends HTMLElement {
     }
   }
 
-  attributeChangedCallback(name, prevValue, nextValue) {
-    if (prevValue === nextValue) return;
+  willUpdate(_changed) {
+    if (_changed.has(DEBOUNCE_DELAY_NAME)) {
+      this.#onParentScroll = debounce(
+        this.#onParentScrollUnDebounced,
+        this.#debounceDelay
+      );
+    }
 
-    switch (name) {
-    case PARENT_SELECTOR_NAME:
-    case CLASS_NAME_ON_INTERSECT_NAME:
-    case 'debounceDelay':
-    case 'hiddenClassName':
-    case 'visibleClassName':
-    case 'marginTop':
-      this[name] = nextValue;
-      return;
-    default:
-      return;
+    if (_changed.has(VISIBLE_CLASSNAME_NAME) ||
+      _changed.has(HIDDEN_CLASSNAME_NAME) ||
+      _changed.has(PARENT_SELECTOR_NAME)) {
+      this.#onParentScroll();
     }
   }
 
   #toggleIntersectState(isIntersecting) {
-    if (this.intersecting === isIntersecting) return;
+    if (this.intersected === isIntersecting) return;
 
     const _isIntersecting =
       this.#intersected = Boolean(isIntersecting);
@@ -244,7 +258,7 @@ export class XAppbarElement extends HTMLElement {
     return this;
   }
 
-  #onParentScroll = debounce(() => {
+  #onParentScrollUnDebounced = () => {
     const {selectedParent: p, visibleClassName} = this,
       intersectionPoint = this.marginTop + this.#appbarContentHeight,
       hasFocusWithin = this.matches(':focus-within');
@@ -258,5 +272,10 @@ export class XAppbarElement extends HTMLElement {
     }
 
     this.#lastScrollTop = p.scrollTop;
-  }, this.debounceDelay);
+  };
+
+  #onParentScroll = debounce(
+    this.#onParentScrollUnDebounced,
+    this.debounceDelay
+  );
 }

@@ -19,14 +19,21 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "@mdx-js/loader": "^2.3.0",
+    "@mdx-js/react": "^2.3.0",
+    "@types/react": "18.2.0",
+    "@lit-labs/react": "^1.2.0",
     "atomic-ui-js": "workspace:^",
+    "lit": "^2.7.4",
     "react": "^18.2.0",
-    "typescript": "^5.0.4",
-    "@lit-labs/react": "^1.1.1"
+    "react-dom": "^18.2.0",
+    "typescript": "^5.0.4"
   },
   "peerDependencies": {
+    "@lit-labs/react": "^1.2.0",
     "atomic-ui-js": "workspace:^",
+    "lit": "^2.7.4",
     "react": "^18.2.0",
-    "@lit-labs/react": "^1.1.1"
+    "react-dom": "^18.2.0"
   }
 }
