@@ -4,7 +4,10 @@ export default function XToggleonscrollPage() {
   return <section>
     <header>Toggleonscroll Page</header>
     <article>
-      <XToggleOnScrollComponent classNameToToggle={'hello'}>
+      <XToggleOnScrollComponent
+        classNameToToggle="hello"
+        container=".back-to-top-btn-container"
+      >
         <h4>&ldquo;Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci
           velit...&rdquo;</h4>
 

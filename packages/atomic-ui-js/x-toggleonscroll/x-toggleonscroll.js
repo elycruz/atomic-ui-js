@@ -1,23 +1,27 @@
 import {
+  CLASSNAME_TO_TOGGLE_NAME,
   CONTAINER_NAME,
   CONTAINER_SELECTOR_NAME,
   replaceClass,
   SCROLLABLE_PARENT_NAME,
   SCROLLABLE_PARENT_SELECTOR_NAME,
+
   toggleClass
 } from '../utils/index.js';
 import {ReactiveElement} from 'lit';
 
 export const xToggleOnScrollName = 'x-toggleonscroll';
 
-const CLASSNAME_TO_TOGGLE_NAME = 'classNameToToggle',
+const
 
   // Flags
   INITIALIZED = 0x02,
   CLASSNAME_SHOWING = 0X04;
 
 /**
- *
+ * @class XToggleOnScrollElement
+ * @element x-toggleonscroll
+ * @extends {ReactiveElement}
  */
 export class XToggleOnScrollElement extends ReactiveElement {
   static localName = xToggleOnScrollName;
@@ -45,15 +49,17 @@ export class XToggleOnScrollElement extends ReactiveElement {
   }
 
   set scrollableParentSelector(str) {
-    const prevValue = this.#scrollableParentSelector;
+    const prevValue = this.scrollableParentSelector;
 
     this.#scrollableParentSelector = (str ?? '') + '';
 
     // Force scrollable parent re-fetch
     this.#scrollableParent = null;
 
-    this.#clearParentListeners();
-    this.#addParentListeners(this.scrollableParent);
+    if (prevValue !== this.#scrollableParentSelector) {
+      this.#clearParentListeners();
+      this.#addParentListeners(this.scrollableParent);
+    }
 
     this.requestUpdate(SCROLLABLE_PARENT_SELECTOR_NAME, prevValue);
   }
@@ -67,10 +73,8 @@ export class XToggleOnScrollElement extends ReactiveElement {
    * @type {Element | Document}
    */
   get scrollableParent() {
-    if (!this.#scrollableParent) {
-      this.#scrollableParent = this.scrollableParentSelector ?
-        this.ownerDocument.querySelector(this.scrollableParentSelector) :
-        this.ownerDocument.scrollingElement;
+    if (!this.#scrollableParent && this.scrollableParentSelector) {
+      this.#scrollableParent = this.ownerDocument.querySelector(this.scrollableParentSelector);
     }
 
     return this.#scrollableParent;
@@ -93,9 +97,13 @@ export class XToggleOnScrollElement extends ReactiveElement {
   }
 
   set containerSelector(x) {
-    const prevValue = this.#containerSelector;
+    const prevValue = this.containerSelector;
     this.#containerSelector = (x ?? '') + '';
     this.#container = null;
+    if (prevValue !== this.#containerSelector) {
+      this.#clearParentListeners()
+        .#addParentListeners(this.scrollableParent);
+    }
     this.requestUpdate(CONTAINER_SELECTOR_NAME, prevValue);
   }
 
@@ -112,6 +120,16 @@ export class XToggleOnScrollElement extends ReactiveElement {
     return this.#container;
   }
 
+  set container(str) {
+    this.containerSelector = str;
+  }
+
+  constructor() {
+    super();
+
+    this.classNameToToggle = '';
+  }
+
   connectedCallback() {
     if (!(this.#flags & INITIALIZED) && this.isConnected) {
       this.#addListeners();
@@ -124,6 +142,10 @@ export class XToggleOnScrollElement extends ReactiveElement {
       this.#removeListeners();
       this.#flags &= ~INITIALIZED;
     }
+  }
+
+  adoptedCallback() {
+    this.connectedCallback();
   }
 
   willUpdate(_changedProps) {
@@ -155,7 +177,7 @@ export class XToggleOnScrollElement extends ReactiveElement {
 
   #clearParentListeners() {
     this.#intersectionObserver.unobserve(this.container);
-    this.#intersectionObserver = null;
+    this.#intersectionObserver.disconnect();
     return this;
   }
 
@@ -164,23 +186,18 @@ export class XToggleOnScrollElement extends ReactiveElement {
 
     if (this.#intersectionObserver) this.#clearParentListeners();
 
-    const {container, container: {
-      offsetTop: y,
-      offsetHeight: h,
-      offsetWidth: w,
-      offsetLeft: x
-    }} = this;
+    const obsrvrOptions = {
+      rootMargin: '0px',
+      threshold: 1
+    };
+
+    if (scrollableParent) obsrvrOptions.root = scrollableParent;
 
     this.#intersectionObserver = new IntersectionObserver(records => {
       records.forEach(r => {
-        console.log(r);
         callback(r.isIntersecting);
       });
-    }, {
-      root: scrollableParent,
-      // rootMargin: '-10px 0px 0px 0px', //`-${y}px ${w + x}px ${h + y}px ${x}px`,
-      threshold: new Array(100).fill(null, 0, 100).map((_, i) => i * .01)
-    });
+    }, obsrvrOptions);
 
     this.#intersectionObserver.observe(this.container);
     return this;
