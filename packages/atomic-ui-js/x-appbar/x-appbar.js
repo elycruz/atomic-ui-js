@@ -7,7 +7,7 @@ import {
   error, isUsableNumber, toNumberOr,
 } from '../utils/index.js';
 
-import {ReactiveElement} from "lit";
+import {ReactiveElement} from 'lit';
 
 /**
  * @type {string}

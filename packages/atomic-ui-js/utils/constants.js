@@ -24,5 +24,9 @@ export const xThemes = {
   THEME_NAME = 'theme',
   VARIETY_NAME = 'variety',
   PARENT_SELECTOR_NAME = 'parentSelector',
-  CLASS_NAME_ON_INTERSECT_NAME = 'classNameOnIntersect'
+  CLASS_NAME_ON_INTERSECT_NAME = 'classNameOnIntersect',
+  SCROLLABLE_PARENT_NAME = 'scrollableParent',
+  SCROLLABLE_PARENT_SELECTOR_NAME = `${SCROLLABLE_PARENT_NAME}Selector`,
+  CONTAINER_NAME = 'container',
+  CONTAINER_SELECTOR_NAME = 'containerSelector'
 ;

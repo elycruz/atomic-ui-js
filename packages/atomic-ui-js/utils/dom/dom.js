@@ -22,9 +22,11 @@ export const // isTouchCapable = window.ontouchend !== undefined,
 
   removeClass = (className, elm) => elm.classList.remove(className),
 
-  toggleClass = (className, elm) => elm.classList.toggle(className),
+  toggleClass = (className, elm, bln = null) => elm.classList.toggle(className, bln),
 
   hasClass = (className, elm) => elm.classList.contains(className),
+
+  replaceClass = (className1, className2, elm) => elm.classList.replace(className1, className2),
 
   addStyle = (keyName, keyValue, elm) => {
     elm.style[keyName] = keyValue;
