@@ -2,9 +2,9 @@ import {
   CLASSNAME_TO_TOGGLE_NAME,
   CONTAINER_NAME,
   CONTAINER_SELECTOR_NAME,
-  replaceClass,
+  replaceClass, ROOT_MARGIN_NAME, ROOT_NAME,
   SCROLLABLE_PARENT_NAME,
-  SCROLLABLE_PARENT_SELECTOR_NAME,
+  SCROLLABLE_PARENT_SELECTOR_NAME, THRESHHOLD_NAME,
 
   toggleClass
 } from '../utils/index.js';
@@ -21,15 +21,20 @@ const
 /**
  * @class XToggleOnScrollElement
  * @element x-toggleonscroll
- * @extends {ReactiveElement}
+ *
+ * An element for quickly setting up a classname toggle when a container element scrolls in/out from view.
+ *
+ * @extends {ReactiveElement & HTMLElement}
  */
 export class XToggleOnScrollElement extends ReactiveElement {
   static localName = xToggleOnScrollName;
 
   static properties = {
-    [CLASSNAME_TO_TOGGLE_NAME]: {type: String, attribute: true},
+    [CLASSNAME_TO_TOGGLE_NAME]: {type: String},
+    [CONTAINER_SELECTOR_NAME]: {type: String, attribute: CONTAINER_NAME},
+    [ROOT_MARGIN_NAME]: {type: String},
     [SCROLLABLE_PARENT_SELECTOR_NAME]: {type: String, attribute: SCROLLABLE_PARENT_NAME},
-    [CONTAINER_SELECTOR_NAME]: {type: String, attribute: CONTAINER_NAME}
+    [THRESHHOLD_NAME]: {type: String}, // @todo Update this to allow either an array or an number.
   };
 
   #flags = 0x00;
@@ -55,12 +60,6 @@ export class XToggleOnScrollElement extends ReactiveElement {
 
     // Force scrollable parent re-fetch
     this.#scrollableParent = null;
-
-    if (prevValue !== this.#scrollableParentSelector) {
-      this.#clearParentListeners();
-      this.#addParentListeners(this.scrollableParent);
-    }
-
     this.requestUpdate(SCROLLABLE_PARENT_SELECTOR_NAME, prevValue);
   }
 
@@ -74,7 +73,7 @@ export class XToggleOnScrollElement extends ReactiveElement {
    */
   get scrollableParent() {
     if (!this.#scrollableParent && this.scrollableParentSelector) {
-      this.#scrollableParent = this.ownerDocument.querySelector(this.scrollableParentSelector);
+      this.#scrollableParent = this.ownerDocument?.querySelector(this.scrollableParentSelector);
     }
 
     return this.#scrollableParent;
@@ -96,14 +95,10 @@ export class XToggleOnScrollElement extends ReactiveElement {
     return this.#containerSelector ?? '';
   }
 
-  set containerSelector(x) {
+  set containerSelector(str) {
     const prevValue = this.containerSelector;
-    this.#containerSelector = (x ?? '') + '';
+    this.#containerSelector = (str ?? '') + '';
     this.#container = null;
-    if (prevValue !== this.#containerSelector) {
-      this.#clearParentListeners()
-        .#addParentListeners(this.scrollableParent);
-    }
     this.requestUpdate(CONTAINER_SELECTOR_NAME, prevValue);
   }
 
@@ -113,7 +108,7 @@ export class XToggleOnScrollElement extends ReactiveElement {
   get container() {
     if (!this.#container) {
       this.#container = this.#containerSelector ?
-        this.ownerDocument.querySelector(this.#containerSelector) :
+        this.ownerDocument?.querySelector(this.#containerSelector) :
         this;
     }
 
@@ -128,9 +123,17 @@ export class XToggleOnScrollElement extends ReactiveElement {
     super();
 
     this.classNameToToggle = '';
+    this.rootMargin = '0px';
+    this.threshold = 1; //Array(100).fill(null, 0, 100).map((_, i) => i * .01);
+  }
+
+  createRenderRoot() {
+    return this;
   }
 
   connectedCallback() {
+    super.connectedCallback();
+
     if (!(this.#flags & INITIALIZED) && this.isConnected) {
       this.#addListeners();
       this.#flags |= INITIALIZED;
@@ -138,6 +141,8 @@ export class XToggleOnScrollElement extends ReactiveElement {
   }
 
   disconnectedCallback() {
+    super.disconnectedCallback();
+
     if (this.#flags & INITIALIZED) {
       this.#removeListeners();
       this.#flags &= ~INITIALIZED;
@@ -145,21 +150,28 @@ export class XToggleOnScrollElement extends ReactiveElement {
   }
 
   adoptedCallback() {
+    super.adoptedCallback();
+
     this.connectedCallback();
   }
 
-  willUpdate(_changedProps) {
+  update(_changedProps) {
+    super.update(_changedProps);
+
     const classNameToToggle = this[CLASSNAME_TO_TOGGLE_NAME],
       prevClassNameToToggle = _changedProps.get(CLASSNAME_TO_TOGGLE_NAME),
       containerSelectorChanged = _changedProps.has(CONTAINER_SELECTOR_NAME),
-      scrollableParentSelectorChanged = _changedProps.has(SCROLLABLE_PARENT_SELECTOR_NAME);
+      scrollableParentSelectorChanged = _changedProps.has(SCROLLABLE_PARENT_SELECTOR_NAME),
+      rootMarginChanged = _changedProps.has(ROOT_MARGIN_NAME),
+      thresholdChanged = _changedProps.has(THRESHHOLD_NAME);
 
     if ((this.#flags & CLASSNAME_SHOWING) && _changedProps.has(CLASSNAME_TO_TOGGLE_NAME)) {
       replaceClass(prevClassNameToToggle, classNameToToggle, this) ||
       toggleClass(classNameToToggle, this, true);
     }
 
-    if (scrollableParentSelectorChanged || containerSelectorChanged) {
+    if (scrollableParentSelectorChanged || containerSelectorChanged ||
+      rootMarginChanged || thresholdChanged) {
       this.#clearParentListeners()
         .#addParentListeners(this.scrollableParent);
     }
@@ -187,14 +199,16 @@ export class XToggleOnScrollElement extends ReactiveElement {
     if (this.#intersectionObserver) this.#clearParentListeners();
 
     const obsrvrOptions = {
-      rootMargin: '0px',
-      threshold: 1
+      rootMargin: this.rootMargin,
+      threshold: this.threshold
     };
 
     if (scrollableParent) obsrvrOptions.root = scrollableParent;
 
     this.#intersectionObserver = new IntersectionObserver(records => {
       records.forEach(r => {
+        console.log('Intersection observed.', r);
+
         callback(r.isIntersecting);
       });
     }, obsrvrOptions);

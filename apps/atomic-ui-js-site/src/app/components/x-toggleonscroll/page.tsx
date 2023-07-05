@@ -1,12 +1,15 @@
 import XToggleOnScrollComponent from 'atomic-ui-js-next/x-toggleonscroll';
+import XRippleComponent from 'atomic-ui-js-next/x-ripple';
+import styles from './page.module.scss';
 
 export default function XToggleonscrollPage() {
   return <section>
     <header>Toggleonscroll Page</header>
     <article>
       <XToggleOnScrollComponent
-        classNameToToggle="hello"
-        container=".back-to-top-btn-container"
+        classNameToToggle={styles['with-hidden-back-to-top-btn']}
+        container="header"
+        rootMargin="16% 0% 0% 0%"
       >
         <h4>&ldquo;Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci
           velit...&rdquo;</h4>
@@ -180,12 +183,16 @@ export default function XToggleonscrollPage() {
           nibh at sem. Cras non purus a purus aliquam tempor. Donec non efficitur felis, in egestas lorem.
         </p>
 
-        <p>Generated 20 paragraphs, 1713 words, 11555 bytes of <a
-          href="https://www.lipsum.com/" title="Lorem Ipsum">Lorem Ipsum</a>
+        <p>Generated 20 paragraphs, 1713 words, 11555 bytes of
+          <a href="https://www.lipsum.com/" title="Lorem Ipsum">
+          <span>Lorem Ipsum</span></a>
         </p>
 
-        <div className="back-to-top-btn-container">
-          <a href="#">Back to top</a>
+        <div className={styles['back-to-top-btn-container']}>
+          <a href="#" className="x-btn x-filled x-theme-primary">
+            <XRippleComponent></XRippleComponent>
+            <span>Back to top</span>
+          </a>
         </div>
       </XToggleOnScrollComponent>
     </article>
