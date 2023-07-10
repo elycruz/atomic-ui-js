@@ -1,0 +1,3 @@
+:where(.x-toggleclassonscroll, x-toggleclassonscroll) {
+  display: inline-block;
+}

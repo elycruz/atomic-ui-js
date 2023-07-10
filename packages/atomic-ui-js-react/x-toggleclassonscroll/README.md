@@ -1,0 +1,3 @@
+# XToggleClassOnScrollComponent
+
+Component description.

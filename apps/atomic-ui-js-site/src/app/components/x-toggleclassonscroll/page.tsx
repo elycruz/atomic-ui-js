@@ -1,4 +1,4 @@
-import XToggleOnScrollComponent from 'atomic-ui-js-next/x-toggleonscroll';
+import XToggleClassOnScrollComponent from 'atomic-ui-js-next/x-toggleclassonscroll';
 import XRippleComponent from 'atomic-ui-js-next/x-ripple';
 import styles from './page.module.scss';
 
@@ -6,7 +6,7 @@ export default function XToggleonscrollPage() {
   return <section>
     <header>Toggleonscroll Page</header>
     <article>
-      <XToggleOnScrollComponent
+      <XToggleClassOnScrollComponent
         classNameToToggle={styles['with-hidden-back-to-top-btn']}
         container="header"
         rootMargin="16% 0% 0% 0%"
@@ -194,7 +194,7 @@ export default function XToggleonscrollPage() {
             <span>Back to top</span>
           </a>
         </div>
-      </XToggleOnScrollComponent>
+      </XToggleClassOnScrollComponent>
     </article>
   </section>;
 }

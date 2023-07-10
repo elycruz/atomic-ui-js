@@ -10,7 +10,7 @@ import {
 } from '../utils/index.js';
 import {ReactiveElement} from 'lit';
 
-export const xToggleOnScrollName = 'x-toggleonscroll';
+export const xToggleClassOnScrollName = 'x-toggleclassonscroll';
 
 const
 
@@ -19,15 +19,15 @@ const
   CLASSNAME_SHOWING = 0X04;
 
 /**
- * @class XToggleOnScrollElement
- * @element x-toggleonscroll
+ * @class XToggleClassOnScrollElement
+ * @element x-toggleclassonscroll
  *
  * An element for quickly setting up a classname toggle when a container element scrolls in/out from view.
  *
  * @extends {ReactiveElement & HTMLElement}
  */
-export class XToggleOnScrollElement extends ReactiveElement {
-  static localName = xToggleOnScrollName;
+export class XToggleClassOnScrollElement extends ReactiveElement {
+  static localName = xToggleClassOnScrollName;
 
   static properties = {
     [CLASSNAME_TO_TOGGLE_NAME]: {type: String},
@@ -177,7 +177,7 @@ export class XToggleOnScrollElement extends ReactiveElement {
     }
   }
 
-  #toggleClassToToggle(isIntersecting) {
+  #toggleClassToToggle = (isIntersecting) => {
     const classToToggle = this.classNameToToggle;
 
     if (isIntersecting && !(this.#flags & CLASSNAME_SHOWING)) this.#flags |= CLASSNAME_SHOWING;
@@ -194,8 +194,6 @@ export class XToggleOnScrollElement extends ReactiveElement {
   }
 
   #addParentListeners(scrollableParent) {
-    const callback = this.#toggleClassToToggle.bind(this);
-
     if (this.#intersectionObserver) this.#clearParentListeners();
 
     const obsrvrOptions = {
@@ -209,7 +207,7 @@ export class XToggleOnScrollElement extends ReactiveElement {
       records.forEach(r => {
         console.log('Intersection observed.', r);
 
-        callback(r.isIntersecting);
+        this.#toggleClassToToggle(r.isIntersecting);
       });
     }, obsrvrOptions);
 
