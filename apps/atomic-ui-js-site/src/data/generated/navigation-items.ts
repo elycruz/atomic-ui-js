@@ -76,11 +76,6 @@ export const navigationItems: NavItem[] = [{
           'alias': 'x-appbar'
         },
         {
-          'label': 'X-back-to-top-btn',
-          'uri': '/components/x-back-to-top-btn/',
-          'alias': 'x-back-to-top-btn'
-        },
-        {
           'label': 'X-toggleclassonscroll',
           'uri': '/components/x-toggleclassonscroll/',
           'alias': 'x-toggleclassonscroll'
