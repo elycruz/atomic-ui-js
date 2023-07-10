@@ -5,6 +5,7 @@
   ],
   "ignoreFiles": [
     "./dist/**/*",
-    "./archived/**/*"
+    "./archived/**/*",
+    "./node_modules/**/*"
   ]
 }

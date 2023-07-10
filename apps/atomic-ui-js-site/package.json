@@ -29,7 +29,7 @@
     "atomic-ui-js": "workspace:^",
     "atomic-ui-js-next": "workspace:^",
     "atomic-ui-js-react": "workspace:^",
-    "eslint": "^8.39.0",
+    "eslint": "^8.43.0",
     "eslint-config-next": "^13.3.4",
     "fjl": "2.0.0-alpha.5",
     "lit": "^2.7.4",

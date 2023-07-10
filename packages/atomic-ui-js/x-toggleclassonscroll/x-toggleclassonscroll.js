@@ -2,7 +2,8 @@ import {
   CLASSNAME_TO_TOGGLE_NAME,
   CONTAINER_NAME,
   CONTAINER_SELECTOR_NAME,
-  replaceClass, ROOT_MARGIN_NAME, ROOT_NAME,
+  replaceClass,
+  ROOT_MARGIN_NAME,
   SCROLLABLE_PARENT_NAME,
   SCROLLABLE_PARENT_SELECTOR_NAME, THRESHHOLD_NAME,
 
@@ -185,7 +186,7 @@ export class XToggleClassOnScrollElement extends ReactiveElement {
 
     return Boolean(classToToggle) &&
       this.classList.toggle(classToToggle, isIntersecting);
-  }
+  };
 
   #clearParentListeners() {
     this.#intersectionObserver.unobserve(this.container);

@@ -3,8 +3,7 @@ import {
   hasClass,
   removeClass,
   debounce,
-  CLASS_NAME_ON_INTERSECT_NAME,
-  error, isUsableNumber, toNumberOr,
+  toNumberOr,
 } from '../utils/index.js';
 
 import {ReactiveElement} from 'lit';

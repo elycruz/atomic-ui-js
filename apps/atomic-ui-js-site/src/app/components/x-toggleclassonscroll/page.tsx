@@ -185,7 +185,7 @@ export default function XToggleonscrollPage() {
 
         <p>Generated 20 paragraphs, 1713 words, 11555 bytes of
           <a href="https://www.lipsum.com/" title="Lorem Ipsum">&nbsp;
-          <span>Lorem Ipsum</span></a>
+            <span>Lorem Ipsum</span></a>
         </p>
 
         <div className={styles['back-to-top-btn-container']}>
