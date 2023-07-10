@@ -2,13 +2,20 @@
   display: inline-flex;
   justify-content: flex-end;
   flex-flow: row nowrap;
-  position: fixed;
-  right: 0;
-  bottom: 0;
+  position: sticky;
+  left: 100%;
+  bottom: 1.5rem;
+
+  > * {
+    transition: transform 0.21s ease-in-out, opacity 0.21s;
+    transform: translateX(0);
+    opacity: 1;
+  }
 }
 
 x-toggleonscroll.with-hidden-back-to-top-btn {
-  .back-to-top-btn-container {
-    display: none;
+  .back-to-top-btn-container > * {
+    transform: translateX(100%);
+    opacity: 0;
   }
 }
