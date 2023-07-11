@@ -1,3 +1,10 @@
+.with-back-to-top-btn--visible {
+  .back-to-top-btn-container > * {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
 .back-to-top-btn-container {
   display: inline-flex;
   justify-content: flex-end;
@@ -8,14 +15,16 @@
 
   > * {
     transition: transform 0.21s ease-in-out, opacity 0.21s;
-    transform: translateX(0);
-    opacity: 1;
-  }
-}
-
-x-toggleclassonscroll.with-hidden-back-to-top-btn {
-  .back-to-top-btn-container > * {
     transform: translateX(100%);
     opacity: 0;
   }
+}
+
+.scrollable-element-example {
+  overflow: auto;
+  max-width: 55vw;
+  max-height: 33vh;
+  height: 33vh;
+  margin: 1.5rem auto;
+  border: var(--x-border-width) solid var(--x-input-border-color);
 }

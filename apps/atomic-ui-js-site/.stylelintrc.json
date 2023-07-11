@@ -4,6 +4,8 @@
     "../../.stylelintrc.json"
   ],
   "ignoreFiles": [
-    "./dist/**/*"
+    "dist/**/*",
+    "node_modules/**/*",
+    ".turbo/**/*"
   ]
 }

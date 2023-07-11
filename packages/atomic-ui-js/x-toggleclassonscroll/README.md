@@ -11,28 +11,29 @@ In this example component should toggle `.some-css-class`, on itself. whenever t
 ```html
 <!doctype>
 <html lang="en">
+<title>Example</title>
 <head>
   <!-- Setup styles -->
   <style>
-  .back-to-top-container {
-    display: inline-flex;
-    justify-content: flex-end;
-    flex-flow: row nowrap;
-    position: sticky;
-    left: 100%;
-    bottom: 1.5rem;
-  }
+    .back-to-top-container {
+      display: inline-flex;
+      justify-content: flex-end;
+      flex-flow: row nowrap;
+      position: sticky;
+      left: 100%;
+      bottom: 1.5rem;
+    }
 
-  .back-to-top-container > * {
-    transition: transform 0.21s ease-in-out, opacity 0.21s;
-    transform: translateX(0);
-    opacity: 1;
-  }
+    .back-to-top-container > * {
+      transition: transform 0.21s ease-in-out, opacity 0.21s;
+      transform: translateX(0);
+      opacity: 1;
+    }
 
-  x-toggleclassonscroll.with-back-to-top-hidden .back-to-top-container > * {
-    transform: translateX(100%);
-    opacity: 0;
-  }
+    x-toggleclassonscroll.with-back-to-top--visible .back-to-top-container > * {
+      transform: translateX(100%);
+      opacity: 0;
+    }
   </style>
 </head>
 <body>
@@ -41,15 +42,16 @@ In this example component should toggle `.some-css-class`, on itself. whenever t
 </header>
 
 <x-toggleclassonscroll
-  classToToggle="with-back-to-top-hidden"
+  classToToggle="with-back-to-top--visible"
   trigger="header"
-  scrollOffsetRect="16% 0% 0% 0%">
+  threshold="[0.5, 1]"
+  rootMargin="16% 0% 0% 0%">
   <p>Lorem Ipsum ...</p>
-  
+
   <p>...</p>
-  
-  <div className="back-to-top-container">
-    <a href="#" className="back-to-top-btn x-btn x-filled x-theme-primary">
+
+  <div class="back-to-top-container">
+    <a href="#" class="back-to-top-btn x-btn x-filled x-theme-primary">
       <x-ripple></x-ripple>
       <span>Back to top</span>
     </a>
