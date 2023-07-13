@@ -20,17 +20,18 @@ export const xThemes = {
   },
 
   CHECKED_NAME = 'checked',
-  DEFAULT_CHECKED_NAME = 'defaultChecked',
-  THEME_NAME = 'theme',
-  VARIETY_NAME = 'variety',
-  PARENT_SELECTOR_NAME = 'parentSelector',
-  CLASS_NAME_ON_INTERSECT_NAME = 'classNameOnIntersect',
   CLASSNAME_TO_TOGGLE_NAME = 'classNameToToggle',
-  ROOT_NAME = 'root',
+  CLASS_NAME_ON_INTERSECT_NAME = 'classNameOnIntersect',
+  DEFAULT_CHECKED_NAME = 'defaultChecked',
+  PARENT_SELECTOR_NAME = 'parentSelector',
   ROOT_MARGIN_NAME = 'rootMargin',
-  THRESHHOLD_NAME = 'threshold',
+  ROOT_NAME = 'root',
   SCROLLABLE_PARENT_NAME = 'scrollableParent',
   SCROLLABLE_PARENT_SELECTOR_NAME = `${SCROLLABLE_PARENT_NAME}Selector`,
-  CONTAINER_NAME = 'container',
-  CONTAINER_SELECTOR_NAME = 'containerSelector'
+  THEME_NAME = 'theme',
+  THRESHHOLD_NAME = 'threshold',
+  TOGGLE_TARGET_NAME = 'toggleTarget',
+  TRIGGER_NAME = 'trigger',
+  TRIGGER_SELECTOR_NAME = 'triggerSelector',
+  VARIETY_NAME = 'variety'
 ;

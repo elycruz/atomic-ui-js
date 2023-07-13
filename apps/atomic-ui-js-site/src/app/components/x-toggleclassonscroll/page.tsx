@@ -2,7 +2,16 @@ import XToggleClassOnScrollComponent from 'atomic-ui-js-next/x-toggleclassonscro
 import XRippleComponent from 'atomic-ui-js-next/x-ripple';
 import styles from './page.module.scss';
 
-// const triggerThresholds = Array(100).fill(null, 0, 100).map((_, i) => i * 0.01);
+const triggerThresholds = Array(10).fill(null, 0, 10).map((_, i) => i * 0.1);
+
+interface LipsumArticleProps extends IntersectionObserverInit {
+  anchorTarget?: string;
+  className?: string;
+  classNameToToggle?: string;
+  scrollableParent?: string;
+  title?: string;
+  triggerTarget?: string;
+}
 
 const lipsumArticle = ({
   scrollableParent = null,
@@ -12,8 +21,8 @@ const lipsumArticle = ({
   anchorTarget = '#',
   classNameToToggle = styles['with-back-to-top-btn--visible'],
   rootMargin = '200px 0px 0px 0px',
-  thresholds = [0.5, 1]
-} = {}) => {
+  threshold = [0.5, 1]
+} = {} as LipsumArticleProps) => {
   return <article className={className}>
     {anchorTarget !== '#' && <a id={anchorTarget.slice(1)}></a>}
 
@@ -202,12 +211,12 @@ const lipsumArticle = ({
       <XToggleClassOnScrollComponent
         className={styles['back-to-top-btn-container']}
         classNameToToggle={classNameToToggle}
-        container={triggerTarget}
+        triggerSelector={triggerTarget}
         rootMargin={rootMargin}
-        threshold={thresholds}
+        threshold={threshold}
         scrollableParentSelector={scrollableParent}
       >
-        <a href={anchorTarget} className="back-to-top-btn x-btn x-filled x-theme-primary">
+        <a href={anchorTarget} className="back-to-top-btn x-btn x-filled x-raised x-theme-primary">
           <XRippleComponent></XRippleComponent>
           <span>Back to top</span>
         </a>
@@ -232,19 +241,18 @@ export default function XToggleonscrollPage() {
       triggerTarget: '.scrollable-elm-example-1 section',
       scrollableParent: '.scrollable-elm-example-1',
       title: 'Scrollable Element 1',
-      rootMargin: '200px 0px 0px 0px',
-      thresholds: [0.16]
+      rootMargin: '0px',
+      threshold: [0.16, 0.5, 1]
     })}
 
-    {lipsumArticle({
-      className: `${styles['scrollable-element-example']} scrollable-elm-example-2`,
-      anchorTarget: '#example-2',
-      triggerTarget: '.scrollable-elm-example-2 section',
-      scrollableParent: '.scrollable-elm-example-2',
-      title: 'Scrollable Element 2',
-      rootMargin: '200px 0px 0px 0px',
-      thresholds: [0.16]
-    })}
+    {/*{lipsumArticle({*/}
+    {/*  className: `${styles['scrollable-element-example']} scrollable-elm-example-2`,*/}
+    {/*  anchorTarget: '#example-2',*/}
+    {/*  triggerTarget: '.scrollable-elm-example-2 section',*/}
+    {/*  scrollableParent: '.scrollable-elm-example-2',*/}
+    {/*  title: 'Scrollable Element 2',*/}
+    {/*  threshold: 0.25*/}
+    {/*})}*/}
 
   </section>;
 }
