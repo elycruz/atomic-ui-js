@@ -77,8 +77,8 @@ export const navigationItems: NavItem[] = [{
         },
         {
           'label': 'X-toggleclassonscroll',
-          'uri': '/components/x-toggleclassonscroll/',
-          'alias': 'x-toggleclassonscroll'
+          'uri': '/components/x-toggleonscroll/',
+          'alias': 'x-toggleonscroll'
         }
       ]
     },
