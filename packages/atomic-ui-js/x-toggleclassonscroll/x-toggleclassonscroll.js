@@ -33,6 +33,10 @@ const
  * An element for quickly setting up a classname toggle when a trigger element scrolls in/out from view.
  *
  * @extends {ReactiveElement & HTMLElement}
+ *
+ * @shadowdom - None.
+ *
+ * @event 'x-toggleclassonscroll-intersection' {CustomEvent<{records: IntersectionObserverEntry}>} - Custom intersection event.
  */
 export class XToggleClassOnScrollElement extends ReactiveElement {
   static localName = xToggleClassOnScrollName;
