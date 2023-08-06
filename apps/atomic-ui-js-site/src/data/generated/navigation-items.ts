@@ -6,25 +6,6 @@ export const navigationItems: NavItem[] = [{
   'alias': 'app',
   'items': [
     {
-      'label': 'Api',
-      'uri': '/api/',
-      'alias': 'api',
-      'items': [
-        {
-          'label': 'Lipsum',
-          'uri': '/api/lipsum/',
-          'alias': 'lipsum',
-          'items': [
-            {
-              'label': '[numParagraphs]',
-              'uri': '/api/lipsum/[numParagraphs]/',
-              'alias': '[numParagraphs]'
-            }
-          ]
-        }
-      ]
-    },
-    {
       'label': 'Components',
       'uri': '/components/',
       'alias': 'components',
