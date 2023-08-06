@@ -1,6 +1,7 @@
 import XToggleClassOnScrollComponent from 'atomic-ui-js-next/x-toggleonscroll';
 import XRippleComponent from 'atomic-ui-js-next/x-ripple';
 import styles from './page.module.scss';
+import Lipsum from '@/components/lipsum';
 
 // const triggerThresholds = Array(10).fill(null, 0, 10).map((_, i) => i * 0.1);
 
@@ -34,6 +35,8 @@ const lipsumArticle = ({
     </header>
 
     <section>
+      <Lipsum numParagraphs={5}></Lipsum>
+
       <h4>&ldquo;Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci
         velit...&rdquo;</h4>
 
