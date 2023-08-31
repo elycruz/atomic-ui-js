@@ -2,15 +2,18 @@ import XToggleClassOnScrollComponent from 'atomic-ui-js-next/x-toggleclassonscro
 import XRippleComponent from 'atomic-ui-js-next/x-ripple';
 import styles from './page.module.scss';
 
-const triggerThresholds = Array(10).fill(null, 0, 10).map((_, i) => i * 0.1);
+// const triggerThresholds = Array(10).fill(null, 0, 10).map((_, i) => i * 0.1);
 
-interface LipsumArticleProps extends IntersectionObserverInit {
+interface LipsumArticleProps {
   anchorTarget?: string;
   className?: string;
   classNameToToggle?: string;
   scrollableParent?: string;
   title?: string;
   triggerTarget?: string;
+  root?: Element | Document | null;
+  rootMargin?: string;
+  threshold?: number | number[];
 }
 
 const lipsumArticle = ({

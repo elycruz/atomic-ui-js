@@ -1,4 +1,4 @@
-# x-toggleclassonscroll
+# x-toggleonscroll
 
 Toggles a classname on an element (itself by default) when ever target 'trigger' element is scrolled in, and/or out, from the 'container' element (default element used by `IntersectionObserver` (body/html element), by default).
 
@@ -27,11 +27,12 @@ Toggles a classname on an element (itself by default) when ever target 'trigger'
 - `classNameToToggle: string` - Optional classname to toggle on 
 - `classNameToggleTargetSelector: string` - Used in conjunction with `classNameToToggle` -
 - `classNameToggleTarget(): string` - Getter.
-- `onintersection: (event: CustomEvent<{records: IntersectionObserverEntry}>) => void` - Intersection event handling prop.
+- [tentative] `onintersection: (event: CustomEvent<{records: IntersectionObserverEntry}>) => void` - Intersection event handling prop.
+- `intersectionCallback: (records: IntersectionObserverEntry) => void` - Callback called on intersection event.
 
 ### Events
 
-- `'x-toggleclassonscroll-intersection': CustomEvent<{records: IntersectionObserverEntry}>`  - Custom intersection event.
+- `'x-toggleonscroll-intersection': CustomEvent<{records: IntersectionObserverEntry}>`  - Custom intersection event.
 
 ### Basic Use Case Example
 
@@ -71,7 +72,7 @@ In this example component should toggle `.some-css-class`, on itself. whenever t
   <h1>Header</h1>
 </header>
 
-<x-toggleclassonscroll
+<x-toggleonscroll
   classNameToToggle="back-to-top-btn--visible"
   classNameToggleTarget="back-to-top-btn"
   target="header"
@@ -87,10 +88,10 @@ In this example component should toggle `.some-css-class`, on itself. whenever t
       <span>Back to top</span>
     </a>
   </div>
-</x-toggleclassonscroll>
+</x-toggleonscroll>
 
 <script type="module">
-  import {XToggleClassOnScrollElement} from "atomic-ui-js/x-toggleclassonscroll";
+  import {XToggleClassOnScrollElement} from "atomic-ui-js/x-toggleonscroll";
 
   const {localName: xToggleClassOnScrollName} = XToggleClassOnScrollElement;
   
