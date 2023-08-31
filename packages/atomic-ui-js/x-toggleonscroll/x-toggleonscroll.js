@@ -15,7 +15,7 @@ import {
   typeOf
 } from '../utils/index.js';
 
-export const xToggleClassOnScrollName = 'x-toggleclassonscroll';
+export const xToggleClassOnScrollName = 'x-toggleonscroll';
 
 const
 
@@ -28,7 +28,7 @@ const
 
 /**
  * @class XToggleClassOnScrollElement
- * @element x-toggleclassonscroll
+ * @element x-toggleonscroll
  *
  * An element for quickly setting up a classname toggle when a trigger element scrolls in/out from view.
  *
@@ -36,7 +36,7 @@ const
  *
  * @shadowdom - None.
  *
- * @event 'x-toggleclassonscroll-intersection' {CustomEvent<{records: IntersectionObserverEntry}>} - Custom intersection event.
+ * @event 'x-toggleonscroll-intersection' {CustomEvent<{records: IntersectionObserverEntry}>} - Custom intersection event.
  */
 export class XToggleClassOnScrollElement extends ReactiveElement {
   static localName = xToggleClassOnScrollName;
