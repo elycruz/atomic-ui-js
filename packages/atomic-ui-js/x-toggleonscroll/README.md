@@ -23,11 +23,25 @@ Toggles a classname on an element (itself by default) when ever target 'trigger'
 - `targetSelector: string` - Element to observe for intersections on `root`
 - `target(): Element` - Target element getter;  Default `self`.
 - `threshold: number | number[]` - Intersection threshold(s) on which to trigger observer callback.
-- `axis: 'x' | 'y' | 'xy'` - Axis we're allowing user-land callback to be triggered on;  E.g., when 
-- `classNameToToggle: string` - Optional classname to toggle on 
-- `classNameToggleTargetSelector: string` - Used in conjunction with `classNameToToggle` -
-- `classNameToggleTarget(): string` - Getter.
+- `axis: 'x' | 'y' | 'xy'` - Axis we're allowing user-land callback to be triggered on. 
+- `classNameToToggle: string` - Optional classname to toggle on toggle target
+- `classNameToToggleTargetSelector: string` - Used in conjunction with `classNameToToggle` -
+- `classNameToToggleTarget(): string` - Getter.
 - `onintersection: (event: CustomEvent<{records: IntersectionObserverEntry}>) => void` - Intersection event handling prop.
+
+### Alternate API:
+
+- `get root: Element | Document`
+- `rootSelector: string`
+- `rootMargin: string`
+- `get intersectingTarget: Element`
+- `intersectingTargetSelector: string`
+- `threshold: number | number[]`
+- `axis: 'x' | 'y' | 'xy'`
+- `toggleClassName: string`
+- `get toggleClassNameTarget: Element | Document`
+- `toggleClassNameTargetSelector: string`
+- `intersectionCallback: (records: IntersectionObserverEntry, observer: IntersectionObserver) => void`
 
 ### Events
 
@@ -71,37 +85,38 @@ In this example component should toggle `.some-css-class`, on itself. whenever t
   <h1>Header</h1>
 </header>
 
-<x-toggleonscroll
-  classNameToToggle="back-to-top-btn--visible"
-  classNameToggleTarget="back-to-top-btn"
-  target="header"
-  threshold="[0.5, 1]"
-  rootMargin="16% 0% 0% 0%">
+<main>
   <p>Lorem Ipsum ...</p>
 
   <p>...</p>
+</main>
 
-  <div class="back-to-top-container">
-    <a href="#" class="back-to-top-btn x-btn x-filled x-theme-primary">
-      <x-ripple></x-ripple>
-      <span>Back to top</span>
-    </a>
-  </div>
+<x-toggleonscroll
+  classNameToToggle="back-to-top-btn--visible"
+  classNameToToggleTarget="back-to-top-btn"
+  class="back-to-top-container"
+  target="header"
+  threshold="[0.5, 1]"
+  rootMargin="16% 0% 0% 0%">
+  <a href="#" class="back-to-top-btn x-btn x-filled x-theme-primary">
+    <x-ripple></x-ripple>
+    <span>Back to top</span>
+  </a>
 </x-toggleonscroll>
 
 <script type="module">
-  import {XToggleClassOnScrollElement} from "atomic-ui-js/x-toggleonscroll";
+  import {XToggleOnScrollElement} from "atomic-ui-js/x-toggleonscroll";
 
-  const {localName: xToggleClassOnScrollName} = XToggleClassOnScrollElement;
+  const {localName: xToggleOnScrollName} = XToggleOnScrollElement;
   
   window.addEventListener('DOMContentLoaded', () => {
-      document.querySelector(xToggleClassOnScrollName)
-              .addEventListener(`${xToggleClassOnScrollName}-intersection`, e => {
+      document.querySelector(xToggleOnScrollName)
+              .addEventListener(`${xToggleOnScrollName}-intersection`, e => {
                   const {currentTarget, detail: {records}} = e;
                   // Handle intersection observer callback result (records)
                   records.forEach(r => {
                       // In this scenario, toggle DOM rendering of our '.back-to-top-container' 
-                      (currentTarget.classNameToggleTarget ?? r.target).hidden = r.isIntersecting;
+                      (currentTarget.classNameToToggleTarget ?? r.target).hidden = r.isIntersecting;
                   });
               });
   }, {once: true});

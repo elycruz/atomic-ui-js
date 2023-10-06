@@ -8,20 +8,21 @@ interface LipsumArticleProps /*extends IntersectionObserverInit*/ {
   anchorTarget?: string;
   className?: string;
   classNameToToggle?: string;
-  scrollableParent?: string;
+  classNameToToggleTarget?: string;
   title?: string;
-  triggerTarget?: string;
-  root?: Element | Document | null;
+  trigger?: string;
+  root?: string;
   rootMargin?: string;
   threshold?: number | number[];
 }
 
 const lipsumArticle = ({
-  scrollableParent = null,
+  root = null,
   className = 'xtoggle-scroll-target',
-  triggerTarget = '.xtoggle-scroll-target',
+  trigger = '#top-anchor',
   title = 'Using Page Scrollbar',
-  anchorTarget = '#',
+  anchorTarget = '#top-anchor',
+  classNameToToggleTarget = '.xtoggle-scroll-target',
   classNameToToggle = styles['with-back-to-top-btn--visible'],
   rootMargin = '200px 0px 0px 0px',
   threshold = [0.5, 1]
@@ -214,10 +215,11 @@ const lipsumArticle = ({
       <XToggleClassOnScrollComponent
         className={styles['back-to-top-btn-container']}
         classNameToToggle={classNameToToggle}
-        triggerSelector={triggerTarget}
+        classNameToToggleTargetSelector={classNameToToggleTarget}
+        triggerSelector={trigger}
         rootMargin={rootMargin}
         threshold={threshold}
-        scrollableParentSelector={scrollableParent}
+        rootSelector={root}
       >
         <a href={anchorTarget} className="back-to-top-btn x-btn x-filled x-raised x-theme-primary">
           <XRippleComponent></XRippleComponent>
@@ -236,13 +238,13 @@ export default function XToggleonscrollPage() {
       </hgroup>
     </header>
 
-    {lipsumArticle()}
+    {lipsumArticle({anchorTarget: '#top-anchor'})}
 
     {lipsumArticle({
       className: `${styles['scrollable-element-example']} scrollable-elm-example-1`,
       anchorTarget: '#example-1',
-      triggerTarget: '.scrollable-elm-example-1 section',
-      scrollableParent: '.scrollable-elm-example-1',
+      trigger: '.scrollable-elm-example-1 section',
+      root: '.scrollable-elm-example-1',
       title: 'Scrollable Element 1',
       rootMargin: '0px',
       threshold: [0.16, 0.5, 1]
@@ -251,8 +253,8 @@ export default function XToggleonscrollPage() {
     {/*{lipsumArticle({*/}
     {/*  className: `${styles['scrollable-element-example']} scrollable-elm-example-2`,*/}
     {/*  anchorTarget: '#example-2',*/}
-    {/*  triggerTarget: '.scrollable-elm-example-2 section',*/}
-    {/*  scrollableParent: '.scrollable-elm-example-2',*/}
+    {/*  trigger: '.scrollable-elm-example-2 section',*/}
+    {/*  root: '.scrollable-elm-example-2',*/}
     {/*  title: 'Scrollable Element 2',*/}
     {/*  threshold: 0.25*/}
     {/*})}*/}
