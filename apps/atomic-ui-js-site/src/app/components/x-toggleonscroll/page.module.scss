@@ -1,4 +1,5 @@
 .with-back-to-top-btn--visible {
+  &.back-to-top-btn-container > *,
   .back-to-top-btn-container > * {
     transform: translateX(0);
     opacity: 1;

@@ -103,6 +103,7 @@ export class XToggleOnScrollElement extends ReactiveElement {
 
   /**
    * @property {boolean} reverse
+   * @property {string} classNameToToggleTargetSelector
    */
 
   /**
@@ -139,8 +140,10 @@ export class XToggleOnScrollElement extends ReactiveElement {
    * @type {Element | Document}
    */
   get root() {
-    if (!this.#root && this.rootSelector) {
-      this.#root = this.ownerDocument?.querySelector(this.rootSelector);
+    if (!this.#root) {
+      this.#root = this.rootSelector ?
+        this.ownerDocument?.querySelector(this.rootSelector) :
+        null;
     }
 
     return this.#root;
@@ -180,8 +183,8 @@ export class XToggleOnScrollElement extends ReactiveElement {
    */
   get intersectingTarget() {
     if (!this.#intersectingTarget) {
-      this.#intersectingTarget = this.#intersectingTargetSelector ?
-        this.ownerDocument?.querySelector(this.#intersectingTargetSelector) :
+      this.#intersectingTarget = this.#intersectingTargetSelector  ?
+        (this.root ?? this.ownerDocument).querySelector(this.#intersectingTargetSelector) :
         this;
     }
 
@@ -216,9 +219,9 @@ export class XToggleOnScrollElement extends ReactiveElement {
   #classNameToToggleTarget;
 
   get classNameToToggleTarget() {
-    if (!this.#classNameToToggleTarget) {
+    if (!this.#classNameToToggleTarget && this.classNameToToggleTargetSelector) {
       this.#classNameToToggleTarget = this.classNameToToggle ?
-        this.ownerDocument?.querySelector(this.classNameToToggle) :
+        this.ownerDocument?.querySelector(this.classNameToToggleTargetSelector) :
         null;
     }
 
@@ -263,6 +266,45 @@ export class XToggleOnScrollElement extends ReactiveElement {
     this.requestUpdate(THRESHOLD_NAME, prevValue);
   }
 
+  #defaultObserverCallback(records) {
+    // Loop through records, if required
+    if (this.classNameToToggle && this.classNameToToggleTarget) {
+      records.forEach(r => {
+        console.log(r, this.threshold);
+        const shouldTriggerAction = this.reverse ?
+          !r.isIntersecting : r.isIntersecting;
+
+        this.performClassNameToggle(shouldTriggerAction);
+      });
+
+      // Dispatch x-toggleonscroll-intersection event
+      this.dispatchEvent(new CustomEvent(xToggleOnScrollIntersectionEvName, {
+        composed: true,
+        bubbles: false
+      }));
+    }
+  }
+
+  #observerCallback;
+
+  get observerCallback() {
+    return this.#observerCallback ?? this.#defaultObserverCallback;
+  }
+
+  set observerCallback(fn) {
+    const prevValue = this.#observerCallback;
+
+    if (fn && fn instanceof Function) {
+      this.#observerCallback = fn;
+    } else if (fn === null) {
+      this.#observerCallback = this.#defaultObserverCallback;
+    } else {
+      return;
+    }
+
+    this.requestUpdate('observerCallback', prevValue);
+  }
+
   /**
    * Holds internal boolean flags.
    *
@@ -280,6 +322,7 @@ export class XToggleOnScrollElement extends ReactiveElement {
 
     this.reverse = false;
     this.rootMargin = '0px';
+    this.#observerCallback = this.#defaultObserverCallback;
   }
 
   createRenderRoot() {
@@ -334,17 +377,18 @@ export class XToggleOnScrollElement extends ReactiveElement {
       const intersectingTargetSelectorChanged = _changedProps.has(INTERSECTING_TARGET_NAME),
         rootSelectorChanged = _changedProps.has(ROOT_SELECTOR_NAME),
         rootMarginChanged = _changedProps.has(ROOT_MARGIN_NAME),
-        thresholdChanged = _changedProps.has(THRESHOLD_NAME);
+        thresholdChanged = _changedProps.has(THRESHOLD_NAME),
+        observerCallbackChanged = _changedProps.has('observerCallback');
 
       // Refresh intersection observer if any of it's related properties changed.
       if (rootSelectorChanged || intersectingTargetSelectorChanged ||
-        rootMarginChanged || thresholdChanged) {
+        rootMarginChanged || thresholdChanged || observerCallbackChanged) {
         this.#refreshObservers();
       }
     });
   }
 
-  #performClassNameToggle = (shouldToggleOn) => {
+  performClassNameToggle = (shouldToggleOn) => {
     const {classNameToToggle, classNameToToggleTarget} = this;
 
     if (shouldToggleOn && !(this.#flags & CLASSNAME_SHOWING)) this.#flags |= CLASSNAME_SHOWING;
@@ -364,28 +408,21 @@ export class XToggleOnScrollElement extends ReactiveElement {
   #refreshObservers() {
     this.#clearObservers();
 
-    const observerOptions = {
-        rootMargin: this.rootMargin,
-        threshold: this.threshold
-      },
-      {root} = this;
+    const observerOptions = {},
 
+      { root,
+        rootMargin,
+        threshold,
+        intersectingTarget
+      } = this;
+
+    if (!intersectingTarget) return;
+
+    if (rootMargin) observerOptions.rootMargin = rootMargin;
+    if (threshold) observerOptions.threshold = threshold;
     if (root) observerOptions.root = root;
 
-    this.#intersectionObserver = new IntersectionObserver(records => {
-      // Loop through records, if required
-      if (this.classNameToToggle && this.classNameToToggleTarget) {
-        records.forEach(r => {
-          this.#performClassNameToggle(this.reverse ? !r.isIntersecting : r.isIntersecting);
-        });
-      }
-
-      // Dispatch x-toggleonscroll-intersection event
-      this.dispatchEvent(new CustomEvent(xToggleOnScrollIntersectionEvName, {
-        composed: true,
-        bubbles: false
-      }));
-    }, observerOptions);
+    this.#intersectionObserver = new IntersectionObserver(this.observerCallback.bind(this), observerOptions);
 
     this.#intersectionObserver.observe(this.intersectingTarget);
   }

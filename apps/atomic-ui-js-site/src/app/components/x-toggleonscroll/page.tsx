@@ -2,18 +2,18 @@ import XToggleClassOnScrollComponent from 'atomic-ui-js-next/x-toggleonscroll';
 import XRippleComponent from 'atomic-ui-js-next/x-ripple';
 import styles from './page.module.scss';
 
-// const triggerThresholds = Array(10).fill(null, 0, 10).map((_, i) => i * 0.1);
-
 interface LipsumArticleProps /*extends IntersectionObserverInit*/ {
   anchorTarget?: string;
   className?: string;
   classNameToToggle?: string;
   classNameToToggleTarget?: string;
+  toggleTarget?: string;
   title?: string;
   trigger?: string;
   root?: string;
   rootMargin?: string;
   threshold?: number | number[];
+  reverse?: boolean;
 }
 
 const lipsumArticle = ({
@@ -22,13 +22,14 @@ const lipsumArticle = ({
   trigger = '#top-anchor',
   title = 'Using Page Scrollbar',
   anchorTarget = '#top-anchor',
-  classNameToToggleTarget = '.xtoggle-scroll-target',
+  toggleTarget = `.${styles['back-to-top-btn-container']}`,
   classNameToToggle = styles['with-back-to-top-btn--visible'],
-  rootMargin = '200px 0px 0px 0px',
-  threshold = [0.5, 1]
+  rootMargin = '-200px 0px 0px 0px',
+  threshold = [0.5, 1],
+  reverse = false
 } = {} as LipsumArticleProps) => {
   return <article className={className}>
-    {anchorTarget !== '#' && <a id={anchorTarget.slice(1)}></a>}
+    {anchorTarget && anchorTarget !== '#' && <a id={anchorTarget.slice(1)}></a>}
 
     <header>
       <span className="x-h3">{title}</span>
@@ -215,8 +216,9 @@ const lipsumArticle = ({
       <XToggleClassOnScrollComponent
         className={styles['back-to-top-btn-container']}
         classNameToToggle={classNameToToggle}
-        classNameToToggleTargetSelector={classNameToToggleTarget}
-        triggerSelector={trigger}
+        classNameToToggleTargetSelector={toggleTarget}
+        intersectingTargetSelector={trigger}
+        reverse={reverse}
         rootMargin={rootMargin}
         threshold={threshold}
         rootSelector={root}
@@ -238,26 +240,46 @@ export default function XToggleonscrollPage() {
       </hgroup>
     </header>
 
-    {lipsumArticle({anchorTarget: '#top-anchor'})}
+    {lipsumArticle({ reverse: true })}
 
     {lipsumArticle({
       className: `${styles['scrollable-element-example']} scrollable-elm-example-1`,
       anchorTarget: '#example-1',
-      trigger: '.scrollable-elm-example-1 section',
+      toggleTarget: '.scrollable-elm-example-1',
+      trigger: ':scope section',
       root: '.scrollable-elm-example-1',
       title: 'Scrollable Element 1',
-      rootMargin: '0px',
-      threshold: [0.16, 0.5, 1]
-    })}
+      rootMargin: '-1% -10% -1% -10%',
+      threshold: Array(50)
+        .fill(null, 0, 50)
+        .map((_, i) => (i + 1) * .02),
+      /*observerCallback: (records, observer) => {
+        'use client';
+        let target;
+        let scrollingParent;
 
-    {/*{lipsumArticle({*/}
-    {/*  className: `${styles['scrollable-element-example']} scrollable-elm-example-2`,*/}
-    {/*  anchorTarget: '#example-2',*/}
-    {/*  trigger: '.scrollable-elm-example-2 section',*/}
-    {/*  root: '.scrollable-elm-example-2',*/}
-    {/*  title: 'Scrollable Element 2',*/}
-    {/*  threshold: 0.25*/}
-    {/*})}*/}
+        for (const r of records) {
+          if (!target) {
+            target = r.target;
+            scrollingParent = target.closest('.scrollable-elm-example-1');
+          }
+
+          console.log(r);
+
+          if (scrollingParent.scrollTop)
+            target.performClassNameToggle(
+              r.isIntersecting ||
+              observer.thresholds.some(n => n < r.intersectionRatio)
+            );
+        }
+
+        // Dispatch x-toggleonscroll-intersection event
+        target.dispatchEvent(new CustomEvent(target.xToggleOnScrollIntersectionEvName, {
+          composed: true,
+          bubbles: false
+        }));
+      }*/
+    })}
 
   </section>;
 }
