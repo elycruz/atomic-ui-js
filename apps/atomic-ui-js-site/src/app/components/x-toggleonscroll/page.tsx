@@ -1,6 +1,7 @@
 import XToggleClassOnScrollComponent from 'atomic-ui-js-next/x-toggleonscroll';
 import XRippleComponent from 'atomic-ui-js-next/x-ripple';
 import styles from './page.module.scss';
+import {FeedbackExample} from '@/components/feedback-example/feedback-example';
 
 interface LipsumArticleProps /*extends IntersectionObserverInit*/ {
   anchorTarget?: string;
@@ -233,7 +234,7 @@ const lipsumArticle = ({
 };
 
 export default function XToggleonscrollPage() {
-  return <section>
+  return <section className={styles['main-section']}>
     <header>
       <hgroup>
         <h2>XToggleClassOnScroll Page</h2>
@@ -281,5 +282,6 @@ export default function XToggleonscrollPage() {
       }*/
     })}
 
+    <FeedbackExample/>
   </section>;
 }
