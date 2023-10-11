@@ -20,8 +20,6 @@ export const watch = async () => {
       log('Awaiting changes ...');
     })
     .on('all', async (event, path) => {
-      log(event, path);
-
       switch (event) {
         case 'change':
           log(`[watch:change] - ${path} changed.`);

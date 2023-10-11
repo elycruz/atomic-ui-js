@@ -231,11 +231,11 @@ export default function XToggleonscrollPage() {
       intersectingTarget: ':scope section',
       root: '.scrollable-elm-example-1',
       title: 'Scrollable Element 1',
-      rootMargin: '-1% -10% -1% -10%',
+      rootMargin: '0px',
       // reverse: true,
-      threshold: Array(50)
-        .fill(null, 0, 50)
-        .map((_, i) => (i + 1) * .02),
+      threshold: Array(10)
+        .fill(null, 0, 10)
+        .map((_, i) => (i + 1) * .1),
       /*observerCallback: (records, observer) => {
         'use client';
         let target;

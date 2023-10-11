@@ -18,24 +18,30 @@ export interface BackToTopBtnProps extends PropsWithChildren<any> { //<JSX.Intri
   classNameToToggle?: string;
 }
 
+let _uuid = 0;
+
 const defaultClassName = styles['back-to-top-btn-container'],
   defaultClassNameToToggle = styles['back-to-top-btn-container--visible'];
+
 export function BackToTopBtn({
   anchorTarget = '#site-top',
   root,
   rootMargin = '-200px 0px 0px 0px',
   threshold = [0.5, 1],
   reverse = true,
-  toggleTarget = `.${defaultClassName}`,
+  toggleTarget,
   className: inClassName,
   intersectingTarget = '#site-top',
   classNameToToggle = defaultClassNameToToggle,
   children
 }: BackToTopBtnProps) {
+  const id = `back-to-top-btn-${_uuid++}`;
+
   return <XToggleOnScrollComponent
+    id={id}
     className={[defaultClassName, inClassName ?? ''].join(' ')}
     classNameToToggle={classNameToToggle}
-    classNameToToggleTargetSelector={toggleTarget}
+    classNameToToggleTargetSelector={toggleTarget ?? `#${id}`}
     intersectingTargetSelector={intersectingTarget}
     reverse={reverse}
     rootMargin={rootMargin}
