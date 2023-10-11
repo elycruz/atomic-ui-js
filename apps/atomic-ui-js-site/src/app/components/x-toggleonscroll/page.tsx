@@ -12,8 +12,8 @@ const lipsumArticle = ({
   intersectingTarget = '#top-anchor',
   title = 'Using Page Scrollbar',
   anchorTarget = '#top-anchor',
-  rootMargin = '-200px 0px 0px 0px',
-  threshold = [0.5, 1],
+  rootMargin ,
+  threshold,
   reverse = false
 } = {} as LipsumArticleProps) => {
   return <article className={className}>
@@ -217,51 +217,32 @@ export default function XToggleonscrollPage() {
   return <section className={styles['main-section']}>
     <header>
       <hgroup>
-        <h2>XToggleClassOnScroll Page</h2>
+        <h2>XToggleOnScroll Page</h2>
       </hgroup>
     </header>
 
-    {lipsumArticle({ reverse: true })}
+    <article>
+      <p>Allows actions to be triggered on element intersections.</p>
+      <p>Example: Back to top buttons</p>
+    </article>
+
+    {lipsumArticle({
+      rootMargin: '200px',
+      threshold: [0.5, 1],
+      reverse: true
+    })}
 
     {lipsumArticle({
       className: `${styles['scrollable-element-example']} scrollable-elm-example-1`,
       anchorTarget: '#example-1',
       toggleTarget: '.scrollable-elm-example-1',
       classNameToToggle: 'scrollable-elm-example-1--with-visible-back-to-top-btn',
-      intersectingTarget: ':scope section',
+      intersectingTarget: '#example-1',
       root: '.scrollable-elm-example-1',
       title: 'Scrollable Element 1',
-      rootMargin: '0px',
-      // reverse: true,
-      threshold: Array(10)
-        .fill(null, 0, 10)
-        .map((_, i) => (i + 1) * .1),
-      /*observerCallback: (records, observer) => {
-        'use client';
-        let target;
-        let scrollingParent;
-
-        for (const r of records) {
-          if (!target) {
-            target = r.target;
-            scrollingParent = target.closest('.scrollable-elm-example-1');
-          }
-
-          console.log(r);
-
-          if (scrollingParent.scrollTop)
-            target.performClassNameToggle(
-              r.isIntersecting ||
-              observer.thresholds.some(n => n < r.intersectionRatio)
-            );
-        }
-
-        // Dispatch x-toggleonscroll-intersection event
-        target.dispatchEvent(new CustomEvent(target.xToggleOnScrollIntersectionEvName, {
-          composed: true,
-          bubbles: false
-        }));
-      }*/
+      rootMargin: '200px',
+      // threshold: [0.5, 1],
+      reverse: true,
     })}
 
     <FeedbackExample/>

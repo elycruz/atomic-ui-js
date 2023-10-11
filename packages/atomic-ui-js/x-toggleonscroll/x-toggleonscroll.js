@@ -38,15 +38,24 @@ const
  *
  * @extends {ReactiveElement & HTMLElement}
  *
- * @todo Change component name to 'x-toggleonintersect' - Better description of what the component does.
  * @todo Should throw an error when `intersectingTarget` is not a descendant of `root`.
  *
  * @shadowdom - None.
  *
  * @event 'x-toggleonscroll-intersection' {CustomEvent<{records: IntersectionObserverEntry}>} - Custom intersection event.
+ *
+ * @attr {string} classNameToToggle
+ * @attr {string} toggleTarget
+ * @attr {string} intersectingTarget
+ * @attr {string} root
+ * @attr {string} rootMargin
+ * @attr {boolean} reverse
+ * @attr {number|number[]} threshold
  */
 export class XToggleOnScrollElement extends ReactiveElement {
   /**
+   * Element name.
+   *
    * @type {string}
    */
   static localName = xToggleOnScrollName;
@@ -102,8 +111,8 @@ export class XToggleOnScrollElement extends ReactiveElement {
   };
 
   /**
-   * @property {boolean} reverse
-   * @property {string} classNameToToggleTargetSelector
+   * @property {boolean} reverse - Causes intersection action to be triggered on lack of intersection.
+   * @property {string} classNameToToggleTargetSelector -
    */
 
   /**

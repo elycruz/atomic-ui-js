@@ -1,6 +1,10 @@
 # x-toggleonscroll
 
-Toggles a classname on an element (itself by default) when ever target 'trigger' element is scrolled in, and/or out, from the 'container' element (default element used by `IntersectionObserver` (body/html element), by default).
+Allows triggering an action when an observed element's intersection occurs;  E.g., a `root` element's container boundary has (or hasn't) been intersected. Additionally, allows a classname to be easily toggled on/off when the intersection, or a lack thereof (via `reverse` prop./attrib.), has occurred (via `classNameToToggle`, `toggleTarget*`.
+
+## How it works
+
+Internally the element manages an `IntersectionObserver` instance and updates it whenever component props./attribs. have changed.
 
 ## Potential Alternate Names
 
@@ -20,27 +24,16 @@ Toggles a classname on an element (itself by default) when ever target 'trigger'
 - `rootSelector: string` - Scrollable ancestor element to observe intersections on;  Documents scroll/view pane, by default.
 - `root(): Element | Document` - Scroll element getter;  Default `Document`.
 - `rootMargin: string` - Padding to add to the root bounds view pane (see MDN Intersection Observer docs for more).
-- `targetSelector: string` - Element to observe for intersections on `root`
-- `target(): Element` - Target element getter;  Default `self`.
+- `observedSelector: string` - Element to observe for intersections on `root`
+- `observed(): Element` - Target element getter;  Default `self`.
 - `threshold: number | number[]` - Intersection threshold(s) on which to trigger observer callback.
-- `axis: 'x' | 'y' | 'xy'` - Axis we're allowing user-land callback to be triggered on. 
 - `classNameToToggle: string` - Optional classname to toggle on toggle target
-- `classNameToToggleTargetSelector: string` - Used in conjunction with `classNameToToggle` -
-- `classNameToToggleTarget(): string` - Getter.
+- `toggleTargetSelector: string` - Used in conjunction with `classNameToToggle` -
+- `toggleTarget(): string` - Getter.
 - `onintersection: (event: CustomEvent<{records: IntersectionObserverEntry}>) => void` - Intersection event handling prop.
 
 ### Alternate API:
 
-- `get root: Element | Document`
-- `rootSelector: string`
-- `rootMargin: string`
-- `get intersectingTarget: Element`
-- `intersectingTargetSelector: string`
-- `threshold: number | number[]`
-- `axis: 'x' | 'y' | 'xy'`
-- `toggleClassName: string`
-- `get toggleClassNameTarget: Element | Document`
-- `toggleClassNameTargetSelector: string`
 - `intersectionCallback: (records: IntersectionObserverEntry, observer: IntersectionObserver) => void`
 
 ### Events
