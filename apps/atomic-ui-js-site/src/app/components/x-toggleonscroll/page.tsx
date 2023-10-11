@@ -1,30 +1,17 @@
-import XToggleClassOnScrollComponent from 'atomic-ui-js-next/x-toggleonscroll';
-import XRippleComponent from 'atomic-ui-js-next/x-ripple';
 import styles from './page.module.scss';
 import {FeedbackExample} from '@/components/feedback-example/feedback-example';
+import {BackToTopBtn, BackToTopBtnProps} from '@/components/examples/back-to-top-btn';
 
-interface LipsumArticleProps /*extends IntersectionObserverInit*/ {
-  anchorTarget?: string;
-  className?: string;
-  classNameToToggle?: string;
-  classNameToToggleTarget?: string;
-  toggleTarget?: string;
+interface LipsumArticleProps extends BackToTopBtnProps {
   title?: string;
-  trigger?: string;
-  root?: string;
-  rootMargin?: string;
-  threshold?: number | number[];
-  reverse?: boolean;
 }
 
 const lipsumArticle = ({
-  root = null,
+  root ,
   className = 'xtoggle-scroll-target',
-  trigger = '#top-anchor',
+  intersectingTarget = '#top-anchor',
   title = 'Using Page Scrollbar',
   anchorTarget = '#top-anchor',
-  toggleTarget = `.${styles['back-to-top-btn-container']}`,
-  classNameToToggle = styles['with-back-to-top-btn--visible'],
   rootMargin = '-200px 0px 0px 0px',
   threshold = [0.5, 1],
   reverse = false
@@ -214,21 +201,14 @@ const lipsumArticle = ({
           <span>Lorem Ipsum</span></a>
       </p>
 
-      <XToggleClassOnScrollComponent
-        className={styles['back-to-top-btn-container']}
-        classNameToToggle={classNameToToggle}
-        classNameToToggleTargetSelector={toggleTarget}
-        intersectingTargetSelector={trigger}
+      <BackToTopBtn
+        anchorTarget={anchorTarget}
+        intersectingTarget={intersectingTarget}
         reverse={reverse}
         rootMargin={rootMargin}
         threshold={threshold}
-        rootSelector={root}
-      >
-        <a href={anchorTarget} className="back-to-top-btn x-btn x-filled x-raised x-theme-primary">
-          <XRippleComponent></XRippleComponent>
-          <span>Back to top</span>
-        </a>
-      </XToggleClassOnScrollComponent>
+        root={root}
+      />
     </section>
   </article>;
 };
@@ -247,10 +227,12 @@ export default function XToggleonscrollPage() {
       className: `${styles['scrollable-element-example']} scrollable-elm-example-1`,
       anchorTarget: '#example-1',
       toggleTarget: '.scrollable-elm-example-1',
-      trigger: ':scope section',
+      classNameToToggle: 'scrollable-elm-example-1--with-visible-back-to-top-btn',
+      intersectingTarget: ':scope section',
       root: '.scrollable-elm-example-1',
       title: 'Scrollable Element 1',
       rootMargin: '-1% -10% -1% -10%',
+      // reverse: true,
       threshold: Array(50)
         .fill(null, 0, 50)
         .map((_, i) => (i + 1) * .02),

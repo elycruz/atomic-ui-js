@@ -377,12 +377,15 @@ export class XToggleOnScrollElement extends ReactiveElement {
       const intersectingTargetSelectorChanged = _changedProps.has(INTERSECTING_TARGET_NAME),
         rootSelectorChanged = _changedProps.has(ROOT_SELECTOR_NAME),
         rootMarginChanged = _changedProps.has(ROOT_MARGIN_NAME),
+        classNameToToggleChanged = _changedProps.has(CLASSNAME_TO_TOGGLE_NAME),
+        classNameToToggleTargetSelectorChanged = _changedProps.has(CLASSNAME_TO_TOGGLE_TARGET_SELECTOR_NAME),
         thresholdChanged = _changedProps.has(THRESHOLD_NAME),
         observerCallbackChanged = _changedProps.has('observerCallback');
 
       // Refresh intersection observer if any of it's related properties changed.
       if (rootSelectorChanged || intersectingTargetSelectorChanged ||
-        rootMarginChanged || thresholdChanged || observerCallbackChanged) {
+        rootMarginChanged || thresholdChanged || observerCallbackChanged ||
+        classNameToToggleChanged || classNameToToggleTargetSelectorChanged) {
         this.#refreshObservers();
       }
     });
