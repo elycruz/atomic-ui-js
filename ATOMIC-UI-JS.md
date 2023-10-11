@@ -92,6 +92,7 @@ Default color variants:
 
 - `x-ripple`
 - `x-field`
+- `x-toggleonscroll`
 
 ### Tentative/For future development
 
