@@ -118,12 +118,23 @@ General:
 - SPA (nextjs/react).
 - SPA (custom 'vanilla js' approach).
 
-### SPA (custom/vanillajs)
+### SPA (custom/vanilla-js)
 
 ### Todos
 
 - Can we perform custom "dropdown" menu animation with `details` element?
 - [ ] Move story styles into './apps/atomic-ui-js-site'.
+
+## Font Icons
+
+Solution here is similar to SVG Icons solution:
+
+1.  If possible export icons, to a given page, to an font-icon - If not possible an overall application font-icon file would suffice.
+2.  Load font icon file in application and allow icon component to load/set icons, where required.
+
+### From the icon component side
+
+Use ligatures, etc., to render the given font-icon variant (see [material icons ligature examples](https://developers.google.com/fonts/docs/material_icons))
 
 ## SVG Icons
 
@@ -152,6 +163,7 @@ What solution can we implement to allow icons to be easily used in all UI projec
 ### FAQs
 
 - Can we reference svg sprites, from an `svg` element that contains a `hidden` attribute?  
+- Do empty spaces come up as `TextNode` in html? They are listed as child nodes but will not show up when querying an element's `children` prop.. 
 
 ### References:
 
