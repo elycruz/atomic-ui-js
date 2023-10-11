@@ -1,4 +1,4 @@
-import {fib, factorsOf} from 'atomic-ui-js/utils/index.js';
+import {fib, factorsOf} from 'atomic-ui-js/utils';
 import styles from './page.module.scss';
 
 const boxCName = styles.box;

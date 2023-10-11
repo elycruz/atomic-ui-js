@@ -16,31 +16,6 @@ export const navigationItems: NavItem[] = [{
           'alias': 'app-bar'
         },
         {
-          'label': 'Button',
-          'uri': '/components/button/',
-          'alias': 'button'
-        },
-        {
-          'label': 'Card',
-          'uri': '/components/card/',
-          'alias': 'card'
-        },
-        {
-          'label': 'Checkbox',
-          'uri': '/components/checkbox/',
-          'alias': 'checkbox'
-        },
-        {
-          'label': 'Colors',
-          'uri': '/components/colors/',
-          'alias': 'colors'
-        },
-        {
-          'label': 'Copy',
-          'uri': '/components/copy/',
-          'alias': 'copy'
-        },
-        {
           'label': 'Field',
           'uri': '/components/field/',
           'alias': 'field'
@@ -56,19 +31,9 @@ export const navigationItems: NavItem[] = [{
           'alias': 'menu'
         },
         {
-          'label': 'Radio',
-          'uri': '/components/radio/',
-          'alias': 'radio'
-        },
-        {
           'label': 'Ripple',
           'uri': '/components/ripple/',
           'alias': 'ripple'
-        },
-        {
-          'label': 'Spacing',
-          'uri': '/components/spacing/',
-          'alias': 'spacing'
         },
         {
           'label': 'X-appbar',
@@ -79,6 +44,48 @@ export const navigationItems: NavItem[] = [{
           'label': 'X-toggleonscroll',
           'uri': '/components/x-toggleonscroll/',
           'alias': 'x-toggleonscroll'
+        }
+      ]
+    },
+    {
+      'label': 'Css-components',
+      'uri': '/css-components/',
+      'alias': 'css-components',
+      'items': [
+        {
+          'label': 'Button',
+          'uri': '/css-components/button/',
+          'alias': 'button'
+        },
+        {
+          'label': 'Card',
+          'uri': '/css-components/card/',
+          'alias': 'card'
+        },
+        {
+          'label': 'Checkbox',
+          'uri': '/css-components/checkbox/',
+          'alias': 'checkbox'
+        },
+        {
+          'label': 'Colors',
+          'uri': '/css-components/colors/',
+          'alias': 'colors'
+        },
+        {
+          'label': 'Copy',
+          'uri': '/css-components/copy/',
+          'alias': 'copy'
+        },
+        {
+          'label': 'Radio',
+          'uri': '/css-components/radio/',
+          'alias': 'radio'
+        },
+        {
+          'label': 'Spacing',
+          'uri': '/css-components/spacing/',
+          'alias': 'spacing'
         }
       ]
     },
