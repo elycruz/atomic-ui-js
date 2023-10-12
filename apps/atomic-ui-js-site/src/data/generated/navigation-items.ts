@@ -11,11 +11,6 @@ export const navigationItems: NavItem[] = [{
       'alias': 'components',
       'items': [
         {
-          'label': 'App-bar',
-          'uri': '/components/app-bar/',
-          'alias': 'app-bar'
-        },
-        {
           'label': 'Field',
           'uri': '/components/field/',
           'alias': 'field'
@@ -52,6 +47,11 @@ export const navigationItems: NavItem[] = [{
       'uri': '/css-components/',
       'alias': 'css-components',
       'items': [
+        {
+          'label': 'App-bar',
+          'uri': '/css-components/app-bar/',
+          'alias': 'app-bar'
+        },
         {
           'label': 'Button',
           'uri': '/css-components/button/',

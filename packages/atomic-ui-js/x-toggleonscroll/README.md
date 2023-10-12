@@ -24,25 +24,23 @@ Internally the element manages an `IntersectionObserver` instance and updates it
 - `rootSelector: string` - Scrollable ancestor element to observe intersections on;  Documents scroll/view pane, by default.
 - `root(): Element | Document` - Scroll element getter;  Default `Document`.
 - `rootMargin: string` - Padding to add to the root bounds view pane (see MDN Intersection Observer docs for more).
-- `observedSelector: string` - Element to observe for intersections on `root`
-- `observed(): Element` - Target element getter;  Default `self`.
+- `intersectingTargetSelector: string` - Element to observe for intersections on `root`
+- `intersectingTarget(): Element` - Target element getter;  Default `self`.
 - `threshold: number | number[]` - Intersection threshold(s) on which to trigger observer callback.
 - `classNameToToggle: string` - Optional classname to toggle on toggle target
-- `toggleTargetSelector: string` - Used in conjunction with `classNameToToggle` -
-- `toggleTarget(): string` - Getter.
-- `onintersection: (event: CustomEvent<{records: IntersectionObserverEntry}>) => void` - Intersection event handling prop.
-
-### Alternate API:
-
-- `intersectionCallback: (records: IntersectionObserverEntry, observer: IntersectionObserver) => void`
+- `classNameToToggleTargetSelector: string` - Used in conjunction with `classNameToToggle` -
+- `classNameToToggleTarget(): string` - Getter.
+- `observerCallback: (records: IntersectionObserverEntry, observer: IntersectionObserver) => void` - Gets called from internal intersection observer callback, on 'intersection'.
 
 ### Events
 
-- `'x-toggleonscroll-intersection': CustomEvent<{records: IntersectionObserverEntry}>`  - Custom intersection event.
+- `'x-toggleonscroll-intersection': CustomEvent<{records: IntersectionObserverEntry}>`  - Triggered when an intersection occurs.
 
 ### Basic Use Case Example
 
 In this example component should toggle `.some-css-class`, on itself. whenever the `header` element scrolls in/out of the ('default') scrollpane view.
+
+**Note:** Selector attributes don't have the '*Selector' text appended to their names, but their property counterparts do - This is relevant to `React` app contexts where things are usually set via properties (an not html attributes) in popular versions of react (later versions may have corrected this).
 
 ```html
 <!doctype>
@@ -86,7 +84,7 @@ In this example component should toggle `.some-css-class`, on itself. whenever t
 
 <x-toggleonscroll
   classNameToToggle="back-to-top-btn--visible"
-  classNameToggleTarget="back-to-top-btn"
+  classNameToToggleTarget="back-to-top-btn"
   class="back-to-top-container"
   target="header"
   threshold="[0.5, 1]"
@@ -109,7 +107,7 @@ In this example component should toggle `.some-css-class`, on itself. whenever t
                   // Handle intersection observer callback result (records)
                   records.forEach(r => {
                       // In this scenario, toggle DOM rendering of our '.back-to-top-container' 
-                      (currentTarget.classNameToggleTarget ?? r.target).hidden = r.isIntersecting;
+                      (currentTarget.classNameToToggleTarget ?? r.target).hidden = r.isIntersecting;
                   });
               });
   }, {once: true});
