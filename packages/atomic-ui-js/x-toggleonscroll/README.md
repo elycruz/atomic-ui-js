@@ -86,7 +86,7 @@ In this example component should toggle `.some-css-class`, on itself. whenever t
 
 <x-toggleonscroll
   classNameToToggle="back-to-top-btn--visible"
-  classNameToToggleTarget="back-to-top-btn"
+  classNameToggleTarget="back-to-top-btn"
   class="back-to-top-container"
   target="header"
   threshold="[0.5, 1]"
@@ -109,7 +109,7 @@ In this example component should toggle `.some-css-class`, on itself. whenever t
                   // Handle intersection observer callback result (records)
                   records.forEach(r => {
                       // In this scenario, toggle DOM rendering of our '.back-to-top-container' 
-                      (currentTarget.classNameToToggleTarget ?? r.target).hidden = r.isIntersecting;
+                      (currentTarget.classNameToggleTarget ?? r.target).hidden = r.isIntersecting;
                   });
               });
   }, {once: true});

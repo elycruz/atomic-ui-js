@@ -41,7 +41,7 @@ export function BackToTopBtn({
     id={id}
     className={[defaultClassName, inClassName ?? ''].join(' ')}
     classNameToToggle={classNameToToggle}
-    classNameToToggleTargetSelector={toggleTarget ?? `#${id}`}
+    classNameToggleTargetSelector={toggleTarget ?? `#${id}`}
     intersectingTargetSelector={intersectingTarget}
     reverse={reverse}
     rootMargin={rootMargin}
