@@ -29,7 +29,7 @@
     "atomic-ui-js": "workspace:^",
     "atomic-ui-js-next": "workspace:^",
     "atomic-ui-js-react": "workspace:^",
-    "eslint": "^8.50.0",
+    "eslint": "^8.51.0",
     "eslint-config-next": "^13.5.4",
     "fjl": "2.0.0-alpha.5",
     "lit": "^2.8.0",
@@ -49,10 +49,10 @@
     "css-loader": "^6.8.1",
     "node-dirwalk": "^0.8.6",
     "postcss": "^8.4.31",
-    "sass": "^1.69.0",
+    "sass": "^1.69.2",
     "sass-loader": "^13.3.2",
     "style-loader": "^3.3.3",
     "stylelint-config-standard-scss": "^9.0.0",
-    "typescript": "^5.1.6"
+    "typescript": "^5.2.2"
   }
 }

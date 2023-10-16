@@ -20,7 +20,7 @@ const withMDX = nextMdx({
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  output: 'export',
+  // output: 'export',
   distDir: '../../dist/atomic-ui-js-site',
   basePath: '/atomic-ui-js',
   trailingSlash: true,
