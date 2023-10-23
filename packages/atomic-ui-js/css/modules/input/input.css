@@ -80,7 +80,7 @@ html[dir="rtl"] :where(x-input, .x-input) > *:not(
   --x-input-padding-block: var(--x-8px);
   --x-input-padding-inline: var(--x-8px);
 
-  display: flex;
+  display: inline-flex;
   width: fit-content;
   height: fit-content;
   color: var(--x-input-text-color);
