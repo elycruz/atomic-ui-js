@@ -32,7 +32,7 @@ const __dirname = url.fileURLToPath(new URL('.', import.meta.url)),
     getNavItemConstructor(dir),
 
     // Directory effect factory
-    (dirPath, stat, dirName) => fileInfoObj => fileInfoObj,
+    (dirPath, stat, dirName) => fileInfoObj => dirPath.includes('/api') ? null : fileInfoObj,
 
     // File effect factory
     (filePath, stat, fileName) => fileInfoObj => /\./.test(fileInfoObj.uri) ? undefined : fileInfoObj,

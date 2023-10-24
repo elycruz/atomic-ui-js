@@ -5,9 +5,10 @@
 
 :host button {
     display: block;
-    /*background: none;
+
+    /* background: none;
     border-radius: 0;
-    border: none;*/
+    border: none; */
 }
 
 :host button:hover {
@@ -15,7 +16,7 @@
 }
 
 :host ::slotted(select) {
-    /*display: none;*/
+    /* display: none; */
 }
 
 :host _value-display {

@@ -13,7 +13,7 @@ export const isset = (x) => x !== null && x !== undefined;
  * Returns the constructor/class/type name of a value.
  * @note For `NaN`, `null`, and `undefined` we return their names classed case;
  * 'NaN' (for `NaN`), 'Undefined' for `undefined` and 'Null' for `null`.
- * @function module:object.typeOf
+
  * @param value {*}
  * @returns {string} - Constructor's name or derived name (in the case of `null`, `undefined`, or `NaN` (whose
  *  normalized names are 'Null', 'Undefined', 'NaN' respectively).

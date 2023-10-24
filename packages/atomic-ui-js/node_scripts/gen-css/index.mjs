@@ -11,7 +11,7 @@ import {genAlignItemsCss} from './align-items.mjs';
 import {genGridCss} from './grid.mjs';
 import {genPositionCss} from './position.mjs';
 import {genSpacingCss} from './spacing.mjs';
-import {buildCss} from "../build/build-css.mjs";
+import {genMarginAndPaddingClasses} from "./margin-and-padding.mjs";
 
 (async () => Promise.all([
     genAlignItemsCss(),
@@ -21,6 +21,7 @@ import {buildCss} from "../build/build-css.mjs";
     genJustifyContentCss(),
     genPositionCss(),
     genSpacingCss(),
+    genMarginAndPaddingClasses()
   ])
     .then(() => console.log('\ngen-css completed successfully\n'))
     .catch(console.error)

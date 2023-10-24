@@ -7,7 +7,7 @@
     "node": ">=v18"
   },
   "scripts": {
-    "dev": "turbo dev",
+    "dev": "pnpm gen:site:navitems && turbo dev",
     "start": "turbo start",
     "build": "turbo build",
     "build:lib": "cd packages/atomic-ui-js && pnpm build",
@@ -36,24 +36,18 @@
   },
   "homepage": "https://github.com/elycruz/atomic-ui-js#readme",
   "devDependencies": {
-    "@mdx-js/loader": "^2.3.0",
-    "@mdx-js/react": "^2.3.0",
-    "@next/mdx": "^13.3.4",
     "@types/node": "18.16.3",
-    "@types/react": "18.2.0",
-    "eslint": "^8.39.0",
-    "eslint-config-next": "^13.3.4",
+    "eslint": "^8.52.0",
     "husky": "^8.0.3",
-    "next": "^13.3.4",
+    "postcss": "^8.4.31",
     "prettier": "^2.8.8",
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0",
-    "rollup": "^3.21.2",
-    "stylelint": "^15.6.0",
+    "rollup": "^3.29.4",
+    "stylelint": "^15.11.0",
     "stylelint-config-standard": "^33.0.0",
-    "turbo": "^1.10.3",
-    "typedoc": "^0.24.6",
-    "typescript": "^5.0.4",
-    "webpack": "^5.81.0"
+    "stylelint-config-standard-scss": "^9.0.0",
+    "turbo": "^1.10.16",
+    "typedoc": "^0.24.8",
+    "typescript": "^5.2.2",
+    "webpack": "^5.89.0"
   }
 }

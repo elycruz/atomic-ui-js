@@ -5,7 +5,7 @@ An atomic, CSS first, user interface library.
 ## CSS Components
 
 - [ ] `.x-alert`
-- [ ] `.x-app-bar`
+- [ ] `.x-appbar`
 - [ ] `.x-badge`
 - [x] `.x-btn`
 - [ ] `.x-card`
@@ -92,6 +92,7 @@ Default color variants:
 
 - `x-ripple`
 - `x-field`
+- `x-toggleonscroll`
 
 ### Tentative/For future development
 
@@ -117,9 +118,55 @@ General:
 - SPA (nextjs/react).
 - SPA (custom 'vanilla js' approach).
 
-### SPA (custom/vanillajs)
+### SPA (custom/vanilla-js)
 
 ### Todos
 
 - Can we perform custom "dropdown" menu animation with `details` element?
 - [ ] Move story styles into './apps/atomic-ui-js-site'.
+
+## Font Icons
+
+Solution here is similar to SVG Icons solution:
+
+1.  If possible export icons, to a given page, to an font-icon - If not possible an overall application font-icon file would suffice.
+2.  Load font icon file in application and allow icon component to load/set icons, where required.
+
+### From the icon component side
+
+Use ligatures, etc., to render the given font-icon variant (see [material icons ligature examples](https://developers.google.com/fonts/docs/material_icons))
+
+## SVG Icons
+
+The way svg icons are included in a project can sometimes cause degradation to the overall user experience, and inconsistent language in application sources when different icon sets are included from different libraries (material, clarity, and/or font-awesome, icons etc.) - Examples:
+
+- Flashes of un-styled content (FOUC) sometimes happen while icons are loading.
+- Icon libraries/files are some times not tree-shaken, causing large number of assets to be minified/included in project build artifacts.
+- Repetition of icons (when using only SVG) contributes to artifact bloat, which can also cause FOUCs.
+
+What solution can we implement to allow icons to be easily used in all UI project contexts, that improve performance (over traditional methods), and improves code agility for developers working on apps.
+
+### Solutions:
+
+- Use SVG sprites per application page.
+- Use SVG body imports - Methods that return the SVG icon body contents, which could be referenced via an `iconsMap: Map<string, callback>` from a web-component implementation.
+- Font icons - This solution works great if icons are not multi-colored, are not many in one file (font file bloat can occur when too many icons are included/required), and/or contain dynamic functionality (see badges in [clarity icons](https://clarity.design/documentation/icons)) 
+
+#### SVG Body Callback Imports
+
+@todo
+
+#### SVG Sprites per App Page
+
+@todo
+
+### FAQs
+
+- Can we reference svg sprites, from an `svg` element that contains a `hidden` attribute?  
+- Do empty spaces come up as `TextNode` in html? They are listed as child nodes but will not show up when querying an element's `children` prop.. 
+
+### References:
+
+- [Clarity Icons] (https://clarity.design/documentation/icons/shapes)
+- [Font Awesome Icons] (https://fontawesome.com/icons)
+- [Material Symbols] (https://fonts.google.com/icons)

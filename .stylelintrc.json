@@ -1,10 +1,12 @@
-{ "extends": ["stylelint-config-standard"],
+{
   "ignoreFiles": [
-    "./dist/**/*"
+    "**/dist/**/*",
+    "**/archived/**/*"
   ],
   "rules": {
-    "selector-class-pattern": "[a-zA-Z][\\w-]+",
     "number-max-precision": 5,
-    "selector-attribute-quotes": "always"
+    "no-descending-specificity": null,
+    "selector-attribute-quotes": "always",
+    "selector-class-pattern": "[a-zA-Z][\\w-]+"
   }
 }

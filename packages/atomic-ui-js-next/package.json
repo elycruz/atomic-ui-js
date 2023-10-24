@@ -18,15 +18,22 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "@mdx-js/loader": "^2.3.0",
+    "@mdx-js/react": "^2.3.0",
+    "@types/react": "18.2.0",
+    "@next/mdx": "^13.4.7",
     "atomic-ui-js": "workspace:^",
     "atomic-ui-js-react": "workspace:^",
+    "lit": "^2.7.4",
     "next": "^13.3.4",
     "react": "^18.2.0",
     "react-dom": "^18.2.0"
   },
   "peerDependencies": {
+    "@lit-labs/react": "^1.2.0",
     "atomic-ui-js": "workspace:^",
     "atomic-ui-js-react": "workspace:^",
+    "lit": "^2.7.4",
     "next": "^13.3.4",
     "react": "^18.2.0",
     "react-dom": "^18.2.0"

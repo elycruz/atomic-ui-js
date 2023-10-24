@@ -1,5 +1,11 @@
-{ "extends": ["stylelint-config-standard", "../../.stylelintrc.json"],
+{
+  "extends": [
+    "stylelint-config-standard",
+    "../../.stylelintrc.json"
+  ],
   "ignoreFiles": [
-    "./dist/**/*"
+    "./dist/**/*",
+    "./archived/**/*",
+    "./node_modules/**/*"
   ]
 }

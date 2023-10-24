@@ -11,7 +11,7 @@
   min-height: 100vh;
 }
 
-.x-app-wrapper > .x-app-bar {
+.x-app-wrapper > .x-appbar {
   grid-column: 1 / -1;
   border-bottom: var(--x-1px) solid;
   gap: 0.5rem;
@@ -49,7 +49,7 @@ html.with-app-nav-hidden .x-app-wrapper > .x-app-content > .x-app-nav {
   border-top: var(--x-border-width) solid var(--x-neutral-color-4);
 }
 
-@media (max-width: 600px) {
+@media (width <= 600px) {
   .x-app-wrapper {
     grid-template-columns: 100%;
     grid-template-rows: auto;

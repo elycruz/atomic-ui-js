@@ -1,0 +1,33 @@
+.feedback-module {
+  position: fixed;
+  top: 34%;
+  right: 0;
+  transform: translateX(100%);
+  transition: transform 0.21s ease-in-out;
+  z-index: 997;
+
+  &,
+  legend {
+    background: var(--x-field);
+  }
+
+  legend {
+    position: absolute;
+    display: block;
+    padding: 0;
+    border: none;
+    transform: rotate(-90deg) translate(-100%, -180%);
+    box-shadow: -0.5rem -0.25rem 0.25rem 0 rgb(0 0 0 / 25%);
+  }
+
+  legend button {
+    border-bottom: 0;
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+  }
+
+  &:focus-within,
+  &--active {
+    transform: translateX(0);
+  }
+}

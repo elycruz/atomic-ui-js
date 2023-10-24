@@ -1,14 +1,14 @@
 const _map = new Map();
 
 export const debounce = (fn, timeout, ...args) => {
-  return () => {
+  return (...args2) => {
     if (_map.has(fn)) {
       clearTimeout(_map.get(fn));
     }
     _map.set(
       fn,
       setTimeout(() => {
-        fn(...args);
+        fn(...(args.concat(args2)));
         _map.delete(fn);
       }, timeout),
     );

@@ -10,7 +10,7 @@
     "lintfix": "pnpm stylelint --fix && next lint --fix",
     "docs": "pnpm typedoc",
     "gen-navitems": "node node_scripts/gen-navItems.mjs",
-    "stylelint": "stylelint src/**/*.css",
+    "stylelint": "stylelint src/**/*.{css,scss}",
     "typedoc": "typedoc ",
     "test": "echo \"Tests not yet writtent\""
   },
@@ -19,33 +19,40 @@
     "> 0.2% and not dead"
   ],
   "dependencies": {
+    "@lit-labs/react": "^1.2.1",
     "@mdx-js/loader": "^2.3.0",
     "@mdx-js/react": "^2.3.0",
-    "@next/mdx": "^13.3.4",
+    "@next/mdx": "^13.5.4",
     "@types/node": "18.16.3",
     "@types/react": "18.2.0",
     "@types/react-dom": "18.2.3",
     "atomic-ui-js": "workspace:^",
     "atomic-ui-js-next": "workspace:^",
     "atomic-ui-js-react": "workspace:^",
-    "eslint": "^8.39.0",
-    "eslint-config-next": "^13.3.4",
+    "eslint": "^8.51.0",
+    "eslint-config-next": "^13.5.4",
     "fjl": "2.0.0-alpha.5",
-    "next": "^13.3.4",
+    "lit": "^2.8.0",
+    "markdown-it": "^13.0.2",
+    "next": "^13.5.4",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "rollup": "^3.21.2",
-    "stylelint": "^15.6.0",
+    "rollup": "^3.29.4",
+    "server-only": "^0.0.1",
+    "stylelint": "^15.10.3",
     "stylelint-config-standard": "^33.0.0",
-    "typedoc": "^0.24.6",
-    "typescript": "^5.0.4",
-    "webpack": "^5.81.0"
+    "typedoc": "^0.24.8",
+    "webpack": "^5.88.2"
   },
   "devDependencies": {
-    "css-loader": "^6.7.4",
+    "copy-webpack-plugin": "^11.0.0",
+    "css-loader": "^6.8.1",
     "node-dirwalk": "^0.8.6",
-    "sass": "^1.62.1",
-    "sass-loader": "^13.2.2",
-    "style-loader": "^3.3.3"
+    "postcss": "^8.4.31",
+    "sass": "^1.69.2",
+    "sass-loader": "^13.3.2",
+    "style-loader": "^3.3.3",
+    "stylelint-config-standard-scss": "^9.0.0",
+    "typescript": "^5.2.2"
   }
 }

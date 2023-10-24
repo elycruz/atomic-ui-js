@@ -20,7 +20,21 @@ export const xThemes = {
   },
 
   CHECKED_NAME = 'checked',
+  CLASSNAME_TO_TOGGLE_NAME = 'classNameToToggle',
+  CLASSNAME_TO_TOGGLE_TARGET_NAME = 'classNameToToggleTarget',
+  CLASSNAME_TO_TOGGLE_TARGET_SELECTOR_NAME = `${CLASSNAME_TO_TOGGLE_TARGET_NAME}Selector`,
   DEFAULT_CHECKED_NAME = 'defaultChecked',
+  REVERSE_NAME = 'reverse',
+  INTERSECTING_TARGET_NAME = 'intersectingTarget',
+  INTERSECTING_TARGET_SELECTOR_NAME = `${INTERSECTING_TARGET_NAME}Selector`,
+  OBSERVER_CALLBACK = 'observerCallback',
+  ROOT_SELECTOR_NAME = 'rootSelector',
+  ROOT_MARGIN_NAME = 'rootMargin',
+  ROOT_NAME = 'root',
   THEME_NAME = 'theme',
+  THRESHOLD_NAME = 'threshold',
+  TOGGLE_TARGET_NAME = 'toggleTarget',
+  TRIGGER_NAME = 'trigger',
+  TRIGGER_SELECTOR_NAME = 'triggerSelector',
   VARIETY_NAME = 'variety'
 ;

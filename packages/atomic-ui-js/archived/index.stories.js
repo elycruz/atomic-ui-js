@@ -4,7 +4,7 @@ import {debounce, $, $$} from '../utils/index.js';
 // ----
 window.addEventListener('DOMContentLoaded', () => {
   const iframe = $('iframe'),
-    header = $('.x-app-bar'),
+    header = $('.x-appbar'),
     footer = $('.x-app-footer'),
     menus = $$('.x-menu'),
     nav = $('.x-app-nav'),

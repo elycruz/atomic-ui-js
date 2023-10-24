@@ -49,4 +49,9 @@ export const constrainNumber = (min = 0, max = 0, num = 0) => {
       if (b <= end) out.push(b);
     }
     return out;
+  },
+
+  toNumberOr = (n, orValue = 0) => {
+    const cast = Number(n);
+    return isUsableNumber(cast) ? cast : orValue;
   };
