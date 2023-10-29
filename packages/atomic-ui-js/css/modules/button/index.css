@@ -1,11 +1,10 @@
 /**
  * Base
  * ---------------- */
-.x-btn,
+.x-btn, .x-button,
 button,
 input:where([type="submit"], [type="reset"], [type="image"], [type="button"]),
-input[type="file"]::file-selector-button
-{
+input[type="file"]::file-selector-button {
   position: relative;
   border-radius: var(--x-border-radius);
   border: var(--x-border-width) solid ButtonBorder;
@@ -20,7 +19,7 @@ input[type="file"]::file-selector-button
 }
 
 :where(
-  .x-btn, button, input:where([type="submit"], [type="reset"], [type="image"], [type="button"]),
+  .x-btn, .x-button, button, input:where([type="submit"], [type="reset"], [type="image"], [type="button"]),
   input[type="file"]::file-selector-button
 ):not(:disabled):hover {
   cursor: pointer;
@@ -31,6 +30,7 @@ input[type="file"]::file-selector-button
  * ------------------- */
 :where(
   .x-btn,
+  .x-button,
    button,
   input:where([type="submit"], [type="reset"], [type="image"], [type="button"]),
   input[type="file"]::file-selector-button
@@ -40,7 +40,7 @@ input[type="file"]::file-selector-button
   padding: var(--x-3px);
 }
 
-:where(.x-btn, button,
+:where(.x-btn, .x-button, button,
   input:where([type="submit"], [type="reset"], [type="image"], [type="button"]),
   input[type="file"]::file-selector-button
 ).x-dense {
@@ -49,7 +49,7 @@ input[type="file"]::file-selector-button
   line-height: var(--x-18px);
 }
 
-:where(.x-btn, button,
+:where(.x-btn, .x-button, button,
   input:where([type="submit"], [type="reset"], [type="image"], [type="button"]),
   input[type="file"]::file-selector-button
 ).x-large {
@@ -58,7 +58,7 @@ input[type="file"]::file-selector-button
   line-height: var(--x-34px);
 }
 
-:where(.x-btn, button,
+:where(.x-btn, .x-button, button,
   input:where([type="submit"], [type="reset"], [type="image"], [type="button"]),
   input[type="file"]::file-selector-button
 ):is(
@@ -72,7 +72,7 @@ input[type="file"]::file-selector-button
 /**
  * Raised
  */
-:where(.x-btn, button,
+:where(.x-btn, .x-button, button,
   input:where([type="submit"], [type="reset"], [type="image"], [type="button"]),
   input[type="file"]::file-selector-button
 ).x-raised:hover {
@@ -80,11 +80,11 @@ input[type="file"]::file-selector-button
   0 var(--x-3px) var(--x-5px) var(--x-neutral-color-with-alpha-6);
 }
 
-:where(.x-btn, button,
+:where(.x-btn, .x-button, button,
   input:where([type="submit"], [type="reset"], [type="image"], [type="button"]),
   input[type="file"]::file-selector-button
 ).x-raised:active,
-:where(.x-btn, button,
+:where(.x-btn, .x-button, button,
   input:where([type="submit"], [type="reset"], [type="image"], [type="button"]),
   input[type="file"]::file-selector-button
 ).x-raised {
@@ -95,7 +95,7 @@ input[type="file"]::file-selector-button
 /*
  * Contents
  * -------------------- */
-:where(.x-btn, button,
+:where(.x-btn, .x-button, button,
   input:where([type="submit"], [type="reset"], [type="image"], [type="button"]),
   input[type="file"]::file-selector-button
 ) > *:not(:is(x-ripple)) + * {

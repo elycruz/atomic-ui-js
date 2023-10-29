@@ -1,20 +1,20 @@
 /**
  * Setup `x-ripple` element for animations.
  */
-.x-btn,
-.x-btn > *:not(x-ripple) {
+.x-btn, .x-button,
+:where(.x-btn, .x-button) > *:not(x-ripple) {
   position: relative;
 }
 
-.x-btn > *:not(x-ripple) {
+:where(.x-btn, .x-button) > *:not(x-ripple) {
   z-index: 3;
 }
 
-.x-btn > x-ripple {
+:where(.x-btn, .x-button) > x-ripple {
   z-index: 1;
 }
 
-.x-btn:not(.x-outlined) {
+:where(.x-btn, .x-button):not(.x-outlined) {
   border: none;
 }
 
@@ -23,62 +23,62 @@
  */
 
  /** For small size **/
-.x-btn.x-outlined.x-small {
+:where(.x-btn, .x-button).x-outlined.x-small {
   padding: calc(var(--x-3px) - var(--x-border-width));
 }
 
 /** For medium size **/
-.x-btn.x-outlined:is(
+:where(.x-btn, .x-button).x-outlined:is(
   :not(.x-small, .x-dense, .x-large), .x-normal
 ),
-.x-btn.x-outlined.x-dense {
+:where(.x-btn, .x-button).x-outlined.x-dense {
   padding: calc(var(--x-8px) - var(--x-border-width));
 }
 
 /** For large size **/
-.x-btn.x-outlined.x-large {
+:where(.x-btn, .x-button).x-outlined.x-large {
   padding: calc(var(--x-12px) - var(--x-border-width));
 }
 
 /**
  * Not "Filled" variant base
  * ------------------- */
-.x-btn:not(.x-filled) {
+:where(.x-btn, .x-button):not(.x-filled) {
   background: transparent;
   color: var(--x-color-5);
 }
 
-.x-btn:not(.x-filled):hover {
+:where(.x-btn, .x-button):not(.x-filled):hover {
   color: var(--x-color-4);
 }
 
-.x-btn:not(.x-filled):has(> [rippleactive]),
-.x-btn:not(.x-filled):active {
+:where(.x-btn, .x-button):not(.x-filled):has(> [rippleactive]),
+:where(.x-btn, .x-button):not(.x-filled):active {
   color: var(--x-color-3);
 }
 
 /** Ripple styles **/
-.x-btn:not(.x-filled) x-ripple::after,
-.x-btn:not(.x-filled) x-ripple::before {
+:where(.x-btn, .x-button):not(.x-filled) x-ripple::after,
+:where(.x-btn, .x-button):not(.x-filled) x-ripple::before {
   background: var(--x-color-7);
 }
 
 @media (prefers-color-scheme: dark) {
-  .x-btn:not(.x-filled) {
+  :where(.x-btn, .x-button):not(.x-filled) {
     color: var(--x-color-6);
   }
 
-  .x-btn:not(.x-filled):hover {
+  :where(.x-btn, .x-button):not(.x-filled):hover {
     color: var(--x-color-7);
   }
 
-  .x-btn:not(.x-filled):has(> [rippleactive]),
-  .x-btn:not(.x-filled):active {
+  :where(.x-btn, .x-button):not(.x-filled):has(> [rippleactive]),
+  :where(.x-btn, .x-button):not(.x-filled):active {
     color: var(--x-color-8);
   }
 
-  .x-btn:not(.x-filled) x-ripple::after,
-  .x-btn:not(.x-filled) x-ripple::before {
+  :where(.x-btn, .x-button):not(.x-filled) x-ripple::after,
+  :where(.x-btn, .x-button):not(.x-filled) x-ripple::before {
     --x-ripple-hover-opacity: 0.55;
     --x-ripple-active-opacity: 0.13;
   }
@@ -87,7 +87,7 @@
 /**
  * Disabled
  */
-.x-btn:disabled {
+:where(.x-btn, .x-button):disabled {
   pointer-events: none;
   opacity: 0.55;
 }
@@ -106,21 +106,21 @@
  * -------------------- */
 
 /** Ripple styles **/
-.x-btn.x-filled x-ripple::after,
-.x-btn.x-filled x-ripple::before {
+:where(.x-btn, .x-button).x-filled x-ripple::after,
+:where(.x-btn, .x-button).x-filled x-ripple::before {
   --x-ripple-hover-opacity: 0.55;
   --x-ripple-active-opacity: 0.21;
 
   background: var(--x-color-12);
 }
 
-.x-btn.x-filled {
+:where(.x-btn, .x-button).x-filled {
   background-color: var(--x-color-5);
   border-color: var(--x-color-5);
   color: var(--x-color-12);
 }
 
-.x-btn.x-filled:focus-visible {
+:where(.x-btn, .x-button).x-filled:focus-visible {
   --x-focus-ring-color: var(--x-color-3);
 
   border-color: var(--x-color-3);
@@ -129,6 +129,6 @@
 /*
  * Outlined
  * -------------------- */
-.x-btn.x-outlined {
+:where(.x-btn, .x-button).x-outlined {
   border-color: var(--x-color-4);
 }
