@@ -17,13 +17,14 @@ const {fib, factorsOf, multiplesOf} = utils,
   fibs = fib(5000),
   factorsOf144 = factorsOf(144),
   multiplesOf6 = multiplesOf(16, 6),
+  spacingNums = Array.from(new Set(fibs.concat(factorsOf144, multiplesOf6)).values()).sort((a, b) => {
+    if (a < b) return -1;
+    return a === b ? 0 : 1;
+  }),
 
   genSpacingCss = () => {
     const outputFilePath = path.join(__dirname, '../../css/modules/', fileName),
-      props = Array.from(new Set(fibs.concat(factorsOf144, multiplesOf6)).values()).sort((a, b) => {
-        if (a < b) return -1;
-        return a === b ? 0 : 1;
-      })
+      props = spacingNums
         .reduce((agg, x) =>
           `${agg}  --x-${x}px: ${x / 16}rem;\n`, ``),
       content =
@@ -47,4 +48,4 @@ ${props.trimEnd()}
       );
   };
 
-export {genSpacingCss, fibs, factorsOf144, multiplesOf6};
+export {genSpacingCss, fibs, factorsOf144, multiplesOf6, spacingNums};

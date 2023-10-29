@@ -1,70 +1,45 @@
 import styles from './page.module.css';
+import {inputTypes} from '@/data/controls-metadata';
+
+let _uuid = Number.MIN_SAFE_INTEGER;
 
 export default function InputPage() {
+  const elementsConfig = inputTypes.map(type => {
+    let options = null;
 
-  // All HTMLInputElement types
-  // ----
-  const inputTypes = [
-      'button',
-      'checkbox',
-      'color',
-      'date',
-      'datetime-local',
-      'email',
-      'file',
-      'hidden',
-      'image',
-      'month',
-      'number',
-      'password',
-      'radio',
-      'range',
-      'reset',
-      'search',
-      'submit',
-      'tel',
-      'text',
-      'time',
-      'url',
-      'week'
-    ],
+    switch (type) {
+    case 'button':
+    case 'image':
+    case 'submit':
+    case 'reset':
+      return [type, {value: type[0].toUpperCase() + type.substring(1)}];
+    case 'hidden':
+      break;
+    case 'date':
+      options = {showReadonly: true, readonly2Value: '2023-05-01'};
+      break;
+    case 'datetime-local':
+      options = {showReadonly: true, readonly2Value: '2023-05-10T11:59'};
+      break;
+    case 'time':
+      options = {showReadonly: true, readonly2Value: '11:59'};
+      break;
+    case 'number':
+      options = {showReadonly: true, readonly2Value: '1000'};
+      break;
+    case 'email':
+      options = {showReadonly: true, readonly2Value: 'hello@hello.com'};
+      break;
+    case 'file':
+      options = {showReadonly: true};
+      break;
+    default:
+      options = {showReadonly: true, readonly2Value: 'Readonly'};
+      break;
+    }
 
-    elementsConfig = inputTypes.map(type => {
-      let options = null;
-
-      switch (type) {
-      case 'button':
-      case 'image':
-      case 'submit':
-      case 'reset':
-        return [type, {value: type[0].toUpperCase() + type.substring(1)}];
-      case 'hidden':
-        break;
-      case 'date':
-        options = {showReadonly: true, readonly2Value: '2023-05-01'};
-        break;
-      case 'datetime-local':
-        options = {showReadonly: true, readonly2Value: '2023-05-10T11:59'};
-        break;
-      case 'time':
-        options = {showReadonly: true, readonly2Value: '11:59'};
-        break;
-      case 'number':
-        options = {showReadonly: true, readonly2Value: '1000'};
-        break;
-      case 'email':
-        options = {showReadonly: true, readonly2Value: 'hello@hello.com'};
-        break;
-      case 'file':
-        options = {showReadonly: true};
-        break;
-      default:
-        options = {showReadonly: true, readonly2Value: 'Readonly'};
-        break;
-      }
-
-      return [type, options];
-    });
+    return [type, options];
+  });
 
   return <section className="x-flex x-flex-row-wrap">
     <article className={styles['article']}>
@@ -188,6 +163,36 @@ export default function InputPage() {
             return <>
               <label htmlFor={name}>{humanReadableName}</label>
               <div><input type={type} name={name} id={name}/></div>
+            </>;
+          })}
+        </fieldset>
+      </form>
+    </article>
+
+    <article>
+      <header>
+        <h3>Input Controls Alignment</h3>
+      </header>
+
+      <form action="#">
+        <fieldset className={`${styles.fieldset} x-flex x-flex-row-wrap`}>
+          <legend>Horizontal alignment</legend>
+
+          {inputTypes.map((inputType) => {
+            const id = `example-${_uuid++}-${inputType}`;
+            const isButton = /reset|submit|button$/i.test(inputType);
+
+            if (inputType === 'hidden') return;
+
+            return <>
+              {!isButton ? <label htmlFor={id}>{inputType}:</label> : null}
+              <input
+                type={inputType}
+                className={`${inputType === 'button' ? 'x-btn x-primary x-filled' : ''}`}
+                defaultValue={isButton ? inputType[0].toUpperCase() + inputType.slice(1) : ''}
+                name={`example-${_uuid}-${inputType}`}
+                id={id}
+              />
             </>;
           })}
         </fieldset>

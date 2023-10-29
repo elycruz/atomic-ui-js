@@ -70,7 +70,14 @@ export const navigationItems: NavItem[] = [{
         {
           'label': 'X-input',
           'uri': '/custom-elements/x-input/',
-          'alias': 'x-input'
+          'alias': 'x-input',
+          'items': [
+            {
+              'label': 'Alignment',
+              'uri': '/custom-elements/x-input/alignment/',
+              'alias': 'alignment'
+            }
+          ]
         },
         {
           'label': 'X-menu',

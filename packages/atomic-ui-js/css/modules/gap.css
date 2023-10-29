@@ -1,0 +1,34 @@
+/**
+ * Gap classes.
+ */
+
+.gap-1px { gap: var(--x-1px, 1px); }
+.gap-2px { gap: var(--x-2px, 2px); }
+.gap-3px { gap: var(--x-3px, 3px); }
+.gap-4px { gap: var(--x-4px, 4px); }
+.gap-5px { gap: var(--x-5px, 5px); }
+.gap-6px { gap: var(--x-6px, 6px); }
+.gap-8px { gap: var(--x-8px, 8px); }
+.gap-9px { gap: var(--x-9px, 9px); }
+.gap-12px { gap: var(--x-12px, 12px); }
+.gap-13px { gap: var(--x-13px, 13px); }
+.gap-16px { gap: var(--x-16px, 16px); }
+.gap-18px { gap: var(--x-18px, 18px); }
+.gap-21px { gap: var(--x-21px, 21px); }
+.gap-24px { gap: var(--x-24px, 24px); }
+.gap-30px { gap: var(--x-30px, 30px); }
+.gap-34px { gap: var(--x-34px, 34px); }
+.gap-36px { gap: var(--x-36px, 36px); }
+.gap-42px { gap: var(--x-42px, 42px); }
+.gap-48px { gap: var(--x-48px, 48px); }
+.gap-54px { gap: var(--x-54px, 54px); }
+.gap-55px { gap: var(--x-55px, 55px); }
+.gap-60px { gap: var(--x-60px, 60px); }
+.gap-66px { gap: var(--x-66px, 66px); }
+.gap-72px { gap: var(--x-72px, 72px); }
+.gap-78px { gap: var(--x-78px, 78px); }
+.gap-84px { gap: var(--x-84px, 84px); }
+.gap-89px { gap: var(--x-89px, 89px); }
+.gap-90px { gap: var(--x-90px, 90px); }
+.gap-96px { gap: var(--x-96px, 96px); }
+.gap-144px { gap: var(--x-144px, 144px); }
