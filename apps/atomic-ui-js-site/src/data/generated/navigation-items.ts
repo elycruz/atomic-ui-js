@@ -39,6 +39,11 @@ export const navigationItems: NavItem[] = [{
           'label': 'X-toggleonscroll',
           'uri': '/components/x-toggleonscroll/',
           'alias': 'x-toggleonscroll'
+        },
+        {
+          'label': 'X-typeahead',
+          'uri': '/components/x-typeahead/',
+          'alias': 'x-typeahead'
         }
       ]
     },

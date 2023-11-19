@@ -3,6 +3,10 @@ lockfileVersion: '6.0'
 importers:
 
   .:
+    dependencies:
+      lit:
+        specifier: ^3.1.0
+        version: 3.1.0
     devDependencies:
       '@types/node':
         specifier: 18.16.3
@@ -172,10 +176,10 @@ importers:
         version: 7.5.3(react-dom@18.2.0)(react@18.2.0)
       '@storybook/web-components':
         specifier: ^7.5.3
-        version: 7.5.3(lit@2.7.4)(react-dom@18.2.0)(react@18.2.0)
+        version: 7.5.3(lit@3.1.0)(react-dom@18.2.0)(react@18.2.0)
       '@storybook/web-components-webpack5':
         specifier: ^7.5.3
-        version: 7.5.3(@babel/core@7.23.3)(esbuild@0.18.20)(lit@2.7.4)(react-dom@18.2.0)(react@18.2.0)(typescript@5.0.4)(webpack@5.89.0)
+        version: 7.5.3(@babel/core@7.23.3)(esbuild@0.18.20)(lit@3.1.0)(react-dom@18.2.0)(react@18.2.0)(typescript@5.0.4)(webpack@5.89.0)
       '@types/node':
         specifier: 18.16.3
         version: 18.16.3
@@ -198,8 +202,8 @@ importers:
         specifier: ^0.6.15
         version: 0.6.15(eslint@8.43.0)(typescript@5.0.4)
       lit:
-        specifier: ^2.7.4
-        version: 2.7.4
+        specifier: ^3.1.0
+        version: 3.1.0
       postcss:
         specifier: ^8.4.23
         version: 8.4.23
@@ -2506,6 +2510,11 @@ packages:
     dependencies:
       '@lit-labs/ssr-dom-shim': 1.1.2
 
+  /@lit/reactive-element@2.0.2:
+    resolution: {integrity: sha512-SVOwLAWUQg3Ji1egtOt1UiFe4zdDpnWHyc5qctSceJ5XIu0Uc76YmGpIjZgx9YJ0XtdW0Jm507sDvjOu+HnB8w==}
+    dependencies:
+      '@lit-labs/ssr-dom-shim': 1.1.2
+
   /@mdx-js/loader@2.3.0(webpack@5.88.2):
     resolution: {integrity: sha512-IqsscXh7Q3Rzb+f5DXYk0HU71PK+WuFsEhf+mSV3fOhpLcEpgsHvTQ2h0T6TlZ5gHOaBeFjkXwB52by7ypMyNg==}
     peerDependencies:
@@ -4206,7 +4215,7 @@ packages:
     resolution: {integrity: sha512-r+H3xGMu2A9yOSsygc3bDFhku8wpOZF3SqO19B7eAML12viHwUtYfyGL74svw4TMcKukyQ+KPn5QsSG+4bjZMg==}
     dev: true
 
-  /@storybook/preset-web-components-webpack@7.5.3(@babel/core@7.23.3)(lit@2.7.4)(webpack@5.89.0):
+  /@storybook/preset-web-components-webpack@7.5.3(@babel/core@7.23.3)(lit@3.1.0)(webpack@5.89.0):
     resolution: {integrity: sha512-tCHnFGpVisA+ib21C2ed4aoHJK7XE8EYZKoAt12U0tfAGt7h6Jk+d90gjrQF8JZSmicxfWEu7UUgv4EgaOi9wg==}
     engines: {node: '>=16.0.0'}
     peerDependencies:
@@ -4219,7 +4228,7 @@ packages:
       '@types/node': 18.16.3
       babel-loader: 9.1.3(@babel/core@7.23.3)(webpack@5.89.0)
       babel-plugin-bundled-import-meta: 0.3.2(@babel/core@7.23.3)
-      lit: 2.7.4
+      lit: 3.1.0
     transitivePeerDependencies:
       - '@babel/core'
       - encoding
@@ -4312,7 +4321,7 @@ packages:
       file-system-cache: 2.3.0
     dev: true
 
-  /@storybook/web-components-webpack5@7.5.3(@babel/core@7.23.3)(esbuild@0.18.20)(lit@2.7.4)(react-dom@18.2.0)(react@18.2.0)(typescript@5.0.4)(webpack@5.89.0):
+  /@storybook/web-components-webpack5@7.5.3(@babel/core@7.23.3)(esbuild@0.18.20)(lit@3.1.0)(react-dom@18.2.0)(react@18.2.0)(typescript@5.0.4)(webpack@5.89.0):
     resolution: {integrity: sha512-7Gbic+IQ63PUo3l3W0wia6Dg8cnFpIrad8RtdV0BL/7xu2rSKCdEPXaC2zZrWbz+Vj8c9cKvhvoascD5CHBeUQ==}
     engines: {node: '>=16.0.0'}
     peerDependencies:
@@ -4323,10 +4332,10 @@ packages:
       '@babel/preset-env': 7.23.3(@babel/core@7.23.3)
       '@storybook/builder-webpack5': 7.5.3(esbuild@0.18.20)(typescript@5.0.4)
       '@storybook/core-common': 7.5.3
-      '@storybook/preset-web-components-webpack': 7.5.3(@babel/core@7.23.3)(lit@2.7.4)(webpack@5.89.0)
-      '@storybook/web-components': 7.5.3(lit@2.7.4)(react-dom@18.2.0)(react@18.2.0)
+      '@storybook/preset-web-components-webpack': 7.5.3(@babel/core@7.23.3)(lit@3.1.0)(webpack@5.89.0)
+      '@storybook/web-components': 7.5.3(lit@3.1.0)(react-dom@18.2.0)(react@18.2.0)
       '@types/node': 18.16.3
-      lit: 2.7.4
+      lit: 3.1.0
       react: 18.2.0
       react-dom: 18.2.0(react@18.2.0)
     transitivePeerDependencies:
@@ -4341,7 +4350,7 @@ packages:
       - webpack-cli
     dev: true
 
-  /@storybook/web-components@7.5.3(lit@2.7.4)(react-dom@18.2.0)(react@18.2.0):
+  /@storybook/web-components@7.5.3(lit@3.1.0)(react-dom@18.2.0)(react@18.2.0):
     resolution: {integrity: sha512-C+2bx1ZuelUVRj6H1IcAu5W0kwli3GXJcgfbdL8FCW1d3UMYCxITQ0ZzixQWCMi+GootmYALv1vTmsoQOsdulA==}
     engines: {node: '>=16.0.0'}
     peerDependencies:
@@ -4354,7 +4363,7 @@ packages:
       '@storybook/manager-api': 7.5.3(react-dom@18.2.0)(react@18.2.0)
       '@storybook/preview-api': 7.5.3
       '@storybook/types': 7.5.3
-      lit: 2.7.4
+      lit: 3.1.0
       tiny-invariant: 1.3.1
       ts-dedent: 2.2.0
     transitivePeerDependencies:
@@ -9601,8 +9610,8 @@ packages:
     resolution: {integrity: sha512-xXAeVWKGr4/njq0rGC9dethMnYCq5hpKYrgQZYTzawt9YQhMiXfD+T1RgrdY3NamOxwq2aXlb0vOI6e29CKgVQ==}
     dependencies:
       '@lit-labs/ssr-dom-shim': 1.1.1
-      '@lit/reactive-element': 1.6.2
-      lit-html: 2.7.4
+      '@lit/reactive-element': 1.6.3
+      lit-html: 2.8.0
     dev: true
 
   /lit-element@3.3.3:
@@ -9612,6 +9621,13 @@ packages:
       '@lit/reactive-element': 1.6.3
       lit-html: 2.8.0
 
+  /lit-element@4.0.2:
+    resolution: {integrity: sha512-/W6WQZUa5VEXwC7H9tbtDMdSs9aWil3Ou8hU6z2cOKWbsm/tXPAcsoaHVEtrDo0zcOIE5GF6QgU55tlGL2Nihg==}
+    dependencies:
+      '@lit-labs/ssr-dom-shim': 1.1.2
+      '@lit/reactive-element': 2.0.2
+      lit-html: 3.1.0
+
   /lit-html@2.7.4:
     resolution: {integrity: sha512-/Jw+FBpeEN+z8X6PJva5n7+0MzCVAH2yypN99qHYYkq8bI+j7I39GH+68Z/MZD6rGKDK9RpzBw7CocfmHfq6+g==}
     dependencies:
@@ -9620,6 +9636,11 @@ packages:
 
   /lit-html@2.8.0:
     resolution: {integrity: sha512-o9t+MQM3P4y7M7yNzqAyjp7z+mQGa4NS4CxiyLqFPyFWyc4O+nodLrkrxSaCTrla6M5YOLaT3RpbbqjszB5g3Q==}
+    dependencies:
+      '@types/trusted-types': 2.0.4
+
+  /lit-html@3.1.0:
+    resolution: {integrity: sha512-FwAjq3iNsaO6SOZXEIpeROlJLUlrbyMkn4iuv4f4u1H40Jw8wkeR/OUXZUHUoiYabGk8Y4Y0F/rgq+R4MrOLmA==}
     dependencies:
       '@types/trusted-types': 2.0.4
 
@@ -9637,6 +9658,13 @@ packages:
       '@lit/reactive-element': 1.6.3
       lit-element: 3.3.3
       lit-html: 2.8.0
+
+  /lit@3.1.0:
+    resolution: {integrity: sha512-rzo/hmUqX8zmOdamDAeydfjsGXbbdtAFqMhmocnh2j9aDYqbu0fjXygjCa0T99Od9VQ/2itwaGrjZz/ZELVl7w==}
+    dependencies:
+      '@lit/reactive-element': 2.0.2
+      lit-element: 4.0.2
+      lit-html: 3.1.0
 
   /loader-runner@4.3.0:
     resolution: {integrity: sha512-3R/1M+yS3j5ou80Me59j7F9IMs4PXs3VqRrm0TU3AbKPxlmpoY1TNscJV/oGJXo8qCatFGTfDbY6W6ipGOYXfg==}

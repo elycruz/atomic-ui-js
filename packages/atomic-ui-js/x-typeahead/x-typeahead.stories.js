@@ -1,12 +1,19 @@
 import {html} from 'lit';
-import './register.js';
+import './index.js';
+import {XTypeaheadElement} from './x-typeahead.js';
 
 export default {
   title: 'Typeahead',
-  component: 'x-typeahead',
+  component: XTypeaheadElement.localName,
 };
 
-export const DefaultVariation = () => html`<x-typeahead>
-    <input />
-    <datalist></datalist>
-  </x-typeahead>`;
+export const DefaultVariation = () => html`
+    <x-typeahead list="datalist">
+      <input/>
+    </x-typeahead>
+      <datalist id="datalist">
+        ${Array.from({length: 100}, (_, i) => html`
+          <option value="${i}">Option ${i}</option>
+        `)}
+      </datalist>
+`;
