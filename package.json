@@ -18,7 +18,8 @@
     "docs": "turbo doc",
     "test": "turbo test",
     "watch:lib": "cd packages/atomic-ui-js/ && pnpm watch && cd ../../",
-    "prepare": "husky install"
+    "prepare": "husky install",
+    "storybook": "cd packages/atomic-ui-js/ && pnpm storybook"
   },
   "browserslist": [
     "defaults",
@@ -37,7 +38,7 @@
   "homepage": "https://github.com/elycruz/atomic-ui-js#readme",
   "devDependencies": {
     "@types/node": "18.16.3",
-    "eslint": "^8.52.0",
+    "eslint": "^8.54.0",
     "husky": "^8.0.3",
     "postcss": "^8.4.31",
     "prettier": "^2.8.8",
