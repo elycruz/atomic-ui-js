@@ -1,4 +1,5 @@
 import {html} from 'lit';
+import './index.js';
 
 export default {
   title: 'Ripple',
@@ -6,8 +7,8 @@ export default {
 };
 
 export const DefaultVariation = () => html`
-    <button type="button" class="x-btn x-theme-primary">
-        <x-ripple></x-ripple>
-        Hello
-    </button>
+  <button type="button" class="x-btn x-theme-primary">
+    <x-ripple></x-ripple>
+    Hello
+  </button>
 `;

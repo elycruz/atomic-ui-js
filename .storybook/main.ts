@@ -1,4 +1,4 @@
-import type { StorybookConfig } from "@storybook/web-components-webpack5";
+import type { StorybookConfig } from "@storybook/web-components-vite";
 
 import { join, dirname } from "path";
 
@@ -11,15 +11,16 @@ function getAbsolutePath(value: string): any {
 }
 const config: StorybookConfig = {
   stories: [
-    "../x-*/**/*.mdx",
-    "../x-*/**/*.stories.@(js|jsx|mjs|ts|tsx)",
+    "../stories/**/*.mdx",
+    "../packages/atomic-ui-js/x-*/**/*.stories.@(js|jsx|mjs|ts|tsx)",
+    "../stories/**/*.stories.@(js|jsx|mjs|ts|tsx)",
   ],
   addons: [
     getAbsolutePath("@storybook/addon-links"),
     getAbsolutePath("@storybook/addon-essentials"),
   ],
   framework: {
-    name: getAbsolutePath("@storybook/web-components-webpack5"),
+    name: getAbsolutePath("@storybook/web-components-vite"),
     options: {},
   },
   docs: {

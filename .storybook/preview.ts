@@ -1,5 +1,5 @@
 import type { Preview } from "@storybook/web-components";
-import '../dist/index.min.css';
+import '../packages/atomic-ui-js/dist/index.min.css';
 
 const preview: Preview = {
   parameters: {
@@ -14,4 +14,3 @@ const preview: Preview = {
 };
 
 export default preview;
-
