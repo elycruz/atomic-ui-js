@@ -2,16 +2,27 @@ import { html } from 'lit';
 import { Header } from './Header';
 import './page.css';
 
-export const Page = ({ user, onLogin, onLogout, onCreateAccount }) => html`
+type User = {
+  name: string;
+};
+
+export interface PageProps {
+  user?: User;
+  onLogin: () => void;
+  onLogout: () => void;
+  onCreateAccount: () => void;
+}
+
+export const Page = ({ user, onLogin, onLogout, onCreateAccount }: PageProps) => html`
   <article>
     ${Header({
-    user,
-    onLogin,
-    onLogout,
-    onCreateAccount,
-  })}
+      user,
+      onLogin,
+      onLogout,
+      onCreateAccount,
+    })}
 
-    <section>
+    <section class="storybook-page">
       <h2>Pages in Storybook</h2>
       <p>
         We recommend building UIs with a

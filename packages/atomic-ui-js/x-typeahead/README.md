@@ -1,0 +1,3 @@
+# x-typeahead
+
+Component description.

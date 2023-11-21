@@ -24,7 +24,9 @@
     "eslint": "eslint .",
     "stylelint": "stylelint **/*.{css,scss}",
     "typedoc": "typedoc .",
-    "test": "web-test-runner ./**/*.test.js --node-resolve"
+    "test": "web-test-runner ./**/*.test.js --node-resolve",
+    "storybook": "storybook dev -p 6006",
+    "build-storybook": "storybook build"
   },
   "browserslist": [
     "defaults",
@@ -52,10 +54,16 @@
     "eslint": "^8.52.0",
     "lit": "^2.8.0",
     "postcss": "^8.4.31",
+    "eslint": "^8.43.0",
+    "lit": "^3.1.0",
+    "postcss": "^8.4.23",
     "postcss-import": "^15.1.0",
     "postcss-preset-env": "^8.5.1",
     "prettier": "^2.8.8",
     "rollup": "^3.29.4",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "rollup": "^3.21.2",
     "rollup-plugin-postcss": "^4.0.2",
     "rollup-plugin-sass": "^1.12.21",
     "sass": "^1.69.4",
@@ -66,6 +74,6 @@
     "web-component-analyzer": "^1.1.7"
   },
   "peerDependencies": {
-    "lit": "^2.7.4"
+    "lit": "^3.1.0"
   }
 }
