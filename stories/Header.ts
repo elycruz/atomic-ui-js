@@ -3,9 +3,20 @@ import { html } from 'lit';
 import { Button } from './Button';
 import './header.css';
 
-export const Header = ({ user, onLogin, onLogout, onCreateAccount }) => html`
+type User = {
+  name: string;
+};
+
+export interface HeaderProps {
+  user?: User;
+  onLogin: () => void;
+  onLogout: () => void;
+  onCreateAccount: () => void;
+}
+
+export const Header = ({ user, onLogin, onLogout, onCreateAccount }: HeaderProps) => html`
   <header>
-    <div class="wrapper">
+    <div class="storybook-header">
       <div>
         <svg width="32" height="32" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">
           <g fill="none" fillRule="evenodd">
@@ -27,18 +38,18 @@ export const Header = ({ user, onLogin, onLogout, onCreateAccount }) => html`
       </div>
       <div>
         ${user
-    ? Button({ size: 'small', onClick: onLogout, label: 'Log out' })
-    : html`${Button({
-      size: 'small',
-      onClick: onLogin,
-      label: 'Log in',
-    })}
+          ? Button({ size: 'small', onClick: onLogout, label: 'Log out' })
+          : html`${Button({
+              size: 'small',
+              onClick: onLogin,
+              label: 'Log in',
+            })}
             ${Button({
-    primary: true,
-    size: 'small',
-    onClick: onCreateAccount,
-    label: 'Sign up',
-  })}`}
+              primary: true,
+              size: 'small',
+              onClick: onCreateAccount,
+              label: 'Sign up',
+            })}`}
       </div>
     </div>
   </header>
