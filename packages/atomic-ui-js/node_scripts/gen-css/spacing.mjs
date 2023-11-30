@@ -17,7 +17,8 @@ const {fib, factorsOf, multiplesOf} = utils,
   fibs = fib(5000),
   factorsOf144 = factorsOf(144),
   multiplesOf6 = multiplesOf(16, 6),
-  spacingNums = Array.from(new Set(fibs.concat(factorsOf144, multiplesOf6)).values()).sort((a, b) => {
+  multiplesOf8 = multiplesOf(12, 8),
+  spacingNums = Array.from(new Set(fibs.concat(factorsOf144, multiplesOf8, multiplesOf6)).values()).sort((a, b) => {
     if (a < b) return -1;
     return a === b ? 0 : 1;
   }),
@@ -31,7 +32,7 @@ const {fib, factorsOf, multiplesOf} = utils,
         `/**
  * spacing.css
  *
- * The library's spacing properties - factors of 144, multiples of 6 (upto 96), and the fibonacci sequence (upto 4181),
+ * The library's spacing properties - factors of 144, multiples of 6 (and 8) (upto 96), and the fibonacci sequence (upto 4181),
  * represented as \`rem\` units.
  *
  * ====> DO NOT MANUALLY EDIT THIS FILE - This file is generated via a script ({repo-root}/scripts/gen-css/spacing.mjs).

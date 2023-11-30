@@ -187,8 +187,8 @@ export class XTypeaheadElement extends LitElement {
     return !options.childElementCount ? null : html`
       <menu part="list">
         ${Array.from(options.children, (option, i) => {
-    return this.template(option, i, options.children, _renderMenu);
-  })}
+          return this.template(option, i, options.children, _renderMenu);
+        })}
       </menu>`;
   }
 

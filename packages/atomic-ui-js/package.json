@@ -52,18 +52,14 @@
     "chokidar": "^3.5.3",
     "cssnano": "^6.0.1",
     "eslint": "^8.52.0",
-    "lit": "^2.8.0",
-    "postcss": "^8.4.31",
-    "eslint": "^8.43.0",
     "lit": "^3.1.0",
-    "postcss": "^8.4.23",
+    "postcss": "^8.4.31",
     "postcss-import": "^15.1.0",
     "postcss-preset-env": "^8.5.1",
     "prettier": "^2.8.8",
-    "rollup": "^3.29.4",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "rollup": "^3.21.2",
+    "rollup": "^3.29.4",
     "rollup-plugin-postcss": "^4.0.2",
     "rollup-plugin-sass": "^1.12.21",
     "sass": "^1.69.4",
@@ -75,5 +71,8 @@
   },
   "peerDependencies": {
     "lit": "^3.1.0"
+  },
+  "dependencies": {
+    "@cucumber/cucumber": "^10.0.1"
   }
 }

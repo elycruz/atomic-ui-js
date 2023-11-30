@@ -21,7 +21,7 @@ export const genGapCss = () => {
     `/**
  * Gap classes.
  */
-${spacingNums.slice(0, spacingNums.indexOf(144) + 1).reduce((acc, val) =>
+${spacingNums.reduce((acc, val) =>
     `${acc}
 .gap-${val}px { gap: var(--x-${val}px, ${val}px); }`
   , '')}\n`;

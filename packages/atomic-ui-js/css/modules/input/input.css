@@ -29,7 +29,10 @@ html:not([dir="rtl"]) :where(x-input, .x-input):where(
    ),
   select,
   textarea
-),
+) {
+  padding: var(--x-input-padding-block) var(--x-input-padding-inline);
+}
+
 html:not([dir="rtl"]) :where(x-input, .x-input) > *:not(
   [type="button"],
   [type="checkbox"],
@@ -40,7 +43,8 @@ html:not([dir="rtl"]) :where(x-input, .x-input) > *:not(
   [type="reset"],
   [type="submit"]
 ) {
-  padding: var(--x-input-padding-block) var(--x-input-padding-inline);
+  padding: calc(var(--x-input-padding-block) - var(--x-input-border-width))
+  calc(var(--x-input-padding-inline) - var(--x-input-border-width));
 }
 
 /**
@@ -59,7 +63,10 @@ html[dir="rtl"] :where(x-input, .x-input):is(
   ),
   select,
   textarea
-),
+) {
+  padding: var(--x-input-padding-inline) var(--x-input-padding-block);
+}
+
 html[dir="rtl"] :where(x-input, .x-input) > *:not(
   [type="button"],
   [type="checkbox"],
@@ -70,8 +77,29 @@ html[dir="rtl"] :where(x-input, .x-input) > *:not(
   [type="reset"],
   [type="submit"]
 ) {
-  padding: var(--x-input-padding-inline) var(--x-input-padding-block);
+  padding: calc(var(--x-input-padding-inline) - var(--x-input-border-width))
+  calc(var(--x-input-padding-block) - var(--x-input-border-width));
 }
+
+/**
+ * Size control - Restrict heights for known control sizes.
+ */
+:where(x-input, .x-input):not(.x-small, .x-dense, .x-large, textarea, :has(> textarea)) {
+  max-height: calc(40 / 16 * 1rem);
+}
+
+/** .. For select elements */
+:where(x-input, .x-input):not(.x-small, .x-dense, .x-large) > select {
+  min-height: calc(38 / 16 * 1rem);
+}
+
+.x-input:not(.x-small, .x-dense, .x-large):is(select) {
+  min-height: calc(40 / 16 * 1rem);
+}
+
+/**
+ * @todo Support 'x-small', 'x-dense', and 'x-large', input control, sizes.
+ */
 
 /**
  * Default dimensions, where not checkbox, and/or radio button.

@@ -1,7 +1,7 @@
 import fs from 'fs';
 import * as path from "path";
 import url from "url";
-import {fibs, multiplesOf6, factorsOf144} from "./spacing.mjs";
+import {spacingNums} from "./spacing.mjs";
 
 const __dirname = url.fileURLToPath(new URL('.', import.meta.url)),
 
@@ -13,11 +13,7 @@ const __dirname = url.fileURLToPath(new URL('.', import.meta.url)),
   genMarginAndPaddingClasses = () => {
     const outputFilePath = path.join(__dirname, `../../css/modules/${fileName}`),
 
-      seeds = Array.from(new Set(fibs.concat(multiplesOf6, factorsOf144)).values()).sort((a, b) => {
-        if (a < b) return -1;
-        else if (a > b) return 1;
-        else return 0;
-      }),
+      seeds = spacingNums,
 
       indexOf144 = seeds.indexOf(144),
 
