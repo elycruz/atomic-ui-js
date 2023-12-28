@@ -28,6 +28,8 @@ input[type="file"]::file-selector-button {
 /*
  * Sizes
  * ------------------- */
+
+/* Small */
 :where(
   .x-btn,
   .x-button,
@@ -40,31 +42,34 @@ input[type="file"]::file-selector-button {
   padding: var(--x-3px);
 }
 
+/* Dense */
 :where(.x-btn, .x-button, button,
   input:where([type="submit"], [type="reset"], [type="image"], [type="button"]),
   input[type="file"]::file-selector-button
 ).x-dense {
-  padding: var(--x-8px);
+  padding: var(--x-6px) var(--x-8px);
   font-size: var(--x-16px);
   line-height: var(--x-18px);
 }
 
+/* Large */
 :where(.x-btn, .x-button, button,
   input:where([type="submit"], [type="reset"], [type="image"], [type="button"]),
   input[type="file"]::file-selector-button
 ).x-large {
-  padding: var(--x-12px);
+  padding: var(--x-8px) var(--x-12px);
   font-size: var(--x-24px);
   line-height: var(--x-32px);
 }
 
+/* Normal */
 :where(.x-btn, .x-button, button,
   input:where([type="submit"], [type="reset"], [type="image"], [type="button"]),
   input[type="file"]::file-selector-button
 ):is(
   :not(.x-small, .x-dense, .x-large), .x-normal
 ) {
-  padding: var(--x-8px);
+  padding: var(--x-4px) var(--x-8px);
   font-size: var(--x-16px);
   line-height: var(--x-24px);
 }

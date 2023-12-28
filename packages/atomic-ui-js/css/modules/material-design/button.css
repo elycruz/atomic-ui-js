@@ -37,7 +37,7 @@
 
 /** For large size **/
 :where(.x-btn, .x-button).x-outlined.x-large {
-  padding: calc(var(--x-12px) - var(--x-border-width));
+  padding: calc(var(--x-8px) - var(--x-border-width)) calc(var(--x-12px) - var(--x-border-width));
 }
 
 /**

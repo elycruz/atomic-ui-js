@@ -2,6 +2,8 @@
  * gen-spacing-scheme-css.js
  *
  * Outputs the library's css spacing properties - We are supporting multiples of 6 and 8 and the fibonacci sequence.
+ *
+ * @todo Each unit set should output it's own css file;  E.g., `fib-spacing.css`, `mult-of-6-spacing.css`, etc.
  */
 import fs from 'fs'
 import * as path from 'path';
@@ -16,8 +18,8 @@ const {fib, factorsOf, multiplesOf} = utils,
 
   fibs = fib(5000),
   factorsOf144 = factorsOf(144),
-  multiplesOf6 = multiplesOf(16, 6),
-  multiplesOf8 = multiplesOf(12, 8),
+  multiplesOf6 = multiplesOf(6, 16),
+  multiplesOf8 = multiplesOf(8, 12),
   spacingNums = Array.from(new Set(fibs.concat(factorsOf144, multiplesOf8, multiplesOf6)).values()).sort((a, b) => {
     if (a < b) return -1;
     return a === b ? 0 : 1;

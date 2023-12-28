@@ -1,0 +1,7 @@
+.x-hgroup > * + * {
+  margin-left: 1rem;
+}
+
+.x-vgroup > * + * {
+  margin-top: 1rem;
+}
