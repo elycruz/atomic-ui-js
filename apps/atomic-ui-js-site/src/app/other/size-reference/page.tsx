@@ -8,9 +8,9 @@ export default function Page() {
     fib144 = fib(144),
     commonNumbers = (() => {
       const counts = []
-        .concat(factorsOf144, /*multiplesOf4, */multiplesOf6, multiplesOf8, fib144)
+        .concat(factorsOf144, multiplesOf4, multiplesOf6, multiplesOf8, fib144)
         .reduce((acc, curr) => {
-          if (acc[curr]) acc[curr]++;
+          if (acc[curr]) acc[curr] += 1;
           else acc[curr] = 1;
           return acc;
         }, {} as Record<number, number>)
@@ -21,7 +21,7 @@ export default function Page() {
       }, [] as number[])
         .sort((a, b) => a - b);
     })(),
-    commonNumberFactors = commonFactorsOf(...commonNumbers);
+    commonNumberFactors = commonFactorsOf(...new Set(commonNumbers));
 
   return (
     <section>
