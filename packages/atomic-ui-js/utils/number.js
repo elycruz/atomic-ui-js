@@ -21,7 +21,7 @@ export const constrainNumber = (min = 0, max = 0, num = 0) => {
   resolvePointer = (autoWrap, min, max, pointer) =>
     (autoWrap ? wrapPointer : constrainPointer)(min, max, pointer),
 
-  multiplesOf = (numMultiples, multiplicand, ) => {
+  multiplesOf = (multiplicand, numMultiples) => {
     const out = [];
     for (let i = 1; i <= numMultiples; i += 1) {
       out.push(i * multiplicand);
@@ -30,12 +30,35 @@ export const constrainNumber = (min = 0, max = 0, num = 0) => {
   },
 
   factorsOf = x => {
-    if (!x) throw new Error('`x` must not be equal to `0`');
+    if (!x) throw new Error('`x` must not be equal to `0` or be falsy');
     const out = [];
     for (let i = 1; i <= x; i += 1) {
       const rslt = x % i;
       if (rslt === 0) out.push(i);
     }
+    return out;
+  },
+
+  commonFactorsOf = (...args) => {
+    if (args.length < 2) return args[0];
+
+    const out = [1];
+    const factorSets = args.map(factorsOf);
+    const len = factorSets.length;
+
+    for (let i = 0; i < len; i += 1) {
+      const fs = factorSets[i];
+
+      for (const f of fs) {
+        if (f === 1) continue;
+
+        const isCommonFactor =
+          factorSets.every((set, j) => i === j ? true : set.includes(f));
+
+        if (!out.includes(f) && isCommonFactor) out.push(f);
+      }
+    }
+
     return out;
   },
 

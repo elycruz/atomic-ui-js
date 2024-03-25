@@ -18,6 +18,26 @@ export default function ButtonPage() {
       <header>
         <h2>Button</h2>
       </header>
+
+      <div className="x-section-body">
+        <dl>
+          <dt>Button Sizes</dt>
+          <dd className="x-btn-group">
+            <button className="x-btn x-theme-primary x-outlined" type="button">
+              <XRippleComponent></XRippleComponent>
+              <span>Default</span>
+            </button>
+            {Object.keys(sizeVariants).map(k3 => k3 === 'Normal' ? null :
+              <button key={`sized-button-${k3}`}
+                className={`x-btn x-${sizeVariants[k3]} x-theme-primary x-outlined`}
+                type="button">
+                <XRippleComponent></XRippleComponent>
+                <span>{k3}</span>
+              </button>)}
+          </dd>
+        </dl>
+      </div>
+
       <div className="x-section-body">
         <h3>Button Varieties</h3>
 

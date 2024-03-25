@@ -1,20 +1,25 @@
+/** Properties and util classes. **/
 @import url("properties.css");
+@import url("spacing.css");
+@import url("gap.css");
+@import url("align-items.css");
+@import url("display.css");
+@import url("flex.css");
+@import url("colors/index.css");
+@import url("focus-ring.css");
+@import url("justify-content.css");
+@import url("position.css");
+@import url("group.css");
+
+/** Component styles. **/
 @import url("../../x-appbar/index.css");
 @import url("button/index.css");
 @import url("card.css");
-@import url("colors/index.css");
 @import url("fieldset/index.css");
 @import url("../../x-ripple/index.css");
 @import url("material-design/index.css");
 @import url("input/index.css");
-@import url("align-items.css");
-@import url("display.css");
-@import url("flex.css");
-@import url("focus-ring.css");
-@import url("justify-content.css");
-@import url("position.css");
 @import url("section.css");
-@import url("spacing.css");
 @import url("form.css");
 @import url("menu.css");
 @import url("table.css");

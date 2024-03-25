@@ -44,30 +44,35 @@
   },
   "homepage": "https://github.com/elycruz/atomic-ui-js#readme",
   "devDependencies": {
+    "@open-wc/testing": "^3.2.0",
+    "@rollup/plugin-typescript": "^11.1.5",
     "@types/node": "18.16.3",
-    "@web/test-runner": "^0.17.1",
+    "@web/test-runner": "^0.17.2",
     "@web/test-runner-mocha": "^0.8.1",
     "chokidar": "^3.5.3",
     "cssnano": "^6.0.1",
-    "eslint": "^8.43.0",
+    "eslint": "^8.52.0",
     "lit": "^3.1.0",
-    "postcss": "^8.4.23",
+    "postcss": "^8.4.31",
     "postcss-import": "^15.1.0",
-    "postcss-preset-env": "^8.3.2",
+    "postcss-preset-env": "^8.5.1",
     "prettier": "^2.8.8",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "rollup": "^3.21.2",
+    "rollup": "^3.29.4",
     "rollup-plugin-postcss": "^4.0.2",
-    "rollup-plugin-sass": "^1.12.19",
-    "sass": "^1.62.1",
-    "stylelint": "^15.9.0",
+    "rollup-plugin-sass": "^1.12.21",
+    "sass": "^1.69.4",
+    "stylelint": "^15.11.0",
     "stylelint-config-standard": "^33.0.0",
-    "typedoc": "^0.24.6",
-    "typescript": "^5.0.4",
+    "typedoc": "^0.24.8",
+    "typescript": "^5.2.2",
     "web-component-analyzer": "^1.1.7"
   },
   "peerDependencies": {
     "lit": "^3.1.0"
+  },
+  "dependencies": {
+    "@cucumber/cucumber": "^10.0.1"
   }
 }

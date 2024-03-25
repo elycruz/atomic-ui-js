@@ -1,6 +1,6 @@
 import React from 'react';
 import '../css/index.scss';
-import {AppNav} from '../features/app-nav';
+import {AppNav} from '@/features/app-nav';
 import {AppNavToggle} from '@/components/app-nav-toggle';
 
 export const metadata = {

@@ -6,43 +6,6 @@ export const navigationItems: NavItem[] = [{
   'alias': 'app',
   'items': [
     {
-      'label': 'Components',
-      'uri': '/components/',
-      'alias': 'components',
-      'items': [
-        {
-          'label': 'Field',
-          'uri': '/components/field/',
-          'alias': 'field'
-        },
-        {
-          'label': 'Input',
-          'uri': '/components/input/',
-          'alias': 'input'
-        },
-        {
-          'label': 'Menu',
-          'uri': '/components/menu/',
-          'alias': 'menu'
-        },
-        {
-          'label': 'Ripple',
-          'uri': '/components/ripple/',
-          'alias': 'ripple'
-        },
-        {
-          'label': 'X-appbar',
-          'uri': '/components/x-appbar/',
-          'alias': 'x-appbar'
-        },
-        {
-          'label': 'X-toggleonscroll',
-          'uri': '/components/x-toggleonscroll/',
-          'alias': 'x-toggleonscroll'
-        }
-      ]
-    },
-    {
       'label': 'Css-components',
       'uri': '/css-components/',
       'alias': 'css-components',
@@ -86,6 +49,67 @@ export const navigationItems: NavItem[] = [{
           'label': 'Spacing',
           'uri': '/css-components/spacing/',
           'alias': 'spacing'
+        }
+      ]
+    },
+    {
+      'label': 'Custom-elements',
+      'uri': '/custom-elements/',
+      'alias': 'custom-elements',
+      'items': [
+        {
+          'label': 'X-appbar',
+          'uri': '/custom-elements/x-appbar/',
+          'alias': 'x-appbar'
+        },
+        {
+          'label': 'X-field',
+          'uri': '/custom-elements/x-field/',
+          'alias': 'x-field'
+        },
+        {
+          'label': 'X-icon',
+          'uri': '/custom-elements/x-icon/',
+          'alias': 'x-icon'
+        },
+        {
+          'label': 'X-input',
+          'uri': '/custom-elements/x-input/',
+          'alias': 'x-input',
+          'items': [
+            {
+              'label': 'Alignment',
+              'uri': '/custom-elements/x-input/alignment/',
+              'alias': 'alignment'
+            }
+          ]
+        },
+        {
+          'label': 'X-menu',
+          'uri': '/custom-elements/x-menu/',
+          'alias': 'x-menu'
+        },
+        {
+          'label': 'X-ripple',
+          'uri': '/custom-elements/x-ripple/',
+          'alias': 'x-ripple'
+        },
+        {
+          'label': 'X-toggleonscroll',
+          'uri': '/custom-elements/x-toggleonscroll/',
+          'alias': 'x-toggleonscroll'
+        }
+      ]
+    },
+    {
+      'label': 'Other',
+      'uri': '/other/',
+      'alias': 'other',
+      'items': [
+        {
+          'label': 'Size-reference',
+          'uri': '/other/size-reference/',
+          'alias': 'size-reference'
         }
       ]
     },

@@ -335,7 +335,7 @@ force: ${force}
 
     // Write Site lib. files
     .then(collectedFilePaths => scaffoldFilesUsing(
-      writeSitePageFiles, 'apps/atomic-ui-js-site/src/app/components', collectedFilePaths)
+      writeSitePageFiles, 'apps/atomic-ui-js-site/src/app/custom-elements', collectedFilePaths)
     )
 
     // Print skipped files

@@ -1,11 +1,10 @@
 /**
  * Base
  * ---------------- */
-.x-btn,
+.x-btn, .x-button,
 button,
 input:where([type="submit"], [type="reset"], [type="image"], [type="button"]),
-input[type="file"]::file-selector-button
-{
+input[type="file"]::file-selector-button {
   position: relative;
   border-radius: var(--x-border-radius);
   border: var(--x-border-width) solid ButtonBorder;
@@ -20,7 +19,7 @@ input[type="file"]::file-selector-button
 }
 
 :where(
-  .x-btn, button, input:where([type="submit"], [type="reset"], [type="image"], [type="button"]),
+  .x-btn, .x-button, button, input:where([type="submit"], [type="reset"], [type="image"], [type="button"]),
   input[type="file"]::file-selector-button
 ):not(:disabled):hover {
   cursor: pointer;
@@ -29,8 +28,11 @@ input[type="file"]::file-selector-button
 /*
  * Sizes
  * ------------------- */
+
+/* Small */
 :where(
   .x-btn,
+  .x-button,
    button,
   input:where([type="submit"], [type="reset"], [type="image"], [type="button"]),
   input[type="file"]::file-selector-button
@@ -40,31 +42,34 @@ input[type="file"]::file-selector-button
   padding: var(--x-3px);
 }
 
-:where(.x-btn, button,
+/* Dense */
+:where(.x-btn, .x-button, button,
   input:where([type="submit"], [type="reset"], [type="image"], [type="button"]),
   input[type="file"]::file-selector-button
 ).x-dense {
-  padding: var(--x-8px);
+  padding: var(--x-6px) var(--x-8px);
   font-size: var(--x-16px);
   line-height: var(--x-18px);
 }
 
-:where(.x-btn, button,
+/* Large */
+:where(.x-btn, .x-button, button,
   input:where([type="submit"], [type="reset"], [type="image"], [type="button"]),
   input[type="file"]::file-selector-button
 ).x-large {
-  padding: var(--x-12px);
-  font-size: var(--x-21px);
-  line-height: var(--x-34px);
+  padding: var(--x-8px) var(--x-12px);
+  font-size: var(--x-24px);
+  line-height: var(--x-32px);
 }
 
-:where(.x-btn, button,
+/* Normal */
+:where(.x-btn, .x-button, button,
   input:where([type="submit"], [type="reset"], [type="image"], [type="button"]),
   input[type="file"]::file-selector-button
 ):is(
   :not(.x-small, .x-dense, .x-large), .x-normal
 ) {
-  padding: var(--x-8px);
+  padding: var(--x-4px) var(--x-8px);
   font-size: var(--x-16px);
   line-height: var(--x-24px);
 }
@@ -72,7 +77,7 @@ input[type="file"]::file-selector-button
 /**
  * Raised
  */
-:where(.x-btn, button,
+:where(.x-btn, .x-button, button,
   input:where([type="submit"], [type="reset"], [type="image"], [type="button"]),
   input[type="file"]::file-selector-button
 ).x-raised:hover {
@@ -80,11 +85,11 @@ input[type="file"]::file-selector-button
   0 var(--x-3px) var(--x-5px) var(--x-neutral-color-with-alpha-6);
 }
 
-:where(.x-btn, button,
+:where(.x-btn, .x-button, button,
   input:where([type="submit"], [type="reset"], [type="image"], [type="button"]),
   input[type="file"]::file-selector-button
 ).x-raised:active,
-:where(.x-btn, button,
+:where(.x-btn, .x-button, button,
   input:where([type="submit"], [type="reset"], [type="image"], [type="button"]),
   input[type="file"]::file-selector-button
 ).x-raised {
@@ -95,7 +100,7 @@ input[type="file"]::file-selector-button
 /*
  * Contents
  * -------------------- */
-:where(.x-btn, button,
+:where(.x-btn, .x-button, button,
   input:where([type="submit"], [type="reset"], [type="image"], [type="button"]),
   input[type="file"]::file-selector-button
 ) > *:not(:is(x-ripple)) + * {

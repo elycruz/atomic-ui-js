@@ -9,9 +9,7 @@ export const xFieldName = 'x-field';
 //   VALIDATION_MESSAGE_NAME = 'validationMessage';
 
 export class XFieldElement extends LitElement {
-  static get localName() {
-    return xFieldName;
-  }
+  static localName = xFieldName;
 
   static get styles() {
     return styles;

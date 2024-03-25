@@ -15,7 +15,7 @@ An atomic, CSS first, user interface library.
 - [ ] `.x-input`
 - [ ] `.x-mds-icon`
 - [ ] `.x-menu`
-- [x] `.x-radio`
+- [x] `.x-radio` - Available also via `.x-input`.
 - [ ] `.x-section`
 - [ ] `.x-select`
 - [ ] `.x-table`

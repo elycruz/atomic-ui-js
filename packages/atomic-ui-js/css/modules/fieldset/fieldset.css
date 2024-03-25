@@ -51,7 +51,7 @@ html[dir="rtl"] :is(.x-fieldset, fieldset).x-grid {
   grid-template-columns: auto auto;
 }
 
-:is(.x-fieldset, fieldset):not(.x-grid, .x-layout-horizontal)
+:is(.x-fieldset, fieldset):not(.x-grid, .x-layout-horizontal),
 > :is(x-field, .x-field):not(:last-child) {
   margin-bottom: 1rem;
 }

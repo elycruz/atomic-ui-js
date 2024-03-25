@@ -1,7 +1,7 @@
 /**
  * spacing.css
  *
- * The library's spacing properties - factors of 144, multiples of 6 (upto 96), and the fibonacci sequence (upto 4181),
+ * The library's spacing properties - factors of 144, multiples of 6 (and 8) (upto 96), and the fibonacci sequence (upto 4181),
  * represented as `rem` units.
  *
  * ====> DO NOT MANUALLY EDIT THIS FILE - This file is generated via a script ({repo-root}/scripts/gen-css/spacing.mjs).
@@ -23,17 +23,23 @@
   --x-21px: 1.3125rem;
   --x-24px: 1.5rem;
   --x-30px: 1.875rem;
+  --x-32px: 2rem;
   --x-34px: 2.125rem;
   --x-36px: 2.25rem;
+  --x-40px: 2.5rem;
   --x-42px: 2.625rem;
   --x-48px: 3rem;
   --x-54px: 3.375rem;
   --x-55px: 3.4375rem;
+  --x-56px: 3.5rem;
   --x-60px: 3.75rem;
+  --x-64px: 4rem;
   --x-66px: 4.125rem;
   --x-72px: 4.5rem;
   --x-78px: 4.875rem;
+  --x-80px: 5rem;
   --x-84px: 5.25rem;
+  --x-88px: 5.5rem;
   --x-89px: 5.5625rem;
   --x-90px: 5.625rem;
   --x-96px: 6rem;
