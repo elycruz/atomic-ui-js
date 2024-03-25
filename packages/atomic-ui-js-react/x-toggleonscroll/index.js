@@ -1,7 +1,7 @@
 'use client';
 
 import React from 'react';
-import {createComponent} from '@lit-labs/react';
+import {createComponent} from '@lit/react';
 import {XToggleOnScrollElement} from 'atomic-ui-js/x-toggleonscroll/index.js';
 
 const XToggleOnScrollComponent = createComponent({

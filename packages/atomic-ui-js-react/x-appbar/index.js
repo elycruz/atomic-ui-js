@@ -1,7 +1,7 @@
 'use client';
 
 import React from 'react';
-import {createComponent} from '@lit-labs/react';
+import {createComponent} from '@lit/react';
 import {XAppbarElement, xAppbarEvents} from 'atomic-ui-js/x-appbar/index.js';
 
 const XAppbarComponent = createComponent({
