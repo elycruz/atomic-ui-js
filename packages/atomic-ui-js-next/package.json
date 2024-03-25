@@ -18,7 +18,7 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "@lit-labs/react": "^2.1.2",
+    "@lit/react": "^1.0.4",
     "@mdx-js/loader": "^2.3.0",
     "@mdx-js/react": "^2.3.0",
     "@types/react": "18.2.0",
@@ -31,7 +31,7 @@
     "react-dom": "^18.2.0"
   },
   "peerDependencies": {
-    "@lit-labs/react": "^2.1.2",
+    "@lit/react": "^1.0.4",
     "atomic-ui-js": "workspace:^",
     "atomic-ui-js-react": "workspace:^",
     "lit": "^3.1.0",

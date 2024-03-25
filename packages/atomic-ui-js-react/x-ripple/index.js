@@ -1,7 +1,7 @@
 'use client';
 
 import React from 'react';
-import {createComponent} from '@lit-labs/react';
+import {createComponent} from '@lit/react';
 import {XRippleElement} from 'atomic-ui-js/x-ripple/index.js';
 
 const XRippleComponent = createComponent({
