@@ -43,8 +43,5 @@
     ".next/types/**/*.ts",
     "../../docs/types/**/*.ts",
     "../../dist/atomic-ui-js-site/types/**/*.ts"
-  ],
-  "exclude": [
-    "node_modules"
   ]
 }
