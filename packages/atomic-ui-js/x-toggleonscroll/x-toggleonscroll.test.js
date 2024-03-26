@@ -1,5 +1,4 @@
 import {expect, fixture} from '@open-wc/testing';
-import {Given} from '@cucumber/cucumber';
 
 import {XToggleOnScrollElement} from './index.js';
 
@@ -10,8 +9,4 @@ describe(`${XToggleOnScrollElement.localName}`, () => {
     const el = await fixture('<x-toggleonscroll></x-toggleonscroll>');
     expect(el).to.be.instanceof(XToggleOnScrollElement);
   });
-});
-
-Given('the user has scrolled the page', () => {
-  console.log('hello');
 });
