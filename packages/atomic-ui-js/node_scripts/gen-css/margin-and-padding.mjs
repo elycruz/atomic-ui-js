@@ -33,8 +33,8 @@ const __dirname = url.fileURLToPath(new URL('.', import.meta.url)),
             [val0, val1] = agg2;
 
           return [
-            val0 + margin + '\n',
-            val1 + padding + '\n'
+            val0 + margin + '\n\n',
+            val1 + padding + '\n\n'
           ];
         }, ['', '']);
 
@@ -48,8 +48,7 @@ const __dirname = url.fileURLToPath(new URL('.', import.meta.url)),
         `/**
  * Margin and Padding shorthand classes.
  */
-${marginContent}
-${paddingContent}
+${marginContent}${paddingContent}
 `;
 
     return fs.promises.writeFile(outputFilePath, content)

@@ -68,11 +68,6 @@ export const navigationItems: NavItem[] = [{
           'alias': 'x-field'
         },
         {
-          'label': 'X-icon',
-          'uri': '/custom-elements/x-icon/',
-          'alias': 'x-icon'
-        },
-        {
           'label': 'X-input',
           'uri': '/custom-elements/x-input/',
           'alias': 'x-input',
