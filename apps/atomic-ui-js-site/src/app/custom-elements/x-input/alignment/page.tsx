@@ -1,9 +1,10 @@
 import {inputTypes} from '@/data/controls-metadata';
+import styles from './page.module.scss';
 
 let _uuid = 0;
 
 export default function XInputAlignmentPage() {
-  return <section>
+  return <section className={styles.topSection}>
     <header>
       <h2>Input Controls Alignment</h2>
     </header>
