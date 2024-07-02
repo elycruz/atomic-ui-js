@@ -19,7 +19,10 @@ input[type="file"]::file-selector-button {
 }
 
 :where(
-  .x-btn, .x-button, button, input:where([type="submit"], [type="reset"], [type="image"], [type="button"]),
+  .x-btn,
+  .x-button,
+  button,
+  input:where([type="submit"], [type="reset"], [type="image"], [type="button"]),
   input[type="file"]::file-selector-button
 ):not(:disabled):hover {
   cursor: pointer;
