@@ -38,32 +38,43 @@
   },
   "homepage": "https://github.com/elycruz/atomic-ui-js#readme",
   "dependencies": {
-    "@lit/react": "^1.0.4",
-    "lit": "^3.1.2"
+    "@lit/react": "^1.0.5",
+    "lit": "^3.1.4"
   },
   "devDependencies": {
-    "@storybook/addon-essentials": "^7.6.17",
-    "@storybook/addon-links": "^7.6.17",
-    "@storybook/blocks": "^7.6.17",
-    "@storybook/web-components": "^7.6.17",
-    "@storybook/web-components-vite": "^7.6.17",
+    "@storybook/addon-essentials": "^7.6.20",
+    "@storybook/addon-links": "^7.6.20",
+    "@storybook/blocks": "^7.6.20",
+    "@storybook/web-components": "^7.6.20",
+    "@storybook/web-components-vite": "^7.6.20",
     "@types/node": "18.16.3",
     "eslint": "^8.57.0",
     "eslint-plugin-storybook": "^0.6.15",
     "husky": "^8.0.3",
-    "postcss": "^8.4.38",
+    "postcss": "^8.4.39",
     "prettier": "^2.8.8",
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
     "rollup": "^3.29.4",
-    "storybook": "^7.6.17",
+    "storybook": "^7.6.20",
     "stylelint": "^15.11.0",
     "stylelint-config-standard": "^33.0.0",
     "stylelint-config-standard-scss": "^9.0.0",
-    "turbo": "^1.13.0",
+    "turbo": "^1.13.4",
     "typedoc": "^0.24.8",
-    "typescript": "^5.4.3",
-    "webpack": "^5.91.0"
+    "typescript": "^5.5.3",
+    "webpack": "^5.92.1"
   },
-  "packageManager": "pnpm@8.15.3+sha1.64838798f519c18029c1e8a1310e16101fc2eda0"
+  "packageManager": "pnpm@8.15.3+sha1.64838798f519c18029c1e8a1310e16101fc2eda0",
+  "pnpm": {
+    "overrides": {
+      "postcss@<8.4.31": ">=8.4.31",
+      "next@>=0.9.9 <13.4.20-canary.13": ">=13.4.20-canary.13",
+      "ejs@<3.1.10": ">=3.1.10",
+      "braces@<3.0.3": ">=3.0.3",
+      "ws@>=8.0.0 <8.17.1": ">=8.17.1",
+      "ws@>=7.0.0 <7.5.10": ">=7.5.10",
+      "ws@>=6.0.0 <6.2.3": ">=6.2.3"
+    }
+  }
 }
