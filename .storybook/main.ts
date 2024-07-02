@@ -18,13 +18,12 @@ const config: StorybookConfig = {
   addons: [
     getAbsolutePath("@storybook/addon-links"),
     getAbsolutePath("@storybook/addon-essentials"),
+    getAbsolutePath("@storybook/addon-mdx-gfm")
   ],
   framework: {
     name: getAbsolutePath("@storybook/web-components-vite"),
     options: {},
   },
-  docs: {
-    autodocs: "tag",
-  },
+  docs: {},
 };
 export default config;
