@@ -1,22 +1,26 @@
-# Ripple
+# x-ripple
 
-Ripple effect element.
+Element for applying "material-design" like ripple effect to element interactions.
 
-## Approaches
+## Usage
 
-### Self contained element
+```html
+<!-- Within element - Effect is constrained within
+     wrapping element's boundaries 
+-->
+<button type="button" class="x-btn x-theme-primary">
+  <x-ripple></x-ripple>
+  Hello
+</button>
 
-In this approach the element would be able to operate in two configurations: 
-
-1.  With `children` elements.
-2.  As a child element.
-
-In the first configuration the element would apply the effect to it's first child.
-
-In the second, it would apply the effect to itself.
-
-#### Requirements
-
-- Css styles that could be applied to itself, and/or, it's children.
-- Ability to apply effect as either an 'bounded', and/or, 'un-bounded', ripple.
-- Ripple effect origins should originate from the user's triggered pointer/mouse event.
+<!-- Around element - Effect is unconstrained -- 
+     uses `x-ripple:empty` selector to know 
+     which mode the element is running in.
+-->
+<label for="checkbox" class="x-theme-success">
+  <x-ripple>
+    <input class="x-checkbox" type="checkbox" id="checkbox" name="checkbox"/>
+  </x-ripple>
+  <span>Checkbox</span>
+</label>
+```

@@ -7,7 +7,7 @@
  * The `:active` animation only happens via `animation`.
  *!
 
-@keyframes ripple-behavior-in {
+@keyframes ripple-in-behavior {
   0% {
     transform: translate(var(--x-ripple-x), var(--x-ripple-y)) scale(var(--x-ripple-inactive-scale));
     opacity: var(--x-ripple-inactive-opacity);
@@ -22,7 +22,7 @@
   }
 }
 
-@keyframes ripple-behavior-out {
+@keyframes ripple-out-behavior {
   0% {
     transform: translate(var(--x-ripple-x), var(--x-ripple-y)) scale(var(--x-ripple-active-scale));
     opacity: var(--x-ripple-active-opacity-end);
@@ -109,13 +109,13 @@
 }
 
 :where(.x-btn, .x-ripple)::after {
-  animation: var(--x-ripple-active-speed-out) ripple-behavior-out ease-out;
+  animation: var(--x-ripple-active-speed-out) ripple-out-behavior ease-out;
   animation-fill-mode: forwards;
 }
 
 :where(.x-btn, .x-ripple).x-ripple--active::after,
 :where(.x-btn, .x-ripple):not(.x-ripple-upgraded):is(:active, :hover:active)::after {
-  animation: var(--x-ripple-active-speed) ripple-behavior-in ease-out;
+  animation: var(--x-ripple-active-speed) ripple-in-behavior ease-out;
   animation-fill-mode: forwards;
 }
 */
