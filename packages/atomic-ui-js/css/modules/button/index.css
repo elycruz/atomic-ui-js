@@ -1,7 +1,8 @@
 /**
  * Base
  * ---------------- */
-.x-btn, .x-button,
+.x-btn,
+.x-button,
 button,
 input:where([type="submit"], [type="reset"], [type="image"], [type="button"]),
 input[type="file"]::file-selector-button {

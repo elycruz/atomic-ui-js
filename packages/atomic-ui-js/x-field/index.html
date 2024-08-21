@@ -4,8 +4,7 @@
   <meta charset="UTF-8">
   <base href="./">
   <title>X-Field</title>
-  <link rel="stylesheet" href="../css/index.scss">
-  <link rel="stylesheet" href="../../../apps/atomic-ui-js-site/src/css/index.stories.css">
+  <link rel="stylesheet" href="../css/index.css">
   <script type="importmap">
     {
       "imports": {
@@ -25,45 +24,51 @@
       <fieldset class="x-grid x-fieldset--grid-2">
         <legend>Fieldset - Grid Layout Approach</legend>
 
-        <label for="text-input-1">Default</label>
+        <label for="default-input">Default</label>
         <x-field selectors="input">
-          <input id="text-input-1" name="text-input-1" class="x-input" />
-
+          <input id="default-input" name="default-input" class="x-input" />
           <div slot="help">(Optional)</div>
         </x-field>
 
-        <label slot="leading" for="text-input-2"
-               title="Is 'leading slot' label">Default</label>
-
+        <label for="required-input">Required</label>
         <x-field selectors="input">
-          <input id="text-input-2" name="text-input-2" class="x-input" />
-
-          <div slot="help">(Optional)</div>
+          <input id="required-input" name="required-input" required class="x-input" />
         </x-field>
 
-        <label for="text-input-3">Required</label>
-
-        <x-field selectors="input">
-          <input id="text-input-3" name="text-input-3" required class="x-input" />
+        <label for="required-with-serv-message">Required (with server err message)</label>
+        <x-field selectors="input" validationMessage="Server-side Err Message">
+          <input id="required-with-serv-message" name="required-with-serv-message" required class="x-input"/>
         </x-field>
 
-        <label slot="leading" for="text-input-4"
-               title="Is 'leading slot' label">With Leading Slot</label>
-
-        <x-field selectors="input">
-          <input id="text-input-4" name="text-input-4" required class="x-input"/>
+        <label for="email-input">Email (+ &grave;validateOnInput&grave;)</label>
+        <x-field selectors="input" validateOnInput>
+          <input id="email-input" name="email-input" type="email" required class="x-input" />
         </x-field>
 
-        <label for="text-input">Required</label>
-
-        <x-field selectors="input">
-          <input id="text-input" name="text-input" required class="x-input"/>
+        <label for="zipcode-input">Zipcode (+ &grave;validateOnInput&grave;)</label>
+        <x-field selectors="input" validateOnInput>
+          <input id="zipcode-input" name="zipcode-input" type="text"
+                 pattern="^\d{5}(\-\d{4})?$" required class="x-input" />
         </x-field>
 
-        <label for="checkbox">Checkbox</label>
-
+        <label for="checkbox-input">Checkbox</label>
         <x-field class="x-layout-horizontal" selectors="input">
-          <input type="checkbox" class="x-checkbox" id="checkbox" name="checkbox" required/>
+          <input type="checkbox" class="x-checkbox" id="checkbox-input" name="checkbox-input" required/>
+        </x-field>
+
+        <label for="checkbox-input-2">Checkbox (&grave;validateOnChange&grave;)</label>
+        <x-field class="x-layout-horizontal" selectors="input" validateOnChange>
+          <input type="checkbox" class="x-checkbox" id="checkbox-input-2" name="checkbox-input-2" required/>
+        </x-field>
+
+        <label for="textarea">Textarea (&grave;validateOnChange&grave;)</label>
+        <x-field selectors="textarea" validateOnChange>
+          <textarea id="textarea" name="textarea" minlength="5"></textarea>
+        </x-field>
+
+        <label for="textarea-2">Textarea - Required (&grave;validateOnChange&grave;)</label>
+        <x-field selectors="textarea" validateOnChange>
+          <textarea id="textarea-2" name="textarea-2" minlength="5" required></textarea>
         </x-field>
 
         <label for="radio-1">Radio-Group</label>
@@ -100,66 +105,6 @@
     <form action="#">
       <fieldset>
         <legend>General, Default Layout, Approach</legend>
-
-        <x-field>
-          <label for="text-input-2-1">Default</label>
-          <input id="text-input-2-1" name="text-input-2-1" class="x-input"/>
-          <div slot="help">(Optional)</div>
-        </x-field>
-
-        <x-field>
-          <label slot="leading" for="text-input-2-2"
-                 title="Is 'leading slot' label">Default</label>
-          <div class="x-input">
-            <input id="text-input-2-2" name="text-input-2-2"/>
-          </div>
-          <div slot="help">(Optional)</div>
-        </x-field>
-
-        <x-field selectors="input">
-          <label for="text-input-2-3">Required</label>
-          <input id="text-input-2-3" name="text-input-2-3" required class="x-input" />
-        </x-field>
-
-        <x-field selectors="input">
-          <label slot="leading" for="text-input-2-4"
-                 title="Is 'leading slot' label">With Leading Slot Label</label>
-          <input id="text-input-2-4" name="text-input-2-4" required  class="x-input" />
-        </x-field>
-
-        <x-field validationMessage="Forced error message." selectors="input">
-          <label for="text-input-2-">Required</label>
-          <input id="text-input-2-" name="text-input-2-" required class="x-input"/>
-        </x-field>
-
-        <x-field selectors="input" class="x-layout-horizontal">
-          <label for="checkbox-2">Checkbox</label>
-          <input type="checkbox" id="checkbox-2" name="checkbox" required/>
-        </x-field>
-
-        <x-field selectors="input" class="x-layout-horizontal">
-          <label for="radio-1">Radio-Group</label>
-          <x-field>
-            <input type="radio" name="radio-group-1" id="radio-2-1" required value="1">
-            <label for="radio-2-1">Radio 1</label>
-          </x-field>
-          <x-field>
-            <input type="radio" name="radio-group-1" id="radio-2-2" required value="2">
-            <label for="radio-2-2">Radio 2</label>
-          </x-field>
-          <x-field>
-            <input type="radio" name="radio-group-1" id="radio-2-3" required value="3">
-            <label for="radio-2-3">Radio 3</label>
-          </x-field>
-          <x-field>
-            <input type="radio" name="radio-group-1" id="radio-2-4" required value="4">
-            <label for="radio-2-4">Radio 4</label>
-          </x-field>
-          <x-field>
-            <input type="radio" name="radio-group-1" id="radio-2-5" required value="5">
-            <label for="radio-2-5">Radio 5</label>
-          </x-field>
-        </x-field>
       </fieldset>
 
       <fieldset>
