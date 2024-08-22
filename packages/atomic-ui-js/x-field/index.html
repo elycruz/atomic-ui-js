@@ -42,13 +42,19 @@
 
         <label for="email-input">Email (+ &grave;validateOnInput&grave;)</label>
         <x-field selectors="input" validateOnInput>
-          <input id="email-input" name="email-input" type="email" required class="x-input" />
+          <input id="email-input" name="email-input" type="email" maxlength="255" required class="x-input" />
         </x-field>
 
         <label for="zipcode-input">Zipcode (+ &grave;validateOnInput&grave;)</label>
         <x-field selectors="input" validateOnInput>
-          <input id="zipcode-input" name="zipcode-input" type="text"
-                 pattern="^\d{5}(\-\d{4})?$" required class="x-input" />
+          <input id="zipcode-input" name="zipcode-input"
+                 type="text"
+                 class="x-input"
+                 maxlength="10"
+                 pattern="^\d{5}(-\d{4})?$"
+                 required
+          />
+          <div slot="help">#####(-####)</div>
         </x-field>
 
         <label for="checkbox-input">Checkbox</label>
@@ -99,6 +105,7 @@
       <fieldset>
         <button type="reset">Reset</button>
         <button>Submit</button>
+        <button type="button" class="fill">Fill</button>
       </fieldset>
     </form>
 
@@ -115,7 +122,48 @@
   </article>
 </section>
 
-<script type="module" src="../index.js">
+<script type="module" src="../index.js"></script>
+<script type="module">
+  const $ = (sel = '', root = document) => root.querySelector(sel),
+    exampleValues = {
+      'default-input': 'Hello',
+      'required-input': 'World',
+      'required-with-serv-message': 'World x2',
+      'email-input': 'test@test',
+      'zipcode-input': '12345-1234',
+      'checkbox-input': true,
+      'checkbox-input-2': true,
+      'textarea-2': 'Sally sells seashells',
+      'radio-group-1': '2',
+    };
+
+
+  window.addEventListener('DOMContentLoaded', () => {
+    const form = $('form');
+
+    console.log(form.elements);
+
+    form.addEventListener('submit', (e) => {
+      e.preventDefault();
+      console.log(e, e.currentTarget.validity)
+    });
+
+    // Fill the form with some data
+    $('button.fill', form).addEventListener('click', () => {
+      for (const [k, v] of Object.entries(exampleValues)) {
+        let elm = form.elements[k];
+        if (k.startsWith('checkbox')) {
+          elm.checked = v;
+        } else if (k.startsWith('radio')) {
+          elm = $(`#radio-${v}`, form);
+          elm.checked = true;
+        } else {
+          elm.value = v;
+        }
+        elm.checkValidity();
+      }
+    });
+  }, {once: true});
 </script>
 </body>
 </html>
