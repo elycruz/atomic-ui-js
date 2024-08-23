@@ -29,7 +29,7 @@ legend {
 :is(.x-fieldset, fieldset).x-grid {
   display: grid;
   gap: 1rem;
-  align-items: center;
+  align-items: flex-start;
 }
 
 html:not([dir="rtl"]) :is(.x-fieldset, fieldset).x-grid > label {

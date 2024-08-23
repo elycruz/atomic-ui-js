@@ -79,6 +79,7 @@
 
         <label for="radio-1">Radio-Group</label>
         <x-field class="x-field x-layout-horizontal" selectors="input">
+          <div class="x-flex x-flex-row-wrap gap-16px">
           <x-field>
             <input type="radio" class="x-radio" name="radio-group-1" id="radio-1" required value="1">
             <label for="radio-1">Radio 1</label>
@@ -99,13 +100,15 @@
             <input type="radio" class="x-radio" name="radio-group-1" id="radio-5" required value="5">
             <label for="radio-5">Radio 5</label>
           </x-field>
+          </div>
         </x-field>
       </fieldset>
 
       <fieldset>
         <button type="reset">Reset</button>
         <button>Submit</button>
-        <button type="button" class="fill">Fill</button>
+        <button type="button" class="fill">Set defaults</button>
+        <button type="button" class="un-fill">Remove defaults</button>
       </fieldset>
     </form>
 
@@ -124,6 +127,8 @@
 
 <script type="module" src="../index.js"></script>
 <script type="module">
+  import {log, preventDefault} from "../utils/index.js";
+
   const $ = (sel = '', root = document) => root.querySelector(sel),
     exampleValues = {
       'default-input': 'Hello',
@@ -137,32 +142,57 @@
       'radio-group-1': '2',
     };
 
-
   window.addEventListener('DOMContentLoaded', () => {
     const form = $('form');
 
-    console.log(form.elements);
+    log(form.elements);
 
-    form.addEventListener('submit', (e) => {
-      e.preventDefault();
-      console.log(e, e.currentTarget.validity)
-    });
+    form.addEventListener('submit', preventDefault);
+    form.addEventListener('formdata', log);
 
     // Fill the form with some data
     $('button.fill', form).addEventListener('click', () => {
       for (const [k, v] of Object.entries(exampleValues)) {
         let elm = form.elements[k];
+        const radioGroupElm0 = elm.constructor === RadioNodeList && elm.item(0);
+        const xField = ((radioGroupElm0 && radioGroupElm0.parentElement?.parentElement?.closest('x-field')) || elm).closest('x-field');
+
         if (k.startsWith('checkbox')) {
-          elm.checked = v;
-        } else if (k.startsWith('radio')) {
-          elm = $(`#radio-${v}`, form);
-          elm.checked = true;
+          elm.defaultChecked =
+            elm.checked = v;
         } else {
-          elm.value = v;
+          elm.defaultValue =
+            elm.value = v + '';
         }
-        elm.checkValidity();
+
+        if (xField) {
+          xField.validationMessage = '';
+        }
+        (radioGroupElm0 || elm).checkValidity?.();
       }
     });
+
+    // Fill the form with some data
+    $('button.un-fill', form).addEventListener('click', () => {
+      for (const [k, v] of Object.entries(exampleValues)) {
+        let elm = form.elements[k];
+        const radioGroupElm0 = elm.constructor === RadioNodeList && elm.item(0);
+        const xField = ((radioGroupElm0 && radioGroupElm0.parentElement?.parentElement?.closest('x-field')) || elm).closest('x-field');
+
+        if (k.startsWith('checkbox')) {
+          elm.defaultChecked =
+            elm.checked = false;
+        } else {
+          elm.defaultValue =
+            elm.value = '';
+        }
+
+        if (xField) {
+          xField.validationMessage = '';
+        }
+      }
+    });
+
   }, {once: true});
 </script>
 </body>
