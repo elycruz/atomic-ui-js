@@ -13,6 +13,9 @@ export const xThemes = {
     Outlined: 'outlined',
     Filled: 'filled',
     Raised: 'raised',
+    /**
+     * @deprecated - Use `Normal` instead of `Dense`.
+     **/
     Dense: 'dense',
     Small: 'small',
     Normal: 'normal',

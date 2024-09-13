@@ -2,8 +2,10 @@ import {xThemes, xVariants} from 'atomic-ui-js/utils';
 import XRippleComponent from 'atomic-ui-js-next/x-ripple';
 
 const partitionedVariants = Object.entries(xVariants).reduce((agg, [k, v]) => {
-    if (/large|small|dense|normal|medium/.test(v + '')) {
+    if (/large|small|normal|medium/.test(v + '')) {
       agg[1][k] = v;
+    } if (v.toLowerCase() === 'dense') {
+      return agg;
     } else {
       agg[0][k] = v;
     }
@@ -23,7 +25,7 @@ export default function ButtonPage() {
         <dl>
           <dt>Pure Buttons</dt>
           <dd className="x-btn-group">
-            {Object.keys(sizeVariants).map(k3 => k3 === 'Normal' ? null :
+            {Object.keys(sizeVariants).map(k3 => k3 === 'Dense' ? null :
               <button key={`pure-sized-button-${k3}`}
                 className={`x-${sizeVariants[k3]}`}
                 type="button">

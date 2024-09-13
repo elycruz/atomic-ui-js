@@ -47,6 +47,7 @@ input[type="file"]::file-selector-button {
 }
 
 /* Dense */
+/** @deprecated - Use `.x-normal` instead. **/
 :where(.x-btn, .x-button, button,
   input:where([type="submit"], [type="reset"], [type="image"], [type="button"]),
   input[type="file"]::file-selector-button
@@ -66,14 +67,14 @@ input[type="file"]::file-selector-button {
   line-height: var(--x-32px);
 }
 
-/* Normal */
+/* Normal - height: 34px + borders === 36px */
 :where(.x-btn, .x-button, button,
   input:where([type="submit"], [type="reset"], [type="image"], [type="button"]),
   input[type="file"]::file-selector-button
 ):is(
   :not(.x-small, .x-dense, .x-large), .x-normal
 ) {
-  padding: var(--x-4px) var(--x-8px);
+  padding: var(--x-5px) var(--x-9px);
   font-size: var(--x-16px);
   line-height: var(--x-24px);
 }
