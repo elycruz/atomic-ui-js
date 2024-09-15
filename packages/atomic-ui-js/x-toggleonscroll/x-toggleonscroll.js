@@ -254,6 +254,34 @@ export class XToggleOnScrollElement extends ReactiveElement {
   }
 
   /**
+   * @type {string}
+   */
+  #classNameToToggleTargetSelector;
+
+  /**
+   * Gets the target selector used for fetching the element to toggle the
+   *  `classNameToToggle` classname on.
+   *
+   * @returns {string}
+   */
+  get classNameToToggleTargetSelector() {
+    return this.#classNameToToggleTargetSelector ?? '';
+  }
+
+  /**
+   * Sets the target selector used for fetching the element to toggle the
+   *  `classNameToToggle` classname on.
+   *
+   * @param {string} str
+   */
+  set classNameToToggleTargetSelector(str) {
+    const prevValue = this.classNameToToggleTargetSelector;
+    this.#classNameToToggleTargetSelector = (str ?? '') + '';
+    this.requestUpdate(CLASSNAME_TO_TOGGLE_TARGET_SELECTOR_NAME, prevValue);
+  }
+
+
+  /**
    * @type {number | Array<number>}
    */
   #threshold;
