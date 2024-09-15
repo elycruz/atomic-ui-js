@@ -20,10 +20,6 @@
   0 var(--x-3px) var(--x-5px) var(--x-neutral-color-with-alpha-6);
 }
 
-:where(.x-appbar, x-appbar).x-dense {
-  padding: var(--x-8px);
-}
-
 :where(.x-appbar, x-appbar).x-small {
   padding: var(--x-3px);
 }
