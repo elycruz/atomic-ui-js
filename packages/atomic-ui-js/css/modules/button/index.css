@@ -46,17 +46,6 @@ input[type="file"]::file-selector-button {
   padding: var(--x-3px);
 }
 
-/* Dense */
-/** @deprecated - Use `.x-normal` instead. **/
-:where(.x-btn, .x-button, button,
-  input:where([type="submit"], [type="reset"], [type="image"], [type="button"]),
-  input[type="file"]::file-selector-button
-).x-dense {
-  padding: var(--x-6px) var(--x-8px);
-  font-size: var(--x-16px);
-  line-height: var(--x-18px);
-}
-
 /* Large */
 :where(.x-btn, .x-button, button,
   input:where([type="submit"], [type="reset"], [type="image"], [type="button"]),
@@ -72,7 +61,7 @@ input[type="file"]::file-selector-button {
   input:where([type="submit"], [type="reset"], [type="image"], [type="button"]),
   input[type="file"]::file-selector-button
 ):is(
-  :not(.x-small, .x-dense, .x-large), .x-normal
+  :not(.x-small, .x-large), .x-normal
 ) {
   padding: var(--x-5px) var(--x-9px);
   font-size: var(--x-16px);
