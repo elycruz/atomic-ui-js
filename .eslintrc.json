@@ -9,7 +9,8 @@
   "ignorePatterns": [
     "**/archived/**/*",
     "**/node_modules/**/*",
-    "**/generated/**/*"
+    "**/generated/**/*",
+    "**/*.d.ts"
   ],
   "overrides": [],
   "parserOptions": {
