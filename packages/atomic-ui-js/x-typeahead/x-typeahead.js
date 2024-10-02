@@ -1,3 +1,5 @@
+'use client';
+
 import {css, html, LitElement} from 'lit';
 
 export const xTypeaheadName = 'x-typeahead';
@@ -9,33 +11,34 @@ export class XTypeaheadElement extends LitElement {
   static localName = xTypeaheadName;
 
   static styles = css`
-    :host {
-      position: relative;
-      display: inline-block;
-      width: fit-content;
-    }
-
     :host,
     :host * {
       box-sizing: border-box;
     }
 
-    :host::part(button) {
-      --anchor-name: --button-anchor;
+    :host {
+      position: relative;
+      display: inline-block;
+      width: fit-content;
+      min-width: 1rem;
+      min-height: 1rem;
+    }
+
+    ::slotted(input, [type]) {
+      --anchor-name: --input;
     }
 
     :host::part(popover) {
+      position: absolute;
       margin: 0;
       padding: 0;
       border-radius: var(--x-border-radius);
       border: var(--x-border-width) solid;
 
-      /* Required due to only "partial" support of New API */
-      //top: 0;
-      //left: 0;
-      //inset: auto; /* Required for New API */
-      /* New API - placed here for testing */
-      position-anchor: --button-anchor;
+      /* Required due to only "partial" support of popover API */
+      inset: auto; /* Required for New API */
+      /* Popover API specific - placed here for testing */
+      position-anchor: --input;
       position-area: block-end;
       /* flip to bottom if goes off the top of the screen */
       position-try-fallbacks: flip-block;
@@ -56,6 +59,11 @@ export class XTypeaheadElement extends LitElement {
       display: block;
       padding: 0;
       margin: 0;
+    }
+
+    :host::part(list-item)[hidden],
+    :host::part(list-item-group)[hidden] {
+      display: none;
     }
 
     :host::part(list-item) {
@@ -95,6 +103,7 @@ export class XTypeaheadElement extends LitElement {
   get input() {
     if (!this.#input) {
       this.#input = this.querySelector(this.inputSelector || 'input');
+      if (!this.#input) throw new Error(`input element missing in ${xTypeaheadName} component`);
     }
     return this.#input;
   }
@@ -113,7 +122,7 @@ export class XTypeaheadElement extends LitElement {
   #popover;
   get popover() {
     if (!this.#popover) {
-      this.#popover = this.shadowRoot.querySelector('[popover]');
+      this.#popover = this.shadowRoot.querySelector('[part=popover]');
     }
     return this.#popover;
   }
@@ -130,10 +139,10 @@ export class XTypeaheadElement extends LitElement {
           <button
             type="button"
             part="list-item-button"
-            ?disabled="${option.disabled}"
             class="${!isOptGroup && option.selected ? 'selected' : null}"
-            tabindex="-1"
+            ?disabled="${option.disabled}"
             ?inert="${isOptGroup}"
+            tabindex="-1"
           >
             ${option.label ?? option.value}
           </button>
@@ -141,8 +150,9 @@ export class XTypeaheadElement extends LitElement {
         </li>
       `;
     };
-
     this.addEventListener('click', this.#onClick);
+    this.addEventListener('input', this.#onInput);
+    this.addEventListener('keyup', this.#onEnterKeyUp);
   }
 
   #refetchDataList() {
@@ -153,17 +163,47 @@ export class XTypeaheadElement extends LitElement {
     }
   }
 
+  #popoverOpened = false;
+  /**
+   * @param {Event} e
+   * @todo How do we resolve the difference between 'Enter' key action on the "input" control, and
+   *   the fact that we need to toggle the popover? // 'Enter' key on "input" control performs form
+   *   submit.
+   */
   #onClick(e) {
     const { target } = e;
 
-    // If is toggle button
-    if (target.matches('input, [type]:not(#button)')) {
-      this.popover.togglePopover();
+    // If "input" control has been clicked
+    if (target.matches(`${this.inputSelector || 'input, [type]'}`)) {
+      this.popover.togglePopover?.(!this.#popoverOpened);
     }
   }
 
-  #onButtonClick() {
-    this.input?.focus();
+  /**
+   * @param {KeyboardEvent} e
+   */
+  #onEnterKeyUp(e) {
+    if (e.key === 'Enter' && this.matches(':focus, :focus-within')) {
+      e.preventDefault();
+    }
+  }
+
+  /**
+   * Ensures we capture popover "opened" state, on light dismiss (
+   *  e.g, on outside click, and/or "Escape" key press, etc.).
+   *
+   *  @param {ToggleEvent} e
+   */
+  #onPopoverToggle(e) {
+    this.#popoverOpened = e.oldState === 'closed';
+  }
+
+  #onInput(e) {
+    console.log(e);
+    const {value} = e.target;
+    this.shadowRoot.querySelectorAll('[part^="list"]').forEach(li => {
+      li.hidden = !li.textContent.includes(value);
+    });
   }
 
   connectedCallback() {
@@ -195,14 +235,6 @@ export class XTypeaheadElement extends LitElement {
     }
   }
 
-  updated(_changedProperties) {
-    super.updated(_changedProperties);
-
-    return this.updateComplete.then(allUpdatesPerformed => () => {
-      if (!allUpdatesPerformed) return;
-    });
-  }
-
   /**
    * @param {HTMLElement} options
    * @returns {null|TemplateResult}
@@ -215,21 +247,15 @@ export class XTypeaheadElement extends LitElement {
     return !(options.childElementCount ?? options.length) ? null : html`
       <menu part="list">
         ${Array.from(options.children, (option, i) =>
-          this.template(option, i, options.children, _renderMenu)
-        )}
+    this.template(option, i, options.children, _renderMenu)
+  )}
       </menu>`;
   }
 
   render() {
     return html`
-      <button id="button"
-              type="button"
-              popoverTarget="popover"
-              @click="${this.#onButtonClick}"
-      >
-        <slot></slot>
-      </button>
-      <div id="popover" part="popover" popover tabindex="-1">
+      <slot></slot>
+      <div part="popover" popover tabindex="-1" @toggle="${this.#onPopoverToggle}">
         <div part="popover-content" tabindex="-1">
           ${this.renderMenu(this.datalist)}
         </div>
