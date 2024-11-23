@@ -1,9 +1,10 @@
 # atomic-ui-js (work-in-progress)
 
-An atomic user interface toolkit library experiment for building custom elements, and user interfaces.  The library part of the experiment is built purely on the web platform (and the 'lit' library in places).
+An atomic user interface toolkit, and library, experiment for building custom elements, and user interfaces.  The library part of the experiment is built purely on the web platform (and the 'lit' library in places).
 
 ## CSS Components
 
+- [ ] `.z-alert`
 - [ ] `.z-button`
 - [ ] `.z-checkbox`
 - [ ] `.z-radio`
