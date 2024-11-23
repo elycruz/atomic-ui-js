@@ -1,4 +1,4 @@
-# `.z-button`
+# `.x-button`
 
 Simplest possible button, with accompanying variant styles - Something akin to the native button but slightly more flexible, and easier to use.
 
