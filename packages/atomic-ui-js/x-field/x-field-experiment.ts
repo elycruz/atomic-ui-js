@@ -3,7 +3,7 @@
 import { LitElement, html, PropertyValues } from 'lit';
 import styles from './field.element.css';
 
-export const DasFieldName = 'das-field';
+export const XFieldName = 'x-field';
 
 export type ValidationMessageGetter = (i: HTMLInputElement) => string;
 export type ValidationMessage = string;
@@ -12,8 +12,8 @@ export type ValidityMessaging = {
   [key in keyof ValidityState]?: ValidationMessageGetter | ValidationMessage;
 };
 
-export class DasFieldElement extends LitElement {
-  static localName = DasFieldName;
+export class XFieldElement extends LitElement {
+  static localName = XFieldName;
   static styles = styles;
 
   static properties = {
@@ -26,7 +26,7 @@ export class DasFieldElement extends LitElement {
   };
 
   get localName() {
-    return DasFieldName;
+    return XFieldName;
   }
 
   #_inputs: NodeList | null;
@@ -225,6 +225,6 @@ export class DasFieldElement extends LitElement {
 
 declare global {
   interface HTMLElementTagNameMap {
-    'das-field': DasFieldElement;
+    'x-field': XFieldElement;
   }
 }
