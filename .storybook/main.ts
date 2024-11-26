@@ -9,6 +9,7 @@ import { join, dirname } from "path";
 function getAbsolutePath(value: string): any {
   return dirname(require.resolve(join(value, "package.json")));
 }
+
 const config: StorybookConfig = {
   stories: [
     "../packages/atomic-ui-js/x-*/**/*.stories.@(js|jsx|mjs|mdx|ts|tsx)",
@@ -25,4 +26,5 @@ const config: StorybookConfig = {
   },
   docs: {},
 };
+
 export default config;
