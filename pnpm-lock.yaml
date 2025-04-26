@@ -11028,10 +11028,10 @@ packages:
       balanced-match: 2.0.0
       colord: 2.9.3
       cosmiconfig: 8.3.6(typescript@5.5.3)
-      css-functions-list: 3.2.3
+      css-functions-list: 3.2.2
       css-tree: 2.3.1
-      debug: 4.4.0
-      fast-glob: 3.3.3
+      debug: 4.3.7
+      fast-glob: 3.3.2
       fastest-levenshtein: 1.0.16
       file-entry-cache: 7.0.2
       global-modules: 2.0.0
@@ -11047,19 +11047,19 @@ packages:
       meow: 10.1.5
       micromatch: 4.0.8
       normalize-path: 3.0.0
-      picocolors: 1.1.1
-      postcss: 8.5.3
+      picocolors: 1.1.0
+      postcss: 8.4.47
       postcss-resolve-nested-selector: 0.1.6
-      postcss-safe-parser: 6.0.0(postcss@8.5.3)
+      postcss-safe-parser: 6.0.0(postcss@8.4.47)
       postcss-selector-parser: 6.1.2
       postcss-value-parser: 4.2.0
       resolve-from: 5.0.0
       string-width: 4.2.3
       strip-ansi: 6.0.1
       style-search: 0.1.0
-      supports-hyperlinks: 3.2.0
+      supports-hyperlinks: 3.1.0
       svg-tags: 1.0.0
-      table: 6.9.0
+      table: 6.8.2
       write-file-atomic: 5.0.1
     transitivePeerDependencies:
       - supports-color
