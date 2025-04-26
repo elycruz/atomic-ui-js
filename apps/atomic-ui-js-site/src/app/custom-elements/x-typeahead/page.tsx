@@ -6,7 +6,7 @@ export default function XTypeaheadPage() {
     <article>
       <div>
         <XTypeaheadComponent>
-          <input className="x-input" placeholder="please select an option" />
+          <input className="x-input" type="search" placeholder="please select an option" />
           <datalist>
             <option>-- Choose an option --</option>
             {Array.from({length: 500}, (_, i) =>
