@@ -19,8 +19,8 @@
     "test": "turbo test",
     "watch:lib": "cd packages/atomic-ui-js/ && pnpm watch && cd ../../",
     "prepare": "husky install",
-    "storybook": "storybook dev -p 6006",
-    "build-storybook": "storybook build"
+    "storybook": "pnpm --filter atomic-ui-js storybook",
+    "build-storybook": "pnpm --filter atomic-ui-js build-storybook"
   },
   "browserslist": [
     "defaults",

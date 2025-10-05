@@ -1,7 +1,6 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import readline from 'node:readline';
-import {Buffer} from 'node:buffer';
 
 import Markdown from 'markdown-it';
 import {NextResponse} from 'next/server';
@@ -44,5 +43,5 @@ export async function GET(request: Request, params: { params: { numParagraphs?: 
 
     reader.on('error', reject);
   })
-    .then(content => new NextResponse(Buffer.from(content as string)));
+    .then(content => new NextResponse(content + ''));
 }
