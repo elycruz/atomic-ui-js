@@ -1,4 +1,4 @@
-import type { Preview } from "@storybook/web-components";
+import type { Preview } from "@storybook/web-components-vite";
 import '../packages/atomic-ui-js/dist/index.min.css';
 
 const preview: Preview = {

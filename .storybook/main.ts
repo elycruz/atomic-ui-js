@@ -15,16 +15,15 @@ const config: StorybookConfig = {
     "../packages/atomic-ui-js/x-*/**/*.stories.@(js|jsx|mjs|ts|tsx)",
     "../stories/**/*.stories.@(js|jsx|mjs|ts|tsx)",
   ],
+
   addons: [
     getAbsolutePath("@storybook/addon-links"),
-    getAbsolutePath("@storybook/addon-essentials"),
+    getAbsolutePath("@storybook/addon-docs")
   ],
+
   framework: {
     name: getAbsolutePath("@storybook/web-components-vite"),
     options: {},
-  },
-  docs: {
-    autodocs: "tag",
-  },
+  }
 };
 export default config;
