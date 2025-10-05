@@ -41,6 +41,11 @@ export const navigationItems: NavItem[] = [{
           'alias': 'copy'
         },
         {
+          'label': 'Input',
+          'uri': '/css-components/input/',
+          'alias': 'input'
+        },
+        {
           'label': 'Radio',
           'uri': '/css-components/radio/',
           'alias': 'radio'

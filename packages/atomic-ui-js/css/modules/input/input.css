@@ -16,8 +16,8 @@ html[dir="rtl"] :where(x-input, .x-input) {
 /**
  * Padding (ltr)
  * ------------------------ */
-html:not([dir="rtl"]) .x-input:is(
-  :where(input, [type]):not(
+html:not([dir="rtl"]) :where(x-input, .x-input):where(
+  input:not(
     [type="button"],
     [type="checkbox"],
     [type="color"],
@@ -33,22 +33,15 @@ html:not([dir="rtl"]) .x-input:is(
   padding: var(--x-input-padding-block) var(--x-input-padding-inline);
 }
 
-/**
- * Where input is inside of `x-input`/`.x-input`.
- */
-html:not([dir="rtl"]) :where(x-input, .x-input) > :where(
-  :where(input, [type]):not(
-    [type="button"],
-    [type="checkbox"],
-    [type="color"],
-    [type="image"],
-    [type="radio"],
-    [type="range"],
-    [type="reset"],
-    [type="submit"]
-  ),
-  select,
-  textarea
+html:not([dir="rtl"]) :where(x-input, .x-input) > *:not(
+  [type="button"],
+  [type="checkbox"],
+  [type="color"],
+  [type="image"],
+  [type="radio"],
+  [type="range"],
+  [type="reset"],
+  [type="submit"]
 ) {
   padding: calc(var(--x-input-padding-block) - var(--x-input-border-width))
   calc(var(--x-input-padding-inline) - var(--x-input-border-width));
@@ -57,25 +50,8 @@ html:not([dir="rtl"]) :where(x-input, .x-input) > :where(
 /**
  * Padding (rtl)
  */
-html[dir="rtl"] .x-input:is(
-  :where(input, [type]):not(
-    [type="button"],
-    [type="checkbox"],
-    [type="color"],
-    [type="image"],
-    [type="radio"],
-    [type="range"],
-    [type="reset"],
-    [type="submit"]
-   ),
-  select,
-  textarea
-) {
-  padding: var(--x-input-padding-inline) var(--x-input-padding-block);
-}
-
-html[dir="rtl"] :where(x-input, .x-input) > :where(
-  :where(input, [type]):not(
+html[dir="rtl"] :where(x-input, .x-input):is(
+  input:not(
     [type="button"],
     [type="checkbox"],
     [type="color"],
@@ -88,6 +64,19 @@ html[dir="rtl"] :where(x-input, .x-input) > :where(
   select,
   textarea
 ) {
+  padding: var(--x-input-padding-inline) var(--x-input-padding-block);
+}
+
+html[dir="rtl"] :where(x-input, .x-input) > *:not(
+  [type="button"],
+  [type="checkbox"],
+  [type="color"],
+  [type="image"],
+  [type="radio"],
+  [type="range"],
+  [type="reset"],
+  [type="submit"]
+) {
   padding: calc(var(--x-input-padding-inline) - var(--x-input-border-width))
   calc(var(--x-input-padding-block) - var(--x-input-border-width));
 }
@@ -95,34 +84,16 @@ html[dir="rtl"] :where(x-input, .x-input) > :where(
 /**
  * Size control - Restrict heights for known control sizes.
  */
-
-/** Max-height **/
-.x-input:not(select[size], textarea, .x-large, button, :has(> textarea, > select[size])) {
+:where(x-input, .x-input):not(.x-small, .x-large, textarea, :has(> textarea)) {
   max-height: calc(36 / 16 * 1rem);
 }
 
 /** .. For select elements */
-:where(x-input, .x-input):not(.x-small, .x-large) > :where(
-  select,
-  [type="button"],
-  [type="submit"],
-  [type="reset"],
-  [type="color"],
-  [type="image"],
-  textarea
-) {
-  min-height: calc(34 / 16 * 1rem);
+:where(x-input, .x-input):not(.x-small, .x-large) > select {
+  min-height: calc(38 / 16 * 1rem);
 }
 
-.x-input:not(.x-small, .x-large):is(
-  select,
-  [type="button"],
-  [type="submit"],
-  [type="reset"],
-  [type="color"],
-  [type="image"],
-  textarea
-) {
+.x-input:not(.x-small, .x-large):is(select) {
   min-height: calc(36 / 16 * 1rem);
 }
 
@@ -133,7 +104,7 @@ html[dir="rtl"] :where(x-input, .x-input) > :where(
 /**
  * Default dimensions, where not checkbox, and/or radio button.
  */
-:where(x-input, .x-input):not([type="checkbox"], [type="radio"], [type="color"]) {
+:where(x-input, .x-input):not([type="checkbox"], [type="radio"]) {
   --x-input-padding-block: var(--x-6px);
   --x-input-padding-inline: var(--x-6px);
 

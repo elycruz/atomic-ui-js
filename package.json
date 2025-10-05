@@ -18,9 +18,7 @@
     "docs": "turbo doc",
     "test": "turbo test",
     "watch:lib": "cd packages/atomic-ui-js/ && pnpm watch && cd ../../",
-    "prepare": "husky install",
-    "storybook": "storybook dev -p 6006",
-    "build-storybook": "storybook build"
+    "prepare": "husky install"
   },
   "browserslist": [
     "defaults",
@@ -42,12 +40,6 @@
     "lit": "^3.2.0"
   },
   "devDependencies": {
-    "@storybook/addon-essentials": "^8.3.0",
-    "@storybook/addon-links": "^8.3.0",
-    "@storybook/addon-mdx-gfm": "^8.3.0",
-    "@storybook/blocks": "^8.3.0",
-    "@storybook/web-components": "^8.3.0",
-    "@storybook/web-components-vite": "^8.3.0",
     "@types/node": "18.16.3",
     "eslint": "^8.57.0",
     "eslint-plugin-storybook": "^0.8.0",
@@ -57,11 +49,10 @@
     "react": "19.0.0-rc-206df66e-20240912",
     "react-dom": "19.0.0-rc-206df66e-20240912",
     "rollup": "^3.29.4",
-    "storybook": "^8.3.0",
     "stylelint": "^15.11.0",
     "stylelint-config-standard": "^33.0.0",
     "stylelint-config-standard-scss": "^9.0.0",
-    "turbo": "^1.13.4",
+    "turbo": "^2.5.8",
     "typedoc": "^0.24.8",
     "typescript": "^5.6.2",
     "webpack": "^5.94.0"
