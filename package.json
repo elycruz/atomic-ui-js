@@ -4,7 +4,7 @@
   "description": "Atomic-Ui-Js Monorepo.",
   "private": true,
   "engines": {
-    "node": ">=v20"
+    "node": ">=v22"
   },
   "scripts": {
     "dev": "pnpm gen:site:navitems && turbo dev",
@@ -48,10 +48,11 @@
     "eslint": "^8.57.1",
     "eslint-plugin-storybook": "^9.1.10",
     "husky": "^8.0.3",
+    "next": "^15.5.4",
     "postcss": "^8.5.6",
     "prettier": "^2.8.8",
-    "react": "19.0.0-rc-206df66e-20240912",
-    "react-dom": "19.0.0-rc-206df66e-20240912",
+    "react": "^19.2.0",
+    "react-dom": "^19.2.0",
     "rollup": "^3.29.5",
     "stylelint": "^15.11.0",
     "stylelint-config-standard": "^33.0.0",
@@ -65,7 +66,9 @@
   "pnpm": {
     "overrides": {
       "postcss@<8.4.31": ">=8.4.31",
-      "next@>=0.9.9 <13.4.20-canary.13": ">=13.4.20-canary.13",
+      "react@<19.2.0": ">=19.2.0",
+      "react-dom@<19.2.0": ">=19.2.0",
+      "next@<15.5.4": ">=15.5.4",
       "ejs@<3.1.10": ">=3.1.10",
       "braces@<3.0.3": ">=3.0.3",
       "ws@>=8.0.0 <8.17.1": ">=8.17.1",

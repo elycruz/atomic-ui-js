@@ -1,11 +1,10 @@
 'use client'; // Error boundaries must be Client Components
 
 import {useEffect} from 'react';
-import {noop} from 'fjl';
 
 export default function Error({
   error,
-  reset = noop,
+  reset,
 }: {
   error: Error & { digest?: string }
   reset: () => void
