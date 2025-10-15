@@ -1,3 +1,4 @@
+import {Metadata} from 'next';
 import React from 'react';
 import '../css/index.scss';
 import {AppNav} from '@/features/app-nav';
@@ -5,7 +6,7 @@ import {AppNavToggle} from '@/components/app-nav-toggle';
 
 export const metadata = {
   title: 'Atomic UI Js'
-};
+} as Metadata;
 
 export default function RootLayout({
   // Layouts must accept a children prop.
