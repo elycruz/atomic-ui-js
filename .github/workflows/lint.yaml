@@ -21,7 +21,7 @@ jobs:
 
     steps:
       - name: Checkout
-        uses: actions/checkout@v3
+        uses: actions/checkout@v5.0.0
       - name: Detect package manager
         id: detect-package-manager
         run: |
@@ -45,13 +45,13 @@ jobs:
             exit 1
           fi
       - name: Setup pnpm
-        uses: pnpm/action-setup@v2.2.4
+        uses: pnpm/action-setup@v4.2.0
         with:
           version: 8
       - name: Setup Node
-        uses: actions/setup-node@v3
+        uses: actions/setup-node@v6.0.0
         with:
-          node-version: "18"
+          node-version: "20"
           cache: ${{ steps.detect-package-manager.outputs.manager }}
       - name: Install (Vercel) Turbo
         id: install-vercel-turbo

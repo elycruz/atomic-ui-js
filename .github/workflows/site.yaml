@@ -31,7 +31,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v3
+        uses: actions/checkout@v5.0.0
       - name: Detect package manager
         id: detect-package-manager
         run: |
@@ -55,13 +55,13 @@ jobs:
             exit 1
           fi
       - name: Setup pnpm
-        uses: pnpm/action-setup@v2.2.4
+        uses: pnpm/action-setup@v4.2.0
         with:
           version: 8
       - name: Setup Node
-        uses: actions/setup-node@v3
+        uses: actions/setup-node@v6.0.0
         with:
-          node-version: "18"
+          node-version: "20"
           cache: ${{ steps.detect-package-manager.outputs.manager }}
       - name: Install (Vercel) Turbo
         id: install-vercel-turbo
@@ -72,7 +72,7 @@ jobs:
           path: |
             apps/atomic-ui-js-site/.next/cache
           # Generate a new cache whenever packages or source files change.
-          key: ${{ runner.os }}-nextjs-${{ hashFiles('**/package-lock.json', '**/yarn.lock', '**/pnpm-lock.yaml') }}-${{ hashFiles('**.[jt]s', '**.[jt]sx') }}
+          key: ${{ runner.os }}-nextjs-${{ hashFiles('**/package-lock.json', '**/yarn.lock', '**/pnpm-lock.yaml') }}-${{ hashFiles('**.[jt]s', '**.[jt]sx', '**.[mc][jt]s', '**.[mc][jt]sx') }}
           # If source files changed but packages didn't, rebuild from a prior cache.
           restore-keys: |
             ${{ runner.os }}-nextjs-${{ hashFiles('**/package-lock.json', '**/yarn.lock', '**/pnpm-lock.yaml') }}-
