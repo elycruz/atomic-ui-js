@@ -4,7 +4,7 @@
   "description": "Atomic-Ui-Js Monorepo.",
   "private": true,
   "engines": {
-    "node": ">=v22"
+    "node": ">=v20"
   },
   "scripts": {
     "dev": "pnpm gen:site:navitems && turbo dev",
@@ -39,16 +39,16 @@
   "homepage": "https://github.com/elycruz/atomic-ui-js#readme",
   "dependencies": {
     "@lit/react": "^1.0.8",
-    "@tailwindcss/vite": "^4.1.12",
+    "@tailwindcss/vite": "^4.1.14",
     "lit": "^3.3.1",
-    "tailwindcss": "^4.1.12"
+    "tailwindcss": "^4.1.14"
   },
   "devDependencies": {
     "@types/node": "18.16.3",
     "eslint": "^8.57.1",
     "eslint-plugin-storybook": "^9.1.10",
     "husky": "^8.0.3",
-    "next": "^15.5.4",
+    "next": "^15.5.5",
     "postcss": "^8.5.6",
     "prettier": "^2.8.8",
     "react": "^19.2.0",
@@ -59,8 +59,8 @@
     "stylelint-config-standard-scss": "^9.0.0",
     "turbo": "^2.5.8",
     "typedoc": "^0.24.8",
-    "typescript": "^5.9.2",
-    "webpack": "^5.101.3"
+    "typescript": "^5.9.3",
+    "webpack": "^5.102.1"
   },
   "packageManager": "pnpm@8.15.3+sha1.64838798f519c18029c1e8a1310e16101fc2eda0",
   "pnpm": {
