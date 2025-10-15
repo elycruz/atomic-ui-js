@@ -6,7 +6,7 @@
 }
 
 .x-menu,
-.x-menu :where(> ul, > ul ul) {
+.x-menu > :where(ul, ul ul) {
   min-width: var(--x-144px);
 }
 
