@@ -1,8 +1,9 @@
 import {Metadata} from 'next';
 import React from 'react';
-import '../css/index.scss';
 import {AppNav} from '@/features/app-nav';
 import {AppNavToggle} from '@/components/app-nav-toggle';
+
+import '../css/index.scss';
 
 export const metadata = {
   title: 'Atomic UI Js'
