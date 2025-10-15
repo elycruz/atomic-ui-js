@@ -41,6 +41,11 @@ export const navigationItems: NavItem[] = [{
           'alias': 'copy'
         },
         {
+          'label': 'Input',
+          'uri': '/css-components/input/',
+          'alias': 'input'
+        },
+        {
           'label': 'Radio',
           'uri': '/css-components/radio/',
           'alias': 'radio'
@@ -93,6 +98,11 @@ export const navigationItems: NavItem[] = [{
           'label': 'X-toggleonscroll',
           'uri': '/custom-elements/x-toggleonscroll/',
           'alias': 'x-toggleonscroll'
+        },
+        {
+          'label': 'X-typeahead',
+          'uri': '/custom-elements/x-typeahead/',
+          'alias': 'x-typeahead'
         }
       ]
     },

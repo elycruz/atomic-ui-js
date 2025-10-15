@@ -9,6 +9,7 @@ legend {
  * ---------------- */
 :is(fieldset, .x-fieldset) {
   padding: 1rem;
+  gap: 1.5rem;
 }
 
 :is(fieldset, .x-fieldset, legend) {
@@ -20,23 +21,15 @@ legend {
   margin-top: 1.5rem;
 }
 
-.x-layout-horizontal > x-field + x-field {
-  margin-left: 1rem;
-  margin-top: 1rem;
-}
 
 /* :is(.x-layout-vertical, :not(.x-layout-horizontal)) > x-field {
   display: block;
 } */
 
-/* :is(.x-layout-vertical, :not(.x-layout-horizontal)) > x-field + x-field {
-  margin-top: 1rem;
-} */
-
 :is(.x-fieldset, fieldset).x-grid {
   display: grid;
   gap: 1rem;
-  align-items: center;
+  align-items: flex-start;
 }
 
 html:not([dir="rtl"]) :is(.x-fieldset, fieldset).x-grid > label {
@@ -49,23 +42,6 @@ html[dir="rtl"] :is(.x-fieldset, fieldset).x-grid {
 
 :is(.x-fieldset, fieldset).x-fieldset--grid-2 {
   grid-template-columns: auto auto;
-}
-
-:is(.x-fieldset, fieldset):not(.x-grid, .x-layout-horizontal),
-> :is(x-field, .x-field):not(:last-child) {
-  margin-bottom: 1rem;
-}
-
-:is(.x-fieldset, fieldset):not(.x-grid) > * + :is(x-field, .x-field, label) {
-  margin-left: 1rem;
-}
-
-:is(.x-fieldset, fieldset):not(.x-layout-vertical) :is(x-field, .x-field) > :is(x-field, x-field) {
-  margin: 0 0 1rem 1rem;
-}
-
-:is(.x-fieldset, fieldset) > :is(* + button, button + *) {
-  margin-left: 0.5rem;
 }
 
 :where(.x-fieldset, fieldset).x-grid label:has(+ .x-input > textarea) {

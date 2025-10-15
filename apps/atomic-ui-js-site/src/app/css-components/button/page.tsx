@@ -2,11 +2,10 @@ import {xThemes, xVariants} from 'atomic-ui-js/utils';
 import XRippleComponent from 'atomic-ui-js-next/x-ripple';
 
 const partitionedVariants = Object.entries(xVariants).reduce((agg, [k, v]) => {
-    if (/large|small|dense|normal|medium/.test(v)) {
+    if (/large|small|normal|medium/.test(v + '')) {
       agg[1][k] = v;
-    } else {
-      agg[0][k] = v;
     }
+    agg[0][k] = v;
     return agg;
   }, [{}, {}]),
 
@@ -21,6 +20,15 @@ export default function ButtonPage() {
 
       <div className="x-section-body">
         <dl>
+          <dt>Pure Buttons</dt>
+          <dd className="x-btn-group">
+            {Object.keys(sizeVariants).map(k3 =>
+              <button key={`pure-sized-button-${k3}`}
+                className={`x-${sizeVariants[k3]}`}
+                type="button">
+                {k3}
+              </button>)}
+          </dd>
           <dt>Button Sizes</dt>
           <dd className="x-btn-group">
             <button className="x-btn x-theme-primary x-outlined" type="button">
@@ -55,7 +63,7 @@ export default function ButtonPage() {
                   <dl>
                     <dt>{k2}</dt>
                     <dd className="x-btn-group">
-                      {k2 !== 'Dense' && k2 !== 'Small' && k2 !== 'Large' ?
+                      {k2 !== 'Small' && k2 !== 'Large' ?
                         <button className={`x-btn x-theme-${themeClassSuffix}${variantClassName}`} type="button">
                           <XRippleComponent></XRippleComponent>
                           <span>Default</span>

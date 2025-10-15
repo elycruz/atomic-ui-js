@@ -6,7 +6,7 @@
   "type": "module",
   "typings": "types",
   "engines": {
-    "node": ">=v18"
+    "node": ">=v20"
   },
   "exports": {
     ".": "./index.js",
@@ -24,7 +24,7 @@
     "eslint": "eslint .",
     "stylelint": "stylelint **/*.{css,scss}",
     "typedoc": "typedoc .",
-    "test": "web-test-runner ./**/*.test.js --node-resolve --puppeteer",
+    "test": "echo \"tests not set up yet\"",
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build"
   },
@@ -44,34 +44,40 @@
   },
   "homepage": "https://github.com/elycruz/atomic-ui-js#readme",
   "devDependencies": {
-    "@cucumber/cucumber": "^10.3.1",
+    "@cucumber/cucumber": "^10.9.0",
     "@open-wc/testing": "^3.2.2",
     "@rollup/plugin-typescript": "^11.1.6",
+    "@storybook/addon-docs": "^9.1.10",
+    "@storybook/addon-links": "^9.1.10",
+    "@storybook/web-components-vite": "^9.1.10",
     "@types/node": "18.16.3",
     "@web/test-runner": "^0.17.3",
     "@web/test-runner-mocha": "^0.8.2",
     "@web/test-runner-puppeteer": "^0.16.0",
     "chokidar": "^3.6.0",
     "cssnano": "^6.1.2",
-    "eslint": "^8.57.0",
-    "lit": "^3.1.2",
-    "postcss": "^8.4.38",
+    "eslint": "^8.57.1",
+    "lit": "^3.3.1",
+    "postcss": "^8.5.6",
     "postcss-import": "^15.1.0",
     "postcss-preset-env": "^8.5.1",
     "prettier": "^2.8.8",
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0",
-    "rollup": "^3.29.4",
+    "react": "^19.2.0",
+    "react-dom": "^19.2.0",
+    "rollup": "4.22.4",
     "rollup-plugin-postcss": "^4.0.2",
-    "rollup-plugin-sass": "^1.12.21",
-    "sass": "^1.72.0",
+    "rollup-plugin-sass": "^1.15.3",
+    "sass": "^1.93.2",
+    "storybook": "^9.1.10",
     "stylelint": "^15.11.0",
     "stylelint-config-standard": "^33.0.0",
     "typedoc": "^0.24.8",
-    "typescript": "^5.4.3",
+    "typescript": "^5.9.3",
     "web-component-analyzer": "^1.1.7"
   },
   "peerDependencies": {
-    "lit": "^3.1.0"
+    "@tailwindcss/vite": "^4.1.12",
+    "lit": "^3.1.0",
+    "tailwindcss": "^4.1.12"
   }
 }

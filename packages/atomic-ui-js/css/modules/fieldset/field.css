@@ -39,7 +39,7 @@ label:has(> x-ripple > :disabled) {
 }
 
 :where(x-field, .x-field):not(.x-field--vertical) > label:has(+ *),
-:where(x-field, .x-field):not(.x-field--vertical) > label:is(* + *) {
+:where(x-field, .x-field):not(.x-field--vertical) > label:is(label + *) {
   margin-inline-end: 0.5rem;
 }
 
