@@ -51,6 +51,9 @@ jobs:
         with:
           node-version: "20"
           cache: ${{ steps.detect-package-manager.outputs.manager }}
+      - name: Setup chromium
+        uses: browser-actions/setup-chrome@v2
+        run: chrome --version
       - name: Install (Vercel) Turbo
         id: install-vercel-turbo
         run: ${{ steps.detect-package-manager.outputs.manager }} i -g turbo
