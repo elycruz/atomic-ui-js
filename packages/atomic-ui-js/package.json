@@ -73,6 +73,8 @@
     "stylelint-config-standard": "^39.0.1",
     "typedoc": "^0.28.15",
     "typescript": "^5.9.3",
+    "vite": "^7.3.0",
+    "vitest": "^4.0.16",
     "web-component-analyzer": "^2.0.0"
   },
   "peerDependencies": {
