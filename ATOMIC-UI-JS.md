@@ -7,7 +7,7 @@ An atomic, CSS first, user interface library.
 - [ ] `.x-alert`
 - [ ] `.x-appbar`
 - [ ] `.x-badge`
-- [x] `.x-btn`
+- [x] `.x-btn`, `.x-button`
 - [ ] `.x-card`
 - [x] `.x-checkbox` - Available also via `.x-input`.
 - [ ] `.x-field`

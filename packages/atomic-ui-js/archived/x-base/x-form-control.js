@@ -8,7 +8,7 @@ import {
   READONLY_NAME,
   REQUIRED_NAME, TABINDEX_NAME,
   VALUE_NAME,
-} from '../../utils/shared-constants.js';
+} from '../../utils/constants.js';
 
 export class XFormControl extends XAtomic {
   static formAssociated = true;
