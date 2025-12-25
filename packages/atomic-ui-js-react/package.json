@@ -4,6 +4,9 @@
   "description": "",
   "module": "index.js",
   "typings": "types",
+  "engines": {
+    "node": ">=v20"
+  },
   "exports": {
     ".": "./index.js",
     "./*": "./*"
@@ -21,19 +24,19 @@
   "devDependencies": {
     "@mdx-js/loader": "^2.3.0",
     "@mdx-js/react": "^2.3.0",
-    "@types/react": "18.2.0",
+    "@types/react": "^19.2.0",
     "@lit/react": "^1.0.4",
     "atomic-ui-js": "workspace:^",
     "lit": "^3.1.0",
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0",
+    "react": "^19.2.0",
+    "react-dom": "^19.2.0",
     "typescript": "^5.0.4"
   },
   "peerDependencies": {
     "@lit/react": "^1.0.4",
     "atomic-ui-js": "workspace:^",
     "lit": "^3.1.0",
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0"
+    "react": "^19.2.0",
+    "react-dom": "^19.2.0"
   }
 }

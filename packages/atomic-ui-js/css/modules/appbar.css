@@ -22,10 +22,6 @@
   0 var(--x-3px) var(--x-5px) var(--x-neutral-color-with-alpha-6);
 }
 
-.x-appbar.x-dense {
-  --x-appbar-padding: var(--x-8px);
-}
-
 .x-appbar.x-small {
   --x-appbar-padding: var(--x-3px);
 }

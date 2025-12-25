@@ -4,9 +4,9 @@
  * Outputs the library's css color properties - Colors are made up of `hsl`, and `hsla` generated colors.
  */
 import fs from 'fs';
-import * as path from "path";
-import url from "url";
-import {xThemes} from "../../utils/constants.js";
+import * as path from 'path';
+import url from 'url';
+import {xThemes} from '../../utils/constants.js';
 
 const __dirname = url.fileURLToPath(new URL('.', import.meta.url)),
 
@@ -32,7 +32,7 @@ const __dirname = url.fileURLToPath(new URL('.', import.meta.url)),
         primary, secondary, success, info,
         warning, danger, neutral
       ]
-        .flatMap(([name, hue, saturation], j) =>
+        .flatMap(([name, hue, saturation]) =>
           lightnessNums.flatMap((lightness, i) => {
             const alpha = 100 - lightness;
             let chroma = Math.min(
@@ -47,24 +47,24 @@ const __dirname = url.fileURLToPath(new URL('.', import.meta.url)),
               `  --x-${name}-color-${i}: ` +
               `oklch(${lightness}% ${chroma} ${hue}deg);`,
               `  --x-${name}-color-with-alpha-${i}: ` +
-              `oklch(${lightness}% ${chroma} ${hue}deg / ${(alpha * .01).toFixed(5)});`,
+              `oklch(${lightness}% ${chroma} ${hue}deg / ${alpha}%);`,
             ];
           })
         ).join('\n'),
 
-      themeVars = xThemeKeys.reduce((agg, k, j) => {
+      themeVars = xThemeKeys.reduce((agg, k) => {
         const themeName = xThemes[k];
 
         return agg + `
 .x-theme-${themeName} {
 ${lightnessNums.flatMap((lightness, i) => {
-          return [
-            `  --x-color-${i}: var(--x-${themeName}-color-${i});`,
-            `  --x-color-with-alpha-${i}: var(--x-${themeName}-color-with-alpha-${i});`,
-          ];
-        })
-          .join('\n')}
-}\n`
+    return [
+      `  --x-color-${i}: var(--x-${themeName}-color-${i});`,
+      `  --x-color-with-alpha-${i}: var(--x-${themeName}-color-with-alpha-${i});`,
+    ];
+  })
+    .join('\n')}
+}\n`;
       }, '');
 
     return fs.promises.writeFile(outputFilePath, `/**
@@ -75,7 +75,6 @@ ${lightnessNums.flatMap((lightness, i) => {
 
 :root {
 ${themeColors}
-
   --x-field: Field;
 }
 

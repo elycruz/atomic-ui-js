@@ -27,14 +27,6 @@
   padding: calc(var(--x-3px) - var(--x-border-width));
 }
 
-/** For medium size **/
-:where(.x-btn, .x-button).x-outlined:is(
-  :not(.x-small, .x-dense, .x-large), .x-normal
-),
-:where(.x-btn, .x-button).x-outlined.x-dense {
-  padding: calc(var(--x-8px) - var(--x-border-width));
-}
-
 /** For large size **/
 :where(.x-btn, .x-button).x-outlined.x-large {
   padding: calc(var(--x-8px) - var(--x-border-width)) calc(var(--x-12px) - var(--x-border-width));

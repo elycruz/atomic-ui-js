@@ -18,6 +18,8 @@ export class XFieldElement extends LitElement {
   static properties = {
     selectors: {type: String},
     validationMessage: {type: String},
+    validateOnChange: {type: Boolean},
+    validateOnInput: {type: Boolean},
   };
 
   get localName() {
@@ -74,7 +76,7 @@ export class XFieldElement extends LitElement {
         <slot name="leading" part="leading"></slot>
         <div class="center-column">
           <slot></slot>
-          <div class="error-message">${this.validationMessage}</div>
+          <div class="error-message" part="error">${this.validationMessage}</div>
           <slot name="help" part="help"></slot>
         </div>
         <slot name="trailing" part="trailing"></slot>
@@ -96,6 +98,9 @@ export class XFieldElement extends LitElement {
     const {target} = e;
     if (!target.matches(this.selectors)) return;
     if (!target.validationMessage) this.validationMessage = '';
+    if ((this.validateOnChange && e.type === 'change') || (this.validateOnInput && e.type === 'input')) {
+      this.#_inputs?.forEach((input) => input.checkValidity());
+    }
   };
 
   #_onFormReset = () => {

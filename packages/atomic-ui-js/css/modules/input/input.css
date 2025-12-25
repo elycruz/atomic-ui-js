@@ -84,29 +84,29 @@ html[dir="rtl"] :where(x-input, .x-input) > *:not(
 /**
  * Size control - Restrict heights for known control sizes.
  */
-:where(x-input, .x-input):not(.x-small, .x-dense, .x-large, textarea, :has(> textarea)) {
-  max-height: calc(40 / 16 * 1rem);
+:where(x-input, .x-input):not(.x-small, .x-large, textarea, :has(> textarea)) {
+  max-height: calc(36 / 16 * 1rem);
 }
 
 /** .. For select elements */
-:where(x-input, .x-input):not(.x-small, .x-dense, .x-large) > select {
+:where(x-input, .x-input):not(.x-small, .x-large) > select {
   min-height: calc(38 / 16 * 1rem);
 }
 
-.x-input:not(.x-small, .x-dense, .x-large):is(select) {
-  min-height: calc(40 / 16 * 1rem);
+.x-input:not(.x-small, .x-large):is(select) {
+  min-height: calc(36 / 16 * 1rem);
 }
 
 /**
- * @todo Support 'x-small', 'x-dense', and 'x-large', input control, sizes.
+ * @todo Support 'x-small', and 'x-large', input control, sizes.
  */
 
 /**
  * Default dimensions, where not checkbox, and/or radio button.
  */
 :where(x-input, .x-input):not([type="checkbox"], [type="radio"]) {
-  --x-input-padding-block: var(--x-8px);
-  --x-input-padding-inline: var(--x-8px);
+  --x-input-padding-block: var(--x-6px);
+  --x-input-padding-inline: var(--x-6px);
 
   display: inline-flex;
   width: fit-content;

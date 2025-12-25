@@ -1,6 +1,8 @@
-import lazy from "next/dynamic";
+'use client';
 
-const XRippleComponent = lazy(() => import("atomic-ui-js-react/x-ripple"), {
+import lazy from 'next/dynamic';
+
+const XRippleComponent = lazy(() => import('atomic-ui-js-react/x-ripple'), {
   ssr: false
 });
 

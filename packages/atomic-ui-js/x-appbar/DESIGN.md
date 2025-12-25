@@ -83,7 +83,7 @@ In other frameworks ... etc.
 
 - `scrollingParent: string` - Selector to use to acquire the target's parent scrolling-element.
 - `orientation: string` - 'top' or 'bottom';  Tentative
-- `auxAppBarMode: boolean` - Indicates whether the original app bar is showing, at it's 'initial' (default) designated position.  Default `false`.
+- `readonly auxAppBarMode: boolean` - Indicates whether the original app bar is showing, at it's 'initial' (default) designated position.  Default `false`.
 
 ## Events
 

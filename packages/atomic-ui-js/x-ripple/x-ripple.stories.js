@@ -2,7 +2,7 @@ import {html} from 'lit';
 import './index.js';
 
 export default {
-  title: 'Ripple',
+  title: 'Custom Elements/Ripple',
   component: 'x-ripple'
 };
 
