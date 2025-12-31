@@ -1,0 +1,88 @@
+/// <reference types="vitest" />
+/// <reference types="vitest/config" />
+import {defineConfig} from 'vite';
+import react from '@vitejs/plugin-react';
+import storybookTest from '@storybook/addon-vitest/vitest-plugin';
+
+import path from 'node:path';
+import {fileURLToPath} from 'node:url';
+
+const {NODE_ENV} = process.env;
+
+const isDev = !NODE_ENV || NODE_ENV === 'development';
+const dirname = path.dirname(fileURLToPath(import.meta.url));
+
+export default defineConfig({
+  plugins: [react()],
+  resolve: {
+    alias: {
+      '@': dirname,
+    },
+  },
+  // More info at: https://storybook.js.org/docs/next/writing-tests/integrations/vitest-addon
+  test: {
+    globals: true,
+    clearMocks: true,
+    coverage: {
+      enabled: true,
+      provider: 'istanbul',
+      reporter: ['lcov', 'text', 'html'],
+      include: ['src/**/*.{js,ts,jsx,tsx}'],
+      exclude: [
+        'src/**/*.{stories,test,spec,d}.{js,ts,jsx,tsx}',
+        '__mocks__/**/*',
+        'vitest.setup.ts',
+      ],
+      thresholds: {
+        statements: 80,
+        branches: 80,
+        functions: 80,
+        lines: 80,
+      },
+      test: {
+        alias: {
+          '@': dirname,
+        },
+      }
+    },
+    projects: [
+      {
+        extends: true,
+        test: {
+          name: 'local',
+          root: './',
+          environment: 'happy-dom',
+          setupFiles: ['./vitest.setup.ts'],
+        },
+      },
+      {
+        extends: true,
+        plugins: [
+          // The plugin will run tests for the stories defined in your Storybook config
+          // See options at: https://storybook.js.org/docs/next/writing-tests/integrations/vitest-addon#storybooktest
+          // @ts-expect-error - Using actual type but type casting (even forcibly) doesn't work
+          storybookTest({
+            configDir: '.storybook',
+            // Command should match what we have in package.json
+            storybookScript: `storybook ${isDev ? 'dev ' : ''}start -p 6006 --ci`,
+          }),
+        ],
+        test: {
+          name: 'storybook',
+          browser: {
+            enabled: true,
+            headless: true,
+            provider: 'playwright',
+            screenshotFailures: false,
+            instances: [
+              {
+                browser: 'chromium',
+              },
+            ],
+          },
+          setupFiles: ['.storybook/vitest.setup.ts'],
+        },
+      },
+    ],
+  },
+});
