@@ -21,7 +21,7 @@
     "watch": "node node_scripts/watch/index.mjs",
     "docs": "pnpm typedoc",
     "gen:css": "node node_scripts/gen-css/index.mjs",
-    "eslint": "eslint .",
+    "eslint": "eslint -c .eslintrc.json .",
     "stylelint": "stylelint **/*.{css,scss}",
     "typedoc": "typedoc .",
     "test": "echo \"tests not set up yet\"",
