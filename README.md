@@ -20,4 +20,13 @@ An atomic user interface toolkit, and library, experiment for building custom el
 - [ ] `x-field`
 - [ ] `x-ripple`
 - [ ] `x-onintersection` (A.K.A. `x-toggleonscroll`).
-- 
+
+## Development
+
+### General
+
+- Package Manager `pnpm` (see https://pnpm.io/installation#on-posix-systems for instructions).
+
+### Scripts
+
+See root `package.json`, and `packages/**/package.json`, 'scripts', or any package's `node_scripts` dir.
