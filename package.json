@@ -39,42 +39,28 @@
   "homepage": "https://github.com/elycruz/atomic-ui-js#readme",
   "dependencies": {
     "@lit/react": "^1.0.8",
-    "@tailwindcss/vite": "^4.1.14",
-    "lit": "^3.3.1",
-    "tailwindcss": "^4.1.14"
+    "@tailwindcss/vite": "^4.1.18",
+    "lit": "^3.3.2",
+    "tailwindcss": "^4.1.18"
   },
   "devDependencies": {
-    "@types/node": "18.16.3",
-    "eslint": "^9.36.0",
-    "@eslint/js": "^9.36.0",
-    "eslint-plugin-storybook": "^9.1.8",
-    "husky": "^8.0.3",
-    "next": "^15.5.5",
+    "@types/node": "^24.10.4",
+    "eslint": "^9.39.2",
+    "eslint-plugin-storybook": "^10.1.11",
+    "husky": "^9.1.7",
+    "next": "^16.1.1",
     "postcss": "^8.5.6",
-    "prettier": "^2.8.8",
-    "react": "^19.2.0",
-    "react-dom": "^19.2.0",
-    "rollup": "^3.29.5",
-    "stylelint": "^15.11.0",
-    "stylelint-config-standard": "^33.0.0",
-    "stylelint-config-standard-scss": "^9.0.0",
-    "turbo": "^2.5.8",
-    "typedoc": "^0.24.8",
+    "prettier": "^3.7.4",
+    "react": "^19.2.3",
+    "react-dom": "^19.2.3",
+    "rollup": "^4.54.0",
+    "stylelint": "^16.26.1",
+    "stylelint-config-standard": "^39.0.1",
+    "stylelint-config-standard-scss": "^16.0.0",
+    "turbo": "^2.7.2",
+    "typedoc": "^0.28.15",
     "typescript": "^5.9.3",
-    "webpack": "^5.102.1"
+    "webpack": "^5.104.1"
   },
-  "packageManager": "pnpm@8.15.3+sha1.64838798f519c18029c1e8a1310e16101fc2eda0",
-  "pnpm": {
-    "overrides": {
-      "postcss@<8.4.31": ">=8.4.31",
-      "react@<19.2.0": ">=19.2.0",
-      "react-dom@<19.2.0": ">=19.2.0",
-      "next@<15.5.4": ">=15.5.4",
-      "ejs@<3.1.10": ">=3.1.10",
-      "braces@<3.0.3": ">=3.0.3",
-      "ws@>=8.0.0 <8.17.1": ">=8.17.1",
-      "ws@>=7.0.0 <7.5.10": ">=7.5.10",
-      "ws@>=6.0.0 <6.2.3": ">=6.2.3"
-    }
-  }
+  "packageManager": "pnpm@10.25.0+sha512.5e82639027af37cf832061bcc6d639c219634488e0f2baebe785028a793de7b525ffcd3f7ff574f5e9860654e098fe852ba8ac5dd5cefe1767d23a020a92f501"
 }

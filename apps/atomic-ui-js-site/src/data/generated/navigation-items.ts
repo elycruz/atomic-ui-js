@@ -90,9 +90,19 @@ export const navigationItems: NavItem[] = [{
           'alias': 'x-menu'
         },
         {
+          'label': 'X-option',
+          'uri': '/custom-elements/x-option/',
+          'alias': 'x-option'
+        },
+        {
           'label': 'X-ripple',
           'uri': '/custom-elements/x-ripple/',
           'alias': 'x-ripple'
+        },
+        {
+          'label': 'X-select',
+          'uri': '/custom-elements/x-select/',
+          'alias': 'x-select'
         },
         {
           'label': 'X-toggleonscroll',
