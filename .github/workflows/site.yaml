@@ -39,16 +39,19 @@ jobs:
             echo "manager=yarn" >> $GITHUB_OUTPUT
             echo "command=install" >> $GITHUB_OUTPUT
             echo "runner=yarn" >> $GITHUB_OUTPUT
+            echo "build_command=build" >> $GITHUB_OUTPUT
             exit 0
           elif [ -f "${{ github.workspace }}/package-lock.json" ]; then
             echo "manager=npm" >> $GITHUB_OUTPUT
             echo "command=ci" >> $GITHUB_OUTPUT
             echo "runner=npx --no-install" >> $GITHUB_OUTPUT
+            echo "build_command=run build" >> $GITHUB_OUTPUT
             exit 0
           elif [ -f "${{ github.workspace }}/pnpm-lock.yaml" ]; then
             echo "manager=pnpm" >> $GITHUB_OUTPUT
             echo "command=i" >> $GITHUB_OUTPUT
             echo "runner=pnpm dlx --skip-install" >> $GITHUB_OUTPUT
+            echo "build_command=build" >> $GITHUB_OUTPUT
             exit 0
           else
             echo "Unable to determine package manager"
@@ -79,7 +82,7 @@ jobs:
       - name: Build with Next.js
         env:
           NODE_ENV: production
-        run: turbo build
+        run: ${{ steps.detect-package-manager.outputs.manager }} ${{ steps.detect-package-manager.outputs.build_command }}
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v4
         with:
