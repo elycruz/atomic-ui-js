@@ -65,7 +65,7 @@ jobs:
         id: install-vercel-turbo
         run: ${{ steps.detect-package-manager.outputs.manager }} i -g turbo
       - name: Restore cache
-        uses: actions/cache@v3
+        uses: actions/cache@v5.0.1
         with:
           path: |
             apps/atomic-ui-js-site/.next/cache
@@ -81,7 +81,7 @@ jobs:
           NODE_ENV: production
         run: turbo build
       - name: Upload artifact
-        uses: actions/upload-pages-artifact@v1
+        uses: actions/upload-pages-artifact@v4
         with:
           path: ./dist/atomic-ui-js-site
 
