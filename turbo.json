@@ -5,7 +5,9 @@
     "build": {
       "outputs": [
         "dist/**",
-        "packages/**/dist/**"
+        "packages/atomic-ui-js-react/dist/**",
+        "packages/atomic-ui-js-next/dist/**",
+        "packages/atomic-ui-js/**"
       ]
     },
     "watch": {
