@@ -73,7 +73,7 @@ jobs:
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v4
         with:
-          path: dist/atomic-ui-js-site
+          path: dist/
 
   # Deployment job
   deploy:
