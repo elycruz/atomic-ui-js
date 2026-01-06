@@ -13,7 +13,7 @@
     "./*": "./*"
   },
   "scripts": {
-    "build": "pnpm build:css",
+    "build": "pnpm build:css && pnpm build-storybook",
     "build:css": "pnpm gen:css && node node_scripts/build/index.mjs",
     "lint": "pnpm eslint && pnpm stylelint",
     "lintfix": "pnpm stylelint --fix && pnpm eslint --fix",
@@ -25,7 +25,7 @@
     "typedoc": "typedoc .",
     "test": "echo \"tests not set up yet\"",
     "storybook": "storybook dev -p 6006",
-    "build-storybook": "storybook build"
+    "build-storybook": "storybook build -o ../../dist/atomic-ui-js/storybook"
   },
   "browserslist": [
     "defaults",
@@ -47,10 +47,10 @@
     "@open-wc/testing": "^3.2.2",
     "@rollup/plugin-typescript": "^11.1.6",
     "@storybook/addon-a11y": "^10.1.11",
-    "@storybook/addon-docs": "^9.1.17",
-    "@storybook/addon-links": "^9.1.17",
+    "@storybook/addon-docs": "^10.1.11",
+    "@storybook/addon-links": "^10.1.11",
     "@storybook/addon-vitest": "^10.1.11",
-    "@storybook/web-components-vite": "^9.1.17",
+    "@storybook/web-components-vite": "^10.1.11",
     "@types/node": "^24.10.4",
     "@vitejs/plugin-react": "^5.1.2",
     "@web/test-runner": "^0.17.3",
@@ -70,7 +70,7 @@
     "rollup-plugin-postcss": "^4.0.2",
     "rollup-plugin-sass": "^1.15.3",
     "sass": "^1.97.1",
-    "storybook": "^9.1.17",
+    "storybook": "^10.1.11",
     "stylelint": "^16.26.1",
     "stylelint-config-standard": "^39.0.1",
     "typedoc": "^0.24.8",

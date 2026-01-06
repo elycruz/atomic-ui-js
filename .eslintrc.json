@@ -10,6 +10,7 @@
     "**/archived/**/*",
     "**/node_modules/**/*",
     "**/generated/**/*",
+    "**/storybook-static/**/*",
     "**/*.d.ts"
   ],
   "overrides": [],

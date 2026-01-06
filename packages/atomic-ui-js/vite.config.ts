@@ -1,11 +1,11 @@
 /// <reference types="vitest" />
 /// <reference types="vitest/config" />
+import path from 'node:path';
+import {fileURLToPath} from 'node:url';
+
 import {defineConfig} from 'vite';
 import react from '@vitejs/plugin-react';
 import storybookTest from '@storybook/addon-vitest/vitest-plugin';
-
-import path from 'node:path';
-import {fileURLToPath} from 'node:url';
 
 const {NODE_ENV} = process.env;
 
@@ -38,11 +38,6 @@ export default defineConfig({
         branches: 80,
         functions: 80,
         lines: 80,
-      },
-      test: {
-        alias: {
-          '@': dirname,
-        },
       }
     },
     projects: [
@@ -53,6 +48,9 @@ export default defineConfig({
           root: './',
           environment: 'happy-dom',
           setupFiles: ['./vitest.setup.ts'],
+          alias: {
+            '@': dirname,
+          },
         },
       },
       {
@@ -60,7 +58,6 @@ export default defineConfig({
         plugins: [
           // The plugin will run tests for the stories defined in your Storybook config
           // See options at: https://storybook.js.org/docs/next/writing-tests/integrations/vitest-addon#storybooktest
-          // @ts-expect-error - Using actual type but type casting (even forcibly) doesn't work
           storybookTest({
             configDir: '.storybook',
             // Command should match what we have in package.json
@@ -81,6 +78,9 @@ export default defineConfig({
             ],
           },
           setupFiles: ['.storybook/vitest.setup.ts'],
+          alias: {
+            '@': dirname,
+          },
         },
       },
     ],

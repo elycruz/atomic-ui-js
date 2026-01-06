@@ -1,7 +1,8 @@
 {
   "ignoreFiles": [
     "**/dist/**/*",
-    "**/archived/**/*"
+    "**/archived/**/*",
+    "**/storybook-static/**/*"
   ],
   "rules": {
     "number-max-precision": 5,

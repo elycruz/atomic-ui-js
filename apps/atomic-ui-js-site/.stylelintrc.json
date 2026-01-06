@@ -6,6 +6,7 @@
   "ignoreFiles": [
     "dist/**/*",
     "node_modules/**/*",
+    "storybook-static/**/*",
     ".turbo/**/*"
   ]
 }

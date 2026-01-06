@@ -7,7 +7,7 @@
       "esnext"
     ],
     "module": "ESNext",
-    "moduleResolution": "node",
+    "moduleResolution":  "nodenext",
     "noImplicitAny": false,
     "removeComments": false,
     "preserveConstEnums": true,
