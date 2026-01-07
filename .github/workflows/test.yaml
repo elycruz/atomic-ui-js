@@ -18,7 +18,7 @@ jobs:
     runs-on: ubuntu-latest
     env:
       NODE_ENV: CI/CD
-      PUPPETEER_CACHE_DIR: ~/.cache/ms-puppeteer
+      PUPPETEER_CACHE_DIR: ~/.cache/ms-playwright
     steps:
       - name: Checkout
         uses: actions/checkout@v6.0.1
@@ -56,7 +56,7 @@ jobs:
       - if: ${{ steps.restore-puppeteer-cache.outputs.cache-hit != 'true' }}
         name: Install Puppeteer
         continue-on-error: false
-        run: cd packages/atomic-ui-js && pnpm exec playwright install --with-deps
+        run: cd packages/atomic-ui-js && pnpm exec playwright install chromium-headless-shell --with-deps
 
       - if: ${{ steps.restore-puppeteer-cache.outputs.cache-hit != 'true' }}
         name: Save Puppeteer Bin Cache
