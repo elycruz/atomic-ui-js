@@ -22,6 +22,7 @@
     },
     "lintfix": {},
     "test": {},
+    "test-ci": {},
     "doc": {}
   }
 }

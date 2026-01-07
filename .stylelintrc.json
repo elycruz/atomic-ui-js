@@ -2,7 +2,8 @@
   "ignoreFiles": [
     "**/dist/**/*",
     "**/archived/**/*",
-    "**/storybook-static/**/*"
+    "**/storybook-static/**/*",
+    "**/coverage/**/*"
   ],
   "rules": {
     "number-max-precision": 5,

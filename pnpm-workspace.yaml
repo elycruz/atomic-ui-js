@@ -2,6 +2,13 @@ packages:
   - apps/*
   - packages/*
 
+onlyBuiltDependencies:
+  - '@parcel/watcher'
+  - esbuild
+  - puppeteer
+  - sharp
+  - unrs-resolver
+
 overrides:
   tar-fs@>=3.0.0 <3.0.7: '>=3.0.7'
   tar-fs@>=3.0.0 <3.0.9: '>=3.0.9'

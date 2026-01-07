@@ -6,6 +6,8 @@
   "ignoreFiles": [
     "./dist/**/*",
     "./archived/**/*",
-    "./node_modules/**/*"
+    "./node_modules/**/*",
+    "./coverage/**/*",
+    "./storybook-static/**/*"
   ]
 }

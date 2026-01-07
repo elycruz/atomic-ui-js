@@ -20,7 +20,8 @@ const config: StorybookConfig = {
   ],
   addons: [
     getAbsolutePath("@storybook/addon-links"),
-    getAbsolutePath("@storybook/addon-docs")
+    getAbsolutePath("@storybook/addon-docs"),
+    getAbsolutePath("@storybook/addon-vitest")
   ],
   framework: {
     name: getAbsolutePath("@storybook/web-components-vite"),

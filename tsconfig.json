@@ -5,7 +5,7 @@
       "DOM",
       "esnext"
     ],
-    "module": "ESNext",
+    "module": "NodeNext",
     "moduleResolution": "nodenext",
     "noImplicitAny": false,
     "removeComments": false,
