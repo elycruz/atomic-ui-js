@@ -59,4 +59,4 @@ jobs:
         run: cd packages/atomic-ui-js && pnpm exec playwright install
 
       - name: Run test
-        run: turbo test
+        run: turbo build && turbo test
