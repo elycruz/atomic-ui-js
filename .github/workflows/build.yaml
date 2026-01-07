@@ -57,4 +57,4 @@ jobs:
       - name: Install dependencies
         run: ${{ steps.detect-package-manager.outputs.manager }} ${{ steps.detect-package-manager.outputs.command }}
       - name: Run build
-        run: turbo build
+        run: turbo build build-storybook

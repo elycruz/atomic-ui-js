@@ -67,4 +67,4 @@ jobs:
           key: ${{ steps.restore-puppeteer-cache.outputs.cache-primary-key }}
 
       - name: Run test
-        run: turbo build test
+        run: turbo build test test-storybook

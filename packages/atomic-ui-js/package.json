@@ -13,7 +13,7 @@
     "./*": "./*"
   },
   "scripts": {
-    "build": "pnpm build:css && pnpm build-storybook",
+    "build": "pnpm build:css",
     "build:css": "pnpm gen:css && node node_scripts/build/index.mjs",
     "lint": "pnpm eslint && pnpm stylelint",
     "lintfix": "pnpm stylelint --fix && pnpm eslint --fix",
@@ -26,8 +26,7 @@
     "test": "vitest --run",
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build -o ../../dist/atomic-ui-js/storybook",
-    "test-storybook": "vitest --project=storybook --run",
-    "test-ci": "pnpm test -- --coverage && pnpm test-storybook -- --coverage"
+    "test-storybook": "vitest --project=storybook --run"
   },
   "browserslist": {
     "production": [
