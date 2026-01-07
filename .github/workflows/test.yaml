@@ -18,7 +18,7 @@ jobs:
     runs-on: ubuntu-latest
     env:
       NODE_ENV: CI/CD
-
+      PUPPETEER_CACHE_DIR: ~/.cache/ms-puppeteer
     steps:
       - name: Checkout
         uses: actions/checkout@v6.0.1
@@ -39,24 +39,32 @@ jobs:
       - name: Install dependencies
         run: pnpm i
 
-      - name: Setup Puppeteer Cache
-        uses: actions/cache@v5
-        id: puppeteer-cache
+      - name: Restore Puppeteer Bin Cache
+        uses: actions/cache/restore@v5
+        id: restore-puppeteer-cache
         env:
-          cache-name: puppeteer-cache
+          cache-name: restore-puppeteer-cache
         with:
           # Cache files in the default puppeteer cache directory (on linux)
-          path: ~/.cache/ms-puppeteer
+          path: ${{ env.PUPPETEER_CACHE_DIR }}
           key: ${{ runner.os }}-build-${{ env.cache-name }}-${{ hashFiles('**/pnpm-lock.yaml') }}
           restore-keys: |
             ${{ runner.os }}-build-${{ env.cache-name }}-
             ${{ runner.os }}-build-
             ${{ runner.os }}-
 
-      - if: ${{ steps.puppeteer-cache.outputs.cache-hit != 'true' }}
+      - if: ${{ steps.restore-puppeteer-cache.outputs.cache-hit != 'true' }}
         name: Install Puppeteer
         continue-on-error: false
         run: cd packages/atomic-ui-js && pnpm exec playwright install --with-deps
 
+      - if: ${{ steps.restore-puppeteer-cache.outputs.cache-hit != 'true' }}
+        name: Save Puppeteer Bin Cache
+        id: save-puppeteer-cache
+        uses: actions/cache/save@v5
+        with:
+          path: ${{ env.PUPPETEER_CACHE_DIR }}
+          key: ${{ steps.restore-puppeteer-cache.outputs.cache-primary-key }}
+
       - name: Run test
-        run: turbo build && turbo test
+        run: turbo build test

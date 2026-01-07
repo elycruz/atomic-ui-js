@@ -4,10 +4,10 @@
     "lint": {},
     "build": {
       "outputs": [
-        "dist/**",
-        "packages/atomic-ui-js-react/dist/**",
-        "packages/atomic-ui-js-next/dist/**",
-        "packages/atomic-ui-js/**"
+        "dist/**/*",
+        "packages/atomic-ui-js-react/dist/**/*",
+        "packages/atomic-ui-js-next/dist/**/*",
+        "packages/atomic-ui-js/dist/**/*"
       ]
     },
     "watch": {
