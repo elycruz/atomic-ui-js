@@ -10,6 +10,11 @@
         "packages/atomic-ui-js/dist/**/*"
       ]
     },
+    "build-storybook": {
+      "outputs": [
+        "dist/storybook"
+      ]
+    },
     "watch": {
       "outputs": [
         "packages/atomic-ui-js/dist/index.min.css"
@@ -22,7 +27,7 @@
     },
     "lintfix": {},
     "test": {},
-    "test-ci": {},
+    "test-storybook": {},
     "doc": {}
   }
 }
