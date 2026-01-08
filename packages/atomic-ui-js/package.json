@@ -23,10 +23,9 @@
     "eslint": "eslint -c .eslintrc.json .",
     "stylelint": "stylelint **/*.{css,scss}",
     "typedoc": "typedoc .",
-    "test": "vitest --run",
+    "test": "vitest --project=storybook --run",
     "storybook": "storybook dev -p 6006",
-    "build-storybook": "storybook build -o ../../dist/atomic-ui-js/storybook",
-    "test-storybook": "vitest --project=storybook --run"
+    "build-storybook": "storybook build -o ../../dist/atomic-ui-js/storybook"
   },
   "browserslist": {
     "production": [
