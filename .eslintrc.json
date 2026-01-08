@@ -10,6 +10,11 @@
     "**/archived/**/*",
     "**/node_modules/**/*",
     "**/generated/**/*",
+    "**/storybook-static/**/*",
+    "**/coverage/**/*",
+    "**/dist/**/*",
+    // @todo Do not include the following line in new configuration.
+    "**/*.ts",
     "**/*.d.ts"
   ],
   "overrides": [],

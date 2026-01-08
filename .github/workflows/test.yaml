@@ -18,43 +18,53 @@ jobs:
     runs-on: ubuntu-latest
     env:
       NODE_ENV: CI/CD
-
+      PUPPETEER_CACHE_DIR: ~/.cache/ms-playwright
     steps:
       - name: Checkout
         uses: actions/checkout@v6.0.1
-      - name: Detect package manager
-        id: detect-package-manager
-        run: |
-          if [ -f "${{ github.workspace }}/yarn.lock" ]; then
-            echo "manager=yarn" >> $GITHUB_OUTPUT
-            echo "command=install" >> $GITHUB_OUTPUT
-            echo "runner=yarn" >> $GITHUB_OUTPUT
-            exit 0
-          elif [ -f "${{ github.workspace }}/package-lock.json" ]; then
-            echo "manager=npm" >> $GITHUB_OUTPUT
-            echo "command=ci" >> $GITHUB_OUTPUT
-            echo "runner=npx --no-install" >> $GITHUB_OUTPUT
-            exit 0
-          elif [ -f "${{ github.workspace }}/pnpm-lock.yaml" ]; then
-            echo "manager=pnpm" >> $GITHUB_OUTPUT
-            echo "command=i" >> $GITHUB_OUTPUT
-            echo "runner=pnpm dlx --skip-install" >> $GITHUB_OUTPUT
-            exit 0
-          else
-            echo "Unable to determine package manager"
-            exit 1
-          fi
+
       - name: Setup pnpm
         uses: pnpm/action-setup@v4.2.0
+
       - name: Setup Node
         uses: actions/setup-node@v6.1.0
         with:
           node-version: "24"
-          cache: ${{ steps.detect-package-manager.outputs.manager }}
+          cache: pnpm
+
       - name: Install (Vercel) Turbo
         id: install-vercel-turbo
-        run: ${{ steps.detect-package-manager.outputs.manager }} i -g turbo
+        run: pnpm i -g turbo
+
       - name: Install dependencies
-        run: ${{ steps.detect-package-manager.outputs.manager }} ${{ steps.detect-package-manager.outputs.command }}
+        run: pnpm i
+
+      - name: Restore Puppeteer Bin Cache
+        uses: actions/cache/restore@v5
+        id: restore-puppeteer-cache
+        env:
+          cache-name: restore-puppeteer-cache
+        with:
+          # Cache files in the default puppeteer cache directory (on linux)
+          path: ${{ env.PUPPETEER_CACHE_DIR }}
+          key: ${{ runner.os }}-build-${{ env.cache-name }}-${{ hashFiles('**/pnpm-lock.yaml') }}
+          restore-keys: |
+            ${{ runner.os }}-build-${{ env.cache-name }}-
+            ${{ runner.os }}-build-
+            ${{ runner.os }}-
+
+      - if: ${{ steps.restore-puppeteer-cache.outputs.cache-hit != 'true' }}
+        name: Install Puppeteer
+        continue-on-error: false
+        run: cd packages/atomic-ui-js && pnpm exec playwright install chromium-headless-shell --with-deps && cd ../../
+
+      - if: ${{ steps.restore-puppeteer-cache.outputs.cache-hit != 'true' }}
+        name: Save Puppeteer Bin Cache
+        id: save-puppeteer-cache
+        uses: actions/cache/save@v5
+        with:
+          path: ${{ env.PUPPETEER_CACHE_DIR }}
+          key: ${{ steps.restore-puppeteer-cache.outputs.cache-primary-key }}
+
       - name: Run test
-        run: turbo test
+        run: turbo build test

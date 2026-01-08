@@ -6,8 +6,8 @@
       "DOM",
       "esnext"
     ],
-    "module": "ESNext",
-    "moduleResolution": "node",
+    "module": "NodeNext",
+    "moduleResolution":  "nodenext",
     "noImplicitAny": false,
     "removeComments": false,
     "preserveConstEnums": true,
