@@ -32,7 +32,6 @@ export default defineConfig({
       enabled: true,
       provider: 'istanbul',
       reporter: ['lcov', 'text', 'html'],
-      reportsDirectory: path.join(dirname, '../../coverage/packages/atomic-ui-js'),
       include: ['src/**/*.{js,ts,jsx,tsx}'],
       exclude: ['src/**/*.{stories,test,spec,d}.{js,ts,jsx,tsx}', '__mocks__/**/*', 'vitest.setup.ts'],
       thresholds: {
