@@ -7,6 +7,8 @@ import react from '@vitejs/plugin-react';
 import storybookTest from '@storybook/addon-vitest/vitest-plugin';
 import { playwright } from '@vitest/browser-playwright';
 
+import type { TestProjectInlineConfiguration } from "vitest/config";
+
 const {
   NODE_ENV
 } = process.env;
@@ -30,6 +32,7 @@ export default defineConfig({
       enabled: true,
       provider: 'istanbul',
       reporter: ['lcov', 'text', 'html'],
+      reportsDirectory: path.join(dirname, '../../coverage/packages/atomic-ui-js'),
       include: ['src/**/*.{js,ts,jsx,tsx}'],
       exclude: ['src/**/*.{stories,test,spec,d}.{js,ts,jsx,tsx}', '__mocks__/**/*', 'vitest.setup.ts'],
       thresholds: {
@@ -42,7 +45,7 @@ export default defineConfig({
     projects: [{
       extends: true,
       test: {
-        name: 'local',
+        name: 'unit',
         root: './',
         environment: 'happy-dom',
         setupFiles: ['./vitest.setup.ts'],
@@ -76,6 +79,6 @@ export default defineConfig({
           '@': dirname
         }
       }
-    }]
+    }] as TestProjectInlineConfiguration[]
   }
 });
