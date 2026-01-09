@@ -18,7 +18,7 @@ An atomic user interface toolkit, and library, experiment for building custom el
 ## Components
 
 - [ ] `x-field`
-- [ ] `x-ripple`
+- [x] `x-ripple`
 - [ ] `x-onintersection` (A.K.A. `x-toggleonscroll`).
 
 ## Development
