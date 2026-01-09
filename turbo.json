@@ -1,7 +1,9 @@
 {
   "$schema": "https://turbo.build/schema.json",
   "tasks": {
-    "lint": {},
+    "lint": {
+      "persistent": true
+    },
     "build": {
       "outputs": [
         "dist/**/*",
@@ -25,8 +27,12 @@
         "watch"
       ]
     },
-    "lintfix": {},
-    "test": {},
+    "lintfix": {
+      "persistent": true
+    },
+    "test": {
+      "persistent": true
+    },
     "doc": {}
   }
 }
