@@ -27,6 +27,7 @@
     },
     "lintfix": {},
     "test": {},
+    "test-dev": {},
     "doc": {}
   }
 }

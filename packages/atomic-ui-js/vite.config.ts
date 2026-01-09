@@ -44,7 +44,7 @@ export default defineConfig({
     projects: [{
       extends: true,
       test: {
-        name: 'unit',
+        name: 'tests',
         root: './',
         environment: 'happy-dom',
         setupFiles: ['./vitest.setup.ts'],
@@ -63,7 +63,7 @@ export default defineConfig({
         storybookScript: `storybook ${isDev ? 'dev ' : ''}start -p 6006 --ci`
       })],
       test: {
-        name: 'storybook',
+        name: 'e2e',
         browser: {
           enabled: true,
           headless: true,
