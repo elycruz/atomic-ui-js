@@ -44,7 +44,7 @@ export default defineConfig({
     projects: [{
       extends: true,
       test: {
-        name: 'tests',
+        name: 'unit',
         root: './',
         environment: 'happy-dom',
         setupFiles: ['./vitest.setup.ts'],
@@ -60,7 +60,7 @@ export default defineConfig({
       storybookTest({
         configDir: path.join(dirname, '.storybook'),
         // Command should match what we have in package.json
-        storybookScript: `storybook ${isDev ? 'dev ' : ''}start -p 6006 --ci`
+        storybookScript: `storybook ${isDev ? 'dev ' : ''}start -p 6006${isDev ? '' : ' --ci'}`
       })],
       test: {
         name: 'e2e',
