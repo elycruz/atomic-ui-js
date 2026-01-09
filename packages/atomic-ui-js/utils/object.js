@@ -7,7 +7,12 @@ const _Number = Number.name,
   _Null = 'Null',
   _Undefined = 'Undefined';
 
+/**
+ * @deprecated - Use `isNullable`.
+ */
 export const isset = (x) => x !== null && x !== undefined;
+
+export const isNullable = (x) => x === null || x === undefined;
 
 /**
  * Returns the constructor/class/type name of a value.

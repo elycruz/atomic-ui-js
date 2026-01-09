@@ -60,10 +60,10 @@ export default defineConfig({
       storybookTest({
         configDir: path.join(dirname, '.storybook'),
         // Command should match what we have in package.json
-        storybookScript: `storybook ${isDev ? 'dev ' : ''}start -p 6006 --ci`
+        storybookScript: `storybook ${isDev ? 'dev ' : ''}start -p 6006${isDev ? '' : ' --ci'}`
       })],
       test: {
-        name: 'storybook',
+        name: 'e2e',
         browser: {
           enabled: true,
           headless: true,

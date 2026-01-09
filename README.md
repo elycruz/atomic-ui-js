@@ -1,6 +1,6 @@
 # atomic-ui-js (work-in-progress)
 
-An atomic user interface toolkit, and library, experiment for building custom elements, and user interfaces.  The library part of the experiment is built purely on the web platform (and the 'lit' library in places).
+An atomic user interface toolkit, and library, experiment for building custom elements, and user interfaces.  The library part of the experiment is built on the web platform and the 'lit' library.
 
 ## CSS Components
 
@@ -18,7 +18,7 @@ An atomic user interface toolkit, and library, experiment for building custom el
 ## Components
 
 - [ ] `x-field`
-- [ ] `x-ripple`
+- [x] `x-ripple`
 - [ ] `x-onintersection` (A.K.A. `x-toggleonscroll`).
 
 ## Development

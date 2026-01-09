@@ -5,7 +5,7 @@ export const xRippleName = 'x-ripple';
 /**
  * @module ripple
  *
- * Adds/Removes 'Bounded' (enclosed) ripple effects from an element.
+ * Defines, and exports, x-ripple element.
  */
 const _mouseOverEventName = 'mouseenter',
   _mouseDownEventName = 'pointerdown',
@@ -119,7 +119,7 @@ const _mouseOverEventName = 'mouseenter',
   RIPPLE_ACTIVE_NAME = 'rippleactive',
   RADIUS_MULTIPLIER_NAME = 'radiusmultiplier',
 
-  observedAttributes = [RIPPLE_ACTIVE_NAME, RADIUS_MULTIPLIER_NAME],
+  observedAttributes = [RIPPLE_ACTIVE_NAME],
 
   _resizeObserver = new ResizeObserver(debounce((records) => {
     if (!records?.length) return;
@@ -142,6 +142,9 @@ const _mouseOverEventName = 'mouseenter',
   _mutObserver = new MutationObserver((records) => {
     const recordsLen = records.length;
 
+    /**
+     * @type {XRippleElement}
+     */
     let target;
 
     for (let i = 0; i < recordsLen; i += 1) {
@@ -160,6 +163,34 @@ const _mouseOverEventName = 'mouseenter',
 
 export {addRippleEffect, removeRippleEffect, RIPPLE_ACTIVE_NAME, RADIUS_MULTIPLIER_NAME};
 
+/**
+ * Ripple effect element resembling the Material Design ripple effect - Use it
+ * when you want a ripple effect within an element, or as ripple effect surrounding
+ * an element.
+ *
+ * @element x-ripple
+ *
+ * @example ```
+ * <!-- Within element - Effect is constrained within
+ *      wrapping element's boundaries
+ * -->
+ * <button type="button" class="x-btn x-theme-primary">
+ *   <x-ripple></x-ripple>
+ *   Hello
+ * </button>
+ *
+ * <!-- Around element - Effect is unconstrained --
+ *      uses `x-ripple:empty` selector to know
+ *      which mode the element is running in.
+ * -->
+ * <label for="checkbox" class="x-theme-success">
+ *   <x-ripple>
+ *     <input class="x-checkbox" type="checkbox" id="checkbox" name="checkbox"/>
+ *   </x-ripple>
+ *   <span>Checkbox</span>
+ * </label>
+ * ```
+ */
 export class XRippleElement extends HTMLElement {
   static localName = xRippleName;
 
@@ -167,12 +198,19 @@ export class XRippleElement extends HTMLElement {
     return observedAttributes;
   }
 
+  /**
+   * @prop {boolean} pauseUpdates - When true, prevents updates to CSS properties.  Used internally.
+   */
   pauseUpdates = false;
 
   #initialized = false;
   #rippleActive = false;
   #attrsChangedMap = {};
 
+  /**
+   * @prop {boolean} rippleActive - Ripple active state.
+   * @attr
+   */
   get rippleActive() {
     return this.#rippleActive;
   }
@@ -225,8 +263,11 @@ export class XRippleElement extends HTMLElement {
     }
   }
 
+  /**
+   * Updates ripple CSS properties (css vars on element).
+   * @return {void}
+   */
   update() {
     _updateCssProps(this);
   }
 }
-

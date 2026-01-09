@@ -23,7 +23,7 @@
     "eslint": "eslint -c .eslintrc.json .",
     "stylelint": "stylelint **/*.{css,scss}",
     "typedoc": "typedoc .",
-    "test": "vitest --project=storybook --run",
+    "test": "vitest --run",
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build -o ../../dist/atomic-ui-js/storybook"
   },
