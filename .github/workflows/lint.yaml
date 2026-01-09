@@ -4,6 +4,10 @@ name: Lint Projects
 
 on:
 
+  # Temporarily runs on push
+  push:
+    branches: [ "52-ci-cd-update-eslint-version" ]
+
   # Runs on pull request open to listed branches
   pull_request:
     branches: [ "main" ]
