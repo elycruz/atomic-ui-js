@@ -69,7 +69,7 @@ jobs:
       - name: Build with Next.js
         env:
           NODE_ENV: production
-        run: turbo build && turbo build-storybook doc docs
+        run: turbo build && turbo build-storybook docs
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v4
         with:
