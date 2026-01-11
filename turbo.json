@@ -2,14 +2,16 @@
   "$schema": "https://turbo.build/schema.json",
   "tasks": {
     "docs": {
-     "persistent": true 
+      "outputs": [
+        "dist/atomic-ui-js/docs"
+      ] 
     },
     "lint": {
       "persistent": true
     },
     "build": {
       "outputs": [
-        "dist/**/*",
+        "dist/atomic-ui-js/**/*",
         "packages/atomic-ui-js-react/dist/**/*",
         "packages/atomic-ui-js-next/dist/**/*",
         "packages/atomic-ui-js/dist/**/*"
@@ -17,7 +19,7 @@
     },
     "build-storybook": {
       "outputs": [
-        "dist/storybook"
+        "dist/atomic-ui-js/storybook"
       ]
     },
     "watch": {
