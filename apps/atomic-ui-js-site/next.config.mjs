@@ -20,14 +20,14 @@ const withMDX = nextMdx({
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  // output: 'export',
-  distDir: '../../dist/atomic-ui-js-site',
+  distDir: '../../dist/atomic-ui-js',
   basePath: '/atomic-ui-js',
   trailingSlash: true,
   // Configure pageExtensions to include md and mdx
   pageExtensions: ['ts', 'tsx', 'js', 'jsx', 'md', 'mdx'],
   // Optionally, add any other Next.js config below
   reactStrictMode: true,
+  output: "export",
   sassOptions: {
     includePaths: [
       path.join(__dirname, 'src/css'),
@@ -35,8 +35,8 @@ const nextConfig = {
     ],
   },
   webpack: (
-    config,
-    {buildId, dev, isServer, defaultLoaders, nextRuntime, webpack}
+    config
+    // {buildId, dev, isServer, defaultLoaders, nextRuntime, webpack}
   ) => {
     const copyPlugin = new CopyPlugin({
       patterns: [

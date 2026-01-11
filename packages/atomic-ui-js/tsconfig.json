@@ -6,8 +6,8 @@
       "DOM",
       "esnext"
     ],
-    "module": "ESNext",
-    "moduleResolution": "node",
+    "module": "NodeNext",
+    "moduleResolution":  "nodenext",
     "noImplicitAny": false,
     "removeComments": false,
     "preserveConstEnums": true,
@@ -25,20 +25,16 @@
     "noEmit": true,
     "incremental": true,
     "resolveJsonModule": true,
-    "isolatedModules": true,
-    "jsx": "preserve",
-    "plugins": [
-      {
-        "name": "next"
-      }
-    ]
+    "isolatedModules": true
   },
   "exclude": [
     "**/node_modules",
-    "**/dist"
+    "**/dist",
+    "**/archived",
+    "**/coverage"
   ],
   "include": [
-    "**/*.ts",
-    "**/*.tsx"
+    "**/*.js",
+    "**/*.ts"
   ]
 }
