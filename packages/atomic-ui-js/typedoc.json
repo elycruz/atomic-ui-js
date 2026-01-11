@@ -1,0 +1,5 @@
+{
+  "out": "./dist/docs",
+  "entryPoints": ["./index.js"]
+}
+

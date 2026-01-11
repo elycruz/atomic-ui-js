@@ -29,9 +29,12 @@
   },
   "exclude": [
     "**/node_modules",
-    "**/dist"
+    "**/dist",
+    "**/archived",
+    "**/coverage"
   ],
   "include": [
+    "**/*.js",
     "**/*.ts"
   ]
 }
