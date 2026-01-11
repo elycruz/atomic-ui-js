@@ -1,8 +1,9 @@
 {
   "$schema": "https://turbo.build/schema.json",
   "tasks": {
-    "doc": {},
-    "docs": {},
+    "docs": {
+     "persistent": true 
+    },
     "lint": {
       "persistent": true
     },
