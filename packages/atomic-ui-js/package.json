@@ -20,7 +20,7 @@
     "watch": "node node_scripts/watch/index.mjs",
     "docs": "pnpm typedoc",
     "gen:css": "node node_scripts/gen-css/index.mjs",
-    "eslint": "eslint -c .eslintrc.json .",
+    "eslint": "eslint .",
     "stylelint": "stylelint **/*.{css,scss}",
     "typedoc": "typedoc .",
     "test": "vitest --run",

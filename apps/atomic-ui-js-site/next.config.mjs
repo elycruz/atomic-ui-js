@@ -27,7 +27,7 @@ const nextConfig = {
   pageExtensions: ['ts', 'tsx', 'js', 'jsx', 'md', 'mdx'],
   // Optionally, add any other Next.js config below
   reactStrictMode: true,
-  output: "export",
+  output: 'export',
   sassOptions: {
     includePaths: [
       path.join(__dirname, 'src/css'),
@@ -57,7 +57,7 @@ const nextConfig = {
     // Important: return the modified config
     return config;
   }
-}
+};
 
 // Merge MDX config with Next.js config
 export default withMDX(nextConfig);

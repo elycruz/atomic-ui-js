@@ -3,7 +3,7 @@
  *
  * Generates `align-item` property classes (`.x-align-item-center, .x-ai-center` etc.).
  */
-import fs from 'fs'
+import fs from 'fs';
 import * as path from 'path';
 import url from 'url';
 

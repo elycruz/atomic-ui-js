@@ -3,7 +3,7 @@
  *
  * Outputs the library's css color properties - Colors are made up of `hsl`, and `hsla` generated colors.
  */
-import fs from 'fs'
+import fs from 'fs';
 import * as path from 'path';
 import url from 'url';
 

@@ -1,7 +1,7 @@
 import fs from 'fs';
-import * as path from "path";
-import url from "url";
-import {spacingNums} from "./spacing.mjs";
+import * as path from 'path';
+import url from 'url';
+import {spacingNums} from './spacing.mjs';
 
 const __dirname = url.fileURLToPath(new URL('.', import.meta.url)),
 
@@ -41,7 +41,7 @@ const __dirname = url.fileURLToPath(new URL('.', import.meta.url)),
         return [
           inMarginContent + marginContent,
           inPaddingContent + paddingContent
-        ]
+        ];
       }, ['', '']),
 
       content =
@@ -60,4 +60,4 @@ ${marginContent}${paddingContent}
 
 ;
 
-export {genMarginAndPaddingClasses}
+export {genMarginAndPaddingClasses};

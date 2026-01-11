@@ -44,6 +44,9 @@
     "tailwindcss": "^4.1.18"
   },
   "devDependencies": {
+    "@eslint/eslintrc": "^3.3.3",
+    "@eslint/js": "^9.39.2",
+    "@next/eslint-plugin-next": "^16.1.1",
     "@types/node": "^24.10.4",
     "eslint": "^9.39.2",
     "eslint-plugin-storybook": "^10.1.11",

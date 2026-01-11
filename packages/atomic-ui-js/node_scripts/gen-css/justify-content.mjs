@@ -3,7 +3,7 @@
  *
  * Generates `justify-content` property classes (`.x-justify-space-between, .x-jc-space-between` etc.).
  */
-import fs from 'fs'
+import fs from 'fs';
 import * as path from 'path';
 import url from 'url';
 

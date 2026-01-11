@@ -3,7 +3,7 @@
  *
  * Generates `display` property classes (`.x-display-block, .x-d-block` etc.).
  */
-import fs from 'fs'
+import fs from 'fs';
 import * as path from 'path';
 import url from 'url';
 

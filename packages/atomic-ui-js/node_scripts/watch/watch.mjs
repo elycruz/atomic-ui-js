@@ -1,7 +1,7 @@
 import chokidar from 'chokidar';
 import path from 'node:path';
-import url from "node:url";
-import {buildCss} from "../build/build-css.mjs";
+import url from 'node:url';
+import {buildCss} from '../build/build-css.mjs';
 
 const {log, error} = console;
 
@@ -21,20 +21,20 @@ export const watch = async () => {
     })
     .on('all', async (event, path) => {
       switch (event) {
-        case 'change':
-          log(`[watch:change] - ${path} changed.`);
-          await buildCss();
-          log('Awaiting changes ...');
-          break;
-        case 'error':
-          error(event);
-          return;
+      case 'change':
+        log(`[watch:change] - ${path} changed.`);
+        await buildCss();
+        log('Awaiting changes ...');
+        break;
+      case 'error':
+        error(event);
+        return;
         // case 'add':
         // case 'addDir':
         // case 'unlink':
         // case 'unlinkDir':
-        default:
-          break;
+      default:
+        break;
       }
     });
 };

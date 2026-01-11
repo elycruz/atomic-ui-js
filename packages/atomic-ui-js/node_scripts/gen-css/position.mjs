@@ -3,7 +3,7 @@
  *
  * Generates `position` property classes (`.x-position-absolute` etc.).
  */
-import fs from 'fs'
+import fs from 'fs';
 import * as path from 'path';
 import url from 'url';
 
