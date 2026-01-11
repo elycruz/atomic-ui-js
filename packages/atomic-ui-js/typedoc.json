@@ -1,5 +1,5 @@
 {
-  "out": "./dist/docs",
+  "out": "./dist/atomic-ui-js/docs",
   "entryPoints": ["./index.js"]
 }
 
