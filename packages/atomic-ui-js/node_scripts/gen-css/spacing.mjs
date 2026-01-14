@@ -5,7 +5,7 @@
  *
  * @todo Each unit set should output it's own css file;  E.g., `fib-spacing.css`, `mult-of-6-spacing.css`, etc.
  */
-import fs from 'fs'
+import fs from 'fs';
 import * as path from 'path';
 import url from 'url';
 import * as utils from '../../utils/number.js';
@@ -29,7 +29,7 @@ const {fib, factorsOf, multiplesOf} = utils,
     const outputFilePath = path.join(__dirname, '../../css/modules/', fileName),
       props = spacingNums
         .reduce((agg, x) =>
-          `${agg}  --ez-${x}px: ${x / 16}rem;\n`, ``),
+          `${agg}  --ez-${x}px: ${x / 16}rem;\n`, ''),
       content =
         `/**
  * spacing.css

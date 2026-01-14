@@ -13,20 +13,20 @@ const distPath = path.join(__dirname, '../../dist'),
 
   compileCss = async () => fs.readFile(inFilePath)
     .then(css => postcss([
-        postcssImport,
-        cssnano
-      ])
-        .process(css, {from: inFilePath, to: outFilePath})
-        .then(result => fs.writeFile(outFilePath, result.css)
-          .then(() => result.map))
-        .then(map => {
-          if (map) {
-            return fs.writeFile(outFilePath + '.map', map.toString())
-          }
-        })
+      postcssImport,
+      cssnano
+    ])
+      .process(css, {from: inFilePath, to: outFilePath})
+      .then(result => fs.writeFile(outFilePath, result.css)
+        .then(() => result.map))
+      .then(map => {
+        if (map) {
+          return fs.writeFile(outFilePath + '.map', map.toString());
+        }
+      })
     )
     .then(() => console.log('\'build-css\' finished successfully.')),
 
   buildCss = async () => fs.mkdir(distPath).then(compileCss, compileCss);
 
-export {buildCss}
+export {buildCss};

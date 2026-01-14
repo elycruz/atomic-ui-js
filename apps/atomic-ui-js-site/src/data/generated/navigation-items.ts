@@ -1,4 +1,4 @@
-import {NavItem} from '../types';
+import { NavItem } from '../types';
 
 export const navigationItems: NavItem[] = [{
   'label': 'App',
@@ -98,11 +98,6 @@ export const navigationItems: NavItem[] = [{
           'label': 'Ez-toggleonscroll',
           'uri': '/custom-elements/ez-toggleonscroll/',
           'alias': 'ez-toggleonscroll'
-        },
-        {
-          'label': 'Ez-typeahead',
-          'uri': '/custom-elements/ez-typeahead/',
-          'alias': 'ez-typeahead'
         }
       ]
     },

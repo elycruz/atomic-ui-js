@@ -3,7 +3,7 @@
  *
  * Generates `align-item` property classes (`.ez-align-item-center, .ez-ai-center` etc.).
  */
-import fs from 'fs'
+import fs from 'fs';
 import * as path from 'path';
 import url from 'url';
 

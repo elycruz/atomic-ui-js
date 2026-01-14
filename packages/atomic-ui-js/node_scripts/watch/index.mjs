@@ -1,3 +1,3 @@
-import {watch} from "./watch.mjs";
+import {watch} from './watch.mjs';
 
 await watch();
