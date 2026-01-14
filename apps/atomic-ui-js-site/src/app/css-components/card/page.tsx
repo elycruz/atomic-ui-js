@@ -4,12 +4,12 @@ export default function CardComponent () {
       <h3>Card Component</h3>
     </header>
     <article>
-      <div className="x-card">
-        <header><span className="x-h4">Card Title</span></header>
-        <section className="x-card-body">
+      <div className="ez-card">
+        <header><span className="ez-h4">Card Title</span></header>
+        <section className="ez-card-body">
           <p>Card Body</p>
         </section>
-        <footer className="x-card-footer">
+        <footer className="ez-card-footer">
           <p>Card Footer</p>
         </footer>
       </div>

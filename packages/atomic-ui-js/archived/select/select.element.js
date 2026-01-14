@@ -1,4 +1,4 @@
-import { AtomicElement } from "../lib/dom/x-atomic.js";
+import { AtomicElement } from "../lib/dom/ez-atomic.js";
 import styles from "./select.element.css";
 
 const mutObserverConfig = {
@@ -16,10 +16,10 @@ const mutObserverConfig = {
 // Auto initialize the styles
 styleSheet.replace(styles).then(() => null, console.error);
 
-const xSelectLocalName = "x-select",
+const xSelectLocalName = "ez-select",
   xOptionSelectedClassName = `${xSelectLocalName}-option--selected`;
 
-class XSelect extends AtomicElement {
+class EzSelect extends AtomicElement {
   static localName = xSelectLocalName;
   static shadowRootOptions = { mode: "open", delegatedFocus: true };
 
@@ -81,7 +81,7 @@ class XSelect extends AtomicElement {
   #_xSelectInitialized = false;
 
   onClick = (e) => {
-    const button = e.target.closest("button.x-select-option");
+    const button = e.target.closest("button.ez-select-option");
     if (!button) return;
     let index = -1;
     if (button.dataset.index) {
@@ -152,7 +152,7 @@ class XSelect extends AtomicElement {
   renderOptions() {
     const { select: { selectedIndex } } = this;
     return Array.from(this.select.options).map((x, i) => {
-      return `<button class="x-select-option${
+      return `<button class="ez-select-option${
         i === selectedIndex ? ` ${xOptionSelectedClassName}` : ""
       }"
                         type="button" value="${x.value}" data-index="${i}"
@@ -172,5 +172,5 @@ class XSelect extends AtomicElement {
 
 // Register element
 if (!customElements.get(xSelectLocalName)) {
-  customElements.define(xSelectLocalName, XSelect);
+  customElements.define(xSelectLocalName, EzSelect);
 }

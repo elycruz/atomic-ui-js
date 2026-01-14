@@ -1,3 +1,3 @@
-# x-typeahead
+# ez-typeahead
 
 Component description.

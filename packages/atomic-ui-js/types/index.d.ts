@@ -1,15 +1,15 @@
-import {XRippleElement} from "../x-ripple";
-import {XAppbarElement} from "../x-appbar";
-import {XToggleOnScrollElement} from "../x-toggleonscroll";
-import {XFieldElement} from "../x-field";
-import {XTypeaheadElement} from "../x-typeahead";
+import {EzRippleElement} from "../ez-ripple";
+import {EzAppbarElement} from "../ez-appbar";
+import {EzToggleOnScrollElement} from "../ez-toggleonscroll";
+import {EzFieldElement} from "../ez-field";
+import {EzTypeaheadElement} from "../ez-typeahead";
 
 declare global {
   interface HTMLElementTagNameMap {
-    'x-appbar': XAppbarElement;
-    'x-field': XFieldElement;
-    'x-ripple': XRippleElement;
-    'x-typeahead': XTypeaheadElement;
-    'x-toggleonscroll': XToggleOnScrollElement;
+    'ez-appbar': EzAppbarElement;
+    'ez-field': EzFieldElement;
+    'ez-ripple': EzRippleElement;
+    'ez-typeahead': EzTypeaheadElement;
+    'ez-toggleonscroll': EzToggleOnScrollElement;
   }
 }

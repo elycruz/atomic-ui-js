@@ -1,27 +1,27 @@
-.x-appbar {
-  --x-appbar-padding: var(--x-16px);
+.ez-appbar {
+  --ez-appbar-padding: var(--ez-16px);
 
   position: relative;
-  padding: var(--x-appbar-padding);
+  padding: var(--ez-appbar-padding);
 }
 
-.x-appbar.x-filled {
-  background: var(--x-color-5);
-  color: var(--x-color-8);
+.ez-appbar.ez-filled {
+  background: var(--ez-color-5);
+  color: var(--ez-color-8);
 }
 
-.x-appbar.x-outlined {
-  border: var(--x-border-width) solid var(--x-color-4);
-  color: var(--x-color-5);
+.ez-appbar.ez-outlined {
+  border: var(--ez-border-width) solid var(--ez-color-4);
+  color: var(--ez-color-5);
 }
 
-.x-appbar.x-raised {
-  border: var(--x-border-width) solid var(--x-color-4);
-  color: var(--x-color-5);
-  box-shadow: 0 var(--x-2px) var(--x-3px) var(--x-neutral-color-with-alpha-6),
-  0 var(--x-3px) var(--x-5px) var(--x-neutral-color-with-alpha-6);
+.ez-appbar.ez-raised {
+  border: var(--ez-border-width) solid var(--ez-color-4);
+  color: var(--ez-color-5);
+  box-shadow: 0 var(--ez-2px) var(--ez-3px) var(--ez-neutral-color-with-alpha-6),
+  0 var(--ez-3px) var(--ez-5px) var(--ez-neutral-color-with-alpha-6);
 }
 
-.x-appbar.x-small {
-  --x-appbar-padding: var(--x-3px);
+.ez-appbar.ez-small {
+  --ez-appbar-padding: var(--ez-3px);
 }

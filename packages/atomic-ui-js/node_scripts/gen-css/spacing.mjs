@@ -29,7 +29,7 @@ const {fib, factorsOf, multiplesOf} = utils,
     const outputFilePath = path.join(__dirname, '../../css/modules/', fileName),
       props = spacingNums
         .reduce((agg, x) =>
-          `${agg}  --x-${x}px: ${x / 16}rem;\n`, ``),
+          `${agg}  --ez-${x}px: ${x / 16}rem;\n`, ``),
       content =
         `/**
  * spacing.css

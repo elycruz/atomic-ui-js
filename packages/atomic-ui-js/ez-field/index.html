@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <base href="./">
+  <title>Ez-Field</title>
+  <link rel="stylesheet" href="../css/index.css">
+  <script type="importmap">
+    {
+      "imports": {
+        "lit": "https://cdn.jsdelivr.net/gh/lit/dist@2.3.0/all/lit-all.min.js"
+      }
+    }
+  </script>
+</head>
+<body>
+<section>
+  <header>
+    <h2>Ez-Field</h2>
+  </header>
+
+  <article>
+    <form action="#">
+      <fieldset class="ez-grid ez-fieldset--grid-2">
+        <legend>Fieldset - Grid Layout Approach</legend>
+
+        <label for="default-input">Default</label>
+        <ez-field selectors="input">
+          <input id="default-input" name="default-input" class="ez-input" />
+          <div slot="help">(Optional)</div>
+        </ez-field>
+
+        <label for="required-input">Required</label>
+        <ez-field selectors="input">
+          <input id="required-input" name="required-input" required class="ez-input" />
+        </ez-field>
+
+        <label for="required-with-serv-message">Required (with server err message)</label>
+        <ez-field selectors="input" validationMessage="Server-side Err Message">
+          <input id="required-with-serv-message" name="required-with-serv-message" required class="ez-input"/>
+        </ez-field>
+
+        <label for="email-input">Email (+ &grave;validateOnInput&grave;)</label>
+        <ez-field selectors="input" validateOnInput>
+          <input id="email-input" name="email-input" type="email" maxlength="255" required class="ez-input" />
+        </ez-field>
+
+        <label for="zipcode-input">Zipcode (+ &grave;validateOnInput&grave;)</label>
+        <ez-field selectors="input" validateOnInput>
+          <input id="zipcode-input" name="zipcode-input"
+                 type="text"
+                 class="ez-input"
+                 maxlength="10"
+                 pattern="^\d{5}(-\d{4})?$"
+                 required
+          />
+          <div slot="help">#####(-####)</div>
+        </ez-field>
+
+        <label for="checkbox-input">Checkbox</label>
+        <ez-field class="ez-layout-horizontal" selectors="input">
+          <input type="checkbox" class="ez-checkbox" id="checkbox-input" name="checkbox-input" required/>
+        </ez-field>
+
+        <label for="checkbox-input-2">Checkbox (&grave;validateOnChange&grave;)</label>
+        <ez-field class="ez-layout-horizontal" selectors="input" validateOnChange>
+          <input type="checkbox" class="ez-checkbox" id="checkbox-input-2" name="checkbox-input-2" required/>
+        </ez-field>
+
+        <label for="textarea">Textarea (&grave;validateOnChange&grave;)</label>
+        <ez-field selectors="textarea" validateOnChange>
+          <textarea id="textarea" name="textarea" minlength="5"></textarea>
+        </ez-field>
+
+        <label for="textarea-2">Textarea - Required (&grave;validateOnChange&grave;)</label>
+        <ez-field selectors="textarea" validateOnChange>
+          <textarea id="textarea-2" name="textarea-2" minlength="5" required></textarea>
+        </ez-field>
+
+        <label for="radio-1">Radio-Group</label>
+        <ez-field class="ez-field ez-layout-horizontal" selectors="input">
+          <div class="ez-flex ez-flex-row-wrap gap-16px">
+          <ez-field>
+            <input type="radio" class="ez-radio" name="radio-group-1" id="radio-1" required value="1">
+            <label for="radio-1">Radio 1</label>
+          </ez-field>
+          <ez-field>
+            <input type="radio" class="ez-radio" name="radio-group-1" id="radio-2" required value="2">
+            <label for="radio-2">Radio 2</label>
+          </ez-field>
+          <ez-field>
+            <input type="radio" class="ez-radio" name="radio-group-1" id="radio-3" required value="3">
+            <label for="radio-3">Radio 3</label>
+          </ez-field>
+          <ez-field>
+            <input type="radio" class="ez-radio" name="radio-group-1" id="radio-4" required value="4">
+            <label for="radio-4">Radio 4</label>
+          </ez-field>
+          <ez-field>
+            <input type="radio" class="ez-radio" name="radio-group-1" id="radio-5" required value="5">
+            <label for="radio-5">Radio 5</label>
+          </ez-field>
+          </div>
+        </ez-field>
+      </fieldset>
+
+      <fieldset>
+        <button type="reset">Reset</button>
+        <button>Submit</button>
+        <button type="button" class="fill">Set defaults</button>
+        <button type="button" class="un-fill">Remove defaults</button>
+      </fieldset>
+    </form>
+
+    <form action="#">
+      <fieldset>
+        <legend>General, Default Layout, Approach</legend>
+      </fieldset>
+
+      <fieldset>
+        <button type="reset">Reset</button>
+        <button>Submit</button>
+      </fieldset>
+    </form>
+  </article>
+</section>
+
+<script type="module" src="../index.js"></script>
+<script type="module">
+  import {log, preventDefault} from "../utils/index.js";
+
+  const $ = (sel = '', root = document) => root.querySelector(sel),
+    exampleValues = {
+      'default-input': 'Hello',
+      'required-input': 'World',
+      'required-with-serv-message': 'World x2',
+      'email-input': 'test@test',
+      'zipcode-input': '12345-1234',
+      'checkbox-input': true,
+      'checkbox-input-2': true,
+      'textarea-2': 'Sally sells seashells',
+      'radio-group-1': '2',
+    };
+
+  window.addEventListener('DOMContentLoaded', () => {
+    const form = $('form');
+
+    log(form.elements);
+
+    form.addEventListener('submit', preventDefault);
+    form.addEventListener('formdata', log);
+
+    // Fill the form with some data
+    $('button.fill', form).addEventListener('click', () => {
+      for (const [k, v] of Object.entries(exampleValues)) {
+        let elm = form.elements[k];
+        const radioGroupElm0 = elm.constructor === RadioNodeList && elm.item(0);
+        const xField = ((radioGroupElm0 && radioGroupElm0.parentElement?.parentElement?.closest('ez-field')) || elm).closest('ez-field');
+
+        if (k.startsWith('checkbox')) {
+          elm.defaultChecked =
+            elm.checked = v;
+        } else {
+          elm.defaultValue =
+            elm.value = v + '';
+        }
+
+        if (xField) {
+          xField.validationMessage = '';
+        }
+        (radioGroupElm0 || elm).checkValidity?.();
+      }
+    });
+
+    // Fill the form with some data
+    $('button.un-fill', form).addEventListener('click', () => {
+      for (const [k, v] of Object.entries(exampleValues)) {
+        let elm = form.elements[k];
+        const radioGroupElm0 = elm.constructor === RadioNodeList && elm.item(0);
+        const xField = ((radioGroupElm0 && radioGroupElm0.parentElement?.parentElement?.closest('ez-field')) || elm).closest('ez-field');
+
+        if (k.startsWith('checkbox')) {
+          elm.defaultChecked =
+            elm.checked = false;
+        } else {
+          elm.defaultValue =
+            elm.value = '';
+        }
+
+        if (xField) {
+          xField.validationMessage = '';
+        }
+      }
+    });
+
+  }, {once: true});
+</script>
+</body>
+</html>

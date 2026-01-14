@@ -1,5 +1,5 @@
 import {xThemes, xVariants} from 'atomic-ui-js/utils';
-import XRippleComponent from 'atomic-ui-js-next/x-ripple';
+import EzRippleComponent from 'atomic-ui-js-next/ez-ripple';
 
 const partitionedVariants = Object.entries(xVariants).reduce((agg, [k, v]) => {
     if (/large|small|normal|medium/.test(v + '')) {
@@ -18,35 +18,35 @@ export default function ButtonPage() {
         <h2>Button</h2>
       </header>
 
-      <div className="x-section-body">
+      <div className="ez-section-body">
         <dl>
           <dt>Pure Buttons</dt>
-          <dd className="x-btn-group">
+          <dd className="ez-btn-group">
             {Object.keys(sizeVariants).map(k3 =>
               <button key={`pure-sized-button-${k3}`}
-                className={`x-${sizeVariants[k3]}`}
+                className={`ez-${sizeVariants[k3]}`}
                 type="button">
                 {k3}
               </button>)}
           </dd>
           <dt>Button Sizes</dt>
-          <dd className="x-btn-group">
-            <button className="x-btn x-theme-primary x-outlined" type="button">
-              <XRippleComponent></XRippleComponent>
+          <dd className="ez-btn-group">
+            <button className="ez-btn ez-theme-primary ez-outlined" type="button">
+              <EzRippleComponent></EzRippleComponent>
               <span>Default</span>
             </button>
             {Object.keys(sizeVariants).map(k3 => k3 === 'Normal' ? null :
               <button key={`sized-button-${k3}`}
-                className={`x-btn x-${sizeVariants[k3]} x-theme-primary x-outlined`}
+                className={`ez-btn ez-${sizeVariants[k3]} ez-theme-primary ez-outlined`}
                 type="button">
-                <XRippleComponent></XRippleComponent>
+                <EzRippleComponent></EzRippleComponent>
                 <span>{k3}</span>
               </button>)}
           </dd>
         </dl>
       </div>
 
-      <div className="x-section-body">
+      <div className="ez-section-body">
         <h3>Button Varieties</h3>
 
         <dl>
@@ -57,29 +57,29 @@ export default function ButtonPage() {
 
               {Object.keys(filteredVariants).map(k2 => {
                 const variantClassSuffix = xVariants[k2],
-                  variantClassName = variantClassSuffix ? ` x-${variantClassSuffix}` : '';
+                  variantClassName = variantClassSuffix ? ` ez-${variantClassSuffix}` : '';
 
                 return <dd key={`dd-2.${k2}`}>
                   <dl>
                     <dt>{k2}</dt>
-                    <dd className="x-btn-group">
+                    <dd className="ez-btn-group">
                       {k2 !== 'Small' && k2 !== 'Large' ?
-                        <button className={`x-btn x-theme-${themeClassSuffix}${variantClassName}`} type="button">
-                          <XRippleComponent></XRippleComponent>
+                        <button className={`ez-btn ez-theme-${themeClassSuffix}${variantClassName}`} type="button">
+                          <EzRippleComponent></EzRippleComponent>
                           <span>Default</span>
                         </button> : null}
-                      <button className={`x-btn x-theme-${themeClassSuffix}${variantClassName}`} type="button" disabled>
-                        <XRippleComponent></XRippleComponent>
+                      <button className={`ez-btn ez-theme-${themeClassSuffix}${variantClassName}`} type="button" disabled>
+                        <EzRippleComponent></EzRippleComponent>
                         <span>Disabled</span>
                       </button>
-                      <button className={`x-btn x-theme-${themeClassSuffix}${variantClassName}`} type="button">
-                        <XRippleComponent></XRippleComponent>
+                      <button className={`ez-btn ez-theme-${themeClassSuffix}${variantClassName}`} type="button">
+                        <EzRippleComponent></EzRippleComponent>
                         <span>$</span><span>With multiple children</span>
                       </button>
                       {Object.keys(sizeVariants).map(k3=> k3 === 'Normal' ? null :
-                        <button key={`${k1}-${k2}-${k3}`} className={`x-btn x-theme-${themeClassSuffix}${variantClassName} x-${sizeVariants[k3]}`}
+                        <button key={`${k1}-${k2}-${k3}`} className={`ez-btn ez-theme-${themeClassSuffix}${variantClassName} ez-${sizeVariants[k3]}`}
                           type="button">
-                          <XRippleComponent></XRippleComponent>
+                          <EzRippleComponent></EzRippleComponent>
                           <span>{k3}</span>
                         </button>)}
                     </dd>

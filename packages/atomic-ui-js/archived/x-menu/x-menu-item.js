@@ -1,11 +1,11 @@
 import { registerCustomElement } from '../js/utils';
 
-export const xMenuItemName = 'x-menu-item';
+export const xMenuItemName = 'ez-menu-item';
 
-export class XMenuItem extends HTMLElement {
+export class EzMenuItem extends HTMLElement {
   get localName() {
     return xMenuItemName;
   }
 }
 
-registerCustomElement(xMenuItemName, XMenuItem);
+registerCustomElement(xMenuItemName, EzMenuItem);

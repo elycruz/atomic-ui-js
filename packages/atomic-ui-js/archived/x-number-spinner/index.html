@@ -3,14 +3,14 @@
 <head>
   <meta charset="UTF-8">
   <base href="./">
-  <title>X-Number-Spinner</title>
+  <title>Ez-Number-Spinner</title>
   <link href="../../../../apps/atomic-ui-js-site/src/css/index.stories.css" rel="stylesheet">
   <style>
     form {
       max-inline-size: 55vw;
     }
 
-    x-number-input,
+    ez-number-input,
     input {
       text-align: right;
     }
@@ -25,31 +25,31 @@
 </head>
 <body>
 <section>
-  <header>x-number-spinner</header>
+  <header>ez-number-spinner</header>
   <article>
     <header>Default</header>
-    <form action="#" id="default-x-number-spinner-form" method="get">
-      <fieldset class="x-fieldset x-fieldset--grid-2">
+    <form action="#" id="default-ez-number-spinner-form" method="get">
+      <fieldset class="ez-fieldset ez-fieldset--grid-2">
         <legend>Default</legend>
         <label for="default">Default</label>
-        <x-number-spinner id="default" name="default"></x-number-spinner>
-        <label for="x-spinner--with-min-and-max">With `min` and `max`</label>
-        <x-number-spinner id="x-spinner--with-min-and-max" max="12" min="1"
-                          name="x-spinner--with-min-and-max"></x-number-spinner>
-        <label for="x-spinner--with-min-invalid">With invalid `min`</label>
-        <x-number-spinner id="x-spinner--with-min-invalid" min="abcdefg" name="x-spinner--with-min-invalid">
+        <ez-number-spinner id="default" name="default"></ez-number-spinner>
+        <label for="ez-spinner--with-min-and-max">With `min` and `max`</label>
+        <ez-number-spinner id="ez-spinner--with-min-and-max" max="12" min="1"
+                          name="ez-spinner--with-min-and-max"></ez-number-spinner>
+        <label for="ez-spinner--with-min-invalid">With invalid `min`</label>
+        <ez-number-spinner id="ez-spinner--with-min-invalid" min="abcdefg" name="ez-spinner--with-min-invalid">
           <div slot="help">`min` will be normalized to `Number.MIN_SAFE_INTEGER`, in this case.</div>
-        </x-number-spinner>
-        <label for="x-spinner--required">Required</label>
-        <x-number-spinner id="x-spinner--required"
-                          name="x-spinner--required" required>
-        </x-number-spinner>
+        </ez-number-spinner>
+        <label for="ez-spinner--required">Required</label>
+        <ez-number-spinner id="ez-spinner--required"
+                          name="ez-spinner--required" required>
+        </ez-number-spinner>
         <label for="number-input">Native Number Input</label>
         <div><input id="number-input" name="number-input" type="number"></div>
         <label for="text-input">Native Text Input (with 'live-formatting', and restrictions)</label>
         <div><input id="text-input" name="text-input" pattern="^([-+]|\d|[-+]?[eE]?\d+?)((?<=\1)\.([eE]?\d+)?)?$"
                     type="text"></div>
-        <div class="x-btn-group">
+        <div class="ez-btn-group">
           <button type="reset">Reset</button>
           <button type="submit">Submit</button>
         </div>

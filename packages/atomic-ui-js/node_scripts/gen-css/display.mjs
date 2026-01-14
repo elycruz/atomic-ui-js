@@ -1,7 +1,7 @@
 /**
  * display.js
  *
- * Generates `display` property classes (`.x-display-block, .x-d-block` etc.).
+ * Generates `display` property classes (`.ez-display-block, .ez-d-block` etc.).
  */
 import fs from 'fs'
 import * as path from 'path';
@@ -35,8 +35,8 @@ const {log, error} = console,
       'table-header-group',
       'table-row',
       'table-row-group'
-    ].map(k => `.x-display-${k},
-.x-d-${k} {
+    ].map(k => `.ez-display-${k},
+.ez-d-${k} {
   display: ${k};
 }\n`);
 

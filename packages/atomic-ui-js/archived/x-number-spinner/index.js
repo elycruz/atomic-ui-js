@@ -1,2 +1,2 @@
-export * from './x-number-spinner.js';
+export * from './ez-number-spinner.js';
 import './register.js';

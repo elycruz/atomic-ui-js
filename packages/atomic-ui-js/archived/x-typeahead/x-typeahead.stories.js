@@ -1,19 +1,19 @@
 import {html} from 'lit';
 import './index.js';
-import {XTypeaheadElement} from './x-typeahead.js';
+import {EzTypeaheadElement} from './ez-typeahead.js';
 
 export default {
   title: 'Typeahead',
-  component: XTypeaheadElement.localName,
+  component: EzTypeaheadElement.localName,
 };
 
 export const DefaultVariation = () => html`
-  <x-typeahead list="datalist">
+  <ez-typeahead list="datalist">
     <input/>
     <datalist id="datalist">
       ${Array.from({length: 100}, (_, i) => html`
         <option value="${i}">Option ${i}</option>
       `)}
     </datalist>
-  </x-typeahead>
+  </ez-typeahead>
 `;

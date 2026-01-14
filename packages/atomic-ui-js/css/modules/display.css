@@ -1,103 +1,103 @@
 /**
  * Display property classes.
  */
-.x-display-block,
-.x-d-block {
+.ez-display-block,
+.ez-d-block {
   display: block;
 }
 
-.x-display-contents,
-.x-d-contents {
+.ez-display-contents,
+.ez-d-contents {
   display: contents;
 }
 
-.x-display-flex,
-.x-d-flex {
+.ez-display-flex,
+.ez-d-flex {
   display: flex;
 }
 
-.x-display-flow-root,
-.x-d-flow-root {
+.ez-display-flow-root,
+.ez-d-flow-root {
   display: flow-root;
 }
 
-.x-display-grid,
-.x-d-grid {
+.ez-display-grid,
+.ez-d-grid {
   display: grid;
 }
 
-.x-display-inline,
-.x-d-inline {
+.ez-display-inline,
+.ez-d-inline {
   display: inline;
 }
 
-.x-display-inline-block,
-.x-d-inline-block {
+.ez-display-inline-block,
+.ez-d-inline-block {
   display: inline-block;
 }
 
-.x-display-inline-flex,
-.x-d-inline-flex {
+.ez-display-inline-flex,
+.ez-d-inline-flex {
   display: inline-flex;
 }
 
-.x-display-inline-grid,
-.x-d-inline-grid {
+.ez-display-inline-grid,
+.ez-d-inline-grid {
   display: inline-grid;
 }
 
-.x-display-inline-table,
-.x-d-inline-table {
+.ez-display-inline-table,
+.ez-d-inline-table {
   display: inline-table;
 }
 
-.x-display-list-item,
-.x-d-list-item {
+.ez-display-list-item,
+.ez-d-list-item {
   display: list-item;
 }
 
-.x-display-none,
-.x-d-none {
+.ez-display-none,
+.ez-d-none {
   display: none;
 }
 
-.x-display-table,
-.x-d-table {
+.ez-display-table,
+.ez-d-table {
   display: table;
 }
 
-.x-display-table-caption,
-.x-d-table-caption {
+.ez-display-table-caption,
+.ez-d-table-caption {
   display: table-caption;
 }
 
-.x-display-table-cell,
-.x-d-table-cell {
+.ez-display-table-cell,
+.ez-d-table-cell {
   display: table-cell;
 }
 
-.x-display-table-column-group,
-.x-d-table-column-group {
+.ez-display-table-column-group,
+.ez-d-table-column-group {
   display: table-column-group;
 }
 
-.x-display-table-footer-group,
-.x-d-table-footer-group {
+.ez-display-table-footer-group,
+.ez-d-table-footer-group {
   display: table-footer-group;
 }
 
-.x-display-table-header-group,
-.x-d-table-header-group {
+.ez-display-table-header-group,
+.ez-d-table-header-group {
   display: table-header-group;
 }
 
-.x-display-table-row,
-.x-d-table-row {
+.ez-display-table-row,
+.ez-d-table-row {
   display: table-row;
 }
 
-.x-display-table-row-group,
-.x-d-table-row-group {
+.ez-display-table-row-group,
+.ez-d-table-row-group {
   display: table-row-group;
 }
 

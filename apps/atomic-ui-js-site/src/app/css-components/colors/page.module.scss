@@ -1,12 +1,12 @@
-.x-color-grid th {
+.ez-color-grid th {
   padding: 0.5rem;
-  background: var(--x-neutral-color-8);
+  background: var(--ez-neutral-color-8);
 }
 
-.x-color-grid tbody td {
+.ez-color-grid tbody td {
   padding: 1rem;
 }
 
-.x-color-grid + .x-color-grid {
+.ez-color-grid + .ez-color-grid {
   margin-top: 1rem;
 }

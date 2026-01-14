@@ -17,7 +17,7 @@ export default function SpacingPage () {
 
   return <section>
     <header>
-      <div className="x-h2">Spacing</div>
+      <div className="ez-h2">Spacing</div>
     </header>
     <article>
       <div>
@@ -31,8 +31,8 @@ export default function SpacingPage () {
 
           return <>
             <div key={`spacing-set-title-${i}`}
-              className="x-display-block">
-              <div>--x-{n}px</div>
+              className="ez-display-block">
+              <div>--ez-{n}px</div>
             </div>
             <div key={`spacing-set-${i}`}>
               {Array(Math.max(lim, 1))
@@ -42,8 +42,8 @@ export default function SpacingPage () {
                     key={`box-${j}`}
                     className={boxCName}
                     style={{
-                      width: `var(--x-${n}px)`,
-                      height: `var(--x-${n}px)`
+                      width: `var(--ez-${n}px)`,
+                      height: `var(--ez-${n}px)`
                     }}>&nbsp;
                   </div>
                 )

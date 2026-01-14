@@ -1,4 +1,4 @@
-# x-base
+# ez-base
 
 Base classes for creating custom elements.
 
@@ -6,7 +6,7 @@ Base classes for creating custom elements.
 
 ### Todos
 
-#### x-atomic-element
+#### ez-atomic-element
 
 ##### Reactive properties support
 

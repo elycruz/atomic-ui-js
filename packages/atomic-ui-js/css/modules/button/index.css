@@ -1,14 +1,14 @@
 /**
  * Base
  * ---------------- */
-.x-btn,
-.x-button,
+.ez-btn,
+.ez-button,
 button,
 input:where([type="submit"], [type="reset"], [type="image"], [type="button"]),
 input[type="file"]::file-selector-button {
   position: relative;
-  border-radius: var(--x-border-radius);
-  border: var(--x-border-width) solid ButtonBorder;
+  border-radius: var(--ez-border-radius);
+  border: var(--ez-border-width) solid ButtonBorder;
   display: inline-flex;
   text-decoration: none;
   text-align: center;
@@ -20,8 +20,8 @@ input[type="file"]::file-selector-button {
 }
 
 :where(
-  .x-btn,
-  .x-button,
+  .ez-btn,
+  .ez-button,
   button,
   input:where([type="submit"], [type="reset"], [type="image"], [type="button"]),
   input[type="file"]::file-selector-button
@@ -35,78 +35,78 @@ input[type="file"]::file-selector-button {
 
 /* Small */
 :where(
-  .x-btn,
-  .x-button,
+  .ez-btn,
+  .ez-button,
    button,
   input:where([type="submit"], [type="reset"], [type="image"], [type="button"]),
   input[type="file"]::file-selector-button
-).x-small {
-  font-size: var(--x-12px);
-  line-height: var(--x-12px);
-  padding: var(--x-3px);
+).ez-small {
+  font-size: var(--ez-12px);
+  line-height: var(--ez-12px);
+  padding: var(--ez-3px);
 }
 
 /* Large */
-:where(.x-btn, .x-button, button,
+:where(.ez-btn, .ez-button, button,
   input:where([type="submit"], [type="reset"], [type="image"], [type="button"]),
   input[type="file"]::file-selector-button
-).x-large {
-  padding: var(--x-8px) var(--x-12px);
-  font-size: var(--x-24px);
-  line-height: var(--x-32px);
+).ez-large {
+  padding: var(--ez-8px) var(--ez-12px);
+  font-size: var(--ez-24px);
+  line-height: var(--ez-32px);
 }
 
 /* Normal - height: 34px + borders === 36px */
-:where(.x-btn, .x-button, button,
+:where(.ez-btn, .ez-button, button,
   input:where([type="submit"], [type="reset"], [type="image"], [type="button"]),
   input[type="file"]::file-selector-button
 ):is(
-  :not(.x-small, .x-large), .x-normal
+  :not(.ez-small, .ez-large), .ez-normal
 ) {
-  padding: var(--x-5px) var(--x-9px);
-  font-size: var(--x-16px);
-  line-height: var(--x-24px);
+  padding: var(--ez-5px) var(--ez-9px);
+  font-size: var(--ez-16px);
+  line-height: var(--ez-24px);
 }
 
 /**
  * Raised
  */
-:where(.x-btn, .x-button, button,
+:where(.ez-btn, .ez-button, button,
   input:where([type="submit"], [type="reset"], [type="image"], [type="button"]),
   input[type="file"]::file-selector-button
-).x-raised:hover {
-  box-shadow: 0 var(--x-2px) var(--x-3px) var(--x-neutral-color-with-alpha-6),
-  0 var(--x-3px) var(--x-5px) var(--x-neutral-color-with-alpha-6);
+).ez-raised:hover {
+  box-shadow: 0 var(--ez-2px) var(--ez-3px) var(--ez-neutral-color-with-alpha-6),
+  0 var(--ez-3px) var(--ez-5px) var(--ez-neutral-color-with-alpha-6);
 }
 
-:where(.x-btn, .x-button, button,
+:where(.ez-btn, .ez-button, button,
   input:where([type="submit"], [type="reset"], [type="image"], [type="button"]),
   input[type="file"]::file-selector-button
-).x-raised:active,
-:where(.x-btn, .x-button, button,
+).ez-raised:active,
+:where(.ez-btn, .ez-button, button,
   input:where([type="submit"], [type="reset"], [type="image"], [type="button"]),
   input[type="file"]::file-selector-button
-).x-raised {
-  box-shadow: 0 0 var(--x-1px) var(--x-neutral-color-with-alpha-6),
-  0 var(--x-2px) var(--x-3px) var(--x-neutral-color-with-alpha-6);
+).ez-raised {
+  box-shadow: 0 0 var(--ez-1px) var(--ez-neutral-color-with-alpha-6),
+  0 var(--ez-2px) var(--ez-3px) var(--ez-neutral-color-with-alpha-6);
 }
 
 /*
  * Contents
  * -------------------- */
-:where(.x-btn, .x-button, button,
+:where(.ez-btn, .ez-button, button,
   input:where([type="submit"], [type="reset"], [type="image"], [type="button"]),
   input[type="file"]::file-selector-button
-) > *:not(:is(x-ripple)) + * {
-  margin-left: var(--x-5px);
+) > *:not(:is(ez-ripple)) + * {
+  margin-left: var(--ez-5px);
 }
 
 /**
- * .x-btn-group
+ * .ez-btn-group
  * ---------------- */
-.x-btn-group {
+.ez-btn-group {
   display: flex;
-  gap: var(--x-8px);
+  gap: var(--ez-8px);
   flex-flow: row wrap;
   align-items: center;
 }

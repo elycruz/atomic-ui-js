@@ -12,7 +12,7 @@ section > :where(
   article,
   div > article
 ) {
-  border-top: var(--x-1px) solid currentcolor;
+  border-top: var(--ez-1px) solid currentcolor;
 }
 
 section > :where(
@@ -44,8 +44,8 @@ section > :where(
 section article,
 section > :where(
   div,
-  .x-section__body,
-  .x-section-body
+  .ez-section__body,
+  .ez-section-body
 ) {
   padding: 1.5rem;
 }

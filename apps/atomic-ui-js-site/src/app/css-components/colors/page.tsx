@@ -3,7 +3,7 @@ import {xThemes} from 'atomic-ui-js/utils/constants.js';
 
 import styles from './page.module.scss';
 
-const xColorGridCName = styles['x-color-grid'];
+const xColorGridCName = styles['ez-color-grid'];
 
 let _keyIndex = Number.MIN_SAFE_INTEGER;
 let _key = (name, index) => `colors-${name}-${index}-${_keyIndex++}`;
@@ -26,8 +26,8 @@ export default function ColorsPage() {
       <tbody>
         {themeRange.map((_, i) =>
           <tr key={_key('tr', i)}>{themes.map((k, j) =>
-            <td key={_key('td', j)} style={{background: `var(--x-${k}-color-${i + 1})`}}
-              title={`--x-${k}-color-${i + 1}`}>&nbsp;
+            <td key={_key('td', j)} style={{background: `var(--ez-${k}-color-${i + 1})`}}
+              title={`--ez-${k}-color-${i + 1}`}>&nbsp;
             </td>
           )}
           </tr>
@@ -46,8 +46,8 @@ export default function ColorsPage() {
       <tbody>
         {themeRange.map((_, i) =>
           <tr key={_key('tr', i)}>{themes.map((k, j) =>
-            <td key={_key('td', j)} style={{background: `var(--x-${k}-color-with-alpha-${i})`}}
-              title={`--x-${k}-color-with-alpha-${i}`}>&nbsp;
+            <td key={_key('td', j)} style={{background: `var(--ez-${k}-color-with-alpha-${i})`}}
+              title={`--ez-${k}-color-with-alpha-${i}`}>&nbsp;
             </td>
           )}
           </tr>

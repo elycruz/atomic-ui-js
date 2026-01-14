@@ -1,16 +1,16 @@
 /// <reference types="atomic-ui-js" />
 
-import {XTypeaheadElement} from "atomic-ui-js/x-typeahead";
-import {XToggleOnScrollElement} from "atomic-ui-js/x-toggleonscroll";
-import {XAppbarElement} from "atomic-ui-js/x-appbar";
-import {XFieldElement} from "atomic-ui-js/x-field";
+import {EzTypeaheadElement} from "atomic-ui-js/ez-typeahead";
+import {EzToggleOnScrollElement} from "atomic-ui-js/ez-toggleonscroll";
+import {EzAppbarElement} from "atomic-ui-js/ez-appbar";
+import {EzFieldElement} from "atomic-ui-js/ez-field";
 
 declare namespace JSX {
   interface IntrinsicElements {
-    'x-appbar': XAppbarElement;
-    'x-field': XFieldElement;
-    'x-ripple': XRippleElement;
-    'x-typeahead': XTypeaheadElement;
-    'x-toggleonscroll': XToggleOnScrollElement;
+    'ez-appbar': EzAppbarElement;
+    'ez-field': EzFieldElement;
+    'ez-ripple': EzRippleElement;
+    'ez-typeahead': EzTypeaheadElement;
+    'ez-toggleonscroll': EzToggleOnScrollElement;
   }
 }

@@ -3,12 +3,12 @@
 }
 
 [type="radio"]::after {
-  border-radius: var(--x-8px);
-  transition: clip-path var(--x-input-speed);
-  width: var(--x-8px);
-  height: var(--x-8px);
+  border-radius: var(--ez-8px);
+  transition: clip-path var(--ez-input-speed);
+  width: var(--ez-8px);
+  height: var(--ez-8px);
   clip-path: circle(0);
-  background: var(--x-input-highlight-color);
+  background: var(--ez-input-highlight-color);
 }
 
 [type="radio"]:checked::after {

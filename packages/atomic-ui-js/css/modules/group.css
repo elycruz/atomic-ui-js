@@ -1,7 +1,7 @@
-.x-hgroup > * + * {
+.ez-hgroup > * + * {
   margin-left: 1rem;
 }
 
-.x-vgroup > * + * {
+.ez-vgroup > * + * {
   margin-top: 1rem;
 }

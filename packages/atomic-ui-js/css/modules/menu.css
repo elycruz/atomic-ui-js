@@ -1,45 +1,45 @@
-.x-menu,
-.x-menu a,
-.x-menu li:focus-within > a + ul,
-.x-menu li:hover > a + ul {
+.ez-menu,
+.ez-menu a,
+.ez-menu li:focus-within > a + ul,
+.ez-menu li:hover > a + ul {
   display: block;
 }
 
-.x-menu,
-.x-menu > :where(ul, ul ul) {
-  min-width: var(--x-144px);
+.ez-menu,
+.ez-menu > :where(ul, ul ul) {
+  min-width: var(--ez-144px);
 }
 
-/* .x-menu li:not(:focus-within) > a + ul {
+/* .ez-menu li:not(:focus-within) > a + ul {
   display: none;
 } */
 
-.x-menu.x-menu--horizontal {
+.ez-menu.ez-menu--horizontal {
   width: 100%;
 }
 
-.x-menu.x-menu--horizontal ul ul {
+.ez-menu.ez-menu--horizontal ul ul {
   position: absolute;
   min-width: fit-content;
 }
 
-.x-menu.x-menu--horizontal > ul ul ul {
+.ez-menu.ez-menu--horizontal > ul ul ul {
   left: 100%;
 }
 
-.x-menu.x-menu--horizontal > ul {
+.ez-menu.ez-menu--horizontal > ul {
   display: flex;
-  column-gap: var(--x-8px);
+  column-gap: var(--ez-8px);
 }
 
-.x-menu.x-menu--horizontal > ul > li {
+.ez-menu.ez-menu--horizontal > ul > li {
   display: inline-block;
 }
 
-.x-menu.x-menu--horizontal li {
+.ez-menu.ez-menu--horizontal li {
   position: relative;
 }
 
-.x-menu ul {
+.ez-menu ul {
   list-style: none;
 }

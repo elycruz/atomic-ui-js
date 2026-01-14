@@ -4,22 +4,22 @@ An atomic user interface toolkit, and library, experiment for building custom el
 
 ## CSS Components
 
-- [ ] `.x-alert`
-- [ ] `.x-button`
-- [ ] `.x-checkbox`
-- [ ] `.x-radio`
-- [ ] `.x-input`
-- [ ] `.x-field`
-- [ ] `.x-fieldset`
-- [ ] `.x-table`
+- [ ] `.ez-alert`
+- [ ] `.ez-button`
+- [ ] `.ez-checkbox`
+- [ ] `.ez-radio`
+- [ ] `.ez-input`
+- [ ] `.ez-field`
+- [ ] `.ez-fieldset`
+- [ ] `.ez-table`
 
 ## CSS Helpers
 
 ## Components
 
-- [ ] `x-field`
-- [x] `x-ripple`
-- [ ] `x-onintersection` (A.K.A. `x-toggleonscroll`).
+- [ ] `ez-field`
+- [x] `ez-ripple`
+- [ ] `ez-onintersection` (A.K.A. `ez-toggleonscroll`).
 
 ## Development
 

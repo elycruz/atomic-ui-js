@@ -1,6 +1,6 @@
 import {LitElement} from 'lit';
 
-export class XAtomic extends LitElement {
+export class EzAtomic extends LitElement {
   static localName = '';
 
   get localName() {

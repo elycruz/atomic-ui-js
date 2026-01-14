@@ -1,2 +1,2 @@
-export * from './x-atomic.js';
-export * from './x-form-control.js';
+export * from './ez-atomic.js';
+export * from './ez-form-control.js';

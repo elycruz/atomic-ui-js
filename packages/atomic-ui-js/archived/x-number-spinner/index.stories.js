@@ -1,5 +1,5 @@
 import { isset, log, qs } from '../../utils/index.js';
-import { allowedDataChars } from './x-number-spinner.js';
+import { allowedDataChars } from './ez-number-spinner.js';
 
 window.addEventListener('DOMContentLoaded', () => {
   if (document.forms) {

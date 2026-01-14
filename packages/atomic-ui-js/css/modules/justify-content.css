@@ -1,62 +1,62 @@
 /**
  * justify-content.css
  */
-.x-justify-content-center,
-.x-jc-center {
+.ez-justify-content-center,
+.ez-jc-center {
   justify-content: center;
 }
 
-.x-justify-content-start,
-.x-jc-start {
+.ez-justify-content-start,
+.ez-jc-start {
   justify-content: start;
 }
 
-.x-justify-content-end,
-.x-jc-end {
+.ez-justify-content-end,
+.ez-jc-end {
   justify-content: end;
 }
 
-.x-justify-content-flex-start,
-.x-jc-flex-start {
+.ez-justify-content-flex-start,
+.ez-jc-flex-start {
   justify-content: flex-start;
 }
 
-.x-justify-content-flex-end,
-.x-jc-flex-end {
+.ez-justify-content-flex-end,
+.ez-jc-flex-end {
   justify-content: flex-end;
 }
 
-.x-justify-content-left,
-.x-jc-left {
+.ez-justify-content-left,
+.ez-jc-left {
   justify-content: left;
 }
 
-.x-justify-content-right,
-.x-jc-right {
+.ez-justify-content-right,
+.ez-jc-right {
   justify-content: right;
 }
 
-.x-justify-content-normal,
-.x-jc-normal {
+.ez-justify-content-normal,
+.ez-jc-normal {
   justify-content: normal;
 }
 
-.x-justify-content-space-between,
-.x-jc-space-between {
+.ez-justify-content-space-between,
+.ez-jc-space-between {
   justify-content: space-between;
 }
 
-.x-justify-content-space-around,
-.x-jc-space-around {
+.ez-justify-content-space-around,
+.ez-jc-space-around {
   justify-content: space-around;
 }
 
-.x-justify-content-space-evenly,
-.x-jc-space-evenly {
+.ez-justify-content-space-evenly,
+.ez-jc-space-evenly {
   justify-content: space-evenly;
 }
 
-.x-justify-content-stretch,
-.x-jc-stretch {
+.ez-justify-content-stretch,
+.ez-jc-stretch {
   justify-content: stretch;
 }

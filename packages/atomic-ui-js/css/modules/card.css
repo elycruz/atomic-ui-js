@@ -1,25 +1,25 @@
-.x-card {
+.ez-card {
   display: inline-flex;
 }
 
-html[dir="ltr"] .x-card:not(.x-layout-horizontal) {
+html[dir="ltr"] .ez-card:not(.ez-layout-horizontal) {
   flex-flow: column nowrap;
 }
 
-html[dir="rtl"] .x-card:not(.x-layout-vertical) {
+html[dir="rtl"] .ez-card:not(.ez-layout-vertical) {
   flex-flow: row nowrap;
 }
 
-.x-card.x-outlined {
-  border: var(--x-border-width) solid;
+.ez-card.ez-outlined {
+  border: var(--ez-border-width) solid;
 }
 
 /*
-.x-card.x-filled {
+.ez-card.ez-filled {
 
 }
 
-.x-card.x-raised {
+.ez-card.ez-raised {
 
 }
 */

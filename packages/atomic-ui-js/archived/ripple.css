@@ -9,113 +9,113 @@
 
 @keyframes ripple-in-behavior {
   0% {
-    transform: translate(var(--x-ripple-x), var(--x-ripple-y)) scale(var(--x-ripple-inactive-scale));
-    opacity: var(--x-ripple-inactive-opacity);
+    transform: translate(var(--ez-ripple-x), var(--ez-ripple-y)) scale(var(--ez-ripple-inactive-scale));
+    opacity: var(--ez-ripple-inactive-opacity);
   }
   55% {
-    transform: translate(var(--x-ripple-x), var(--x-ripple-y)) scale(var(--x-ripple-active-scale));
-    opacity: var(--x-ripple-active-opacity);
+    transform: translate(var(--ez-ripple-x), var(--ez-ripple-y)) scale(var(--ez-ripple-active-scale));
+    opacity: var(--ez-ripple-active-opacity);
   }
   100% {
-    transform: translate(var(--x-ripple-x), var(--x-ripple-y)) scale(var(--x-ripple-active-scale));
-    opacity: var(--x-ripple-active-opacity-end);
+    transform: translate(var(--ez-ripple-x), var(--ez-ripple-y)) scale(var(--ez-ripple-active-scale));
+    opacity: var(--ez-ripple-active-opacity-end);
   }
 }
 
 @keyframes ripple-out-behavior {
   0% {
-    transform: translate(var(--x-ripple-x), var(--x-ripple-y)) scale(var(--x-ripple-active-scale));
-    opacity: var(--x-ripple-active-opacity-end);
+    transform: translate(var(--ez-ripple-x), var(--ez-ripple-y)) scale(var(--ez-ripple-active-scale));
+    opacity: var(--ez-ripple-active-opacity-end);
   }
   100% {
-    transform: translate(var(--x-ripple-x), var(--x-ripple-y)) scale(var(--x-ripple-active-scale));
-    opacity: var(--x-ripple-inactive-opacity);
+    transform: translate(var(--ez-ripple-x), var(--ez-ripple-y)) scale(var(--ez-ripple-active-scale));
+    opacity: var(--ez-ripple-inactive-opacity);
   }
 }
 
-.x-button,
-.x-btn,
-.x-ripple {
+.ez-button,
+.ez-btn,
+.ez-ripple {
 
   !* Set dynamically *!
-  --x-ripple-diameter: 250%;
-  --x-ripple-x: -50%;
-  --x-ripple-y: -50%;
+  --ez-ripple-diameter: 250%;
+  --ez-ripple-x: -50%;
+  --ez-ripple-y: -50%;
 
-  --x-ripple-opacity: 0.13;
-  --x-ripple-active-opacity: 0.21;
-  --x-ripple-active-opacity-end: 0.13;
-  --x-ripple-inactive-opacity: 0;
-  --x-ripple-active-scale: 1;
-  --x-ripple-inactive-scale: 0;
-  --x-ripple-speed: 0.21s;
-  --x-ripple-active-speed: 0.55s;
-  --x-ripple-active-speed-out: 0.34s;
+  --ez-ripple-opacity: 0.13;
+  --ez-ripple-active-opacity: 0.21;
+  --ez-ripple-active-opacity-end: 0.13;
+  --ez-ripple-inactive-opacity: 0;
+  --ez-ripple-active-scale: 1;
+  --ez-ripple-inactive-scale: 0;
+  --ez-ripple-speed: 0.21s;
+  --ez-ripple-active-speed: 0.55s;
+  --ez-ripple-active-speed-out: 0.34s;
 
   position: relative;
 }
 
-:where(.x-btn, .x-ripple)::after,
-:where(.x-btn, .x-ripple)::before {
+:where(.ez-btn, .ez-ripple)::after,
+:where(.ez-btn, .ez-ripple)::before {
   position: absolute;
   content: "";
   top: 50%;
   left: 50%;
   pointer-events: none;
   transform-origin: center;
-  transition: opacity var(--x-ripple-speed),
-  background var(--x-ripple-speed),
-  transform var(--x-ripple-speed) ease-out;
-  width: var(--x-ripple-diameter);
-  height: var(--x-ripple-diameter);
+  transition: opacity var(--ez-ripple-speed),
+  background var(--ez-ripple-speed),
+  transform var(--ez-ripple-speed) ease-out;
+  width: var(--ez-ripple-diameter);
+  height: var(--ez-ripple-diameter);
   border-radius: 50%;
 }
 
-.x-ripple,
-.x-button,
-.x-btn,
-.x-ripple-contained {
+.ez-ripple,
+.ez-button,
+.ez-btn,
+.ez-ripple-contained {
   overflow: hidden;
 }
 
-:where(.x-btn, .x-ripple)::before {
+:where(.ez-btn, .ez-ripple)::before {
   transform: translate(
-    var(--x-ripple-x),
-    var(--x-ripple-y)
+    var(--ez-ripple-x),
+    var(--ez-ripple-y)
   ) scale(
-    var(--x-ripple-inactive-scale)
+    var(--ez-ripple-inactive-scale)
   );
-  opacity: var(--x-ripple-inactive-opacity);
+  opacity: var(--ez-ripple-inactive-opacity);
   z-index: 1;
 }
 
-:where(.x-btn, .x-ripple):is(
+:where(.ez-btn, .ez-ripple):is(
   :focus-visible,
   :hover,
   :active,
-  .x-ripple--active
+  .ez-ripple--active
 )::before {
   transform: translate(
-    var(--x-ripple-x),
-    var(--x-ripple-y)
+    var(--ez-ripple-x),
+    var(--ez-ripple-y)
   ) scale(
-    var(--x-ripple-active-scale)
+    var(--ez-ripple-active-scale)
   );
-  opacity: var(--x-ripple-opacity);
+  opacity: var(--ez-ripple-opacity);
 }
 
-:where(.x-btn, .x-ripple)::after {
+:where(.ez-btn, .ez-ripple)::after {
   z-index: 2;
 }
 
-:where(.x-btn, .x-ripple)::after {
-  animation: var(--x-ripple-active-speed-out) ripple-out-behavior ease-out;
+:where(.ez-btn, .ez-ripple)::after {
+  animation: var(--ez-ripple-active-speed-out) ripple-out-behavior ease-out;
   animation-fill-mode: forwards;
 }
 
-:where(.x-btn, .x-ripple).x-ripple--active::after,
-:where(.x-btn, .x-ripple):not(.x-ripple-upgraded):is(:active, :hover:active)::after {
-  animation: var(--x-ripple-active-speed) ripple-in-behavior ease-out;
+:where(.ez-btn, .ez-ripple).ez-ripple--active::after,
+:where(.ez-btn, .ez-ripple):not(.ez-ripple-upgraded):is(:active, :hover:active)::after {
+  animation: var(--ez-ripple-active-speed) ripple-in-behavior ease-out;
   animation-fill-mode: forwards;
 }
 */

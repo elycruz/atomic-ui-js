@@ -1,0 +1,156 @@
+/**
+ * How it works:
+ * `::before` pseudo selector gets designated as the hover/`:focus-visible` surface,
+ *  and `::after` pseudo selector gets designated as the mousedown/click surface.
+ * The `::before` hover transition only happens via `transition`,
+ * The `:active` animation happens via `animation`.
+ */
+
+@keyframes ripple-in-behavior {
+  0% {
+    transform: translate(var(--ez-ripple-x), var(--ez-ripple-y)) scale(var(--ez-ripple-inactive-scale));
+    opacity: var(--ez-ripple-active-opacity-end);
+  }
+
+  55% {
+    transform: translate(var(--ez-ripple-x), var(--ez-ripple-y)) scale(var(--ez-ripple-active-scale));
+    opacity: var(--ez-ripple-active-opacity);
+  }
+
+  100% {
+    transform: translate(var(--ez-ripple-x), var(--ez-ripple-y)) scale(var(--ez-ripple-active-scale));
+    opacity: var(--ez-ripple-active-opacity-end);
+  }
+}
+
+@keyframes ripple-out-behavior {
+  0% {
+    transform: translate(var(--ez-ripple-x), var(--ez-ripple-y)) scale(var(--ez-ripple-active-scale));
+    opacity: var(--ez-ripple-active-opacity-end);
+  }
+
+  100% {
+    transform: translate(var(--ez-ripple-x), var(--ez-ripple-y)) scale(var(--ez-ripple-active-scale));
+    opacity: var(--ez-ripple-inactive-opacity);
+  }
+}
+
+ez-ripple {
+  --ez-ripple-x: 50%;
+  --ez-ripple-y: 50%;
+  --ez-ripple-opacity: 0.13;
+  --ez-ripple-active-opacity: 0.13;
+  --ez-ripple-active-opacity-end: 0.13;
+  --ez-ripple-inactive-opacity: 0;
+  --ez-ripple-active-scale: 1;
+  --ez-ripple-inactive-scale: 0;
+  --ez-ripple-speed: 0.21s;
+  --ez-ripple-active-speed: 0.55s;
+  --ez-ripple-active-speed-out: 0.34s;
+
+  position: relative;
+  display: inline-grid;
+  transition: background var(--ez-ripple-speed),
+  background-color var(--ez-ripple-speed);
+}
+
+ez-ripple,
+*:has(> ez-ripple:empty) {
+  overflow: hidden;
+}
+
+ez-ripple:empty {
+  --ez-ripple-diameter: 200%;
+
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+}
+
+ez-ripple:has(:disabled) {
+  pointer-events: none;
+}
+
+ez-ripple:not(:empty) {
+  --ez-ripple-diameter: 100%;
+
+  padding: 0.5rem;
+  border-radius: 50%;
+}
+
+ez-ripple:not(:empty) > :first-child {
+  place-self: center;
+}
+
+ez-ripple:not(:empty):hover {
+  background: var(--ez-color-with-alpha-9);
+}
+
+ez-ripple::after,
+ez-ripple::before {
+  position: absolute;
+  content: "";
+  background: var(--ez-color-5);
+  pointer-events: none;
+  transform-origin: center;
+  transition: opacity var(--ez-ripple-speed),
+  background var(--ez-ripple-speed),
+  background-color var(--ez-ripple-speed),
+  transform var(--ez-ripple-speed) ease-out;
+  width: var(--ez-ripple-diameter);
+  height: var(--ez-ripple-diameter);
+  border-radius: 50%;
+}
+
+ez-ripple::before {
+  transform: translate(
+    var(--ez-ripple-x),
+    var(--ez-ripple-y)
+  ) scale(
+    var(--ez-ripple-inactive-scale)
+  );
+  opacity: var(--ez-ripple-inactive-opacity);
+  z-index: 1;
+}
+
+ez-ripple:where(
+    [rippleactive]
+  )::before,
+ez-ripple:has(
+    :hover,
+    :focus,
+    :active
+  )::before,
+*:has(> ez-ripple:empty):where(:hover, :active, :focus) > ez-ripple:empty::before {
+  transform: translate(
+    var(--ez-ripple-x),
+    var(--ez-ripple-y)
+  ) scale(
+    var(--ez-ripple-active-scale)
+  );
+  opacity: var(--ez-ripple-opacity);
+}
+
+ez-ripple::after {
+  z-index: 2;
+}
+
+/**
+ * "active" out animation.
+ */
+ez-ripple:not([rippleactive])::after {
+  animation: var(--ez-ripple-active-speed-out) ripple-out-behavior ease-in-out;
+  animation-fill-mode: forwards;
+}
+
+/**
+ * "active" in animation.
+ */
+ez-ripple[rippleactive]::after,
+ez-ripple:has(:active, :hover:active)::after,
+*:has(> ez-ripple:empty):is(:active, :hover:active, :has(> ez-ripple:empty[rippleactive])) > ez-ripple:empty::after {
+  animation: var(--ez-ripple-active-speed) ripple-in-behavior ease-in-out;
+  animation-fill-mode: forwards;
+}

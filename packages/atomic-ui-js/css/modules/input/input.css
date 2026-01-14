@@ -1,11 +1,11 @@
 /**
  * Layout direction
  * ---------------------- */
-html:not([dir="rtl"]) :where(x-input, .x-input) {
+html:not([dir="rtl"]) :where(ez-input, .ez-input) {
   flex-flow: row nowrap;
 }
 
-html[dir="rtl"] :where(x-input, .x-input) {
+html[dir="rtl"] :where(ez-input, .ez-input) {
   flex-flow: column nowrap;
 }
 
@@ -16,7 +16,7 @@ html[dir="rtl"] :where(x-input, .x-input) {
 /**
  * Padding (ltr)
  * ------------------------ */
-html:not([dir="rtl"]) :where(x-input, .x-input):where(
+html:not([dir="rtl"]) :where(ez-input, .ez-input):where(
   input:not(
     [type="button"],
     [type="checkbox"],
@@ -30,10 +30,10 @@ html:not([dir="rtl"]) :where(x-input, .x-input):where(
   select,
   textarea
 ) {
-  padding: var(--x-input-padding-block) var(--x-input-padding-inline);
+  padding: var(--ez-input-padding-block) var(--ez-input-padding-inline);
 }
 
-html:not([dir="rtl"]) :where(x-input, .x-input) > *:not(
+html:not([dir="rtl"]) :where(ez-input, .ez-input) > *:not(
   [type="button"],
   [type="checkbox"],
   [type="color"],
@@ -43,14 +43,14 @@ html:not([dir="rtl"]) :where(x-input, .x-input) > *:not(
   [type="reset"],
   [type="submit"]
 ) {
-  padding: calc(var(--x-input-padding-block) - var(--x-input-border-width))
-  calc(var(--x-input-padding-inline) - var(--x-input-border-width));
+  padding: calc(var(--ez-input-padding-block) - var(--ez-input-border-width))
+  calc(var(--ez-input-padding-inline) - var(--ez-input-border-width));
 }
 
 /**
  * Padding (rtl)
  */
-html[dir="rtl"] :where(x-input, .x-input):is(
+html[dir="rtl"] :where(ez-input, .ez-input):is(
   input:not(
     [type="button"],
     [type="checkbox"],
@@ -64,10 +64,10 @@ html[dir="rtl"] :where(x-input, .x-input):is(
   select,
   textarea
 ) {
-  padding: var(--x-input-padding-inline) var(--x-input-padding-block);
+  padding: var(--ez-input-padding-inline) var(--ez-input-padding-block);
 }
 
-html[dir="rtl"] :where(x-input, .x-input) > *:not(
+html[dir="rtl"] :where(ez-input, .ez-input) > *:not(
   [type="button"],
   [type="checkbox"],
   [type="color"],
@@ -77,47 +77,47 @@ html[dir="rtl"] :where(x-input, .x-input) > *:not(
   [type="reset"],
   [type="submit"]
 ) {
-  padding: calc(var(--x-input-padding-inline) - var(--x-input-border-width))
-  calc(var(--x-input-padding-block) - var(--x-input-border-width));
+  padding: calc(var(--ez-input-padding-inline) - var(--ez-input-border-width))
+  calc(var(--ez-input-padding-block) - var(--ez-input-border-width));
 }
 
 /**
  * Size control - Restrict heights for known control sizes.
  */
-:where(x-input, .x-input):not(.x-small, .x-large, textarea, :has(> textarea)) {
+:where(ez-input, .ez-input):not(.ez-small, .ez-large, textarea, :has(> textarea)) {
   max-height: calc(36 / 16 * 1rem);
 }
 
 /** .. For select elements */
-:where(x-input, .x-input):not(.x-small, .x-large) > select {
+:where(ez-input, .ez-input):not(.ez-small, .ez-large) > select {
   min-height: calc(38 / 16 * 1rem);
 }
 
-.x-input:not(.x-small, .x-large):is(select) {
+.ez-input:not(.ez-small, .ez-large):is(select) {
   min-height: calc(36 / 16 * 1rem);
 }
 
 /**
- * @todo Support 'x-small', and 'x-large', input control, sizes.
+ * @todo Support 'ez-small', and 'ez-large', input control, sizes.
  */
 
 /**
  * Default dimensions, where not checkbox, and/or radio button.
  */
-:where(x-input, .x-input):not([type="checkbox"], [type="radio"]) {
-  --x-input-padding-block: var(--x-6px);
-  --x-input-padding-inline: var(--x-6px);
+:where(ez-input, .ez-input):not([type="checkbox"], [type="radio"]) {
+  --ez-input-padding-block: var(--ez-6px);
+  --ez-input-padding-inline: var(--ez-6px);
 
   display: inline-flex;
   width: fit-content;
   height: fit-content;
-  color: var(--x-input-text-color);
+  color: var(--ez-input-text-color);
 }
 
 /**
  * Default background.
  */
-:where(x-input, .x-input):has(
+:where(ez-input, .ez-input):has(
   input:not(
     [type="button"],
     [type="checkbox"],
@@ -131,7 +131,7 @@ html[dir="rtl"] :where(x-input, .x-input) > *:not(
   select,
   textarea
 ),
-:where(x-input, .x-input):is(
+:where(ez-input, .ez-input):is(
   input:not(
     [type="button"],
     [type="checkbox"],
@@ -145,31 +145,31 @@ html[dir="rtl"] :where(x-input, .x-input) > *:not(
   select,
   textarea
 ) {
-  background: var(--x-input-bg-color);
+  background: var(--ez-input-bg-color);
 }
 
-:where(x-input, .x-input) > :is(input, textarea, select) {
+:where(ez-input, .ez-input) > :is(input, textarea, select) {
   vertical-align: middle;
 }
 
 /*
  * Input, Select, Textarea, and 'not checkbox, or radio'
  * ---------------------- */
-:where(x-input, .x-input):not([type="checkbox"], [type="radio"]),
-:where(x-input, .x-input) > :is(
+:where(ez-input, .ez-input):not([type="checkbox"], [type="radio"]),
+:where(ez-input, .ez-input) > :is(
   input:not([type="checkbox"], [type="radio"]),
   textarea,
   select
 ) {
-  border-radius: var(--x-border-radius);
+  border-radius: var(--ez-border-radius);
 }
 
-:where(x-input, .x-input):is(
+:where(ez-input, .ez-input):is(
   input:not([type="checkbox"], [type="radio"]),
   textarea,
   select
 ),
-:where(x-input, .x-input) > :is(
+:where(ez-input, .ez-input) > :is(
   input:not([type="checkbox"], [type="radio"]),
   textarea,
   select
@@ -181,7 +181,7 @@ html[dir="rtl"] :where(x-input, .x-input) > *:not(
 /**
  * Line-height
  */
-:where(x-input, .x-input):where(
+:where(ez-input, .ez-input):where(
   input:not(
     [type="checkbox"],
     [type="color"],
@@ -192,7 +192,7 @@ html[dir="rtl"] :where(x-input, .x-input) > *:not(
   select,
   textarea
 ),
-:where(x-input, .x-input) > :where(
+:where(ez-input, .ez-input) > :where(
   input:not(
     [type="checkbox"],
     [type="color"],
@@ -203,13 +203,13 @@ html[dir="rtl"] :where(x-input, .x-input) > *:not(
   select,
   textarea
 ) {
-  line-height: var(--x-24px);
+  line-height: var(--ez-24px);
 }
 
 /*
  * Focus Visible
  *--------------------- */
-:where(x-input, .x-input) > :is(
+:where(ez-input, .ez-input) > :is(
   input:not(
     [type="button"],
     [type="checkbox"],
@@ -230,31 +230,31 @@ html[dir="rtl"] :where(x-input, .x-input) > *:not(
  * Outlined/Default
  * ----------------------- */
 :where(
-  :where(x-input, .x-input):not(.x-underlined),
-  :where(x-input, .x-input).x-outlined
+  :where(ez-input, .ez-input):not(.ez-underlined),
+  :where(ez-input, .ez-input).ez-outlined
 ):has(
   input:not([type="range"], [type="image"], [type="checkbox"], [type="radio"]),
   select,
   textarea
 ),
 :where(
-  :where(x-input, .x-input):not(.x-underlined),
-  :where(x-input, .x-input).x-outlined
+  :where(ez-input, .ez-input):not(.ez-underlined),
+  :where(ez-input, .ez-input).ez-outlined
 ):is(
   input:not([type="range"], [type="image"], [type="checkbox"], [type="radio"]),
   select,
   textarea
 ) {
-  border: var(--x-border-width) solid;
+  border: var(--ez-border-width) solid;
 }
 
-:where(x-input, .x-input).x-underlined {
-  border-bottom: var(--x-border-width) solid;
+:where(ez-input, .ez-input).ez-underlined {
+  border-bottom: var(--ez-border-width) solid;
 }
 
 /*
  * Size
  * -------------------- */
-:where(x-input, .x-input).x-small {
-  /* --x-input-padding-block: ; */
+:where(ez-input, .ez-input).ez-small {
+  /* --ez-input-padding-block: ; */
 }

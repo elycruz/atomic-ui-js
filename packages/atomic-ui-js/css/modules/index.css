@@ -12,15 +12,15 @@
 @import url("group.css");
 
 /** Component styles. **/
-@import url("../../x-appbar/index.css");
+@import url("../../ez-appbar/index.css");
 @import url("button/index.css");
 @import url("card.css");
 @import url("fieldset/index.css");
-@import url("../../x-ripple/index.css");
+@import url("../../ez-ripple/index.css");
 @import url("material-design/index.css");
 @import url("input/index.css");
 @import url("section.css");
 @import url("form.css");
 @import url("menu.css");
 @import url("table.css");
-@import url("../../x-toggleonscroll/index.css");
+@import url("../../ez-toggleonscroll/index.css");

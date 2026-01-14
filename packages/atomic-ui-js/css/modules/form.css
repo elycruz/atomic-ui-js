@@ -1,7 +1,7 @@
-:is(.x-form, form):not(.x-layout-horizontal) + :is(.x-form, form) {
+:is(.ez-form, form):not(.ez-layout-horizontal) + :is(.ez-form, form) {
   margin-top: 1.5rem;
 }
 
-:is(.x-form, form) {
+:is(.ez-form, form) {
   width: fit-content;
 }

@@ -1,7 +1,7 @@
 /**
  * position.js
  *
- * Generates `position` property classes (`.x-position-absolute` etc.).
+ * Generates `position` property classes (`.ez-position-absolute` etc.).
  */
 import fs from 'fs'
 import * as path from 'path';
@@ -20,8 +20,8 @@ const {log, error} = console,
       'absolute',
       'sticky',
       'fixed',
-    ].map(k => `.x-position-${k},
-.x-pos-${k} {
+    ].map(k => `.ez-position-${k},
+.ez-pos-${k} {
   position: ${k};
 }`);
 

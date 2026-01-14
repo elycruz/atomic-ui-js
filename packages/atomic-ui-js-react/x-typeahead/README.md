@@ -1,3 +1,0 @@
-# XTypeaheadComponent
-
-Component description.

@@ -9,7 +9,7 @@ export function AppNavToggle() {
   };
 
   return (
-    <button className="x-hamburger-btn x-btn"
+    <button className="ez-hamburger-btn ez-btn"
       onClick={onClick}><i className="mds-icon">menu</i></button>
   );
 }

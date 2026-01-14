@@ -1,6 +1,6 @@
 import {css, html, LitElement} from 'lit';
 
-export const xTypeaheadName = 'x-typeahead';
+export const xTypeaheadName = 'ez-typeahead';
 
 const mutObserver = new MutationObserver((mutations) => {
   let target;
@@ -12,7 +12,7 @@ const mutObserver = new MutationObserver((mutations) => {
   target.ownerDocument.querySelector(`${xTypeaheadName}[list="${target.id}"]`)?.refreshOverlay();
 });
 
-export class XTypeaheadElement extends LitElement {
+export class EzTypeaheadElement extends LitElement {
   static localName = xTypeaheadName;
 
   static styles = css`
@@ -31,8 +31,8 @@ export class XTypeaheadElement extends LitElement {
       left: 0;
       margin: 0;
       padding: 0;
-      border-radius: var(--x-border-radius);
-      border: var(--x-border-width) solid;
+      border-radius: var(--ez-border-radius);
+      border: var(--ez-border-width) solid;
     }
 
     :host::part(popover-content) {
@@ -52,14 +52,14 @@ export class XTypeaheadElement extends LitElement {
     }
 
     :host::part(list-item) {
-      padding: var(--x-border-width) calc(2 * var(--x-border-width));
+      padding: var(--ez-border-width) calc(2 * var(--ez-border-width));
     }
 
     :host::part(list-item-button) {
       width: 100%;
       padding: 0.25rem 1rem;
       border: none;
-      border-radius: var(--x-border-radius);
+      border-radius: var(--ez-border-radius);
     }
   `;
 

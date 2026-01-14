@@ -1,8 +1,8 @@
 import {registerCustomElement} from "../../utils/dom/index.js";
-import xMenuStyleSheet from "./x-menu.css" assert {type: "css"};
+import xMenuStyleSheet from "./ez-menu.css" assert {type: "css"};
 import {html, LitElement} from "lit";
 
-export const xMenuName = "x-menu",
+export const xMenuName = "ez-menu",
 
   xMenuTypes = {
     Select: "select-one",
@@ -26,7 +26,7 @@ const mutObserverInit = {
   mutObserver = new MutationObserver((mutations) => {
   });
 
-class XMenu extends LitElement {
+class EzMenu extends LitElement {
   static get styles() {
     return xMenuStyleSheet;
   }
@@ -65,4 +65,4 @@ class XMenu extends LitElement {
   }
 }
 
-registerCustomElement(xMenuName, XMenu);
+registerCustomElement(xMenuName, EzMenu);

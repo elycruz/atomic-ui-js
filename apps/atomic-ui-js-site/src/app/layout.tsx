@@ -19,34 +19,34 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body>
-        <div className="x-app-wrapper">
-          <header className="x-appbar">
-            <div className=" x-flex x-flex-row x-align-items-center">
+        <div className="ez-app-wrapper">
+          <header className="ez-appbar">
+            <div className=" ez-flex ez-flex-row ez-align-items-center">
               <AppNavToggle />
 
-              <hgroup className="x-appbar__start">
-                <a href="/atomic-ui-js"><h1 className="x-appbar__title">Atomic UI Js</h1></a>
+              <hgroup className="ez-appbar__start">
+                <a href="/atomic-ui-js"><h1 className="ez-appbar__title">Atomic UI Js</h1></a>
               </hgroup>
             </div>
           </header>
 
-          <div className="x-flex-row x-app-content">
+          <div className="ez-flex-row ez-app-content">
             <AppNav />
 
-            <main className="x-app-main">
+            <main className="ez-app-main">
               <div>
                 {children}
               </div>
             </main>
           </div>
 
-          <footer className="x-app-footer">
+          <footer className="ez-app-footer">
             <div>
               <p>&copy;</p>
             </div>
           </footer>
         </div>
-        {/* end of .x-app-wrapper */}
+        {/* end of .ez-app-wrapper */}
 
       </body>
     </html>

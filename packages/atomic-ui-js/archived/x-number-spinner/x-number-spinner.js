@@ -9,20 +9,20 @@ import {
 } from '../../utils/index.js';
 
 import {autoWrapNumber, isset} from '../../utils/index.js';
-import {XFormControl} from '../x-base/index.js';
+import {EzFormControl} from '../ez-base/index.js';
 import {html} from 'lit';
 
 const {MAX_SAFE_INTEGER, MIN_SAFE_INTEGER, isNaN} = Number,
-  xNumberSpinnerLocalName = 'x-number-spinner',
-  charLengthCssProp = '--x-number-spinner-size',
+  xNumberSpinnerLocalName = 'ez-number-spinner',
+  charLengthCssProp = '--ez-number-spinner-size',
   xNumberSpinnerStyles = `
 :host {
-  --x-border-color: gray;
+  --ez-border-color: gray;
 }
 
 :host > :first-child {
   width: var(${charLengthCssProp}, 18ch);
-  border: 1px solid var(--x-border-color);
+  border: 1px solid var(--ez-border-color);
   border-radius: 2px;
   padding: 1px 2px;
   color: -internal-light-dark(black, white);
@@ -57,7 +57,7 @@ const {MAX_SAFE_INTEGER, MIN_SAFE_INTEGER, isNaN} = Number,
 }
 
 :host(:invalid) {
-  --x-border-color: red;
+  --ez-border-color: red;
 }
 
 :host > .help {
@@ -82,10 +82,10 @@ export const numberRegex = /^([-+]|\d|[-+]?e?\d+?)((?<=\1)\.(e?\d+)?)?$/i,
   newLinesRegex = /[\n\r\t\f]/g,
   allowedDataChars = /^[.\-e\d]/i;
 
-export class XNumberSpinner extends XFormControl {
+export class EzNumberSpinner extends EzFormControl {
   static localName = xNumberSpinnerLocalName;
 
-  static properties = Object.assign({}, XFormControl.properties || {}, {
+  static properties = Object.assign({}, EzFormControl.properties || {}, {
     min: {type: Number, reflect: true},
     max: {type: Number, reflect: true},
     step: {type: Number, reflect: true},

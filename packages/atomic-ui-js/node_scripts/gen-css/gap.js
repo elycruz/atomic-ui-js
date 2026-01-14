@@ -23,7 +23,7 @@ export const genGapCss = () => {
  */
 ${spacingNums.reduce((acc, val) =>
     `${acc}
-.gap-${val}px { gap: var(--x-${val}px, ${val}px); }`
+.gap-${val}px { gap: var(--ez-${val}px, ${val}px); }`
   , '')}\n`;
 
   return fs.promises.writeFile(outputFilePath, content)

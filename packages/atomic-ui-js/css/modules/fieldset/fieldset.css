@@ -5,45 +5,45 @@ legend {
 }
 
 /* ----------------
- * x-fieldset
+ * ez-fieldset
  * ---------------- */
-:is(fieldset, .x-fieldset) {
+:is(fieldset, .ez-fieldset) {
   padding: 1rem;
   gap: 1.5rem;
 }
 
-:is(fieldset, .x-fieldset, legend) {
-  border-radius: var(--x-border-radius);
-  border: var(--x-1px) solid;
+:is(fieldset, .ez-fieldset, legend) {
+  border-radius: var(--ez-border-radius);
+  border: var(--ez-1px) solid;
 }
 
-:is(fieldset, .x-fieldset) + :is(fieldset, .x-fieldset) {
+:is(fieldset, .ez-fieldset) + :is(fieldset, .ez-fieldset) {
   margin-top: 1.5rem;
 }
 
 
-/* :is(.x-layout-vertical, :not(.x-layout-horizontal)) > x-field {
+/* :is(.ez-layout-vertical, :not(.ez-layout-horizontal)) > ez-field {
   display: block;
 } */
 
-:is(.x-fieldset, fieldset).x-grid {
+:is(.ez-fieldset, fieldset).ez-grid {
   display: grid;
   gap: 1rem;
   align-items: flex-start;
 }
 
-html:not([dir="rtl"]) :is(.x-fieldset, fieldset).x-grid > label {
+html:not([dir="rtl"]) :is(.ez-fieldset, fieldset).ez-grid > label {
   text-align: right;
 }
 
-html[dir="rtl"] :is(.x-fieldset, fieldset).x-grid {
+html[dir="rtl"] :is(.ez-fieldset, fieldset).ez-grid {
   text-align: right;
 }
 
-:is(.x-fieldset, fieldset).x-fieldset--grid-2 {
+:is(.ez-fieldset, fieldset).ez-fieldset--grid-2 {
   grid-template-columns: auto auto;
 }
 
-:where(.x-fieldset, fieldset).x-grid label:has(+ .x-input > textarea) {
+:where(.ez-fieldset, fieldset).ez-grid label:has(+ .ez-input > textarea) {
   align-self: flex-start;
 }

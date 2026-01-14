@@ -1,7 +1,7 @@
 /**
  * justify-content.js
  *
- * Generates `justify-content` property classes (`.x-justify-space-between, .x-jc-space-between` etc.).
+ * Generates `justify-content` property classes (`.ez-justify-space-between, .ez-jc-space-between` etc.).
  */
 import fs from 'fs'
 import * as path from 'path';
@@ -26,8 +26,8 @@ const {log, error} = console,
       'space-around',
       'space-evenly',
       'stretch',
-    ].map(k => `.x-justify-content-${k},
-.x-jc-${k} {
+    ].map(k => `.ez-justify-content-${k},
+.ez-jc-${k} {
   justify-content: ${k};
 }`);
 

@@ -1,0 +1,3 @@
+# EzTypeaheadComponent
+
+Component description.

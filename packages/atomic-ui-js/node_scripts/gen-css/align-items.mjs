@@ -1,7 +1,7 @@
 /**
  * align-items.js
  *
- * Generates `align-item` property classes (`.x-align-item-center, .x-ai-center` etc.).
+ * Generates `align-item` property classes (`.ez-align-item-center, .ez-ai-center` etc.).
  */
 import fs from 'fs'
 import * as path from 'path';
@@ -22,8 +22,8 @@ export const genAlignItemsCss = () => {
     'self-end',
     'flex-start',
     'flex-end',
-  ].map(k => `.x-align-items-${k},
-.x-ai-${k} {
+  ].map(k => `.ez-align-items-${k},
+.ez-ai-${k} {
   align-items: ${k};
 }`);
 

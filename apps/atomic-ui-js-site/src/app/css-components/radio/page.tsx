@@ -1,7 +1,7 @@
 import React from 'react';
 import {xThemes} from 'atomic-ui-js/utils/constants.js';
-import XRippleComponent from 'atomic-ui-js-next/x-ripple';
-import XFieldComponent from 'atomic-ui-js-next/x-field';
+import EzRippleComponent from 'atomic-ui-js-next/ez-ripple';
+import EzFieldComponent from 'atomic-ui-js-next/ez-field';
 
 export default function RadioPage() {
   return <section>
@@ -14,30 +14,30 @@ export default function RadioPage() {
 
             <dd key={`radio-page-dd-${i}`}>
               <form>
-                <fieldset className="x-fieldset x-fieldset--grid-2">
+                <fieldset className="ez-fieldset ez-fieldset--grid-2">
                   <label htmlFor={`radio-${i}-0`}>Radio set {i + 1}:</label>
 
-                  <XFieldComponent>
+                  <EzFieldComponent>
                     {Array(3).fill(null, 0, 2).map((_, j) =>
                       <label htmlFor={`radio-${i}-${j}`} key={`radio-page-label-${i}-${j}`}>
-                        <XRippleComponent className={`x-theme-${xThemes[k1]}`}>
+                        <EzRippleComponent className={`ez-theme-${xThemes[k1]}`}>
                           <input type="radio" id={`radio-${i}-${j}`} name={`radio-set-${i}`}
-                            className="x-radio"/>
-                        </XRippleComponent>
+                            className="ez-radio"/>
+                        </EzRippleComponent>
 
                         <span>Radio {i + 1}.{j + 1}</span>
                       </label>
                     )}
 
                     <label htmlFor={`radio-disabled-${i}`}>
-                      <XRippleComponent className={`x-theme-${xThemes[k1]}`}>
+                      <EzRippleComponent className={`ez-theme-${xThemes[k1]}`}>
                         <input type="radio" id={`radio-disabled-${i}`} name={`radio-disabled-${i}`}
-                          className="x-radio" disabled/>
-                      </XRippleComponent>
+                          className="ez-radio" disabled/>
+                      </EzRippleComponent>
 
                       <span>Disabled {i + 1}</span>
                     </label>
-                  </XFieldComponent>
+                  </EzFieldComponent>
 
                 </fieldset>
               </form>

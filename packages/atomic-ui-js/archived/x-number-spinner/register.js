@@ -1,4 +1,4 @@
 import { registerCustomElement } from '../../utils/index.js';
-import { XNumberSpinner } from './x-number-spinner.js';
+import { EzNumberSpinner } from './ez-number-spinner.js';
 
-registerCustomElement(XNumberSpinner.localName, XNumberSpinner);
+registerCustomElement(EzNumberSpinner.localName, EzNumberSpinner);

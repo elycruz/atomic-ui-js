@@ -3,11 +3,11 @@
 <head>
   <meta charset="UTF-8">
   <base href="./">
-  <title>X-Modal</title>
+  <title>Ez-Modal</title>
 </head>
 <body>
 
-<x-dialog>
+<ez-dialog>
   <form method="dialog">
     <fieldset>
       <legend>Dialog</legend>
@@ -17,7 +17,7 @@
       <button value="1" type="submit">Confirm</button>
     </fieldset>
   </form>
-</x-dialog>
+</ez-dialog>
 
 <button class="open-btn">Open dialogs</button>
 
@@ -41,7 +41,7 @@
 
   window.addEventListener('DOMContentLoaded', () => {
     const toggleBtn = querySelector('.open-btn'),
-      dialogs = querySelectorAll('x-dialog');
+      dialogs = querySelectorAll('ez-dialog');
 
     toggleBtn.addEventListener('click', () => {
       dialogs.forEach(d => d.showModal ? d.showModal() : void (0));

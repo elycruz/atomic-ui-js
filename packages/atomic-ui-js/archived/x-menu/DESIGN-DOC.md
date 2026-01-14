@@ -1,4 +1,4 @@
-# X-Menu
+# Ez-Menu
 
 ## Properties
 

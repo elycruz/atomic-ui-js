@@ -1,9 +1,9 @@
-.x-checkbox,
-.x-radio {
-  --x-input-highlight-color: var(--x-color-5, var(--x-neutral-color-5));
+.ez-checkbox,
+.ez-radio {
+  --ez-input-highlight-color: var(--ez-color-5, var(--ez-neutral-color-5));
 }
 
-:where(.x-checkbox,
-.x-radio):where(:active, :checked) {
-  border-color: var(--x-input-highlight-color);
+:where(.ez-checkbox,
+.ez-radio):where(:active, :checked) {
+  border-color: var(--ez-input-highlight-color);
 }

@@ -44,9 +44,9 @@ const __dirname = url.fileURLToPath(new URL('.', import.meta.url)),
             if (!saturation) chroma = 0;
 
             return [
-              `  --x-${name}-color-${i}: ` +
+              `  --ez-${name}-color-${i}: ` +
               `oklch(${lightness}% ${chroma} ${hue}deg);`,
-              `  --x-${name}-color-with-alpha-${i}: ` +
+              `  --ez-${name}-color-with-alpha-${i}: ` +
               `oklch(${lightness}% ${chroma} ${hue}deg / ${alpha}%);`,
             ];
           })
@@ -56,11 +56,11 @@ const __dirname = url.fileURLToPath(new URL('.', import.meta.url)),
         const themeName = xThemes[k];
 
         return agg + `
-.x-theme-${themeName} {
+.ez-theme-${themeName} {
 ${lightnessNums.flatMap((lightness, i) => {
     return [
-      `  --x-color-${i}: var(--x-${themeName}-color-${i});`,
-      `  --x-color-with-alpha-${i}: var(--x-${themeName}-color-with-alpha-${i});`,
+      `  --ez-color-${i}: var(--ez-${themeName}-color-${i});`,
+      `  --ez-color-with-alpha-${i}: var(--ez-${themeName}-color-with-alpha-${i});`,
     ];
   })
     .join('\n')}
@@ -75,12 +75,12 @@ ${lightnessNums.flatMap((lightness, i) => {
 
 :root {
 ${themeColors}
-  --x-field: Field;
+  --ez-field: Field;
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --x-field: var(--x-neutral-color-1);
+    --ez-field: var(--ez-neutral-color-1);
   }
 }
 

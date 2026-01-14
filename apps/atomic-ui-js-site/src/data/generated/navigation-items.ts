@@ -63,56 +63,46 @@ export const navigationItems: NavItem[] = [{
       'alias': 'custom-elements',
       'items': [
         {
-          'label': 'X-appbar',
-          'uri': '/custom-elements/x-appbar/',
-          'alias': 'x-appbar'
+          'label': 'Ez-appbar',
+          'uri': '/custom-elements/ez-appbar/',
+          'alias': 'ez-appbar'
         },
         {
-          'label': 'X-field',
-          'uri': '/custom-elements/x-field/',
-          'alias': 'x-field'
+          'label': 'Ez-field',
+          'uri': '/custom-elements/ez-field/',
+          'alias': 'ez-field'
         },
         {
-          'label': 'X-input',
-          'uri': '/custom-elements/x-input/',
-          'alias': 'x-input',
+          'label': 'Ez-input',
+          'uri': '/custom-elements/ez-input/',
+          'alias': 'ez-input',
           'items': [
             {
               'label': 'Alignment',
-              'uri': '/custom-elements/x-input/alignment/',
+              'uri': '/custom-elements/ez-input/alignment/',
               'alias': 'alignment'
             }
           ]
         },
         {
-          'label': 'X-menu',
-          'uri': '/custom-elements/x-menu/',
-          'alias': 'x-menu'
+          'label': 'Ez-menu',
+          'uri': '/custom-elements/ez-menu/',
+          'alias': 'ez-menu'
         },
         {
-          'label': 'X-option',
-          'uri': '/custom-elements/x-option/',
-          'alias': 'x-option'
+          'label': 'Ez-ripple',
+          'uri': '/custom-elements/ez-ripple/',
+          'alias': 'ez-ripple'
         },
         {
-          'label': 'X-ripple',
-          'uri': '/custom-elements/x-ripple/',
-          'alias': 'x-ripple'
+          'label': 'Ez-toggleonscroll',
+          'uri': '/custom-elements/ez-toggleonscroll/',
+          'alias': 'ez-toggleonscroll'
         },
         {
-          'label': 'X-select',
-          'uri': '/custom-elements/x-select/',
-          'alias': 'x-select'
-        },
-        {
-          'label': 'X-toggleonscroll',
-          'uri': '/custom-elements/x-toggleonscroll/',
-          'alias': 'x-toggleonscroll'
-        },
-        {
-          'label': 'X-typeahead',
-          'uri': '/custom-elements/x-typeahead/',
-          'alias': 'x-typeahead'
+          'label': 'Ez-typeahead',
+          'uri': '/custom-elements/ez-typeahead/',
+          'alias': 'ez-typeahead'
         }
       ]
     },

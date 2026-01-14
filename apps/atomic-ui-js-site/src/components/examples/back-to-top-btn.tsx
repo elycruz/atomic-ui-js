@@ -1,8 +1,8 @@
 'use client';
 
 import {PropsWithChildren} from 'react';
-import XToggleOnScrollComponent from 'atomic-ui-js-next/x-toggleonscroll';
-import XRippleComponent from 'atomic-ui-js-next/x-ripple';
+import EzToggleOnScrollComponent from 'atomic-ui-js-next/ez-toggleonscroll';
+import EzRippleComponent from 'atomic-ui-js-next/ez-ripple';
 
 import styles from './back-to-top-btn.module.scss';
 
@@ -37,7 +37,7 @@ export function BackToTopBtn({
 }: BackToTopBtnProps) {
   const id = `back-to-top-btn-${_uuid++}`;
 
-  return <XToggleOnScrollComponent
+  return <EzToggleOnScrollComponent
     id={id}
     className={[defaultClassName, inClassName ?? ''].join(' ')}
     classNameToToggle={classNameToToggle}
@@ -48,9 +48,9 @@ export function BackToTopBtn({
     rootSelector={root}
     threshold={threshold}
   >
-    <a href={anchorTarget} className="back-to-top-btn x-btn x-filled x-raised x-theme-primary">
-      <XRippleComponent></XRippleComponent>
+    <a href={anchorTarget} className="back-to-top-btn ez-btn ez-filled ez-raised ez-theme-primary">
+      <EzRippleComponent></EzRippleComponent>
       {!children ? <span>Back to top</span> : children}
     </a>
-  </XToggleOnScrollComponent>;
+  </EzToggleOnScrollComponent>;
 }

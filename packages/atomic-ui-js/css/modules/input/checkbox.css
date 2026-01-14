@@ -1,54 +1,54 @@
-:where(.x-radio, .x-checkbox, [type="radio"], [type="checkbox"]) {
+:where(.ez-radio, .ez-checkbox, [type="radio"], [type="checkbox"]) {
   appearance: none;
   display: inline-grid;
   place-content: center;
   cursor: pointer;
-  transition: background-color var(--x-input-speed), border var(--x-input-speed),
-  opacity var(--x-input-speed);
-  background-color: var(--x-input-bg-color);
-  border: var(--x-input-border-width) solid var(--x-input-border-color);
+  transition: background-color var(--ez-input-speed), border var(--ez-input-speed),
+  opacity var(--ez-input-speed);
+  background-color: var(--ez-input-bg-color);
+  border: var(--ez-input-border-width) solid var(--ez-input-border-color);
   box-sizing: border-box;
   margin: 0;
 }
 
-:where(.x-checkbox, [type="checkbox"])::after,
-:where(.x-radio, .x-checkbox, [type="radio"], [type="checkbox"]) {
+:where(.ez-checkbox, [type="checkbox"])::after,
+:where(.ez-radio, .ez-checkbox, [type="radio"], [type="checkbox"]) {
   width: 1rem;
   height: 1rem;
 }
 
-:where(.x-radio, .x-checkbox, [type="radio"], [type="checkbox"])::after {
+:where(.ez-radio, .ez-checkbox, [type="radio"], [type="checkbox"])::after {
   content: "";
-  background-color: var(--x-input-bg-color);
+  background-color: var(--ez-input-bg-color);
 }
 
-:where(.x-radio, .x-checkbox, [type="radio"], [type="checkbox"])[readonly] {
+:where(.ez-radio, .ez-checkbox, [type="radio"], [type="checkbox"])[readonly] {
   pointer-events: none;
 }
 
-:where(.x-checkbox, [type="checkbox"]),
-:where(.x-checkbox, [type="checkbox"])::after {
-  border-radius: var(--x-border-radius);
+:where(.ez-checkbox, [type="checkbox"]),
+:where(.ez-checkbox, [type="checkbox"])::after {
+  border-radius: var(--ez-border-radius);
 }
 
-:where(.x-checkbox, [type="checkbox"])::after,
-:where(.x-checkbox, [type="checkbox"]):checked::after {
+:where(.ez-checkbox, [type="checkbox"])::after,
+:where(.ez-checkbox, [type="checkbox"]):checked::after {
   background: transparent url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="none" stroke="white" stroke-width="3" d="M1.73,12.91 8.1,19.28 22.79,4.59"></path></svg>');
-  width: var(--x-12px);
-  height: var(--x-12px);
+  width: var(--ez-12px);
+  height: var(--ez-12px);
 }
 
-:where(.x-checkbox, [type="checkbox"]):checked {
-  background: var(--x-input-highlight-color);
+:where(.ez-checkbox, [type="checkbox"]):checked {
+  background: var(--ez-input-highlight-color);
 }
 
-:where(.x-checkbox, [type="checkbox"])::after {
-  animation: var(--x-input-speed) box-wipe-obscure;
+:where(.ez-checkbox, [type="checkbox"])::after {
+  animation: var(--ez-input-speed) box-wipe-obscure;
   animation-fill-mode: forwards;
 }
 
-:where(.x-checkbox, [type="checkbox"]):checked::after {
-  animation: var(--x-input-speed) box-wipe-reveal;
+:where(.ez-checkbox, [type="checkbox"]):checked::after {
+  animation: var(--ez-input-speed) box-wipe-reveal;
 }
 
 @keyframes box-wipe-reveal {

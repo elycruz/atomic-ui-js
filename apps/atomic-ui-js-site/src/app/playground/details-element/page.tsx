@@ -1,8 +1,8 @@
 import styles from './page.module.css';
-import XRippleComponent from 'atomic-ui-js-next/x-ripple';
+import EzRippleComponent from 'atomic-ui-js-next/ez-ripple';
 
-const xDetailsCN = styles['x-details'],
-  xDetailsArrowCN = styles['x-details-arrow'];
+const xDetailsCN = styles['ez-details'],
+  xDetailsArrowCN = styles['ez-details-arrow'];
 
 export default function DetailsElement() {
   return <section>
@@ -15,21 +15,21 @@ export default function DetailsElement() {
     <article>
       <header>As <code>alert</code> element</header>
 
-      <details open className={`x-alert ${xDetailsCN} x-theme-primary`}>
-        <summary className="x-btn">
-          <XRippleComponent></XRippleComponent>
+      <details open className={`ez-alert ${xDetailsCN} ez-theme-primary`}>
+        <summary className="ez-btn">
+          <EzRippleComponent></EzRippleComponent>
           <span>Message</span>
           <span className={xDetailsArrowCN}></span>
         </summary>
 
-        <div className="x-card">
-          <section className="x-card-section">
+        <div className="ez-card">
+          <section className="ez-card-section">
             <p>
               Content
             </p>
           </section>
-          <footer className="x-card-footer">
-            <button className="x-btn"></button>
+          <footer className="ez-card-footer">
+            <button className="ez-btn"></button>
           </footer>
         </div>
 

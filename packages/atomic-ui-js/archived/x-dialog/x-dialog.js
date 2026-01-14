@@ -1,8 +1,8 @@
 // Type assertions not yet supported by firefox - css now loaded in `connectedCallback()`.
-// import xDialogStyleSheet from './x-dialog.css' assert {type: "css"};
+// import xDialogStyleSheet from './ez-dialog.css' assert {type: "css"};
 import { error } from "../js/utils/index.js";
 
-export const xDialogLocalName = "x-dialog",
+export const xDialogLocalName = "ez-dialog",
   xDialogStyles = `
   :host dialog::backdrop {
     background: rgba(0,0,0,0) !important;
@@ -10,7 +10,7 @@ export const xDialogLocalName = "x-dialog",
   `,
   xDialogStyleSheet = new CSSStyleSheet();
 
-export class XDialog extends HTMLElement {
+export class EzDialog extends HTMLElement {
   _disabled_initialized = false;
   _disabled_styleSheetInitialized = false;
 
@@ -96,5 +96,5 @@ export class XDialog extends HTMLElement {
 }
 
 if (!customElements.get(xDialogLocalName)) {
-  customElements.define(xDialogLocalName, XDialog);
+  customElements.define(xDialogLocalName, EzDialog);
 }

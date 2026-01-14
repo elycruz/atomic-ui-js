@@ -3,14 +3,14 @@
 <head>
   <meta charset="UTF-8">
   <base href="./">
-  <title>X-Menu Examples</title>
+  <title>Ez-Menu Examples</title>
   <script src="index.js" type="module"></script>
 </head>
 <body>
-<header><h1>X-Menu Examples</h1></header>
+<header><h1>Ez-Menu Examples</h1></header>
 <section>
   <header><h3>With Unordered List</h3></header>
-  <x-menu value-textContent="ul > li > a">
+  <ez-menu value-textContent="ul > li > a">
     <ul>
       <li><a href="#link-1">Link 1</a></li>
       <li><a href="#link-2">Link 2</a>
@@ -28,28 +28,28 @@
         </ul>
       </li>
     </ul>
-  </x-menu>
+  </ez-menu>
 </section>
 
 <section>
-  <header><h3>With x-menu-item elements</h3></header>
-  <x-menu value-textContent="x-menu-item > span">
-    <x-menu-item><span>Link 1</span></x-menu-item>
-    <x-menu-item><span>Link 2</span>
-      <x-menu>
-        <x-menu-item><span>Link 2-1</span></x-menu-item>
-        <x-menu-item><span>Link 2-2</span></x-menu-item>
-        <x-menu-item><span>Link 2-3</span></x-menu-item>
-      </x-menu>
-    </x-menu-item>
-    <x-menu-item>Link 3</x-menu-item>
-    <x-menu-item>Link 4</x-menu-item>
-  </x-menu>
+  <header><h3>With ez-menu-item elements</h3></header>
+  <ez-menu value-textContent="ez-menu-item > span">
+    <ez-menu-item><span>Link 1</span></ez-menu-item>
+    <ez-menu-item><span>Link 2</span>
+      <ez-menu>
+        <ez-menu-item><span>Link 2-1</span></ez-menu-item>
+        <ez-menu-item><span>Link 2-2</span></ez-menu-item>
+        <ez-menu-item><span>Link 2-3</span></ez-menu-item>
+      </ez-menu>
+    </ez-menu-item>
+    <ez-menu-item>Link 3</ez-menu-item>
+    <ez-menu-item>Link 4</ez-menu-item>
+  </ez-menu>
 </section>
 
 <section>
   <header><h3>With `datalist`</h3></header>
-  <x-menu list="example-datalist"></x-menu>
+  <ez-menu list="example-datalist"></ez-menu>
   <datalist id="example-datalist">
     <option value="1">Option 1</option>
     <option value="2">Option 2</option>
@@ -61,7 +61,7 @@
 
 <section>
   <header><h3>With `select`</h3></header>
-  <x-menu>
+  <ez-menu>
     <select size="3" multiple>
       <option value="1">Option 1</option>
       <option value="2">Option 2</option>
@@ -69,7 +69,7 @@
       <option value="4">Option 4</option>
       <option value="5">Option 5</option>
     </select>
-  </x-menu>
+  </ez-menu>
 </section>
 </body>
 </html>

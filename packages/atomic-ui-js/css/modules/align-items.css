@@ -1,47 +1,47 @@
 /**
  * align-items.css
  */
-.x-align-items-normal,
-.x-ai-normal {
+.ez-align-items-normal,
+.ez-ai-normal {
   align-items: normal;
 }
 
-.x-align-items-baseline,
-.x-ai-baseline {
+.ez-align-items-baseline,
+.ez-ai-baseline {
   align-items: baseline;
 }
 
-.x-align-items-center,
-.x-ai-center {
+.ez-align-items-center,
+.ez-ai-center {
   align-items: center;
 }
 
-.x-align-items-start,
-.x-ai-start {
+.ez-align-items-start,
+.ez-ai-start {
   align-items: start;
 }
 
-.x-align-items-end,
-.x-ai-end {
+.ez-align-items-end,
+.ez-ai-end {
   align-items: end;
 }
 
-.x-align-items-self-start,
-.x-ai-self-start {
+.ez-align-items-self-start,
+.ez-ai-self-start {
   align-items: self-start;
 }
 
-.x-align-items-self-end,
-.x-ai-self-end {
+.ez-align-items-self-end,
+.ez-ai-self-end {
   align-items: self-end;
 }
 
-.x-align-items-flex-start,
-.x-ai-flex-start {
+.ez-align-items-flex-start,
+.ez-ai-flex-start {
   align-items: flex-start;
 }
 
-.x-align-items-flex-end,
-.x-ai-flex-end {
+.ez-align-items-flex-end,
+.ez-ai-flex-end {
   align-items: flex-end;
 }

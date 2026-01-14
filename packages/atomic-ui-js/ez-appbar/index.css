@@ -1,0 +1,62 @@
+:where(.ez-appbar, ez-appbar) {
+  position: relative;
+  padding: var(--ez-16px);
+}
+
+:where(.ez-appbar, ez-appbar).ez-filled {
+  background: var(--ez-color-5);
+  color: var(--ez-color-8);
+}
+
+:where(.ez-appbar, ez-appbar).ez-outlined {
+  border: var(--ez-border-width) solid var(--ez-color-4);
+  color: var(--ez-color-5);
+}
+
+:where(.ez-appbar, ez-appbar).ez-raised {
+  border: var(--ez-border-width) solid var(--ez-color-4);
+  color: var(--ez-color-5);
+  box-shadow: 0 var(--ez-2px) var(--ez-3px) var(--ez-neutral-color-with-alpha-6),
+  0 var(--ez-3px) var(--ez-5px) var(--ez-neutral-color-with-alpha-6);
+}
+
+:where(.ez-appbar, ez-appbar).ez-small {
+  padding: var(--ez-3px);
+}
+
+ez-appbar {
+  --ez-ani-speed: 0.21s;
+
+  position: sticky;
+  display: block;
+  transition: transform var(--ez-ani-speed) ease-in-out, opacity var(--ez-ani-speed);
+}
+
+ez-appbar:not(.ez--bottom),
+ez-appbar.ez--top {
+  top: 0;
+}
+
+ez-appbar.ez--bottom {
+  bottom: 0;
+}
+
+ez-appbar.ez--hidden {
+  pointer-events: none;
+  opacity: 0;
+}
+
+ez-appbar.ez--hidden:not(.ez--bottom, .ez--visible) {
+  transform: translateY(-100%);
+}
+
+ez-appbar.ez--hidden.ez--bottom {
+  transform: translateY(100%);
+}
+
+ez-appbar:focus-within,
+ez-appbar.ez--visible {
+  transform: translateY(0%);
+  pointer-events: all;
+  opacity: 1;
+}

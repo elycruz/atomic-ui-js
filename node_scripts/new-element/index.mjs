@@ -3,7 +3,7 @@
  *
  * **Note:**
  *
- * - 'x-' prefix gets added, to element name, if it isn't already there.
+ * - 'ez-' prefix gets added, to element name, if it isn't already there.
  * - Flags must come before element name (element name must be last in argv list).
  *
  * Usage:
@@ -61,7 +61,7 @@ const __dirname = url.fileURLToPath(new URL('.', import.meta.url)),
   lcaseFirst = (str = '') => str[0].toLowerCase() + str.slice(1),
 
   getComponentMeta = (inLocalName = '') => {
-    const localName = inLocalName.startsWith('x-') ? inLocalName : `x-${inLocalName}`,
+    const localName = inLocalName.startsWith('ez-') ? inLocalName : `ez-${inLocalName}`,
       classNamePrefix = localName.trim()
         .split('-')
         .reduce((agg, part) =>

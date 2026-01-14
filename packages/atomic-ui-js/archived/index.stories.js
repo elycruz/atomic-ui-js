@@ -4,11 +4,11 @@ import {debounce, $, $$} from '../utils/index.js';
 // ----
 window.addEventListener('DOMContentLoaded', () => {
   const iframe = $('iframe'),
-    header = $('.x-appbar'),
-    footer = $('.x-app-footer'),
-    menus = $$('.x-menu'),
-    nav = $('.x-app-nav'),
-    hamburgerBtn = $('.x-hamburger-btn'),
+    header = $('.ez-appbar'),
+    footer = $('.ez-app-footer'),
+    menus = $$('.ez-menu'),
+    nav = $('.ez-app-nav'),
+    hamburgerBtn = $('.ez-hamburger-btn'),
     html = $('html'),
 
     mainIframeHeightResize = (iframe) => {
@@ -36,8 +36,8 @@ window.addEventListener('DOMContentLoaded', () => {
   iframe.addEventListener('load', e => mainIframeHeightResize(e.currentTarget));
 
   hamburgerBtn.addEventListener('click', () => {
-    html.classList.toggle('x-nav-hidden');
-    nav.classList.toggle('x-display-none');
+    html.classList.toggle('ez-nav-hidden');
+    nav.classList.toggle('ez-display-none');
   });
 
   // Load stories into iframe

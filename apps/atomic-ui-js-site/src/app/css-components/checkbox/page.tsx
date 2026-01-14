@@ -1,7 +1,7 @@
 import React from 'react';
 import {xThemes} from 'atomic-ui-js/utils/constants.js';
 
-import XRippleComponent from 'atomic-ui-js-next/x-ripple';
+import EzRippleComponent from 'atomic-ui-js-next/ez-ripple';
 
 export default function CheckboxPage() {
   return <section>
@@ -18,27 +18,27 @@ export default function CheckboxPage() {
 
             <dd>
               <form>
-                <fieldset className={'x-fieldset x-layout-horizontal'}>
+                <fieldset className={'ez-fieldset ez-layout-horizontal'}>
                   <label htmlFor={`checkbox-${i}`}
-                    className={`x-theme-${xThemes[k1]}`}>
-                    <XRippleComponent>
+                    className={`ez-theme-${xThemes[k1]}`}>
+                    <EzRippleComponent>
                       <input type="checkbox" id={`checkbox-${i}`} name={`checkbox-${i}`}
-                        className={'x-checkbox'}/>
-                    </XRippleComponent>
+                        className={'ez-checkbox'}/>
+                    </EzRippleComponent>
 
                     <span>Checkbox {i}</span>
                   </label>
 
                   {/* Use of \`inert\` here is temporary - disabled state should be handled via css */}
                   <label htmlFor={`checkbox-disabled-${i}`}
-                    className={`x-theme-${xThemes[k1]}`}>
-                    <XRippleComponent>
+                    className={`ez-theme-${xThemes[k1]}`}>
+                    <EzRippleComponent>
                       <input type="checkbox"
                         id={`checkbox-disabled-${i}`}
                         name={`checkbox-disabled-${i}`}
-                        className={'x-checkbox'}
+                        className={'ez-checkbox'}
                         disabled/>
-                    </XRippleComponent>
+                    </EzRippleComponent>
 
                     <span>Disabled {i}</span>
                   </label>

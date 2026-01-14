@@ -24,11 +24,11 @@ const __dirname = url.fileURLToPath(new URL('.', import.meta.url)),
         const abbrev = key ? key[0] : '';
         const [inMarginContent, inPaddingContent] = agg;
         const [marginContent, paddingContent] = seedsUpto144.reduce((agg2, seed) => {
-          const margin = `.x-m${abbrev}${seed}px {
-  margin${dir}: var(--x-${seed}px, ${seed}px);
+          const margin = `.ez-m${abbrev}${seed}px {
+  margin${dir}: var(--ez-${seed}px, ${seed}px);
 }`,
-            padding = `.x-p${abbrev}${seed}px {
-  padding${dir}: var(--x-${seed}px, ${seed}px);
+            padding = `.ez-p${abbrev}${seed}px {
+  padding${dir}: var(--ez-${seed}px, ${seed}px);
 }`,
             [val0, val1] = agg2;
 

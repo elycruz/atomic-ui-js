@@ -1,11 +1,11 @@
-.x-flex {
+.ez-flex {
   display: flex;
 }
 
-.x-flex-row {
+.ez-flex-row {
   flex-flow: row nowrap;
 }
 
-.x-flex-row-wrap {
+.ez-flex-row-wrap {
   flex-flow: row wrap;
 }

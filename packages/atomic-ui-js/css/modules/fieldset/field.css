@@ -22,63 +22,63 @@ label:has(+ :required, + * :required)::before {
   margin-inline-end: 0.25rem;
 }
 
-label:has(> x-ripple > :disabled) {
+label:has(> ez-ripple > :disabled) {
   pointer-events: none;
 }
 
 /*
- * x-field
+ * ez-field
  * ------------------ */
-:where(x-field, .x-field) {
+:where(ez-field, .ez-field) {
   display: inline-block;
 }
 
-:where(x-field, .x-field),
-:where(x-field, .x-field):not(.x-field--vertical) > * {
+:where(ez-field, .ez-field),
+:where(ez-field, .ez-field):not(.ez-field--vertical) > * {
   vertical-align: middle;
 }
 
-:where(x-field, .x-field):not(.x-field--vertical) > label:has(+ *),
-:where(x-field, .x-field):not(.x-field--vertical) > label:is(label + *) {
+:where(ez-field, .ez-field):not(.ez-field--vertical) > label:has(+ *),
+:where(ez-field, .ez-field):not(.ez-field--vertical) > label:is(label + *) {
   margin-inline-end: 0.5rem;
 }
 
-:where(x-field, .x-field).x-field--vertical > label:has(+ *) {
+:where(ez-field, .ez-field).ez-field--vertical > label:has(+ *) {
   margin-block-end: 0.5rem;
 }
 
-:where(x-field, .x-field).x-field--vertical,
-:where(x-field, .x-field).x-field--vertical > label:has(+ *) {
+:where(ez-field, .ez-field).ez-field--vertical,
+:where(ez-field, .ez-field).ez-field--vertical > label:has(+ *) {
   display: block;
 }
 
-:where(x-field, .x-field) :is(
-  .x-field__error-message,
-  .x-field__help,
+:where(ez-field, .ez-field) :is(
+  .ez-field__error-message,
+  .ez-field__help,
   [slot="help"],
-  .x-help,
-  .x-error-message
+  .ez-help,
+  .ez-error-message
   ) {
   margin-top: 0.5rem;
 }
 
-:where(x-field, .x-field) :is(.x-field__help, [slot="help"], .x-help) {
+:where(ez-field, .ez-field) :is(.ez-field__help, [slot="help"], .ez-help) {
   font-size: smaller;
 }
 
-:where(x-field, .x-field) .x-field__flex-row {
+:where(ez-field, .ez-field) .ez-field__flex-row {
   display: flex;
   flex-flow: row nowrap;
 }
 
-:where(x-field, .x-field) .x-field__flex-row .x-field__leading {
+:where(ez-field, .ez-field) .ez-field__flex-row .ez-field__leading {
   margin-right: 0.5rem;
 }
 
-:where(x-field, .x-field) .x-field__flex-row .x-field__trailing {
+:where(ez-field, .ez-field) .ez-field__flex-row .ez-field__trailing {
   margin-left: 0.5rem;
 }
 
-:where(x-field, .x-field) :is(.x-field__error-message, .x-error-message) {
+:where(ez-field, .ez-field) :is(.ez-field__error-message, .ez-error-message) {
   color: red;
 }

@@ -1,3 +1,0 @@
-# XToggleOnScrollComponent
-
-Component description.

@@ -1,20 +1,20 @@
 /**
- * Setup `x-ripple` element for animations.
+ * Setup `ez-ripple` element for animations.
  */
-.x-btn, .x-button,
-:where(.x-btn, .x-button) > *:not(x-ripple) {
+.ez-btn, .ez-button,
+:where(.ez-btn, .ez-button) > *:not(ez-ripple) {
   position: relative;
 }
 
-:where(.x-btn, .x-button) > *:not(x-ripple) {
+:where(.ez-btn, .ez-button) > *:not(ez-ripple) {
   z-index: 3;
 }
 
-:where(.x-btn, .x-button) > x-ripple {
+:where(.ez-btn, .ez-button) > ez-ripple {
   z-index: 1;
 }
 
-:where(.x-btn, .x-button):not(.x-outlined) {
+:where(.ez-btn, .ez-button):not(.ez-outlined) {
   border: none;
 }
 
@@ -23,63 +23,63 @@
  */
 
  /** For small size **/
-:where(.x-btn, .x-button).x-outlined.x-small {
-  padding: calc(var(--x-3px) - var(--x-border-width));
+:where(.ez-btn, .ez-button).ez-outlined.ez-small {
+  padding: calc(var(--ez-3px) - var(--ez-border-width));
 }
 
 /** For large size **/
-:where(.x-btn, .x-button).x-outlined.x-large {
-  padding: calc(var(--x-8px) - var(--x-border-width)) calc(var(--x-12px) - var(--x-border-width));
+:where(.ez-btn, .ez-button).ez-outlined.ez-large {
+  padding: calc(var(--ez-8px) - var(--ez-border-width)) calc(var(--ez-12px) - var(--ez-border-width));
 }
 
 /**
  * Not "Filled" variant base
  * ------------------- */
-:where(.x-btn, .x-button):not(.x-filled) {
+:where(.ez-btn, .ez-button):not(.ez-filled) {
   background: transparent;
-  color: var(--x-color-5);
+  color: var(--ez-color-5);
 }
 
-:where(.x-btn, .x-button):not(.x-filled):hover {
-  color: var(--x-color-4);
+:where(.ez-btn, .ez-button):not(.ez-filled):hover {
+  color: var(--ez-color-4);
 }
 
-:where(.x-btn, .x-button):not(.x-filled):has(> [rippleactive]),
-:where(.x-btn, .x-button):not(.x-filled):active {
-  color: var(--x-color-3);
+:where(.ez-btn, .ez-button):not(.ez-filled):has(> [rippleactive]),
+:where(.ez-btn, .ez-button):not(.ez-filled):active {
+  color: var(--ez-color-3);
 }
 
 /** Ripple styles **/
-:where(.x-btn, .x-button):not(.x-filled) x-ripple::after,
-:where(.x-btn, .x-button):not(.x-filled) x-ripple::before {
-  background: var(--x-color-7);
+:where(.ez-btn, .ez-button):not(.ez-filled) ez-ripple::after,
+:where(.ez-btn, .ez-button):not(.ez-filled) ez-ripple::before {
+  background: var(--ez-color-7);
 }
 
 @media (prefers-color-scheme: dark) {
-  :where(.x-btn, .x-button):not(.x-filled) {
-    color: var(--x-color-6);
+  :where(.ez-btn, .ez-button):not(.ez-filled) {
+    color: var(--ez-color-6);
   }
 
-  :where(.x-btn, .x-button):not(.x-filled):hover {
-    color: var(--x-color-7);
+  :where(.ez-btn, .ez-button):not(.ez-filled):hover {
+    color: var(--ez-color-7);
   }
 
-  :where(.x-btn, .x-button):not(.x-filled):has(> [rippleactive]),
-  :where(.x-btn, .x-button):not(.x-filled):active {
-    color: var(--x-color-8);
+  :where(.ez-btn, .ez-button):not(.ez-filled):has(> [rippleactive]),
+  :where(.ez-btn, .ez-button):not(.ez-filled):active {
+    color: var(--ez-color-8);
   }
 
-  :where(.x-btn, .x-button):not(.x-filled) x-ripple::after,
-  :where(.x-btn, .x-button):not(.x-filled) x-ripple::before {
-    --x-ripple-hover-opacity: 0.55;
-    --x-ripple-active-opacity: 0.13;
+  :where(.ez-btn, .ez-button):not(.ez-filled) ez-ripple::after,
+  :where(.ez-btn, .ez-button):not(.ez-filled) ez-ripple::before {
+    --ez-ripple-hover-opacity: 0.55;
+    --ez-ripple-active-opacity: 0.13;
   }
 }
 
 /**
  * Disabled
  */
-:where(.x-btn, .x-button):disabled {
+:where(.ez-btn, .ez-button):disabled {
   pointer-events: none;
   opacity: 0.55;
 }
@@ -98,29 +98,29 @@
  * -------------------- */
 
 /** Ripple styles **/
-:where(.x-btn, .x-button).x-filled x-ripple::after,
-:where(.x-btn, .x-button).x-filled x-ripple::before {
-  --x-ripple-hover-opacity: 0.55;
-  --x-ripple-active-opacity: 0.21;
+:where(.ez-btn, .ez-button).ez-filled ez-ripple::after,
+:where(.ez-btn, .ez-button).ez-filled ez-ripple::before {
+  --ez-ripple-hover-opacity: 0.55;
+  --ez-ripple-active-opacity: 0.21;
 
-  background: var(--x-color-12);
+  background: var(--ez-color-12);
 }
 
-:where(.x-btn, .x-button).x-filled {
-  background-color: var(--x-color-5);
-  border-color: var(--x-color-5);
-  color: var(--x-color-12);
+:where(.ez-btn, .ez-button).ez-filled {
+  background-color: var(--ez-color-5);
+  border-color: var(--ez-color-5);
+  color: var(--ez-color-12);
 }
 
-:where(.x-btn, .x-button).x-filled:focus-visible {
-  --x-focus-ring-color: var(--x-color-3);
+:where(.ez-btn, .ez-button).ez-filled:focus-visible {
+  --ez-focus-ring-color: var(--ez-color-3);
 
-  border-color: var(--x-color-3);
+  border-color: var(--ez-color-3);
 }
 
 /*
  * Outlined
  * -------------------- */
-:where(.x-btn, .x-button).x-outlined {
-  border-color: var(--x-color-4);
+:where(.ez-btn, .ez-button).ez-outlined {
+  border-color: var(--ez-color-4);
 }

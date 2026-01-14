@@ -6,19 +6,19 @@ export default function AppBarPage() {
       <h2>AppBar</h2>
     </header>
     <article>
-      <div className="x-theme-primary">
+      <div className="ez-theme-primary">
         <p>Supplies the hide and show animation on user scroll.</p>
         {Object.entries(xVariants)
           .map(([k, v], i) => {
-            const className = classNames('x-appbar',
+            const className = classNames('ez-appbar',
               {
-                [`x-${v}`]: !!v
+                [`ez-${v}`]: !!v
               });
 
             return <header key={`app-header-${Date.now()}-${i}`}
               className={className}>
               <hgroup>
-                <span className="x-h3">Title{v ? ` (${k})` : null}</span>
+                <span className="ez-h3">Title{v ? ` (${k})` : null}</span>
               </hgroup>
             </header>;
           })}
