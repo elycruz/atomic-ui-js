@@ -1,5 +1,10 @@
-import {addEventListener, addEventListeners, removeEventListener, removeEventListeners} from '../utils/dom/events.js';
-import {LitElement, html} from 'lit';
+import {
+  addEventListener,
+  addEventListeners,
+  removeEventListener,
+  removeEventListeners,
+} from '../utils/dom/events.js';
+import { LitElement, html } from 'lit';
 
 import styles from './ez-field.css.js';
 
@@ -16,10 +21,10 @@ export class EzFieldElement extends LitElement {
   }
 
   static properties = {
-    selectors: {type: String},
-    validationMessage: {type: String},
-    validateOnChange: {type: Boolean},
-    validateOnInput: {type: Boolean},
+    selectors: { type: String },
+    validationMessage: { type: String },
+    validateOnChange: { type: Boolean },
+    validateOnInput: { type: Boolean },
   };
 
   get localName() {
@@ -76,7 +81,9 @@ export class EzFieldElement extends LitElement {
         <slot name="leading" part="leading"></slot>
         <div class="center-column">
           <slot></slot>
-          <div class="error-message" part="error">${this.validationMessage}</div>
+          <div class="error-message" part="error">
+            ${this.validationMessage}
+          </div>
           <slot name="help" part="help"></slot>
         </div>
         <slot name="trailing" part="trailing"></slot>
@@ -86,8 +93,9 @@ export class EzFieldElement extends LitElement {
 
   #_onInvalid = e => {
     e.preventDefault();
-    const {currentTarget: target} = e,
-      {selectors} = this;
+
+    const { currentTarget: target } = e,
+      { selectors } = this;
 
     if (selectors && target.matches(selectors)) {
       this.validationMessage = target.validationMessage;
@@ -95,11 +103,15 @@ export class EzFieldElement extends LitElement {
   };
 
   #_onInputOrChange = e => {
-    const {target} = e;
+    const { target } = e;
+
     if (!target.matches(this.selectors)) return;
     if (!target.validationMessage) this.validationMessage = '';
-    if ((this.validateOnChange && e.type === 'change') || (this.validateOnInput && e.type === 'input')) {
-      this.#_inputs?.forEach((input) => input.checkValidity());
+    if (
+      (this.validateOnChange && e.type === 'change') ||
+      (this.validateOnInput && e.type === 'input')
+    ) {
+      this.#_inputs?.forEach(input => input.checkValidity());
     }
   };
 
@@ -108,7 +120,8 @@ export class EzFieldElement extends LitElement {
   };
 
   #_addEventListeners() {
-    if (this.#_form) removeEventListener(this.#_onFormReset, 'reset', this.#_form);
+    if (this.#_form)
+      removeEventListener(this.#_onFormReset, 'reset', this.#_form);
 
     const form = this.closest('form');
 
@@ -118,18 +131,23 @@ export class EzFieldElement extends LitElement {
       this.#_form = form;
     }
 
-    if (this.#_inputs) this.#_inputs.forEach(x => {
-      removeEventListener(this.#_onInvalid, 'invalid', x);
-      addEventListener(this.#_onInvalid, 'invalid', x);
-    });
+    if (this.#_inputs)
+      this.#_inputs.forEach(x => {
+        removeEventListener(this.#_onInvalid, 'invalid', x);
+        addEventListener(this.#_onInvalid, 'invalid', x);
+      });
 
     addEventListeners(this.#_evListenersTupleList, this);
     return this;
   }
 
   #_removeEventListeners() {
-    if (this.#_form) removeEventListener(this.#_onFormReset, 'reset', this.#_form);
-    if (this.#_inputs) this.#_inputs.forEach(x => removeEventListener(this.#_onInvalid, 'invalid', x));
+    if (this.#_form)
+      removeEventListener(this.#_onFormReset, 'reset', this.#_form);
+    if (this.#_inputs)
+      this.#_inputs.forEach(x =>
+        removeEventListener(this.#_onInvalid, 'invalid', x)
+      );
     return removeEventListeners(this.#_evListenersTupleList, this);
   }
 }

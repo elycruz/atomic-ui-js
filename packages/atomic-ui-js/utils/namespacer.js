@@ -9,6 +9,7 @@ export const namespacer = (nsString, obj, valueToSet = undefined) => {
   if (!nsString || !obj) {
     return obj;
   }
+
   const shouldSetValue = valueToSet !== undefined,
     nss = nsString[0] === '.' ? nsString.slice(1) : nsString;
 

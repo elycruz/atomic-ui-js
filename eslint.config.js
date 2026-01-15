@@ -1,29 +1,28 @@
 // eslint.config.js
-import globals from "globals";
-import js from "@eslint/js";
+import globals from 'globals';
+import js from '@eslint/js';
 import jsxA11y from 'eslint-plugin-jsx-a11y';
-import prettier from 'eslint-plugin-prettier';
 import prettierRecommended from 'eslint-plugin-prettier/recommended';
 
 // For more info, see https://github.com/storybookjs/eslint-plugin-storybook#configuration-flat-config-format
-import storybook from "eslint-plugin-storybook";
+import storybook from 'eslint-plugin-storybook';
 import tsEslint from 'typescript-eslint';
 
-import {defineConfig, globalIgnores} from "eslint/config";
+import { defineConfig, globalIgnores } from 'eslint/config';
 
 // const __dirname = new URL('.', import.meta.url).pathname;
 
 const baseRules = {
-  "padding-line-between-statements": [
-    "error",
+  'padding-line-between-statements': [
+    'error',
     // Blank line before function declarations
-    { "blankLine": "always", "prev": "*", "next": "function" },
+    { blankLine: 'always', prev: '*', next: 'function' },
     // Blank line before class declarations
-    { "blankLine": "always", "prev": "*", "next": "class" },
+    { blankLine: 'always', prev: '*', next: 'class' },
     // Blank line before variable declarations
-    { "blankLine": "always", "prev": "*", "next": ["const", "let", "var"] },
+    { blankLine: 'always', prev: '*', next: ['const', 'let', 'var'] },
     // Blank line after variable declarations
-    { "blankLine": "always", "prev": ["const", "let", "var"], "next": "*" }
+    { blankLine: 'always', prev: ['const', 'let', 'var'], next: '*' },
   ],
 
   // Prettier integration
@@ -36,6 +35,7 @@ const baseRules = {
   'no-promise-executor-return': 'error',
   // 'require-atomic-updates': 'error',
   'no-var': 'error',
+  'one-var': ['warn', 'consecutive'],
   'prefer-const': 'error',
 
   // Console
@@ -44,23 +44,23 @@ const baseRules = {
 
 export default defineConfig([
   globalIgnores([
-    "**/.storybook",
-    "**/*.d.ts",
-    "**/archived/**/*",
-    "**/coverage/**/*",
-    "**/dist",
-    "**/generated",
-    "**/node_modules",
+    '**/.storybook',
+    '**/*.d.ts',
+    '**/archived/**/*',
+    '**/coverage/**/*',
+    '**/dist',
+    '**/generated',
+    '**/node_modules',
   ]),
   js.configs.recommended,
   prettierRecommended,
-  ...storybook.configs["flat/recommended"],
+  ...storybook.configs['flat/recommended'],
   jsxA11y['flatConfigs'].recommended,
   {
-    files: ["**/*.js", "**/*.cjs", "**/*.mjs"],
+    files: ['**/*.js', '**/*.cjs', '**/*.mjs'],
     languageOptions: {
-      ecmaVersion: "latest",
-      sourceType: "module",
+      ecmaVersion: 'latest',
+      sourceType: 'module',
       globals: {
         ...globals.browser,
         ...globals.node,
@@ -70,22 +70,18 @@ export default defineConfig([
         sourceType: 'module',
       },
     },
-    plugins: {
-      js,
-      prettier,
-    },
     rules: baseRules,
   },
   {
-    files: ["**/*.ts", "**/*.tsx"],
+    files: ['**/*.ts', '**/*.tsx'],
     extends: [
       tsEslint.configs.strict,
       tsEslint.configs.stylistic,
       tsEslint.configs.recommendedTypeChecked,
     ],
     languageOptions: {
-      ecmaVersion: "latest",
-      sourceType: "module",
+      ecmaVersion: 'latest',
+      sourceType: 'module',
       parser: tsEslint.parser,
       globals: {
         ...globals.browser,
@@ -98,10 +94,7 @@ export default defineConfig([
       },
     },
     plugins: {
-      globals,
-      js,
       '@typescript-eslint': tsEslint.plugin,
-      prettier,
     },
     rules: {
       ...baseRules,
@@ -109,7 +102,7 @@ export default defineConfig([
       '@typescript-eslint/no-unused-vars': 'error',
 
       // relaxed rules
-      "@typescript-eslint/no-explicit-any": "off",
+      '@typescript-eslint/no-explicit-any': 'off',
 
       // Async/Promise handling rules
       '@typescript-eslint/no-floating-promises': 'error',
@@ -123,10 +116,10 @@ export default defineConfig([
   // Tests (Jest/Vitest) override
   {
     files: [
-      "**/*.test.{js,jsx,ts,tsx}",
-      "**/*.spec.{js,jsx,ts,tsx}",
-      "**/jest.config.{js,ts}",
-      "**/vite.config.{js,ts}",
+      '**/*.test.{js,jsx,ts,tsx}',
+      '**/*.spec.{js,jsx,ts,tsx}',
+      '**/jest.config.{js,ts}',
+      '**/vite.config.{js,ts}',
     ],
     languageOptions: {
       globals: {
@@ -141,7 +134,7 @@ export default defineConfig([
     },
     rules: {
       // Relaxed rules
-      "@typescript-eslint/no-explicit-any": "off",
+      '@typescript-eslint/no-explicit-any': 'off',
     },
   },
 ]);

@@ -6,7 +6,7 @@ import {
   toNumberOr,
 } from '../utils/index.js';
 
-import {ReactiveElement} from 'lit';
+import { ReactiveElement } from 'lit';
 
 /**
  * @type {string}
@@ -15,16 +15,15 @@ export const xAppbarName = 'ez-appbar';
 
 export const xAppbarEvents = {
   Intersected: `${xAppbarName}-intersected`,
-  NotIntersected: `${xAppbarName}-not-intersected`
+  NotIntersected: `${xAppbarName}-not-intersected`,
 };
 
-const {Intersected, NotIntersected} = xAppbarEvents,
+const { Intersected, NotIntersected } = xAppbarEvents,
   HIDDEN_CLASSNAME_NAME = 'hiddenClassName',
   VISIBLE_CLASSNAME_NAME = 'visibleClassName',
   PARENT_SELECTOR_NAME = 'parentSelector',
   DEBOUNCE_DELAY_NAME = 'debounceDelay',
-  MARGIN_TOP_NAME = 'marginTop'
-;
+  MARGIN_TOP_NAME = 'marginTop';
 
 /**
  * @note Component functions as a decorator.
@@ -35,11 +34,11 @@ export class EzAppbarElement extends ReactiveElement {
   static localName = xAppbarName;
 
   static properties = {
-    [HIDDEN_CLASSNAME_NAME]: {type: String, attribute: true},
-    [VISIBLE_CLASSNAME_NAME]: {type: String, attribute: true},
-    [PARENT_SELECTOR_NAME]: {type: String, attribute: true},
-    [DEBOUNCE_DELAY_NAME]: {type: Number, attribute: true},
-    [MARGIN_TOP_NAME]: {type: Number, attribute: true},
+    [HIDDEN_CLASSNAME_NAME]: { type: String, attribute: true },
+    [VISIBLE_CLASSNAME_NAME]: { type: String, attribute: true },
+    [PARENT_SELECTOR_NAME]: { type: String, attribute: true },
+    [DEBOUNCE_DELAY_NAME]: { type: Number, attribute: true },
+    [MARGIN_TOP_NAME]: { type: Number, attribute: true },
   };
 
   /**
@@ -104,7 +103,7 @@ export class EzAppbarElement extends ReactiveElement {
   }
 
   set parentSelector(str) {
-    const {parentSelector: prevValue, hiddenClassName} = this,
+    const { parentSelector: prevValue, hiddenClassName } = this,
       newValue = str ? str + '' : '';
 
     if (prevValue === newValue || !hiddenClassName) {
@@ -113,7 +112,7 @@ export class EzAppbarElement extends ReactiveElement {
       return;
     }
 
-    const {selectedParent: prevParent} = this;
+    const { selectedParent: prevParent } = this;
 
     this.#parentSelector = newValue;
 
@@ -130,9 +129,9 @@ export class EzAppbarElement extends ReactiveElement {
   #selectedParent;
   get selectedParent() {
     if (!this.#selectedParent) {
-      this.#selectedParent = !this.parentSelector ?
-        this.ownerDocument.scrollingElement :
-        this.ownerDocument.querySelector(this.parentSelector);
+      this.#selectedParent = !this.parentSelector
+        ? this.ownerDocument.scrollingElement
+        : this.ownerDocument.querySelector(this.parentSelector);
     }
 
     return this.#selectedParent;
@@ -156,6 +155,7 @@ export class EzAppbarElement extends ReactiveElement {
 
   set marginTop(n) {
     const prevValue = this.debounceDelay;
+
     this.#marginTop = toNumberOr(n, 0);
     this.requestUpdate(MARGIN_TOP_NAME, prevValue);
   }
@@ -170,6 +170,7 @@ export class EzAppbarElement extends ReactiveElement {
 
   set debounceDelay(x) {
     const prevValue = this.debounceDelay;
+
     this.#debounceDelay = toNumberOr(x, 233);
     this.requestUpdate(DEBOUNCE_DELAY_NAME, prevValue);
   }
@@ -215,9 +216,11 @@ export class EzAppbarElement extends ReactiveElement {
       );
     }
 
-    if (_changed.has(VISIBLE_CLASSNAME_NAME) ||
+    if (
+      _changed.has(VISIBLE_CLASSNAME_NAME) ||
       _changed.has(HIDDEN_CLASSNAME_NAME) ||
-      _changed.has(PARENT_SELECTOR_NAME)) {
+      _changed.has(PARENT_SELECTOR_NAME)
+    ) {
       this.#onParentScroll();
     }
   }
@@ -225,26 +228,28 @@ export class EzAppbarElement extends ReactiveElement {
   #toggleIntersectState(isIntersecting) {
     if (this.intersected === isIntersecting) return;
 
-    const _isIntersecting =
-      this.#intersected = Boolean(isIntersecting);
+    const _isIntersecting = (this.#intersected = Boolean(isIntersecting));
 
     this.classList.toggle(this.hiddenClassName, !_isIntersecting);
 
-    this.dispatchEvent(new CustomEvent(
-      _isIntersecting ? Intersected : NotIntersected, {
+    this.dispatchEvent(
+      new CustomEvent(_isIntersecting ? Intersected : NotIntersected, {
         bubbles: true,
-        composed: true
-      }));
+        composed: true,
+      })
+    );
   }
 
   #initializeListeners(oldParent, newParent) {
-    if (oldParent) oldParent.removeEventListener('scroll', this.#onParentScroll);
+    if (oldParent)
+      oldParent.removeEventListener('scroll', this.#onParentScroll);
 
     if (this.#resizeObserver) this.#resizeObserver.unobserve(this);
 
     this.#resizeObserver = new ResizeObserver(records => {
       records.forEach(r => {
         const bbox = r.target.getBoundingClientRect();
+
         this.#appbarContentHeight = bbox.height;
       });
     });
@@ -258,7 +263,7 @@ export class EzAppbarElement extends ReactiveElement {
   }
 
   #onParentScrollUnDebounced = () => {
-    const {selectedParent: p, visibleClassName} = this,
+    const { selectedParent: p, visibleClassName } = this,
       intersectionPoint = this.marginTop + this.#appbarContentHeight,
       hasFocusWithin = this.matches(':focus-within');
 

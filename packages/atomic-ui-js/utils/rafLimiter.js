@@ -9,12 +9,15 @@
  */
 export function rafLimiter(fn, fps = 60) {
   const interval = 1000 / fps;
+
   let then = Date.now();
 
   return (function loop(/*timestamp*/) {
     const now = Date.now(),
       delta = now - then;
+
     let stopAnimation;
+
     if (delta > interval) {
       // Update time
       // now - (delta % interval) is an improvement over just
@@ -25,5 +28,5 @@ export function rafLimiter(fn, fps = 60) {
       stopAnimation = fn(delta);
     }
     return stopAnimation ? undefined : requestAnimationFrame(loop);
-  }(then));
+  })(then);
 }

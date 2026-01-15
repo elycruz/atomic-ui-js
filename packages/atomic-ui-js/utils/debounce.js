@@ -8,9 +8,9 @@ export const debounce = (fn, timeout, ...args) => {
     _map.set(
       fn,
       setTimeout(() => {
-        fn(...(args.concat(args2)));
+        fn(...args.concat(args2));
         _map.delete(fn);
-      }, timeout),
+      }, timeout)
     );
   };
 };

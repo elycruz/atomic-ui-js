@@ -10,9 +10,9 @@ const _Number = Number.name,
 /**
  * @deprecated - Use `isNullable`.
  */
-export const isset = (x) => x !== null && x !== undefined;
+export const isset = x => x !== null && x !== undefined;
 
-export const isNullable = (x) => x === null || x === undefined;
+export const isNullable = x => x === null || x === undefined;
 
 /**
  * Returns the constructor/class/type name of a value.
@@ -25,15 +25,16 @@ export const isNullable = (x) => x === null || x === undefined;
  */
 export function typeOf(value) {
   let retVal;
+
   if (value === undefined) {
     retVal = _Undefined;
   } else if (value === null) {
     retVal = _Null;
   } else {
-    const { name: constructorName } = (value).constructor;
-    retVal = constructorName === _Number && isNaN(value)
-      ? _NaN
-      : constructorName;
+    const { name: constructorName } = value.constructor;
+
+    retVal =
+      constructorName === _Number && isNaN(value) ? _NaN : constructorName;
   }
   return retVal;
 }

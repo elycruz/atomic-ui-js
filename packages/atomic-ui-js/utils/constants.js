@@ -5,9 +5,8 @@ export const xThemes = {
     Info: 'info',
     Warning: 'warning',
     Danger: 'danger',
-    Grayscale: 'neutral'
+    Grayscale: 'neutral',
   },
-
   xVariants = {
     Default: '',
     Outlined: 'outlined',
@@ -15,9 +14,8 @@ export const xThemes = {
     Raised: 'raised',
     Small: 'small',
     Normal: 'normal',
-    Large: 'large'
+    Large: 'large',
   },
-
   AUTO_COMPLETE_NAME = 'autocomplete',
   AUTO_FOCUS_NAME = 'autofocus',
   CHECKED_NAME = 'checked',
@@ -47,5 +45,4 @@ export const xThemes = {
   TRIGGER_NAME = 'trigger',
   TRIGGER_SELECTOR_NAME = 'triggerSelector',
   VARIETY_NAME = 'variety',
-  VALUE_NAME = 'value'
-;
+  VALUE_NAME = 'value';

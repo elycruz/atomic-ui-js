@@ -1,4 +1,4 @@
-import {isNullable} from './object';
+import { isNullable } from './object';
 import { expect, describe, it } from 'vitest';
 
 describe('#isNullable', () => {
@@ -10,11 +10,10 @@ describe('#isNullable', () => {
     [false, false],
     [NaN, false],
     [{}, false],
-    [{a: 1}, false]
-  ]
-    .forEach(([control, expected]) => {
-      it(`isNullable(${control}) === ${expected}`, () => {
-        expect(isNullable(control)).toEqual(expected);
-      });
+    [{ a: 1 }, false],
+  ].forEach(([control, expected]) => {
+    it(`isNullable(${control}) === ${expected}`, () => {
+      expect(isNullable(control)).toEqual(expected);
     });
+  });
 });

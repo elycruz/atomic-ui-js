@@ -6,12 +6,10 @@
 import fs from 'fs';
 import * as path from 'path';
 import url from 'url';
-import {xThemes} from '../../utils/constants.js';
+import { xThemes } from '../../utils/constants.js';
 
 const __dirname = url.fileURLToPath(new URL('.', import.meta.url)),
-
-  {log, error} = console,
-
+  { log, error } = console,
   primary = ['primary', 240, 21],
   secondary = ['secondary', 300, 21],
   success = ['success', 120, 21],
@@ -21,23 +19,31 @@ const __dirname = url.fileURLToPath(new URL('.', import.meta.url)),
   neutral = ['neutral', 0, 0],
   fileName = 'index.css',
   xThemeKeys = Object.keys(xThemes),
-
-  genColorsCss = (outputFilePath = path.join(__dirname, '../../css/modules/colors/', fileName)) => {
+  genColorsCss = (
+    outputFilePath = path.join(__dirname, '../../css/modules/colors/', fileName)
+  ) => {
     const lightnessNums = new Array(10)
         .fill(null, 0, 10)
         .map((_, i) => i * 10)
         .concat([95, 99, 100]),
-
       themeColors = [
-        primary, secondary, success, info,
-        warning, danger, neutral
+        primary,
+        secondary,
+        success,
+        info,
+        warning,
+        danger,
+        neutral,
       ]
         .flatMap(([name, hue, saturation]) =>
           lightnessNums.flatMap((lightness, i) => {
             const alpha = 100 - lightness;
+
             let chroma = Math.min(
               0.21,
-              1 - (saturation + ((100 - saturation) / lightnessNums.length) * i) * .01
+              1 -
+                (saturation + ((100 - saturation) / lightnessNums.length) * i) *
+                  0.01
             ).toFixed(5);
 
             // If 'neutral' color set chroma to the lowest value
@@ -45,29 +51,36 @@ const __dirname = url.fileURLToPath(new URL('.', import.meta.url)),
 
             return [
               `  --ez-${name}-color-${i}: ` +
-              `oklch(${lightness}% ${chroma} ${hue}deg);`,
+                `oklch(${lightness}% ${chroma} ${hue}deg);`,
               `  --ez-${name}-color-with-alpha-${i}: ` +
-              `oklch(${lightness}% ${chroma} ${hue}deg / ${alpha}%);`,
+                `oklch(${lightness}% ${chroma} ${hue}deg / ${alpha}%);`,
             ];
           })
-        ).join('\n'),
-
+        )
+        .join('\n'),
       themeVars = xThemeKeys.reduce((agg, k) => {
         const themeName = xThemes[k];
 
-        return agg + `
+        return (
+          agg +
+          `
 .ez-theme-${themeName} {
-${lightnessNums.flatMap((lightness, i) => {
+${lightnessNums
+  .flatMap((lightness, i) => {
     return [
       `  --ez-color-${i}: var(--ez-${themeName}-color-${i});`,
       `  --ez-color-with-alpha-${i}: var(--ez-${themeName}-color-with-alpha-${i});`,
     ];
   })
-    .join('\n')}
-}\n`;
+  .join('\n')}
+}\n`
+        );
       }, '');
 
-    return fs.promises.writeFile(outputFilePath, `/**
+    return fs.promises
+      .writeFile(
+        outputFilePath,
+        `/**
  * colors.css
  *
  * The library's base colors (tentative).
@@ -85,11 +98,9 @@ ${themeColors}
 }
 
 ${themeVars.trim()}
-`)
-      .then(
-        () => log(`file ${fileName} written successfully`),
-        error
-      );
+`
+      )
+      .then(() => log(`file ${fileName} written successfully`), error);
   };
 
-export {genColorsCss};
+export { genColorsCss };

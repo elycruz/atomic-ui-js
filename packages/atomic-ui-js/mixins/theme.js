@@ -1,4 +1,3 @@
 export const WithTheme = constructor => {
-  return class extends constructor {
-  };
+  return class extends constructor {};
 };

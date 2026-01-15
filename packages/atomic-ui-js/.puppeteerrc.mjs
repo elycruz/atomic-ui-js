@@ -1,3 +1,3 @@
 export default {
-  'defaultProduct': 'google-chrome'
+  defaultProduct: 'google-chrome',
 };
