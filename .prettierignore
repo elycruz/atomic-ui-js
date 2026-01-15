@@ -1,0 +1,35 @@
+# Dependencies
+**/node_modules/
+
+# Build outputs
+**/dist/
+**/build/
+**/coverage/
+
+# Cache directories
+**/.eslintcache
+**/.parcel-cache
+
+# Package manager files
+**/package-lock.json
+**/yarn.lock
+**/pnpm-lock.yaml
+
+# OS generated files
+**/.DS_Store
+**/Thumbs.db
+
+# IDE/Editor files
+.vscode/
+.idea/
+
+# Logs
+*.log
+npm-debug.log*
+
+# Generated files
+coverage/
+*.tsbuildinfo
+
+# Public assets (don't format these)
+**/public/
