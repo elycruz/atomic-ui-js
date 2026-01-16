@@ -53,8 +53,10 @@ export default defineConfig([
   ]),
   js.configs.recommended,
   prettierRecommended,
+  // @ts-expect-error - Known type.
   ...storybook.configs['flat/recommended'],
-  jsxA11y['flatConfigs'].recommended,
+  // @ts-expect-error - Known type.
+  jsxA11y.flatConfigs.recommended,
   {
     files: ['**/*.js', '**/*.cjs', '**/*.mjs'],
     languageOptions: {
@@ -69,6 +71,7 @@ export default defineConfig([
         sourceType: 'module',
       },
     },
+    // @ts-expect-error - Known type
     rules: baseRules,
   },
   {
@@ -93,9 +96,11 @@ export default defineConfig([
         tsconfigRootDir: __dirname,
       },
     },
+    // @ts-expect-error - Type compatibility issue with typescript-eslint plugin
     plugins: {
       '@typescript-eslint': tsEslint.plugin,
     },
+    // @ts-expect-error - Type compatibility issue with padding-line-between-statements rule
     rules: {
       ...baseRules,
 

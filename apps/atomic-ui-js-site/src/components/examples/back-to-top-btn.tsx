@@ -1,12 +1,13 @@
 'use client';
 
-import {PropsWithChildren} from 'react';
+import { PropsWithChildren } from 'react';
 import EzToggleOnScrollComponent from 'atomic-ui-js-next/ez-toggleonscroll';
 import EzRippleComponent from 'atomic-ui-js-next/ez-ripple';
 
 import styles from './back-to-top-btn.module.scss';
 
-export interface BackToTopBtnProps extends PropsWithChildren<any> { //<JSX.IntrinsicElements['a']> {
+export interface BackToTopBtnProps extends PropsWithChildren<any> {
+  //<JSX.IntrinsicElements['a']> {
   anchorTarget?: string;
   root?: string | null;
   rootMargin?: string;
@@ -33,24 +34,29 @@ export function BackToTopBtn({
   className: inClassName,
   intersectingTarget = '#site-top',
   classNameToToggle = defaultClassNameToToggle,
-  children
+  children,
 }: BackToTopBtnProps) {
   const id = `back-to-top-btn-${_uuid++}`;
 
-  return <EzToggleOnScrollComponent
-    id={id}
-    className={[defaultClassName, inClassName ?? ''].join(' ')}
-    classNameToToggle={classNameToToggle}
-    classNameToToggleTargetSelector={toggleTarget ?? `#${id}`}
-    intersectingTargetSelector={intersectingTarget}
-    reverse={reverse}
-    rootMargin={rootMargin}
-    rootSelector={root}
-    threshold={threshold}
-  >
-    <a href={anchorTarget} className="back-to-top-btn ez-btn ez-filled ez-raised ez-theme-primary">
-      <EzRippleComponent></EzRippleComponent>
-      {!children ? <span>Back to top</span> : children}
-    </a>
-  </EzToggleOnScrollComponent>;
+  return (
+    <EzToggleOnScrollComponent
+      id={id}
+      className={[defaultClassName, inClassName ?? ''].join(' ')}
+      classNameToToggle={classNameToToggle}
+      classNameToToggleTargetSelector={toggleTarget ?? `#${id}`}
+      intersectingTargetSelector={intersectingTarget}
+      reverse={reverse}
+      rootMargin={rootMargin}
+      rootSelector={root as string | undefined}
+      threshold={threshold}
+    >
+      <a
+        href={anchorTarget}
+        className="back-to-top-btn ez-btn ez-filled ez-raised ez-theme-primary"
+      >
+        <EzRippleComponent></EzRippleComponent>
+        {!children ? <span>Back to top</span> : children}
+      </a>
+    </EzToggleOnScrollComponent>
+  );
 }

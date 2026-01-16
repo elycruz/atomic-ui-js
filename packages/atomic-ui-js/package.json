@@ -13,7 +13,7 @@
     "./*": "./*"
   },
   "scripts": {
-    "build": "pnpm build:css",
+    "build": "pnpm build:css && pnpm typings",
     "build:css": "pnpm gen:css && node node_scripts/build/index.mjs",
     "watch": "node node_scripts/watch/index.mjs",
     "docs": "pnpm typedoc",
@@ -22,6 +22,7 @@
     "eslintfix": "pnpm eslint --fix",
     "stylelint": "stylelint \"**/*.css\"",
     "stylelintfix": "pnpm stylelint --fix",
+    "typings": "tsc --project tsconfig.json",
     "typedoc": "typedoc .",
     "test": "vitest --run",
     "storybook": "storybook dev -p 6006",
