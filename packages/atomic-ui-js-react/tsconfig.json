@@ -3,7 +3,8 @@
   "compilerOptions": {
     "types": [
       "atomic-ui-js"
-    ]
+    ],
+    "jsx": "preserve"
   },
   "include": [
     ""

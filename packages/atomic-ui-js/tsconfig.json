@@ -14,7 +14,11 @@
     "sourceMap": true,
     "strictNullChecks": true,
     "target": "ES2017",
-    "declaration": false,
+    "declaration": true,
+    "emitDeclarationOnly": true,
+    "declarationMap": true,
+    "declarationDir": "./dist/typings",
+    "outDir": "./dist/atomic-ui-js",
     "types": [
       "./types"
     ],

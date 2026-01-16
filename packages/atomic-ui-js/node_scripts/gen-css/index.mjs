@@ -26,5 +26,8 @@ import { genGapCss } from './gap.js';
     genGapCss(),
     genMarginAndPaddingClasses(),
   ])
-    .then(() => console.log('\ngen-css completed successfully\n'))
+    .then(() =>
+      // eslint-disable-next-line no-console
+      console.log('\ngen-css completed successfully\n')
+    )
     .catch(console.error))();

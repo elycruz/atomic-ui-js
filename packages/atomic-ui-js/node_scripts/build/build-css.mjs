@@ -24,7 +24,10 @@ const __dirname = url.fileURLToPath(new URL('.', import.meta.url)),
             }
           })
       )
-      .then(() => console.log("'build-css' finished successfully.")),
+      .then(() =>
+        // eslint-disable-next-line no-console
+        console.log("'build-css' finished successfully.")
+      ),
   buildCss = async () => fs.mkdir(distPath).then(compileCss, compileCss);
 
 export { buildCss };

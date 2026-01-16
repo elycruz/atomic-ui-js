@@ -50,7 +50,7 @@ export const DefaultVariation: StoryObj = {
 
     await expect(ripple2).toBeInTheDocument();
     await expect(ripple2).toHaveProperty('nodeName', xRippleName.toUpperCase());
-    await expect(ripple2.children).toHaveProperty('length', 1);
+    await expect(ripple2?.children).toHaveProperty('length', 1);
     // Ensure no additional DOM is generated
     await expect(ripple2).toHaveProperty('childElementCount', 1);
     // Ensure no `shadowRoot` is created

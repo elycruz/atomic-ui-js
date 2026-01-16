@@ -1,14 +1,15 @@
 {
   "ignoreFiles": [
-    "**/dist/**/*",
-    "**/archived/**/*",
-    "**/storybook-static/**/*",
-    "**/coverage/**/*"
+    "**/dist/**/*.{css,scss}",
+    "**/archived/**/*.{css,scss}",
+    "**/storybook-static/**/*.{css,scss}",
+    "**/coverage/**/*.{css,scss}",
+    "**/.turbo/**/*.{css,scss}"
   ],
   "rules": {
     "number-max-precision": 5,
     "no-descending-specificity": null,
     "selector-attribute-quotes": "always",
-    "selector-class-pattern": "[a-zA-Z][\\w-]+"
+    "selector-class-pattern": "^[a-zA-Z_][a-zA-Z0-9_-]+$"
   }
 }

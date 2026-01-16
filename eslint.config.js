@@ -10,37 +10,36 @@ import tsEslint from 'typescript-eslint';
 
 import { defineConfig, globalIgnores } from 'eslint/config';
 
-// const __dirname = new URL('.', import.meta.url).pathname;
+const __dirname = new URL('.', import.meta.url).pathname,
+  baseRules = {
+    'padding-line-between-statements': [
+      'error',
+      // Blank line before function declarations
+      { blankLine: 'always', prev: '*', next: 'function' },
+      // Blank line before class declarations
+      { blankLine: 'always', prev: '*', next: 'class' },
+      // Blank line before variable declarations
+      { blankLine: 'always', prev: '*', next: ['const', 'let', 'var'] },
+      // Blank line after variable declarations
+      { blankLine: 'always', prev: ['const', 'let', 'var'], next: '*' },
+    ],
 
-const baseRules = {
-  'padding-line-between-statements': [
-    'error',
-    // Blank line before function declarations
-    { blankLine: 'always', prev: '*', next: 'function' },
-    // Blank line before class declarations
-    { blankLine: 'always', prev: '*', next: 'class' },
-    // Blank line before variable declarations
-    { blankLine: 'always', prev: '*', next: ['const', 'let', 'var'] },
-    // Blank line after variable declarations
-    { blankLine: 'always', prev: ['const', 'let', 'var'], next: '*' },
-  ],
+    // Prettier integration
+    'prettier/prettier': 'error',
+    'no-undef': 'off', // Typescript handles this better  via it's type checking
+    'no-unused-vars': 'off', // Typescript handles this better via it's type checking
 
-  // Prettier integration
-  'prettier/prettier': 'error',
-  'no-undef': 'off', // Typescript handles this better  via it's type checking
-  'no-unused-vars': 'off', // Typescript handles this better via it's type checking
+    'no-async-promise-executor': 'error',
+    'no-await-in-loop': 'warn',
+    'no-promise-executor-return': 'error',
+    // 'require-atomic-updates': 'error',
+    'no-var': 'error',
+    'one-var': ['warn', 'consecutive'],
+    'prefer-const': 'error',
 
-  'no-async-promise-executor': 'error',
-  'no-await-in-loop': 'warn',
-  'no-promise-executor-return': 'error',
-  // 'require-atomic-updates': 'error',
-  'no-var': 'error',
-  'one-var': ['warn', 'consecutive'],
-  'prefer-const': 'error',
-
-  // Console
-  'no-console': ['warn', { allow: ['warn', 'error', 'info', 'table'] }],
-};
+    // Console
+    'no-console': ['warn', { allow: ['warn', 'error', 'info', 'table'] }],
+  };
 
 export default defineConfig([
   globalIgnores([
@@ -75,9 +74,9 @@ export default defineConfig([
   {
     files: ['**/*.ts', '**/*.tsx'],
     extends: [
-      tsEslint.configs.strict,
-      tsEslint.configs.stylistic,
       tsEslint.configs.recommendedTypeChecked,
+      tsEslint.configs.strictTypeChecked,
+      tsEslint.configs.stylisticTypeChecked,
     ],
     languageOptions: {
       ecmaVersion: 'latest',
@@ -91,6 +90,7 @@ export default defineConfig([
         ecmaVersion: 'latest',
         projectService: true,
         sourceType: 'module',
+        tsconfigRootDir: __dirname,
       },
     },
     plugins: {
@@ -103,6 +103,7 @@ export default defineConfig([
 
       // relaxed rules
       '@typescript-eslint/no-explicit-any': 'off',
+      '@typescript-eslint/restrict-template-expressions': 'off',
 
       // Async/Promise handling rules
       '@typescript-eslint/no-floating-promises': 'error',
@@ -114,12 +115,12 @@ export default defineConfig([
     },
   },
   // Tests (Jest/Vitest) override
-  {
+  /*{
     files: [
-      '**/*.test.{js,jsx,ts,tsx}',
-      '**/*.spec.{js,jsx,ts,tsx}',
-      '**/jest.config.{js,ts}',
-      '**/vite.config.{js,ts}',
+      '**!/!*.test.{js,jsx,ts,tsx}',
+      '**!/!*.spec.{js,jsx,ts,tsx}',
+      '**!/jest.config.{js,ts}',
+      '**!/vite.config.{js,ts}',
     ],
     languageOptions: {
       globals: {
@@ -136,5 +137,5 @@ export default defineConfig([
       // Relaxed rules
       '@typescript-eslint/no-explicit-any': 'off',
     },
-  },
+  },*/
 ]);

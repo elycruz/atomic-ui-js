@@ -37,6 +37,7 @@ const digitRegex = /\d/,
   ) => {
     let {
       flags = FractionsAllowed,
+      // eslint-disable-next-line prefer-const
       lastIndex = 0,
       prevChar = '',
       out = '',
