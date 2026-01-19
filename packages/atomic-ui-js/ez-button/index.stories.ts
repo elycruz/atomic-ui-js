@@ -1,4 +1,4 @@
-import { xThemes, xVariants } from '../utils';
+import { xThemes, xVariants } from '../utils/constants.js';
 import { html } from 'lit';
 
 export default {
@@ -7,7 +7,7 @@ export default {
 
 const partitionedVariants = Object.entries(xVariants).reduce(
     (agg, [k, v]) => {
-      if (/large|small|normal|medium/.test(v + '')) {
+      if (/large|small|normal|medium/.test(v)) {
         agg[1][k] = v;
       }
       agg[0][k] = v;
@@ -67,12 +67,10 @@ export const Variations = {
 };
 
 const Variaties = () =>
-  Object.keys(xThemes).map(k1 => {
-    const themeClassSuffix = xThemes[k1];
-
+  Object.entries(xThemes).map(([k1, themeClassSuffix]) => {
     return html`
       <dt>${k1}</dt>
-      ${Object.keys(filteredVariants).map(k2 => {
+      ${Object.keys(filteredVariants).map((k2: keyof typeof xVariants) => {
         const variantClassSuffix = xVariants[k2],
           variantClassName = variantClassSuffix
             ? ` ez-${variantClassSuffix}`

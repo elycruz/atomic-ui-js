@@ -15,13 +15,9 @@
     "strictNullChecks": true,
     "target": "ES2017",
     "declaration": true,
-    "emitDeclarationOnly": true,
     "declarationMap": true,
     "declarationDir": "./dist/typings",
     "outDir": "./dist/atomic-ui-js",
-    "types": [
-      "./types"
-    ],
     "allowJs": true,
     "checkJs": true,
     "skipLibCheck": true,

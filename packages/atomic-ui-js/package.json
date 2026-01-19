@@ -2,15 +2,15 @@
   "name": "atomic-ui-js",
   "version": "1.0.0",
   "description": "An atomic user interface toolkit, and library, for building html user interfaces.",
-  "module": "index.js",
+  "module": "./dist/index.js",
   "type": "module",
-  "typings": "dist/typings/index.d.ts",
+  "typings": "./dist/typings/index.d.ts",
   "engines": {
     "node": ">=v20"
   },
   "exports": {
-    ".": "./index.js",
-    "./*": "./*"
+    ".": "./dist/index.js",
+    "./*": "./dist/*"
   },
   "scripts": {
     "build": "pnpm build:css && pnpm typings",
