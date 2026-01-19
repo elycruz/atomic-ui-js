@@ -12,7 +12,7 @@ import { genGridCss } from './grid.mjs';
 import { genPositionCss } from './position.mjs';
 import { genSpacingCss } from './spacing.mjs';
 import { genMarginAndPaddingClasses } from './margin-and-padding.mjs';
-import { genGapCss } from './gap.js';
+import { genGapCss } from './gap.mjs';
 
 (async () =>
   Promise.all([
