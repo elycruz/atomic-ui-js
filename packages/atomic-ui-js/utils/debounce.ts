@@ -3,7 +3,7 @@ const _map = new Map<CallableFunction, number>();
 export const debounce = <Fn extends (...args: any) => unknown>(
   fn: Fn,
   timeout: number,
-  ...args: Parameters<Fn>
+  ...args: Partial<Parameters<Fn>>
 ) => {
   return (...args2: Parameters<Fn>) => {
     if (_map.has(fn)) {

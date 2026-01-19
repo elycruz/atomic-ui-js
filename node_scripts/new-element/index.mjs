@@ -1,4 +1,3 @@
-// eslint-env node
 /**
  * Generates new 'custom element' files for given element name.
  *

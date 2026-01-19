@@ -126,7 +126,6 @@ export class EzToggleOnScrollElement extends ReactiveElement {
   set rootSelector(str: string) {
     const prevValue = this.rootSelector;
 
-    // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
     this.#rootSelector = str ?? '';
 
     // Force scrollable parent re-fetch
@@ -162,7 +161,6 @@ export class EzToggleOnScrollElement extends ReactiveElement {
   set intersectingTargetSelector(str: string) {
     const prevValue = this.intersectingTargetSelector;
 
-    // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
     this.#intersectingTargetSelector = str ?? '';
     this.#intersectingTarget = null;
     this.requestUpdate(INTERSECTING_TARGET_SELECTOR_NAME, prevValue);
@@ -203,7 +201,6 @@ export class EzToggleOnScrollElement extends ReactiveElement {
   set classNameToToggle(str: string) {
     const prevValue = this.#classNameToToggle;
 
-    // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
     this.#classNameToToggle = str ?? '';
     this.#classNameToToggleTarget = null;
     this.requestUpdate(INTERSECTING_TARGET_NAME, prevValue);
@@ -246,7 +243,6 @@ export class EzToggleOnScrollElement extends ReactiveElement {
   set classNameToToggleTargetSelector(str: string) {
     const prevValue = this.classNameToToggleTargetSelector;
 
-    // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
     this.#classNameToToggleTargetSelector = str ?? '';
     this.requestUpdate(CLASSNAME_TO_TOGGLE_TARGET_SELECTOR_NAME, prevValue);
   }
@@ -389,7 +385,6 @@ export class EzToggleOnScrollElement extends ReactiveElement {
     if (
       this.#flags & CLASSNAME_SHOWING &&
       prevClassNameToToggle &&
-      // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
       (this.intersectingTarget as Element)?.classList // If is `Element`
     ) {
       // eslint-disable-next-line @typescript-eslint/no-unused-expressions

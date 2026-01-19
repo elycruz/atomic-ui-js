@@ -6,7 +6,8 @@ export const xRippleName = 'ez-ripple';
  * @module ripple
  *
  * Defines, and exports, ez-ripple element.
- */
+ * ================================================= */
+
 const _mouseOverEventName = 'mouseenter',
   _mouseDownEventName = 'pointerdown',
   _animationEndEventName = 'animationend',
@@ -17,15 +18,16 @@ const _mouseOverEventName = 'mouseenter',
    * @param {Event} e
    * @returns {EzRippleElement}
    */
-  _rippleCtxFromEvent = e =>
+  _rippleCtxFromEvent = (e: Event): EzRippleElement | null =>
     e.currentTarget instanceof EzRippleElement
       ? e.currentTarget
-      : e.currentTarget.querySelector(`:scope > ${xRippleName}`),
-  /**
-   * @param {AnimationEvent} e
-   */
-  _onRippleAnimationEnd = function (e) {
+      : (e.currentTarget as HTMLElement).querySelector(
+          `:scope > ${xRippleName}`
+        ),
+  _onRippleAnimationEnd = function (e: AnimationEvent) {
     const ctx = _rippleCtxFromEvent(e);
+
+    if (!ctx) return;
 
     ctx.pauseUpdates = true;
     if (ctx.rippleActive) ctx.rippleActive = false;
@@ -34,25 +36,23 @@ const _mouseOverEventName = 'mouseenter',
   /**
    * @param {MouseEvent} e
    */
-  _onRippleElementMouseDown = function (e) {
+  _onRippleElementMouseDown = function (e: Event) {
     const rippleCtx = _rippleCtxFromEvent(e);
 
+    if (!rippleCtx) return;
+
     if (e.type === _mouseOverEventName) {
-      _updateCssProps(rippleCtx, e);
+      _updateCssProps(rippleCtx, e as MouseEvent);
       return;
     }
 
     _rippleActive(rippleCtx, e);
   },
-  _calcRippleRadius = (containerW, containerH) => {
+  _calcRippleRadius = (containerW: number, containerH: number) => {
     return Math.sqrt(Math.pow(containerW, 2) + Math.pow(containerH, 2));
   },
-  /**
-   * @param {EzRippleElement} ctx
-   * @param {MouseEvent} [e]
-   */
-  _updateCssProps = (ctx, e) => {
-    let rippleRadius,
+  _updateCssProps = (ctx: EzRippleElement, e?: MouseEvent) => {
+    let rippleRadius: number,
       rippleOffsetX = e?.offsetX,
       rippleOffsetY = e?.offsetY;
 
@@ -70,7 +70,8 @@ const _mouseOverEventName = 'mouseenter',
     if (!e || ctx.childElementCount) {
       rippleOffsetX = ctx.offsetWidth / 2;
       rippleOffsetY = ctx.offsetHeight / 2;
-    } else if (rippleOffsetX === undefined) return;
+    } else if (rippleOffsetX === undefined || rippleOffsetY === undefined)
+      return;
 
     const rippleX = `${rippleOffsetX - rippleRadius}px`,
       rippleY = `${rippleOffsetY - rippleRadius}px`;
@@ -78,20 +79,23 @@ const _mouseOverEventName = 'mouseenter',
     ctx.style.setProperty(_rippleXCssPropName, rippleX);
     ctx.style.setProperty(_rippleYCssPropName, rippleY);
   },
-  _rippleActive = (ctx, e) => {
+  _rippleActive = (ctx: EzRippleElement, e: Event) => {
     ctx.pauseUpdates = true;
-    _updateCssProps(ctx, e);
+    _updateCssProps(ctx, e as MouseEvent);
 
     ctx.rippleActive = true;
     ctx.pauseUpdates = false;
   },
-  addRippleEffect = ctx => {
-    const eventTarget = !ctx.childElementCount ? ctx.parentElement : ctx;
+  addRippleEffect = (ctx: EzRippleElement) => {
+    const eventTarget = (
+      !ctx.childElementCount ? ctx.parentElement : ctx
+    ) as EzRippleElement;
 
     removeRippleEffect(eventTarget);
 
     // Ensure any applied side effects are removed
-    if (ctx.childElementCount) removeRippleEffect(ctx.parentElement);
+    if (ctx.childElementCount)
+      removeRippleEffect(ctx.parentElement as EzRippleElement);
 
     _updateCssProps(ctx);
     eventTarget.addEventListener(
@@ -107,7 +111,7 @@ const _mouseOverEventName = 'mouseenter',
 
     return ctx;
   },
-  removeRippleEffect = ctx => {
+  removeRippleEffect = (ctx: EzRippleElement) => {
     ctx.removeEventListener(_mouseOverEventName, _onRippleElementMouseDown);
     ctx.removeEventListener(_mouseDownEventName, _onRippleElementMouseDown);
     ctx.removeEventListener(_animationEndEventName, _onRippleAnimationEnd);
@@ -118,20 +122,20 @@ const _mouseOverEventName = 'mouseenter',
   RADIUS_MULTIPLIER_NAME = 'radiusmultiplier',
   observedAttributes = [RIPPLE_ACTIVE_NAME],
   _resizeObserver = new ResizeObserver(
-    debounce(records => {
+    debounce((records: ResizeObserverEntry[]) => {
       if (!records?.length) return;
 
-      let lastTarget;
+      let lastTarget: EzRippleElement;
 
       records.forEach(record => {
         const { target } = record;
 
         // Only allow update if target hasn't already been updated in parent iteration
         if (!lastTarget?.isSameNode(target)) {
-          lastTarget = target;
-          target.update();
+          lastTarget = target as EzRippleElement;
+          lastTarget.update();
         } else {
-          lastTarget = target;
+          lastTarget = target as EzRippleElement;
         }
       });
     }, 377)
@@ -139,19 +143,16 @@ const _mouseOverEventName = 'mouseenter',
   _mutObserver = new MutationObserver(records => {
     const recordsLen = records.length;
 
-    /**
-     * @type {EzRippleElement}
-     */
-    let target;
+    let target: EzRippleElement;
 
     for (let i = 0; i < recordsLen; i += 1) {
       const r = records[i];
 
       if (r.addedNodes.length || r.removedNodes.length) {
+        target = r.target as EzRippleElement;
         if (!target?.isSameNode(r.target)) {
-          r.target.update();
+          target.update();
         }
-        target = r.target;
       }
     }
   }),
@@ -193,7 +194,7 @@ export {
  * ```
  */
 export class EzRippleElement extends HTMLElement {
-  static localName = xRippleName;
+  static localName: string = xRippleName;
 
   static get observedAttributes() {
     return observedAttributes;
@@ -206,17 +207,17 @@ export class EzRippleElement extends HTMLElement {
 
   #initialized = false;
   #rippleActive = false;
-  #attrsChangedMap = {};
+  #attrsChangedMap: Record<string, any> = {};
 
   /**
    * @prop {boolean} rippleActive - Ripple active state.
    * @attr
    */
-  get rippleActive() {
+  get rippleActive(): boolean {
     return this.#rippleActive;
   }
 
-  set rippleActive(bln) {
+  set rippleActive(bln: any) {
     this.#rippleActive = Boolean(bln);
 
     if (!this.#attrsChangedMap[RIPPLE_ACTIVE_NAME]) {
@@ -224,13 +225,16 @@ export class EzRippleElement extends HTMLElement {
       if (this.#rippleActive) this.setAttribute(RIPPLE_ACTIVE_NAME, '');
       else this.removeAttribute(RIPPLE_ACTIVE_NAME);
     } else {
+      // eslint-disable-next-line @typescript-eslint/no-dynamic-delete
       delete this.#attrsChangedMap[RIPPLE_ACTIVE_NAME];
     }
     if (!this.pauseUpdates) this.update();
   }
 
   get localName() {
-    return this.constructor.localName;
+    return (
+      (this.constructor as unknown as EzRippleElement).localName ?? xRippleName
+    );
   }
 
   connectedCallback() {
@@ -257,7 +261,10 @@ export class EzRippleElement extends HTMLElement {
       case RIPPLE_ACTIVE_NAME:
         if (!this.#attrsChangedMap[RIPPLE_ACTIVE_NAME]) {
           this.rippleActive = newValue !== null;
-        } else delete this.#attrsChangedMap[RIPPLE_ACTIVE_NAME];
+        } else {
+          // eslint-disable-next-line @typescript-eslint/no-dynamic-delete
+          delete this.#attrsChangedMap[RIPPLE_ACTIVE_NAME];
+        }
         break;
       default:
         break;
@@ -266,7 +273,6 @@ export class EzRippleElement extends HTMLElement {
 
   /**
    * Updates ripple CSS properties (css vars on element).
-   * @return {void}
    */
   update() {
     _updateCssProps(this);
