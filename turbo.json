@@ -27,6 +27,8 @@
     },
     "eslint": {
     },
+    "eslintfix": {
+    },
     "lint": {
       "dependsOn": [
         "eslint",
@@ -40,6 +42,8 @@
       ]
     },
     "stylelint": {
+    },
+    "stylelintfix": {
     },
     "test": {
       "persistent": true

@@ -36,11 +36,11 @@ const digitRegex = /\d/,
     }
   ) => {
     let {
-      flags = FractionsAllowed,
+      flags,
       // eslint-disable-next-line prefer-const
-      lastIndex = 0,
-      prevChar = '',
-      out = '',
+      lastIndex,
+      prevChar,
+      out,
     } = options;
 
     if (!inValue) return { flags, lastIndex, prevChar, out };

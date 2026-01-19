@@ -127,7 +127,7 @@ const _mouseOverEventName = 'mouseenter',
         const { target } = record;
 
         // Only allow update if target hasn't already been updated in parent iteration
-        if (!lastTarget || !lastTarget.isSameNode(target)) {
+        if (!lastTarget?.isSameNode(target)) {
           lastTarget = target;
           target.update();
         } else {
@@ -148,7 +148,7 @@ const _mouseOverEventName = 'mouseenter',
       const r = records[i];
 
       if (r.addedNodes.length || r.removedNodes.length) {
-        if (!target || !target.isSameNode(r.target)) {
+        if (!target?.isSameNode(r.target)) {
           r.target.update();
         }
         target = r.target;

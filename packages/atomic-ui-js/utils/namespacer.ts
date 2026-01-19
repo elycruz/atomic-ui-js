@@ -5,7 +5,7 @@
  * @param [valueToSet=undefined] {*} - Value to set.  Optional.  Default `undefined`.
  * @returns {*} - Object that was passed in.
  */
-export const namespacer = (nsString, obj, valueToSet = undefined) => {
+export const namespacer = (nsString, obj, valueToSet) => {
   if (!nsString || !obj) {
     return obj;
   }
