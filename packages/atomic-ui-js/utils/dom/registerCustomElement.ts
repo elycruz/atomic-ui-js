@@ -1,9 +1,9 @@
 export const registerCustomElement = (
-  elementName,
-  elementConstructor,
+  elementName: string,
+  elementConstructor: CustomElementConstructor,
   registry = customElements
 ) => {
-  if (typeof registry !== 'undefined' && !registry?.get(elementName)) {
+  if (typeof registry !== 'undefined' && !registry.get?.(elementName)) {
     registry.define(elementName, elementConstructor);
   }
 };
