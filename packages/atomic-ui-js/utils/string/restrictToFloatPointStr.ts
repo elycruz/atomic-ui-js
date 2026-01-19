@@ -1,3 +1,12 @@
+interface RestrictToFloatCharsOptions {
+  flags: number;
+  out?: string;
+
+  // Internal:
+  lastIndex?: number;
+  prevChar?: string;
+}
+
 const digitRegex = /\d/,
   minusSign = '-',
   plusSign = '+',
@@ -27,8 +36,8 @@ const digitRegex = /\d/,
    * @private
    */
   restrictToFloatPointStr = (
-    inValue,
-    options = {
+    inValue?: string | number,
+    options: RestrictToFloatCharsOptions = {
       prevChar: '',
       flags: FractionsAllowed,
       lastIndex: 0,
@@ -39,8 +48,8 @@ const digitRegex = /\d/,
       flags,
       // eslint-disable-next-line prefer-const
       lastIndex,
-      prevChar,
-      out,
+      prevChar = '',
+      out = '',
     } = options;
 
     if (!inValue) return { flags, lastIndex, prevChar, out };
@@ -84,7 +93,7 @@ const digitRegex = /\d/,
         const {
           out: _out,
           flags: _flags,
-          lastIndex,
+          lastIndex = 0,
           prevChar: _prevChar,
         } = restrictToFloatPointStr(_inValue.slice(i + 1), {
           flags,
