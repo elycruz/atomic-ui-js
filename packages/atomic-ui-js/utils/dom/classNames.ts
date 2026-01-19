@@ -1,9 +1,9 @@
-export const classNames = (...args) => {
+export const classNames = (...args: any[]): string => {
   if (!args.length) {
     return '';
   }
-  return args
-    .reduce((agg, x) => {
+  return (
+    args.reduce((agg, x) => {
       if (!x) {
         return agg;
       }
@@ -17,10 +17,10 @@ export const classNames = (...args) => {
           return `${agg} ${x}`;
         case 'object':
         default:
-          return `${agg} ${Object.keys(x)
-            .filter(x1 => Boolean(x[x1]))
+          return `${agg} ${Object.keys(x as object)
+            .filter(x1 => Boolean((x as object)[x1]))
             .join(' ')}`;
       }
-    }, '')
-    .trim();
+    }, '') as string
+  ).trim();
 };

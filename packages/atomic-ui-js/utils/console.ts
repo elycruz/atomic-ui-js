@@ -1,2 +1,5 @@
 export const { error, log, warn } = console,
-  peek = (...args) => (log(...args), args.pop());
+  peek = (...args: any[]) => {
+    log.apply(args);
+    return args.pop();
+  };

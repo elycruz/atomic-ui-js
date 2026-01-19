@@ -14,7 +14,7 @@ const _Number = Number.name,
  */
 export const isset = (x: any) => x !== null && x !== undefined;
 
-export const isNullable = (x: any) => x === null || x === undefined;
+export const isNullable = (x: any): boolean => x === null || x === undefined;
 
 /**
  * Returns the constructor/class/type name of a value.

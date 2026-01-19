@@ -1,4 +1,4 @@
-import { ReactiveElement } from 'lit';
+import { PropertyValues, ReactiveElement } from 'lit';
 
 import {
   CLASSNAME_TO_TOGGLE_NAME,
@@ -12,11 +12,11 @@ import {
   ROOT_SELECTOR_NAME,
   THRESHOLD_NAME,
   isUsableNumber,
-  isset,
   replaceClass,
   toggleClass,
   typeOf,
   OBSERVER_CALLBACK,
+  isNullable,
 } from '../utils/index.js';
 
 export const xToggleOnScrollName = 'ez-toggleonscroll',
@@ -53,8 +53,6 @@ const // Flags
 export class EzToggleOnScrollElement extends ReactiveElement {
   /**
    * Element name.
-   *
-   * @type {string}
    */
   static localName = xToggleOnScrollName;
 
@@ -76,12 +74,8 @@ export class EzToggleOnScrollElement extends ReactiveElement {
     [REVERSE_NAME]: { type: Boolean },
     [THRESHOLD_NAME]: {
       converter: {
-        /**
-         * @param {string} value
-         * @return {number|number[]}
-         */
-        fromAttribute: value => {
-          if (!isset(value)) return 1;
+        fromAttribute: (value: string): number | number[] => {
+          if (value) return 1;
 
           let newValue = value.trim();
 
@@ -91,17 +85,14 @@ export class EzToggleOnScrollElement extends ReactiveElement {
             return 1;
           }
 
-          return isUsableNumber(newValue) || isArray(newValue) ? newValue : 1;
+          return isUsableNumber(newValue) || isArray(newValue)
+            ? (newValue as unknown as number[])
+            : 1;
         },
       },
 
-      /**
-       * @param {*} newValue
-       * @param {*} prevValue
-       * @return {boolean}
-       */
-      hasChanged(newValue, prevValue) {
-        if (!isset(newValue) || !isset(prevValue)) {
+      hasChanged(newValue: number | number[], prevValue: number | number[]) {
+        if (isNullable(newValue) || isNullable(prevValue)) {
           return newValue !== prevValue;
         }
 
@@ -115,95 +106,77 @@ export class EzToggleOnScrollElement extends ReactiveElement {
     [OBSERVER_CALLBACK]: { state: true },
   };
 
+  reverse?: boolean;
+  rootMargin?: string;
+
   /**
    * @property {boolean} reverse - Causes intersection action to be triggered on the lack of intersection.
    * @property {string} classNameToToggleTargetSelector - Element selector where `classNameToToggle` should be toggled on.
    */
 
-  /**
-   * @type {string}
-   */
-  #rootSelector;
+  #rootSelector?: string;
 
   /**
    * Scrollable parent selector used by intersection observer.
-   *
-   * @return {string}
    */
-  get rootSelector() {
+  get rootSelector(): string {
     return this.#rootSelector ?? '';
   }
 
-  /**
-   * @param {string} str
-   */
-  set rootSelector(str) {
+  set rootSelector(str: string) {
     const prevValue = this.rootSelector;
 
-    this.#rootSelector = (str ?? '') + '';
+    // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
+    this.#rootSelector = str ?? '';
 
     // Force scrollable parent re-fetch
     this.#root = null;
     this.requestUpdate(ROOT_SELECTOR_NAME, prevValue);
   }
 
-  /**
-   * @type {Element | Document}
-   */
-  #root;
+  #root?: Element | Document | null;
 
   /**
    * Root element used by the contained intersection observer;  (Internally) defaults to the top-level document's
    * viewport;  Default `null`.
-   *
-   * @type {Element | Document | null}
    */
   get root() {
     if (!this.#root) {
       this.#root = this.rootSelector
-        ? this.ownerDocument?.querySelector(this.rootSelector)
+        ? this.ownerDocument.querySelector(this.rootSelector)
         : null;
     }
 
     return this.#root;
   }
 
-  /**
-   * @type {string}
-   */
-  #intersectingTargetSelector;
+  #intersectingTargetSelector?: string;
 
   /**
    * Intersecting element selector used to fetch the intersecting element to observe.
-   *
-   * @return {string}
    */
-  get intersectingTargetSelector() {
+  get intersectingTargetSelector(): string {
     return this.#intersectingTargetSelector ?? '';
   }
 
-  /**
-   * @param {string} str
-   */
-  set intersectingTargetSelector(str) {
+  set intersectingTargetSelector(str: string) {
     const prevValue = this.intersectingTargetSelector;
 
-    this.#intersectingTargetSelector = (str ?? '') + '';
+    // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
+    this.#intersectingTargetSelector = str ?? '';
     this.#intersectingTarget = null;
     this.requestUpdate(INTERSECTING_TARGET_SELECTOR_NAME, prevValue);
   }
 
   /**
-   * @type {Element | Document}
+   * @type {Element}
    */
-  #intersectingTarget;
+  #intersectingTarget?: Element | Document | null;
 
   /**
    * Intersecting element to observe for intersections with `root` target.
-   *
-   * @type {Element | Document}
    */
-  get intersectingTarget() {
+  get intersectingTarget(): Element | Document | null {
     if (!this.#intersectingTarget) {
       this.#intersectingTarget = this.#intersectingTargetSelector
         ? (this.root ?? this.ownerDocument).querySelector(
@@ -212,71 +185,55 @@ export class EzToggleOnScrollElement extends ReactiveElement {
         : this;
     }
 
-    return this.#intersectingTarget;
+    return this.#intersectingTarget ?? null;
   }
 
-  /**
-   * @type {string}
-   */
-  #classNameToToggle;
+  #classNameToToggle?: string;
 
   /**
    * Classname to toggle on the 'classname to toggle' target element.
-   *
-   * @return {string}
    */
-  get classNameToToggle() {
+  get classNameToToggle(): string {
     return this.#classNameToToggle ?? '';
   }
 
   /**
    * @param {string} str
    */
-  set classNameToToggle(str) {
+  set classNameToToggle(str: string) {
     const prevValue = this.#classNameToToggle;
 
-    this.#classNameToToggle = (str ?? '') + '';
+    // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
+    this.#classNameToToggle = str ?? '';
     this.#classNameToToggleTarget = null;
     this.requestUpdate(INTERSECTING_TARGET_NAME, prevValue);
   }
 
-  /**
-   * @type {Element | Document}
-   */
-  #classNameToToggleTarget;
+  #classNameToToggleTarget?: Element | Document | null;
 
   /**
    * Target element to toggle `classNameToToggle` classname on.
-   *
-   * @return {Element|Document}
    */
-  get classNameToToggleTarget() {
+  get classNameToToggleTarget(): Element | Document | null {
     if (
       !this.#classNameToToggleTarget &&
       this.classNameToToggleTargetSelector
     ) {
       this.#classNameToToggleTarget = this.classNameToToggle
-        ? this.ownerDocument?.querySelector(
-            this.classNameToToggleTargetSelector
-          )
+        ? this.ownerDocument.querySelector(this.classNameToToggleTargetSelector)
         : null;
     }
 
-    return this.#classNameToToggleTarget;
+    return this.#classNameToToggleTarget ?? null;
   }
 
-  /**
-   * @type {string}
-   */
-  #classNameToToggleTargetSelector;
+  #classNameToToggleTargetSelector?: string;
 
   /**
    * Gets the target selector used for fetching the element to toggle the
    *  `classNameToToggle` classname on.
-   *
-   * @returns {string}
    */
-  get classNameToToggleTargetSelector() {
+  get classNameToToggleTargetSelector(): string {
     return this.#classNameToToggleTargetSelector ?? '';
   }
 
@@ -286,34 +243,27 @@ export class EzToggleOnScrollElement extends ReactiveElement {
    *
    * @param {string} str
    */
-  set classNameToToggleTargetSelector(str) {
+  set classNameToToggleTargetSelector(str: string) {
     const prevValue = this.classNameToToggleTargetSelector;
 
-    this.#classNameToToggleTargetSelector = (str ?? '') + '';
+    // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
+    this.#classNameToToggleTargetSelector = str ?? '';
     this.requestUpdate(CLASSNAME_TO_TOGGLE_TARGET_SELECTOR_NAME, prevValue);
   }
 
-  /**
-   * @type {number | Array<number>}
-   */
-  #threshold;
+  #threshold?: number | number[];
 
   /**
    * Threshold passed to intersection observer constructor.
-   *
-   * @type {number|Array<number>}
    */
-  get threshold() {
+  get threshold(): number | number[] {
     return this.#threshold ?? 1;
   }
 
-  /**
-   * @param {string|number|number[]} x
-   */
-  set threshold(x) {
+  set threshold(x: number | number[] | string) {
     const prevValue = this.threshold;
 
-    let newValue = !isset(x) ? 1 : x;
+    let newValue = isNullable(x) ? 1 : x;
 
     switch (typeOf(newValue)) {
       case Number.name:
@@ -322,7 +272,7 @@ export class EzToggleOnScrollElement extends ReactiveElement {
       case String.name:
       default:
         try {
-          newValue = JSON.parse(newValue + '');
+          newValue = JSON.parse(newValue as string);
         } catch {
           newValue = 1;
         }
@@ -330,29 +280,23 @@ export class EzToggleOnScrollElement extends ReactiveElement {
     }
 
     this.#threshold =
-      isUsableNumber(newValue) || isArray(newValue) ? newValue : 1;
+      isUsableNumber(newValue) || isArray(newValue)
+        ? (newValue as number | number[])
+        : 1;
 
     this.requestUpdate(THRESHOLD_NAME, prevValue);
   }
 
-  /**
-   * @type {IntersectionObserverCallback}
-   */
-  #observerCallback;
+  #observerCallback?: IntersectionObserverCallback | null;
 
   /**
    * Gets called from internal intersection observer callback, when an intersection occurs.
-   *
-   * @return {IntersectionObserverCallback}
    */
-  get observerCallback() {
-    return this.#observerCallback ? this.#observerCallback : null;
+  get observerCallback(): IntersectionObserverCallback | null {
+    return this.#observerCallback ?? null;
   }
 
-  /**
-   * @param {IntersectionObserverCallback} fn
-   */
-  set observerCallback(fn) {
+  set observerCallback(fn: IntersectionObserverCallback | null) {
     const prevValue = this.#observerCallback;
 
     if (fn && fn instanceof Function) {
@@ -366,15 +310,10 @@ export class EzToggleOnScrollElement extends ReactiveElement {
 
   /**
    * Holds internal boolean flags.
-   *
-   * @type {number}
    */
   #flags = 0x00;
 
-  /**
-   * @type {IntersectionObserver}
-   */
-  #intersectionObserver;
+  #intersectionObserver?: IntersectionObserver;
 
   constructor() {
     super();
@@ -385,7 +324,6 @@ export class EzToggleOnScrollElement extends ReactiveElement {
 
   /**
    * Used by `lit` library to resolve whether to attach a shadowdom, or not, for the current element instance.
-   * @return {EzToggleOnScrollElement}
    */
   createRenderRoot() {
     return this;
@@ -393,7 +331,6 @@ export class EzToggleOnScrollElement extends ReactiveElement {
 
   /**
    * @native-web-component-lifecycle-callback
-   * @return {void}
    */
   connectedCallback() {
     super.connectedCallback();
@@ -413,7 +350,6 @@ export class EzToggleOnScrollElement extends ReactiveElement {
 
   /**
    * @native-web-component-lifecycle-callback
-   * @return {void}
    */
   disconnectedCallback() {
     super.disconnectedCallback();
@@ -429,9 +365,10 @@ export class EzToggleOnScrollElement extends ReactiveElement {
 
   /**
    * @native-web-component-lifecycle-callback
-   * @return {void}
    */
   adoptedCallback() {
+    // @ts-expect-error - Known type.
+    // eslint-disable-next-line @typescript-eslint/no-unsafe-call
     super.adoptedCallback();
 
     this.connectedCallback();
@@ -440,56 +377,69 @@ export class EzToggleOnScrollElement extends ReactiveElement {
   /**
    * Ensures classname toggling is in the expected state, after reactive prop. changes;  Triggered when
    *  reactive properties are changed.
-   *
-   * @param {Map<string | number | symbol, any>} _changedProps
    */
-  update(_changedProps) {
+  update(_changedProps: PropertyValues) {
     super.update(_changedProps);
 
     const { classNameToToggle } = this,
-      prevClassNameToToggle = _changedProps.get(CLASSNAME_TO_TOGGLE_NAME);
+      prevClassNameToToggle = _changedProps.get(
+        CLASSNAME_TO_TOGGLE_NAME
+      ) as string;
 
-    if (this.#flags & CLASSNAME_SHOWING && prevClassNameToToggle) {
+    if (
+      this.#flags & CLASSNAME_SHOWING &&
+      prevClassNameToToggle &&
+      // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
+      (this.intersectingTarget as Element)?.classList // If is `Element`
+    ) {
+      // eslint-disable-next-line @typescript-eslint/no-unused-expressions
       replaceClass(
         prevClassNameToToggle,
         classNameToToggle,
-        this.intersectingTarget
-      ) || toggleClass(classNameToToggle, this.intersectingTarget, true);
+        this.intersectingTarget as Element
+      ) ||
+        toggleClass(
+          classNameToToggle,
+          this.intersectingTarget as Element,
+          true
+        );
     }
   }
 
   /**
    * Ensures we refresh our intersection observer after reactive properties have changed.
-   *
-   * @param {Map<string | number | symbol, any>} _changedProps
    */
-  updated(_changedProps) {
-    this.updateComplete.then(() => {
-      const intersectingTargetSelectorChanged = _changedProps.has(
-          INTERSECTING_TARGET_NAME
-        ),
-        rootSelectorChanged = _changedProps.has(ROOT_SELECTOR_NAME),
-        rootMarginChanged = _changedProps.has(ROOT_MARGIN_NAME),
-        classNameToToggleChanged = _changedProps.has(CLASSNAME_TO_TOGGLE_NAME),
-        classNameToToggleTargetSelectorChanged = _changedProps.has(
-          CLASSNAME_TO_TOGGLE_TARGET_SELECTOR_NAME
-        ),
-        thresholdChanged = _changedProps.has(THRESHOLD_NAME),
-        observerCallbackChanged = _changedProps.has(OBSERVER_CALLBACK);
+  updated(_changedProps: PropertyValues) {
+    this.updateComplete
+      .then(() => {
+        const intersectingTargetSelectorChanged = _changedProps.has(
+            INTERSECTING_TARGET_NAME
+          ),
+          rootSelectorChanged = _changedProps.has(ROOT_SELECTOR_NAME),
+          rootMarginChanged = _changedProps.has(ROOT_MARGIN_NAME),
+          classNameToToggleChanged = _changedProps.has(
+            CLASSNAME_TO_TOGGLE_NAME
+          ),
+          classNameToToggleTargetSelectorChanged = _changedProps.has(
+            CLASSNAME_TO_TOGGLE_TARGET_SELECTOR_NAME
+          ),
+          thresholdChanged = _changedProps.has(THRESHOLD_NAME),
+          observerCallbackChanged = _changedProps.has(OBSERVER_CALLBACK);
 
-      // Refresh intersection observer if any of it's related properties changed.
-      if (
-        rootSelectorChanged ||
-        intersectingTargetSelectorChanged ||
-        rootMarginChanged ||
-        thresholdChanged ||
-        observerCallbackChanged ||
-        classNameToToggleChanged ||
-        classNameToToggleTargetSelectorChanged
-      ) {
-        this.#refreshObservers();
-      }
-    });
+        // Refresh intersection observer if any of it's related properties changed.
+        if (
+          rootSelectorChanged ||
+          intersectingTargetSelectorChanged ||
+          rootMarginChanged ||
+          thresholdChanged ||
+          observerCallbackChanged ||
+          classNameToToggleChanged ||
+          classNameToToggleTargetSelectorChanged
+        ) {
+          this.#refreshObservers();
+        }
+      })
+      .catch(console.error);
   }
 
   /**
@@ -498,7 +448,7 @@ export class EzToggleOnScrollElement extends ReactiveElement {
    * @param {boolean} shouldToggleOn - Whether to add, or remove, the toggle classname.
    * @return {boolean} - Whether classname was toggled on, or off.
    */
-  performClassNameToggle = shouldToggleOn => {
+  performClassNameToggle = (shouldToggleOn: boolean): boolean => {
     const { classNameToToggle, classNameToToggleTarget } = this;
 
     if (shouldToggleOn && !(this.#flags & CLASSNAME_SHOWING))
@@ -507,7 +457,7 @@ export class EzToggleOnScrollElement extends ReactiveElement {
 
     return !classNameToToggle || !classNameToToggleTarget
       ? false
-      : classNameToToggleTarget.classList.toggle(
+      : (classNameToToggleTarget as HTMLElement).classList.toggle(
           classNameToToggle,
           shouldToggleOn
         );
@@ -517,8 +467,11 @@ export class EzToggleOnScrollElement extends ReactiveElement {
    * @private
    */
   #clearObservers() {
+    const intersectingTarget = this.intersectingTarget;
+
     if (this.#intersectionObserver) {
-      this.#intersectionObserver.unobserve(this.intersectingTarget);
+      if (intersectingTarget)
+        this.#intersectionObserver.unobserve(intersectingTarget as Element);
       this.#intersectionObserver.disconnect();
     }
   }
@@ -531,7 +484,7 @@ export class EzToggleOnScrollElement extends ReactiveElement {
   #refreshObservers() {
     this.#clearObservers();
 
-    const observerOptions = {},
+    const observerOptions = {} as IntersectionObserverInit,
       { root, rootMargin, threshold, intersectingTarget } = this;
 
     if (!intersectingTarget) return;
@@ -561,11 +514,16 @@ export class EzToggleOnScrollElement extends ReactiveElement {
           );
         }
 
-        this.observerCallback?.bind(this)(records, observer);
+        (this.observerCallback?.bind(this) as IntersectionObserverCallback)(
+          records,
+          observer
+        );
       },
       observerOptions
     );
 
-    this.#intersectionObserver.observe(this.intersectingTarget);
+    if (this.intersectingTarget)
+      // @todo Ensure component can work with `Document` targets
+      this.#intersectionObserver.observe(this.intersectingTarget as Element);
   }
 }
