@@ -1,7 +1,7 @@
-import { buildCss } from './build-css.mjs';
+import { buildCss, copyCssToDist } from './build-css.mjs';
 
 export const build = async () =>
-  Promise.all([buildCss()])
+  Promise.all([buildCss().then(copyCssToDist)])
     .then(() =>
       // eslint-disable-next-line no-console
       console.log('build completed successfully\n')

@@ -13,6 +13,7 @@ const __dirname = url.fileURLToPath(new URL('.', import.meta.url)),
     fs
       .readFile(inFilePath)
       .then(css =>
+        // @ts-expect-error - Known call type.
         postcss([postcssImport, cssnano])
           .process(css, { from: inFilePath, to: outFilePath })
           .then(result =>
@@ -28,6 +29,20 @@ const __dirname = url.fileURLToPath(new URL('.', import.meta.url)),
         // eslint-disable-next-line no-console
         console.log("'build-css' finished successfully.")
       ),
-  buildCss = async () => fs.mkdir(distPath).then(compileCss, compileCss);
+  buildCss = async () => fs.mkdir(distPath).then(compileCss, compileCss),
+  copyCssToDist = async () => {
+    return fs
+      .cp(path.join(__dirname, '../../css'), path.join(distPath, 'css'), {
+        recursive: true,
+      })
+      .then(() =>
+        // eslint-disable-next-line no-console
+        console.log("'copy-css-to-dist' finished successfully.")
+      )
+      .catch(error => {
+        console.error("'copy-css-to-dist' failed:", error);
+        throw error;
+      });
+  };
 
-export { buildCss };
+export { buildCss, copyCssToDist };
