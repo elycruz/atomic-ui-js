@@ -5,13 +5,17 @@
  * @param [valueToSet=undefined] {*} - Value to set.  Optional.  Default `undefined`.
  * @returns {*} - Object that was passed in.
  */
-export const namespacer = (nsString, obj, valueToSet) => {
+export const namespacer = (
+  nsString?: string,
+  obj?: object,
+  valueToSet?: any
+): object | undefined => {
   if (!nsString || !obj) {
     return obj;
   }
 
   const shouldSetValue = valueToSet !== undefined,
-    nss = nsString[0] === '.' ? nsString.slice(1) : nsString;
+    nss = nsString.startsWith('.') ? nsString.slice(1) : nsString;
 
   // Reduce original object to itself with requested modifications
   return nss.split('.').reduce((agg, key, ind, parts) => {

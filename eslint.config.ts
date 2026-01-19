@@ -117,6 +117,8 @@ export default defineConfig([
       // Front-end best practices
       // '@typescript-eslint/no-explicit-any': 'error',
       '@typescript-eslint/no-unnecessary-condition': 'warn',
+      '@typescript-eslint/no-unsafe-assignment': 'off',
+      '@typescript-eslint/no-unsafe-return': 'off',
     },
   },
   // Tests (Jest/Vitest) override

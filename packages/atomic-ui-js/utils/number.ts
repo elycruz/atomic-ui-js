@@ -1,18 +1,12 @@
 /**
  * Constrains a number to be within a specified range.
  *
- * @param {number} [min=0] - The minimum value of the range.
- * @param {number} [max=0] - The maximum value of the range.
- * @param {number} [num=0] - The number to constrain.
- *
- * @returns {number} The constrained number within the min-max range.
- *
  * @example
  * constrainNumber(0, 10, 15); // returns 10
  * constrainNumber(0, 10, -5); // returns 0
  * constrainNumber(0, 10, 5);  // returns 5
  */
-export const constrainNumber = (min = 0, max = 0, num = 0) => {
+export const constrainNumber = (min = 0, max = 0, num = 0): number => {
     if (num < min) return min;
     else if (num > max) return max;
     else return num;
@@ -21,18 +15,12 @@ export const constrainNumber = (min = 0, max = 0, num = 0) => {
    * Wraps a number around the specified range boundaries.
    * If the number exceeds max, it wraps to min. If it's below min, it wraps to max.
    *
-   * @param {number} [min=0] - The minimum value of the range.
-   * @param {number} [max=0] - The maximum value of the range.
-   * @param {number} [num=0] - The number to wrap.
-   *
-   * @returns {number} The wrapped number, or the original if within range.
-   *
    * @example
    * autoWrapNumber(0, 10, 15); // returns 0
    * autoWrapNumber(0, 10, -5); // returns 10
    * autoWrapNumber(0, 10, 5);  // returns 5
    */
-  autoWrapNumber = (min = 0, max = 0, num = 0) => {
+  autoWrapNumber = (min = 0, max = 0, num = 0): number => {
     if (num < min) return max;
     else if (num > max) return min;
     else return num;
@@ -46,7 +34,8 @@ export const constrainNumber = (min = 0, max = 0, num = 0) => {
    * isUsableNumber(NaN);    // returns false
    * isUsableNumber('5');    // returns false
    */
-  isUsableNumber = (num = 0) => typeof num === 'number' && !Number.isNaN(num),
+  isUsableNumber = (num: any = 0): boolean =>
+    typeof num === 'number' && !Number.isNaN(num),
   /**
    * Checks if a value is a positive number (including zero).
    * @param {*} [num=0] - The value to check.
@@ -59,12 +48,10 @@ export const constrainNumber = (min = 0, max = 0, num = 0) => {
   isPositiveNumber = (num = 0) => isUsableNumber(num) && num > -1,
   /**
    * Alias for constrainNumber. Constrains a pointer/index to be within a specified range.
-   * @type {typeof constrainNumber}
    */
   constrainPointer = constrainNumber,
   /**
    * Alias for autoWrapNumber. Wraps a pointer/index around the specified range boundaries.
-   * @type {typeof autoWrapNumber}
    */
   wrapPointer = autoWrapNumber,
   /**
@@ -78,8 +65,12 @@ export const constrainNumber = (min = 0, max = 0, num = 0) => {
    * resolvePointer(true, 0, 10, 15);  // returns 0 (wraps)
    * resolvePointer(false, 0, 10, 15); // returns 10 (constrains)
    */
-  resolvePointer = (autoWrap, min, max, pointer) =>
-    (autoWrap ? wrapPointer : constrainPointer)(min, max, pointer),
+  resolvePointer = (
+    autoWrap: boolean,
+    min: number,
+    max: number,
+    pointer: number
+  ): number => (autoWrap ? wrapPointer : constrainPointer)(min, max, pointer),
   /**
    * Generates an array of multiples of a given number.
    * @param {number} multiplicand - The base number to multiply.
@@ -89,8 +80,8 @@ export const constrainNumber = (min = 0, max = 0, num = 0) => {
    * multiplesOf(3, 5); // returns [3, 6, 9, 12, 15]
    * multiplesOf(7, 3); // returns [7, 14, 21]
    */
-  multiplesOf = (multiplicand, numMultiples) => {
-    const out = [];
+  multiplesOf = (multiplicand: number, numMultiples: number): number[] => {
+    const out = [] as number[];
 
     for (let i = 1; i <= numMultiples; i += 1) {
       out.push(i * multiplicand);
@@ -108,10 +99,10 @@ export const constrainNumber = (min = 0, max = 0, num = 0) => {
    * factorsOf(12); // returns [1, 2, 3, 4, 6, 12]
    * factorsOf(7);  // returns [1, 7]
    */
-  factorsOf = x => {
+  factorsOf = (x: number): number[] => {
     if (!x) throw new Error('`x` must not be equal to `0` or be falsy');
 
-    const out = [];
+    const out = [] as number[];
 
     for (let i = 1; i <= x; i += 1) {
       const rslt = x % i;
@@ -121,16 +112,15 @@ export const constrainNumber = (min = 0, max = 0, num = 0) => {
     return out;
   },
   /**
-   * Finds common factors shared by all provided numbers.
-   * @param {...number} args - Two or more numbers to find common factors of.
-   * @returns {number[]} An array of common factors. Returns the first argument if less than 2 numbers provided.
+   * Finds common factors shared by all provided numbers and returns them in an array.
+   * Returns `[1]` if array length is less than 2.
    * @example
    * commonFactorsOf(12, 18);     // returns [1, 2, 3, 6]
    * commonFactorsOf(12, 18, 24); // returns [1, 2, 3, 6]
    * commonFactorsOf(7, 13);      // returns [1]
    */
-  commonFactorsOf = (...args) => {
-    if (args.length < 2) return args[0];
+  commonFactorsOf = (...args: number[]): number[] => {
+    if (args.length < 2) return [1];
 
     const out = [1],
       factorSets = args.map(factorsOf),
@@ -160,8 +150,8 @@ export const constrainNumber = (min = 0, max = 0, num = 0) => {
    * fib(10);  // returns [1, 2, 3, 5, 8]
    * fib(50);  // returns [1, 2, 3, 5, 8, 13, 21, 34]
    */
-  fib = end => {
-    const out = [];
+  fib = (end: number): number[] => {
+    const out = [] as number[];
 
     let a = 0,
       b = 1;
@@ -184,7 +174,7 @@ export const constrainNumber = (min = 0, max = 0, num = 0) => {
    * toNumberOr('abc', 10);   // returns 10
    * toNumberOr(null, -1);    // returns -1
    */
-  toNumberOr = (n, orValue = 0) => {
+  toNumberOr = (n: any, orValue = 0): number => {
     const cast = Number(n);
 
     return isUsableNumber(cast) ? cast : orValue;
