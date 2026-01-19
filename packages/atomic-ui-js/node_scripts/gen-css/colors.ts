@@ -6,7 +6,6 @@
 import fs from 'fs';
 import * as path from 'path';
 import url from 'url';
-import { xThemes } from '../../utils/constants.js';
 
 const __dirname = url.fileURLToPath(new URL('.', import.meta.url)),
   { log, error } = console,
@@ -18,7 +17,15 @@ const __dirname = url.fileURLToPath(new URL('.', import.meta.url)),
   danger = ['danger', 30, 21],
   neutral = ['neutral', 0, 0],
   fileName = 'index.css',
-  xThemeKeys = Object.keys(xThemes),
+  xThemeKeys = [
+    primary,
+    secondary,
+    success,
+    info,
+    warning,
+    danger,
+    neutral,
+  ].map(([key]) => key),
   genColorsCss = (
     outputFilePath = path.join(__dirname, '../../css/modules/colors/', fileName)
   ) => {
@@ -26,15 +33,13 @@ const __dirname = url.fileURLToPath(new URL('.', import.meta.url)),
         .fill(null, 0, 10)
         .map((_, i) => i * 10)
         .concat([95, 99, 100]),
-      themeColors = [
-        primary,
-        secondary,
-        success,
-        info,
-        warning,
-        danger,
-        neutral,
-      ]
+      themeColors = (
+        [primary, secondary, success, info, warning, danger, neutral] as [
+          string,
+          number,
+          number,
+        ][]
+      )
         .flatMap(([name, hue, saturation]) =>
           lightnessNums.flatMap((lightness, i) => {
             const alpha = 100 - lightness;
@@ -47,7 +52,7 @@ const __dirname = url.fileURLToPath(new URL('.', import.meta.url)),
             ).toFixed(5);
 
             // If 'neutral' color set chroma to the lowest value
-            if (!saturation) chroma = 0;
+            if (!saturation) chroma = '0';
 
             return [
               `  --ez-${name}-color-${i}: ` +
@@ -58,9 +63,7 @@ const __dirname = url.fileURLToPath(new URL('.', import.meta.url)),
           })
         )
         .join('\n'),
-      themeVars = xThemeKeys.reduce((agg, k) => {
-        const themeName = xThemes[k];
-
+      themeVars = xThemeKeys.reduce<string>((agg: string, themeName) => {
         return (
           agg +
           `
@@ -100,7 +103,9 @@ ${themeColors}
 ${themeVars.trim()}
 `
       )
-      .then(() => log(`file ${fileName} written successfully`), error);
+      .then(() => {
+        log(`file ${fileName} written successfully`);
+      }, error);
   };
 
 export { genColorsCss };

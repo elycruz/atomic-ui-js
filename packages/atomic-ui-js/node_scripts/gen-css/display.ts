@@ -1,5 +1,5 @@
 /**
- * display.js
+ * display.ts
  *
  * Generates `display` property classes (`.ez-display-block, .ez-d-block` etc.).
  */
@@ -44,9 +44,9 @@ const __dirname = url.fileURLToPath(new URL('.', import.meta.url)),
  */
 ${out.join('\n')}\n`;
 
-    return fs.promises
-      .writeFile(outputFilePath, content)
-      .then(() => log(`file ${fileName} written successfully`), error);
+    return fs.promises.writeFile(outputFilePath, content).then(() => {
+      log(`file ${fileName} written successfully`);
+    }, error);
   };
 
 export { genDisplayCss };

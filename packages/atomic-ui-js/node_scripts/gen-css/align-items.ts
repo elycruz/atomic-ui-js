@@ -1,5 +1,5 @@
 /**
- * align-items.js
+ * align-items.ts
  *
  * Generates `align-item` property classes (`.ez-align-item-center, .ez-ai-center` etc.).
  */
@@ -35,7 +35,7 @@ export const genAlignItemsCss = () => {
 ${out.join('\n\n')}
 `;
 
-  return fs.promises
-    .writeFile(outputFilePath, content)
-    .then(() => log(`file ${fileName} written successfully`), error);
+  return fs.promises.writeFile(outputFilePath, content).then(() => {
+    log(`file ${fileName} written successfully`);
+  }, error);
 };

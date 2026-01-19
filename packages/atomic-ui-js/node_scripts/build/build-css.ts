@@ -25,23 +25,23 @@ const __dirname = url.fileURLToPath(new URL('.', import.meta.url)),
             }
           })
       )
-      .then(() =>
+      .then(() => {
         // eslint-disable-next-line no-console
-        console.log("'build-css' finished successfully.")
-      ),
+        console.log("'build-css' finished successfully.");
+      }),
   buildCss = async () => fs.mkdir(distPath).then(compileCss, compileCss),
   copyCssToDist = async () => {
     return fs
       .cp(path.join(__dirname, '../../css'), path.join(distPath, 'css'), {
         recursive: true,
       })
-      .then(() =>
+      .then(() => {
         // eslint-disable-next-line no-console
-        console.log("'copy-css-to-dist' finished successfully.")
-      )
-      .catch(error => {
-        console.error("'copy-css-to-dist' failed:", error);
-        throw error;
+        console.log("'copy-css-to-dist' finished successfully.");
+      })
+      .catch((err: unknown) => {
+        console.error("'copy-css-to-dist' failed:", err);
+        throw err;
       });
   };
 

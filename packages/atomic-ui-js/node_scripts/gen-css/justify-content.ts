@@ -1,5 +1,5 @@
 /**
- * justify-content.js
+ * justify-content.ts
  *
  * Generates `justify-content` property classes (`.ez-justify-space-between, .ez-jc-space-between` etc.).
  */
@@ -36,9 +36,9 @@ const __dirname = url.fileURLToPath(new URL('.', import.meta.url)),
  */
 ${out.join('\n\n')}\n`;
 
-    return fs.promises
-      .writeFile(outputFilePath, content)
-      .then(() => log(`file ${fileName} written successfully`), error);
+    return fs.promises.writeFile(outputFilePath, content).then(() => {
+      log(`file ${fileName} written successfully`);
+    }, error);
   };
 
 export { genJustifyContentCss };

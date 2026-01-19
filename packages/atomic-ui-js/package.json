@@ -14,10 +14,10 @@
   },
   "scripts": {
     "build": "pnpm build:css && pnpm typings",
-    "build:css": "pnpm gen:css && node node_scripts/build/index.mjs",
-    "watch": "node node_scripts/watch/index.mjs",
+    "build:css": "pnpm gen:css && node node_scripts/build/index.ts",
+    "watch": "node --experimental-strip-types node_scripts/watch/index.ts",
     "docs": "pnpm typedoc",
-    "gen:css": "node node_scripts/gen-css/index.mjs",
+    "gen:css": "node node_scripts/gen-css/index.ts",
     "eslint": "eslint .",
     "eslintfix": "pnpm eslint --fix",
     "stylelint": "stylelint \"**/*.css\"",

@@ -1,12 +1,12 @@
 import chokidar from 'chokidar';
 import path from 'node:path';
 import url from 'node:url';
-import { buildCss } from '../build/build-css.mjs';
+import { buildCss } from '../build/build-css.ts';
 
 const { log, error } = console,
   __dirname = url.fileURLToPath(new URL('.', import.meta.url));
 
-export const watch = async () => {
+export const watch = async (): Promise<any> => {
   return chokidar
     .watch(path.join(__dirname, '../../**/*.css'), {
       ignored: '**/(node_modules|dist)',
@@ -14,20 +14,17 @@ export const watch = async () => {
       interval: 610,
       binaryInterval: 610,
     })
-    .on('ready', async () => {
-      await buildCss();
+    .on('ready', () => {
+      buildCss().catch(error);
       log('Awaiting changes ...');
     })
-    .on('all', async (event, path) => {
+    .on('all', (event, path) => {
       switch (event) {
         case 'change':
           log(`[watch:change] - ${path} changed.`);
-          await buildCss();
+          buildCss().catch(error);
           log('Awaiting changes ...');
           break;
-        case 'error':
-          error(event);
-          return;
         // case 'add':
         // case 'addDir':
         // case 'unlink':
@@ -35,5 +32,8 @@ export const watch = async () => {
         default:
           break;
       }
+    })
+    .on('error', err => {
+      error(`[watch:error] - ${err}`);
     });
 };

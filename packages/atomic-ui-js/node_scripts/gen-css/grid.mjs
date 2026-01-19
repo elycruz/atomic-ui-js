@@ -1,3 +1,0 @@
-const genGridCss = () => {};
-
-export { genGridCss };

@@ -11,12 +11,12 @@
  *
  * Default:
  * ```bash
- * $ node index.mjs -- my-custom-element-name
+ * $ node index.ts -- my-custom-element-name
  * ```
  *
  * With `--force`
  * ```bash
- * $ node index.mjs -- -f custom-element-name
+ * $ node index.ts -- -f custom-element-name
  * ```
  */
 import fs from 'node:fs/promises';

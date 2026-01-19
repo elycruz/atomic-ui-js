@@ -113,6 +113,7 @@ export default defineConfig([
       // Async/Promise handling rules
       '@typescript-eslint/no-floating-promises': 'error',
       '@typescript-eslint/no-misused-promises': 'error',
+      '@typescript-eslint/require-await': 'off',
 
       // Front-end best practices
       // '@typescript-eslint/no-explicit-any': 'error',

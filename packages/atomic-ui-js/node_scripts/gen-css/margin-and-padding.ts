@@ -1,7 +1,7 @@
 import fs from 'fs';
 import * as path from 'path';
 import url from 'url';
-import { spacingNums } from './spacing.mjs';
+import { spacingNums } from './spacing.ts';
 
 const __dirname = url.fileURLToPath(new URL('.', import.meta.url)),
   { log, error } = console,
@@ -48,9 +48,9 @@ const __dirname = url.fileURLToPath(new URL('.', import.meta.url)),
 ${marginContent}${paddingContent}
 `;
 
-    return fs.promises
-      .writeFile(outputFilePath, content)
-      .then(() => log(`file ${fileName} written successfully`), error);
+    return fs.promises.writeFile(outputFilePath, content).then(() => {
+      log(`file ${fileName} written successfully`);
+    }, error);
   };
 
 export { genMarginAndPaddingClasses };

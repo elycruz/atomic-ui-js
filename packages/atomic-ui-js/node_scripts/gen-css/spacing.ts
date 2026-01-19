@@ -1,5 +1,5 @@
 /**
- * gen-spacing-scheme-css.js
+ * gen-spacing-scheme-css.ts
  *
  * Outputs the library's css spacing properties - We are supporting multiples of 6 and 8 and the fibonacci sequence.
  *
@@ -8,7 +8,7 @@
 import fs from 'fs';
 import * as path from 'path';
 import url from 'url';
-import * as utils from '../../utils/number.js';
+import * as utils from '../../utils/number.ts';
 
 const __dirname = url.fileURLToPath(new URL('.', import.meta.url)),
   { fib, factorsOf, multiplesOf } = utils,
@@ -44,9 +44,9 @@ ${props.trimEnd()}
 }
 `;
 
-    return fs.promises
-      .writeFile(outputFilePath, content)
-      .then(() => log(`file ${fileName} written successfully`), error);
+    return fs.promises.writeFile(outputFilePath, content).then(() => {
+      log(`file ${fileName} written successfully`);
+    }, error);
   };
 
 export { genSpacingCss, fibs, factorsOf144, multiplesOf6, spacingNums };
