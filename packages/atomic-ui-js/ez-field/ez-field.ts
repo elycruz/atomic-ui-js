@@ -1,10 +1,17 @@
 import {
+  LitElement,
+  html,
+  type PropertyValues,
+  type CSSResultGroup,
+} from 'lit';
+
+import {
   addEventListener,
   addEventListeners,
   removeEventListener,
   removeEventListeners,
+  type EventListenerTuple,
 } from '../utils/dom/events.js';
-import { LitElement, html } from 'lit';
 
 import styles from './ez-field.css.js';
 
@@ -16,7 +23,7 @@ export const xFieldName = 'ez-field';
 export class EzFieldElement extends LitElement {
   static localName = xFieldName;
 
-  static get styles() {
+  static get styles(): CSSResultGroup {
     return styles;
   }
 
@@ -27,14 +34,21 @@ export class EzFieldElement extends LitElement {
     validateOnInput: { type: Boolean },
   };
 
-  get localName() {
+  selectors?: string;
+  validationMessage?: string;
+  validateOnChange?: boolean;
+  validateOnInput?: boolean;
+
+  get localName(): typeof xFieldName {
     return xFieldName;
   }
 
-  #_initialized;
-  #_evListenersTupleList;
-  #_form;
-  #_inputs;
+  #_initialized = false;
+  #_evListenersTupleList: EventListenerTuple[];
+  #_form?: HTMLFormElement;
+  #_inputs?: NodeListOf<
+    HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement
+  >;
 
   constructor() {
     super();
@@ -64,7 +78,7 @@ export class EzFieldElement extends LitElement {
     }
   }
 
-  updated(_changedProperties) {
+  updated(_changedProperties: PropertyValues): void {
     super.updated(_changedProperties);
 
     if (_changedProperties.has('selectors')) {
@@ -91,22 +105,36 @@ export class EzFieldElement extends LitElement {
     `;
   }
 
-  #_onInvalid = e => {
+  #_onInvalid = (e: Event): void => {
     e.preventDefault();
 
-    const { currentTarget: target } = e,
+    const { currentTarget } = e,
+      target = currentTarget as
+        | HTMLInputElement
+        | HTMLTextAreaElement
+        | HTMLSelectElement,
       { selectors } = this;
 
-    if (selectors && target.matches(selectors)) {
+    if (selectors && target?.matches(selectors)) {
       this.validationMessage = target.validationMessage;
     }
   };
 
-  #_onInputOrChange = e => {
+  #_onInputOrChange = (e: Event): void => {
     const { target } = e;
 
-    if (!target.matches(this.selectors)) return;
-    if (!target.validationMessage) this.validationMessage = '';
+    if (
+      !(target instanceof HTMLElement) ||
+      !target.matches(this.selectors ?? '')
+    )
+      return;
+
+    const inputTarget = target as
+      | HTMLInputElement
+      | HTMLTextAreaElement
+      | HTMLSelectElement;
+
+    if (!inputTarget.validationMessage) this.validationMessage = '';
     if (
       (this.validateOnChange && e.type === 'change') ||
       (this.validateOnInput && e.type === 'input')
@@ -115,11 +143,11 @@ export class EzFieldElement extends LitElement {
     }
   };
 
-  #_onFormReset = () => {
+  #_onFormReset = (): void => {
     this.validationMessage = '';
   };
 
-  #_addEventListeners() {
+  #_addEventListeners(): this {
     if (this.#_form)
       removeEventListener(this.#_onFormReset, 'reset', this.#_form);
 
@@ -141,13 +169,14 @@ export class EzFieldElement extends LitElement {
     return this;
   }
 
-  #_removeEventListeners() {
+  #_removeEventListeners(): this {
     if (this.#_form)
       removeEventListener(this.#_onFormReset, 'reset', this.#_form);
     if (this.#_inputs)
       this.#_inputs.forEach(x =>
         removeEventListener(this.#_onInvalid, 'invalid', x)
       );
-    return removeEventListeners(this.#_evListenersTupleList, this);
+    removeEventListeners(this.#_evListenersTupleList, this);
+    return this;
   }
 }

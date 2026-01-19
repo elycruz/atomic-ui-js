@@ -1,12 +1,12 @@
-import {Metadata} from 'next';
+import { Metadata } from 'next';
 import React from 'react';
-import {AppNav} from '@/features/app-nav';
-import {AppNavToggle} from '@/components/app-nav-toggle';
+import { AppNav } from '@/features/app-nav';
+import { AppNavToggle } from '@/components/app-nav-toggle';
 
 import '../css/index.scss';
 
 export const metadata = {
-  title: 'Atomic UI Js'
+  title: 'Atomic UI Js',
 } as Metadata;
 
 export default function RootLayout({
@@ -25,7 +25,9 @@ export default function RootLayout({
               <AppNavToggle />
 
               <hgroup className="ez-appbar__start">
-                <a href="/atomic-ui-js"><h1 className="ez-appbar__title">Atomic UI Js</h1></a>
+                <a href="/atomic-ui-js">
+                  <h1 className="ez-appbar__title">Atomic UI Js</h1>
+                </a>
               </hgroup>
             </div>
           </header>
@@ -34,9 +36,7 @@ export default function RootLayout({
             <AppNav />
 
             <main className="ez-app-main">
-              <div>
-                {children}
-              </div>
+              <div>{children}</div>
             </main>
           </div>
 
@@ -47,7 +47,6 @@ export default function RootLayout({
           </footer>
         </div>
         {/* end of .ez-app-wrapper */}
-
       </body>
     </html>
   );

@@ -5,11 +5,14 @@ import React from 'react';
 export function AppNavToggle() {
   const onClick = e => {
     e.preventDefault();
-    e.currentTarget.ownerDocument.documentElement.classList.toggle('with-app-nav-hidden');
+    e.currentTarget.ownerDocument.documentElement.classList.toggle(
+      'with-app-nav-hidden'
+    );
   };
 
   return (
-    <button className="ez-hamburger-btn ez-btn"
-      onClick={onClick}><i className="mds-icon">menu</i></button>
+    <button className="ez-hamburger-btn ez-btn" onClick={onClick}>
+      <i className="mds-icon">menu</i>
+    </button>
   );
 }

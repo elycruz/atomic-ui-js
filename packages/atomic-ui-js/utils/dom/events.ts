@@ -37,7 +37,7 @@ export const removeEventListener = <K extends keyof HTMLElementEventMap>(
 export const addEventListeners = <K extends keyof HTMLElementEventMap>(
   listenerEvNameOpsTuple: EventListenerTuple<K>[],
   element: HTMLElement
-): HTMLElement =>
+): typeof element =>
   listenerEvNameOpsTuple.reduce(
     (elm, [listener, evName, options]) =>
       addEventListener(listener, evName, elm, options),
@@ -47,7 +47,7 @@ export const addEventListeners = <K extends keyof HTMLElementEventMap>(
 export const removeEventListeners = <K extends keyof HTMLElementEventMap>(
   listenerEvNameOpsTuple: EventListenerTuple<K>[],
   element: HTMLElement
-): HTMLElement =>
+): typeof element =>
   listenerEvNameOpsTuple.reduce(
     (elm, [listener, evName, options]) =>
       removeEventListener(listener, evName, elm, options),

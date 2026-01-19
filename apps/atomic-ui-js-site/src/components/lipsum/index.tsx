@@ -5,7 +5,5 @@ export interface LipsumProps {
 }
 
 export default function Lipsum() {
-  return (<>
-    Hello
-  </>);
+  return <>Hello</>;
 }

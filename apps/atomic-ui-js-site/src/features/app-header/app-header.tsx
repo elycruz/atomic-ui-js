@@ -1,3 +1,1 @@
-export function AppHeader() {
-
-}
+export function AppHeader() {}
