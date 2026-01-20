@@ -16,7 +16,7 @@
     "target": "ES2017",
     "declaration": true,
     "declarationMap": true,
-    "declarationDir": "./dist/typings",
+    "declarationDir": "./dist",
     "outDir": "./dist",
     "allowJs": true,
     "checkJs": true,
@@ -35,7 +35,6 @@
     "**/node_scripts"
   ],
   "include": [
-    "types/**/*.d.ts",
     "**/*.js",
     "**/*.ts"
   ]

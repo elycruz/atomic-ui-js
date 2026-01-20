@@ -13,11 +13,8 @@
     "sourceMap": true,
     "strict": false,
     "strictNullChecks": true,
-    "target": "ES2017",
+    "target": "ES2020",
     "declaration": false,
-    "types": [
-      "./types"
-    ],
     "allowJs": true,
     "checkJs": true,
     "skipLibCheck": true,

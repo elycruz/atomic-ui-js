@@ -18,6 +18,9 @@ import {
   OBSERVER_CALLBACK,
   isNullable,
 } from '../utils/index.js';
+import { EzAppbarElement } from '../ez-appbar/index.js';
+import { EzFieldElement } from '../ez-field/index.js';
+import { EzRippleElement } from '../ez-ripple/index.js';
 
 export const xToggleOnScrollName = 'ez-toggleonscroll',
   xToggleOnScrollIntersectionEvName = `${xToggleOnScrollName}-intersection`;
@@ -520,5 +523,11 @@ export class EzToggleOnScrollElement extends ReactiveElement {
     if (this.intersectingTarget)
       // @todo Ensure component can work with `Document` targets
       this.#intersectionObserver.observe(this.intersectingTarget as Element);
+  }
+}
+
+declare global {
+  interface HTMLElementTagNameMap {
+    'ez-toggleonscroll': EzToggleOnScrollElement;
   }
 }

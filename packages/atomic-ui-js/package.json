@@ -2,16 +2,39 @@
   "name": "atomic-ui-js",
   "version": "1.0.0",
   "description": "An atomic user interface toolkit, and library, for building html user interfaces.",
-  "module": "./dist/atomic-ui-js/packages/atomic-ui-js/index.js",
+  "module": "./dist/packages/atomic-ui-js/index.js",
   "type": "module",
-  "typings": "./dist/typings/index.d.ts",
+  "typings": "./dist/packages/atomic-ui-js/index.d.ts",
   "engines": {
     "node": ">=v24"
   },
   "exports": {
-    ".": "./dist/atomic-ui-js/packages/atomic-ui-js/index.js",
-    "./*.css": "./dist/css/*.css",
-    "./typings/*": "./dist/typings/*"
+    ".": {
+      "types": "./dist/packages/atomic-ui-js/index.d.ts",
+      "default": "./dist/packages/atomic-ui-js/index.js"
+    },
+    "./ez-appbar": {
+      "types": "./dist/packages/atomic-ui-js/ez-appbar/index.d.ts",
+      "default": "./dist/packages/atomic-ui-js/ez-appbar/index.js"
+    },
+    "./ez-field": {
+      "types": "./dist/packages/atomic-ui-js/ez-field/index.d.ts",
+      "default": "./dist/packages/atomic-ui-js/ez-field/index.js"
+    },
+    "./ez-ripple": {
+      "types": "./dist/packages/atomic-ui-js/ez-ripple/index.d.ts",
+      "default": "./dist/packages/atomic-ui-js/ez-ripple/index.js"
+    },
+    "./ez-toggleonscroll": {
+      "types": "./dist/packages/atomic-ui-js/ez-toggleonscroll/index.d.ts",
+      "default": "./dist/packages/atomic-ui-js/ez-toggleonscroll/index.js"
+    },
+    "./utils": {
+      "types": "./dist/packages/atomic-ui-js/utils/index.d.ts",
+      "default": "./dist/packages/atomic-ui-js/utils/index.js"
+    },
+    "./dist/*": "./dist/packages/atomic-ui-js/*",
+    "./*": "./dist/packages/atomic-ui-js/*"
   },
   "scripts": {
     "build": "pnpm build:css && pnpm typings",

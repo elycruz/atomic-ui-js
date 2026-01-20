@@ -14,6 +14,7 @@ import {
 } from '../utils/dom/events.js';
 
 import styles from './ez-field.css.js';
+import { EzAppbarElement } from '../ez-appbar/index.js';
 
 export const xFieldName = 'ez-field';
 
@@ -178,5 +179,11 @@ export class EzFieldElement extends LitElement {
       );
     removeEventListeners(this.#_evListenersTupleList, this);
     return this;
+  }
+}
+
+declare global {
+  interface HTMLElementTagNameMap {
+    'ez-field': EzFieldElement;
   }
 }

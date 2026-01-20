@@ -263,3 +263,9 @@ export class EzAppbarElement extends ReactiveElement {
     this.debounceDelay
   );
 }
+
+declare global {
+  interface HTMLElementTagNameMap {
+    'ez-appbar': EzAppbarElement;
+  }
+}

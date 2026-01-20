@@ -2,16 +2,36 @@
   "name": "atomic-ui-js-react",
   "version": "1.0.0",
   "description": "",
-  "module": "index.js",
-  "typings": "types",
+  "module": "./dist/index.js",
+  "typings": "./dist/index.d.ts",
   "engines": {
     "node": ">=v24"
   },
   "exports": {
-    ".": "./index.js",
-    "./*": "./*"
+    ".": {
+      "types": "./dist/index.d.ts",
+      "default": "./dist/index.js"
+    },
+    "./ez-appbar": {
+      "types": "./dist/ez-appbar/index.d.ts",
+      "default": "./dist/ez-appbar/index.js"
+    },
+    "./ez-field": {
+      "types": "./dist/ez-field/index.d.ts",
+      "default": "./dist/ez-field/index.js"
+    },
+    "./ez-ripple": {
+      "types": "./dist/ez-ripple/index.d.ts",
+      "default": "./dist/ez-ripple/index.js"
+    },
+    "./ez-toggleonscroll": {
+      "types": "./dist/ez-toggleonscroll/index.d.ts",
+      "default": "./dist/ez-toggleonscroll/index.js"
+    },
+    "./*": "./dist/*"
   },
   "scripts": {
+    "build": "tsc --project tsconfig.json",
     "test": "echo \"Tests not yet written\""
   },
   "browserslist": [
