@@ -2,7 +2,7 @@ import styles from './page.module.scss';
 
 export default function CopyPage() {
   return (
-    <section className={styles.copySection} role="region">
+    <section className={styles.copySection}>
       <header>
         <h2>Copy</h2>
       </header>
@@ -27,6 +27,7 @@ export default function CopyPage() {
           </dd>
           <dt>Inline text</dt>
           <dd>
+            {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
             <a href="#">Anchor tag</a>
             <button type="button">Button</button>
           </dd>

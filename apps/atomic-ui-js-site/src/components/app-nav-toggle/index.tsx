@@ -3,7 +3,7 @@
 import React from 'react';
 
 export function AppNavToggle() {
-  const onClick = e => {
+  const onClick = (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
     e.currentTarget.ownerDocument.documentElement.classList.toggle(
       'with-app-nav-hidden'

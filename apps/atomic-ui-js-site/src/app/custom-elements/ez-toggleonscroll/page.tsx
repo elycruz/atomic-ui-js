@@ -24,7 +24,8 @@ const lipsumArticle = (
   return (
     <article className={className}>
       {anchorTarget && anchorTarget !== '#' && (
-        <a id={anchorTarget.slice(1)}></a>
+        // eslint-disable-next-line jsx-a11y/anchor-is-valid
+        <a id={anchorTarget.slice(1)}>&nbsp;</a>
       )}
 
       <header>

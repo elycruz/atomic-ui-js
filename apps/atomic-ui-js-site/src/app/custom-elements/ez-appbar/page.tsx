@@ -18,9 +18,11 @@ export default function EzAppBarPage() {
               </hgroup>
               <menu>
                 <li>
+                  {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
                   <a href="#">Link 1</a>
                 </li>
                 <li>
+                  {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
                   <a href="#">Link 2</a>
                 </li>
               </menu>

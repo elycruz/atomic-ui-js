@@ -55,7 +55,7 @@ export function BackToTopBtn({
         className="back-to-top-btn ez-btn ez-filled ez-raised ez-theme-primary"
       >
         <EzRippleComponent></EzRippleComponent>
-        {!children ? <span>Back to top</span> : children}
+        {children ?? <span>Back to top</span>}
       </a>
     </EzToggleOnScrollComponent>
   );

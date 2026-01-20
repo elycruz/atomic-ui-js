@@ -2,7 +2,7 @@ import { factorsOf, fib, multiplesOf } from 'atomic-ui-js/utils/index.js';
 
 export default function ExampleFontSizeSequences() {
   const text = 'The quick brown fox jumped over the lazy dog.',
-    renderFontSizeSubArticle = (title, numbers) => {
+    renderFontSizeSubArticle = (title: string, numbers: number[]) => {
       return (
         <article>
           <header>

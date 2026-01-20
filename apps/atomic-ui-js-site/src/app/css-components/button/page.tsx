@@ -3,7 +3,7 @@ import EzRippleComponent from 'atomic-ui-js-next/ez-ripple';
 
 const partitionedVariants = Object.entries(xVariants).reduce(
     (agg, [k, v]) => {
-      if (/large|small|normal|medium/.test(v + '')) {
+      if (/large|small|normal|medium/.test(v)) {
         agg[1][k] = v;
       }
       agg[0][k] = v;
