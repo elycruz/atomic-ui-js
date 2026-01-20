@@ -17,7 +17,7 @@
     "declaration": true,
     "declarationMap": true,
     "declarationDir": "./dist/typings",
-    "outDir": "./dist/atomic-ui-js",
+    "outDir": "./dist",
     "allowJs": true,
     "checkJs": true,
     "skipLibCheck": true,
@@ -31,7 +31,8 @@
     "**/node_modules",
     "**/dist",
     "**/archived",
-    "**/coverage"
+    "**/coverage",
+    "**/node_scripts"
   ],
   "include": [
     "types/**/*.d.ts",
