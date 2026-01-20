@@ -6,7 +6,7 @@
   "type": "module",
   "typings": "./dist/typings/index.d.ts",
   "engines": {
-    "node": ">=v20"
+    "node": ">=v24"
   },
   "exports": {
     ".": "./dist/index.js",

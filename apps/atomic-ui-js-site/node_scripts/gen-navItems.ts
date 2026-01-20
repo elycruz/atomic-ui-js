@@ -1,4 +1,5 @@
 import fs from 'node:fs/promises';
+import { Stats } from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { dirWalk } from 'node-dirwalk';
@@ -9,12 +10,18 @@ const __dirname = fileURLToPath(new URL('.', import.meta.url)),
     __dirname,
     '../src/data/generated/navigation-items.ts'
   ),
-  getNavItemConstructor = dirToWalk =>
-    function NavItem(fileName, filePath, stat, files) {
+  getNavItemConstructor = (dirToWalk: string) =>
+    function NavItem(
+      fileName: string,
+      filePath: string,
+      stat: Stats,
+      files: string[]
+    ) {
       const ext = path.extname(fileName),
         basename = path.basename(fileName, ext),
         uri = filePath.split(dirToWalk)[1];
 
+      // @ts-expect-error - Known type.
       Object.defineProperties(this, {
         label: {
           value: basename[0].toUpperCase() + basename.slice(1),
@@ -28,30 +35,33 @@ const __dirname = fileURLToPath(new URL('.', import.meta.url)),
       });
 
       if (files?.filter(Boolean).length) {
+        // @ts-expect-error - Known type.
         Object.defineProperty(this, 'items', {
           value: files.filter(Boolean),
           enumerable: true,
         });
       }
     },
-  genNavItemsJson = async dir =>
+  genNavItemsJson = async (dir: string) =>
+    // eslint-disable-next-line @typescript-eslint/no-unsafe-call
     dirWalk(
       getNavItemConstructor(dir),
 
       // Directory effect factory
-      (dirPath, _stat, _dirName) => fileInfoObj =>
+      (dirPath: string) => (fileInfoObj: object) =>
         dirPath.includes('/api') ? null : fileInfoObj,
 
       // File effect factory
-      (filePath, _stat, _fileName) => fileInfoObj =>
-        /\./.test(fileInfoObj.uri) ? undefined : fileInfoObj,
+      () => (fileInfoObj: { uri: string }) =>
+        fileInfoObj.uri.includes('.') ? undefined : fileInfoObj,
 
       // Directory to walk
       dir
     );
 
 // Generation file contents
-(async () => {
+await (async () => {
+  // eslint-disable-next-line no-console
   console.log(`Generation nav-items json, from dir: ${targetDir} ...`);
 
   return genNavItemsJson(targetDir)

@@ -30,6 +30,7 @@
     "eslintfix": {
     },
     "lint": {
+      "persistent": true,
       "dependsOn": [
         "eslint",
         "stylelint"

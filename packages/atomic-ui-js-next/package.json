@@ -4,7 +4,7 @@
   "description": "",
   "module": "index.js",
   "engines": {
-    "node": ">=v20"
+    "node": ">=v24"
   },
   "exports": {
     ".": "./index.js",

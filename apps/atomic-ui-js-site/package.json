@@ -3,6 +3,9 @@
   "version": "0.1.0",
   "private": true,
   "type": "module",
+  "engines": {
+    "node": ">=v24"
+  },
   "scripts": {
     "dev": "next dev",
     "build": "pnpm gen-navitems && next build",
@@ -10,7 +13,7 @@
     "eslint": "eslint .",
     "eslintfix": "pnpm eslint --fix",
     "docs": "pnpm typedoc",
-    "gen-navitems": "node node_scripts/gen-navItems.mjs",
+    "gen-navitems": "node --experimental-strip-types node_scripts/gen-navItems.ts",
     "stylelint": "stylelint -c .stylelintrc.json \"src/**/*.{css,scss}\"",
     "stylelintfix": "pnpm stylelint --fix",
     "typedoc": "typedoc ",
