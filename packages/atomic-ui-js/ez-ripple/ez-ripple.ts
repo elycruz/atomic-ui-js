@@ -1,7 +1,4 @@
 import { debounce } from '../utils/index.js';
-import { EzAppbarElement } from '../ez-appbar/index.js';
-import { EzFieldElement } from '../ez-field/index.js';
-import { EzToggleOnScrollElement } from '../ez-toggleonscroll/index.js';
 
 export const xRippleName = 'ez-ripple';
 

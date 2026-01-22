@@ -18,9 +18,6 @@ import {
   OBSERVER_CALLBACK,
   isNullable,
 } from '../utils/index.js';
-import { EzAppbarElement } from '../ez-appbar/index.js';
-import { EzFieldElement } from '../ez-field/index.js';
-import { EzRippleElement } from '../ez-ripple/index.js';
 
 export const xToggleOnScrollName = 'ez-toggleonscroll',
   xToggleOnScrollIntersectionEvName = `${xToggleOnScrollName}-intersection`;
@@ -142,7 +139,7 @@ export class EzToggleOnScrollElement extends ReactiveElement {
    * Root element used by the contained intersection observer;  (Internally) defaults to the top-level document's
    * viewport;  Default `null`.
    */
-  get root() {
+  get root(): Element | Document | null {
     if (!this.#root) {
       this.#root = this.rootSelector
         ? this.ownerDocument.querySelector(this.rootSelector)

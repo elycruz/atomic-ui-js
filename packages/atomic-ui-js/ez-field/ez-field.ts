@@ -14,7 +14,6 @@ import {
 } from '../utils/dom/events.js';
 
 import styles from './ez-field.css.js';
-import { EzAppbarElement } from '../ez-appbar/index.js';
 
 export const xFieldName = 'ez-field';
 
