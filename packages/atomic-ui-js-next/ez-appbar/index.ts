@@ -2,9 +2,11 @@
 
 import lazy from 'next/dynamic';
 
-// @ts-expect-error - Temporarily disabled.
-const EzAppBarComponent = lazy(() => import('atomic-ui-js-react/ez-appbar'), {
-  ssr: false,
-});
+const EzAppBarComponent = lazy(
+  () => import('atomic-ui-js-react/ez-appbar').then(mod => mod.default),
+  {
+    ssr: false,
+  }
+);
 
 export default EzAppBarComponent;

@@ -5,9 +5,13 @@
     "declarationMap": true,
     "declarationDir": "./dist",
     "outDir": "./dist",
+    "jsx": "preserve",
     "types": [
       "atomic-ui-js"
-    ],
-    "jsx": "preserve",
-  }
+    ]
+  },
+  "includes": [
+    "**/*.ts",
+    "**/*.tsx"
+  ]
 }

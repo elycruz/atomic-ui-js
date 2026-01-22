@@ -3,8 +3,7 @@
 import lazy from 'next/dynamic';
 
 const EzToggleOnScrollComponent = lazy(
-  // @ts-expect-error - Temporarily disabled.
-  () => import('atomic-ui-js-react/ez-toggleonscroll'),
+  () => import('atomic-ui-js-react/ez-toggleonscroll').then(mod => mod.default),
   {
     ssr: false,
   }

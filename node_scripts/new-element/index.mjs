@@ -211,7 +211,7 @@ Component description.
         indexFilePath,
         `import lazy from 'next/dynamic';
 
-const ${className} = lazy(() => import('atomic-ui-js-react/${localName}'), {
+const ${className} = lazy(() => import('atomic-ui-js-react/${localName}').then(mod => mod.default), {
   ssr: false
 });
 

@@ -6,8 +6,13 @@
     "declarationDir": "./dist",
     "outDir": "./dist",
     "types": [
+      "atomic-ui-js",
       "atomic-ui-js-react"
     ],
     "jsx": "preserve"
-  }
+  },
+  "includes": [
+    "**/.ts",
+    "**/*.tsx"
+  ]
 }
