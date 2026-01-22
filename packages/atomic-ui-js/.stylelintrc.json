@@ -3,7 +3,7 @@
     "../../.stylelintrc.json"
   ],
   "ignoreFiles": [
-    "dist/*.css",
+    "dist/**/*",
     "node_modules/**/*",
     "coverage/**/*",
     ".turbo/**/*"

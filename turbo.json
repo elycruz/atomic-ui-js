@@ -26,25 +26,30 @@
       ]
     },
     "eslint": {
+      "cache": false
     },
     "eslintfix": {
+      "cache": false
     },
     "lint": {
-      "persistent": true,
+      "cache": false,
       "dependsOn": [
         "eslint",
         "stylelint"
       ]
     },
     "lintfix": {
+      "cache": false,
       "dependsOn": [
         "eslintfix",
         "stylelintfix"
       ]
     },
     "stylelint": {
+      "cache": false
     },
     "stylelintfix": {
+      "cache": false
     },
     "test": {
       "persistent": true

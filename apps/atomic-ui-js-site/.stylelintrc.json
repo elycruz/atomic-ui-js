@@ -4,9 +4,9 @@
     "../../.stylelintrc.json"
   ],
   "ignoreFiles": [
-    "dist/**/*",
-    "node_modules/**/*",
-    "storybook-static/**/*",
-    ".turbo/**/*"
+    "dist/**/*.{css,scss}",
+    "node_modules/**/*.{css,scss}",
+    "storybook-static/**/*.{css,scss}",
+    ".turbo/**/*.{css,scss}"
   ]
 }
