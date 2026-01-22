@@ -1,5 +1,5 @@
 import type {Preview} from "@storybook/web-components-vite";
-import '../dist/index.min.css';
+import '../dist/packages/atomic-ui-js/css/index.min.css';
 
 const preview: Preview = {
   parameters: {

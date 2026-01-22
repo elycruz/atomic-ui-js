@@ -50,6 +50,8 @@ export default defineConfig([
     '**/dist',
     '**/generated',
     '**/node_modules',
+    '**/.turbo',
+    '**/.next',
   ]),
   js.configs.recommended,
   prettierRecommended,
