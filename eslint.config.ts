@@ -45,6 +45,7 @@ export default defineConfig([
   globalIgnores([
     '**/.storybook',
     '**/*.d.ts',
+    '**/docs',
     '**/archived/**/*',
     '**/coverage/**/*',
     '**/dist',

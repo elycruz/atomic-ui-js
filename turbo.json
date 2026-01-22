@@ -26,10 +26,16 @@
       ]
     },
     "eslint": {
-      "cache": false
+      "cache": false,
+      "dependsOn": [
+        "^build"
+      ]
     },
     "eslintfix": {
-      "cache": false
+      "cache": false,
+      "dependsOn": [
+        "^build"
+      ]
     },
     "lint": {
       "cache": false,
@@ -52,7 +58,10 @@
       "cache": false
     },
     "test": {
-      "persistent": true
+      "persistent": true,
+      "dependsOn": [
+        "^build"
+      ]
     },
     "watch": {
       "outputs": [
