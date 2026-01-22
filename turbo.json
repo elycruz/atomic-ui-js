@@ -7,7 +7,7 @@
         "dist/atomic-ui-js/**/*",
         "packages/atomic-ui-js-react/dist/**/*",
         "packages/atomic-ui-js-next/dist/**/*",
-        "packages/atomic-ui-js/dist/**/*"
+        "dist/**/*"
       ]
     },
     "build-storybook": {
@@ -56,7 +56,7 @@
     },
     "watch": {
       "outputs": [
-        "packages/atomic-ui-js/dist/index.min.css"
+        "dist/index.min.css"
       ]
     }
   }

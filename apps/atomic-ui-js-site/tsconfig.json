@@ -36,15 +36,13 @@
       "@types/react",
       "@types/react-dom",
       "atomic-ui-js",
-      "atomic-ui-js-react"
+      "atomic-ui-js-react",
+      "atomic-ui-js-next"
     ]
   },
   "include": [
     "next-env.d.ts",
     "**/*.ts",
-    "**/*.tsx",
-    ".next/types/**/*.ts",
-    "../../docs/types/**/*.ts",
-    "../../dist/atomic-ui-js-site/types/**/*.ts"
+    "**/*.tsx"
   ]
 }

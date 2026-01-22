@@ -8,7 +8,7 @@ import postcssImport from 'postcss-import';
 const __dirname = url.fileURLToPath(new URL('.', import.meta.url)),
   distPath = path.join(__dirname, '../../dist'),
   inFilePath = path.join(__dirname, '../../css/index.css'),
-  outFilePath = path.join(distPath, 'packages/atomic-ui-js/css/index.min.css'),
+  outFilePath = path.join(distPath, 'css/index.min.css'),
   compileCss = async () =>
     fs
       .readFile(inFilePath)
@@ -35,13 +35,9 @@ const __dirname = url.fileURLToPath(new URL('.', import.meta.url)),
       .then(compileCss, compileCss),
   copyCssToDist = async () => {
     return fs
-      .cp(
-        path.join(__dirname, '../../css'),
-        path.join(distPath, 'packages/atomic-ui-js/css'),
-        {
-          recursive: true,
-        }
-      )
+      .cp(path.join(__dirname, '../../css'), path.join(distPath, 'css'), {
+        recursive: true,
+      })
       .then(() => {
         // eslint-disable-next-line no-console
         console.log("'copy-css-to-dist' finished successfully.");

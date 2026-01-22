@@ -2,39 +2,38 @@
   "name": "atomic-ui-js",
   "version": "1.0.0",
   "description": "An atomic user interface toolkit, and library, for building html user interfaces.",
-  "module": "./dist/packages/atomic-ui-js/index.js",
+  "module": "./dist/index.js",
   "type": "module",
-  "typings": "./dist/packages/atomic-ui-js/index.d.ts",
+  "typings": "./dist/index.d.ts",
   "engines": {
     "node": ">=v24"
   },
   "exports": {
     ".": {
-      "types": "./dist/packages/atomic-ui-js/index.d.ts",
-      "default": "./dist/packages/atomic-ui-js/index.js"
+      "types": "./dist/index.d.ts",
+      "default": "./dist/index.js"
     },
     "./ez-appbar": {
-      "types": "./dist/packages/atomic-ui-js/ez-appbar/index.d.ts",
-      "default": "./dist/packages/atomic-ui-js/ez-appbar/index.js"
+      "types": "./dist/ez-appbar/index.d.ts",
+      "default": "./dist/ez-appbar/index.js"
     },
     "./ez-field": {
-      "types": "./dist/packages/atomic-ui-js/ez-field/index.d.ts",
-      "default": "./dist/packages/atomic-ui-js/ez-field/index.js"
+      "types": "./dist/ez-field/index.d.ts",
+      "default": "./dist/ez-field/index.js"
     },
     "./ez-ripple": {
-      "types": "./dist/packages/atomic-ui-js/ez-ripple/index.d.ts",
-      "default": "./dist/packages/atomic-ui-js/ez-ripple/index.js"
+      "types": "./dist/ez-ripple/index.d.ts",
+      "default": "./dist/ez-ripple/index.js"
     },
     "./ez-toggleonscroll": {
-      "types": "./dist/packages/atomic-ui-js/ez-toggleonscroll/index.d.ts",
-      "default": "./dist/packages/atomic-ui-js/ez-toggleonscroll/index.js"
+      "types": "./dist/ez-toggleonscroll/index.d.ts",
+      "default": "./dist/ez-toggleonscroll/index.js"
     },
     "./utils": {
-      "types": "./dist/packages/atomic-ui-js/utils/index.d.ts",
-      "default": "./dist/packages/atomic-ui-js/utils/index.js"
+      "types": "./dist/utils/index.d.ts",
+      "default": "./dist/utils/index.js"
     },
-    "./dist/*": "./dist/packages/atomic-ui-js/*",
-    "./*": "./dist/packages/atomic-ui-js/*"
+    "./*": "./dist/*"
   },
   "scripts": {
     "build": "pnpm build:css && pnpm typings",

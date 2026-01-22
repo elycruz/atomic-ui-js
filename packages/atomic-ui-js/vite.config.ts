@@ -18,9 +18,9 @@ export default defineConfig({
       '@': dirname,
     },
   },
-  build: {
-    sourcemap: isDev ? 'inline' : false,
-  },
+  // build: {
+  //   sourcemap: isDev ? 'inline' : false,
+  // },
   // More info at: https://storybook.js.org/docs/next/writing-tests/integrations/vitest-addon
   test: {
     globals: true,

@@ -24,18 +24,22 @@
     "strict": false,
     "forceConsistentCasingInFileNames": true,
     "incremental": true,
-    "resolveJsonModule": true,
-    "isolatedModules": true
+    "resolveJsonModule": true
   },
   "exclude": [
     "**/node_modules",
     "**/dist",
     "**/archived",
     "**/coverage",
-    "**/node_scripts"
+    "**/node_scripts",
+    "**/.turbo",
+    "eslint.config.ts",
+    "vite.config.ts",
+    "vitest.setup.ts",
+    "vitest.shims.d.ts"
   ],
-  "include": [
-    "**/*.js",
-    "**/*.ts"
+  "includes": [
+    "**/.ts",
+    "**/*.tsx"
   ]
 }
